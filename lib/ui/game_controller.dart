@@ -1,9 +1,13 @@
 import 'dart:math';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
 import '../content/models.dart';
 import '../game/events.dart';
+import '../game/atomic_file.dart';
+import '../game/story_library.dart';
+import '../game/story_store.dart';
 import '../game/family.dart';
 import '../game/save.dart';
 import '../game/session.dart';
@@ -11,7 +15,31 @@ import '../game/state.dart';
 
 /// Widget'ların tek kapısı: okur ve niyet gönderir, hesap yapmaz.
 class GameController extends ChangeNotifier {
-  GameController(this.session);
+  GameController(this.session) {
+    final directory = File(session.saves.savePath).parent.path;
+    storyStore = StoryStore(
+      session.content.stories.values.map((b) => b.productId),
+      AtomicTextFile('$directory/story-entitlements.json'),
+    )..load();
+    stories = StoryLibrary(
+      session.content.stories,
+      AtomicTextFile('$directory/story-progress.json'),
+      ownsProduct: storyStore.owns,
+    )..load();
+  }
+  late final StoryLibrary stories;
+  late final StoryStore storyStore;
+  void openBook(String id) {
+    stories.open(id);
+    notifyListeners();
+  }
+
+  ActionResult chooseStory(String id, int index, String expectedNode) =>
+      _update(stories.choose(id, index, expectedNode: expectedNode));
+  ActionResult restartStory(String id) => _update(stories.restart(id));
+  ActionResult restoreStories() => _update(storyStore.restore());
+  ActionResult purchaseStory(String product) =>
+      _update(storyStore.purchase(product));
 
   final GameSession session;
 
