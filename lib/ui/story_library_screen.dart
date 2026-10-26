@@ -39,6 +39,11 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
 
   void _top() {
     if (_scroll.hasClients) _scroll.jumpTo(0);
+    // Yeni bölümün ölçüleri yerleşince de başa dön: önceki listenin kaydırma
+    // düzeltmesi, uzun bir kitap kartından açılan okuyucuyu aşağıda bırakmasın.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted && _scroll.hasClients) _scroll.jumpTo(0);
+    });
   }
 
   void _open(String id) {

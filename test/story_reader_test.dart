@@ -43,7 +43,12 @@ void main() {
     if (finder.evaluate().isEmpty) {
       await tester.dragUntilVisible(
         finder,
-        find.byType(Scrollable).last,
+        find
+            .descendant(
+              of: find.byType(ListView).last,
+              matching: find.byType(Scrollable),
+            )
+            .first,
         const Offset(0, -200),
         maxIteration: 100,
       );
@@ -126,7 +131,12 @@ void main() {
       // Use the action inside that book card, even when the list builds lazily.
       await tester.dragUntilVisible(
         find.text(paid.title),
-        find.byType(Scrollable).last,
+        find
+            .descendant(
+              of: find.byType(ListView).last,
+              matching: find.byType(Scrollable),
+            )
+            .first,
         const Offset(0, -300),
       );
       await tester.ensureVisible(find.text(paid.title));
@@ -175,6 +185,15 @@ void main() {
       );
     },
   );
+  testWidgets('bundled serif fonts load with network fetching disabled', (
+    tester,
+  ) async {
+    GoogleFonts.config.allowRuntimeFetching = false;
+    await app(tester);
+    await tester.runAsync(() => GoogleFonts.pendingFonts());
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets(
     'reading size changes and persists without consuming a decision',
     (tester) async {
@@ -264,7 +283,12 @@ void main() {
           await tester.pumpAndSettle();
           await tester.dragUntilVisible(
             find.text(paid.title),
-            find.byType(Scrollable).last,
+            find
+                .descendant(
+                  of: find.byType(ListView).last,
+                  matching: find.byType(Scrollable),
+                )
+                .first,
             const Offset(0, -300),
           );
           final paidCard = find
