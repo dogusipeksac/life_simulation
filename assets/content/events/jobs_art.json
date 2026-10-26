@@ -1,0 +1,401 @@
+[
+  {
+    "id": "job_carpenter_1", "title": "Ustanın Rendesi", "category": "Career", "minAge": 17, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:carpenter"],
+    "description": "Atölyede ilk haftan. Usta kırk yıllık rendesini eline tutuşturuyor, «Ceviz damarına karşı rendelenmez,» diyor ve çay demlemeye gidiyor. Talaş kokusunun ortasında, müşterinin yarın alacağı bir çekmece kapağı seni bekliyor.",
+    "choices": [
+      {"id": "slow", "text": "Damarı okuyarak, saatlerce sabırla çalış.", "effects": {"Education": 3, "Happiness": 2, "Health": -1}, "set": ["carpenter_patience"],
+       "result": "Kapak akşam bitti ama cam gibi pürüzsüzdü. Usta parmaklarını yüzeyde gezdirdi ve ilk kez başını salladı."},
+      {"id": "sander", "text": "Elektrikli zımparayla hızlıca bitir.", "effects": {"Education": 1, "Happiness": -1},
+       "result": "İş zamanında yetişti. Usta kapağı ışığa tuttu, dalgalanmaları gösterdi ve tek kelime etmedi."},
+      {"id": "ask", "text": "Ustayı çağır, önce onun nasıl yaptığını izle.", "effects": {"Social": 3, "Education": 2},
+       "result": "Çayını bırakıp yanına geldi. O gün rendeden çok, sormanın ayıp olmadığını öğrendin."}
+    ]
+  },
+  {
+    "id": "job_carpenter_2", "title": "Fabrikadan Gelen Teklif", "category": "Career", "minAge": 19, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:carpenter", "MinCareerLevel:2"],
+    "description": "Bir mobilya zinciri, tasarladığın sandalyeyi fabrikada binlerce kez üretmek istiyor. Teklif birkaç aylık kazancın kadar; ama hiçbir parçanın altında adın yazmayacak. Tozlu camın ardında yarım kalmış sandalyelerine bakıyorsun.",
+    "choices": [
+      {"id": "sell", "text": "Tasarımı sat, parayı al.", "effects": {"Money": 120000, "Happiness": -3},
+       "result": "Bir yıl sonra bir kafede kendi sandalyene oturdun. Kimse onun nereden geldiğini bilmiyordu."},
+      {"id": "refuse", "text": "Reddet; her sandalye elden çıksın.", "effects": {"Happiness": 4, "Social": 1, "Money": -5000},
+       "result": "Sipariş listen kısaldı ama müşterilerin seni isminle aradı. Bu sana yetti."},
+      {"id": "credit", "text": "Adının etikette yazmasını şart koş.", "requires": ["MinStat:Social:55"], "effects": {"Money": 80000, "Happiness": 3, "Social": 2},
+       "result": "Pazarlık uzun sürdü ama kazandın. Mağaza vitrinlerinde adını görmek tuhaf bir gurur verdi."}
+    ]
+  },
+  {
+    "id": "job_carpenter_3", "title": "Son Çırak", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:carpenter", "MinCareerLevel:3"],
+    "description": "Ellerin artık eskisi kadar sabit değil; sabahları parmak eklemlerin sızlıyor. Atölyenin kapısında, gözleri parlayan genç bir çırak duruyor. Ona ne bırakacağına karar vermenin zamanı geldi.",
+    "choices": [
+      {"id": "teach", "text": "Her şeyi baştan, yavaş yavaş öğret.", "effects": {"Happiness": 5, "Social": 4, "Health": -1},
+       "result": "Bir kış boyunca yan yana çalıştınız. Baharda onun yaptığı ilk dolabı sen bile seninkinden ayıramadın."},
+      {"id": "sell_shop", "text": "Atölyeyi sat, birikimini büyüt.", "effects": {"Money": 150000, "Happiness": -2},
+       "result": "Yeni sahipler tabelayı değiştirdi. Önünden geçerken adımlarını hızlandırdın."},
+      {"id": "plane", "text": "Ustanın rendesini ona ver ve ilk dersi tekrarla.", "requires": ["HasFlag:carpenter_patience"], "effects": {"Happiness": 8, "Social": 3},
+       "result": "«Ceviz damarına karşı rendelenmez,» dedin ve çay demlemeye gittin. Arkandan gelen sesin ritmini tanıdın."}
+    ]
+  },
+
+  {
+    "id": "job_restorer_1", "title": "Freskteki Yüz", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:restorer"],
+    "description": "Bir kilisenin iskelesinde, yüzü neredeyse silinmiş bir azizin önündesin. Kireç ve nem kokusu genzini yakıyor, el fenerinin ışığında altı yüz yıllık bir fırça izi seçiliyor. Eksik gözü tamamlamak için elinde yalnızca kendi tahminin var.",
+    "choices": [
+      {"id": "leave", "text": "Eksiği tamamlama; yalnızca var olanı koru.", "effects": {"Education": 3, "Happiness": 1}, "set": ["restorer_honest"],
+       "result": "Ziyaretçiler yarım yüzü garip buldu. Ama sanat tarihçileri raporunu aylarca alıntıladı."},
+      {"id": "paint", "text": "Benzer fresklere bakarak gözü yeniden çiz.", "effects": {"Happiness": 3, "Social": 2},
+       "result": "Aziz yeniden bakmaya başladı. Bazen o gözün kime ait olduğunu düşündüğün geceler oldu."},
+      {"id": "consult", "text": "Kurula danış, kararı onlarla paylaş.", "effects": {"Social": 3, "Happiness": -1},
+       "result": "Toplantılar haftalarca sürdü. Sonunda kimsenin tam memnun olmadığı ama herkesin imzaladığı bir karar çıktı."}
+    ]
+  },
+  {
+    "id": "job_restorer_2", "title": "Hızlı Bitsin", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:restorer", "MinCareerLevel:2"],
+    "description": "Belediye, tarihi konağın açılışını seçimden önce yapmak istiyor. Doğru iş iki yıl sürer; sana altı ay veriliyor. Duvarlardaki kalem işlerini modern boyayla kapatmak her şeyi hızlandırır.",
+    "choices": [
+      {"id": "comply", "text": "Takvime uy, gerekeni kapat.", "effects": {"Money": 30000, "Happiness": -5},
+       "result": "Kurdeleler kesildi, fotoğraflar çekildi. Duvarların altında kalanları yalnızca sen biliyordun."},
+      {"id": "resist", "text": "Takvimi reddet ve gerekçeni yaz.", "effects": {"Happiness": 3, "Social": -3, "Education": 2},
+       "result": "Projeden alındın. İki yıl sonra yeni ekip, senin raporunla işe başladı."},
+      {"id": "press", "text": "Bir gazeteciyle konuş, kamuoyunu harekete geçir.", "requires": ["MinStat:Social:55"], "effects": {"Social": 4, "Happiness": 4, "Money": -10000},
+       "result": "Haber yayıldı, takvim uzatıldı. Ama belediyenin sonraki ihalelerinde adın hiç geçmedi."}
+    ]
+  },
+  {
+    "id": "job_restorer_3", "title": "Kendi İzin", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:restorer", "MinCareerLevel:3"],
+    "description": "Yıllar önce restore ettiğin bir tablo, şimdi yeniden laboratuvarda. Genç bir meslektaşın senin dokunuşlarını ultraviyole altında tek tek işaretliyor. «Bunları kaldıralım mı?» diye soruyor.",
+    "choices": [
+      {"id": "remove", "text": "Kaldırın; benim de bir dönemim vardı.", "effects": {"Happiness": 3, "Education": 2},
+       "result": "Kendi fırça izlerinin silinişini izledin. Garip bir şekilde hafiflemiştin."},
+      {"id": "keep", "text": "Kalsın; onlar da artık eserin tarihi.", "effects": {"Social": 2, "Happiness": 2},
+       "result": "Raporda adın bir dipnota dönüştü. Altı yüz yıllık bir hikâyede küçük bir cümle."},
+      {"id": "lesson", "text": "Ona, eksik bıraktığın o yarım yüzü göster.", "requires": ["HasFlag:restorer_honest"], "effects": {"Happiness": 7, "Social": 4},
+       "result": "Kiliseye birlikte gittiniz. Yarım yüzün önünde uzun süre sustu, sonra defterine bir şey yazdı."}
+    ]
+  },
+
+  {
+    "id": "job_ceramicist_1", "title": "Fırın Açılıyor", "category": "Career", "minAge": 17, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ceramicist"],
+    "description": "Bütün gece bin iki yüz dereceye ulaşan fırın sabaha karşı soğudu. Kapağı araladığında sıcak bir toprak kokusu yüzüne vuruyor. İlk büyük serinin yarısı çatlamış, yarısı ise hayal ettiğinden güzel.",
+    "choices": [
+      {"id": "sell_good", "text": "Sağlam olanları sat, çatlakları at.", "effects": {"Money": 8000, "Happiness": 1},
+       "result": "Pazar tezgâhında hepsi bir öğleden sonra bitti. Çatlaklar ise çöpte sessizce kaldı."},
+      {"id": "kintsugi", "text": "Çatlakları altın tozuyla onar.", "cost": 3000, "effects": {"Happiness": 4, "Education": 2}, "set": ["ceramicist_gold"],
+       "result": "Çatlaklar ışıkta parlayan damarlara dönüştü. İnsanlar en çok onları sordu."},
+      {"id": "study", "text": "Hepsini kır, sırrın nerede bozulduğunu incele.", "effects": {"Education": 4, "Happiness": -2},
+       "result": "Kırıkların arasında nemi buldun. Sonraki fırında hiçbir şey çatlamadı."}
+    ]
+  },
+  {
+    "id": "job_ceramicist_2", "title": "Otel Siparişi", "category": "Career", "minAge": 19, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ceramicist", "MinCareerLevel:2"],
+    "description": "Lüks bir otel, restoranı için iki bin parça tabak istiyor. Para bir yılı rahat geçirtir ama aylarca aynı tabağı yapacaksın. Çarkın başında oturup ellerine bakıyorsun.",
+    "choices": [
+      {"id": "accept", "text": "Kabul et, iki yardımcı tut.", "effects": {"Money": 90000, "Health": -3, "Happiness": -2},
+       "result": "Atölye bir fabrikaya döndü. Son tabağı paketlediğinde bir hafta çamura dokunamadın."},
+      {"id": "decline", "text": "Reddet, kendi koleksiyonuna odaklan.", "effects": {"Happiness": 4, "Money": -5000},
+       "result": "Kira zor ödendi ama o yıl yaptığın vazolar bir sergiye seçildi."},
+      {"id": "unique", "text": "Her tabağın biraz farklı olmasını şart koş.", "requires": ["MinStat:Social:50"], "effects": {"Money": 60000, "Happiness": 3},
+       "result": "Şef bu fikre bayıldı. Misafirler tabaklarının altını çevirip imzanı aradı."}
+    ]
+  },
+  {
+    "id": "job_ceramicist_3", "title": "Çömleğin Sesi", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ceramicist", "MinCareerLevel:3"],
+    "description": "Bir müze, yaşayan seramik ustaları sergisi için senden tek bir eser istiyor. Raflar dolusu iş arasında hangisinin seni anlatacağını bilmiyorsun. Ellerindeki kurumuş çamuru ovuşturuyorsun.",
+    "choices": [
+      {"id": "new", "text": "Sıfırdan, en zor formu dene.", "effects": {"Happiness": 4, "Health": -2, "Education": 2},
+       "result": "Üç denemede çöktü, dördüncüde ayakta kaldı. Vitrinde, sanki hep oradaymış gibi duruyordu."},
+      {"id": "first", "text": "İlk yaptığın çarpık kâseyi gönder.", "effects": {"Happiness": 5, "Social": 2},
+       "result": "Küratör önce şaşırdı, sonra yanına senin hikâyeni yazdı. En çok o kâsenin önünde duruldu."},
+      {"id": "gold", "text": "Altınla onardığın o ilk çatlak vazoyu seç.", "requires": ["HasFlag:ceramicist_gold"], "effects": {"Happiness": 8, "Social": 3},
+       "result": "Etikete tek bir cümle yazdın: «Kırıldığı yerden güzelleşti.» Ziyaretçi defteri o cümleyle doldu."}
+    ]
+  },
+
+  {
+    "id": "job_tailor_1", "title": "Gelinlik Provası", "category": "Career", "minAge": 17, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:tailor"],
+    "description": "Düğüne üç gün var ve gelinlik, provada omuzdan bir parmak sarkıyor. Gelin aynada ağlamak üzere, annesi arkada sessizce sana bakıyor. Ağzında toplu iğneler, ellerin kumaşın üzerinde.",
+    "choices": [
+      {"id": "night", "text": "Geceyi atölyede geçir, sökerek yeniden dik.", "effects": {"Health": -2, "Happiness": 4, "Social": 2}, "set": ["tailor_bride"],
+       "result": "Sabah gelin elbiseyi giydiğinde aynaya uzun uzun baktı. Sonra sana sarıldı ve hiçbir şey söylemedi."},
+      {"id": "pin", "text": "Gizli bir dikişle geçici çözüm üret.", "effects": {"Happiness": 1, "Education": 1},
+       "result": "Düğünde kimse fark etmedi. Ama sen fotoğraflarda o omza bakmadan duramadın."},
+      {"id": "honest", "text": "Kalıbın başta hatalı alındığını dürüstçe söyle.", "effects": {"Social": -2, "Happiness": 2},
+       "result": "Anne kaşlarını çattı ama gelin anlayışla gülümsedi. Hatanı düzelttin, kendine de bir not düştün."}
+    ]
+  },
+  {
+    "id": "job_tailor_2", "title": "Kopya Koleksiyon", "category": "Career", "minAge": 19, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:tailor", "MinCareerLevel:2"],
+    "description": "Bir hazır giyim firması, ünlü bir modacının yeni koleksiyonunu «esinlenerek» yeniden yaratmanı istiyor. Ödeme cömert, kalıpları zaten önüne koymuşlar. Kumaşın üstünde makasın soğuk ağırlığını hissediyorsun.",
+    "choices": [
+      {"id": "copy", "text": "İşi al; moda zaten birbirinden beslenir.", "effects": {"Money": 50000, "Happiness": -3},
+       "result": "Elbiseler vitrinlere çıktı. Bir dergi «şaşırtıcı benzerlik» başlığıyla iki fotoğrafı yan yana koydu."},
+      {"id": "own", "text": "Kendi tasarımlarını öner.", "effects": {"Happiness": 3, "Education": 2, "Money": 15000},
+       "result": "Firma çekinerek iki parçanı denedi. Biri sezonun en çok satanı oldu."},
+      {"id": "walk", "text": "Teşekkür et ve ayrıl.", "effects": {"Happiness": 2, "Money": -3000},
+       "result": "O ay kira zor ödendi. Ama sokakta o kopyaları gördüğünde içinde bir rahatlık vardı."}
+    ]
+  },
+  {
+    "id": "job_tailor_3", "title": "Defile Gecesi", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:tailor", "MinCareerLevel:3"],
+    "description": "Kendi adını taşıyan ilk defilenin perde arkasındasın. Spot ışıkları ısınıyor, mankenler son kez dönüyor ve ellerin hâlâ bir eteğin kenarını düzeltiyor. Final parçası için son kararı vermen gerekiyor.",
+    "choices": [
+      {"id": "bold", "text": "Finalde en riskli tasarımını çıkar.", "effects": {"Happiness": 5, "Social": 4, "Health": -1},
+       "result": "Salon bir an sustu, sonra ayağa kalktı. Ertesi gün telefonun hiç susmadı."},
+      {"id": "safe", "text": "Satacağından emin olduğun klasik bir parçayla bitir.", "effects": {"Money": 60000, "Happiness": 1},
+       "result": "Eleştirmenler kibar yazdı, siparişler bol geldi. İçindeki bir şey yine de kıpırdamadı."},
+      {"id": "bride", "text": "Finalde, yıllar önce bir gecede kurtardığın o gelini podyuma çıkar.", "requires": ["HasFlag:tailor_bride"], "effects": {"Happiness": 9, "Social": 5},
+       "result": "Aynı elbiseyle, bu kez kızının elini tutarak yürüdü. Salonda ağlamayan kimse kalmadı."}
+    ]
+  },
+
+  {
+    "id": "job_luthier_1", "title": "Ladin Tahtası", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:luthier"],
+    "description": "Ustanın deposunda, kırk yıl önce kesilip kurutulmuş bir ladin tahtası duruyor. Parmağınla vurduğunda çan gibi çınlıyor. Usta, «Bununla ilk kemanını yapabilirsin, ama bir daha böylesini bulamazsın,» diyor.",
+    "choices": [
+      {"id": "use", "text": "Cesaret et, ilk kemanını bu tahtadan yap.", "effects": {"Happiness": 5, "Education": 2}, "set": ["luthier_spruce"],
+       "result": "Aylarca oydun, inceltip dinledin. İlk tını, atölyedeki herkesi işinden alıkoydu."},
+      {"id": "practice", "text": "Önce sıradan tahtalarla pratik yap.", "effects": {"Education": 4, "Happiness": -1},
+       "result": "Üç sıradan keman yaptın, her birinde biraz daha az hata. Ladin tahtası rafta beklemeye devam etti."},
+      {"id": "sell", "text": "Tahtayı bir koleksiyoncuya satmayı öner.", "effects": {"Money": 20000, "Social": -2},
+       "result": "Usta parayı aldı ama bir hafta seninle az konuştu. Bazı şeylerin fiyatı olmadığını o hafta öğrendin."}
+    ]
+  },
+  {
+    "id": "job_luthier_2", "title": "Sahte Etiket", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:luthier", "MinCareerLevel:2"],
+    "description": "Bir antikacı, onarman için iki yüz yıllık olduğu iddia edilen bir viyolonsel getiriyor. İç etiketin altına bakınca vernik kokusunun hâlâ taze olduğunu fark ediyorsun. Antikacı göz kırpıyor: «Sadece onar, gerisine karışma.»",
+    "choices": [
+      {"id": "repair", "text": "Onar ve sus.", "effects": {"Money": 25000, "Happiness": -4},
+       "result": "Enstrüman bir müzayedede servet değerinde satıldı. Haberi okurken gazeteyi katladın."},
+      {"id": "report", "text": "Bilirkişi raporu yaz.", "effects": {"Happiness": 3, "Social": -2, "Education": 2},
+       "result": "Antikacı bir daha kapına gelmedi. Ama birkaç müzisyen, sırf bu yüzden sana güvenmeye başladı."},
+      {"id": "refuse", "text": "İşi reddet, sebep söyleme.", "effects": {"Happiness": 1},
+       "result": "Kapı kapandı, sorun başka bir atölyeye gitti. Sorumluluk hissi bir süre peşini bırakmadı."}
+    ]
+  },
+  {
+    "id": "job_luthier_3", "title": "Konser Salonunda", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:luthier", "MinCareerLevel:3"],
+    "description": "Ünlü bir solist, senin yaptığın enstrümanla dünya turuna çıkmak istiyor. Önünde yıllardır sakladığın en iyi işin ve aceleyle bitirebileceğin yeni bir enstrüman var. Prova salonunun ahşap kokusu seni ilk günlerine götürüyor.",
+    "choices": [
+      {"id": "new", "text": "Ona özel, yeni bir enstrüman yap.", "effects": {"Money": 80000, "Health": -2, "Happiness": 3},
+       "result": "Üç ay neredeyse uyumadın. Tur afişlerinde enstrümanın adı da yazıyordu."},
+      {"id": "lend", "text": "Elindekilerden birini ödünç ver.", "effects": {"Money": 30000, "Social": 3},
+       "result": "Turdan döndüğünde enstrüman çizik içindeydi ama sesi olgunlaşmıştı."},
+      {"id": "spruce", "text": "O kırk yıllık ladinden yaptığın ilk kemanı ona ver.", "requires": ["HasFlag:luthier_spruce"], "effects": {"Happiness": 9, "Social": 4},
+       "result": "İlk konserde ön sıradaydın. Ustanın çınlayan tahtası, bin kişilik salonda yeniden konuştu."}
+    ]
+  },
+
+  {
+    "id": "job_tattoo_artist_1", "title": "Bir İsim", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:tattoo_artist"],
+    "description": "Gece yarısına doğru stüdyoya on dokuz yaşında, gözleri kızarmış biri giriyor. Bileğine iki aydır birlikte olduğu sevgilisinin adını yazdırmak istiyor. Makinenin iğnesini değiştirirken aynadan yüzüne bakıyorsun.",
+    "choices": [
+      {"id": "do", "text": "İsteğine saygı göster, dövmeyi yap.", "effects": {"Money": 3000, "Happiness": -1},
+       "result": "Mutlu ayrıldı. Altı ay sonra aynı bileği kapatmak için yeniden geldi."},
+      {"id": "wait", "text": "Bir ay düşünmesini, sonra gelmesini söyle.", "effects": {"Social": 3, "Happiness": 2}, "set": ["tattoo_artist_conscience"],
+       "result": "Kızgın çıktı. Bir yıl sonra kapıda başka bir taslakla belirdi ve teşekkür etti."},
+      {"id": "symbol", "text": "İsim yerine ikisine ait bir sembol öner.", "effects": {"Money": 2500, "Education": 1, "Happiness": 1},
+       "result": "Küçük bir pusula çizdin. Neyi gösterdiği, sadece onun bileceği bir şeydi."}
+    ]
+  },
+  {
+    "id": "job_tattoo_artist_2", "title": "Kalabalık Sosyal Medya", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:tattoo_artist", "MinCareerLevel:2"],
+    "description": "Bir ünlüye yaptığın dövme internette patladı; sıra listen altı aya uzadı. Şimdi herkes aynı çizimi istiyor. Taslak defterin ise yeni fikirlerle dolu ve kimse onlara bakmıyor.",
+    "choices": [
+      {"id": "repeat", "text": "Talep var, aynı çizimi yapmaya devam et.", "effects": {"Money": 60000, "Happiness": -4},
+       "result": "Kasan doldu. Elin aynı çizgileri yüzlerce kez çizdi ve bir gün onlardan nefret ettin."},
+      {"id": "limit", "text": "O çizimi yalnızca bir kez daha yapacağını duyur.", "effects": {"Money": 25000, "Happiness": 3, "Social": 2},
+       "result": "Son seans bir olaya dönüştü. Ardından gelen müşteriler senin taslaklarını sordu."},
+      {"id": "guest", "text": "Başka bir şehirde misafir sanatçı ol.", "requires": ["MinStat:Social:50"], "effects": {"Happiness": 4, "Education": 3, "Money": 10000},
+       "result": "Yeni stüdyoda kimse seni o çizimle tanımıyordu. Yeniden çizmenin tadını orada hatırladın."}
+    ]
+  },
+  {
+    "id": "job_tattoo_artist_3", "title": "Örtülecek Bir İz", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:tattoo_artist", "MinCareerLevel:3"],
+    "description": "Stüdyona kollarını sıvayarak bir kadın giriyor; bileğinde eski, kötü yapılmış bir isim ve altında ince bir yara izi var. «Bunu görmek istemiyorum artık,» diyor sessizce. Ücretini sormuyor bile.",
+    "choices": [
+      {"id": "cover", "text": "En iyi işini çıkar, bedelini al.", "effects": {"Money": 15000, "Happiness": 3},
+       "result": "Bilekte bir dal ve iki kuş belirdi. Aynaya bakarken ilk kez gülümsedi."},
+      {"id": "free", "text": "Ücret alma, bunu bir hizmet olarak yap.", "effects": {"Happiness": 6, "Social": 3, "Money": -2000},
+       "result": "Haberi kulaktan kulağa yayıldı. Ayda bir gün, ücretsiz örtme seansları senin geleneğin oldu."},
+      {"id": "remember", "text": "Yıllar önce geri çevirdiğin o genci hatırla; ona bir ay düşünme süresi verdiğin günü anlat.", "requires": ["HasFlag:tattoo_artist_conscience"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "Hikâyeni dinlerken ağladı, sonra güldü. Birlikte, bir daha kimsenin adını taşımayacak bir çizim seçtiniz."}
+    ]
+  },
+
+  {
+    "id": "job_glassblower_1", "title": "İlk Nefes", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:glassblower"],
+    "description": "Fırının ağzından turuncu bir ışık taşıyor, borunun ucunda bal kıvamında bir cam topu dönüyor. Usta, «Ne çok, ne az; nefesin ölçüsünü cam söyler,» diyor. Alnından akan ter gözüne giriyor.",
+    "choices": [
+      {"id": "patient", "text": "Küçük nefeslerle, yavaşça şişir.", "effects": {"Education": 3, "Happiness": 2}, "set": ["glassblower_breath"],
+       "result": "Ortaya yamuk ama bütün bir kadeh çıktı. Usta onu tavlama fırınına kendi elleriyle koydu."},
+      {"id": "bold", "text": "Ustayı etkilemek için güçlü üfle.", "effects": {"Happiness": -2, "Health": -1},
+       "result": "Cam bir sabun köpüğü gibi incelip patladı. Ustanın gözleri gülüyordu."},
+      {"id": "watch", "text": "Bugün sadece ustanın ritmini izle.", "effects": {"Education": 2, "Social": 2},
+       "result": "Saatlerce nefesini saydın. Gece rüyanda bile o ritmi duydun."}
+    ]
+  },
+  {
+    "id": "job_glassblower_2", "title": "Doğalgaz Faturası", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:glassblower", "MinCareerLevel:2"],
+    "description": "Enerji fiyatları ikiye katlandı ve fırını bir gün bile söndürmek, yeniden ısıtmak demek. Atölyedeki üç kişinin maaşı ya da fırının ateşi, ikisinden biri. Turuncu ışığa bakıp hesap yapıyorsun.",
+    "choices": [
+      {"id": "cut", "text": "Bir çalışanla yollarınızı ayır.", "effects": {"Money": 20000, "Happiness": -5, "Social": -2},
+       "result": "Fırın yanmaya devam etti. Ama atölye bir kişi eksik, daha sessizdi."},
+      {"id": "share", "text": "Fırını başka ustalarla saatlik paylaş.", "requires": ["MinStat:Social:50"], "effects": {"Social": 4, "Happiness": 2},
+       "result": "Atölye kalabalıklaştı, fikirler birbirine karıştı. Kriz bir kolektife dönüştü."},
+      {"id": "own_money", "text": "Açığı kendi birikiminden kapat.", "effects": {"Money": -40000, "Happiness": 3},
+       "result": "Kimse işini kaybetmedi. Banka hesabına bakmadığın birkaç ay geçirdin."}
+    ]
+  },
+  {
+    "id": "job_glassblower_3", "title": "Işığın Heykeli", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:glassblower", "MinCareerLevel:3"],
+    "description": "Bir şehir, meydanına güneşi kıracak dev bir cam heykel istiyor. Parçalar senin ciğerlerinin hiç taşımadığı kadar büyük olacak. Ellerinde fırının kırk yıllık yanık izleri var.",
+    "choices": [
+      {"id": "team", "text": "Genç ustalardan bir ekip kur, sen yönet.", "effects": {"Social": 5, "Happiness": 4, "Money": 50000},
+       "result": "Kendi elin tek bir parçaya dokunmadı. Ama açılışta güneş heykelden geçtiğinde, içinde senin nefesin vardı."},
+      {"id": "solo", "text": "Her parçayı kendin üfle.", "effects": {"Health": -4, "Happiness": 6, "Money": 50000},
+       "result": "Bir yıl boyunca öksürdün. Heykel ise meydanda, gökkuşağı gibi parlıyordu."},
+      {"id": "breath", "text": "Çıraklara önce nefesin ölçüsünü öğret, ilk günkü gibi.", "requires": ["HasFlag:glassblower_breath"], "effects": {"Happiness": 8, "Social": 4, "Money": 40000},
+       "result": "Haftalarca yamuk kadehler yaptılar. Sonra bir sabah hepsi aynı ritimde nefes almaya başladı."}
+    ]
+  },
+
+  {
+    "id": "job_jeweler_1", "title": "Büyüteçteki Leke", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:jeweler"],
+    "description": "Bir müşteri nişan yüzüğü için pırlanta seçiyor ve en pahalı taşa bayılıyor. Büyüteçte taşın içinde, gözle görünmeyen küçük bir kırık seçiyorsun. Patronun arkadan sana bakıyor.",
+    "choices": [
+      {"id": "tell", "text": "Kırığı müşteriye göster.", "effects": {"Social": 3, "Happiness": 2, "Money": -2000}, "set": ["jeweler_trust"],
+       "result": "Daha ucuz ama kusursuz bir taş aldı. Patronun o akşam seninle uzun bir konuşma yaptı."},
+      {"id": "silent", "text": "Sus; gözle görünmüyor zaten.", "effects": {"Money": 5000, "Happiness": -3},
+       "result": "Primin hesabına yattı. Yüzüğü paketlerken parmakların biraz titriyordu."},
+      {"id": "boss", "text": "Kararı patronuna bırak.", "effects": {"Happiness": -1},
+       "result": "Patronun taşı sattı. Sen yalnızca kutuyu kapattın, ama kurdeleyi bağlarken içinde bir düğüm vardı."}
+    ]
+  },
+  {
+    "id": "job_jeweler_2", "title": "Kanlı Taşlar", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:jeweler", "MinCareerLevel:2"],
+    "description": "Bir tedarikçi, piyasanın yarı fiyatına muhteşem zümrütler getiriyor. Belgeleri eksik ve nereden çıkarıldıklarını sorduğunda konuyu değiştiriyor. Taşlar kadife tepside, yeşil bir alev gibi yanıyor.",
+    "choices": [
+      {"id": "buy", "text": "Al; bu fiyata bir daha bulunmaz.", "effects": {"Money": 70000, "Happiness": -5},
+       "result": "Koleksiyonun bir dergi kapağına çıktı. Haber sitelerinde bir maden kazası okuduğun gece uyuyamadın."},
+      {"id": "certified", "text": "Sadece sertifikalı taşlarla çalış.", "effects": {"Happiness": 3, "Money": -10000},
+       "result": "Kâr marjın düştü. Ama ürünlerinin hikâyesini anlatırken artık gözlerin kaçmıyordu."},
+      {"id": "recycled", "text": "Eski takılardan geri dönüştürülmüş bir koleksiyon tasarla.", "requires": ["MinStat:Education:55"], "effects": {"Money": 30000, "Happiness": 4, "Education": 2},
+       "result": "Büyükannelerin yüzükleri yeni formlarda hayat buldu. Koleksiyon beklenmedik bir ilgi gördü."}
+    ]
+  },
+  {
+    "id": "job_jeweler_3", "title": "Kendi Markan", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:jeweler", "MinCareerLevel:3"],
+    "description": "Büyük bir lüks grup, markanı satın almak istiyor. Adın kalacak ama tasarımlara artık bir yönetim kurulu karar verecek. Vitrindeki ilk tasarımın camın ardından sana bakıyor.",
+    "choices": [
+      {"id": "sell", "text": "Sat ve rahat bir hayata geç.", "effects": {"Money": 300000, "Happiness": -2},
+       "result": "Hesabındaki rakama alışman aylar sürdü. Vitrinlerdeki yeni tasarımlara alışman ise hiç olmadı."},
+      {"id": "stay", "text": "Küçük ve bağımsız kal.", "effects": {"Happiness": 5, "Social": 2},
+       "result": "Atölyen hâlâ aynı sokaktaydı. Müşterilerin çocukları da artık kapıdan giriyordu."},
+      {"id": "trust", "text": "Yıllar önce kırık taşı gösterdiğin o müşteriyi ortak olarak davet et.", "requires": ["HasFlag:jeweler_trust"], "effects": {"Happiness": 7, "Social": 4, "Money": 80000},
+       "result": "O gün aldığı küçük taşlı yüzüğü hâlâ takıyordu. «Sana bir kez güvendim, yeterdi,» dedi ve sermaye koydu."}
+    ]
+  },
+
+  {
+    "id": "job_photographer_1", "title": "Deklanşör Anı", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:photographer"],
+    "description": "Bir mahalle yangınını çekmek için olay yerindesin. Dumanın içinden bir adam, kucağında kurtardığı kediyle çıkıyor ve yere çöküyor. Vizörün gözünde; parmağın deklanşörde.",
+    "choices": [
+      {"id": "shoot", "text": "Çek. Bu kare tarih.", "effects": {"Money": 15000, "Happiness": 1, "Education": 2},
+       "result": "Fotoğraf ertesi gün bütün gazetelerin kapağındaydı. Adamın adını hiç öğrenemedin."},
+      {"id": "help", "text": "Makineyi bırak, adama koş.", "effects": {"Social": 4, "Happiness": 4}, "set": ["photographer_human"],
+       "result": "Ona su verdin, ambulansa kadar eşlik ettin. O günden elinde tek bir kare bile kalmadı."},
+      {"id": "both", "text": "Bir kare çek, sonra yardım et.", "effects": {"Money": 8000, "Happiness": -1},
+       "result": "Fotoğraf iyiydi, yardımın da yetişti. Ama hangisini önce yaptığını hiç unutmadın."}
+    ]
+  },
+  {
+    "id": "job_photographer_2", "title": "Rötuş Talebi", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:photographer", "MinCareerLevel:2"],
+    "description": "Büyük bir marka, kampanya fotoğraflarındaki modelin vücudunu tanınmaz hâle gelene kadar inceltmeni istiyor. Model sana çekim sırasında yeme bozukluğuyla mücadelesini anlatmıştı. Ekranda imleç bekliyor.",
+    "choices": [
+      {"id": "edit", "text": "İstenen rötuşu yap.", "effects": {"Money": 40000, "Happiness": -5},
+       "result": "Afişler şehrin dört bir yanına asıldı. Model sana tek bir mesaj attı: «Bu ben değilim.»"},
+      {"id": "refuse", "text": "Rötuşu reddet, sözleşmeyi kaybet.", "effects": {"Happiness": 4, "Money": -10000, "Social": 2},
+       "result": "Ajans bir daha aramadı. Model ise yıllar sonra bir röportajında adını andı."},
+      {"id": "convince", "text": "Doğal halini öne çıkaran bir kampanya öner.", "requires": ["MinStat:Social:55"], "effects": {"Money": 30000, "Happiness": 5},
+       "result": "Pazarlama ekibi kuşkuluydu. Kampanya, markanın son on yılın en çok konuşulan işi oldu."}
+    ]
+  },
+  {
+    "id": "job_photographer_3", "title": "Retrospektif", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:photographer", "MinCareerLevel:3"],
+    "description": "Bir galeri, kariyerinin retrospektif sergisini açıyor. Binlerce kare arasından yalnızca kırk tane seçebilirsin. Arşivin tozlu kutularında, kendi hayatının negatifleri var.",
+    "choices": [
+      {"id": "famous", "text": "En ünlü karelerini seç.", "effects": {"Money": 40000, "Social": 3, "Happiness": 2},
+       "result": "Açılış kalabalıktı, satışlar iyiydi. Duvarlarda tanıdık yüzler vardı ama hiçbiri sen değildin."},
+      {"id": "unseen", "text": "Hiç yayımlanmamış, kişisel karelerini seç.", "effects": {"Happiness": 6, "Education": 2},
+       "result": "Eleştirmenler şaşırdı. Bir ziyaretçi, annenin mutfakta çekilmiş fotoğrafı önünde yarım saat durdu."},
+      {"id": "empty", "text": "Sergiye bir boş çerçeve koy: yangından sonra çekmediğin o kare.", "requires": ["HasFlag:photographer_human"], "effects": {"Happiness": 9, "Social": 4},
+       "result": "Altına yalnızca o günün tarihini yazdın. Serginin en çok konuşulan eseri, içinde hiçbir şey olmayan çerçeve oldu."}
+    ]
+  },
+
+  {
+    "id": "job_stage_designer_1", "title": "Prömiyerden Önceki Gece", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:stage_designer"],
+    "description": "Perdenin açılmasına on iki saat var ve ikinci perdenin dekoru sahneye sığmıyor. Boya kokusu, testere sesi ve bağıran bir rejisör. Yönetmen sana dönüp, «Bir çözüm bul,» diyor.",
+    "choices": [
+      {"id": "cut", "text": "Dekoru keserek küçült.", "effects": {"Health": -2, "Happiness": 2, "Education": 2},
+       "result": "Sabaha karşı son vidayı sıktın. Perde açıldığında kimse eksik metreleri fark etmedi."},
+      {"id": "light", "text": "Dekoru kaldır, sahneyi ışıkla kur.", "effects": {"Happiness": 5, "Education": 3}, "set": ["stage_designer_light"],
+       "result": "Boş sahnede tek bir ışık huzmesi. Eleştirmenler en çok o sahneyi övdü."},
+      {"id": "blame", "text": "Ölçüleri yanlış veren atölyeyi suçla.", "effects": {"Social": -3, "Happiness": -1},
+       "result": "Suç atölyeye kaldı, dekor yine sığmadı. Prömiyer kötü geçti ve herkes bunu biliyordu."}
+    ]
+  },
+  {
+    "id": "job_stage_designer_2", "title": "Bütçe Kesintisi", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:stage_designer", "MinCareerLevel:2"],
+    "description": "Tiyatronun ödeneği yarıya indirildi; yeni sezonun dekor bütçesi bir öğrenci oyunu kadar. Depoda, eski oyunlardan kalma tozlu panolar ve kostümler duruyor. Ekibin sana bakıyor.",
+    "choices": [
+      {"id": "recycle", "text": "Depodaki her şeyi yeniden kullan.", "effects": {"Happiness": 4, "Education": 2, "Social": 2},
+       "result": "Eski bir oyunun ormanı, yeni oyunun şehrine dönüştü. Kimse ikisinin aynı tahta olduğunu bilmedi."},
+      {"id": "sponsor", "text": "Bir sponsor bul, logosunu fuayeye as.", "requires": ["MinStat:Social:55"], "effects": {"Money": 20000, "Happiness": -1},
+       "result": "Bütçe kurtuldu. Fuayedeki dev logo ise sanatçıların her akşam yüzünü buruşturmasına neden oldu."},
+      {"id": "quit_job", "text": "Bu koşullarda çalışmayacağını söyle.", "effects": {"Happiness": 1, "Money": -10000, "Social": -2},
+       "result": "Bir sezon kenarda kaldın. Döndüğünde ekip senin yerini başka biriyle doldurmuştu."}
+    ]
+  },
+  {
+    "id": "job_stage_designer_3", "title": "Son Perde", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:stage_designer", "MinCareerLevel:3"],
+    "description": "Şehrin en eski tiyatrosu yıkılacak ve son oyunun dekorunu sen tasarlayacaksın. Kulislerdeki duvarlarda onlarca yılın imzaları var. Son gösterimin sahnesine ne koyacağını düşünüyorsun.",
+    "choices": [
+      {"id": "grand", "text": "Hayatının en görkemli dekorunu kur.", "effects": {"Happiness": 5, "Health": -2, "Social": 3},
+       "result": "Seyirciler ayakta alkışladı. Ertesi gün kepçeler girdiğinde dekor hâlâ sahnedeydi."},
+      {"id": "walls", "text": "Kulis duvarlarını sahneye taşı.", "effects": {"Happiness": 6, "Social": 4},
+       "result": "Oyuncular, kendilerinden önce gelenlerin imzaları önünde oynadı. Perde inince kimse ayrılmak istemedi."},
+      {"id": "one_light", "text": "Yıllar önceki gibi: boş bir sahne ve tek bir ışık.", "requires": ["HasFlag:stage_designer_light"], "effects": {"Happiness": 9, "Social": 3},
+       "result": "Son replikten sonra ışık yavaşça söndü. Karanlıkta bin kişi aynı anda nefesini tuttu."}
+    ]
+  }
+]

@@ -1,0 +1,401 @@
+[
+  {
+    "id": "job_airline_pilot_1", "title": "Yan Rüzgâr", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:airline_pilot"],
+    "description": "İkinci pilot olarak ilk zorlu inişin: pist ıslak, yan rüzgâr sınırın hemen altında. Kaptan inişi sana bırakıyor; arkada yüz seksen yolcu var. Ön camdan pist ışıkları sallanıyor.",
+    "choices": [
+      {"id": "land", "text": "İnişi yap.", "effects": {"Happiness": 4, "Education": 2},
+       "result": "Teker yere değdiğinde kabinde alkış koptu. Kaptan sadece «Güzel,» dedi; bu senin için madalyaydı."},
+      {"id": "goaround", "text": "Pas geç ve ikinci yaklaşmayı iste.", "effects": {"Education": 3, "Happiness": 1}, "set": ["airline_pilot_goaround"],
+       "result": "İkinci yaklaşmada rüzgâr biraz dindi ve yumuşak bir iniş yaptın. Kaptan raporuna «doğru karar» yazdı."},
+      {"id": "captain", "text": "Kontrolü kaptana devret.", "effects": {"Happiness": -1, "Education": 1},
+       "result": "Kaptan indi ve sana nedenini sormadı. Bir sonraki sefer sen indin."}
+    ]
+  },
+  {
+    "id": "job_airline_pilot_2", "title": "Yorgunluk", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:airline_pilot", "MinCareerLevel:2"],
+    "description": "Arka arkaya dördüncü gece uçuşu ve gözlerin yanıyor. Şirket, pilot eksikliği yüzünden bir sefer daha uçmanı istiyor; yasal sınırın içindesin ama ancak. Kahve artık işe yaramıyor.",
+    "choices": [
+      {"id": "fly", "text": "Uç; yasal olarak sorun yok.", "effects": {"Money": 10000, "Health": -3, "Happiness": -2},
+       "result": "Uçuş olaysız geçti. Ama bir an, ekranın ne gösterdiğini hatırlamadığını fark ettin."},
+      {"id": "fatigue", "text": "Yorgunluk raporu ver.", "effects": {"Happiness": 2, "Health": 2, "Social": -1},
+       "result": "Şirket memnun değildi ama kabul etti. Uçuşa yedek pilot çağrıldı."},
+      {"id": "union", "text": "Durumu pilot sendikasına bildir.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 3, "Social": 3},
+       "result": "Sendika vardiya planlarını denetletti. Ertesi ay rotasyonlar düzeldi."}
+    ]
+  },
+  {
+    "id": "job_airline_pilot_3", "title": "Motor Arızası", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:airline_pilot", "MinCareerLevel:3"],
+    "description": "Kalkıştan üç dakika sonra sol motorda bir patlama sesi ve kokpitte kırmızı uyarılar. Kaptan sensin; yanındaki ikinci pilot ilk yılında ve yüzü bembeyaz. Kalkış havalimanına dönmek de, yakındaki daha uzun piste gitmek de mümkün.",
+    "choices": [
+      {"id": "return", "text": "Kalkış havalimanına geri dön.", "effects": {"Happiness": 4, "Health": -2, "Education": 2},
+       "result": "Tek motorla, kusursuz bir iniş. Yolcular indikten sonra kokpitin kapısında sana teşekkür etti."},
+      {"id": "long", "text": "Daha uzun piste yönel.", "effects": {"Happiness": 3, "Health": -2},
+       "result": "Birkaç dakika daha havada kaldınız ama iniş güvenliydi. Kontrol sende kaldı."},
+      {"id": "teach", "text": "Yıllar önce pas geçtiğin o ıslak pisti hatırla; kontrol listesini ikinci pilotla sesli oku.", "requires": ["HasFlag:airline_pilot_goaround"], "effects": {"Happiness": 8, "Social": 3, "Education": 2},
+       "result": "Sesin sakindi; ikinci pilotun elleri titremeyi bıraktı. İnişten sonra, «Bunu size borçluyum,» dedi."}
+    ]
+  },
+
+  {
+    "id": "job_air_traffic_controller_1", "title": "İki Nokta", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:air_traffic_controller"],
+    "description": "Radar ekranında iki uçak birbirine yaklaşıyor ve biri senin talimatını yanlış anladı. Kulaklığında birbirine karışan sesler. Saniyeler içinde karar vermelisin.",
+    "choices": [
+      {"id": "clear", "text": "Kısa ve net bir talimatla birini tırmandır.", "effects": {"Happiness": 3, "Education": 3, "Health": -1}, "set": ["air_traffic_controller_calm"],
+       "result": "Noktalar ayrıldı. Vardiya sonunda ellerinin titrediğini fark ettin."},
+      {"id": "both", "text": "İki uçağa da aynı anda talimat ver.", "effects": {"Happiness": -1, "Health": -2},
+       "result": "Pilotlardan biri yeniden sordu; değerli saniyeler gitti. Ama sonunda ayrıldılar."},
+      {"id": "help", "text": "Yanındaki kıdemli kontrolörden destek iste.", "effects": {"Social": 2, "Education": 2},
+       "result": "Birlikte çözdünüz. Kıdemli, vardiya sonunda sana radyo dilinin inceliklerini anlattı."}
+    ]
+  },
+  {
+    "id": "job_air_traffic_controller_2", "title": "Hata Raporu", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:air_traffic_controller", "MinCareerLevel:2"],
+    "description": "Bir yakın geçiş olayı yaşandı ve kayıtlara bakınca hatanın sende olduğunu görüyorsun; kimse fark etmedi. Raporlarsan soruşturma açılacak. Raporlamazsan, sistem aynı açığı bir daha yakalayamayacak.",
+    "choices": [
+      {"id": "report", "text": "Kendi hatanı raporla.", "effects": {"Happiness": 3, "Education": 2, "Money": -5000},
+       "result": "Bir ay masa başı göreve alındın. Raporun, prosedürde bir değişikliğe yol açtı."},
+      {"id": "silent", "text": "Sessiz kal.", "effects": {"Happiness": -5},
+       "result": "Kimse bir şey bilmedi. Ama her vardiyada o anı yeniden yaşadın."},
+      {"id": "anonymous", "text": "Anonim güvenlik bildirim sistemini kullan.", "effects": {"Happiness": 2, "Education": 2},
+       "result": "Sistem açığı düzeltildi ve kimse suçlanmadı. Belki de sistem tam olarak bunun için vardı."}
+    ]
+  },
+  {
+    "id": "job_air_traffic_controller_3", "title": "Kule Amiri", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:air_traffic_controller", "MinCareerLevel:3"],
+    "description": "Kule amirisin ve ekipte tükenmişlik yaygın; iki kontrolör son ay bayıldı. Yönetim, trafik artışı nedeniyle vardiyaların uzatılmasını istiyor. Ekranlardaki noktalar hiç durmuyor.",
+    "choices": [
+      {"id": "extend", "text": "Vardiyaları uzat.", "effects": {"Money": 20000, "Happiness": -4, "Social": -2},
+       "result": "Trafik yönetildi. Bir ay sonra bir kontrolör istifa etti."},
+      {"id": "cap", "text": "Saatlik uçuş kapasitesini düşür.", "effects": {"Happiness": 3, "Social": 3},
+       "result": "Havayolları rötarlardan şikâyet etti. Ama kulede kimse bir daha bayılmadı."},
+      {"id": "calm", "text": "İki noktayı ayırdığın o ilk geceyi anlat ve ekibe nefes molaları getir.", "requires": ["HasFlag:air_traffic_controller_calm"], "effects": {"Happiness": 7, "Social": 4, "Health": 2},
+       "result": "Her iki saatte on dakika, ekransız. Hata oranları düştü; yönetim bile bunu fark etti."}
+    ]
+  },
+
+  {
+    "id": "job_athlete_1", "title": "Seçme", "category": "Career", "minAge": 16, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:athlete"],
+    "description": "Profesyonel takımın seçmelerine bir hafta var ve dizinde bir sızı başladı. Antrenörün, «Ağrı kesici al, devam et,» diyor. Fizyoterapist ise iki hafta dinlenmeni öneriyor.",
+    "choices": [
+      {"id": "rest", "text": "Dinlen ve seçmeyi kaçır.", "effects": {"Health": 3, "Happiness": -3}, "set": ["athlete_listen"],
+       "result": "Seçmeyi kaçırdın. Altı ay sonraki seçmede ise dizin sağlamdı ve takıma girdin."},
+      {"id": "pills", "text": "Ağrı kesiciyle devam et.", "effects": {"Health": -4, "Happiness": 4, "Money": 5000},
+       "result": "Seçmeyi geçtin. Ama sezon ortasında dizin seni yarı yolda bıraktı."},
+      {"id": "tape", "text": "Bantla, yükü azaltarak çalış.", "effects": {"Health": -1, "Happiness": 2, "Education": 1},
+       "result": "Seçmede yüzde seksen performans gösterdin; yine de yedek kadroya alındın."}
+    ]
+  },
+  {
+    "id": "job_athlete_2", "title": "Doping Teklifi", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:athlete", "MinCareerLevel:2"],
+    "description": "Bir şampiyona öncesi, takımın bir doktoru sana «testte çıkmayan» bir takviye öneriyor. Rakiplerinin çoğunun kullandığı fısıldanıyor. Milli takım kadrosu bu yarışa bağlı.",
+    "choices": [
+      {"id": "refuse", "text": "Reddet.", "effects": {"Happiness": 3, "Health": 1},
+       "result": "Üçüncü oldun. İki yıl sonra birinci ve ikinci doping nedeniyle diskalifiye edildi; madalyan altına döndü."},
+      {"id": "take", "text": "Kullan.", "effects": {"Money": 40000, "Happiness": 2, "Health": -5},
+       "result": "Birinci oldun. Her test çağrısında kalbin ağzına geldi."},
+      {"id": "report", "text": "Doktoru federasyona bildir.", "effects": {"Happiness": 4, "Social": -3},
+       "result": "Soruşturma takımı sarstı. Bazı arkadaşların seninle konuşmayı kesti; bazıları sessizce teşekkür etti."}
+    ]
+  },
+  {
+    "id": "job_athlete_3", "title": "Son Sezon", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:athlete", "MinCareerLevel:3"],
+    "description": "Vücudun artık eskisi gibi toparlanmıyor ve her sabah yeni bir ağrıyla uyanıyorsun. Büyük bir kulüp, son bir sezon için cömert bir teklif yaptı. Gençlik takımı ise seni antrenör olarak istiyor.",
+    "choices": [
+      {"id": "one_more", "text": "Son bir sezon oyna.", "effects": {"Money": 100000, "Health": -4, "Happiness": 2},
+       "result": "Sezonun sonunda tribünler adını haykırdı. Ertesi sabah merdivenleri inmek bir dakika sürdü."},
+      {"id": "coach", "text": "Gençlik takımının antrenörü ol.", "effects": {"Happiness": 5, "Social": 4, "Health": 2},
+       "result": "Bağırmak yerine dinleyen bir antrenör oldun. Öğrencilerinden biri, yıllar sonra milli takıma seçildi."},
+      {"id": "listen", "text": "Gençlere seçmeyi kaçırdığın o dinlenme haftasını anlat: vücudunu dinlemek de antrenmandır.", "requires": ["HasFlag:athlete_listen"], "effects": {"Happiness": 8, "Social": 4, "Health": 3},
+       "result": "Takımında sakatlıklar yarıya indi. Ağrıyı saklamayan bir kuşak yetiştirdin."}
+    ]
+  },
+
+  {
+    "id": "job_personal_trainer_1", "title": "İlk Müşteri", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:personal_trainer"],
+    "description": "İlk müşterin, doktoru «spor yap» dediği için gelen elli yaşında, utangaç bir adam. Salonun aynaları, kaslı gençler ve yüksek müzik onu tedirgin ediyor. İlk antrenmanda iki dakikada nefesi kesiliyor.",
+    "choices": [
+      {"id": "walk", "text": "Bugün sadece birlikte yürüyün.", "effects": {"Social": 3, "Happiness": 3}, "set": ["personal_trainer_patient"],
+       "result": "Parkta yürürken torunlarını anlattı. Üç ay sonra, kendi isteğiyle koşu bandına çıktı."},
+      {"id": "program", "text": "Standart başlangıç programını uygula.", "effects": {"Education": 2, "Happiness": -1},
+       "result": "İkinci haftada gelmedi. Telefonla aradığında bir bahane uydurdu."},
+      {"id": "push", "text": "«Acı yoksa kazanç yok,» de ve zorla.", "effects": {"Happiness": -3, "Social": -2},
+       "result": "Ertesi gün kas ağrısıyla yataktan kalkamamış. Bir daha salona gelmedi."}
+    ]
+  },
+  {
+    "id": "job_personal_trainer_2", "title": "Takviye Satışı", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:personal_trainer", "MinCareerLevel:2"],
+    "description": "Salon yönetimi, her müşteriye protein tozu ve «yağ yakıcı» satmanı istiyor; satış başına prim var. Müşterilerinin çoğunun bunlara ihtiyacı yok. Ay sonu primleri, maaşının yarısı kadar.",
+    "choices": [
+      {"id": "sell", "text": "Sat.", "effects": {"Money": 15000, "Happiness": -3},
+       "result": "Primin iyiydi. Bir müşteri, yağ yakıcıdan sonra kalp çarpıntısıyla acile gitti."},
+      {"id": "honest", "text": "Sadece ihtiyacı olanlara öner.", "effects": {"Happiness": 3, "Social": 2},
+       "result": "Primin azaldı ama müşterilerin sana güvendi. Tavsiyeyle yeni müşteriler geldi."},
+      {"id": "food", "text": "Takviye yerine beslenme planı hazırla.", "requires": ["MinStat:Education:40"], "effects": {"Happiness": 4, "Education": 2},
+       "result": "Müşterilerin mutfaklarını değiştirdi. Yönetim kızdı, müşteriler sevindi."}
+    ]
+  },
+  {
+    "id": "job_personal_trainer_3", "title": "Kendi Stüdyon", "category": "Career", "minAge": 28, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:personal_trainer", "MinCareerLevel:3"],
+    "description": "Kendi stüdyonu açmak üzeresin. Ünlü bir sosyal medya fenomeni, ortaklık karşılığında stüdyoyu «estetik» bir marka yapmayı öneriyor. Aklındaki ise yaşlılar, hamileler ve sakatlıktan dönenler için sakin bir yer.",
+    "choices": [
+      {"id": "influencer", "text": "Fenomenle ortak ol.", "effects": {"Money": 80000, "Happiness": -1},
+       "result": "Stüdyo kısa sürede doldu. Herkes aynı kalçaları istiyordu."},
+      {"id": "quiet", "text": "Sakin stüdyonu kur.", "effects": {"Happiness": 5, "Social": 3},
+       "result": "İlk aylar zordu. Bir yıl sonra bekleme listesi oluştu: doktorlar hastalarını sana gönderiyordu."},
+      {"id": "patient", "text": "İlk müşterini, o utangaç adamı, stüdyonun yüzü yap.", "requires": ["HasFlag:personal_trainer_patient"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "Altmış yaşında ilk yarı maratonunu koşmuştu. Afişteki fotoğrafı, bin genç modelden daha çok insanı kapıdan içeri soktu."}
+    ]
+  },
+
+  {
+    "id": "job_race_driver_1", "title": "Test Turu", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:race_driver"],
+    "description": "Yeni aracın test turunda, fren pedalında hafif bir yumuşaklık hissediyorsun. Mühendisler veriye bakıp her şeyin normal olduğunu söylüyor. Takım patronu, en hızlı tur zamanını bekliyor.",
+    "choices": [
+      {"id": "report", "text": "Turu durdur ve hissettiğini anlat.", "effects": {"Education": 2, "Happiness": 2, "Social": -1}, "set": ["race_driver_instinct"],
+       "result": "Mühendisler homurdandı ama baktılar. Fren hattında mikroskobik bir çatlak buldular."},
+      {"id": "push", "text": "Bas ve en hızlı turu at.", "effects": {"Happiness": 3, "Health": -3},
+       "result": "En hızlı turu attın. Son virajda fren bir an boşaldı ve bariyerlere çok yaklaştın."},
+      {"id": "slow", "text": "Tempoyu düşürerek turu tamamla.", "effects": {"Happiness": -1, "Health": 1},
+       "result": "Zamanın vasattı. Patron hayal kırıklığına uğradı ama sen sağdın."}
+    ]
+  },
+  {
+    "id": "job_race_driver_2", "title": "Takım Emri", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:race_driver", "MinCareerLevel:2"],
+    "description": "Yarışın son turunda liderdesin ve telsizden takım emri geliyor: şampiyonluk yarışındaki takım arkadaşının geçmesine izin ver. Bu, kariyerinin ilk zaferi olacaktı.",
+    "choices": [
+      {"id": "obey", "text": "Emre uy, kenara çekil.", "effects": {"Social": 3, "Happiness": -3, "Money": 15000},
+       "result": "Takım arkadaşın kazandı ve podyumda seni kucakladı. Kupayı ise o kaldırdı."},
+      {"id": "win", "text": "Emri duymamış gibi yap ve kazan.", "effects": {"Happiness": 5, "Social": -4},
+       "result": "İlk zaferin! Ama takım patronu seninle bir hafta konuşmadı ve sözleşmen yenilenmedi."},
+      {"id": "ask", "text": "Telsizden bir tur daha yarışmak için izin iste.", "requires": ["MinStat:Social:50"], "effects": {"Happiness": 2, "Social": 1},
+       "result": "Patron kısa bir sessizlikten sonra «Adil yarışın,» dedi. Son virajda ikinci oldun ama kimse seni suçlamadı."}
+    ]
+  },
+  {
+    "id": "job_race_driver_3", "title": "Şampiyonluk", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:race_driver", "MinCareerLevel:3"],
+    "description": "Şampiyonluğun son yarışı yağmur altında. Rakibinle aynı puandasın ve son turda yan yanasınız; ya virajda içeri dalacak ya da bekleyeceksin. Görüş neredeyse sıfır.",
+    "choices": [
+      {"id": "dive", "text": "İçeri dal.", "effects": {"Happiness": 6, "Health": -3, "Money": 50000},
+       "result": "Teker teker sürtündünüz ve sen önde çıktın. Şampiyonsun; ama rakibin bunu hiç kabullenmedi."},
+      {"id": "wait", "text": "Bekle ve düzlükte dene.", "effects": {"Happiness": 2, "Social": 2},
+       "result": "Düzlükte yetişemedin; ikinci oldun. Rakibin podyumda sana saygıyla eğildi."},
+      {"id": "instinct", "text": "Test turundaki o fren hissine güven: pistte suyun nerede toplandığını hisset ve dış hattan git.", "requires": ["HasFlag:race_driver_instinct"], "effects": {"Happiness": 9, "Social": 3, "Money": 50000},
+       "result": "Herkes iç hattan girerken sen dışarıdan geçtin. Şampiyonsun; rakibin bile alkışladı."}
+    ]
+  },
+
+  {
+    "id": "job_mountain_guide_1", "title": "Zirveye İki Yüz Metre", "category": "Career", "minAge": 19, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:mountain_guide"],
+    "description": "Zirveye iki yüz metre kala hava bozuyor; batıdan kara bulutlar yükseliyor. Müşterin, bu tırmanış için yıllarca biriktirdiğini söylüyor ve devam etmek istiyor. Saat, dönüş için son sınıra yaklaştı.",
+    "choices": [
+      {"id": "turn", "text": "Geri dön.", "effects": {"Happiness": -2, "Education": 2, "Health": 1}, "set": ["mountain_guide_turn"],
+       "result": "Müşterin aşağıya kadar konuşmadı. Kampa vardığınızda zirve bulutların içinde kayboldu; o gece sana teşekkür etti."},
+      {"id": "go", "text": "Hızlıca zirveye çık ve in.", "effects": {"Happiness": 3, "Health": -4},
+       "result": "Zirve fotoğrafı çekildi. İnişte fırtınaya yakalandınız ve parmaklarından birinde donma başladı."},
+      {"id": "wait", "text": "Bir kaya sığınağında bekleyip havayı izle.", "effects": {"Health": -1, "Education": 1},
+       "result": "Bir saat bekledin; hava kötüleşti ve döndünüz. En azından denediniz."}
+    ]
+  },
+  {
+    "id": "job_mountain_guide_2", "title": "Kayıp Dağcı", "category": "Career", "minAge": 21, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:mountain_guide", "MinCareerLevel:2"],
+    "description": "Bir grupla tırmanırken, rotanın kenarında yaralı ve yalnız bir yabancı dağcı buluyorsun. Onu indirmek grubun zirve şansını bitirir; müşterilerin ücretlerini ödedi. Hava iyi, zaman dar.",
+    "choices": [
+      {"id": "rescue", "text": "Tırmanışı bırak, dağcıyı indir.", "effects": {"Happiness": 6, "Social": 3, "Money": -10000},
+       "result": "Müşterilerinin ikisi şikâyet etti, biri seninle birlikte sedyeyi taşıdı. Dağcı hayatta kaldı."},
+      {"id": "radio", "text": "Kurtarma ekibine haber ver ve devam et.", "effects": {"Happiness": -3, "Money": 5000},
+       "result": "Ekip altı saat sonra ulaştı. Haberleri izlerken, o altı saati düşündün."},
+      {"id": "split", "text": "Grubu yardımcı rehbere bırak, sen dağcıyla kal.", "requires": ["MinStat:Health:60"], "effects": {"Happiness": 4, "Health": -2, "Social": 2},
+       "result": "Grup zirveye çıktı, sen dağcıyı indirdin. İkisi de mümkündü; sadece biraz daha yorgunluk gerekti."}
+    ]
+  },
+  {
+    "id": "job_mountain_guide_3", "title": "Dağcılık Okulu", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:mountain_guide", "MinCareerLevel:3"],
+    "description": "Dizlerin artık uzun inişleri kaldırmıyor. Bir dağ köyünde kendi okulunu kurmak istiyorsun. Bir turizm şirketi, okulu lüks bir zirve paketi markası yapmayı öneriyor.",
+    "choices": [
+      {"id": "luxury", "text": "Lüks paketlere ortak ol.", "effects": {"Money": 100000, "Happiness": -1},
+       "result": "Zengin müşteriler helikopterle kampa geldi. Dağ, bir ürün oldu."},
+      {"id": "village", "text": "Köyün gençlerine ücretsiz rehberlik eğitimi ver.", "effects": {"Happiness": 6, "Social": 4, "Money": -10000},
+       "result": "Köyün gençleri şehre göç etmek yerine rehber oldu. Okulun, köyün geleceği oldu."},
+      {"id": "turn", "text": "Okulun ilk dersini «geri dönmek» yap; o fırtına gününü anlat.", "requires": ["HasFlag:mountain_guide_turn"], "effects": {"Happiness": 8, "Social": 4, "Health": 2},
+       "result": "Mezunların hiçbiri bir kaza raporu yazmak zorunda kalmadı. Okulun sloganı: «Zirve isteğe bağlı, dönüş zorunlu.»"}
+    ]
+  },
+
+  {
+    "id": "job_dive_instructor_1", "title": "Panik", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:dive_instructor"],
+    "description": "On iki metrede, ilk dalışını yapan bir öğrencin panik oldu; regülatörü ağzından çıkarmaya çalışıyor. Gözleri maskenin arkasında kocaman. Diğer üç öğrenci de sana bakıyor.",
+    "choices": [
+      {"id": "calm", "text": "Gözlerinin içine bak, nefesini birlikte say.", "effects": {"Happiness": 4, "Social": 2}, "set": ["dive_instructor_calm"],
+       "result": "Yavaşça nefesi düzeldi. Yüzeye çıktığınızda gülüyordu; ertesi gün yeniden daldı."},
+      {"id": "ascend", "text": "Kontrollü bir yükselişle yüzeye çıkar.", "effects": {"Education": 2, "Happiness": 1},
+       "result": "Güvenli bir şekilde çıktınız. Öğrenci bir daha dalmak istemedi."},
+      {"id": "signal", "text": "Asistanına işaret ver, diğerlerini o yönetsin.", "effects": {"Social": 2, "Education": 1},
+       "result": "Asistan grubu tuttu, sen öğrenciyle ilgilendin. Takım çalışması işe yaradı."}
+    ]
+  },
+  {
+    "id": "job_dive_instructor_2", "title": "Mercan", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:dive_instructor", "MinCareerLevel:2"],
+    "description": "Dalış merkezi, turist sayısını artırmak için hassas bir mercan resifine günde on tekne düzenlemek istiyor. Resif zaten ağarmaya başladı. Patronun, «Turistler mercan görmeye geliyor,» diyor.",
+    "choices": [
+      {"id": "comply", "text": "İsteneni yap.", "effects": {"Money": 20000, "Happiness": -4},
+       "result": "Sezon rekor kırdı. Ertesi yıl resifin yarısı beyazdı."},
+      {"id": "limit", "text": "Günlük kota ve eğitim şartı öner.", "requires": ["MinStat:Social:50"], "effects": {"Happiness": 4, "Social": 2},
+       "result": "Patron isteksizce kabul etti. Resif yavaş yavaş toparlandı ve merkezin adı «sorumlu dalış» oldu."},
+      {"id": "restore", "text": "Turistlere mercan restorasyon dalışları sun.", "effects": {"Happiness": 5, "Education": 2, "Money": 5000},
+       "result": "Turistler mercan fidanı dikmek için para ödedi. Hem kazanç hem resif büyüdü."}
+    ]
+  },
+  {
+    "id": "job_dive_instructor_3", "title": "Dalış Merkezi", "category": "Career", "minAge": 28, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:dive_instructor", "MinCareerLevel:3"],
+    "description": "Kendi dalış merkezini açtın. Bir rehabilitasyon merkezi, felçli hastalar için terapi dalışları düzenleyip düzenleyemeyeceğini soruyor. Ekipman pahalı, sigorta karmaşık.",
+    "choices": [
+      {"id": "no", "text": "Kibarca reddet; risk çok yüksek.", "effects": {"Money": 10000, "Happiness": -2},
+       "result": "Merkezin güvenli ve kârlı kaldı. Bazen o telefonu düşündün."},
+      {"id": "yes", "text": "Kabul et ve gerekli eğitimi al.", "cost": 20000, "effects": {"Happiness": 6, "Social": 4, "Education": 2},
+       "result": "Su altında ilk kez ağırlıksız kalan bir hastanın gözlerindeki ışık, bütün ekipman faturalarına değdi."},
+      {"id": "calm", "text": "Panik olan o ilk öğrencinle yaptığın gibi: her hastayla nefesini birlikte sayan bir program kur.", "requires": ["HasFlag:dive_instructor_calm"], "effects": {"Happiness": 9, "Social": 4},
+       "result": "Program bir yılda yüz hastaya ulaştı. O ilk öğrencin artık bir eğitmendi ve programda gönüllüydü."}
+    ]
+  },
+
+  {
+    "id": "job_jockey_1", "title": "Şafakta Ahır", "category": "Career", "minAge": 16, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:jockey"],
+    "description": "Şafakta ahırdasın ve tımar ettiğin genç kısrak bir türlü sakinleşmiyor; kimseyi sırtına almıyor. Antrenör, «Kırbacı göster, anlar,» diyor. Kısrağın gözünde korku var.",
+    "choices": [
+      {"id": "patience", "text": "Günlerce sadece yanında dur, onu tanı.", "effects": {"Happiness": 4, "Education": 2}, "set": ["jockey_trust"],
+       "result": "Bir hafta sonra başını omzuna yasladı. Bir ay sonra sırtına ilk binen sen oldun."},
+      {"id": "whip", "text": "Antrenörü dinle.", "effects": {"Happiness": -3, "Health": -2},
+       "result": "Kısrak seni bir çite fırlattı. Kolun bir ay sargıda kaldı."},
+      {"id": "elder", "text": "Yaşlı seyise danış.", "effects": {"Social": 3, "Education": 2},
+       "result": "Kısrağın yanına bir keçi koymanı önerdi. İşe yaradı; yalnızlıktan korkuyormuş."}
+    ]
+  },
+  {
+    "id": "job_jockey_2", "title": "Kilo", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:jockey", "MinCareerLevel:2"],
+    "description": "Büyük bir yarışa iki gün var ve kilo sınırının iki kilo üstündesin. Diğer jokeyler saunada saatler geçiriyor, bazıları yemek yemiyor. Başın dönüyor.",
+    "choices": [
+      {"id": "sauna", "text": "Saunaya gir ve aç kal.", "effects": {"Health": -5, "Happiness": 1, "Money": 15000},
+       "result": "Kiloyu verdin ve yarışı kazandın. Bitişte attan inerken bayıldın."},
+      {"id": "skip", "text": "Bu yarışı bırak.", "effects": {"Health": 2, "Happiness": -3, "Money": -5000},
+       "result": "Yarışı tribünden izledin. Bir sonraki ay, sağlıklı bir şekilde kilo sınırındaydın."},
+      {"id": "dietitian", "text": "Bir diyetisyenle güvenli bir plan yap.", "cost": 3000, "effects": {"Health": 1, "Happiness": 2, "Education": 1},
+       "result": "Bir kiloyu güvenle verdin ve yarışa ağır kategoriden katıldın. Üçüncü oldun."}
+    ]
+  },
+  {
+    "id": "job_jockey_3", "title": "Harada", "category": "Career", "minAge": 28, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:jockey", "MinCareerLevel:3"],
+    "description": "Jokeyliği bıraktın ve küçük bir harada sahibi oldun. Zengin bir alıcı, en iyi tayın için bir servet teklif ediyor; ama atlarını yorgunluktan yığılana kadar yarıştırmasıyla bilinen biri. Tay, çitin öbür yanından sana bakıyor.",
+    "choices": [
+      {"id": "sell", "text": "Tayı sat.", "effects": {"Money": 200000, "Happiness": -5},
+       "result": "Para haradanın borçlarını kapattı. Tayın adını yıllar sonra bir sakatlık haberinde gördün."},
+      {"id": "keep", "text": "Satma, kendin yetiştir.", "effects": {"Happiness": 4, "Money": -20000},
+       "result": "Tay büyüdü ve birkaç yarış kazandı. Hiçbir zaman zorlanmadı."},
+      {"id": "trust", "text": "Bir zamanlar korkulu bir kısrağa güven öğrettiğin gibi, tayı da sabırla yetiştir ve onun yavrusunu aynı yolla büyüt.", "requires": ["HasFlag:jockey_trust"], "effects": {"Happiness": 8, "Social": 3, "Money": 30000},
+       "result": "Haradan, kırbaç kullanılmadan yetiştirilmiş atlarıyla ünlendi. Alıcılar şimdi senin şartlarını kabul ediyordu."}
+    ]
+  },
+
+  {
+    "id": "job_martial_arts_coach_1", "title": "Kavgacı Öğrenci", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:martial_arts_coach"],
+    "description": "Yeni bir öğrenci, okulda kavgaları kazanmak için gelmiş; ilk derste bir arkadaşına fazla sert vuruyor. Gözlerinde öfke var. Velisi, «Onu güçlü yapın,» demişti.",
+    "choices": [
+      {"id": "expel", "text": "Onu salondan çıkar.", "effects": {"Happiness": -2, "Social": -1},
+       "result": "Çocuk bir daha gelmedi. Okul kavgalarını başka yollarla kazanmaya devam etti."},
+      {"id": "talk", "text": "Dersten sonra onunla konuş, öfkesini sor.", "requires": ["MinStat:Social:45"], "effects": {"Social": 3, "Happiness": 4}, "set": ["martial_arts_coach_mentor"],
+       "result": "Evde zor şeyler yaşadığını anlattı. Aylar içinde salonun en saygılı öğrencisi oldu."},
+      {"id": "bow", "text": "Ona selamlaşmanın ve saygının ilk ders olduğunu göster.", "effects": {"Education": 2, "Happiness": 2},
+       "result": "Bir hafta boyunca sadece eğilmeyi ve beklemeyi öğrendi. Sinirlendi ama kaldı."}
+    ]
+  },
+  {
+    "id": "job_martial_arts_coach_2", "title": "Kemer Sınavı", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:martial_arts_coach", "MinCareerLevel:2"],
+    "description": "Salonun sahibi, öğrencilerin daha hızlı kemer atlamasını istiyor; her sınav ücretli ve gelir bekleniyor. Bazı öğrencilerin hazır olmadığını biliyorsun. Velilerin çoğu da kemer rengine bakıyor.",
+    "choices": [
+      {"id": "pass", "text": "Herkesi geçir.", "effects": {"Money": 15000, "Happiness": -3},
+       "result": "Kasa doldu, kemerler renklendi. Bir turnuvada öğrencilerinden biri ciddi bir hata yaptı."},
+      {"id": "honest", "text": "Sadece hazır olanları geçir.", "effects": {"Happiness": 3, "Money": -5000, "Social": -1},
+       "result": "Bazı veliler başka salona gitti. Kalanlar senin kemerinin gerçekten bir anlam taşıdığını biliyordu."},
+      {"id": "explain", "text": "Velilere kemer sisteminin anlamını anlatan bir toplantı yap.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 4, "Social": 3},
+       "result": "Veliler dinledi. Bazıları, çocuklarının ilk kez bir şey için gerçekten çalıştığını gördü."}
+    ]
+  },
+  {
+    "id": "job_martial_arts_coach_3", "title": "Dojo", "category": "Career", "minAge": 28, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:martial_arts_coach", "MinCareerLevel:3"],
+    "description": "Kendi dojonu açtın. Bir televizyon kanalı, öğrencilerinin kafes dövüşlerine katılacağı bir yarışma programı öneriyor. Mahallenin çocukları ise dojonun ücretsiz akşam derslerini bekliyor.",
+    "choices": [
+      {"id": "tv", "text": "Programı kabul et.", "effects": {"Money": 100000, "Happiness": -2, "Health": -1},
+       "result": "Dojon ünlendi. Bazı öğrencilerin sakatlandı ve felsefen ekranda kayboldu."},
+      {"id": "free", "text": "Ücretsiz akşam derslerini sürdür.", "effects": {"Happiness": 5, "Social": 4, "Money": -10000},
+       "result": "Mahallede kavgalar azaldı. Bir anne, oğlunun ilk kez okulda ödül aldığını söyledi."},
+      {"id": "mentor", "text": "Yıllar önceki o öfkeli öğrenciyi, artık genç bir eğitmen olarak akşam derslerinin başına geçir.", "requires": ["HasFlag:martial_arts_coach_mentor"], "effects": {"Happiness": 9, "Social": 4},
+       "result": "Çocuklar onun hikâyesini duyunca dinlemeye başladı. Dojon, bir öfkenin nasıl disipline dönüştüğünün kanıtı oldu."}
+    ]
+  },
+
+  {
+    "id": "job_acrobat_1", "title": "Ağsız", "category": "Career", "minAge": 16, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:acrobat"],
+    "description": "Sirk müdürü, gösterinin daha heyecanlı olması için güvenlik ağının kaldırılmasını istiyor; seyirci sayısı düşmüş. Trapez yirmi metre yüksekte ve sen henüz bir yıllık bir akrobatsın. Partnerin sessizce sana bakıyor.",
+    "choices": [
+      {"id": "net", "text": "Ağ olmadan çıkmayacağını söyle.", "effects": {"Happiness": 2, "Social": -1, "Health": 1}, "set": ["acrobat_net"],
+       "result": "Müdür homurdandı ama ağ kaldı. Bir ay sonra bir provada düştün; ağ seni tuttu."},
+      {"id": "go", "text": "Ağsız çık.", "effects": {"Happiness": 4, "Health": -3, "Money": 5000},
+       "result": "Seyirciler nefeslerini tuttu ve sonra ayağa kalktı. Her gece bir öncekinden biraz daha korkuyordun."},
+      {"id": "invisible", "text": "Seyircinin görmeyeceği ince bir emniyet halatı öner.", "requires": ["MinStat:Education:30"], "effects": {"Happiness": 3, "Education": 2},
+       "result": "Müdür kabul etti. Gösteri heyecanlıydı ve kimse gerçeği bilmedi."}
+    ]
+  },
+  {
+    "id": "job_acrobat_2", "title": "Turne", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:acrobat", "MinCareerLevel:2"],
+    "description": "Uluslararası bir sirk, seni iki yıllık bir dünya turnesine davet ediyor. Annen hasta ve evde senden başka bakacak kimsesi yok. Çadırın arkasında karavanlar sıralanmış.",
+    "choices": [
+      {"id": "tour", "text": "Turneye çık.", "effects": {"Money": 60000, "Happiness": 3, "Social": -3},
+       "result": "Tokyo, Buenos Aires, Montreal. Her gece telefonla annene sesini dinlettin."},
+      {"id": "stay", "text": "Annenin yanında kal.", "effects": {"Happiness": 2, "Social": 3, "Money": -5000},
+       "result": "Yerel bir sirkte çalıştın. Annen iyileştiğinde, onu bir gösterine getirdin."},
+      {"id": "carer", "text": "Turne gelirinle annene bir bakıcı tut.", "requires": ["MinStat:Money:20000"], "effects": {"Money": 30000, "Happiness": 2},
+       "result": "Para ikisine de yetti. Ama her şehirde, annenin sesinde bir eksiklik duydun."}
+    ]
+  },
+  {
+    "id": "job_acrobat_3", "title": "Gösteri Yönetmeni", "category": "Career", "minAge": 28, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:acrobat", "MinCareerLevel:3"],
+    "description": "Vücudun artık trapezin yükünü kaldırmıyor ve gösteri yönetmeni oldun. Yeni gösteri için yatırımcılar, akrobatların daha riskli numaralar yapmasını istiyor. Genç akrobatlar sana bakıyor; tıpkı senin bir zamanlar baktığın gibi.",
+    "choices": [
+      {"id": "risk", "text": "Riskli numaraları koy.", "effects": {"Money": 80000, "Happiness": -3},
+       "result": "Gösteri olay yarattı. Bir provada genç bir akrobat bileğini kırdı."},
+      {"id": "story", "text": "Riskten değil hikâyeden heyecan doğan bir gösteri kur.", "effects": {"Happiness": 5, "Social": 3},
+       "result": "Seyirciler ağlayarak çıktı. Gösteri yıllarca sahnede kaldı."},
+      {"id": "net", "text": "Bir zamanlar ağı savunduğun gibi; her numaranın güvenlik planını ekibinle birlikte yaz.", "requires": ["HasFlag:acrobat_net"], "effects": {"Happiness": 8, "Social": 4, "Health": 2},
+       "result": "Gençler korkmadan, daha cesur numaralar denedi. Gösterinin hiçbir gecesi bir ambulans sireniyle bitmedi."}
+    ]
+  }
+]

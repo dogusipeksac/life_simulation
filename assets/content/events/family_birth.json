@@ -1,0 +1,57 @@
+[
+  {"id": "birth_winter", "title": "Karlı Bir Doğum Günü", "category": "Childhood", "minAge": 6, "maxAge": 10, "weight": 12,
+   "conditions": ["HasFlag:born_winter"],
+   "description": "Doğum günü sabahı pencereden baktığında her yer bembeyaz. Davetliler yollar kapalı diye gelemeyecek; masada sadece pasta ve sıcak bir çay var.",
+   "choices": [
+     {"id": "snow", "text": "Pastayı bekletip dışarıda kardan adam yap.", "effects": {"Happiness": 4, "Health": 1},
+      "result": "Kardan adama bir mum diktin. Fotoğrafı yıllarca buzdolabının kapağında durdu."},
+     {"id": "neighbors", "text": "Apartmandaki çocukları pastaya çağır.", "effects": {"Social": 4, "Happiness": 2},
+      "result": "Karlı botlar kapının önünde yığıldı. Hiç planlamadığın en kalabalık doğum günün oldu."},
+     {"id": "cozy", "text": "Battaniyeye sarılıp bir masal dinle.", "effects": {"Happiness": 3, "Education": 1},
+      "result": "Kar, pencerede sessizce birikti. O masalın sonunu yıllarca kimseye anlatmadın."}
+   ]},
+  {"id": "birth_spring", "title": "Çiçekler Arasında", "category": "Childhood", "minAge": 6, "maxAge": 10, "weight": 12,
+   "conditions": ["HasFlag:born_spring"],
+   "description": "Doğum gününde parktaki erik ağaçları çiçek açmış. Ailen pikniğe gitmeyi öneriyor; gökyüzünde ise yağmur bulutları toplanıyor.",
+   "choices": [
+     {"id": "picnic", "text": "Yine de pikniğe git.", "effects": {"Happiness": 4, "Health": 1},
+      "result": "Yarısında yağmur bastırdı ve ağacın altında sıkışıp güldünüz. Pasta biraz ıslandı, kimse umursamadı."},
+     {"id": "plant", "text": "Bahçeye bir fidan dikmek istediğini söyle.", "effects": {"Happiness": 3, "Education": 1},
+      "result": "Küçük bir erik fidanı. Her doğum gününde onunla boyunu ölçtün."},
+     {"id": "home", "text": "Evde kalıp balon şişir.", "effects": {"Happiness": 2, "Social": 1},
+      "result": "Salon balonla doldu. Yağmurun sesi, en güzel doğum günü şarkısı oldu."}
+   ]},
+  {"id": "birth_summer", "title": "Denizde Bir Yaş", "category": "Childhood", "minAge": 6, "maxAge": 10, "weight": 12,
+   "conditions": ["HasFlag:born_summer"],
+   "description": "Doğum günün yaz tatiline denk geldi ve arkadaşlarının çoğu şehir dışında. Ama sahil yakın ve gün uzun.",
+   "choices": [
+     {"id": "beach", "text": "Sahilde kumdan bir pasta yap.", "effects": {"Happiness": 4, "Health": 1},
+      "result": "Kumdan pastana deniz kabuklarından mumlar diktin. Dalga onu götürdüğünde bile gülüyordun."},
+     {"id": "call", "text": "Arkadaşlarını tek tek arayıp davet et.", "effects": {"Social": 3, "Happiness": 2},
+      "result": "Üç kişi gelebildi. Üç kişilik bir doğum günü, kalabalık olanlardan daha uzun sürdü."},
+     {"id": "swim", "text": "Bu yaş gününde ilk kez derin suya atla.", "effects": {"Health": 2, "Happiness": 3},
+      "result": "Burnun suyla doldu, ama çıktığında herkes alkışlıyordu. Yeni bir yaş, yeni bir cesaret."}
+   ]},
+  {"id": "birth_autumn", "title": "Okulun İlk Haftası", "category": "Childhood", "minAge": 6, "maxAge": 10, "weight": 12,
+   "conditions": ["HasFlag:born_autumn"],
+   "description": "Doğum günün okulların açıldığı haftaya denk geldi ve sınıfta henüz kimseyi tanımıyorsun. Ailen, sınıfa dağıtmak için bir kutu kurabiye hazırlamış.",
+   "choices": [
+     {"id": "share", "text": "Kurabiyeleri sınıfa dağıt.", "effects": {"Social": 4, "Happiness": 3},
+      "result": "Teneffüste herkes adını öğrenmişti. Yeni bir yaş, yeni arkadaşlarla başladı."},
+     {"id": "teacher", "text": "Öğretmene ver, o dağıtsın.", "effects": {"Social": 2, "Happiness": 1},
+      "result": "Öğretmen sınıfa doğum gününü söyledi ve herkes şarkı söyledi. Kızardın ama mutluydun."},
+     {"id": "keep", "text": "Utanıp kurabiyeleri çantanda sakla.", "effects": {"Happiness": -1},
+      "result": "Eve döndüğünde kurabiyeler kırılmıştı. Ertesi yıl, kutuyu ilk gün açtın."}
+   ]},
+  {"id": "military_service", "title": "Askerlik Çağrısı", "category": "Random", "minAge": 20, "maxAge": 29, "weight": 20, "repeatable": true, "cooldownDays": 365,
+   "conditions": ["HasFlag:gender_male", "NotHasFlag:studying", "NotHasFlag:served_military"],
+   "description": "Posta kutusunda askerlik şubesinden bir zarf var; yoklama ve sevk tarihi yazıyor. Hayatın bir süre duracak gibi; ama kimisi bunun bir yol ayrımı olduğunu söylüyor.",
+   "choices": [
+     {"id": "serve", "text": "Askerliğini yap.", "effects": {"Health": 2, "Social": 3, "Happiness": -2, "Money": -5000}, "set": ["served_military"],
+      "result": "Aylar boyunca hiç tanımadığın şehirlerden insanlarla aynı koğuşta uyudun. Bazıları ömür boyu dostun oldu."},
+     {"id": "paid", "text": "Bedelli askerlik için ödeme yap.", "cost": 120000, "effects": {"Happiness": 2}, "set": ["served_military"],
+      "result": "Kısa bir eğitimden sonra hayatına döndün. Birikimin eridi ama zamanın sende kaldı."},
+     {"id": "delay", "text": "Bir süre ertelemenin yollarını araştır.", "effects": {"Happiness": 1, "Social": -1},
+      "result": "Bir yıl kazandın. Zarf, çekmecede seni beklemeye devam etti."}
+   ]}
+]

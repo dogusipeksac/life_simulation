@@ -1,0 +1,441 @@
+[
+  {
+    "id": "job_barista_1", "title": "Her Sabah Aynı Kahve", "category": "Career", "minAge": 16, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:barista"],
+    "description": "Her sabah 7.15'te aynı yaşlı adam gelir, aynı sade kahveyi ister ve hiç konuşmaz. Bugün kuyruk uzun, makine tıkanmış ve adam her zamankinden yorgun görünüyor. Elindeki fincan hafifçe titriyor.",
+    "choices": [
+      {"id": "name", "text": "Kahvesini sırayı beklemeden hazırla ve adını sor.", "effects": {"Social": 3, "Happiness": 3}, "set": ["barista_regular"],
+       "result": "Adı Nihat'mış, eşini geçen ay kaybetmiş. O günden sonra fincanına küçük bir not yazmaya başladın."},
+      {"id": "queue", "text": "Kuralı bozma, sırasını beklesin.", "effects": {"Education": 1},
+       "result": "Kahvesini aldı ve köşedeki masasına oturdu. Fark edilmemeyi seçmiş biri gibiydi."},
+      {"id": "fix", "text": "Önce makineyi tamir et, sonra herkesi hızla hallet.", "effects": {"Education": 2, "Health": -1},
+       "result": "Eline buhar sıçradı ama makine çalıştı. Kuyruk on dakikada eridi."}
+    ]
+  },
+  {
+    "id": "job_barista_2", "title": "Bahşiş Kavanozu", "category": "Career", "minAge": 17, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:barista", "MinCareerLevel:2"],
+    "description": "Vardiya sonu bahşiş kavanozunu sayarken, yeni başlayan stajyerin cebine birkaç banknot attığını görüyorsun. Kız tek başına bir kardeşine bakıyor ve bunu herkes biliyor. Müdür yarın kasayı kontrol edecek.",
+    "choices": [
+      {"id": "report", "text": "Müdüre bildir.", "effects": {"Happiness": -3, "Social": -2},
+       "result": "Stajyer işten çıkarıldı. Kavanoz o hafta her zamankinden ağır geldi."},
+      {"id": "talk", "text": "Onunla baş başa konuş.", "requires": ["MinStat:Social:45"], "effects": {"Happiness": 3, "Social": 3},
+       "result": "Ağlayarak parayı geri koydu. Ekip, o ay bahşişlerden ona küçük bir pay ayırmaya karar verdi."},
+      {"id": "silent", "text": "Görmezden gel.", "effects": {"Happiness": -1},
+       "result": "Bir şey olmadı. Ama her vardiya sonu kavanoza bakarken gözün ona kaydı."}
+    ]
+  },
+  {
+    "id": "job_barista_3", "title": "Kendi Kafen", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:barista", "MinCareerLevel:3"],
+    "description": "Çalıştığın kafenin sahibi emekli oluyor ve dükkânı sana uygun bir fiyata devretmek istiyor. Kredi çekmen gerekecek; bir zincir de köşeye şube açmak üzere. Tezgâhın arkasındaki duvarda müşterilerin yıllardır bıraktığı notlar asılı.",
+    "choices": [
+      {"id": "buy", "text": "Krediyi çek, kafeyi al.", "effects": {"Money": -50000, "Happiness": 6, "Health": -1},
+       "result": "İlk yıl her sabah kapıyı sen açtın. İkinci yıl, mahalle seni kafenin adıyla çağırıyordu."},
+      {"id": "chain", "text": "Zincire vardiya müdürü olarak geç.", "effects": {"Money": 30000, "Happiness": -2},
+       "result": "Maaş iyiydi, kahve ise standarttı. Eski kafenin yerinde bir telefoncu açıldı."},
+      {"id": "regular", "text": "Nihat Bey'e danış; yıllardır fincanına not yazdığın adama.", "requires": ["HasFlag:barista_regular"], "effects": {"Happiness": 8, "Social": 4, "Money": -20000},
+       "result": "Sessizce dinledi, sonra birikimini masaya koydu. Kafenin yeni tabelasında «Nihat'ın Masası» yazıyordu."}
+    ]
+  },
+
+  {
+    "id": "job_baker_1", "title": "Sabahın Dördü", "category": "Career", "minAge": 16, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:baker"],
+    "description": "Saat dört, mahalle uyurken fırının ışığı yanan tek pencere. Usta ekşi mayayı sana emanet edip hastaneye gitti; maya kırk yıllık. Hamur bugün kabarmıyor ve ilk müşteriler altıda kapıda olacak.",
+    "choices": [
+      {"id": "wait", "text": "Fırının yanına koy, sabırla bekle.", "effects": {"Education": 3, "Happiness": 2}, "set": ["baker_starter"],
+       "result": "Altıyı on geçe ilk somunlar çıktı. Kuyruktakiler söylendi ama ilk lokmada sustu."},
+      {"id": "yeast", "text": "Hazır maya ekle, zamanında yetiştir.", "effects": {"Money": 2000, "Happiness": -2},
+       "result": "Ekmekler zamanında çıktı. Yaşlı bir müşteri koklayıp «Bugün başka,» dedi."},
+      {"id": "call", "text": "Ustayı hastanede ara.", "effects": {"Social": 2, "Education": 2},
+       "result": "Usta güldü: «Ona biraz bal ver, üşümüştür.» Haklıydı."}
+    ]
+  },
+  {
+    "id": "job_baker_2", "title": "Un Fiyatları", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:baker", "MinCareerLevel:2"],
+    "description": "Un fiyatı üç ayda ikiye katlandı ve belediye ekmeğin fiyatını sabit tutmanı istiyor. Ya ekmeği küçülteceksin ya da zarar edeceksin. Fırının önünde emekliler kuyrukta.",
+    "choices": [
+      {"id": "smaller", "text": "Gramajı sessizce düşür.", "effects": {"Money": 15000, "Happiness": -3},
+       "result": "Kimse bir şey demedi. Ama bir sabah küçük bir çocuk, «Ekmekler küçülmüş,» dedi annesine."},
+      {"id": "price", "text": "Fiyatı açıkça artır ve nedenini tabelaya yaz.", "effects": {"Money": 10000, "Social": -1, "Happiness": 1},
+       "result": "Bazıları söylendi, bazıları anladı. Dürüstlük beklediğinden az müşteri kaybettirdi."},
+      {"id": "askida", "text": "Kasaya bir «askıda ekmek» kutusu koy.", "effects": {"Social": 4, "Happiness": 4, "Money": -5000},
+       "result": "Zarar ettin ama kutu her gün doldu. Kimse ekmeksiz kalmadı."}
+    ]
+  },
+  {
+    "id": "job_baker_3", "title": "Fırının Anahtarı", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:baker", "MinCareerLevel:3"],
+    "description": "Bir sanayi fırını zinciri, mahalle fırınını ve tarifini satın almak istiyor. Gece mesailerinden sırtın, sabahlardan dizlerin ağrıyor. Ustan yıllar önce vefat etti; fırının duvarında hâlâ onun fotoğrafı var.",
+    "choices": [
+      {"id": "sell", "text": "Sat ve gündüzleri yaşamaya başla.", "effects": {"Money": 200000, "Happiness": 1, "Health": 3},
+       "result": "İlk kez sabah yedide uyandın ve ne yapacağını bilemedin. Ekmekleri marketten aldın; tadı başkaydı."},
+      {"id": "apprentice", "text": "Bir çırak yetiştir, fırını ona devret.", "effects": {"Happiness": 5, "Social": 3},
+       "result": "Üç yıl gece mesailerini paylaştınız. Son sabah anahtarı verirken ellerin un içindeydi."},
+      {"id": "starter", "text": "Kırk yıllık mayadan bir parça ayır ve çırağına emanet et, ustanın sana yaptığı gibi.", "requires": ["HasFlag:baker_starter"], "effects": {"Happiness": 9, "Social": 3},
+       "result": "Maya artık seksen yaşındaydı. Çırağın onu bir kavanozda evine götürdüğü gece, sen ilk kez rahat uyudun."}
+    ]
+  },
+
+  {
+    "id": "job_chef_1", "title": "Pasada Bağırış", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:chef"],
+    "description": "Cumartesi akşamı, yüz yirmi kişilik servis. Şef, hazırladığın sosu yere döküp herkesin önünde bağırıyor. Tavalar tıslıyor, siparişler birikiyor ve gözlerin yanıyor.",
+    "choices": [
+      {"id": "redo", "text": "Sus ve sosu yeniden yap.", "effects": {"Education": 3, "Happiness": -2}, "set": ["chef_kitchen"],
+       "result": "İkinci sos kusursuzdu. Şef bir şey söylemedi ama servisten sonra sana bir kadeh uzattı."},
+      {"id": "answer", "text": "Ona aynı tonda karşılık ver.", "effects": {"Social": -3, "Happiness": 1},
+       "result": "Mutfak bir an durdu. Ertesi hafta başka bir istasyona kaydırıldın."},
+      {"id": "after", "text": "Servisten sonra onunla konuş.", "requires": ["MinStat:Social:45"], "effects": {"Social": 2, "Happiness": 2},
+       "result": "Yorgun bir sesle özür diledi. «Bu mutfak bana da böyle bağırdı,» dedi."}
+    ]
+  },
+  {
+    "id": "job_chef_2", "title": "Eleştirmen Masada", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:chef", "MinCareerLevel:2"],
+    "description": "Garson mutfağa koşarak geliyor: ünlü bir yemek eleştirmeni dört numaralı masada. Bugünkü balık iyi değil ve elinde yedek yok. Menüde en çok övülen yemek tam da o balık.",
+    "choices": [
+      {"id": "serve", "text": "Balığı yine de servis et, sosla kurtar.", "effects": {"Happiness": -2, "Money": 5000},
+       "result": "Eleştiride balık «yorgun» olarak geçti. Restoranın sahibi o haftayı sana zehir etti."},
+      {"id": "honest", "text": "Garsonla haber gönder: bugün balık yok, yerine özel bir tabak.", "effects": {"Happiness": 4, "Education": 2},
+       "result": "Doğaçlama tabağın eleştirinin başlığı oldu: «Dürüst bir mutfak.»"},
+      {"id": "market", "text": "Birini balık haline koştur.", "effects": {"Money": -3000, "Happiness": 2, "Health": -1},
+       "result": "Taze balık kırk dakika sonra geldi; eleştirmen beklemişti ama sabırla."}
+    ]
+  },
+  {
+    "id": "job_chef_3", "title": "Kendi Mutfağın", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:chef", "MinCareerLevel:3"],
+    "description": "Sonunda baş şefsin. Mutfağının kültürünü sen belirleyeceksin: kimin bağıracağını, kimin dinleneceğini. Yeni gelen genç bir komi, sosunu döküp korkuyla sana bakıyor.",
+    "choices": [
+      {"id": "tough", "text": "Sertlik bu işin parçası; ona sen de bağır.", "effects": {"Happiness": -1, "Social": -2},
+       "result": "Mutfak kusursuz işledi ama çalışanlar birer birer gitti."},
+      {"id": "calm", "text": "Sakin bir sesle, birlikte yeniden yapın.", "effects": {"Happiness": 4, "Social": 3},
+       "result": "Komi hiç unutmadı. Mutfağın şehrin en çok başvuru alan mutfağı oldu."},
+      {"id": "glass", "text": "Servisten sonra ona bir kadeh uzat ve yere dökülen kendi ilk sosunu anlat.", "requires": ["HasFlag:chef_kitchen"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "Gülümsedi; yıllar önce senin gülümsediğin gibi. Bu gelenek mutfağının imzası oldu."}
+    ]
+  },
+
+  {
+    "id": "job_coffee_roaster_1", "title": "İlk Çatlama", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:coffee_roaster"],
+    "description": "Kavurma makinesinin tamburu dönüyor ve çekirdekler mısır gibi çatırdamaya başladı. Usta, «Şimdi değil, kokuyu dinle,» diyor ve dışarı çıkıyor. Ekranda sıcaklık, burnunda karamel ve duman.",
+    "choices": [
+      {"id": "nose", "text": "Ekranı bırak, kokuya güven.", "effects": {"Education": 3, "Happiness": 3}, "set": ["coffee_roaster_nose"],
+       "result": "Doksan saniye sonra çektin. Usta fincanı kokladı, «Bu senin kavurman,» dedi."},
+      {"id": "chart", "text": "Profil tablosuna sadık kal.", "effects": {"Education": 2},
+       "result": "Kahve iyiydi, tam tablo gibi. Ne bir eksik ne bir fazla."},
+      {"id": "dark", "text": "Biraz koyu tut, müşteriler sever.", "effects": {"Happiness": -1, "Money": 1000},
+       "result": "Kahve acı ve isliydi. Usta tek yudumda bıraktı."}
+    ]
+  },
+  {
+    "id": "job_coffee_roaster_2", "title": "Çiftlikten Mektup", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:coffee_roaster", "MinCareerLevel:2"],
+    "description": "Doğrudan çalıştığın Etiyopyalı bir kooperatif, bu yıl hasadın yarısını kaybettiğini yazıyor. Fiyatı artırmalarını istiyorlar. Senin marjın zaten ince ve müşteriler fiyat zammına hassas.",
+    "choices": [
+      {"id": "pay", "text": "İstedikleri fiyatı öde.", "effects": {"Money": -15000, "Happiness": 4, "Social": 2},
+       "result": "Kooperatif ayakta kaldı. Ertesi yıl gönderdikleri çekirdekler ödüllü bir kavurmanın temeli oldu."},
+      {"id": "cheaper", "text": "Daha ucuz bir aracıya geç.", "effects": {"Money": 10000, "Happiness": -4},
+       "result": "Kâr marjın düzeldi. Kooperatifin bir sonraki mektubu hiç gelmedi."},
+      {"id": "story", "text": "Durumu müşterilere anlat, özel bir dayanışma serisi çıkar.", "requires": ["MinStat:Social:50"], "effects": {"Money": 5000, "Happiness": 4, "Social": 3},
+       "result": "Paketlerin üstüne çiftçilerin fotoğraflarını koydun. Seri iki haftada tükendi."}
+    ]
+  },
+  {
+    "id": "job_coffee_roaster_3", "title": "Şampiyona", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:coffee_roaster", "MinCareerLevel:3"],
+    "description": "Ulusal kavurma şampiyonasına davet edildin. Jüri, rafine ve yaygın bir profili ödüllendiriyor. Senin en sevdiğin ise riskli, meyvemsi bir kavurma.",
+    "choices": [
+      {"id": "safe", "text": "Jürinin sevdiği profili hazırla.", "effects": {"Money": 30000, "Social": 2, "Happiness": 1},
+       "result": "İkinci oldun. Madalya kavurmahanenin duvarında parladı."},
+      {"id": "risk", "text": "Kendi riskli kavurmanı getir.", "effects": {"Happiness": 5, "Education": 2},
+       "result": "Jüri ikiye bölündü; bir jüri üyesi sonra sana yazdı ve tarifini sordu."},
+      {"id": "nose", "text": "Ekranı kapat ve ustanın öğrettiği gibi yalnızca kokuyla kavur.", "requires": ["HasFlag:coffee_roaster_nose"], "effects": {"Happiness": 8, "Social": 3, "Money": 40000},
+       "result": "Jüri önünde gözlerini kapatıp kavurdun. Birinci oldun; konuşmanı ustana adadın."}
+    ]
+  },
+
+  {
+    "id": "job_hotelier_1", "title": "Gece Resepsiyonu", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:hotelier"],
+    "description": "Gece yarısını yarım saat geçiyor, otel dolu ve kapıda ıslak bir aile duruyor; araçları dağ yolunda arızalanmış. Tek boş yer, yarın sabah gelecek önemli bir misafir için ayrılmış süit. Çocuklardan biri titriyor.",
+    "choices": [
+      {"id": "suite", "text": "Süiti aileye ver, sabah temizlenir.", "effects": {"Happiness": 4, "Social": 3, "Money": -2000}, "set": ["hotelier_family"],
+       "result": "Sabah anne mutfağa inip sana teşekkür etti. Süit, önemli misafir gelmeden pırıl pırıldı."},
+      {"id": "lobby", "text": "Lobide battaniye ve sıcak çorba sun.", "effects": {"Happiness": 2, "Social": 2},
+       "result": "Kanepelerde uyudular. Sabah çocuklar lobideki kediyle oynuyordu."},
+      {"id": "send", "text": "Başka bir otele yönlendir.", "effects": {"Happiness": -3},
+       "result": "Taksi çağırdın, kapıdan uğurladın. Arka camdan bakan çocuğun yüzü aklında kaldı."}
+    ]
+  },
+  {
+    "id": "job_hotelier_2", "title": "Kötü Yorum", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:hotelier", "MinCareerLevel:2"],
+    "description": "Bir misafir, ücretsiz oda almak için tehdit ediyor: vermezsen sitelere yalan bir hamam böceği yorumu yazacak. Otelin puanı rezervasyonların kalbi. Adam lobide sırıtıyor.",
+    "choices": [
+      {"id": "give", "text": "Odayı ver, sorundan kurtul.", "effects": {"Money": -5000, "Happiness": -3},
+       "result": "Yorum yazılmadı. Ama aynı adam bir yıl sonra yeniden geldi."},
+      {"id": "refuse", "text": "Reddet ve platforma bildir.", "effects": {"Happiness": 3, "Money": -2000},
+       "result": "Yorum yazıldı ama platform kaldırdı. Puanın bir hafta düştü, sonra toparlandı."},
+      {"id": "witness", "text": "Konuşmayı diğer misafirlerin önünde sakince cevapla.", "requires": ["MinStat:Social:60"], "effects": {"Social": 3, "Happiness": 4},
+       "result": "Başka bir misafir otelin temizliğine kefil olan bir yorum yazdı. Adam sessizce ayrıldı."}
+    ]
+  },
+  {
+    "id": "job_hotelier_3", "title": "Otelin Ruhu", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:hotelier", "MinCareerLevel:3"],
+    "description": "Uluslararası bir otel zinciri butik otelini bünyesine katmak istiyor; yenilenmiş odalar, standart hizmet ve yüksek gelir. Eski personelinin yarısı yeni standartlara uymayacak. Bahçedeki asma, yirmi yıl önce senin diktiğin.",
+    "choices": [
+      {"id": "join", "text": "Zincire katıl.", "effects": {"Money": 200000, "Happiness": -2, "Social": -2},
+       "result": "Odalar parladı, puanlar yükseldi. Asma, yeni peyzaj projesinde söküldü."},
+      {"id": "stay", "text": "Bağımsız kal.", "effects": {"Happiness": 4, "Social": 3},
+       "result": "Fiyatların zincirle rekabet edemedi ama misafirlerin her yıl döndü."},
+      {"id": "family", "text": "Yıllar önce süiti verdiğin ailenin her yıl gönderdiği kartları misafir kitabına koy, otelin hikâyesini anlat.", "requires": ["HasFlag:hotelier_family"], "effects": {"Happiness": 8, "Social": 4, "Money": 30000},
+       "result": "O ailenin büyüyen çocukları artık kendi çocuklarıyla geliyordu. Hikâye bir gezi dergisine kapak oldu."}
+    ]
+  },
+
+  {
+    "id": "job_sommelier_1", "title": "Kör Tadım", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:sommelier"],
+    "description": "Restoranın sahibi, etiketini kapattığı bir kadehi önüne koyuyor ve «Bölgesi, üzümü, yılı,» diyor. Ekip izliyor. Burnuna kiraz, deri ve ıslak toprak geliyor; ama emin değilsin.",
+    "choices": [
+      {"id": "guess", "text": "Cesurca tahmin et.", "effects": {"Happiness": 2, "Education": 2},
+       "result": "Bölgeyi bildin, yılı iki yıl şaşırdın. Sahip gülerek sana bir şişe hediye etti."},
+      {"id": "honest", "text": "Kokularını anlat ve emin olmadığını söyle.", "effects": {"Education": 3, "Social": 2}, "set": ["sommelier_humble"],
+       "result": "Sahip, «Bilmediğini bilen iyi sommelier olur,» dedi. Ekip seni o günden sonra daha çok dinledi."},
+      {"id": "bluff", "text": "Kendinden eminmiş gibi bir yıl uydur.", "effects": {"Happiness": -1, "Social": -1},
+       "result": "Yanıldın ve bunu herkes gördü. Bir hafta boyunca adın şaka konusu oldu."}
+    ]
+  },
+  {
+    "id": "job_sommelier_2", "title": "Bozuk Şişe", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:sommelier", "MinCareerLevel:2"],
+    "description": "Nadir bir şişe açtın ve mantar kokusu aldın; şarap bozulmuş. Masadaki müşteri fark etmemiş ve kutlama yapıyor. Şişe, bir aylık maaşından pahalı ve müdür «Söyleme,» diye işaret ediyor.",
+    "choices": [
+      {"id": "tell", "text": "Bozulduğunu söyle, yenisini aç.", "effects": {"Happiness": 4, "Social": 2, "Money": -2000},
+       "result": "Müşteri önce şaşırdı, sonra teşekkür etti. Bir sonraki kutlamasını da sizde yaptı."},
+      {"id": "serve", "text": "Sessizce servis et.", "effects": {"Happiness": -4, "Money": 2000},
+       "result": "Kadehler tokuşturuldu. Senin ağzında ise o mantar kokusu kaldı."},
+      {"id": "manager", "text": "Müdürle tartış, şişeyi iade et.", "effects": {"Social": -2, "Happiness": 2},
+       "result": "Müdür kızdı ama şişe tedarikçiye iade edildi. Masa farkı hiç anlamadı."}
+    ]
+  },
+  {
+    "id": "job_sommelier_3", "title": "Mahzen Listesi", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:sommelier", "MinCareerLevel:3"],
+    "description": "Ünlü bir restoranın içecek direktörü oldun ve şarap listesini sıfırdan kuracaksın. Dağıtıcılar sana pahalı etiketler ve cömert indirimler sunuyor. Küçük, bilinmeyen üreticiler ise kapıda numune şişeleriyle bekliyor.",
+    "choices": [
+      {"id": "famous", "text": "Ünlü etiketlerle prestijli bir liste kur.", "effects": {"Money": 40000, "Social": 2},
+       "result": "Liste dergilerde övüldü. Ama her restoranın listesine benziyordu."},
+      {"id": "small", "text": "Küçük üreticilere yer aç.", "effects": {"Happiness": 5, "Education": 2},
+       "result": "Müşteriler şaşırdı, sonra merak etti. Birkaç küçük bağ senin listen sayesinde ayakta kaldı."},
+      {"id": "humble", "text": "Listenin başına bir not yaz: «Emin değilseniz sorun; ben de her gün öğreniyorum.»", "requires": ["HasFlag:sommelier_humble"], "effects": {"Happiness": 7, "Social": 4},
+       "result": "Not, restoranın imzası oldu. Müşteriler etiket değil, hikâye istemeye başladı."}
+    ]
+  },
+
+  {
+    "id": "job_pastry_chef_1", "title": "Çöken Sufle", "category": "Career", "minAge": 17, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:pastry_chef"],
+    "description": "Bir nişan pastasının son katmanı için çikolatayı temperliyorsun; termometre bir derece sapıyor. Çikolata parlamıyor, mat ve çizgili. Pasta iki saat sonra teslim edilecek.",
+    "choices": [
+      {"id": "redo", "text": "Baştan temperle, saniye saniye.", "effects": {"Education": 3, "Happiness": 2, "Health": -1}, "set": ["pastry_chef_precise"],
+       "result": "İkinci denemede çikolata ayna gibi parladı. Pastayı teslim ederken ellerin hâlâ titriyordu."},
+      {"id": "decorate", "text": "Matlığı çiçeklerle gizle.", "effects": {"Happiness": 1, "Money": 1000},
+       "result": "Kimse fark etmedi. Ama fotoğraflara bakarken sen fark ettin."},
+      {"id": "tell", "text": "Müşteriyi ara, yarım saat gecikeceğini söyle.", "effects": {"Social": 2, "Happiness": 1},
+       "result": "Müşteri anlayış gösterdi. Pasta yarım saat geç ama kusursuz geldi."}
+    ]
+  },
+  {
+    "id": "job_pastry_chef_2", "title": "Viral Pasta", "category": "Career", "minAge": 19, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:pastry_chef", "MinCareerLevel:2"],
+    "description": "İnternette bir pasta trendi patladı: gökkuşağı renkli, boyalı ve tatsız. Müşterilerin hepsi onu istiyor; senin geleneksel tatlıların vitrinde bekliyor. Patron, «Para orada,» diyor.",
+    "choices": [
+      {"id": "trend", "text": "Trende uy.", "effects": {"Money": 25000, "Happiness": -2},
+       "result": "Kasa doldu, pasta tezgâhı renk cümbüşüne döndü. Üç ay sonra trend bitti."},
+      {"id": "twist", "text": "Trendi kendi tarifinle, doğal renklerle yeniden yorumla.", "requires": ["MinStat:Education:40"], "effects": {"Money": 15000, "Happiness": 4, "Education": 2},
+       "result": "Pancar ve spirulina ile renklendirdin. Pastanın hem güzel hem lezzetli olduğunu yazdılar."},
+      {"id": "classic", "text": "Klasiklerinde kal.", "effects": {"Happiness": 2, "Money": -3000},
+       "result": "Bazı müşteriler gitti. Bir yıl sonra geri geldiler, trend bittiğinde."}
+    ]
+  },
+  {
+    "id": "job_pastry_chef_3", "title": "Pastanenin Kalbi", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:pastry_chef", "MinCareerLevel:3"],
+    "description": "Bir otel zinciri seni yüksek maaşla baş pasta şefi olarak istiyor. Kendi küçük pastaneni ise mahalle yıllardır seviyor. Vitrininde bir çocuğun yüzünü cama yapıştırdığını görüyorsun.",
+    "choices": [
+      {"id": "hotel", "text": "Teklifi kabul et.", "effects": {"Money": 100000, "Happiness": -1, "Social": -1},
+       "result": "Büfeler devasaydı, tatlıların bin kişiye gitti. Mahalle pastanesi bir döner dükkânı oldu."},
+      {"id": "stay", "text": "Pastanende kal.", "effects": {"Happiness": 4, "Social": 3},
+       "result": "Camdaki çocuğa bir kurabiye verdin. Yıllar sonra o çocuk düğün pastasını sende yaptırdı."},
+      {"id": "school", "text": "Bir derecelik farkı öğrettiğin bir pasta atölyesi aç.", "requires": ["HasFlag:pastry_chef_precise"], "effects": {"Happiness": 8, "Social": 4, "Money": 20000},
+       "result": "Atölyenin ilk dersi temperlemeydi. Öğrencilerin ilk mat çikolatalarını yerken sen gülümsedin."}
+    ]
+  },
+
+  {
+    "id": "job_event_planner_1", "title": "Yağmur", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:event_planner"],
+    "description": "Açık havada iki yüz kişilik bir düğün, tören bir saat sonra ve gökyüzü kararıyor. Gelinin annesi telefonda bağırıyor, damadın babası «Plan B ne?» diye soruyor. Planın B'si yok.",
+    "choices": [
+      {"id": "tent", "text": "Bütün tedarikçileri ara, acil çadır bul.", "cost": 15000, "effects": {"Happiness": 4, "Health": -1}, "set": ["event_planner_rain"],
+       "result": "Çadır yağmurla aynı anda geldi. Damla sesleri, ilk dansın müziğine karıştı."},
+      {"id": "indoor", "text": "Töreni salona taşı.", "effects": {"Happiness": 1, "Social": 1},
+       "result": "Salon dardı ama sıcaktı. Gelin, pencereden yağmuru izlerken güldü."},
+      {"id": "dance", "text": "Şemsiyeler dağıt, yağmurda yapın.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 5, "Social": 3, "Health": -2},
+       "result": "Herkes ıslandı ve herkes güldü. Düğün fotoğrafları bir dergide yayımlandı."}
+    ]
+  },
+  {
+    "id": "job_event_planner_2", "title": "İptal", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:event_planner", "MinCareerLevel:2"],
+    "description": "Düğüne bir hafta kala gelin ağlayarak arıyor: nişanlısı başka biriyle görülmüş ve düğün iptal. Tedarikçiler depozitoları iade etmiyor, aile senden parayı geri istiyor. Sözleşme seni koruyor.",
+    "choices": [
+      {"id": "contract", "text": "Sözleşmeye uy, depozito iade edilmez.", "effects": {"Money": 20000, "Happiness": -3},
+       "result": "Para hesabında kaldı. Aileden kimse bir daha seni aramadı."},
+      {"id": "negotiate", "text": "Tedarikçilerle pazarlık yap, iadenin yarısını geri al.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 3, "Social": 2},
+       "result": "Bir hafta telefonda geçti. Aile kayıplarının yarısını geri aldı ve sana bir mektup yazdı."},
+      {"id": "party", "text": "Mekânı bir «yeniden başlangıç» partisine dönüştür.", "effects": {"Happiness": 4, "Social": 3, "Money": -5000},
+       "result": "Gelin arkadaşlarıyla gece boyunca dans etti. Bir yıl sonra gerçek düğününü sana planlattı."}
+    ]
+  },
+  {
+    "id": "job_event_planner_3", "title": "Kendi Ajansın", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:event_planner", "MinCareerLevel:3"],
+    "description": "Kendi ajansında ortak oldun ve bir ünlünün üç günlük, yüz milyonluk düğün teklifi geldi. İş hayatını değiştirebilir; ama ekibin zaten tükenmiş ve aynı tarihte küçük bir köy düğünü için söz verdin.",
+    "choices": [
+      {"id": "celeb", "text": "Ünlünün düğününü al, köy düğününü devret.", "effects": {"Money": 150000, "Happiness": -2, "Health": -3},
+       "result": "Düğün magazin sayfalarını süsledi. Köy düğünü başka bir ajansın elinde vasat geçti."},
+      {"id": "promise", "text": "Sözünü tut, ünlüyü reddet.", "effects": {"Happiness": 5, "Social": 3},
+       "result": "Köy meydanında, ağaçlara ampuller astınız. Bütün köy dans etti."},
+      {"id": "rain", "text": "İki düğünü de üstlen; yağmur gecesinde öğrendiğin gibi her şeyin bir B planı olsun.", "requires": ["HasFlag:event_planner_rain"], "effects": {"Happiness": 7, "Money": 120000, "Health": -2},
+       "result": "İki ekip, iki takvim, iki yedek plan. İkisi de kusursuz geçti; köy düğününde ünlü çiftten bir hediye vardı."}
+    ]
+  },
+
+  {
+    "id": "job_tour_guide_1", "title": "Yanlış Tarih", "category": "Career", "minAge": 21, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:tour_guide"],
+    "description": "Antik tiyatronun basamaklarında, kırk kişilik bir gruba tarih anlatıyorsun. Ön sırada bir emekli tarih öğretmeni, verdiğin tarihin yanlış olduğunu kibarca söylüyor. Grubun yarısı sana, yarısı ona bakıyor.",
+    "choices": [
+      {"id": "admit", "text": "Hatanı kabul et ve teşekkür et.", "effects": {"Social": 3, "Happiness": 2}, "set": ["tour_guide_humble"],
+       "result": "Öğretmen turun geri kalanında sana küçük bilgiler fısıldadı. Tur sonu bahşişin rekor kırdı."},
+      {"id": "defend", "text": "Kendi kaynağını savun.", "effects": {"Social": -2, "Education": 1},
+       "result": "Haklı olan oydu. Bunu otelde kitabı açınca anladın."},
+      {"id": "story", "text": "Tarihin kendisinin de tartışmalı olduğunu bir hikâyeyle anlat.", "requires": ["MinStat:Education:50"], "effects": {"Education": 2, "Social": 2, "Happiness": 2},
+       "result": "Grup kaynaklar üzerine tartışmaya başladı. Turun en canlı yarım saati oldu."}
+    ]
+  },
+  {
+    "id": "job_tour_guide_2", "title": "Hediyelik Eşya Komisyonu", "category": "Career", "minAge": 23, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:tour_guide", "MinCareerLevel:2"],
+    "description": "Tur şirketi, grubu her gün iki saat bir halı dükkânına götürmeni istiyor; satışlardan komisyon alacaksın. Turistler ise müzeleri görmeye gelmiş. Dükkân sahibi sana göz kırpıyor.",
+    "choices": [
+      {"id": "shop", "text": "Gruba dükkânı göster.", "effects": {"Money": 30000, "Happiness": -3, "Social": -1},
+       "result": "Komisyonun iyiydi. Bir turistin yorumunda «müze yerine dükkân turu» yazıyordu."},
+      {"id": "short", "text": "Uğra ama on beş dakikayla sınırla.", "effects": {"Money": 8000, "Happiness": 1},
+       "result": "Dükkân sahibi homurdandı ama grubun yorumları güzeldi."},
+      {"id": "skip", "text": "Dükkânı atla, o saati gizli bir köşeye ayır.", "effects": {"Happiness": 4, "Social": 3, "Money": -5000},
+       "result": "Kimsenin bilmediği bir Bizans sarnıcına indiniz. Şirket kızdı ama tur yorumların zirve yaptı."}
+    ]
+  },
+  {
+    "id": "job_tour_guide_3", "title": "Kendi Rotası", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:tour_guide", "MinCareerLevel:3"],
+    "description": "Yirmi yıldır başkalarının rotalarını yürüdün. Şimdi kendi tur şirketini kurabilecek birikimin var. Hangi hikâyeyi anlatacağına sen karar vereceksin.",
+    "choices": [
+      {"id": "luxury", "text": "Lüks, butik turlar düzenle.", "effects": {"Money": 80000, "Happiness": 2},
+       "result": "Müşterilerin az ama varlıklıydı. Gece yarısı tekne turları imzan oldu."},
+      {"id": "local", "text": "Yerel halkla birlikte yürüyüş turları kur.", "effects": {"Happiness": 5, "Social": 4},
+       "result": "Köylüler evlerini açtı, turistler sofralarına oturdu. Kazancı herkesle paylaştın."},
+      {"id": "humble", "text": "O emekli tarih öğretmenini bul ve turlarının danışmanı yap.", "requires": ["HasFlag:tour_guide_humble"], "effects": {"Happiness": 8, "Education": 3, "Social": 3},
+       "result": "Seksen yaşında, tiyatro basamaklarında yeniden ders veriyordu. Turlarının adı «Düzeltmeler» oldu."}
+    ]
+  },
+
+  {
+    "id": "job_bartender_1", "title": "Son Kadeh", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:bartender"],
+    "description": "Gece ikide barın ucunda oturan adam, beşinci kadehini istiyor ve araba anahtarları tezgâhta. Saatlerdir sana boşandığını anlatıyor. Patron, «Müşteri ne isterse,» diyor.",
+    "choices": [
+      {"id": "keys", "text": "Kadehi ver ama anahtarları al, taksi çağır.", "effects": {"Social": 3, "Happiness": 3}, "set": ["bartender_keys"],
+       "result": "Önce kızdı, sonra ağladı. Taksiye binerken «Teşekkürler,» dedi; ertesi gün anahtarları almaya geldiğinde utanarak gülümsedi."},
+      {"id": "serve", "text": "Kadehi ver; senin sorumluluğun değil.", "effects": {"Money": 500, "Happiness": -4},
+       "result": "Ne olduğunu hiç öğrenemedin. Ama her siren sesinde o adamı düşündün."},
+      {"id": "water", "text": "Kadeh yerine su ve bir sandviç koy.", "effects": {"Happiness": 2, "Social": 1},
+       "result": "Bir süre baktı, sonra sandviçi yedi. Saat üçte yürüyerek gitti."}
+    ]
+  },
+  {
+    "id": "job_bartender_2", "title": "Kokteyl Yarışması", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:bartender", "MinCareerLevel:2"],
+    "description": "Ulusal kokteyl yarışmasının finalindesin. Sponsor bir alkol markası ve jüri, onların ürünüyle yapılmış bir kokteyl bekliyor. Senin imza kokteylin ise küçük bir yerel üreticinin rakısıyla yapılıyor.",
+    "choices": [
+      {"id": "sponsor", "text": "Sponsorun ürününü kullan.", "effects": {"Money": 25000, "Happiness": -1},
+       "result": "İkinci oldun ve markanın tanıtım yüzü oldun. Kokteylinin tadı ise yabancıydı."},
+      {"id": "local", "text": "Yerel rakınla çık.", "effects": {"Happiness": 5, "Social": 2},
+       "result": "Jüri puan kırdı ama izleyiciler ayakta alkışladı. Üreticinin siparişleri ikiye katlandı."},
+      {"id": "mix", "text": "İkisini harmanlayan bir tarif yarat.", "requires": ["MinStat:Education:40"], "effects": {"Money": 15000, "Happiness": 3, "Education": 2},
+       "result": "Jüri şaşırdı, sponsor memnun kaldı. Kimseyi kırmadan kazandın."}
+    ]
+  },
+  {
+    "id": "job_bartender_3", "title": "Kendi Barın", "category": "Career", "minAge": 28, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:bartender", "MinCareerLevel:3"],
+    "description": "Yıllardır başkalarının barında gece yarılarını dinledin. Şimdi kendi barının anahtarı elinde. Ne tür bir yer olacağına sen karar vereceksin.",
+    "choices": [
+      {"id": "club", "text": "Şehrin en hareketli gece mekânı.", "effects": {"Money": 100000, "Health": -3, "Happiness": 1},
+       "result": "Sıra sokağın sonuna kadar uzadı. Gün ışığını haftalarca görmedin."},
+      {"id": "quiet", "text": "Küçük, sakin, sohbet edilen bir bar.", "effects": {"Happiness": 5, "Social": 4},
+       "result": "Müzik alçak, ışık sıcaktı. Müdavimlerin isimleriyle karşılandı."},
+      {"id": "keys", "text": "Kapının yanına bir anahtar kutusu as: «Son kadeh benden, taksi de.»", "requires": ["HasFlag:bartender_keys"], "effects": {"Happiness": 8, "Social": 5},
+       "result": "Kutu her gece doldu. Yıllar önce anahtarlarını aldığın adam, açılış gecesinde ön sıradaydı; elinde bir maden suyu."}
+    ]
+  },
+
+  {
+    "id": "job_food_critic_1", "title": "Tanındın", "category": "Career", "minAge": 23, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:food_critic"],
+    "description": "Gizlice gittiğin bir restoranda şef seni tanıdı; masana ikramlar yağıyor, garsonlar etrafında pervane. Yan masadaki aile ise yarım saattir siparişini bekliyor. Bu gece yazacağın yazı, gerçeği mi anlatacak?",
+    "choices": [
+      {"id": "neighbor", "text": "Yan masanın deneyimini de yazına kat.", "effects": {"Happiness": 3, "Education": 2}, "set": ["food_critic_fair"],
+       "result": "Yazında iki deneyimi yan yana koydun. Şef öfkelendi, okurlar seni ilk kez gerçekten güvenilir buldu."},
+      {"id": "accept", "text": "İkramların tadını çıkar, olumlu yaz.", "effects": {"Money": 5000, "Happiness": -2},
+       "result": "Restoran yazıyı vitrinine astı. Bir okur, «Bize böyle davranmadılar,» diye yorum bıraktı."},
+      {"id": "leave", "text": "Yazmamaya karar ver; bu ziyaret geçersiz.", "effects": {"Happiness": 1},
+       "result": "Bir ay sonra peruk ve gözlükle geri döndün. Bu kez gerçeği gördün."}
+    ]
+  },
+  {
+    "id": "job_food_critic_2", "title": "Yıkıcı Eleştiri", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:food_critic", "MinCareerLevel:2"],
+    "description": "Genç bir şefin yeni açılan restoranında berbat bir akşam geçirdin. Yazın, yeni bir işletmeyi batırabilir. Ama okurların sana dürüstlük için güveniyor.",
+    "choices": [
+      {"id": "harsh", "text": "Olduğu gibi, sert yaz.", "effects": {"Social": 1, "Happiness": -2, "Education": 1},
+       "result": "Yazın çok okundu. Restoran üç ay sonra kapandı ve şefin bir röportajında adın geçti."},
+      {"id": "wait", "text": "Bir ay sonra tekrar git, sonra yaz.", "effects": {"Happiness": 3, "Education": 2},
+       "result": "İkinci ziyaret daha iyiydi. Yazın, gelişimi gösteren adil bir metin oldu."},
+      {"id": "private", "text": "Yazmadan önce şefe özel bir mektup gönder.", "requires": ["MinStat:Social:50"], "effects": {"Happiness": 4, "Social": 3},
+       "result": "Şef cevap yazdı ve menüyü değiştirdi. Bir yıl sonra aynı restoran hakkında övgü dolu bir yazı yazdın."}
+    ]
+  },
+  {
+    "id": "job_food_critic_3", "title": "Rehberin Editörü", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:food_critic", "MinCareerLevel:3"],
+    "description": "Ülkenin en prestijli restoran rehberinin editörü oldun. Bir sponsor, rehberin finansmanı karşılığında birkaç restoranın listede kalmasını istiyor. Rehber bu yıl sponsorsuz basılamayabilir.",
+    "choices": [
+      {"id": "sponsor", "text": "Sponsoru kabul et.", "effects": {"Money": 80000, "Happiness": -5},
+       "result": "Rehber basıldı. Bir rakip dergi, sponsorlu restoranların listesini yan yana yayımladı."},
+      {"id": "digital", "text": "Rehberi küçültüp dijitale taşı.", "effects": {"Happiness": 3, "Education": 2, "Money": -10000},
+       "result": "Kâğıt kokusu gitti ama bağımsızlık kaldı. Okur sayısı beklediğinden çok arttı."},
+      {"id": "fair", "text": "Yıllar önceki ilk yazını rehberin önsözüne koy: «Yan masaya da bakın.»", "requires": ["HasFlag:food_critic_fair"], "effects": {"Happiness": 8, "Social": 3, "Education": 2},
+       "result": "Okurlar rehberi bir aboneliğe dönüştürdü; sponsora gerek kalmadı. Önsöz, mesleğin okullarında okutuldu."}
+    ]
+  }
+]

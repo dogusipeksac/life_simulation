@@ -1,0 +1,734 @@
+{
+  "Id": "sifir_noktasi",
+  "Title": "Sıfır Noktası",
+  "Subtitle": "Başarı kimin hikâyesi?",
+  "Description": "Ailenin atölyesini kurtarmak için kurduğun girişim ilk yatırım teklifini alıyor. Tek sorun, sözleşmede en yakın arkadaşının adının bulunmaması. Para, emek ve sadakat arasında kendi yolunu yaz.",
+  "Genre": "Hayat & girişim",
+  "Color": "b57963",
+  "Symbol": "◇",
+  "ProductId": "vita.story.sifir_noktasi",
+  "Start": "start",
+  "FreeChapters": 1,
+  "Chapters": [
+    "Teklif",
+    "İmza",
+    "Kırılma",
+    "Yeni bir isim"
+  ],
+  "StatNames": {
+    "vision": "Vizyon",
+    "loyalty": "Sadakat",
+    "balance": "Denge"
+  },
+  "ContentNote": "Kurgusal olaylar ve karakterler. Kayıp, aile çatışmaları ve zor kararlar içerir.",
+  "Nodes": {
+    "start": {
+      "Title": "Masadaki teklif",
+      "Text": "Babanın atölyesinde yağmur, tavandaki aynı deliğin altına düşüyor. Kovayı biraz sola çekiyorsun. Telefonundaki yatırım teklifi, çatıyı onaracak paradan çok daha fazlasını vaat ediyor.\n\nİki yıldır Mira’yla üzerinde çalıştığınız sipariş sistemi ilk müşterilerini bulmuştu. Yatırımcı, “Bir kişiyle anlaşmak daha kolay,” diyor. Sözleşmenin kurucular bölümünde yalnızca senin adın var. Mira yanında, kahveleri masaya bırakıyor. “İyi haber mi?”",
+      "Choices": [
+        {
+          "Text": "Sözleşmeyi hemen Mira’ya göster.",
+          "Next": "mira",
+          "Result": "İlk kopyayı arkadaşına verdin.",
+          "Effects": {
+            "loyalty": 10
+          },
+          "SetFlags": [
+            "open"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Önce yatırımcıya bu eksikliği sor.",
+          "Next": "investor",
+          "Result": "Masaya doğrudan bir soru koydun.",
+          "Effects": {
+            "vision": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Bir gece düşünmek için süre iste.",
+          "Next": "home",
+          "Result": "Hızla değil, kendi temponla karar verdin.",
+          "Effects": {
+            "balance": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "mira": {
+      "Title": "Aynı masanın iki tarafı",
+      "Text": "Mira gülümsemeyi bırakıyor. “Kodda iki kişinin emeği var. Neden sözleşmede bir kişi var?” Kızgınlığının altında başka bir şey duyuyorsun: senden bunu saklamanı beklemiş olmanın korkusu.\n\n“Beni işe almanı istemiyorum,” diyor. “Birlikte kurduğumuz şeyin sahibi olarak kalmak istiyorum.” Atölyenin arkasında baban hesabı kapatmaya çalışıyor. Üç aydır elektrik borcunu erteliyorsunuz.",
+      "Choices": [
+        {
+          "Text": "İkinizin de kurucu olması şartını yazılı ilet.",
+          "Next": "terms",
+          "Result": "Mira’yı bir çalışan değil, ortak olarak tanımladın.",
+          "Effects": {
+            "loyalty": 10
+          },
+          "SetFlags": [
+            "joint"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Paraya ihtiyacımızı açıkça konuş.",
+          "Next": "home",
+          "Result": "Dostluğa yalnızca iyi haberleri taşımadın.",
+          "Effects": {
+            "balance": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "investor": {
+      "Title": "Kolay olan",
+      "Text": "Yatırımcı seni çatı katındaki ofisine çağırıyor. Camın arkasından atölyenin bulunduğu sokağı göremiyorsun.\n\n“Birini dışlamıyoruz,” diyor. “Yetkiyi netleştiriyoruz. Mira’ya iyi bir maaş veririz. Sen ailenin borcunu kapatırsın. Herkes kazanır.”\n\nHerkesin ne kazanacağını sayıyor. Kimin ne kaybedeceğini senden duymayı bekliyor.",
+      "Choices": [
+        {
+          "Text": "Mira’nın emeğini pazarlık konusu yapma.",
+          "Next": "terms",
+          "Result": "Masanın görünmeyen tarafını görünür kıldın.",
+          "Effects": {
+            "loyalty": 10
+          },
+          "SetFlags": [
+            "joint"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Teklifin tamamını bir uzmana inceletmek iste.",
+          "Next": "review",
+          "Result": "İyimserliğin yanına bir ikinci göz koydun.",
+          "Effects": {
+            "vision": 5,
+            "balance": 5
+          },
+          "SetFlags": [
+            "review"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Ailene ayrılacak nakdi öğren.",
+          "Next": "home",
+          "Result": "Başarının evdeki karşılığını düşündün.",
+          "Effects": {
+            "vision": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "home": {
+      "Title": "Kovayı tutan kişi",
+      "Text": "Annen, atölyenin eski sipariş defterini masaya açıyor. “Burada yalnızca borç yok,” diyor. “İnsanların isimleri de var. Baban bazı müşterilerden altı aydır para istemiyor. Onlar da zor durumda diye.”\n\nBaban başını kaldırmıyor. “Benim hatalarımı sizin geleceğinizle ödemeyin.” İlk kez kurtarılması gereken tek şeyin atölye olmadığını düşünüyorsun.",
+      "Choices": [
+        {
+          "Text": "Ailenin gerçek borç tablosunu çıkar.",
+          "Next": "review",
+          "Result": "Bilinmeyen bir rakamla pazarlık yapmamaya karar verdin.",
+          "Effects": {
+            "balance": 10
+          },
+          "SetFlags": [
+            "ledger"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Mira’yı akşam yemeğine çağır.",
+          "Next": "terms",
+          "Result": "Ailenle arkadaşını aynı konuşmaya davet ettin.",
+          "Effects": {
+            "loyalty": 10
+          },
+          "SetFlags": [
+            "family"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "review": {
+      "Title": "Küçük puntolar",
+      "Text": "Sözleşmeyi inceleyen danışman bir maddeyi işaretliyor: yatırımın bir kısmı ailenin eski borçlarını kapatmak için kullanılacak, fakat ürünün bütün hakları yatırımcının yeni şirketine devredilecek.\n\nDanışman metni sana geri itiyor. “Bu teklif kötü olmak zorunda değil. Ama şirket satmakla yatırım almak aynı şey değil.” Sorunun ne olduğunu nihayet kendi kelimelerinle söyleyebiliyorsun.",
+      "Choices": [
+        {
+          "Text": "Hak devrini sınırlandıran karşı teklif hazırla.",
+          "Next": "terms",
+          "Result": "Koşulların yeniden konuşulmasını istedin.",
+          "Effects": {
+            "vision": 10
+          },
+          "SetFlags": [
+            "rights"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Mira’yla birlikte alternatif gelir planı yap.",
+          "Next": "terms",
+          "Result": "Tek kapı varmış gibi davranmayı bıraktın.",
+          "Effects": {
+            "balance": 5,
+            "loyalty": 5
+          },
+          "SetFlags": [
+            "alternative"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "terms": {
+      "Title": "Geri gönderilen sözleşme",
+      "Text": "Karşı teklifiniz bir sayfa. İkinizin kurucu olarak tanınması, ürün haklarının şirkette kalması ve atölyenin borcunun ayrı hesaplanması.\n\nYatırımcı cevabını gece yarısı gönderiyor: “Bu kadar koşul, bu aşamadaki bir ürün için fazla. Yarın öğlene kadar ilk teklifi imzalarsan masadayız.”\n\nMira mesajı okuyor. “Pazarlığın bittiği yer burasıysa, bizim başladığımız yer de burası olabilir.”",
+      "Choices": [
+        {
+          "Text": "Yatırımcıyla yüz yüze son bir görüşme ayarla.",
+          "Next": "meeting",
+          "Result": "Kapıyı kendi sözlerinle kapatmak ya da açmak istedin.",
+          "Effects": {
+            "vision": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Müşterilerden ön sipariş toplamayı öner.",
+          "Next": "customers",
+          "Result": "Ürünün değerini onu kullananlara sormayı seçtin.",
+          "Effects": {
+            "balance": 10
+          },
+          "SetFlags": [
+            "alternative"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Mira’ya teklifi kabul etmek istediğini söyle.",
+          "Next": "rift",
+          "Result": "Dürüst olmak kolay bir karar yaratmadı.",
+          "Effects": {
+            "vision": 10,
+            "loyalty": -10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "meeting": {
+      "Title": "Bir koltuk daha",
+      "Text": "Toplantı odasında senin için bir sandalye hazırlanmış. Mira’yı görünce asistan başka bir sandalye getiriyor. Yatırımcı gülümsüyor ama dosyasını açmıyor.\n\n“İş yaparken duygusal bağlardan uzak durmalısın.” Mira ona bakıyor. “Ben bir bağ değil, ürünü yazan kişiyim.”\n\nKonuşmayı senin sürdürmen bekleniyor.",
+      "Choices": [
+        {
+          "Text": "Mira’nın teknik katkısını verilerle anlat.",
+          "Next": "pilot",
+          "Result": "Değeri kişilik tartışmasına çevirmedin.",
+          "Effects": {
+            "vision": 10,
+            "loyalty": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Koşullar değişmiyorsa masadan kalk.",
+          "Next": "customers",
+          "Result": "Bir hayır, başka kapılar için yer açtı.",
+          "Effects": {
+            "loyalty": 10
+          },
+          "SetFlags": [
+            "walked"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Yetki bende, ortaklık ikimizde kalsın öner.",
+          "Next": "pilot",
+          "Result": "Yetkiyle mülkiyeti birbirinden ayırdın.",
+          "Effects": {
+            "balance": 10
+          },
+          "SetFlags": [
+            "shared"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "customers": {
+      "Title": "İlk gerçek sorular",
+      "Text": "Sabah on müşteriye gidiyorsunuz. Üçü peşin ödeme yapmaya hazır, ikisi sistemin basit bir sürümünü istiyor, biri hiçbir zaman internetten sipariş almayacağını söylüyor.\n\nSon dükkânda yaşlı bir terzi size bir tabure uzatıyor. “Ben uygulama istemiyorum. Müşterinin ölçüsünü kaybetmemek istiyorum.” Haftalardır yatırım sunumunda anlattığınız büyük gelecek, küçük bir ihtiyacın üstünü örtmüş.",
+      "Choices": [
+        {
+          "Text": "Ürünü bu küçük ihtiyaca göre yeniden tasarla.",
+          "Next": "pilot",
+          "Result": "Büyümeyi önce işe yaramak olarak tanımladın.",
+          "Effects": {
+            "vision": 10
+          },
+          "SetFlags": [
+            "useful"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Ön ödemeleri kayda alıp teslim takvimi çıkar.",
+          "Next": "delivery",
+          "Result": "Paranın yanına sorumluluğu da yazdın.",
+          "Effects": {
+            "balance": 10
+          },
+          "SetFlags": [
+            "preorder"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "rift": {
+      "Title": "Söylenmiş olan",
+      "Text": "Mira uzun süre susuyor. “Beni ikna etmeye çalışma. İhtiyacını anlıyorum. Ama benim neyi kaybettiğimi de anla.”\n\nAtölyeden çıkarken anahtarını masaya koymuyor. Bu, her şeyin bittiği anlamına gelmiyor. Bitmediğini varsayma hakkını da vermiyor. Telefonunda sözleşmenin son sayfası açık.",
+      "Choices": [
+        {
+          "Text": "İmzalamadan önce Mira’ya adil bir pay teklifi yaz.",
+          "Next": "pilot",
+          "Result": "Son dakikada da olsa emeği görünür kılmaya çalıştın.",
+          "Effects": {
+            "loyalty": 10
+          },
+          "SetFlags": [
+            "shared"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Sözleşmeyi imzala.",
+          "Next": "signed",
+          "Result": "Borcu kapatan paranın bir bedeli oldu.",
+          "Effects": {
+            "vision": 10
+          },
+          "SetFlags": [
+            "signed"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Anlaşmadan vazgeçip Mira’dan özür dile.",
+          "Next": "customers",
+          "Result": "Özrü bir sonuç değil, başlangıç yaptın.",
+          "Effects": {
+            "loyalty": 10,
+            "balance": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "pilot": {
+      "Title": "Bir aylık deneme",
+      "Text": "Yatırımcı, tüm ürünü almak yerine bir aylık pilot çalışmayı kabul ediyor. Para az ama geri dönüşü var. Mira, “Şimdi bir şeyi kanıtlamamız gerekiyor,” diyor. “Yalnızca onlara değil. Bize de.”\n\nİlk gün sunucu duruyor. Babanın tanıdığı üç esnafın siparişi kaybolmuş. Sorunu tek başına gece boyunca düzeltmek mümkün. Müşterilere hemen söylemekse güveni zedeleyebilir.",
+      "Choices": [
+        {
+          "Text": "Müşterilere açıkça haber ver ve telafi öner.",
+          "Next": "delivery",
+          "Result": "Bir hatayı gizleyerek büyütmedin.",
+          "Effects": {
+            "loyalty": 5,
+            "balance": 5
+          },
+          "SetFlags": [
+            "honest"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Önce sistemi düzelt, sabah açıklama yap.",
+          "Next": "delivery",
+          "Result": "Zaman kazandın; güven için ayrıca çalışman gerekecek.",
+          "Effects": {
+            "vision": 10,
+            "balance": -5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Mira’dan yardım iste ve sorumluluğu paylaş.",
+          "Next": "delivery",
+          "Result": "Bütün yükü tek başına taşıman gerekmedi.",
+          "Effects": {
+            "loyalty": 10
+          },
+          "SetFlags": [
+            "team"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 3,
+      "Ending": ""
+    },
+    "signed": {
+      "Title": "Yeni logonun altında",
+      "Text": "Borçlar kapandı. Baban çatıyı onarttı. Ürünün sitesine yeni bir logo eklendi. Mira’nın adı “erken dönem katkıları” bölümünde, sayfanın en altında.\n\nİlk maaşın hesabına yatınca kutlama için onu arıyorsun. Telefonu açmıyor. Yeni şirketin toplantısında senden daha hızlı teslimat sözü vermen isteniyor. Aynı masanın bu kez diğer tarafındasın.",
+      "Choices": [
+        {
+          "Text": "Mira’nın payını resmi olarak düzeltmek için bastır.",
+          "Next": "renegotiate",
+          "Result": "İmzanın her şeyi bitirmesine izin vermedin.",
+          "Effects": {
+            "loyalty": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Yeni şirkette ürünün başında kal.",
+          "Next": "pressure",
+          "Result": "Başarıyı içeriden değiştirebileceğine inanıyorsun.",
+          "Effects": {
+            "vision": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Kendi payının bir kısmını Mira’ya devretmeyi teklif et.",
+          "Next": "renegotiate",
+          "Result": "Bir bedeli yalnızca başkasına ödetmedin.",
+          "Effects": {
+            "balance": 10,
+            "loyalty": 10
+          },
+          "SetFlags": [
+            "share"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 3,
+      "Ending": ""
+    },
+    "delivery": {
+      "Title": "Teslim günü",
+      "Text": "Atölyenin önünde kargo kolileri değil, sırayla gelen insanlar var. Terzi, manav, küçük bir kitapçı. Herkes kendi işini biraz kolaylaştıran sistemi soruyor.\n\nMira eski bir masayı destek masasına çevirmiş. Baban müşterilere çay taşıyor. Bir yatırım haberi kadar gösterişli değil. Ama ilk kez yaptığınız işin yüzlerini görüyorsun. Akşam yatırımcı yeniden arıyor.",
+      "Choices": [
+        {
+          "Text": "Yeni teklifi birlikte değerlendirin.",
+          "Next": "new_terms",
+          "Result": "Bu masada iki imza olacağını baştan söyledin.",
+          "Effects": {
+            "loyalty": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Küçük kalıp düzenli müşteriyle büyüyün.",
+          "Next": "small",
+          "Result": "Büyümenin hızını seçmek istedin.",
+          "Effects": {
+            "balance": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Hızlı ölçeklenmek için ekibi büyütmeyi öner.",
+          "Next": "pressure",
+          "Result": "Daha fazla insana ulaşmak için risk aldın.",
+          "Effects": {
+            "vision": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 3,
+      "Ending": ""
+    },
+    "renegotiate": {
+      "Title": "Geri dönülebilen şeyler",
+      "Text": "Yatırımcı, kişisel payının bir kısmını devretmene karşı çıkmıyor ama ürünün haklarını geri vermiyor. Mira teklifini okuduktan sonra “Payı konuşuruz,” diyor. “Önce birlikte çalışmayı hâlâ isteyip istemediğimizi konuşalım.”\n\nPara, iki yılın değerini tek başına ölçemiyor. Ama sorumluluğun somut bir biçimi olabiliyor.",
+      "Choices": [
+        {
+          "Text": "Mira’nın ortaklığına gerçek yetki de ekle.",
+          "Next": "new_terms",
+          "Result": "Sözü bir mekanizmaya dönüştürdün.",
+          "Effects": {
+            "loyalty": 10
+          },
+          "SetFlags": [
+            "shared"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Payı devret, farklı yollarda ilerlemeyi kabul et.",
+          "Next": "ending_separate",
+          "Result": "Adil olmakla birlikte kalmayı ayırdın.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 3,
+      "Ending": ""
+    },
+    "new_terms": {
+      "Title": "İkinci sözleşme",
+      "Text": "Bu kez sözleşme odada yüksek sesle okunuyor. Mira iki maddeyi değiştiriyor. Sen iş yükü ve aile borcunun ayrı kalmasını istiyorsun. Yatırımcı ilk kez not alıyor.\n\nİmza atmak hâlâ risk. Ama önceki gibi bir suskunluğu onaylamak değil. Artık nereye evet, nereye hayır dediğinizi biliyorsunuz.",
+      "Choices": [
+        {
+          "Text": "Ortak yetki ve ürün haklarıyla imzala.",
+          "Next": "ending_partners",
+          "Result": "Birlikte büyümek için sağlam bir zemin kurdunuz.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "loyalty",
+          "MinValue": 65
+        },
+        {
+          "Text": "Yatırım miktarını düşür, bağımsızlığı koru.",
+          "Next": "ending_workshop",
+          "Result": "Daha yavaş ama kendi ölçünüzde ilerlediniz.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Müşteri gelirini bekle, imzayı ertele.",
+          "Next": "small",
+          "Result": "Seçenek sahibi olduğunuzu hatırladınız.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 4,
+      "Ending": ""
+    },
+    "small": {
+      "Title": "İlk kâr",
+      "Text": "Kârınız büyük değil. Mira hesap makinesine aynı rakamı iki kez yazıyor. Baban o gün ilk kez “yardımınız” yerine “işiniz” diyor.\n\nDaha çok müşteriye ulaşmak için iki yol var: bir kooperatif ağıyla ürününüzü paylaşmak veya bütün tasarrufu yeni bir şehirde ofise yatırmak. Hangisi başarı sayılacak? Bu kez soruyu yatırımcı sormuyor.",
+      "Choices": [
+        {
+          "Text": "Kooperatif ağıyla paylaşarak büyü.",
+          "Next": "ending_workshop",
+          "Result": "Değeri tek bir kapıda tutmadınız.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "balance",
+          "MinValue": 60
+        },
+        {
+          "Text": "Düzenli müşteriyle küçük bir şirket olarak kal.",
+          "Next": "ending_workshop",
+          "Result": "Yeterli olanın ne olduğuna kendiniz karar verdiniz.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Yeni şehirde ofis aç.",
+          "Next": "ending_scale",
+          "Result": "Bildiğinizden daha büyük bir işe adım attınız.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "vision",
+          "MinValue": 70
+        }
+      ],
+      "Chapter": 4,
+      "Ending": ""
+    },
+    "pressure": {
+      "Title": "Başarının takvimi",
+      "Text": "Yeni hedefler bir önceki hedef tutar tutmaz belirleniyor. Bir ekip arkadaşınız fazla çalışmaktan ayrılıyor. Mira “Bize yapılanı başkasına mı yapıyoruz?” diye soruyor.\n\nTakvimde kırmızı işaretlerle dolu bir ay var. O ayın ortasında annenin doğum günü. Onun da üstüne bir toplantı yazılmış. Büyümekle büyüyen şeyi yönetmek aynı beceri değil.",
+      "Choices": [
+        {
+          "Text": "Teslim tarihini uzat, ekibi koru.",
+          "Next": "ending_partners",
+          "Result": "Şirketin ölçeğinden önce çalışma biçimini seçtin.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "loyalty",
+          "MinValue": 60
+        },
+        {
+          "Text": "Kendi rolünü sınırla, profesyonel bir yönetici al.",
+          "Next": "ending_scale",
+          "Result": "Her sorumluluğu kendinde toplamayı bıraktın.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "balance",
+          "MinValue": 60
+        },
+        {
+          "Text": "Hedefleri tutturmak için büyümeyi sürdür.",
+          "Next": "ending_scale",
+          "Result": "Hızın seni değiştireceğini bilerek yola devam ettin.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Payını sat ve kendi yoluna dön.",
+          "Next": "ending_separate",
+          "Result": "Çıkmak da bir kurucu kararıydı.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 4,
+      "Ending": ""
+    },
+    "ending_partners": {
+      "Title": "İki imza",
+      "Text": "Bir yıl sonra sözleşmenin çerçevelenmiş bir kopyası duvarda asılı değil. Müşterilerin notları, ekibin çizimleri ve kimi zaman bozulan bir kahve makinesi var.\n\nMira’yla her konuda anlaşmıyorsunuz. Artık anlaşmazlıkları gizli birer vedaya dönüştürmüyorsunuz. Atölyenin çatısı yağmurda su almıyor. Baban bazen eski defterin yanına sizin aylık raporu koyuyor.\n\nBaşarı iki isimden biri silinince kolaylaşmamış. İkisinin de okunabildiği bir biçim bulmuş.",
+      "Choices": [],
+      "Chapter": 4,
+      "Ending": "İki imza"
+    },
+    "ending_workshop": {
+      "Title": "Açık kapı",
+      "Text": "Atölyenin önündeki tabelaya yeni bir satır eklendi. Tamir, üretim ve dijital sipariş. Büyük bir lansman yapılmadı. Müşterilerinizden biri kek getirdi; bütün kutlamanız bu oldu.\n\nİşiniz size bir servet kazandırmıyor. Zamanınızın tamamını da almıyor. Mira cuma günleri erken çıkıyor, sen annenin doğum gününü takvimden silmiyorsun.\n\nHerkes “Daha büyük olabilirdi” diyor. Siz “Bu hâliyle kimin hayatını iyileştiriyor?” diye sormayı öğrendiniz.",
+      "Choices": [],
+      "Chapter": 4,
+      "Ending": "Açık kapı"
+    },
+    "ending_scale": {
+      "Title": "Yeni şehir",
+      "Text": "İkinci ofisin camına ürünün adı yazılırken ilk atölyedeki yağmur sesini hatırlıyorsun. Artık daha çok kişinin geçimi aldığın kararlara bağlı.\n\nBasında çıkan fotoğrafta gülümsüyorsun. Fotoğraftan sonra ekibin mesajlarına dönüyorsun. Başarının bir son olmadığını, çözmen gereken daha büyük bir ölçek olduğunu anlıyorsun.\n\nMira ister yanında ister başka bir masada olsun, ilk sözleşmeyi sakladın. Neyi bir daha yapmaman gerektiğini unutmak istemiyorsun.",
+      "Choices": [],
+      "Chapter": 4,
+      "Ending": "Yeni şehir"
+    },
+    "ending_separate": {
+      "Title": "Başka bir masa",
+      "Text": "Mira yeni işinin ilk gününden bir fotoğraf gönderiyor. Kutlamak için arıyorsun. Bu kez telefonu açıyor. Aranızdaki her şey düzelmiş değil; her şeyin bozulmuş olması da gerekmiyor.\n\nAilenin borcunu kapattın ama kendi payına düşen hesabı rakamlarla bitiremedin. Bir süre sonra başka bir projeye başladın. İlk dosyanın adı “ortaklık ilkeleri” oldu.\n\nBazı başlangıçlar, bir önceki hikâyenin sonunu dürüstçe yazabildiğinde mümkün oluyor.",
+      "Choices": [],
+      "Chapter": 4,
+      "Ending": "Başka bir masa"
+    }
+  }
+}

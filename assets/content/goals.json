@@ -1,0 +1,12 @@
+[
+  {"id": "goal_university", "title": "Diploma", "description": "Bir üniversiteden mezun ol.", "conditions": ["MinEducation:University"]},
+  {"id": "goal_first_million", "title": "İlk Milyon", "description": "Hesabında 1.000.000 ₺ biriktir.", "conditions": ["MinStat:Money:1000000"]},
+  {"id": "goal_homeowner", "title": "Kendi Evim", "description": "Bir ev satın al.", "conditions": ["HasFlag:owns_house"], "reward": 8},
+  {"id": "goal_family", "title": "Yuva Kurmak", "description": "Evlen.", "conditions": ["HasFlag:married"]},
+  {"id": "goal_parent", "title": "Ebeveyn", "description": "Bir çocuk sahibi ol.", "conditions": ["HasFlag:has_child"]},
+  {"id": "goal_career_peak", "title": "Kariyer Basamakları", "description": "Mesleğinde en az 4. basamağa yüksel.", "conditions": ["MinCareerLevel:4"]},
+  {"id": "goal_healthy_aging", "title": "Sağlıklı Yaşlanmak", "description": "70 yaşına sağlığın 60'ın üstündeyken ulaş.", "conditions": ["MinAge:70", "MinStat:Health:60"]},
+  {"id": "goal_see_world", "title": "Dünyayı Görmek", "description": "Yurt dışına çık.", "conditions": ["HasFlag:traveled_abroad"]},
+  {"id": "goal_social", "title": "Herkesin Dostu", "description": "Sosyal puanını 90'a çıkar.", "conditions": ["MinStat:Social:90"]},
+  {"id": "goal_inner_peace", "title": "İç Huzur", "description": "30 yaşından sonra mutluluğunu 95'e çıkar.", "conditions": ["MinAge:30", "MinStat:Happiness:95"]}
+]

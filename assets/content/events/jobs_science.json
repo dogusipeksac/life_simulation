@@ -1,0 +1,441 @@
+[
+  {
+    "id": "job_technician_1", "title": "Topraklama", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:technician"],
+    "description": "Eski bir apartmanın bodrumunda sigorta panosunu açıyorsun; kablolar örümcek ağı gibi birbirine dolanmış ve topraklama hiç yok. Ev sahibi sadece prizi değiştirmeni istiyor, «Fazlasına para vermem,» diyor. Üst katta bir bebek ağlıyor.",
+    "choices": [
+      {"id": "warn", "text": "Prizi değiştir ve tehlikeyi yazılı bildir.", "effects": {"Education": 2, "Happiness": 2}, "set": ["technician_safe"],
+       "result": "Ev sahibi kâğıdı buruşturdu. Üç ay sonra aradı ve bütün tesisatı yenilemeni istedi."},
+      {"id": "just", "text": "Sadece isteneni yap.", "effects": {"Money": 1500, "Happiness": -3},
+       "result": "İş on dakikada bitti. Aylar sonra o apartmanda küçük bir yangın çıktığını duydun."},
+      {"id": "free", "text": "Topraklamayı kendi zamanından, ücretsiz yap.", "effects": {"Happiness": 4, "Health": -1, "Money": -1000},
+       "result": "Akşama kadar kaldın. Üst kattaki anne sana bir tabak dolma indirdi."}
+    ]
+  },
+  {
+    "id": "job_technician_2", "title": "Gece Çağrısı", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:technician", "MinCareerLevel:2"],
+    "description": "Fırtınalı bir gecede bütün bir mahalle karanlıkta; bir trafo patlamış. Yağmur yatay yağıyor ve şef, sabaha kadar beklenmesini söylüyor. Mahallede solunum cihazına bağlı yaşlı bir hasta olduğunu biliyorsun.",
+    "choices": [
+      {"id": "go", "text": "Ekibi topla ve şimdi çık.", "effects": {"Health": -3, "Happiness": 5, "Social": 2},
+       "result": "Saat üçte ışıklar yandı. Pencereden birinin el salladığını gördün."},
+      {"id": "generator", "text": "Hastanın evine taşınabilir jeneratör götür.", "effects": {"Happiness": 4, "Social": 3, "Health": -1},
+       "result": "Mahalle sabaha kadar karanlıkta kaldı ama o evde bir ışık yanıyordu."},
+      {"id": "wait", "text": "Şefin talimatına uy.", "effects": {"Happiness": -2, "Health": 1},
+       "result": "Sabah her şey düzeldi. Hastanın ailesi neyse ki kendi önlemini almıştı."}
+    ]
+  },
+  {
+    "id": "job_technician_3", "title": "Çıraklar", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:technician", "MinCareerLevel:3"],
+    "description": "Saha şefi olarak yeni çıraklarla çalışıyorsun. Biri hızlı ama dikkatsiz, diğeri yavaş ama titiz. Büyük bir fabrika ihalesi için ekibe yalnızca birini alabilirsin.",
+    "choices": [
+      {"id": "fast", "text": "Hızlı olanı al; ihalenin takvimi sıkı.", "effects": {"Money": 30000, "Happiness": -1},
+       "result": "İş zamanında bitti. Kontrolde iki bağlantıyı senin düzeltmen gerekti."},
+      {"id": "careful", "text": "Titiz olanı al.", "effects": {"Happiness": 3, "Education": 2},
+       "result": "Bir hafta geciktiniz ama denetimde tek bir hata çıkmadı."},
+      {"id": "safe", "text": "İkisini de al ve onlara o bodrum katındaki topraklamasız panoyu anlat.", "requires": ["HasFlag:technician_safe"], "effects": {"Happiness": 7, "Social": 4, "Money": 20000},
+       "result": "Hızlı olan yavaşlamayı, yavaş olan güvenmeyi öğrendi. Yıllar sonra ikisi de kendi ekiplerini kurdu."}
+    ]
+  },
+
+  {
+    "id": "job_academic_1", "title": "Hakem Raporu", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:academic"],
+    "description": "Gece yarısı, bir dergiden gelen makaleyi değerlendiriyorsun. Yöntemde ciddi bir hata var ve makalenin yazarı alanının en ünlü profesörü. Doçentlik jürinde onun da olacağı söyleniyor.",
+    "choices": [
+      {"id": "honest", "text": "Hatayı açıkça yaz, reddet.", "effects": {"Happiness": 3, "Education": 3, "Social": -1}, "set": ["academic_honest"],
+       "result": "Makale düzeltilip yeniden gönderildi. Profesör, kimin hakem olduğunu hiç öğrenmedi; ya da öğrendi ve sesini çıkarmadı."},
+      {"id": "soft", "text": "Küçük düzeltmelerle kabul et.", "effects": {"Happiness": -3},
+       "result": "Makale yayımlandı ve çok atıf aldı. İki yıl sonra hata başka biri tarafından bulundu."},
+      {"id": "decline", "text": "Çıkar çatışması gerekçesiyle hakemliği bırak.", "effects": {"Happiness": 1},
+       "result": "Dosya başka bir hakeme gitti. Sorumluluk da onunla birlikte."}
+    ]
+  },
+  {
+    "id": "job_academic_2", "title": "Doktora Öğrencisi", "category": "Career", "minAge": 28, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:academic", "MinCareerLevel:2"],
+    "description": "Doktora öğrencin üç yıldır üzerinde çalıştığı hipotezin yanlış çıktığını ağlayarak söylüyor. Bölüm, yayın sayısı için baskı yapıyor ve verileri «uygun şekilde yorumlamak» mümkün. Ofisinde, kitap yığınlarının arasında oturuyorsunuz.",
+    "choices": [
+      {"id": "negative", "text": "Olumsuz sonucu yayımlamaya teşvik et.", "effects": {"Happiness": 3, "Education": 2, "Social": 2},
+       "result": "Makale küçük bir dergide çıktı. Başka bir laboratuvar, sırf o sonuç sayesinde iki yıl kazandı."},
+      {"id": "spin", "text": "Verileri olumlu gösterecek bir analiz öner.", "effects": {"Money": 10000, "Happiness": -5},
+       "result": "Makale iyi bir dergide çıktı. Öğrencin seninle göz göze gelmemeye başladı."},
+      {"id": "pivot", "text": "Yeni bir soru bulmasına yardım et.", "requires": ["MinStat:Education:80"], "effects": {"Education": 3, "Happiness": 3, "Health": -1},
+       "result": "Haftalarca beyin fırtınası yaptınız. Yeni soru, eskisinden çok daha ilginçti."}
+    ]
+  },
+  {
+    "id": "job_academic_3", "title": "Son Ders", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:academic", "MinCareerLevel:3"],
+    "description": "Bölüm başkanlığı için adaylığın konuşuluyor; bu, yıllarca bürokrasi ve az araştırma demek. Aynı hafta, yurt dışındaki bir enstitüden misafir araştırmacı daveti geldi. Amfide dersini bekleyen iki yüz öğrenci var.",
+    "choices": [
+      {"id": "chair", "text": "Bölüm başkanlığını üstlen.", "effects": {"Money": 30000, "Social": 3, "Happiness": -1},
+       "result": "Toplantılar, bütçeler, imzalar. Ama genç araştırmacılar için açtığın kadrolar bölümü değiştirdi."},
+      {"id": "abroad", "text": "Davete git.", "effects": {"Education": 4, "Happiness": 4, "Social": -2},
+       "result": "Bir yıl boyunca sadece düşündün ve yazdın. Döndüğünde kitabın neredeyse bitmişti."},
+      {"id": "honest", "text": "Öğrencilerine hakemlik yaptığın o geceyi ve bilimin dürüstlükle nasıl korunduğunu anlat.", "requires": ["HasFlag:academic_honest"], "effects": {"Happiness": 8, "Social": 4, "Education": 2},
+       "result": "Ders kaydedildi ve paylaşıldı. Yıllar sonra mezunların hâlâ o dersten alıntı yapıyordu."}
+    ]
+  },
+
+  {
+    "id": "job_archaeologist_1", "title": "Fırçanın Ucunda", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:archaeologist"],
+    "description": "Kırk derece sıcakta, kazı açmasının dibinde fırçanı gezdirirken toprağın içinden bir altın parıltısı görüyorsun. Etrafta kimse yok; kazı başkanı öğle uykusunda. Parıltı, bir mührün kenarı olabilir.",
+    "choices": [
+      {"id": "document", "text": "Dur, fotoğrafla ve kazı başkanını uyandır.", "effects": {"Education": 3, "Social": 2}, "set": ["archaeologist_method"],
+       "result": "Başkan önce söylendi, sonra eğildi ve sustu. Mühür, kazının en önemli buluntusu oldu ve senin adınla kaydedildi."},
+      {"id": "dig", "text": "Heyecanla kendin çıkar.", "effects": {"Happiness": 3, "Education": -1},
+       "result": "Mührü çıkardın ama bağlamını bozdun. Başkan sana hayatının en uzun nutkunu çekti."},
+      {"id": "wait", "text": "Üstünü ört, sabah ekiple birlikte aç.", "effects": {"Education": 2, "Happiness": 1},
+       "result": "Sabah ekip toplandı ve buluntu yavaşça açıldı. Kimse bir şey bozmadı."}
+    ]
+  },
+  {
+    "id": "job_archaeologist_2", "title": "Baraj", "category": "Career", "minAge": 26, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:archaeologist", "MinCareerLevel:2"],
+    "description": "Bir vadi, yeni bir barajın suları altında kalacak ve kazı süren bir antik kent orada. Kurtarma kazısı için bir yıl var; ama iyi bir kazı on yıl ister. Köylüler, sulama suyu için barajı bekliyor.",
+    "choices": [
+      {"id": "rush", "text": "Bir yılda kurtarılabilecek her şeyi çıkar.", "effects": {"Health": -3, "Education": 3, "Happiness": 2},
+       "result": "Mozaikler parça parça müzeye taşındı. Sular yükselirken, tepeden son kez baktın."},
+      {"id": "campaign", "text": "Barajın ertelenmesi için kampanya başlat.", "requires": ["MinStat:Social:55"], "effects": {"Social": 3, "Happiness": 2, "Money": -10000},
+       "result": "Baraj iki yıl ertelendi. Bazı köylüler seni affetmedi, bazıları kazıda işçi olarak çalıştı."},
+      {"id": "digital", "text": "Kenti üç boyutlu tarayarak dijital olarak koru.", "requires": ["MinStat:Education:70"], "effects": {"Education": 4, "Happiness": 3},
+       "result": "Kent suların altında ama ekranlarda yaşıyor. Öğrenciler sanal gerçeklikle sokaklarında yürüyor."}
+    ]
+  },
+  {
+    "id": "job_archaeologist_3", "title": "Kazı Başkanı", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:archaeologist", "MinCareerLevel:3"],
+    "description": "Bir yabancı müze, kazında bulunan bir heykel için yüklü bir bağış ve ortak sergi teklif ediyor. Karşılığında heykelin on yıl onlarda kalmasını istiyorlar. Yerel müze küçük ve bütçesi yok.",
+    "choices": [
+      {"id": "lend", "text": "Bağışı kabul et, heykeli ödünç ver.", "effects": {"Money": 100000, "Happiness": -2},
+       "result": "Kazın üç yıl daha sürdü. Heykelin on yılı ise yirmi yıla uzadı."},
+      {"id": "stay", "text": "Heykel yerinde kalsın.", "effects": {"Happiness": 4, "Social": 3},
+       "result": "Yerel müze bir kasabanın gururu oldu. Kazın ise bütçe yüzünden yavaşladı."},
+      {"id": "method", "text": "Yıllar önce mühürde yaptığın gibi her şeyi belgele ve ortak bir dijital sergi öner.", "requires": ["HasFlag:archaeologist_method"], "effects": {"Happiness": 7, "Education": 3, "Money": 40000},
+       "result": "Heykel köyünde kaldı, kopyası dünyayı dolaştı. Müze, bağışın yarısını yine de verdi."}
+    ]
+  },
+
+  {
+    "id": "job_astrophysicist_1", "title": "Bir Sinyal", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:astrophysicist"],
+    "description": "Gece vardiyasında, gözlemevinin soğuk kubbesinde veriler akıyor. Ekranda daha önce görmediğin bir sinyal deseni beliriyor; tekrarlıyor. Sabah bir konferans bildirisinin teslim günü.",
+    "choices": [
+      {"id": "check", "text": "Önce bütün olası hataları ele, sonra konuş.", "effects": {"Education": 4, "Happiness": 1}, "set": ["astrophysicist_doubt"],
+       "result": "Üç hafta sonra kaynağını buldun: gözlemevinin mikrodalga fırını. Kimse gülmedi; sen dışında."},
+      {"id": "announce", "text": "Bildiriye ekle ve duyur.", "effects": {"Happiness": 3, "Social": -3},
+       "result": "Sinyal basında yankı buldu. Bir hafta sonra cihaz kaynaklı olduğu anlaşıldı ve geri çekmek zorunda kaldın."},
+      {"id": "share", "text": "Verileri başka gözlemevleriyle paylaş.", "effects": {"Social": 3, "Education": 2},
+       "result": "Bir başka gözlemevi sinyali göremedi. Böylece hatanın sende olduğunu öğrendin, sessizce."}
+    ]
+  },
+  {
+    "id": "job_astrophysicist_2", "title": "Teleskop Zamanı", "category": "Career", "minAge": 27, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:astrophysicist", "MinCareerLevel:2"],
+    "description": "Dev teleskopta bir gecelik gözlem zamanı kazandın; yıllarca sırada bekledin. Hava raporu bulutlu gösteriyor. Genç bir meslektaşın, aynı gece için çok daha acil bir süpernova takibi istiyor.",
+    "choices": [
+      {"id": "keep", "text": "Zamanını koru; bulutlar dağılabilir.", "effects": {"Education": 2, "Happiness": 1},
+       "result": "Bulutlar dağılmadı. Gece boyunca kubbede kahve içtin."},
+      {"id": "give", "text": "Zamanını süpernova takibine ver.", "effects": {"Social": 4, "Happiness": 4},
+       "result": "Meslektaşın süpernovayı yakaladı ve makalesinde sana teşekkür etti. Sen bir sonraki yıl yine bekledin."},
+      {"id": "share", "text": "Gecenin yarısını paylaşmayı öner.", "effects": {"Social": 2, "Education": 2, "Happiness": 2},
+       "result": "İkiniz de bir şeyler aldınız. Gece yarısı birlikte yıldızlara bakarken uzun bir dostluk başladı."}
+    ]
+  },
+  {
+    "id": "job_astrophysicist_3", "title": "Halka Açık Gece", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:astrophysicist", "MinCareerLevel:3"],
+    "description": "Gözlemevi müdürü olarak bir karar vermen gerekiyor: bütçenin bir kısmı ya yeni bir dedektöre ya da çocuklar için halka açık gözlem gecelerine gidecek. Dedektör makale demek, gözlem geceleri gelecek kuşaklar.",
+    "choices": [
+      {"id": "detector", "text": "Dedektörü al.", "effects": {"Education": 4, "Money": 20000},
+       "result": "Yeni dedektör üç önemli keşfe imza attı. Kubbe, gece ziyaretçisi görmedi."},
+      {"id": "public", "text": "Halka açık geceleri başlat.", "effects": {"Happiness": 5, "Social": 4},
+       "result": "Bir kız, teleskoptan ilk kez Satürn'ün halkalarını görünce çığlık attı. Yıllar sonra onun öğrencin olduğunu öğrendin."},
+      {"id": "doubt", "text": "Çocuklara mikrodalga fırın sinyalini anlat: bilim, kendinden şüphe etmektir.", "requires": ["HasFlag:astrophysicist_doubt"], "effects": {"Happiness": 8, "Social": 4, "Education": 2},
+       "result": "Kahkahalar kubbede yankılandı. O hikâye, gözlemevinin her rehberli turunun sonunda anlatılmaya başlandı."}
+    ]
+  },
+
+  {
+    "id": "job_geologist_1", "title": "Çatlak", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:geologist"],
+    "description": "Bir konut projesinin zemin etüdünde, raporlara geçmemiş bir fay izine rastlıyorsun. Müteahhit, «Herkes burayı kullanıyor,» diyor ve raporun yarın imzalanmasını bekliyor. Kayanın üstündeki ince çizgi sana bakıyor.",
+    "choices": [
+      {"id": "report", "text": "Bulguyu rapora yaz, ek etüt iste.", "effects": {"Happiness": 3, "Social": -2, "Education": 2}, "set": ["geologist_fault"],
+       "result": "Proje durdu ve müteahhit seni bir daha çağırmadı. Yıllar sonra o bölgede bir deprem olduğunda, oradaki boş arsa sana tuhaf bir huzur verdi."},
+      {"id": "sign", "text": "İmzala; tek bir iz kesin kanıt değil.", "effects": {"Money": 15000, "Happiness": -5},
+       "result": "Bloklar yükseldi. Her deprem haberinde o adresi aradın."},
+      {"id": "expert", "text": "Bir meslektaşından ikinci görüş al.", "effects": {"Education": 2, "Social": 2},
+       "result": "O da aynı şeyi gördü. İki imzalı rapor, tek imzalıdan çok daha ağır bastı."}
+    ]
+  },
+  {
+    "id": "job_geologist_2", "title": "Maden", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:geologist", "MinCareerLevel:2"],
+    "description": "Bir şirket, altın madeni için senden rezerv raporu istiyor. Rezerv var ama siyanürle çıkarılması bir köyün su kaynağını tehlikeye atar. Şirket yalnızca rezervin büyüklüğünü soruyor.",
+    "choices": [
+      {"id": "only", "text": "Sadece sorulan soruyu yanıtla.", "effects": {"Money": 40000, "Happiness": -4},
+       "result": "Maden açıldı. Köyün çeşmesinin rengi değişti ve bir mahkeme süreci başladı."},
+      {"id": "full", "text": "Su riskini de raporuna ekle.", "effects": {"Happiness": 3, "Money": 10000, "Education": 2},
+       "result": "Şirket raporu beğenmedi ama ek önlemler aldı. Köylüler, seni bir dava dosyasında tanık olarak gördü."},
+      {"id": "village", "text": "Köylülere bulgularını anlat.", "requires": ["MinStat:Social:50"], "effects": {"Social": 4, "Happiness": 3, "Money": -10000},
+       "result": "Köy bir dernek kurdu ve maden ruhsatı iptal edildi. Şirket seni dava etmekle tehdit etti ama etmedi."}
+    ]
+  },
+  {
+    "id": "job_geologist_3", "title": "Deprem Haritası", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:geologist", "MinCareerLevel:3"],
+    "description": "Şehrin yeni deprem risk haritası senin ekibinde hazırlanıyor. Harita, birkaç lüks semtin yüksek riskli olduğunu gösteriyor ve emlak lobisi baskı yapıyor. Haritanın çıkış tarihi yaklaşıyor.",
+    "choices": [
+      {"id": "publish", "text": "Haritayı olduğu gibi yayımla.", "effects": {"Happiness": 4, "Social": -3},
+       "result": "Emlak fiyatları düştü ve tehdit mektupları geldi. Ama dönüşüm projeleri o semtlerden başladı."},
+      {"id": "soften", "text": "Risk sınırlarını biraz esnet.", "effects": {"Money": 50000, "Happiness": -6},
+       "result": "Kimse itiraz etmedi. Gece uykuların ise bir daha düzelmedi."},
+      {"id": "fault", "text": "Yıllar önce bulduğun fay izini haritanın ilk kanıtı yap ve basın toplantısında anlat.", "requires": ["HasFlag:geologist_fault"], "effects": {"Happiness": 8, "Social": 3, "Education": 2},
+       "result": "O boş arsanın hikâyesi, haritadan daha ikna ediciydi. Belediye meclisi oybirliğiyle haritayı kabul etti."}
+    ]
+  },
+
+  {
+    "id": "job_geneticist_1", "title": "Beklenmedik Sonuç", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:geneticist"],
+    "description": "Bir aile çalışmasında, bir babanın çocuğunun biyolojik babası olmadığını gösteren bir sonuç buluyorsun. Çalışmanın amacıyla hiçbir ilgisi yok. Aile, sonuçları birlikte almak için yarın gelecek.",
+    "choices": [
+      {"id": "protocol", "text": "Etik protokole uy; yalnızca çalışmayla ilgili sonuçları paylaş.", "effects": {"Education": 2, "Happiness": 1}, "set": ["geneticist_ethics"],
+       "result": "Aile sonuçlarını alıp gitti. Sır, bir veri tabanında şifreli olarak kaldı."},
+      {"id": "tell", "text": "Babaya özel olarak söyle.", "effects": {"Happiness": -3, "Social": -2},
+       "result": "Adam bembeyaz oldu. O ailenin ne olduğunu hiç öğrenmedin."},
+      {"id": "board", "text": "Etik kurula danış.", "effects": {"Social": 2, "Education": 2},
+       "result": "Kurul, bu tür bulgular için yeni bir onam formu hazırladı. Senin sorun, bir kural oldu."}
+    ]
+  },
+  {
+    "id": "job_geneticist_2", "title": "Gen Düzenleme", "category": "Career", "minAge": 27, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:geneticist", "MinCareerLevel:2"],
+    "description": "Laboratuvarın, nadir bir kalıtsal hastalığı embriyo aşamasında düzeltebilecek bir teknik geliştirdi. Varlıklı bir çift, hastalığın yanında çocuklarının göz rengini de seçmek istiyor. Yatırımcılar bu pazarı çok büyük görüyor.",
+    "choices": [
+      {"id": "medical", "text": "Yalnızca tıbbi düzeltmeyi kabul et.", "effects": {"Happiness": 3, "Education": 2},
+       "result": "Çift başka bir ülkeye gitti. Senin laboratuvarın sadece hastalığa odaklanan ilk klinik denemeyi başlattı."},
+      {"id": "accept", "text": "İsteklerini kabul et; yasal bir boşluk var.", "effects": {"Money": 150000, "Happiness": -6},
+       "result": "Haber sızdı ve dünya basınına çıktı. Laboratuvarın adı bir tartışmanın simgesi oldu."},
+      {"id": "public", "text": "Bir kamuoyu tartışması başlat.", "requires": ["MinStat:Social:55"], "effects": {"Social": 4, "Happiness": 2, "Education": 2},
+       "result": "Televizyon programları, köşe yazıları, yasa tasarıları. Senin sorun bütün toplumun sorusu oldu."}
+    ]
+  },
+  {
+    "id": "job_geneticist_3", "title": "Patent", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:geneticist", "MinCareerLevel:3"],
+    "description": "Ekibin, yaygın bir kanser türünün erken teşhisi için bir genetik test geliştirdi. Üniversite patenti alıp yüksek fiyatla lisanslamak istiyor. Test ucuz olursa milyonlarca insan yaptırabilir.",
+    "choices": [
+      {"id": "patent", "text": "Patenti destekle; araştırmanın finansmanı gerek.", "effects": {"Money": 200000, "Happiness": -2},
+       "result": "Laboratuvarın yeni bir bina aldı. Test ise yalnızca özel hastanelerde, pahalıya yapılabildi."},
+      {"id": "open", "text": "Testi açık lisansla yayımla.", "effects": {"Happiness": 6, "Social": 3, "Money": -20000},
+       "result": "Devlet hastaneleri testi bir yıl içinde rutine aldı. Bir hemşire, testin annesini kurtardığını yazdı."},
+      {"id": "ethics", "text": "Yıllar önce yazdığın onam formunu temel alarak adil bir lisans modeli öner.", "requires": ["HasFlag:geneticist_ethics"], "effects": {"Happiness": 8, "Money": 60000, "Social": 3},
+       "result": "Zengin ülkeler ödedi, yoksul ülkeler ücretsiz aldı. Model, başka üniversitelerde kopyalandı."}
+    ]
+  },
+
+  {
+    "id": "job_chemical_engineer_1", "title": "Basınç Vanası", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:chemical_engineer"],
+    "description": "Gece vardiyasında bir reaktörün basıncı yavaşça yükseliyor; alarm sınırına daha var. Vardiya şefi hattı durdurmak istemiyor, sipariş acil. Göstergelere bakarken mideni bir kramp yokluyor.",
+    "choices": [
+      {"id": "stop", "text": "Hattı kendi yetkinle durdur.", "effects": {"Happiness": 2, "Social": -2, "Education": 2}, "set": ["chemical_engineer_stop"],
+       "result": "Şef öfkelendi. Sabah bakım ekibi, vanada bir çatlak buldu."},
+      {"id": "monitor", "text": "Göstergeleri yakından izle.", "effects": {"Health": -1, "Happiness": -1},
+       "result": "Basınç sınırın hemen altında durdu. Sabaha kadar gözlerini kırpmadın."},
+      {"id": "call", "text": "Tesis müdürünü ara.", "effects": {"Social": 1, "Education": 1},
+       "result": "Müdür kontrollü bir yavaşlatma önerdi. Kimse tam memnun değildi ama kimse yaralanmadı."}
+    ]
+  },
+  {
+    "id": "job_chemical_engineer_2", "title": "Atık Su", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:chemical_engineer", "MinCareerLevel:2"],
+    "description": "Fabrikanın arıtma tesisi bozuk ve tamiri bir ay sürecek. Yönetim, atık suyun geceleri yakındaki dereye verilmesini istiyor. Derede çocukların yüzdüğünü biliyorsun.",
+    "choices": [
+      {"id": "comply", "text": "Talimatı uygula.", "effects": {"Money": 20000, "Happiness": -7},
+       "result": "Derenin rengi değişti ve balıklar öldü. Bir gazeteci soruşturma başlattığında adın dosyadaydı."},
+      {"id": "stop", "text": "Üretimi durdurmayı öner.", "effects": {"Happiness": 3, "Social": -2, "Money": -5000},
+       "result": "Üretim bir ay yavaşladı. Yönetim seni toplantılara çağırmayı bıraktı."},
+      {"id": "tank", "text": "Atığı geçici tanklarda depolamak için bir çözüm tasarla.", "requires": ["MinStat:Education:65"], "effects": {"Education": 3, "Happiness": 4},
+       "result": "Kiralık tanklar pahalıydı ama yasaldı. Yönetim, çözümünü diğer tesislerde de uyguladı."}
+    ]
+  },
+  {
+    "id": "job_chemical_engineer_3", "title": "Yeşil Formül", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:chemical_engineer", "MinCareerLevel:3"],
+    "description": "Fabrika müdürü olarak, zehirli bir çözücüyü suyla değiştiren yeni bir proses geliştirdin. Geçiş, şirkete bir yıllık kârına mal olacak. Yönetim kurulu kararı sana bıraktı.",
+    "choices": [
+      {"id": "switch", "text": "Geçişi başlat.", "effects": {"Happiness": 5, "Money": -20000, "Education": 2},
+       "result": "Bir yıl zorlu geçti. İkinci yıl, yeni proses hem daha ucuz hem daha temiz çıktı."},
+      {"id": "delay", "text": "Beş yıla yay.", "effects": {"Money": 40000, "Happiness": 1},
+       "result": "Kâr korundu. Geçiş beş yılda tamamlandı; belki de makul olanı buydu."},
+      {"id": "story", "text": "Yıllar önce durdurduğun o reaktörü ve bulunan çatlağı yönetim kuruluna anlat.", "requires": ["HasFlag:chemical_engineer_stop"], "effects": {"Happiness": 7, "Social": 3, "Money": 20000},
+       "result": "Kurul sustu. Geçiş için ek bütçe onaylandı ve çalışanlar, ilk kez maske takmadan bir hatta çalıştı."}
+    ]
+  },
+
+  {
+    "id": "job_environmental_engineer_1", "title": "Numune", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:environmental_engineer"],
+    "description": "Bir nehirden aldığın su numunesinde ağır metal oranı yasal sınırın üç katı. Laboratuvar müdürü numunenin «kontamine» olduğunu söyleyip yeniden alınmasını istiyor. Nehrin yukarısında büyük bir fabrika var.",
+    "choices": [
+      {"id": "resample", "text": "Yeniden numune al, ama bu kez kamera kaydıyla.", "effects": {"Education": 3, "Happiness": 2}, "set": ["environmental_engineer_sample"],
+       "result": "İkinci numune aynı sonucu verdi ve kayıt her şeyi belgeledi. Müdür sessizce raporu imzaladı."},
+      {"id": "accept", "text": "Müdürü dinle, yeni numuneyi o alsın.", "effects": {"Happiness": -4},
+       "result": "Yeni numune temiz çıktı. Nehrin rengi ise değişmedi."},
+      {"id": "independent", "text": "Bağımsız bir laboratuvara da gönder.", "cost": 3000, "effects": {"Education": 2, "Happiness": 2},
+       "result": "Bağımsız sonuç da yüksekti. İki rapor, tek rapordan çok daha zor görmezden gelinebildi."}
+    ]
+  },
+  {
+    "id": "job_environmental_engineer_2", "title": "Çöp Dağı", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:environmental_engineer", "MinCareerLevel:2"],
+    "description": "Belediyenin çöp depolama alanı dolmak üzere ve bir yakma tesisi önerisi masada. Tesis enerji üretecek ama mahalleli zehirli dumandan korkuyor. Seni bir halk toplantısına çağırdılar.",
+    "choices": [
+      {"id": "incinerator", "text": "Modern filtreli yakma tesisini savun.", "effects": {"Money": 20000, "Social": -3, "Education": 2},
+       "result": "Toplantı gergin geçti. Tesis kuruldu ve ölçümler sınırların altında çıktı; güven ise geri gelmedi."},
+      {"id": "recycle", "text": "Önce geri dönüşüm ve kompost programı öner.", "requires": ["MinStat:Social:50"], "effects": {"Happiness": 4, "Social": 3},
+       "result": "Mahalleliler çöplerini ayırmaya başladı. Depolama alanının ömrü on yıl uzadı."},
+      {"id": "data", "text": "Bütün verileri açıkça paylaş ve kararı halka bırak.", "effects": {"Education": 2, "Social": 2, "Happiness": 2},
+       "result": "Halk oylaması yapıldı. Sonuç ne olursa olsun, herkes ne hakkında oy verdiğini biliyordu."}
+    ]
+  },
+  {
+    "id": "job_environmental_engineer_3", "title": "Nehir Geri Döndü", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:environmental_engineer", "MinCareerLevel:3"],
+    "description": "Yıllardır uğraştığın nehir rehabilitasyon projesi bitmek üzere; balıklar geri geldi. Bir siyasetçi, açılış törenini kendi kampanyasına dönüştürmek istiyor. Senden konuşma yapmanı ve onu övmeni bekliyor.",
+    "choices": [
+      {"id": "praise", "text": "Konuşmayı yap, siyasetçiye teşekkür et.", "effects": {"Money": 30000, "Happiness": -2},
+       "result": "Fotoğraflarda yan yanaydınız. Projeye bir sonraki fon kolayca geldi."},
+      {"id": "people", "text": "Konuşmanda gönüllüleri ve balıkçıları öv.", "effects": {"Happiness": 5, "Social": 3},
+       "result": "Siyasetçi yüzünü buruşturdu, kalabalık alkışladı. Bir sonraki fon biraz gecikti."},
+      {"id": "sample", "text": "Konuşma yerine, yıllar önce aldığın ilk numuneyi ve bugünkünü yan yana göster.", "requires": ["HasFlag:environmental_engineer_sample"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "İki şişe: biri bulanık, biri berrak. Kimse konuşmadı; ama o fotoğraf bütün gazetelerin kapağındaydı."}
+    ]
+  },
+
+  {
+    "id": "job_meteorologist_1", "title": "Yanlış Tahmin", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:meteorologist"],
+    "description": "Dünkü tahminin güneşliydi ama şehir sele teslim oldu. Sosyal medyada adın alay konusu. Modelin, bir sıcaklık katmanını hiç hesaba katmamış.",
+    "choices": [
+      {"id": "apologize", "text": "Açıkça özür dile ve neyin yanlış gittiğini anlat.", "effects": {"Social": 2, "Happiness": 1, "Education": 2}, "set": ["meteorologist_humble"],
+       "result": "Bazıları alay etmeye devam etti, ama çoğu hatayı anladı. Açıklaman meteoroloji forumlarında örnek oldu."},
+      {"id": "silent", "text": "Sessiz kal, unutulmasını bekle.", "effects": {"Happiness": -2},
+       "result": "Bir hafta sonra unutuldu. Ama içindeki rahatsızlık unutulmadı."},
+      {"id": "fix", "text": "Gece boyunca modeli düzelt.", "effects": {"Education": 4, "Health": -2},
+       "result": "Düzelttiğin model bir sonraki fırtınayı tam zamanında yakaladı."}
+    ]
+  },
+  {
+    "id": "job_meteorologist_2", "title": "Kırmızı Uyarı", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:meteorologist", "MinCareerLevel:2"],
+    "description": "Modellerin, şehre yaklaşan bir fırtınanın yüzde altmış ihtimalle çok şiddetli olacağını gösteriyor. Kırmızı uyarı okulları, havalimanını ve limanı kapatır. Yanılırsan milyonlarca liralık kayıp senin üstüne kalır.",
+    "choices": [
+      {"id": "red", "text": "Kırmızı uyarıyı ver.", "effects": {"Happiness": 2, "Social": -1, "Education": 2},
+       "result": "Fırtına geldi ama beklenenden hafifti. Şikâyetler yağdı, ama kimse yaralanmadı."},
+      {"id": "orange", "text": "Turuncu uyarıyla yetin.", "effects": {"Happiness": -2, "Money": 5000},
+       "result": "Fırtına sertti ve bazıları hazırlıksız yakalandı. Soruşturma dosyasında adın vardı."},
+      {"id": "explain", "text": "Olasılığı halka açıkça anlatan bir duyuru yaz.", "requires": ["MinStat:Social:50"], "effects": {"Education": 3, "Happiness": 3, "Social": 2},
+       "result": "İnsanlar kendi kararlarını verdi; çoğu doğru olanı seçti. Duyuru şablonun ulusal standarda dönüştü."}
+    ]
+  },
+  {
+    "id": "job_meteorologist_3", "title": "İklim Raporu", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:meteorologist", "MinCareerLevel:3"],
+    "description": "Bölge müdürü olarak hazırladığın on yıllık iklim raporu, kuraklık ve sel risklerinin hızla arttığını gösteriyor. Bakanlık, raporun «panik yaratmayacak» bir dille yazılmasını istiyor. Açıklama yarın.",
+    "choices": [
+      {"id": "plain", "text": "Raporu açık ve net bir dille yayımla.", "effects": {"Happiness": 4, "Social": -2},
+       "result": "Rapor tartışma yarattı ama bütçe görüşmelerine girdi. Belediyeler sel önlemlerini hızlandırdı."},
+      {"id": "soft", "text": "Dili yumuşat.", "effects": {"Money": 20000, "Happiness": -4},
+       "result": "Rapor sessizce yayımlandı ve unutuldu. Üç yıl sonraki sel, raporun söylediğini söyledi."},
+      {"id": "humble", "text": "Raporun başına yıllar önceki yanlış tahminini ve ondan ne öğrendiğini koy.", "requires": ["HasFlag:meteorologist_humble"], "effects": {"Happiness": 8, "Social": 4, "Education": 2},
+       "result": "«Bir kez yanıldım; bu yüzden şimdi daha dikkatliyim,» diye başlıyordu. İnsanlar, yanıldığını kabul eden birine inandı."}
+    ]
+  },
+
+  {
+    "id": "job_nuclear_engineer_1", "title": "Kontrol Odası", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:nuclear_engineer"],
+    "description": "Kontrol odasında yüzlerce gösterge ve ilk gece vardiyan. Bir soğutma pompasının titreşim değeri hafifçe yükseliyor; sınırın çok altında. Kıdemli operatör, «Her gece olur,» diyor ve kahvesine dönüyor.",
+    "choices": [
+      {"id": "log", "text": "Değeri kayda geçir ve bakım talebi aç.", "effects": {"Education": 3, "Happiness": 1}, "set": ["nuclear_engineer_log"],
+       "result": "Talebin rutin olarak kapandı. Altı ay sonra o pompanın rulmanı değiştirildiğinde, kayıtta senin notun vardı."},
+      {"id": "trust", "text": "Kıdemliye güven.", "effects": {"Happiness": 1},
+       "result": "Bir şey olmadı. O gece, belki de hiç olmayacaktı."},
+      {"id": "ask", "text": "Kıdemliye neden «her gece» olduğunu sor.", "effects": {"Social": 2, "Education": 2},
+       "result": "Uzun bir sohbet oldu. Santralin geçmişini, hiçbir kitapta yazmayan ayrıntılarıyla öğrendin."}
+    ]
+  },
+  {
+    "id": "job_nuclear_engineer_2", "title": "Denetim", "category": "Career", "minAge": 27, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:nuclear_engineer", "MinCareerLevel:2"],
+    "description": "Uluslararası denetim bir hafta sonra. Belgelerin bazıları eksik; teknik olarak güvenlik sorunu yok ama kâğıt üzerinde var. Bir yönetici, belgelerin «tamamlanmasını» istiyor; tarihlerin geriye alınarak.",
+    "choices": [
+      {"id": "backdate", "text": "Belgeleri geriye tarihli tamamla.", "effects": {"Money": 15000, "Happiness": -6},
+       "result": "Denetim geçti. Ama bir sonraki denetimde aynı yönetici aynı şeyi yine istedi."},
+      {"id": "report", "text": "Eksikleri denetçilere açıkça bildir.", "effects": {"Happiness": 4, "Social": -2},
+       "result": "Santral küçük bir uyarı aldı. Yönetici seni bir toplantıda görmezden geldi; denetçi ise elini sıktı."},
+      {"id": "sprint", "text": "Bir haftada eksikleri gerçekten tamamla.", "effects": {"Health": -3, "Education": 3, "Happiness": 2},
+       "result": "Bir hafta uyumadın. Denetim temiz geçti ve kayıtlar ilk kez gerçekten tamdı."}
+    ]
+  },
+  {
+    "id": "job_nuclear_engineer_3", "title": "Santralin Geleceği", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:nuclear_engineer", "MinCareerLevel:3"],
+    "description": "Santral kırk yaşında ve hükümet ömrünü yirmi yıl uzatmak istiyor. Raporun, uzatmanın güvenli olup olmadığını belirleyecek. Kasaba santrale bağlı yaşıyor; herkesin bir yakını orada çalışıyor.",
+    "choices": [
+      {"id": "extend", "text": "Önemli yenilemelerle uzatmayı onayla.", "effects": {"Money": 50000, "Happiness": 2, "Social": 3},
+       "result": "Kasaba rahatladı. Yenileme çalışmaları beş yıl sürdü ve bütçenin iki katına çıktı."},
+      {"id": "close", "text": "Kontrollü kapanmayı öner.", "effects": {"Happiness": 2, "Social": -4},
+       "result": "Kasabada seninle selamlaşmayanlar oldu. Ama yeni bir yenilenebilir enerji tesisi aynı arazide kuruldu."},
+      {"id": "log", "text": "İlk gece vardiyandan beri tuttuğun titreşim kayıtlarını rapora ekle.", "requires": ["HasFlag:nuclear_engineer_log"], "effects": {"Happiness": 8, "Education": 3, "Social": 2},
+       "result": "Yirmi yıllık el yazısı notlar, hangi parçanın ne zaman değişmesi gerektiğini kusursuz gösterdi. Karar herkesin güvenebileceği bir veriyle verildi."}
+    ]
+  },
+
+  {
+    "id": "job_sociologist_1", "title": "Kahvehanede Anket", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:sociologist"],
+    "description": "Bir göç araştırması için küçük bir kasabanın kahvehanesindesin. Elindeki anket formu kimsenin dilinde değil; insanlar sorulara gülüyor. Yaşlı bir adam, «Önce bir çay iç, sonra sor,» diyor.",
+    "choices": [
+      {"id": "tea", "text": "Formu bırak, çayını iç ve dinle.", "effects": {"Social": 4, "Education": 2}, "set": ["sociologist_listen"],
+       "result": "Üç saat boyunca hikâyeler dinledin. Raporun en değerli bölümü, hiçbir forma sığmayan o sohbetlerden çıktı."},
+      {"id": "form", "text": "Formu doldurmaya devam et.", "effects": {"Education": 1, "Happiness": -1},
+       "result": "Kırk form doldurdun; çoğu yarım. Veriler temiz ama boş kaldı."},
+      {"id": "rewrite", "text": "Soruları kasaba diline uyarla.", "requires": ["MinStat:Education:60"], "effects": {"Education": 3, "Happiness": 2},
+       "result": "Ertesi gün yeni formlarla döndün; insanlar ilk kez ciddiyetle yanıt verdi."}
+    ]
+  },
+  {
+    "id": "job_sociologist_2", "title": "Rahatsız Edici Bulgu", "category": "Career", "minAge": 26, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:sociologist", "MinCareerLevel:2"],
+    "description": "Araştırman, bir belediyenin sosyal yardımlarının yalnızca belirli mahallelere gittiğini gösteriyor. Projeyi finanse eden de aynı belediye. Rapor teslim tarihi yaklaşırken bir danışman seni öğle yemeğine çağırıyor.",
+    "choices": [
+      {"id": "publish", "text": "Bulguyu olduğu gibi yayımla.", "effects": {"Happiness": 4, "Money": -10000, "Social": -2},
+       "result": "Proje sözleşmen iptal edildi. Ama bulgu bir meclis tartışmasına konu oldu ve dağıtım değişti."},
+      {"id": "appendix", "text": "Bulguyu ek bölüme göm.", "effects": {"Money": 15000, "Happiness": -4},
+       "result": "Rapor kabul edildi. Ek bölümü kimse okumadı; ya da okuyan sustu."},
+      {"id": "journal", "text": "Raporu teslim et ve bulguyu ayrıca akademik bir makalede yayımla.", "requires": ["MinStat:Education:65"], "effects": {"Education": 3, "Happiness": 2},
+       "result": "Makale iki yıl sonra çıktı. Bir gazeteci onu buldu ve haberi yaptı."}
+    ]
+  },
+  {
+    "id": "job_sociologist_3", "title": "Toplumun Aynası", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:sociologist", "MinCareerLevel:3"],
+    "description": "Araştırma merkezinin müdürü olarak, ülke çapında bir yalnızlık araştırması tasarlayacaksın. Bütçe ya büyük bir çevrim içi ankete ya da küçük ama derin saha görüşmelerine yetiyor. Sonuçlar bir sosyal politika paketine temel olacak.",
+    "choices": [
+      {"id": "survey", "text": "Büyük çevrim içi anket.", "effects": {"Education": 3, "Money": 20000},
+       "result": "Yüz bin yanıt, temiz grafikler. Ama internete erişimi olmayan en yalnız insanlar hiç sayılmadı."},
+      {"id": "field", "text": "Derin saha görüşmeleri.", "effects": {"Happiness": 4, "Social": 3, "Health": -1},
+       "result": "Bin görüşme, binlerce sayfa. Politikacılar rakam istedi, sen hikâye verdin."},
+      {"id": "tea", "text": "Kahvehanede öğrendiğin gibi: her görüşme bir çayla, form olmadan başlasın.", "requires": ["HasFlag:sociologist_listen"], "effects": {"Happiness": 8, "Social": 4, "Education": 2},
+       "result": "Görüşmeciler formu en sona bıraktı. Araştırma, ülkede yalnızlık üzerine yapılmış en insani çalışma olarak anıldı."}
+    ]
+  }
+]

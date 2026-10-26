@@ -1,0 +1,401 @@
+[
+  {
+    "id": "job_ship_captain_1", "title": "Pasifik'te Fırtına", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ship_captain"],
+    "description": "Gece nöbetindesin ve barometre bir saattir düşüyor. Kaptan uyuyor, köprüüstünde yalnızca dümenci ve radarın yeşil ışığı var. Rotayı değiştirmek iki gün kaybettirir; değiştirmemek, dalgaların ortasına girmek demek.",
+    "choices": [
+      {"id": "wake", "text": "Kaptanı uyandır.", "effects": {"Social": 2, "Education": 2},
+       "result": "Kaptan homurdanarak geldi, barometreye baktı ve rotayı değiştirdi. Sabah sana bir fincan kahve uzattı."},
+      {"id": "change", "text": "Rotayı kendin değiştir.", "effects": {"Happiness": 3, "Education": 3}, "set": ["ship_captain_storm"],
+       "result": "Fırtına uzaktan geçti. Kaptan seyir defterine senin adını yazdı; bunun ne anlama geldiğini yıllar sonra anladın."},
+      {"id": "hold", "text": "Rotayı koru, yük zamanında yetişmeli.", "effects": {"Health": -3, "Money": 5000, "Happiness": -2},
+       "result": "Gemi on iki saat boyunca dalgalarla boğuştu. Konteynerlerden ikisi denize düştü."}
+    ]
+  },
+  {
+    "id": "job_ship_captain_2", "title": "Sal", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ship_captain", "MinCareerLevel:2"],
+    "description": "Dürbünle ufka bakarken bir şişme bot görüyorsun; içinde on beş kişi, aralarında çocuklar var. Şirket talimatı açık: rotadan sapma, yetkililere bildir ve geç. Limana varış takvimi zaten gecikmeli.",
+    "choices": [
+      {"id": "rescue", "text": "Gemiyi durdur, hepsini güverteye al.", "effects": {"Happiness": 6, "Social": 3, "Money": -15000},
+       "result": "Limanda günlerce bekletildiniz, şirket ceza kesti. Bir çocuk, ayrılırken sana yaptığı resmi verdi."},
+      {"id": "report", "text": "Konumu bildir ve geç.", "effects": {"Happiness": -6},
+       "result": "Sahil güvenlik yola çıktığını söyledi. Bir daha o botun ne olduğunu hiç öğrenemedin."},
+      {"id": "stay", "text": "Yanlarında bekle, kurtarma ekibine eşlik et.", "effects": {"Happiness": 3, "Money": -5000, "Social": 1},
+       "result": "Altı saat motorları rölantide tuttun. Kurtarma gemisi geldiğinde mürettebatın alkışladı."}
+    ]
+  },
+  {
+    "id": "job_ship_captain_3", "title": "Son Sefer", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ship_captain", "MinCareerLevel:3"],
+    "description": "Otuz yıllık denizcilik hayatının son seferine çıkıyorsun. Kamarandaki fotoğraflarda büyüyen çocuklar, kaçırılmış doğum günleri var. Genç ikinci kaptan, köprüüstünde senin her hareketini izliyor.",
+    "choices": [
+      {"id": "home", "text": "Son limanda gemiden in, eve uç.", "effects": {"Happiness": 5, "Social": 4},
+       "result": "Kapıyı açtığında sofra kurulmuştu. Denizin sesi kulaklarında haftalarca çınladı."},
+      {"id": "one_more", "text": "Bir sefer daha; deniz sensiz ne yapacak?", "effects": {"Money": 60000, "Happiness": -2, "Social": -2},
+       "result": "Para iyiydi ama telefonun öbür ucundaki sesler giderek yabancılaştı."},
+      {"id": "storm", "text": "İkinci kaptanı gece nöbetine al ve barometreyi okumayı öğret.", "requires": ["HasFlag:ship_captain_storm"], "effects": {"Happiness": 8, "Social": 3},
+       "result": "Barometre düştüğünde seni uyandırmadı; rotayı kendisi değiştirdi. Sabah seyir defterine onun adını sen yazdın."}
+    ]
+  },
+
+  {
+    "id": "job_underwater_welder_1", "title": "Kırk Metrede", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:underwater_welder"],
+    "description": "Kırk metre derinlikte, bir petrol platformunun ayağındasın. Görüş bir kol boyu, kulağında yalnızca kendi nefesin ve telsizden gelen cızırtı. Kaynak tamamlanmak üzereyken basınç göstergen hafifçe titriyor.",
+    "choices": [
+      {"id": "abort", "text": "İşi bırak ve kurallara uygun yüksel.", "effects": {"Health": 1, "Education": 2, "Money": -3000}, "set": ["underwater_welder_rules"],
+       "result": "Yüzeyde bir regülatör arızası tespit edildi. Usta dalgıç, «Yaşlı dalgıç cesur dalgıçtan iyidir,» dedi."},
+      {"id": "finish", "text": "Kaynağı bitir, iki dakika kaldı.", "effects": {"Money": 8000, "Health": -4, "Happiness": 1},
+       "result": "Kaynak bitti, ama yükselirken başın dönüyordu. Dekompresyon odasında saatlerce bekledin."},
+      {"id": "radio", "text": "Yüzeye bildir, kararı birlikte verin.", "effects": {"Social": 2, "Education": 1},
+       "result": "Yüzey ekibi seni çekti. Kaynağı ertesi gün, yeni ekipmanla tamamladın."}
+    ]
+  },
+  {
+    "id": "job_underwater_welder_2", "title": "Saturasyon Teklifi", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:underwater_welder", "MinCareerLevel:2"],
+    "description": "Kuzey Denizi'nde bir saturasyon dalışı teklifi var: yirmi sekiz gün boyunca basınçlı bir odada yaşayacak, her gün yüz metreye ineceksin. Ücret, bir yıllık kazancın kadar. Eşin telefonda sessiz.",
+    "choices": [
+      {"id": "go", "text": "Kabul et.", "effects": {"Money": 200000, "Health": -5, "Social": -3},
+       "result": "Yirmi sekiz gün boyunca sesin helyumdan incelmiş konuştun. Eve döndüğünde bir hafta boyunca uyudun."},
+      {"id": "decline", "text": "Reddet, kıyı işlerinde kal.", "effects": {"Happiness": 2, "Social": 2},
+       "result": "Para daha azdı ama akşamları evdeydin. Bazen o denizi merak ettin."},
+      {"id": "train", "text": "Önce ek eğitim al, bir sonraki sezona hazırlan.", "cost": 15000, "effects": {"Education": 4, "Health": 1},
+       "result": "Sertifikan geldiğinde daha hazırdın. Bir sonraki teklif daha iyi koşullarla geldi."}
+    ]
+  },
+  {
+    "id": "job_underwater_welder_3", "title": "Kulak Zarı", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:underwater_welder", "MinCareerLevel:3"],
+    "description": "Doktor, eklemlerinde basınç hasarının başladığını söylüyor. Ellerin hâlâ sağlam ama sabahları dizlerin kilitleniyor. Dalış şefi olarak suya girmeden ekip yönetmek mümkün; ama denizi özlemek de.",
+    "choices": [
+      {"id": "surface", "text": "Suya girmeyi bırak, yüzeyden yönet.", "effects": {"Health": 4, "Happiness": 1, "Social": 2},
+       "result": "Telsizin öbür ucunda gençlerin nefeslerini dinliyorsun. Bazen kendi nefesini duyar gibi oluyorsun."},
+      {"id": "dive", "text": "Bir sezon daha dal.", "effects": {"Money": 80000, "Health": -5},
+       "result": "Sezon bitti ama dizlerin bir daha eskisi gibi olmadı."},
+      {"id": "rules", "text": "İlk dalışında öğrendiğin kuralı bir güvenlik eğitimine dönüştür.", "requires": ["HasFlag:underwater_welder_rules"], "effects": {"Happiness": 7, "Social": 4, "Health": 3},
+       "result": "Eğitimin şirket standardı oldu. O yıl ekipte dekompresyon vakası sıfırdı."}
+    ]
+  },
+
+  {
+    "id": "job_organic_farmer_1", "title": "Böcekler Geldi", "category": "Career", "minAge": 17, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:organic_farmer"],
+    "description": "Domates fidelerinin yaprakları bir sabah delik deşik. Komşu çiftçi elinde bir ilaç şişesiyle çitin öbür yanından sesleniyor: «Bir kere sıkarsın, kimse anlamaz.» Organik sertifikan için denetim iki ay sonra.",
+    "choices": [
+      {"id": "spray", "text": "Bir kerelik ilaçla.", "effects": {"Money": 10000, "Happiness": -4},
+       "result": "Hasat kurtuldu. Pazarda «organik» tabelasının altında dururken müşterilerin gözlerine bakamadın."},
+      {"id": "natural", "text": "Uğur böcekleri ve sarımsak suyuyla mücadele et.", "effects": {"Education": 3, "Happiness": 3, "Money": -5000}, "set": ["organic_farmer_honest"],
+       "result": "Hasadın üçte biri gitti. Ama sonraki yıl böcekler gelmedi; tarlan kendi dengesini kurmuştu."},
+      {"id": "neighbors", "text": "Diğer organik çiftçilere sor.", "effects": {"Social": 3, "Education": 2},
+       "result": "Bir kooperatif toplantısına davet edildin. Çözüm ve dostluk aynı akşam geldi."}
+    ]
+  },
+  {
+    "id": "job_organic_farmer_2", "title": "Kuraklık Yazı", "category": "Career", "minAge": 19, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:organic_farmer", "MinCareerLevel:2"],
+    "description": "Üç aydır yağmur yağmadı. Kuyunun suyu azaldı ve köyün kooperatifi suyu kota ile dağıtıyor. Büyük bir firma, toprağını kiralayıp sera kurmak istiyor; kendi kuyusunu açacak.",
+    "choices": [
+      {"id": "lease", "text": "Toprağı kirala, birkaç yıl nefes al.", "effects": {"Money": 80000, "Happiness": -3},
+       "result": "Seralar kuruldu. Firmanın kuyusu köyün yeraltı suyunu çekti ve komşular seninle konuşmayı bıraktı."},
+      {"id": "drip", "text": "Birikimini damla sulamaya yatır.", "cost": 30000, "effects": {"Happiness": 4, "Education": 2},
+       "result": "Su yarıya indi, hasadın ayakta kaldı. Komşular nasıl yaptığını görmeye geldi."},
+      {"id": "fallow", "text": "Tarlanın yarısını nadasa bırak.", "effects": {"Money": -10000, "Happiness": 1, "Health": 1},
+       "result": "O yıl az kazandın. Ama toprak dinlendi ve ertesi yıl seni şaşırttı."}
+    ]
+  },
+  {
+    "id": "job_organic_farmer_3", "title": "Toprağın Mirası", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:organic_farmer", "MinCareerLevel:3"],
+    "description": "Bir müteahhit, köyün kenarındaki çiftliğin için bir servet teklif ediyor; yerine villalar yapılacak. Kooperatif başkanı olarak senin kararın, diğer çiftçileri de etkileyecek. Akşam güneşi, tarlanın üzerinde turuncu bir örtü gibi.",
+    "choices": [
+      {"id": "sell", "text": "Sat; yorgunsun ve bu bir fırsat.", "effects": {"Money": 400000, "Happiness": -3, "Social": -3},
+       "result": "Villalar iki yılda yükseldi. Bazen eski tarlanın üzerinden geçen yoldan kasıtlı olarak geçmedin."},
+      {"id": "school", "text": "Çiftliği bir tarım okuluna dönüştür.", "effects": {"Happiness": 6, "Social": 4, "Money": -20000},
+       "result": "Şehirden gelen gençler toprağa dokunmayı öğrendi. Bazıları hiç geri dönmedi."},
+      {"id": "seed", "text": "İlk yıl ilaç kullanmadığın o tarlanın tohumlarıyla bir tohum bankası kur.", "requires": ["HasFlag:organic_farmer_honest"], "effects": {"Happiness": 8, "Social": 3, "Education": 2},
+       "result": "Yerel tohumlar köyden köye dağıldı. Müteahhit başka bir tarla aradı; bulamadı."}
+    ]
+  },
+
+  {
+    "id": "job_beekeeper_1", "title": "Oğul Verdi", "category": "Career", "minAge": 17, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:beekeeper"],
+    "description": "Bahar sabahı, kovanlardan birinden binlerce arı fışkırıp yakındaki bir çam ağacına kümelendi. Uğultusu o kadar güçlü ki göğsünde hissediyorsun. Ağaç yüksek ve merdiven kısa.",
+    "choices": [
+      {"id": "climb", "text": "Merdivenin ucuna çık, oğulu sepete al.", "effects": {"Health": -2, "Happiness": 4, "Education": 2}, "set": ["beekeeper_swarm"],
+       "result": "Sepet ağırlaştığında kraliçenin içinde olduğunu bildin. Yeni kovanın, en çalışkan kovanın oldu."},
+      {"id": "let_go", "text": "Bırak gitsinler, doğa bu.", "effects": {"Happiness": 1, "Money": -3000},
+       "result": "Bir saat sonra ağaç boştu. Bir yerlerde, bir duvar kovuğunda yeni bir hayat başladı."},
+      {"id": "neighbor", "text": "Yaşlı arıcı komşunu çağır.", "effects": {"Social": 3, "Education": 2},
+       "result": "Elleriyle, eldivensiz, oğulu sepete süpürdü. «Korkuyu koklarlar,» dedi gülerek."}
+    ]
+  },
+  {
+    "id": "job_beekeeper_2", "title": "İlaçlama Günü", "category": "Career", "minAge": 19, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:beekeeper", "MinCareerLevel:2"],
+    "description": "Kovanlarının önünde ölü arılar halı gibi serili. Yan vadideki büyük çiftlik, çiçeklenme döneminde yasaklı bir böcek ilacı kullanmış. Belediyede sana «kanıtın var mı?» diye soruyorlar.",
+    "choices": [
+      {"id": "sue", "text": "Numune al, laboratuvara gönder ve dava aç.", "cost": 10000, "effects": {"Happiness": 3, "Social": -2, "Education": 2},
+       "result": "Dava iki yıl sürdü ve kazandın. Tazminat azdı ama çiftlik bir daha çiçeklenmede ilaç kullanmadı."},
+      {"id": "move", "text": "Kovanlarını dağa, başka bir yere taşı.", "effects": {"Money": -8000, "Health": -1, "Happiness": 1},
+       "result": "Yeni yer daha uzaktı ama kekik kokuyordu. Arılar yavaş yavaş toparlandı."},
+      {"id": "talk", "text": "Çiftlik sahibiyle yüz yüze konuş.", "requires": ["MinStat:Social:50"], "effects": {"Social": 3, "Happiness": 2},
+       "result": "Ölü arıları bir kutuda götürdün. Adam uzun süre baktı, sonra ilaçlama takvimini seninle birlikte yaptı."}
+    ]
+  },
+  {
+    "id": "job_beekeeper_3", "title": "Bal Markası", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:beekeeper", "MinCareerLevel:3"],
+    "description": "Kestane balın bir yarışmada birinci oldu ve büyük bir zincir market hepsini almak istiyor. Ama sözleşme, şekerle beslenen kovanlardan gelen ucuz balı da senin etiketinle satmayı içeriyor. Kavanozların ışıkta koyu amber gibi parlıyor.",
+    "choices": [
+      {"id": "sign", "text": "İmzala; adını büyütmenin tek yolu bu.", "effects": {"Money": 150000, "Happiness": -5},
+       "result": "Etiketin her rafta. Ama tadına baktığın bir kavanoz, senin balın değildi."},
+      {"id": "small", "text": "Reddet, küçük ve gerçek kal.", "effects": {"Happiness": 5, "Social": 2},
+       "result": "Müşterilerin her yıl aynı haftada kapına geldi. Bazıları çocuklarını da getirdi."},
+      {"id": "swarm", "text": "Ağaçtan aldığın o ilk oğulun soyundan kovanlar dağıt, köylülere arıcılık öğret.", "requires": ["HasFlag:beekeeper_swarm"], "effects": {"Happiness": 8, "Social": 5},
+       "result": "On köyde yüz yeni kovan uğuldamaya başladı. Kestane ormanları o yıl hiç olmadığı kadar tozlandı."}
+    ]
+  },
+
+  {
+    "id": "job_forest_ranger_1", "title": "Duman", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:forest_ranger"],
+    "description": "Yangın gözetleme kulesinde yalnız üçüncü haftan. Öğleden sonra rüzgâr dönerken uzaktaki sırtta ince, gri bir duman çizgisi görüyorsun. Mangal dumanı mı, yoksa başlangıç mı; dürbün tam seçemiyor.",
+    "choices": [
+      {"id": "alarm", "text": "Hemen alarm ver.", "effects": {"Social": 2, "Happiness": 2}, "set": ["forest_ranger_alarm"],
+       "result": "Ekipler yarım saatte vardı; küçük bir anız yangınıydı ve büyümeden söndü. Şef sana «iyi göz» dedi."},
+      {"id": "wait", "text": "Birkaç dakika daha izle.", "effects": {"Happiness": -3},
+       "result": "Duman kalınlaştı, sonra alarm verdin. Yetiştiler ama üç hektar kül oldu."},
+      {"id": "go", "text": "Arazi aracıyla kendin bak.", "effects": {"Health": -2, "Education": 2},
+       "result": "Bir piknik ateşiydi. Aileyi uyardın; dönüşte kule yolunda bir tilki seni izledi."}
+    ]
+  },
+  {
+    "id": "job_forest_ranger_2", "title": "Kaçak Kesim", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:forest_ranger", "MinCareerLevel:2"],
+    "description": "Devriyede, gece kesilmiş yüz yıllık meşelerin kütüklerini buluyorsun. Lastik izleri köyün muhtarının kamyonuna çıkıyor. Muhtar seni çaya çağırıyor ve cebinden bir zarf çıkarıyor.",
+    "choices": [
+      {"id": "report", "text": "Zarfı reddet ve tutanak tut.", "effects": {"Happiness": 4, "Social": -4},
+       "result": "Dava açıldı. Köyde seninle selamlaşan pek kimse kalmadı, ama ağaçlar yerinde durdu."},
+      {"id": "take", "text": "Zarfı al, görmezden gel.", "effects": {"Money": 30000, "Happiness": -6},
+       "result": "Ertesi yıl kesim büyüdü. Ormanda yürürken kütüklerin arasından geçmek zorunda kaldın."},
+      {"id": "plant", "text": "Muhtardan, kesilen her ağaç için on fidan diktirmesini iste.", "requires": ["MinStat:Social:50"], "effects": {"Happiness": 2, "Social": 2},
+       "result": "Köylüler bir hafta sonu fidan dikti. Yasal değildi ama orman için belki daha iyiydi."}
+    ]
+  },
+  {
+    "id": "job_forest_ranger_3", "title": "Büyük Yangın", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:forest_ranger", "MinCareerLevel:3"],
+    "description": "Kırk derece sıcak ve saatte altmış kilometre rüzgâr. Alevler bölgenin en yaşlı ormanına ve iki köye aynı anda ilerliyor. Elindeki ekip ikisini birden korumaya yetmiyor.",
+    "choices": [
+      {"id": "villages", "text": "Köyleri koru, ormanı bırak.", "effects": {"Happiness": -2, "Social": 4, "Health": -2},
+       "result": "Kimse ölmedi, hiçbir ev yanmadı. Yaşlı orman ise kara bir iskelete döndü."},
+      {"id": "forest", "text": "Köyleri tahliye et, ekibi ormana yönlendir.", "effects": {"Happiness": 1, "Social": -2, "Health": -3},
+       "result": "Ormanın kalbi kurtuldu. Köylerde altı ev yandı ve sahipleri seni affetmedi."},
+      {"id": "early", "text": "Yıllardır kurduğun erken uyarı ağını devreye sok, gönüllüleri çağır.", "requires": ["HasFlag:forest_ranger_alarm"], "effects": {"Happiness": 8, "Social": 5, "Health": -2},
+       "result": "İlk dumandan beri kurduğun gözcü ağı yüzlerce kişiyi saatler önce yerine getirdi. Hem köyler hem orman ayakta kaldı."}
+    ]
+  },
+
+  {
+    "id": "job_landscape_architect_1", "title": "Çınarın Yeri", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:landscape_architect"],
+    "description": "Bir alışveriş merkezinin önüne meydan tasarlıyorsun. Projenin tam ortasında üç yüz yıllık bir çınar var; işveren onun kesilmesini ve yerine bir süs havuzu yapılmasını istiyor. Çınarın gölgesinde oturan yaşlılar sana bakıyor.",
+    "choices": [
+      {"id": "save", "text": "Tasarımı çınarın etrafında yeniden kur.", "effects": {"Happiness": 4, "Education": 2, "Money": -5000}, "set": ["landscape_architect_tree"],
+       "result": "İşveren itiraz etti ama çizimlerini görünce sustu. Meydan, ağacın etrafında bir oturma çemberine dönüştü."},
+      {"id": "cut", "text": "İstenen tasarımı yap.", "effects": {"Money": 15000, "Happiness": -4},
+       "result": "Havuz parlak ve yeniydi. Yaşlılar başka bir gölge bulmak için meydanı terk etti."},
+      {"id": "petition", "text": "Mahalleliyi toplantıya çağır.", "requires": ["MinStat:Social:50"], "effects": {"Social": 4, "Happiness": 2},
+       "result": "Toplantıya iki yüz kişi geldi. Çınar tescil edildi ve proje senin elinden alındı."}
+    ]
+  },
+  {
+    "id": "job_landscape_architect_2", "title": "Su Faturası", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:landscape_architect", "MinCareerLevel:2"],
+    "description": "Lüks bir site, her yeri çim kaplı bir bahçe istiyor. Bölge kuraklıkla boğuşuyor ve çim, bir köyün içme suyu kadar su tüketecek. Müşteri, «Parasını ödüyoruz,» diyor.",
+    "choices": [
+      {"id": "lawn", "text": "Çimi ek; müşteri ne isterse.", "effects": {"Money": 40000, "Happiness": -3},
+       "result": "Bahçe kartpostal gibiydi. Bir yaz sonra su kısıtlamasıyla sarardı."},
+      {"id": "native", "text": "Yerel, kuraklığa dayanıklı bitkiler öner.", "requires": ["MinStat:Education:60"], "effects": {"Money": 25000, "Happiness": 4, "Education": 2},
+       "result": "Müşteri önce burun kıvırdı. Sonra adaçayı ve lavanta açtığında komşu siteler de seni aradı."},
+      {"id": "walk", "text": "İşi bırak.", "effects": {"Happiness": 1, "Money": -5000},
+       "result": "Başka bir ofis çimi ekti. Sen o yaz bir okul bahçesi tasarladın."}
+    ]
+  },
+  {
+    "id": "job_landscape_architect_3", "title": "Şehrin Ciğeri", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:landscape_architect", "MinCareerLevel:3"],
+    "description": "Belediye, kapatılan eski bir havaalanını şehir parkına dönüştürme yarışması açtı. Pist bir kilometre uzunluğunda, toprak ise onlarca yılın yakıtıyla kirlenmiş. Ekibin ve çizim masan seni bekliyor.",
+    "choices": [
+      {"id": "wild", "text": "Yabani bir doğa parkı tasarla; zaman iyileştirsin.", "effects": {"Happiness": 5, "Education": 3},
+       "result": "Jüri ikiye bölündü ama sen kazandın. Yirmi yıl sonra pistin çatlaklarından ağaçlar yükseliyordu."},
+      {"id": "events", "text": "Konserler ve festivaller için bir alan tasarla.", "effects": {"Money": 60000, "Social": 3},
+       "result": "Park her hafta sonu doldu. Kuşlar ise başka yerlere taşındı."},
+      {"id": "tree", "text": "Yıllar önce kurtardığın çınarın tohumlarından bir koru ekle.", "requires": ["HasFlag:landscape_architect_tree"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "Fidanlar o eski meydanın çocuklarıyla dikildi. Park açıldığında, çınarın torunları pistin kenarında yükseliyordu."}
+    ]
+  },
+
+  {
+    "id": "job_marine_biologist_1", "title": "Ağa Takılan", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:marine_biologist"],
+    "description": "Araştırma teknesinde, terk edilmiş bir balık ağına dolanmış bir deniz kaplumbağası buluyorsun. Yüzgeci kesilmek üzere, nefes almak için yüzeye çıkamıyor. Teknedeki tek bıçak sende ve dalga yükseliyor.",
+    "choices": [
+      {"id": "dive", "text": "Suya atla, ağı kes.", "effects": {"Health": -2, "Happiness": 5}, "set": ["marine_biologist_turtle"],
+       "result": "Ağ koptuğunda kaplumbağa bir an sana baktı ve derinlere süzüldü. Yüzgecine bir takip çipi taktın."},
+      {"id": "boat", "text": "Tekneyi yanaştır, güverteden çek.", "effects": {"Education": 2, "Happiness": 2},
+       "result": "Zor oldu ama başardınız. Veteriner, yüzgecin iyileşeceğini söyledi."},
+      {"id": "record", "text": "Önce belgele; bu, araştırman için kanıt.", "effects": {"Education": 3, "Happiness": -3},
+       "result": "Videoyu çektin, sonra ağı kestiniz. Kaplumbağa çok yorgundu; yüzüşünü uzun süre izledin."}
+    ]
+  },
+  {
+    "id": "job_marine_biologist_2", "title": "Fon Kesildi", "category": "Career", "minAge": 26, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:marine_biologist", "MinCareerLevel:2"],
+    "description": "Mercan resifi projenin fonu bitti. Bir petrol şirketi, çevresel etki raporu için ekibine cömert bir bütçe öneriyor. Raporun sonucunu ise şirketin hukuk ekibi gözden geçirecek.",
+    "choices": [
+      {"id": "accept", "text": "Kabul et; veri veridir.", "effects": {"Money": 60000, "Happiness": -3, "Education": 2},
+       "result": "Ekibin dağılmadı. Raporundaki iki cümlenin son hâlinde yer almadığını ise sonra fark ettin."},
+      {"id": "crowd", "text": "Halktan bağış kampanyası başlat.", "requires": ["MinStat:Social:55"], "effects": {"Social": 4, "Happiness": 4, "Money": 10000},
+       "result": "Mercanların videoları binlerce kez paylaşıldı. Fon küçüktü ama tamamen senindi."},
+      {"id": "volunteer", "text": "Projeyi gönüllülerle sürdür.", "effects": {"Happiness": 2, "Health": -2, "Money": -10000},
+       "result": "Hafta sonları dalış kulüpleriyle çalıştın. Veriler yavaş geldi ama dürüsttü."}
+    ]
+  },
+  {
+    "id": "job_marine_biologist_3", "title": "Koruma Alanı", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:marine_biologist", "MinCareerLevel:3"],
+    "description": "Bakanlık, bir körfezin deniz koruma alanı ilan edilmesi için senin raporunu bekliyor. Kararla birlikte yüzlerce kıyı balıkçısı av sahasını kaybedecek. Limanda, ağlarını onaran adamlar sana bakıyor.",
+    "choices": [
+      {"id": "full", "text": "Tam koruma öner.", "effects": {"Happiness": 3, "Social": -4, "Education": 2},
+       "result": "Körfez beş yılda canlandı. Balıkçıların bazıları seni hâlâ selamlamıyor."},
+      {"id": "zones", "text": "Balıkçılarla birlikte bölgeli bir plan hazırla.", "effects": {"Happiness": 4, "Social": 4, "Health": -1},
+       "result": "Aylarca kahvehanede toplantı yaptınız. Plan herkesin biraz vazgeçtiği, ama herkesin sahiplendiği bir şey oldu."},
+      {"id": "turtle", "text": "Yıllar önce kurtardığın kaplumbağanın çip verilerini rapora ekle.", "requires": ["HasFlag:marine_biologist_turtle"], "effects": {"Happiness": 8, "Social": 3, "Education": 3},
+       "result": "Kaplumbağa her yıl aynı koya yumurtlamaya dönmüştü. Harita, körfezin neden korunması gerektiğini kelimelerden iyi anlattı."}
+    ]
+  },
+
+  {
+    "id": "job_winemaker_1", "title": "Erken Don", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:winemaker"],
+    "description": "Nisan gecesi, termometre sıfırın altına iniyor ve asmalar yeni sürgün vermiş. Yaşlı bağcılar sıraların arasında küçük ateşler yakmaya başladı; duman vadiyi kaplıyor. Uyumak mı, sabaha kadar ateş beklemek mi?",
+    "choices": [
+      {"id": "fires", "text": "Sabaha kadar ateş başında bekle.", "effects": {"Health": -2, "Happiness": 3, "Social": 2}, "set": ["winemaker_frost"],
+       "result": "Şafakta eller isliydi, gözler kızarıktı. Ama sürgünlerin çoğu yaşadı ve o yılın şarabının adı «Don Gecesi» oldu."},
+      {"id": "sleep", "text": "Sigortaya güven, uyu.", "effects": {"Health": 1, "Money": -8000},
+       "result": "Sabah sürgünlerin yarısı kararmıştı. Sigorta ödedi ama komşuların bakışını ödemedi."},
+      {"id": "learn", "text": "Yaşlı bağcıların yanında dur, ne yaptıklarını izle.", "effects": {"Education": 3, "Social": 2},
+       "result": "Gece boyunca bağ hikâyeleri anlattılar. Ateşleri nereye yakacağını o gece öğrendin."}
+    ]
+  },
+  {
+    "id": "job_winemaker_2", "title": "Puan Peşinde", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:winemaker", "MinCareerLevel:2"],
+    "description": "Ünlü bir eleştirmenin yüksek puan verdiği şaraplar hep aynı tatta: ağır meşe, yüksek alkol. Bölgenin geleneksel üzümüyse hafif ve asidik. Bir danışman, «Puanı isteyen meşe fıçı alır,» diyor.",
+    "choices": [
+      {"id": "oak", "text": "Fıçıları al, eleştirmenin damak zevkine göre yap.", "cost": 25000, "effects": {"Money": 60000, "Happiness": -2},
+       "result": "Puanın yüksekti, fiyatın da. Ama şarabın bütün dünyadaki bin şaraba benziyordu."},
+      {"id": "local", "text": "Yerel üzümün kendisi kalsın.", "effects": {"Happiness": 4, "Education": 2},
+       "result": "Puan alamadın. Ama bir lokanta sahibi şişeni masaya koyarken «Bu buranın tadı,» dedi."},
+      {"id": "both", "text": "İki seri yap: biri pazar için, biri kendin için.", "effects": {"Money": 25000, "Health": -2, "Happiness": 2},
+       "result": "İş yükü ikiye katlandı. Ama hangisinin gerçekten sen olduğunu biliyordun."}
+    ]
+  },
+  {
+    "id": "job_winemaker_3", "title": "Mahzendeki Şişe", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:winemaker", "MinCareerLevel:3"],
+    "description": "Mahzenin en dibinde, bağı ilk aldığın yılın tek kasası duruyor. Bir koleksiyoncu kasa için bir arabanın fiyatını teklif ediyor. Kızın ise yakında evlenecek.",
+    "choices": [
+      {"id": "sell", "text": "Kasayı sat.", "effects": {"Money": 200000, "Happiness": -1},
+       "result": "Para bağın yeni çatısını yaptı. Mahzen ise bir köşesi eksik gibi geldi sana."},
+      {"id": "wedding", "text": "Düğünde aç, herkese birer kadeh.", "effects": {"Happiness": 6, "Social": 4},
+       "result": "Kadehler kalktığında şarabın tadı tam olması gerektiği gibiydi: zamanın tadı."},
+      {"id": "frost", "text": "«Don Gecesi»nin son şişelerini, o gece ateş yakan bağcıların torunlarıyla paylaş.", "requires": ["HasFlag:winemaker_frost"], "effects": {"Happiness": 8, "Social": 5},
+       "result": "Bağın ortasında uzun bir masa kurdunuz. O gecenin hikâyesi, yeni bir kuşağın ağzında yeniden anlatıldı."}
+    ]
+  },
+
+  {
+    "id": "job_mushroom_grower_1", "title": "Küf", "category": "Career", "minAge": 17, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:mushroom_grower"],
+    "description": "Karanlık yetiştirme odasına girdiğinde tanıdık toprak kokusunun yerinde ekşi bir koku var. Raflardaki torbaların yarısında yeşil küf yayılmış. Restorana teslimat üç gün sonra.",
+    "choices": [
+      {"id": "burn", "text": "Bütün odayı boşalt ve sterilize et.", "effects": {"Money": -10000, "Education": 3, "Happiness": 1}, "set": ["mushroom_grower_clean"],
+       "result": "Teslimatı kaçırdın. Ama sonraki üretim bembeyaz ve sağlıklı çıktı."},
+      {"id": "sort", "text": "Temiz görünenleri ayıkla ve teslim et.", "effects": {"Money": 6000, "Happiness": -3},
+       "result": "Restoran memnundu. Bir hafta sonra küf öbür odaya da sıçradı."},
+      {"id": "ask", "text": "Bir mikolog arkadaşını ara.", "effects": {"Social": 3, "Education": 2},
+       "result": "Havalandırmadaki nemi gösterdi. Küçük bir değişiklik büyük bir sorunu çözdü."}
+    ]
+  },
+  {
+    "id": "job_mushroom_grower_2", "title": "Ormandaki Sır", "category": "Career", "minAge": 19, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:mushroom_grower", "MinCareerLevel:2"],
+    "description": "Yaşlı bir toplayıcı, ormanda yalnızca kendisinin bildiği bir kuzugöbeği alanını sana göstermeyi teklif ediyor. Karşılığında satışlarından pay istiyor. Kuzugöbeği kilosu, yetiştirdiğin mantarların on katı ediyor.",
+    "choices": [
+      {"id": "partner", "text": "Ortak ol, adil bir pay ver.", "effects": {"Money": 40000, "Social": 3, "Happiness": 2},
+       "result": "Her bahar sabahın beşinde ormana girdiniz. Sessiz bir dostluk kuruldu."},
+      {"id": "map", "text": "Yeri öğren, sonra kendi başına topla.", "effects": {"Money": 60000, "Happiness": -5, "Social": -4},
+       "result": "Kazancın iyiydi. Ama köyde adın, yaşlı adamın hikâyesiyle birlikte anılmaya başladı."},
+      {"id": "decline", "text": "Teşekkür et, yetiştiriciliğe odaklan.", "effects": {"Happiness": 1, "Education": 1},
+       "result": "Orman onun sırrı olarak kaldı. Sen kendi karanlık odalarına döndün."}
+    ]
+  },
+  {
+    "id": "job_mushroom_grower_3", "title": "Mantar Deri", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:mushroom_grower", "MinCareerLevel:3"],
+    "description": "Bir tasarım firması, mantar miselinden deri benzeri bir malzeme üretmek için tesisini kullanmak istiyor. Bu, geleneksel üretimini bırakman demek. Yıllardır besleyen restoran müşterilerin ne olacak?",
+    "choices": [
+      {"id": "pivot", "text": "Yeni malzemeye geç.", "effects": {"Money": 100000, "Happiness": 3, "Education": 3},
+       "result": "Tesisin bir moda haftasında konuşuldu. Restoranlar başka tedarikçiler buldu."},
+      {"id": "stay", "text": "Geleneksel üretimde kal.", "effects": {"Happiness": 2, "Social": 2},
+       "result": "Restoranların sadık kaldı. Bazen o kaçan treni düşündün."},
+      {"id": "clean", "text": "Steril üretim yöntemini iki işe birden uygula, tesisi büyüt.", "requires": ["HasFlag:mushroom_grower_clean"], "effects": {"Happiness": 7, "Money": 70000, "Social": 2},
+       "result": "İlk küften öğrendiğin hijyen düzeni sayesinde iki hat birbirini bulaştırmadı. Hem tabaklarda hem çantalarda senin miselin vardı."}
+    ]
+  },
+
+  {
+    "id": "job_fisher_1", "title": "Şafaktan Önce", "category": "Career", "minAge": 16, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:fisher"],
+    "description": "Saat dört, liman zifiri karanlık ve rüzgâr poyraza dönmüş. Reis, «Bugün çıkmayalım,» diyor ama tekne kredisinin taksiti üç gün sonra. Martılar daha uyanmadı bile.",
+    "choices": [
+      {"id": "go", "text": "Çık; taksit beklemez.", "effects": {"Money": 6000, "Health": -3, "Happiness": -1},
+       "result": "Dalgalar teknenin burnunu dövdü. Ağlar yarı doluydu ama eve sağ döndün."},
+      {"id": "stay", "text": "Reisi dinle, limanda kal.", "effects": {"Happiness": 1, "Social": 2, "Money": -2000}, "set": ["fisher_respect"],
+       "result": "Kahvede çay içip ağ onardınız. O gün denize çıkan bir tekne geri dönmedi."},
+      {"id": "nets", "text": "Ağları onar, öğleden sonra rüzgâr dinerse çık.", "effects": {"Education": 2, "Money": 2000},
+       "result": "Öğleden sonra deniz durgunlaştı. Az ama taze bir avla döndün."}
+    ]
+  },
+  {
+    "id": "job_fisher_2", "title": "Yavru Balık", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:fisher", "MinCareerLevel:2"],
+    "description": "Ağ ağırlaştı; güvertede gümüş gibi parlayan yüzlerce yavru levrek var. Yasal boyun altındalar, ama balıkhane sormadan alıyor. Denize geri atarsan çoğu zaten yaşamayacak.",
+    "choices": [
+      {"id": "sell", "text": "Hepsini balıkhaneye götür.", "effects": {"Money": 10000, "Happiness": -3},
+       "result": "Para iyiydi. Ertesi yıl levrek sürüleri incelmişti."},
+      {"id": "release", "text": "Hepsini denize geri dök.", "effects": {"Happiness": 4, "Money": -3000},
+       "result": "Bir kısmı yüzüp gitti, bir kısmı martılara yem oldu. Yine de içinde bir rahatlık vardı."},
+      {"id": "mesh", "text": "Bundan sonra daha büyük gözlü ağa geç.", "cost": 8000, "effects": {"Happiness": 3, "Education": 2},
+       "result": "Avın biraz azaldı ama büyüdü. Diğer balıkçılar önce güldü, sonra sordu."}
+    ]
+  },
+  {
+    "id": "job_fisher_3", "title": "Teknenin Adı", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:fisher", "MinCareerLevel:3"],
+    "description": "Teknen artık yaşlandı, sen de. Bir yatırımcı kıyıdaki ağ evini bir balık lokantasına dönüştürmek istiyor. Yeğenin ise teknenin dümenine geçmeye can atıyor.",
+    "choices": [
+      {"id": "sell", "text": "Ağ evini sat.", "effects": {"Money": 150000, "Happiness": -2},
+       "result": "Lokanta açıldı, menüde senin adını taşıyan bir yemek vardı. Ağlarının asılı olduğu yerde artık masalar duruyordu."},
+      {"id": "nephew", "text": "Tekneyi yeğenine devret.", "effects": {"Happiness": 5, "Social": 3},
+       "result": "İlk seferine sen de bindin. Dümende kendi gençliğini gördün."},
+      {"id": "respect", "text": "Yeğenine her şeyden önce, denize çıkmama cesaretini öğret.", "requires": ["HasFlag:fisher_respect"], "effects": {"Happiness": 8, "Social": 3},
+       "result": "Bir poyraz sabahı limanda kaldı ve kahvede seninle çay içti. O an tekneyi gerçekten devrettiğini anladın."}
+    ]
+  }
+]

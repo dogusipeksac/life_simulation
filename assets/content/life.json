@@ -1,0 +1,14 @@
+{
+  "declineStartAge": 35,
+  "baseYearlyLoss": 1,
+  "extraLossEveryYears": 13,
+  "recoveryPerYear": 2,
+  "lowHappinessThreshold": 30,
+  "lowHappinessExtraLoss": 1,
+  "flagModifiers": {
+    "exercises": -1,
+    "smoker": 2,
+    "chronic_back_pain": 1,
+    "burnout": 1
+  }
+}

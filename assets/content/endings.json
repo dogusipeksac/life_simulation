@@ -1,0 +1,18 @@
+[
+  {"id": "ending_legendary", "title": "Efsanevi Bir Ömür", "priority": 100, "conditions": ["MinAge:95"],
+   "text": "Doksan beş yılı aşan bir hayat. Mahallede çocuklar senin hikâyelerinle büyüdü; adın, sokağın en yaşlı çınarıyla birlikte anılır oldu."},
+  {"id": "ending_early_farewell", "title": "Erken Veda", "priority": 90, "conditions": ["MaxAge:50"],
+   "text": "Hayat sana fazla zaman tanımadı. Ama yarım kalan cümlelerin bile, seni tanıyanların aklında hâlâ yankılanıyor."},
+  {"id": "ending_buried_in_debt", "title": "Borçlar Arasında", "priority": 85, "conditions": ["HasFlag:bankrupt"],
+   "text": "Son yıllar faturalar ve ihtarnameler arasında geçti. Yine de kapını çalan dostlar, hesap defterinde yazmayan bir zenginlikti."},
+  {"id": "ending_full_table", "title": "Kalabalık Bir Sofra", "priority": 70, "conditions": ["HasFlag:married", "HasFlag:has_child", "MinStat:Happiness:60"],
+   "text": "Uzun masanın etrafında çocuklar, belki torunlar. Bayramlarda evin her odasından bir kahkaha yükselirdi. Bıraktığın en büyük miras buydu."},
+  {"id": "ending_scholar", "title": "Bilgenin Yolu", "priority": 65, "conditions": ["MinEducation:Master", "HadCareer:academic"],
+   "text": "Kütüphanelerde, kürsülerde, öğrencilerin sorularında geçen bir ömür. Yazdığın kitaplar senden sonra da okunmaya devam edecek."},
+  {"id": "ending_lonely_fortune", "title": "Servetin Gölgesinde", "priority": 60, "conditions": ["MinStat:Money:15000000", "NotHasFlag:married"],
+   "text": "Banka hesapların kabarıktı, evin büyüktü. Ama akşamları sofrada tek bir tabak vardı. Paranın satın alamadığı şeyleri geç fark ettin."},
+  {"id": "ending_peaceful_retirement", "title": "Huzurlu Emeklilik", "priority": 40, "conditions": ["HasFlag:retired", "MinStat:Happiness:60"],
+   "text": "Çalışma yıllarının ardından gelen sakin günler. Sabah çayları, bahçe işleri, uzun sohbetler. Hayat, sonunda acele etmeyi bıraktı."},
+  {"id": "ending_ordinary", "title": "Sıradan Ama Senin", "priority": 0,
+   "text": "Ne destanlık ne trajik bir hayat. İyi günler, kötü günler, unutulan doğum günleri ve hatırlanan küçük anlar. Sıradan belki; ama tamamen senindi."}
+]

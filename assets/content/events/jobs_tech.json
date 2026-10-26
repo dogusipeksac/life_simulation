@@ -1,0 +1,401 @@
+[
+  {
+    "id": "job_software_dev_1", "title": "Cuma Akşamı Dağıtımı", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:software_dev"],
+    "description": "Cuma, saat 17.40. Ofis boşalmaya başladı ve yazdığın ilk büyük özellik canlıya çıkmayı bekliyor. Testler yeşil ama içinden bir ses, ödeme ekranındaki o kenar durumunu hiç denemediğini fısıldıyor.",
+    "choices": [
+      {"id": "deploy", "text": "Yeşil yeşildir; dağıt ve çık.", "effects": {"Happiness": 2, "Health": -1},
+       "result": "Cumartesi sabahı telefonun on yedi kez çaldı. Hafta sonunu bir kafede, dizüstüne gömülü geçirdin."},
+      {"id": "monday", "text": "Pazartesiye ertele, kenar durumu test et.", "effects": {"Education": 3, "Happiness": 1}, "set": ["software_dev_careful"],
+       "result": "Pazartesi hatayı buldun; ödeme iki kez çekilecekti. Kod incelemesinde kıdemli geliştirici adını not aldı."},
+      {"id": "pair", "text": "Kıdemli bir arkadaşı birlikte bakmaya ikna et.", "requires": ["MinStat:Social:45"], "effects": {"Social": 3, "Education": 2},
+       "result": "Yarım saat ekrana birlikte baktınız. Hatayı o buldu, ama nasıl düşündüğünü sen öğrendin."}
+    ]
+  },
+  {
+    "id": "job_software_dev_2", "title": "Karanlık Desen", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:software_dev", "MinCareerLevel:2"],
+    "description": "Ürün ekibi, abonelik iptal düğmesini beş ekran derine gömmeni istiyor. Toplantıda herkes rakamlara bakıyor; iptal oranı yüzde otuz düşecekmiş. Kimse kullanıcının o beş ekranda ne hissedeceğini sormuyor.",
+    "choices": [
+      {"id": "build", "text": "İsteneni yap; karar senin değil.", "effects": {"Money": 15000, "Happiness": -4},
+       "result": "Prim geldi. Annen aboneliğini iptal edemediğini söyleyip seni aradığında ekrana uzun süre baktın."},
+      {"id": "object", "text": "Toplantıda itiraz et ve verileri göster.", "requires": ["MinStat:Education:60"], "effects": {"Happiness": 3, "Social": 2, "Education": 1},
+       "result": "Ekran görüntüleri ve şikâyet istatistikleriyle konuştun. Düğme iki ekrana indi; küçük ama gerçek bir zafer."},
+      {"id": "slow", "text": "İşi ağırdan al, unutulmasını bekle.", "effects": {"Happiness": 1, "Social": -2},
+       "result": "Görev üç sprint boyunca bekledi. Sonunda başka bir ekibe verildi ve yöneticin bunu not etti."}
+    ]
+  },
+  {
+    "id": "job_software_dev_3", "title": "Eski Kod", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:software_dev", "MinCareerLevel:3"],
+    "description": "Şirketin kalbi, on yıl önce yazılmış ve kimsenin dokunmaya cesaret edemediği bir modül. Yeni direktör hepsinin baştan yazılmasını istiyor ve projeyi sana veriyor. İlk satırlarda, yıllar önceki kendi yorumlarını tanıyorsun.",
+    "choices": [
+      {"id": "rewrite", "text": "Cesur ol, sıfırdan yaz.", "effects": {"Health": -3, "Happiness": 3, "Money": 40000},
+       "result": "On sekiz ay sürdü, iki kez ertelendi. Ama yeni sistem açıldığında ekip ilk kez nefes aldı."},
+      {"id": "refactor", "text": "Parça parça, test yazarak dönüştür.", "effects": {"Education": 3, "Happiness": 2, "Social": 2},
+       "result": "Kimse büyük bir lansman görmedi. Ama bir yıl sonra eski modülden geriye tek satır kalmamıştı."},
+      {"id": "careful", "text": "Yıllar önceki o cuma akşamından kalan test notlarını ekiple paylaş.", "requires": ["HasFlag:software_dev_careful"], "effects": {"Happiness": 7, "Social": 4, "Education": 2},
+       "result": "Genç geliştiriciler eski notlarını bir belgeye dönüştürdü. Adı ekipte bir şaka oldu: «Pazartesi kuralı.»"}
+    ]
+  },
+
+  {
+    "id": "job_ai_ethicist_1", "title": "Tarafsız Değil", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ai_ethicist"],
+    "description": "Bir bankanın kredi modelini denetliyorsun. Veriler, belirli posta kodlarında yaşayanların sistematik olarak reddedildiğini gösteriyor; model kimsenin kökenini sormuyor ama adresi biliyor. Raporun yarın yönetim kuruluna gidecek.",
+    "choices": [
+      {"id": "full", "text": "Bulguyu açıkça, tüm çıplaklığıyla yaz.", "effects": {"Happiness": 3, "Social": -2, "Education": 2}, "set": ["ai_ethicist_report"],
+       "result": "Toplantı buz gibi geçti. Ama bir ay sonra modelin o değişkeni sessizce kaldırıldı."},
+      {"id": "soft", "text": "Dili yumuşat, «iyileştirme alanı» olarak sun.", "effects": {"Money": 10000, "Happiness": -3},
+       "result": "Rapor teşekkürle kabul edildi ve bir klasöre girdi. Bir daha kimse ona bakmadı."},
+      {"id": "fix", "text": "Sorunu çözecek alternatif bir model öner.", "requires": ["MinStat:Education:75"], "effects": {"Education": 3, "Happiness": 2, "Health": -1},
+       "result": "Haftalarca gece çalıştın. Yeni model biraz daha az kâr getirdi ama çok daha fazla insana kapı açtı."}
+    ]
+  },
+  {
+    "id": "job_ai_ethicist_2", "title": "Savunma Sözleşmesi", "category": "Career", "minAge": 26, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ai_ethicist", "MinCareerLevel:2"],
+    "description": "Çalıştığın şirket, otonom bir gözetleme sistemi için büyük bir savunma ihalesi kazandı. Senden etik çerçeveyi yazmanı, yani işin meşru görünmesini sağlamanı istiyorlar. Masanda iki sayfalık bir görev tanımı ve büyük bir prim teklifi var.",
+    "choices": [
+      {"id": "write", "text": "Yaz; en azından sınırları sen çiz.", "effects": {"Money": 60000, "Happiness": -3, "Education": 2},
+       "result": "Kırmızı çizgilerin çoğunu metne soktun. Hangilerinin uygulandığını ise hiç öğrenemedin."},
+      {"id": "resign", "text": "Bu projede yer almayacağını söyle.", "effects": {"Happiness": 4, "Social": 2, "Money": -15000},
+       "result": "Başka bir birime kaydırıldın, primin yandı. Birkaç meslektaşın sessizce elini sıktı."},
+      {"id": "public", "text": "Konuyu bir akademik panelde kamuoyuna aç.", "requires": ["MinStat:Social:60"], "effects": {"Social": 4, "Happiness": 3, "Money": -10000},
+       "result": "Konuşman videoya çekildi ve yayıldı. Şirketin hukuk birimi seninle ilk kez yüz yüze görüştü."}
+    ]
+  },
+  {
+    "id": "job_ai_ethicist_3", "title": "Kurulun Başında", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ai_ethicist", "MinCareerLevel:3"],
+    "description": "Ülkenin yapay zekâ düzenlemesini hazırlayan kurulda bir koltuk teklif ediliyor. Teknoloji şirketleri sana öğle yemeği davetleri gönderiyor; sivil toplum ise e-postalar. İkisinin de seni ne kadar sabırla beklediğini biliyorsun.",
+    "choices": [
+      {"id": "strict", "text": "Sıkı ve bağlayıcı kurallar için bastır.", "effects": {"Happiness": 4, "Social": -2, "Health": -1},
+       "result": "Yasa geçti ama sektör seni bir süre öğle yemeklerine çağırmadı. Torunların bunun neden önemli olduğunu öğrenecek."},
+      {"id": "balance", "text": "Şirketlerle uzlaşan bir çerçeve kur.", "effects": {"Money": 40000, "Social": 3, "Happiness": 1},
+       "result": "Herkes metinden biraz memnundu, kimse tam olarak değil. Belki de iyi bir uzlaşma böyle bir şeydi."},
+      {"id": "report", "text": "İlk denetim raporundaki posta kodu bulgusunu yasanın gerekçesine koy.", "requires": ["HasFlag:ai_ethicist_report"], "effects": {"Happiness": 8, "Social": 3, "Education": 2},
+       "result": "Yıllar önce buz gibi bir toplantıda okuduğun cümleler, şimdi yasanın ilk maddesindeydi."}
+    ]
+  },
+
+  {
+    "id": "job_security_expert_1", "title": "Gece Üçteki Alarm", "category": "Career", "minAge": 21, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:security_expert"],
+    "description": "Saat 03.12'de telefonun titriyor: bir hastanenin sunucularında olağan dışı veri akışı var. Kahveni bile yapmadan terminali açıyorsun; satırlar hızla akıyor. Saldırgan hâlâ içeride ve izlerini silmeye başlamış.",
+    "choices": [
+      {"id": "cut", "text": "Ağ bağlantısını hemen kes.", "effects": {"Education": 2, "Happiness": 1, "Health": -1},
+       "result": "Saldırı durdu ama hastanenin randevu sistemi altı saat çöktü. Sabah iki yüz kişi kapıda bekledi."},
+      {"id": "trace", "text": "İçeride bırak, izini sür ve kanıt topla.", "effects": {"Education": 4, "Health": -2}, "set": ["security_expert_trace"],
+       "result": "Dört saat boyunca nefesini tutarak izledin. Topladığın kayıtlar, aylar sonra bir şebekenin çökertilmesini sağladı."},
+      {"id": "call", "text": "Ekibi uyandır, birlikte karar verin.", "effects": {"Social": 3, "Education": 1},
+       "result": "Uykulu sesler bir çağrıda birleşti. Kararı paylaşmak, yükü de paylaşmak demekti."}
+    ]
+  },
+  {
+    "id": "job_security_expert_2", "title": "Fidye Notu", "category": "Career", "minAge": 23, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:security_expert", "MinCareerLevel:2"],
+    "description": "Danışmanlık verdiğin bir belediyenin bütün dosyaları şifrelendi; ekranda bir fidye notu ve geri sayım var. Yedekler eksik, belediye başkanı ödeme yapmak istiyor. Herkes senin ne diyeceğini bekliyor.",
+    "choices": [
+      {"id": "pay", "text": "Ödemeyi önerme ama engelleme de.", "effects": {"Money": 20000, "Happiness": -3},
+       "result": "Fidye ödendi, dosyaların yarısı geri geldi. Aynı grup altı ay sonra başka bir belediyeyi vurdu."},
+      {"id": "rebuild", "text": "Ödemeyin; sıfırdan kuralım.", "effects": {"Health": -3, "Happiness": 3, "Education": 3},
+       "result": "Üç hafta neredeyse uyumadın. Sistem eskisinden sağlam ayağa kalktı."},
+      {"id": "crack", "text": "Şifrelemedeki bir açığı aramak için bir gece iste.", "requires": ["MinStat:Education:70"], "effects": {"Education": 4, "Happiness": 5, "Health": -2},
+       "result": "Sabaha karşı anahtarı buldun. Sonraki hafta şifre çözücüyü herkes için ücretsiz yayımladın."}
+    ]
+  },
+  {
+    "id": "job_security_expert_3", "title": "Sıfırıncı Gün", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:security_expert", "MinCareerLevel:3"],
+    "description": "Milyonlarca telefonda kullanılan bir yazılımda, henüz kimsenin bilmediği bir açık buldun. Bir aracı, bu bilgi için bir ev parası teklif ediyor; kime satacağını söylemiyor. Üreticinin ödül programı ise bunun onda birini veriyor.",
+    "choices": [
+      {"id": "vendor", "text": "Açığı üreticiye bildir.", "effects": {"Money": 50000, "Happiness": 4, "Social": 2},
+       "result": "Güncelleme bir hafta sonra çıktı. Sürüm notlarında, küçük harflerle adın yazıyordu."},
+      {"id": "broker", "text": "Aracıya sat.", "effects": {"Money": 400000, "Happiness": -6},
+       "result": "Para hesabına geçti. Bir gazeteci telefonlarının dinlendiğini açıkladığında haberi sonuna kadar okuyamadın."},
+      {"id": "teach", "text": "Yıllar önce izini sürdüğün o saldırının kayıtlarıyla genç analistlere bir eğitim hazırla.", "requires": ["HasFlag:security_expert_trace"], "effects": {"Happiness": 7, "Social": 4, "Money": 30000},
+       "result": "Açığı üreticiye bildirdin, hikâyeyi ise derse dönüştürdün. Salondakilerden biri, sonraki açığı senden önce buldu."}
+    ]
+  },
+
+  {
+    "id": "job_game_designer_1", "title": "Eğlenceli mi?", "category": "Career", "minAge": 21, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:game_designer"],
+    "description": "Tasarladığın ilk seviye oyun testinde. Arkasındaki camdan, oyuncuların üçüncü dakikada sıkılıp telefonlarına baktığını izliyorsun. Yarın sunumda yaratıcı direktöre ne diyeceğini düşünüyorsun.",
+    "choices": [
+      {"id": "scrap", "text": "Seviyeyi çöpe at, baştan tasarla.", "effects": {"Health": -2, "Happiness": 2, "Education": 3}, "set": ["game_designer_playtest"],
+       "result": "İki hafta gece yarılarına kadar çalıştın. İkinci testte bir oyuncu kumandayı bırakmak istemedi."},
+      {"id": "defend", "text": "Seviyeyi savun; oyuncular henüz alışmadı.", "effects": {"Happiness": -1, "Social": -1},
+       "result": "Direktör sabırla dinledi, sonra seviyeyi başka bir tasarımcıya verdi."},
+      {"id": "ask", "text": "Testçilerle konuş, neyin sıktığını sor.", "effects": {"Social": 3, "Education": 2},
+       "result": "Bir lise öğrencisi, «Neden zıplayamıyorum?» dedi. Bütün seviye o cümlenin etrafında yeniden doğdu."}
+    ]
+  },
+  {
+    "id": "job_game_designer_2", "title": "Ganimet Kutuları", "category": "Career", "minAge": 23, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:game_designer", "MinCareerLevel:2"],
+    "description": "Yayıncı, oyunun ortasına ücretli ganimet kutuları eklemeni istiyor. Veriler, harcamaların çoğunun küçük bir oyuncu grubundan, çoğu zaman da gençlerden geldiğini gösteriyor. Ekranda olasılık tablosu bekliyor.",
+    "choices": [
+      {"id": "add", "text": "Ekle; stüdyonun ayakta kalması gerek.", "effects": {"Money": 40000, "Happiness": -4},
+       "result": "Gelir rekor kırdı. Forumlarda, bir annenin kredi kartı ekstresini paylaştığı başlığı kapatamadın."},
+      {"id": "cosmetic", "text": "Yalnızca görünür içerikleri, açık fiyatla sat.", "requires": ["MinStat:Social:55"], "effects": {"Money": 20000, "Happiness": 3},
+       "result": "Yayıncıyı ikna etmek bir ay sürdü. Oyuncular dürüst fiyatı övdü, gelir de fena olmadı."},
+      {"id": "refuse", "text": "Bu tasarımı yapmayacağını söyle.", "effects": {"Happiness": 2, "Social": -2, "Money": -10000},
+       "result": "Başka biri yaptı. Ama sen o özelliğin altına imza atmadın."}
+    ]
+  },
+  {
+    "id": "job_game_designer_3", "title": "Kendi Oyunun", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:game_designer", "MinCareerLevel:3"],
+    "description": "Yıllardır kafanda dönen küçük, kişisel bir oyun fikri var. Büyük stüdyodaki koltuğun güvenli ama tüm kararlar pazarlamada veriliyor. Birikimin bağımsız bir projeyi iki yıl taşıyabilir.",
+    "choices": [
+      {"id": "indie", "text": "İstifa et, kendi oyununu yap.", "effects": {"Money": -60000, "Happiness": 6, "Health": -1},
+       "result": "İki yıl boyunca mutfak masası ofisin oldu. Çıkış günü yorumları okurken ağladın; çoğu güzeldi."},
+      {"id": "pitch", "text": "Fikri stüdyoya sun.", "effects": {"Money": 30000, "Happiness": 1, "Social": 2},
+       "result": "Fikir kabul edildi ama toplantılarda yavaş yavaş başka bir şeye dönüştü."},
+      {"id": "players", "text": "İlk testteki o lise öğrencisini bul ve oyunu onunla birlikte test et.", "requires": ["HasFlag:game_designer_playtest"], "effects": {"Happiness": 8, "Social": 4, "Money": 20000},
+       "result": "Artık o da bir tasarımcıydı. Akşamları birlikte çalıştınız ve oyun ikinizin imzasıyla çıktı."}
+    ]
+  },
+
+  {
+    "id": "job_data_scientist_1", "title": "Güzel Grafik", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:data_scientist"],
+    "description": "Pazarlama müdürü, yeni kampanyanın satışları artırdığını gösteren bir grafik istiyor. Verilere baktığında artışın kampanyadan değil, mevsimden kaynaklandığını görüyorsun. Sunum yarın sabah.",
+    "choices": [
+      {"id": "truth", "text": "Mevsim etkisini gösteren dürüst grafiği hazırla.", "effects": {"Happiness": 2, "Social": -1, "Education": 2}, "set": ["data_scientist_honest"],
+       "result": "Müdür hayal kırıklığına uğradı. Ama finans direktörü toplantıdan sonra seninle konuşmak istedi."},
+      {"id": "cherry", "text": "Uygun tarih aralığını seç, istediği grafiği ver.", "effects": {"Money": 8000, "Happiness": -3},
+       "result": "Kampanya bütçesi ikiye katlandı. Ertesi yılın kış satışları ise sert bir yüzleşmeydi."},
+      {"id": "experiment", "text": "Gerçek etkiyi ölçecek bir deney öner.", "requires": ["MinStat:Education:65"], "effects": {"Education": 3, "Happiness": 2},
+       "result": "Bir ay süren deney, kampanyanın küçük ama gerçek bir etkisi olduğunu gösterdi. Herkes rahatladı."}
+    ]
+  },
+  {
+    "id": "job_data_scientist_2", "title": "Bilinen Hamilelik", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:data_scientist", "MinCareerLevel:2"],
+    "description": "Geliştirdiğin model, alışveriş alışkanlıklarından müşterilerin hamile olduğunu kendilerinden önce tahmin edebiliyor. Pazarlama bunu bebek ürünü reklamları için kullanmak istiyor. Model doğruluğu yüzde seksen yedi.",
+    "choices": [
+      {"id": "ship", "text": "Modeli teslim et.", "effects": {"Money": 30000, "Happiness": -4},
+       "result": "Kampanya başarılı oldu. Bir müşterinin, ailesinden önce bir broşürle öğrendiği hikâyesi şirketin içinde dolaştı."},
+      {"id": "consent", "text": "Yalnızca izin veren müşterilerle sınırla.", "requires": ["MinStat:Social:50"], "effects": {"Money": 10000, "Happiness": 3, "Social": 2},
+       "result": "Kapsam daraldı ama hukuk birimi sana teşekkür e-postası gönderdi. Bu şirkette ilk kez oluyordu."},
+      {"id": "shelve", "text": "Modeli rafa kaldırmayı öner.", "effects": {"Happiness": 2, "Social": -2},
+       "result": "Öneri kabul edilmedi ama kayda geçti. Bir yıl sonra başka bir şirketin skandalında herkes o notu hatırladı."}
+    ]
+  },
+  {
+    "id": "job_data_scientist_3", "title": "Salgın Tahmini", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:data_scientist", "MinCareerLevel:3"],
+    "description": "Sağlık bakanlığı, yeni bir salgının seyrini tahmin etmek için ekibini çağırıyor. Modellerin belirsizlik aralığı geniş; en kötü senaryo korkunç, en iyisi önemsiz. Basın toplantısında hangi rakamı söyleyeceğine sen karar vereceksin.",
+    "choices": [
+      {"id": "worst", "text": "En kötü senaryoyu vurgula.", "effects": {"Happiness": -1, "Social": -2, "Education": 2},
+       "result": "Önlemler erken alındı; salgın beklenenden hafif geçti. Bir kısmı seni gereksiz panik yaratmakla suçladı."},
+      {"id": "range", "text": "Belirsizliği olduğu gibi anlat.", "effects": {"Happiness": 3, "Education": 3, "Health": -1},
+       "result": "Gazeteciler net bir rakam istedi, sen aralığı anlattın. Sonunda doğru olan, o aralığın ta kendisiydi."},
+      {"id": "honest", "text": "İlk işindeki o dürüst grafiği hatırla; mevsim etkisini de modele kat.", "requires": ["HasFlag:data_scientist_honest"], "effects": {"Happiness": 8, "Education": 3, "Social": 3},
+       "result": "Herkesin kaçırdığı mevsimsel düşüşü sen gördün. Tahminin, bir ülkenin ne zaman nefes alacağını haftası haftasına bildi."}
+    ]
+  },
+
+  {
+    "id": "job_content_creator_1", "title": "Algoritma Seni Sevdi", "category": "Career", "minAge": 16, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:content_creator"],
+    "description": "Gece yarısı yüklediğin otuz saniyelik bir video sabah bir milyon izlenmeye ulaştı. Yorumlarda binlerce yabancı ve aynı şeyi bir daha yapmanı isteyen sesler var. Telefonun ısınıyor, kalbin hızlı atıyor.",
+    "choices": [
+      {"id": "repeat", "text": "Aynı formatı her gün yeniden çek.", "effects": {"Money": 15000, "Happiness": -2, "Health": -1},
+       "result": "İzlenmeler bir süre sürdü, sonra yavaşça düştü. Aynada, sanki başka biri gibi gülümsemeye başlamıştın."},
+      {"id": "true", "text": "Gerçekten anlatmak istediğin şeyi anlat.", "effects": {"Happiness": 4, "Social": 2}, "set": ["content_creator_real"],
+       "result": "Takipçilerin yarısı gitti. Kalanlar ise yorumlarda birbirleriyle konuşmaya başladı."},
+      {"id": "break", "text": "Bir hafta telefonu kapat.", "effects": {"Health": 2, "Happiness": 2, "Social": -1},
+       "result": "Döndüğünde dalga geçmişti. Ama ilk kez, ne istediğini düşünecek zamanın olmuştu."}
+    ]
+  },
+  {
+    "id": "job_content_creator_2", "title": "Sponsorlu İçerik", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:content_creator", "MinCareerLevel:2"],
+    "description": "Bir takviye markası, ürününü «günlük rutinin» olarak tanıtman için aylık gelirinin üç katını teklif ediyor. Ürünü denedin; mideni bulandırdı. Kitlenin yarısı on sekiz yaşından küçük.",
+    "choices": [
+      {"id": "accept", "text": "Teklifi kabul et.", "effects": {"Money": 80000, "Happiness": -5, "Social": -2},
+       "result": "Para hesabına geçti. Bir takipçinin «Ben de başladım!» yorumunu okuyunca uygulamayı kapattın."},
+      {"id": "decline", "text": "Reddet ve neden reddettiğini anlat.", "effects": {"Happiness": 4, "Social": 3, "Money": -5000},
+       "result": "Video, şimdiye kadarki en çok paylaşılanın oldu. Dürüstlüğün beklenmedik bir şekilde iyi para etti."},
+      {"id": "fit", "text": "Gerçekten kullandığın bir markayla çalışmayı öner.", "requires": ["MinStat:Social:55"], "effects": {"Money": 30000, "Happiness": 2},
+       "result": "Daha az para ama daha rahat bir uyku. Kitlen farkı hissetti."}
+    ]
+  },
+  {
+    "id": "job_content_creator_3", "title": "Kamera Kapandığında", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:content_creator", "MinCareerLevel:3"],
+    "description": "Milyonlarca takipçin var ve son altı ayda tek bir gün bile çekim yapmadan geçirmedin. Kardeşinin doğum gününde bile telefonun elindeydi. Bir sabah kalktığında kameranın kırmızı ışığına bakamıyorsun.",
+    "choices": [
+      {"id": "pause", "text": "Kanalı süresiz olarak dondur.", "effects": {"Happiness": 5, "Health": 4, "Money": -40000},
+       "result": "Gelir durdu ama sabahlar geri geldi. Kardeşinle uzun bir yürüyüşe çıktın."},
+      {"id": "team", "text": "Bir ekip kur, kendini görünmez kıl.", "effects": {"Money": 60000, "Happiness": 1, "Social": 2},
+       "result": "Kanal büyüdü ama artık senin sesin değildi. Bunun iyi mi kötü mü olduğuna hiç karar veremedin."},
+      {"id": "real", "text": "İlk kez gerçek olanı anlattığın o videoya dön; tükenmişliği anlat.", "requires": ["HasFlag:content_creator_real"], "effects": {"Happiness": 8, "Social": 5, "Health": 2},
+       "result": "Kamerasız, sadece sesle kaydettin. Yorumlarda binlerce insan, kendi kırmızı ışıklarını anlattı."}
+    ]
+  },
+
+  {
+    "id": "job_biomedical_engineer_1", "title": "İlk Kıpırtı", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:biomedical_engineer"],
+    "description": "Laboratuvarda, kolunu bir kazada kaybetmiş bir gönüllü yeni protez eli deniyor. Sensörler kalibre edilmedi ve el, istemediği anlarda kasılıyor. Gönüllü sana bakıyor: «Bir kez daha deneyelim mi?»",
+    "choices": [
+      {"id": "again", "text": "Bir kez daha dene.", "effects": {"Happiness": 2, "Social": 2},
+       "result": "Dördüncü denemede parmaklar bir bardağı kavradı. İkiniz de bir süre konuşamadınız."},
+      {"id": "stop", "text": "Durdur; önce kalibrasyonu düzelt.", "effects": {"Education": 3, "Happiness": 1}, "set": ["biomedical_engineer_patient"],
+       "result": "Gönüllü hayal kırıklığına uğradı ama anlayış gösterdi. Bir hafta sonra el ilk seferde doğru çalıştı."},
+      {"id": "listen", "text": "Ona ne hissettiğini sor, notlar al.", "effects": {"Social": 3, "Education": 2},
+       "result": "Teknik raporların hiçbirinde olmayan şeyler anlattı. Tasarımının yarısını o konuşma değiştirdi."}
+    ]
+  },
+  {
+    "id": "job_biomedical_engineer_2", "title": "Onay Baskısı", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:biomedical_engineer", "MinCareerLevel:2"],
+    "description": "Geliştirdiğin kalp pompası klinik onaya üç ay uzaklıkta. Yatırımcılar takvimin kısaltılmasını istiyor; son testlerde yüzde birlik bir arıza oranı çıktı. Yüzde bir, binlerce cihazda onlarca insan demek.",
+    "choices": [
+      {"id": "delay", "text": "Takvimi ertele, arızayı çöz.", "effects": {"Happiness": 3, "Money": -10000, "Education": 3},
+       "result": "Yatırımcılardan biri çekildi. Altı ay sonra arıza oranı on binde bire indi."},
+      {"id": "go", "text": "Belgele ve devam et; oran sektör ortalamasında.", "effects": {"Money": 50000, "Happiness": -4},
+       "result": "Cihaz onaylandı ve hayat kurtarmaya başladı. Ama her geri çağırma haberinde içini bir korku kapladı."},
+      {"id": "board", "text": "Etik kurula taşı, kararı birlikte verin.", "requires": ["MinStat:Social:50"], "effects": {"Social": 3, "Happiness": 2},
+       "result": "Kurul ek testlerle sınırlı bir onay önerdi. Herkesin biraz razı olduğu bir orta yol."}
+    ]
+  },
+  {
+    "id": "job_biomedical_engineer_3", "title": "Ucuz Protez", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:biomedical_engineer", "MinCareerLevel:3"],
+    "description": "Yıllarca geliştirdiğin protez el, bir arabanın fiyatına satılıyor. Üç boyutlu yazıcıyla neredeyse aynı işlevi yüzde birine üretebilecek bir tasarımın var. Şirket bunu açık kaynak yapmana izin vermiyor.",
+    "choices": [
+      {"id": "open", "text": "Tasarımı istifa edip açık kaynak olarak yayımla.", "effects": {"Happiness": 7, "Money": -50000, "Social": 3},
+       "result": "Bir yıl içinde dünyanın dört bir yanında atölyeler eller basmaya başladı. Hukuki yazışmalar ise iki yıl sürdü."},
+      {"id": "internal", "text": "Şirket içinde ucuz bir ürün hattı için savaş.", "effects": {"Money": 40000, "Happiness": 2, "Health": -1},
+       "result": "Ürün çıktı ama fiyatı umduğunun üç katıydı. Yine de eskisinden çok daha fazla insana ulaştı."},
+      {"id": "patient", "text": "İlk gönüllünü bul ve yeni eli onunla birlikte test et.", "requires": ["HasFlag:biomedical_engineer_patient"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "Bardağı yine kavradı, bu kez gülerek. Onun hikâyesi, şirketin yönetim kurulunu ikna eden tek sunum oldu."}
+    ]
+  },
+
+  {
+    "id": "job_robotics_engineer_1", "title": "Kol Sapıyor", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:robotics_engineer"],
+    "description": "Bir otomobil fabrikasında, kurduğun robot kolu her yüz kaynakta bir milimetre sapıyor. Hat sorumlusu, «Bir milimetreden bir şey olmaz,» diyor. Lehim dumanı ve hidrolik sesi arasında kalibrasyon ekranına bakıyorsun.",
+    "choices": [
+      {"id": "stop_line", "text": "Hattı durdur ve sorunu bul.", "effects": {"Education": 3, "Social": -2}, "set": ["robotics_engineer_precise"],
+       "result": "Fabrika dört saat kaybetti ve herkes sana kızgındı. Ama ertesi ay geri çağırma listesinde bu model yoktu."},
+      {"id": "monitor", "text": "Çalışmaya devam et, sapmayı izle.", "effects": {"Happiness": 1},
+       "result": "Sapma büyümedi, ama küçülmedi de. Her gece aklının bir köşesinde o milimetre durdu."},
+      {"id": "weekend", "text": "Hafta sonu gel, hattı boşken düzelt.", "effects": {"Health": -2, "Education": 2, "Happiness": 2},
+       "result": "Cumartesi tek başınaydın. Pazar akşamı kol, saç teli hassasiyetinde çalışıyordu."}
+    ]
+  },
+  {
+    "id": "job_robotics_engineer_2", "title": "Yüz İşçi", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:robotics_engineer", "MinCareerLevel:2"],
+    "description": "Tasarladığın yeni sistem bir depoda yüz kişinin işini yapabilecek. Depo müdürü sevinçle ellerini ovuşturuyor. Öğle yemeğinde, o yüz kişiden biri sana kızının üniversite harcını anlatıyor.",
+    "choices": [
+      {"id": "deliver", "text": "Sistemi teslim et; bu senin işin.", "effects": {"Money": 50000, "Happiness": -4},
+       "result": "Sistem kusursuz çalıştı. Öğle yemeğindeki adamı bir daha görmedin."},
+      {"id": "cobot", "text": "İşçilerle birlikte çalışan bir versiyon öner.", "requires": ["MinStat:Education:65"], "effects": {"Money": 25000, "Happiness": 4, "Social": 2},
+       "result": "Verimlilik daha az arttı ama kimse işten çıkarılmadı. Depoda sana el sallayanlar oldu."},
+      {"id": "training", "text": "Şirketten işçiler için bir eğitim fonu iste.", "requires": ["MinStat:Social:55"], "effects": {"Money": 30000, "Happiness": 3, "Social": 3},
+       "result": "Fon küçüktü ama gerçekti. Öğle yemeğindeki adam, iki yıl sonra robotların bakımını yapıyordu."}
+    ]
+  },
+  {
+    "id": "job_robotics_engineer_3", "title": "Bakım Robotu", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:robotics_engineer", "MinCareerLevel:3"],
+    "description": "Yaşlı bakım evleri için bir yardımcı robot geliştirme projesinin başındasın. İlk prototip, yaşlı bir kadının elini tutup ona ilaçlarını hatırlatıyor. Kadın robota kızının adını veriyor.",
+    "choices": [
+      {"id": "human_like", "text": "Robotu daha insansı, daha sıcak yap.", "effects": {"Money": 40000, "Happiness": 2, "Social": -1},
+       "result": "Satışlar patladı. Ama bazı ailelerin ziyaretleri seyreldi ve bu seni rahatsız etti."},
+      {"id": "tool", "text": "Robotu açıkça bir alet olarak tasarla.", "effects": {"Happiness": 3, "Education": 2},
+       "result": "Daha az sevimliydi ama kimseyi kandırmıyordu. Bakıcılar onu bir meslektaş gibi kullanmaya başladı."},
+      {"id": "precise", "text": "Hattı durdurduğun o günkü titizlikle, her hareketi güvenlik testinden geçir.", "requires": ["HasFlag:robotics_engineer_precise"], "effects": {"Happiness": 7, "Education": 3, "Money": 30000},
+       "result": "Lansman bir yıl gecikti. Ama tek bir düşme, tek bir yanlış ilaç vakası olmadı."}
+    ]
+  },
+
+  {
+    "id": "job_ux_researcher_1", "title": "Kullanıcı Yanılmaz", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ux_researcher"],
+    "description": "Bir banka uygulamasının kullanılabilirlik testindesin. Yetmiş iki yaşında bir adam, para gönderme düğmesini on dakikadır arıyor ve sonunda «Ben beceriksizim,» diyor. Tasarım ekibi aynanın arkasından izliyor.",
+    "choices": [
+      {"id": "comfort", "text": "Testi durdur, ona hatanın onda olmadığını söyle.", "effects": {"Social": 3, "Happiness": 3}, "set": ["ux_researcher_empathy"],
+       "result": "Adam rahatladı ve gülümsedi. Ayna arkasındakiler, o cümleyi raporun ilk sayfasında gördü."},
+      {"id": "continue", "text": "Müdahale etme; veriler önemli.", "effects": {"Education": 3, "Happiness": -2},
+       "result": "Kayıtlar mükemmel bir kanıttı. Adam testten mahcup ayrıldı."},
+      {"id": "invite", "text": "Tasarımcıları içeri çağır, onu kendileri izlesinler.", "requires": ["MinStat:Social:55"], "effects": {"Social": 2, "Education": 2, "Happiness": 1},
+       "result": "Biri kızardı, biri not aldı. Düğme ertesi sürümde ekranın ortasındaydı."}
+    ]
+  },
+  {
+    "id": "job_ux_researcher_2", "title": "Bağımlılık Metrikleri", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ux_researcher", "MinCareerLevel:2"],
+    "description": "Yeni hedef, kullanıcıların uygulamada geçirdiği süreyi yüzde kırk artırmak. Araştırman, gençlerin gece yarısından sonra kaydırmayı bırakamadığını gösteriyor. Yönetici bu bulguyu «fırsat» olarak işaretliyor.",
+    "choices": [
+      {"id": "optimize", "text": "Hedefe göre öneriler hazırla.", "effects": {"Money": 25000, "Happiness": -4},
+       "result": "Metrikler yükseldi, sunumun alkış aldı. Yeğeninin sabah okula uykusuz gittiğini duyduğunda midene bir ağrı girdi."},
+      {"id": "reframe", "text": "Başarıyı «iyi geçirilen zaman» olarak yeniden tanımla.", "requires": ["MinStat:Education:60"], "effects": {"Happiness": 3, "Education": 2, "Social": 1},
+       "result": "Yeni bir metrik önerdin. Herkes ikna olmadı ama bir ekip onu denemeye başladı."},
+      {"id": "leak", "text": "Bulguyu anonim olarak bir gazeteciye ilet.", "effects": {"Happiness": 2, "Social": -3},
+       "result": "Haber çıktı, şirket savunmaya geçti. İçeride kimin konuştuğu sorusu aylarca havada asılı kaldı."}
+    ]
+  },
+  {
+    "id": "job_ux_researcher_3", "title": "Herkes İçin", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ux_researcher", "MinCareerLevel:3"],
+    "description": "Bir devlet kurumu, bütün kamu hizmetlerini tek bir uygulamada toplamak istiyor ve araştırmayı sana veriyor. Milyonlarca kullanıcı; görme engelliler, okuma yazma bilmeyenler, ilk kez akıllı telefon kullananlar. Bütçe kısa, süre daha da kısa.",
+    "choices": [
+      {"id": "broad", "text": "Ülkeyi dolaş, her kesimden insanla görüş.", "effects": {"Health": -2, "Happiness": 5, "Social": 4},
+       "result": "Köy kahvelerinde, hastane koridorlarında test yaptın. Uygulama gecikti ama kimseyi dışarıda bırakmadı."},
+      {"id": "fast", "text": "Hızlı bir çevrim içi anketle yetin.", "effects": {"Money": 30000, "Happiness": -2},
+       "result": "Takvime yetiştin. Şikâyetlerin çoğu, ankete hiç ulaşamayan insanlardan geldi."},
+      {"id": "empathy", "text": "Yıllar önce «Ben beceriksizim» diyen o adamı danışma kuruluna davet et.", "requires": ["HasFlag:ux_researcher_empathy"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "Seksen yaşındaydı ve her toplantıya gelen ilk kişi oldu. Uygulamanın adı onun önerisiydi."}
+    ]
+  },
+
+  {
+    "id": "job_cloud_architect_1", "title": "Bölge Çöktü", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:cloud_architect"],
+    "description": "Bayram tatilinin ilk günü, bulut sağlayıcısının bütün bir bölgesi çöktü ve şirketin e-ticaret sitesi karanlıkta. Telefonunda yüzlerce bildirim, yanında akrabaların. Yedek bölgeye geçiş planın daha yarım.",
+    "choices": [
+      {"id": "manual", "text": "Elle geçişi yap, ne olursa olsun.", "effects": {"Health": -2, "Education": 3, "Happiness": 1},
+       "result": "Altı saat süren bir sınavdı. Site ayağa kalktığında bayram yemeği çoktan soğumuştu."},
+      {"id": "wait", "text": "Sağlayıcının düzeltmesini bekle.", "effects": {"Happiness": 2, "Money": -5000},
+       "result": "Dört saat sonra her şey kendiliğinden düzeldi. Pazartesi toplantısı ise hiç kolay geçmedi."},
+      {"id": "postmortem", "text": "Bekle ama her dakikayı belgele, suçlamasız bir rapor yaz.", "effects": {"Education": 2, "Social": 3}, "set": ["cloud_architect_blameless"],
+       "result": "Raporun şirkette bir şablona dönüştü. Kimse suçlanmadı, herkes bir şey öğrendi."}
+    ]
+  },
+  {
+    "id": "job_cloud_architect_2", "title": "Fatura Şoku", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:cloud_architect", "MinCareerLevel:2"],
+    "description": "Bu ayın bulut faturası geçen ayın dört katı geldi. Finans direktörü öfkeli, ekipler birbirini suçluyor. Kayıtlarda, bir test ortamının üç haftadır boşta yüzlerce makine çalıştırdığını görüyorsun; onu kuran sendin.",
+    "choices": [
+      {"id": "admit", "text": "Hatanı açıkça kabul et.", "effects": {"Happiness": 2, "Social": 2, "Money": -5000},
+       "result": "Toplantı bir anda sakinleşti. Direktör, «En azından nedenini biliyoruz,» dedi."},
+      {"id": "quiet", "text": "Makineleri sessizce kapat, kimseye söyleme.", "effects": {"Happiness": -3},
+       "result": "Fatura bir sonraki ay düştü ve suçlu hiç bulunmadı. Ama bir stajyer o ay işten ayrıldı."},
+      {"id": "tooling", "text": "Hatayı kabul et ve otomatik maliyet alarmları kur.", "requires": ["MinStat:Education:65"], "effects": {"Education": 3, "Happiness": 3, "Money": 10000},
+       "result": "Kurduğun sistem ertesi yıl şirkete faturanın dört katını kazandırdı."}
+    ]
+  },
+  {
+    "id": "job_cloud_architect_3", "title": "Veri Merkezi", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:cloud_architect", "MinCareerLevel:3"],
+    "description": "Şirket, bütün altyapıyı kendi veri merkezine taşımaya karar verdi ve projeyi sana verdi. Göç gecesi yüzlerce hizmet aynı anda yer değiştirecek. Ekibin sabah beşte kahvelerle karşında duruyor.",
+    "choices": [
+      {"id": "big_bang", "text": "Tek gecede, hepsini birden taşı.", "effects": {"Health": -3, "Happiness": 4, "Money": 40000},
+       "result": "Sabaha karşı son hizmet yeşile döndü. Ekip toplantı odasında uyuyakaldı."},
+      {"id": "gradual", "text": "Aylara yayarak, parça parça taşı.", "effects": {"Happiness": 2, "Education": 2, "Social": 2},
+       "result": "Kimse fark etmedi; asıl başarı da buydu. Yıl sonunda eski faturalar tarihe karıştı."},
+      {"id": "blameless", "text": "Yıllar önceki suçlamasız raporunu göç planının temeline koy.", "requires": ["HasFlag:cloud_architect_blameless"], "effects": {"Happiness": 7, "Social": 4, "Education": 2},
+       "result": "Gece iki kez bir şeyler ters gitti; ikisinde de kimse panik yapmadı. Ekip, seni bir mimardan çok bir kaptan gibi anlattı."}
+    ]
+  }
+]

@@ -1,0 +1,99 @@
+[
+  {
+    "id": "childhood_found_wallet", "title": "Kaldırımdaki Cüzdan", "category": "Childhood", "minAge": 6, "maxAge": 13, "weight": 20,
+    "description": "Okuldan dönerken kaldırım kenarında kahverengi, eski bir cüzdan görüyorsun. İçinde biraz para ve solmuş bir kimlik kartı var. Etrafta kimse yok.",
+    "choices": [
+      {"id": "return_it", "text": "Cüzdanı içindeki kimlikteki adrese götür.", "effects": {"Happiness": 5, "Social": 3}, "set": ["returned_wallet"],
+       "result": "Kapıyı yaşlı bir adam açtı. Gözleri parladı ve adını sordu.", "next": "childhood_wallet_owner_visit"},
+      {"id": "keep_it", "text": "Parayı al, cüzdanı çöpe at.", "effects": {"Money": 120, "Happiness": -6}, "set": ["kept_wallet"],
+       "result": "Cebindeki para ağırlaştı. O gece uyumakta zorlandın."},
+      {"id": "give_teacher", "text": "Ertesi gün öğretmenine teslim et.", "effects": {"Social": 2, "Education": 2},
+       "result": "Öğretmenin seni sınıfın önünde örnek gösterdi. Biraz utandın, biraz gururlandın."}
+    ]
+  },
+  {
+    "id": "childhood_wallet_owner_visit", "title": "Kapıdaki Teşekkür", "category": "Childhood", "minAge": 6, "maxAge": 14, "chainOnly": true, "turnDays": 14,
+    "description": "Birkaç gün sonra kapınız çalınıyor. Cüzdanın sahibi, elinde bir kutu kurabiye ve küçük bir zarfla karşında duruyor.",
+    "choices": [
+      {"id": "accept_reward", "text": "Uzattığı zarfı teşekkür ederek al.", "effects": {"Money": 200, "Happiness": 4},
+       "result": "Zarfın içinden çıkan parayla kumbaran ilk kez doldu."},
+      {"id": "refuse_reward", "text": "\"Gerek yok, herkes aynısını yapardı\" de.", "effects": {"Social": 6, "Happiness": 3}, "set": ["neighbor_friend"],
+       "result": "Adam güldü: \"Herkes yapmazdı.\" O günden sonra ailenle sık sık çay içmeye başladı."},
+      {"id": "ask_story", "text": "Kimlikteki eski fotoğrafın hikâyesini sor.", "requires": ["MinStat:Social:55"], "effects": {"Education": 5, "Social": 2}, "set": ["neighbor_friend"],
+       "result": "Gençliğinde gemilerde telsizci olduğunu anlattı. Eve dönerken aklında hep denizler vardı."}
+    ]
+  },
+  {
+    "id": "childhood_first_bike", "title": "İlk Bisiklet", "category": "Childhood", "minAge": 6, "maxAge": 10, "weight": 15,
+    "description": "Doğum gününde kırmızı bir bisiklet hediye ettiler. Yan tekerlekler sökülmüş; sokağın başında seni bekliyor.",
+    "choices": [
+      {"id": "practice", "text": "Dizlerin kanayana kadar dene, öğrenmeden bırakma.", "effects": {"Health": 3, "Happiness": 4},
+       "result": "Üçüncü gün, kimse tutmadan sokağın sonuna kadar gittin. Rüzgâr hiç bu kadar güzel esmemişti."},
+      {"id": "ask_friends", "text": "Mahalledeki çocuklardan yardım iste.", "effects": {"Social": 4, "Health": 2},
+       "result": "Biri arkadan tuttu, biri önden koştu. Öğrendiğinde hepiniz birlikte bağırdınız."},
+      {"id": "give_up", "text": "Düşünce vazgeç, bisikleti garaja koy.", "effects": {"Happiness": -2},
+       "result": "Bisiklet tozlanmaya başladı. Pencereden bakarken içinde bir şey kıpırdıyordu."}
+    ]
+  },
+  {
+    "id": "childhood_school_bully", "title": "Teneffüsteki Zorba", "category": "Childhood", "minAge": 8, "maxAge": 13, "weight": 12,
+    "description": "Bir üst sınıftan bir çocuk her teneffüs küçüklerin beslenmesini alıyor. Bugün sıra sana geldi.",
+    "choices": [
+      {"id": "stand_up", "text": "Beslenme çantanı sıkıca tut, \"Hayır\" de.", "effects": {"Social": 4, "Health": -3, "Happiness": 2},
+       "result": "İtiştiniz, dizin sıyrıldı. Ama ertesi gün kimse beslenmesini vermedi."},
+      {"id": "tell_teacher", "text": "Nöbetçi öğretmene anlat.", "effects": {"Happiness": 2, "Social": -1},
+       "result": "Zorba uyarı aldı. Birkaç gün sana ters ters baktı, sonra unuttu."},
+      {"id": "hand_over", "text": "Sesini çıkarmadan ver, uzaklaş.", "effects": {"Happiness": -4},
+       "result": "O gün aç kaldın. Akşam aynaya bakmak istemedin."}
+    ]
+  },
+  {
+    "id": "childhood_stray_kitten", "title": "Kapıdaki Yavru Kedi", "category": "Childhood", "minAge": 6, "maxAge": 13, "weight": 10,
+    "conditions": ["NotHasFlag:pet_owner"],
+    "description": "Apartman kapısının önünde titreyen, gri bir yavru kedi miyavlıyor. Sana doğru iki adım atıyor.",
+    "choices": [
+      {"id": "adopt", "text": "Ailene yalvar, eve al.", "requires": ["MinStat:Happiness:40"], "effects": {"Happiness": 6}, "set": ["pet_owner"],
+       "result": "Adını \"Pamuk\" koydun. Her gece ayak ucunda uyumaya başladı."},
+      {"id": "shelter", "text": "Bir hayvan barınağını aratıp oraya götür.", "effects": {"Social": 2, "Happiness": 2},
+       "result": "Görevli kadın, \"Ona iyi bir yuva bulacağız\" dedi. İçin rahatladı."},
+      {"id": "walk_away", "text": "Görmezden gel, eve gir.", "effects": {"Happiness": -3},
+       "result": "Merdivenleri çıkarken miyavlaması kulağında kaldı."}
+    ]
+  },
+  {
+    "id": "childhood_music_lessons", "title": "Kurs Zamanı", "category": "Childhood", "minAge": 7, "maxAge": 13, "weight": 10,
+    "description": "Ailen hafta sonları bir kursa yazılmanı istiyor. Önünde iki broşür var: biri piyano, biri futbol okulu.",
+    "choices": [
+      {"id": "piano", "text": "Piyanoyu seç.", "effects": {"Education": 3, "Happiness": 2}, "set": ["musician"],
+       "result": "Parmakların önce dinlemedi. Aylar sonra ilk şarkını baştan sona çaldın."},
+      {"id": "football", "text": "Futbol okuluna yazıl.", "effects": {"Health": 5, "Social": 3},
+       "result": "Çamurlu formalar, kazanılan ve kaybedilen maçlar. Takımın ikinci ailen oldu."},
+      {"id": "neither", "text": "Hafta sonlarını boş bırakmak istediğini söyle.", "effects": {"Happiness": 2},
+       "result": "Cumartesileri çizgi film ve uzun kahvaltılarla geçti."}
+    ]
+  },
+  {
+    "id": "childhood_science_fair", "title": "Bilim Şenliği", "category": "Childhood", "minAge": 9, "maxAge": 13, "weight": 10,
+    "description": "Okulda bilim şenliği var. Herkes bir proje hazırlayacak; en iyisi ilçe yarışmasına gidecek.",
+    "choices": [
+      {"id": "own_project", "text": "Kendi su arıtma düzeneğini kur.", "effects": {"Education": 5, "Happiness": 2},
+       "result": "Kum, çakıl ve pet şişelerle kurduğun düzenek jüriden övgü aldı."},
+      {"id": "help_friend", "text": "Zorlanan arkadaşının projesine yardım et.", "effects": {"Social": 4, "Education": 2},
+       "result": "Projeniz birinci olmadı ama arkadaşın sana sarılıp teşekkür etti."},
+      {"id": "skip_fair", "text": "Basit bir poster hazırla, geç.", "effects": {"Happiness": 1},
+       "result": "Posterin duvarda sessizce asılı durdu."}
+    ]
+  },
+  {
+    "id": "childhood_village_summer", "title": "Köyde Bir Yaz", "category": "Childhood", "minAge": 6, "maxAge": 12, "weight": 10,
+    "description": "Yaz tatilini büyükannenin köyünde geçireceksin. İnternet çekmiyor, ama bahçede domatesler kızarmış.",
+    "choices": [
+      {"id": "garden", "text": "Büyükannene bahçede yardım et.", "effects": {"Health": 4, "Happiness": 3},
+       "result": "Ellerin topraktan kurtulmadı. Akşamları kendi topladığın domatesleri yedin."},
+      {"id": "books", "text": "Dedenin eski kitaplarını karıştır.", "effects": {"Education": 4},
+       "result": "Sararmış sayfalar arasında kaşifler, korsanlar ve unutulmuş krallar buldun."},
+      {"id": "sulk", "text": "Şehri özle, bütün yaz surat as.", "effects": {"Happiness": -3, "Social": -1},
+       "result": "Yaz bitti. Dönüş yolunda neden o kadar kızdığını hatırlayamadın."}
+    ]
+  }
+]

@@ -1,0 +1,109 @@
+[
+  {
+    "id": "health_gym_offer", "title": "Spor Salonu Kampanyası", "category": "Health", "minAge": 16, "maxAge": 70, "weight": 12,
+    "conditions": ["NotHasFlag:exercises"],
+    "description": "Evinin yakınına yeni bir spor salonu açılmış; ilk yıl için indirimli üyelik veriyorlar.",
+    "choices": [
+      {"id": "join_gym", "text": "Üye ol, haftada üç gün git.", "cost": 3000, "effects": {"Health": 5, "Happiness": 2}, "set": ["exercises"],
+       "result": "İlk hafta her yerin ağrıdı. Üçüncü ay merdivenleri koşarak çıkıyordun."},
+      {"id": "run_outside", "text": "Para verme, parkta koşmaya başla.", "effects": {"Health": 3}, "set": ["exercises"],
+       "result": "Sabah koşuları günün en sessiz anı oldu."},
+      {"id": "skip_gym", "text": "Şimdi değil.", "effects": {"Happiness": 1},
+       "result": "Broşür buzdolabının kapağında sararmaya başladı."}
+    ]
+  },
+  {
+    "id": "health_first_cigarette", "title": "İlk Sigara", "category": "Health", "minAge": 15, "maxAge": 30, "weight": 8,
+    "conditions": ["NotHasFlag:smoker"],
+    "description": "Arkadaş grubunda herkes sigara içiyor. Biri paketi sana uzatıyor: \"Bir tane bir şey olmaz.\"",
+    "choices": [
+      {"id": "take_it", "text": "Al, yak.", "effects": {"Social": 2, "Happiness": 1}, "set": ["smoker"],
+       "result": "Öksürdün, herkes güldü. Bir hafta sonra kendi paketini aldın."},
+      {"id": "refuse", "text": "\"Bana göre değil\" de.", "effects": {"Health": 1},
+       "result": "Kimse ısrar etmedi. Sonra fark ettin ki birkaç kişi daha almamıştı."}
+    ]
+  },
+  {
+    "id": "health_quit_smoking", "title": "Bırakma Kararı", "category": "Health", "minAge": 18, "maxAge": 90, "repeatable": true, "cooldownDays": 365, "weight": 15,
+    "conditions": ["HasFlag:smoker"],
+    "description": "Merdivenleri çıkarken nefes nefese kaldın. Cebindeki paket her zamankinden ağır geliyor.",
+    "choices": [
+      {"id": "cold_turkey", "text": "Paketi çöpe at, bugün bırak.", "requires": ["MinStat:Happiness:35"], "effects": {"Happiness": -4, "Health": 4}, "remove": ["smoker"],
+       "result": "İlk iki hafta herkese sinirlendin. Bir ay sonra kokuları yeniden fark etmeye başladın."},
+      {"id": "nicotine_patch", "text": "Bant ve destek programıyla bırak.", "cost": 2500, "effects": {"Health": 3}, "remove": ["smoker"],
+       "result": "Bantlar, uygulama bildirimleri ve sabır. Sonunda başardın."},
+      {"id": "not_yet", "text": "Daha hazır değilsin.", "effects": {"Health": -2},
+       "result": "Bir sigara daha yaktın. Bu sefer tadı biraz acıydı."}
+    ]
+  },
+  {
+    "id": "health_annual_checkup", "title": "Yıllık Kontrol", "category": "Health", "minAge": 30, "maxAge": 100, "repeatable": true, "cooldownDays": 365, "weight": 10,
+    "description": "Aile hekiminden kısa bir mesaj: \"Yıllık kontrolünüzün zamanı geldi.\"",
+    "choices": [
+      {"id": "full_checkup", "text": "Kapsamlı bir kontrol yaptır.", "cost": 3000, "effects": {"Health": 6},
+       "result": "Doktor küçük bir sorunu erkenden yakaladı. \"İyi ki geldiniz\" dedi."},
+      {"id": "basic_checkup", "text": "Sadece kan tahlili ver.", "effects": {"Health": 2},
+       "result": "Değerler çoğunlukla normaldi. Biraz daha su içmen önerildi."},
+      {"id": "skip_checkup", "text": "Kendini iyi hissediyorsun, erteleme.", "effects": {"Happiness": 1},
+       "result": "Mesajı sildin. Takvimde bir yıl daha geçti."}
+    ]
+  },
+  {
+    "id": "health_back_pain", "title": "Bel Ağrısı", "category": "Health", "minAge": 32, "maxAge": 90, "repeatable": true, "cooldownDays": 600, "weight": 10,
+    "conditions": ["NotHasFlag:chronic_back_pain"],
+    "description": "Bir sabah eğilip çorabını giyerken belinde keskin bir ağrı hissettin. Masa başında geçen yılların faturası mı?",
+    "choices": [
+      {"id": "physio", "text": "Fizik tedaviye başla.", "cost": 5000, "effects": {"Health": 5},
+       "result": "On seans sonra ağrı neredeyse geçti. Egzersizleri evde sürdürüyorsun."},
+      {"id": "yoga", "text": "Sabahları esneme ve yogaya başla.", "effects": {"Health": 3, "Happiness": 2}, "set": ["exercises"],
+       "result": "Mat salonun köşesinde kalıcı bir yer edindi."},
+      {"id": "painkillers", "text": "Ağrı kesiciyle idare et.", "effects": {"Health": -2, "Happiness": -1}, "set": ["chronic_back_pain"],
+       "result": "Ağrı gitti, geri geldi, yine gitti. Artık hayatının bir parçası."}
+    ]
+  },
+  {
+    "id": "health_flu", "title": "Grip", "category": "Health", "minAge": 6, "maxAge": 100, "repeatable": true, "cooldownDays": 300, "weight": 8,
+    "description": "Boğazın yanıyor, ateşin çıkıyor. Herkes \"geçen hafta herkeste vardı\" diyor.",
+    "choices": [
+      {"id": "rest_flu", "text": "Yatağa gir, bol çorba iç.", "effects": {"Health": 2, "Happiness": 1},
+       "result": "Üç gün sonra yeniden insan gibi hissettin."},
+      {"id": "keep_going", "text": "Hiçbir şey olmamış gibi devam et.", "effects": {"Health": -5, "Education": 1},
+       "result": "Grip iki haftaya uzadı ve çevrendekilere de bulaştı."}
+    ]
+  },
+  {
+    "id": "health_inner_silence", "title": "İçindeki Sessizlik", "category": "Health", "minAge": 16, "maxAge": 100, "repeatable": true, "cooldownDays": 365, "weight": 16,
+    "description": "Bir süredir hiçbir şey eskisi kadar renkli gelmiyor. Sevdiğin şarkılar bile sessiz.",
+    "choices": [
+      {"id": "therapy_session", "text": "Bir uzmandan destek al.", "cost": 6000, "effects": {"Happiness": 12, "Health": 2},
+       "result": "Konuştukça sisin biraz dağıldığını hissettin."},
+      {"id": "call_friend", "text": "Eski bir dostunu ara, her şeyi anlat.", "requires": ["MinStat:Social:40"], "effects": {"Happiness": 7, "Social": 2},
+       "result": "Telefonu kapattığında yalnız olmadığını biliyordun."},
+      {"id": "withdraw", "text": "Kimseyi rahatsız etme, kendi içine kapan.", "effects": {"Happiness": -3, "Social": -3},
+       "result": "Perdeler kapalı kaldı. Günler birbirine karıştı."}
+    ]
+  },
+  {
+    "id": "health_marathon", "title": "Şehir Maratonu", "category": "Health", "minAge": 18, "maxAge": 65, "weight": 8,
+    "conditions": ["HasFlag:exercises"],
+    "description": "Şehir maratonuna kayıtlar açıldı. Aylardır koşuyorsun; belki de zamanı geldi.",
+    "choices": [
+      {"id": "run_marathon", "text": "Kaydol ve antrenman programına başla.", "requires": ["MinStat:Health:55"], "effects": {"Health": 6, "Happiness": 6},
+       "result": "Bitiş çizgisini geçtiğinde ağladığını ancak fotoğraflarda fark ettin."},
+      {"id": "cheer", "text": "Bu yıl kenardan destek ol.", "effects": {"Social": 2, "Happiness": 2},
+       "result": "Koşucuların yüzlerindeki kararlılık seni de heyecanlandırdı."}
+    ]
+  },
+  {
+    "id": "health_chest_pain", "title": "Göğüs Ağrısı", "category": "Health", "minAge": 48, "maxAge": 100, "repeatable": true, "cooldownDays": 900, "weight": 10,
+    "description": "Merdivende göğsünde bir sıkışma hissettin. Birkaç dakika sonra geçti ama içini bir korku kapladı.",
+    "choices": [
+      {"id": "hospital", "text": "Hemen hastaneye git.", "cost": 8000, "effects": {"Health": 8},
+       "result": "Doktorlar zamanında müdahale etti. \"Bundan sonra kendinize daha iyi bakın\" dediler."},
+      {"id": "lifestyle", "text": "Hayatını değiştir: yürüyüş, sebze, sigaraya veda.", "effects": {"Health": 4, "Happiness": -1}, "set": ["exercises"], "remove": ["smoker"],
+       "result": "İlk haftalar zordu. Sonra sabah yürüyüşlerini özlemeye başladın."},
+      {"id": "ignore_pain", "text": "Yorgunluktur, geçer.", "effects": {"Health": -10},
+       "result": "Ağrı bir daha geldi. Bu kez daha uzun sürdü."}
+    ]
+  }
+]

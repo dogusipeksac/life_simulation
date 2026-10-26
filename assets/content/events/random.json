@@ -1,0 +1,104 @@
+[
+  {
+    "id": "random_rainy_afternoon", "title": "Yağmurlu Bir Öğleden Sonra", "category": "Random", "minAge": 6, "maxAge": 100, "repeatable": true, "cooldownDays": 120, "weight": 10,
+    "description": "Sabahtan beri durmadan yağan yağmur camlara vuruyor. Bütün planlar suya düştü ve önünde koca bir boş öğleden sonra var.",
+    "choices": [
+      {"id": "read_book", "text": "Pencere kenarında bir kitaba göm.", "effects": {"Education": 3, "Happiness": 1},
+       "result": "Yağmurun sesi eşliğinde sayfalar kendiliğinden döndü."},
+      {"id": "play_in_rain", "text": "Dışarı çık, su birikintilerinde zıpla.", "requires": ["MinStat:Health:40"], "effects": {"Happiness": 6, "Health": -4},
+       "result": "Sırılsıklam ama kahkahalar içinde eve döndün. Ertesi gün burnun akıyordu."},
+      {"id": "call_friend", "text": "Bir arkadaşını arayıp saatlerce konuş.", "effects": {"Social": 4},
+       "result": "Telefonu kapattığında yağmur çoktan dinmişti."}
+    ]
+  },
+  {
+    "id": "random_debt_counselor", "title": "Borç Danışmanı", "category": "Random", "minAge": 20, "maxAge": 80, "repeatable": true, "cooldownDays": 700, "weight": 14,
+    "description": "Bir tanıdık, faturalarına birlikte bakman için sakin bir danışman öneriyor. Hesabın rahat olsa da, borç limitine dayanmış olsa da seçenekler aynı masada: küçülmek, destek istemek ya da daha çok çalışmak.",
+    "choices": [
+      {"id": "sell_belongings", "text": "Eşyalarının bir kısmını sat.", "effects": {"Money": 25000, "Happiness": -5},
+       "result": "Evin biraz boşaldı ama ilk kez nefes alabildin."},
+      {"id": "ask_family", "text": "Ailenden yardım iste.", "requires": ["MinStat:Social:40"], "effects": {"Money": 40000, "Social": -4, "Happiness": -2},
+       "result": "Telefonda uzun bir sessizlik oldu. Sonra annen \"Ne kadar lazım?\" diye sordu."},
+      {"id": "extra_shifts", "text": "Ek işlere gir, gece gündüz çalış.", "requires": ["MinStat:Health:35"], "effects": {"Money": 30000, "Health": -6},
+       "result": "Aylarca uykusuz kaldın, ama borç dağı küçülmeye başladı."}
+    ]
+  },
+  {
+    "id": "random_weekend_getaway", "title": "Hafta Sonu Kaçamağı", "category": "Random", "minAge": 18, "maxAge": 85, "repeatable": true, "cooldownDays": 240, "weight": 10,
+    "description": "Arkadaşların sahil kasabasına iki günlük bir kaçamak planlıyor. Seni de çağırıyorlar.",
+    "choices": [
+      {"id": "join_trip", "text": "Çantanı hazırla, katıl.", "cost": 6000, "effects": {"Happiness": 8, "Social": 4, "Health": 2},
+       "result": "Dalgaların sesi, uzun sohbetler. Pazartesi bambaşka biri olarak döndün."},
+      {"id": "stay_home", "text": "Evde kal, dinlen.", "effects": {"Happiness": 2, "Health": 1},
+       "result": "Sessiz bir hafta sonuydu. Belki de buna ihtiyacın vardı."}
+    ]
+  },
+  {
+    "id": "random_house_for_sale", "title": "Satılık Ev", "category": "Random", "minAge": 26, "maxAge": 75, "repeatable": true, "cooldownDays": 730, "weight": 14,
+    "conditions": ["NotHasFlag:owns_house", "MinStat:Money:1500000"],
+    "description": "Hep beğendiğin sokaktaki balkonlu ev satılığa çıkmış. Fiyatı yüksek, ama artık kira ödemek zorunda kalmazsın.",
+    "choices": [
+      {"id": "buy_house", "text": "Birikimini topla, evi al.", "cost": 2500000, "effects": {"Happiness": 10}, "set": ["owns_house"],
+       "result": "Anahtarı çevirdiğinde kapının arkasında artık senin evin vardı."},
+      {"id": "keep_renting", "text": "Kirada kalmaya devam et.", "effects": {"Happiness": -1},
+       "result": "Ev birkaç hafta sonra satıldı. Balkonunda başka bir aile çay içiyor."}
+    ]
+  },
+  {
+    "id": "random_used_car", "title": "İkinci El Araba", "category": "Random", "minAge": 20, "maxAge": 75, "repeatable": true, "cooldownDays": 730, "weight": 12,
+    "conditions": ["NotHasFlag:owns_car", "MinStat:Money:400000"],
+    "description": "Bir tanıdığın, bakımlı arabasını uygun fiyata satmak istiyor. Ulaşım derdi biter, ama masrafı da olur.",
+    "choices": [
+      {"id": "buy_car", "text": "Arabayı al.", "cost": 600000, "effects": {"Happiness": 5}, "set": ["owns_car"],
+       "result": "İlk uzun yolculuğunda camı açıp şarkı söyledin."},
+      {"id": "public_transport", "text": "Toplu taşımaya devam et.", "effects": {"Health": 1},
+       "result": "Otobüste okuduğun kitaplar birikmeye devam etti."}
+    ]
+  },
+  {
+    "id": "random_trip_abroad", "title": "Yurt Dışı Tatili", "category": "Random", "minAge": 20, "maxAge": 85, "repeatable": true, "cooldownDays": 730, "weight": 10,
+    "conditions": ["MinStat:Money:100000"],
+    "description": "Uzun süredir hayalini kurduğun ülkeye uygun bir uçak bileti buldun. İzin günlerin de birikmiş.",
+    "choices": [
+      {"id": "go_abroad_trip", "text": "Biletini al, git.", "cost": 60000, "effects": {"Happiness": 10, "Social": 3, "Education": 2}, "set": ["traveled_abroad"],
+       "result": "Dar sokaklarda kayboldun, bilmediğin yemekleri denedin. Döndüğünde biraz değişmiştin."},
+      {"id": "local_trip", "text": "Yurt içinde küçük bir tatil yap.", "cost": 15000, "effects": {"Happiness": 5, "Health": 2},
+       "result": "Bir dağ evinde, şömine başında üç gün."},
+      {"id": "save_money", "text": "Parayı biriktir.", "effects": {"Happiness": -1},
+       "result": "Bilet sekmesini kapattın. Hesabın memnundu, sen o kadar değil."}
+    ]
+  },
+  {
+    "id": "random_old_coat", "title": "Eski Montun Cebi", "category": "Random", "minAge": 10, "maxAge": 100, "repeatable": true, "cooldownDays": 1000, "weight": 6,
+    "description": "Dolabı toplarken eski bir montun cebinde katlanmış para buldun. Yanında da yıllar önceki bir sinema bileti.",
+    "choices": [
+      {"id": "keep_coat_money", "text": "Parayı cüzdanına koy.", "effects": {"Money": 500, "Happiness": 2},
+       "result": "Küçük bir hediye, geçmişteki kendinden."},
+      {"id": "donate_coat", "text": "Montu ve parayı bir yardım kutusuna bırak.", "effects": {"Social": 2, "Happiness": 3},
+       "result": "Montun bu kış başka birini ısıtacağını düşünmek güzeldi."}
+    ]
+  },
+  {
+    "id": "random_power_outage", "title": "Elektrik Kesintisi", "category": "Random", "minAge": 6, "maxAge": 100, "repeatable": true, "cooldownDays": 400, "weight": 7,
+    "description": "Akşam yemeğinden sonra bütün mahallenin elektriği kesildi. Telefonların şarjı azalıyor.",
+    "choices": [
+      {"id": "candles", "text": "Mum yak, kutu oyunlarını çıkar.", "effects": {"Social": 3, "Happiness": 3},
+       "result": "Mum ışığında oynanan oyun, haftalardır en çok güldüğünüz akşam oldu."},
+      {"id": "sleep_early", "text": "Erken yat.", "effects": {"Health": 2},
+       "result": "Yıllardır bu kadar erken uyumamıştın. Sabah dinç uyandın."}
+    ]
+  },
+  {
+    "id": "random_retirement_hobby", "title": "Emeklilikte Yeni Uğraş", "category": "Random", "minAge": 60, "maxAge": 100, "weight": 15,
+    "conditions": ["HasFlag:retired"],
+    "description": "Sabahları alarm çalmıyor artık. Günler uzun; bir uğraş edinmenin tam zamanı.",
+    "choices": [
+      {"id": "gardening", "text": "Bir hobi bahçesi kirala.", "effects": {"Health": 4, "Happiness": 5},
+       "result": "Kendi yetiştirdiğin domatesler, çocukluğundaki köy yazlarını hatırlattı."},
+      {"id": "instrument", "text": "Hep istediğin enstrümanı öğren.", "effects": {"Education": 4, "Happiness": 4}, "set": ["musician"],
+       "result": "Komşular önce şikâyet etti, sonra şarkı istemeye başladı."},
+      {"id": "courses", "text": "Halk eğitim merkezinde kurslara yazıl.", "effects": {"Education": 5, "Social": 4},
+       "result": "Sınıftaki en hevesli öğrenci sendin."}
+    ]
+  }
+]

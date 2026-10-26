@@ -1,0 +1,441 @@
+[
+  {
+    "id": "job_nurse_1", "title": "Gece Nöbeti", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:nurse"],
+    "description": "Gece üçte koridor floresan ışığıyla titriyor; serviste otuz hasta, nöbetçi iki hemşire. Yedi numaradaki yaşlı adam, kimse gelmediği için korkuyla seni çağırıyor. Aynı anda on ikinin serumu bitmek üzere.",
+    "choices": [
+      {"id": "stay", "text": "Yedi numarada birkaç dakika otur, elini tut.", "effects": {"Happiness": 3, "Social": 2, "Health": -1}, "set": ["nurse_hand"],
+       "result": "Adam sakinleşip uykuya daldı. On ikinin serumuna son saniyede yetiştin."},
+      {"id": "serum", "text": "Önce serumu değiştir, sonra dön.", "effects": {"Education": 2, "Happiness": -1},
+       "result": "Döndüğünde adam ağlayarak uyumuştu. Sabah ona bir bardak çay götürdün."},
+      {"id": "call", "text": "Diğer hemşireden destek iste.", "effects": {"Social": 3},
+       "result": "Birlikte koştunuz. Nöbetin sonunda ikiniz de koridorda bir sandalyeye çöktünüz ve güldünüz."}
+    ]
+  },
+  {
+    "id": "job_nurse_2", "title": "Doz Hatası", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:nurse", "MinCareerLevel:2"],
+    "description": "Bir asistan hekimin yazdığı ilaç dozu, gözüne on kat fazla görünüyor. Saat sabahın beşi, hekim uykusuz ve sinirli. Seni ilk kez gören biri «Talimata uy,» diyor.",
+    "choices": [
+      {"id": "question", "text": "Dozu uygulamadan önce hekimi ara.", "effects": {"Happiness": 3, "Social": -1, "Education": 2},
+       "result": "Hekim önce bağırdı, sonra sustu. Ertesi sabah nöbet odasına bir kutu kurabiye bırakmıştı."},
+      {"id": "comply", "text": "Talimata uy; o hekim.", "effects": {"Happiness": -5, "Health": -1},
+       "result": "Hasta yoğun bakıma alındı ama kurtuldu. Kayıtlarda kimin hatası olduğu bulanık kaldı."},
+      {"id": "senior", "text": "Sorumlu hemşireyi uyandır.", "effects": {"Social": 2, "Happiness": 1},
+       "result": "Sorumlu hemşire talimatı durdurdu ve olayı bildirdi. Sistem değişti; seni kimse hatırlamadı ama hasta sağdı."}
+    ]
+  },
+  {
+    "id": "job_nurse_3", "title": "Yeni Hemşireler", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:nurse", "MinCareerLevel:3"],
+    "description": "Servise beş yeni mezun hemşire geldi ve hepsi ilk haftasında korkuyla sana bakıyor. Yönetim, kadro açığı yüzünden onları hemen nöbete yazmanı istiyor. Kendi ilk gecen aklına geliyor.",
+    "choices": [
+      {"id": "pair", "text": "İlk ay her birini deneyimli biriyle eşleştir.", "effects": {"Social": 4, "Happiness": 3, "Health": -2},
+       "result": "Nöbet çizelgesi bir yapbozdu ve sen fazla mesai yaptın. Ama beşi de bir yıl sonra hâlâ oradaydı."},
+      {"id": "throw", "text": "Yönetimin istediği gibi doğrudan nöbete yaz.", "effects": {"Happiness": -2, "Money": 5000},
+       "result": "Açık kapandı. Ama ikisi ilk üç ayda istifa etti."},
+      {"id": "hand", "text": "Onlara yedi numaradaki adamı ve kimsenin öğretmediği o dersi anlat: el tutmak.", "requires": ["HasFlag:nurse_hand"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "Bir hafta sonra gece üçte koridordan geçerken, yeni hemşirelerden birini bir hastanın yatağında otururken gördün."}
+    ]
+  },
+
+  {
+    "id": "job_surgeon_1", "title": "İlk Kesi", "category": "Career", "minAge": 26, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:surgeon"],
+    "description": "Ameliyathanenin soğuk ışığı altında hocan bisturiyi sana uzatıyor; ilk kez sen keseceksin. Monitörlerin bip sesi, kendi kalp atışınla birbirine karışıyor. Maskenin altında nefesin ıslak.",
+    "choices": [
+      {"id": "cut", "text": "Derin bir nefes al ve kes.", "effects": {"Education": 3, "Happiness": 3}, "set": ["surgeon_first"],
+       "result": "Eller titremedi. Hocan sessizce başını salladı; o gece uyuyamadın, mutluluktan."},
+      {"id": "pass", "text": "Henüz hazır olmadığını söyle.", "effects": {"Education": 2, "Happiness": -2},
+       "result": "Hocan bisturiyi geri aldı. «Bilmek de bir cesarettir,» dedi; ama sesi biraz hayal kırıklığı taşıyordu."},
+      {"id": "ask", "text": "Kesmeden önce adımları sesli tekrar et.", "effects": {"Education": 4, "Social": 1},
+       "result": "Ekip seni dinledi, ardından kesi başladı. Bu alışkanlık, kariyerin boyunca seninle kaldı."}
+    ]
+  },
+  {
+    "id": "job_surgeon_2", "title": "On Dört Saat", "category": "Career", "minAge": 28, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:surgeon", "MinCareerLevel:2"],
+    "description": "On dört saattir ayaktasın ve acilden bir trafik kazası haberi geliyor; çocuk, iç kanama. Ekipte bu ameliyatı yapabilecek tek uzman sensin. Ellerin hafifçe titriyor ve bunu yalnızca sen biliyorsun.",
+    "choices": [
+      {"id": "operate", "text": "Gir ve ameliyat et.", "effects": {"Health": -4, "Happiness": 4},
+       "result": "Dört saat sonra çocuğun nabzı düzeldi. Sen ise soyunma odasının zemininde uyuyakaldın."},
+      {"id": "call_in", "text": "Evdeki bir meslektaşını acil çağır.", "effects": {"Social": 2, "Happiness": 1},
+       "result": "Kırk dakika sonra geldi ve ameliyatı birlikte yaptınız. O kırk dakika hayatının en uzun anlarıydı."},
+      {"id": "coffee", "text": "Bir kahve, beş dakika göz kapat, sonra gir.", "effects": {"Health": -2, "Happiness": 2, "Education": 1},
+       "result": "Beş dakika bir ömür gibi geldi. Ameliyathaneye girdiğinde ellerin yeniden sabitti."}
+    ]
+  },
+  {
+    "id": "job_surgeon_3", "title": "Bölümün Başında", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:surgeon", "MinCareerLevel:3"],
+    "description": "Bir özel hastane sana bugünkü maaşının üç katını teklif ediyor. Devlet hastanesindeki bölümünde ise yetiştirdiğin asistanlar ve sırada bekleyen yüzlerce hasta var. Beyaz önlüğünün cebinde, bir hastanın el yazısıyla teşekkür notu.",
+    "choices": [
+      {"id": "private", "text": "Özel hastaneye geç.", "effects": {"Money": 250000, "Happiness": -1, "Social": -2},
+       "result": "Ameliyathaneler pırıl pırıldı, hastalar azdı. Eski asistanların ilk aylarda sık sık aradı, sonra seyrekleşti."},
+      {"id": "stay", "text": "Bölümünde kal.", "effects": {"Happiness": 4, "Social": 3},
+       "result": "Maaş aynıydı ama yetiştirdiğin cerrahlar ülkenin dört bir yanına dağıldı."},
+      {"id": "first", "text": "Asistanlarına ilk kesini anlat ve bisturiyi onlara uzat.", "requires": ["HasFlag:surgeon_first"], "effects": {"Happiness": 8, "Social": 4, "Education": 2},
+       "result": "Genç bir asistan derin bir nefes aldı ve kesti. Maskenin üstünden, yıllar önceki kendi gözlerini gördün."}
+    ]
+  },
+
+  {
+    "id": "job_psychologist_1", "title": "Elli Dakika", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:psychologist"],
+    "description": "Seansın son beş dakikası. Danışanın, haftalardır kaçındığı konuyu ilk kez açıyor ve gözleri doluyor. Bekleme salonunda bir sonraki danışan oturuyor.",
+    "choices": [
+      {"id": "extend", "text": "Seansı uzat, onu yarıda bırakma.", "effects": {"Social": 2, "Happiness": 2, "Health": -1}, "set": ["psychologist_boundary"],
+       "result": "Danışanın sakinleşti. Sonraki danışan ise yirmi dakika bekledi ve bunu sana söyledi."},
+      {"id": "close", "text": "Nazikçe kapat, gelecek haftaya bu noktadan başlayacağınızı söyle.", "effects": {"Education": 3, "Happiness": 1},
+       "result": "Kapıdan çıkarken kırılgandı ama tutundu. Bir sonraki seans, en verimlisi oldu."},
+      {"id": "supervisor", "text": "Seanstan sonra süpervizörüne danış.", "effects": {"Education": 2, "Social": 2},
+       "result": "«Sınır koymak da bakım vermektir,» dedi. Bu cümleyi yıllarca hatırladın."}
+    ]
+  },
+  {
+    "id": "job_psychologist_2", "title": "Gizlilik", "category": "Career", "minAge": 26, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:psychologist", "MinCareerLevel:2"],
+    "description": "Bir danışanın, eşine zarar vermeyi düşündüğünü üstü kapalı ama net bir şekilde anlatıyor. Gizlilik ilkesi ile uyarı yükümlülüğü arasında, ince bir çizginin üzerindesin. Ofisinin saatinin tik takları kulağında büyüyor.",
+    "choices": [
+      {"id": "warn", "text": "Yasal uyarı yükümlülüğünü uygula.", "effects": {"Happiness": 1, "Social": -2, "Education": 2},
+       "result": "Eşi korundu. Danışan terapiyi bıraktı ve seni bir daha aramadı."},
+      {"id": "work", "text": "Seansta riski doğrudan konuş, bir güvenlik planı yap.", "requires": ["MinStat:Social:65"], "effects": {"Happiness": 3, "Education": 3, "Health": -1},
+       "result": "Saatlerce konuştunuz. Danışan kendi rızasıyla bir psikiyatriste yönlendirilmeyi kabul etti."},
+      {"id": "consult", "text": "Etik kuruldan acil görüş al.", "effects": {"Education": 2, "Social": 1},
+       "result": "Kurul hızlı döndü ve ne yapacağını adım adım belirledi. Kararı tek başına taşımadın."}
+    ]
+  },
+  {
+    "id": "job_psychologist_3", "title": "Terapistin Terapisti", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:psychologist", "MinCareerLevel:3"],
+    "description": "Yıllardır başkalarının yükünü dinledin ve son aylarda kendi rüyalarında danışanlarının sesleri var. Klinik direktörü olarak takvimin dolu, bekleme listesi uzun. Ayna sana yorgun birini gösteriyor.",
+    "choices": [
+      {"id": "own", "text": "Kendine bir terapist bul.", "cost": 8000, "effects": {"Happiness": 6, "Health": 3},
+       "result": "İlk seansta koltuğun öbür tarafında oturmak tuhaftı. Sonra bir şeyler yerine oturdu."},
+      {"id": "push", "text": "Bekleme listesi bitene kadar dayan.", "effects": {"Health": -4, "Money": 30000, "Happiness": -3},
+       "result": "Liste bitmedi; listeler hiç bitmez. Sen ise bitmeye çok yaklaştın."},
+      {"id": "boundary", "text": "Yıllar önce uzattığın o seansı hatırla ve takvimine sınırlar koy.", "requires": ["HasFlag:psychologist_boundary"], "effects": {"Happiness": 7, "Health": 3, "Social": 2},
+       "result": "Günde beş seans, hafta sonları kapalı. Danışanların farkı fark etti: daha az ama daha derin bir sen."}
+    ]
+  },
+
+  {
+    "id": "job_paramedic_1", "title": "Dar Sokak", "category": "Career", "minAge": 19, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:paramedic"],
+    "description": "Siren çalıyor ama ambulans eski mahallenin dar sokağına girmiyor; çift park etmiş bir araba yolu kesmiş. Telsizde kalp durması bildirildi, adres yüz metre ileride. Sedye ve defibrilatör ağır.",
+    "choices": [
+      {"id": "run", "text": "Çantayı kap ve koş.", "effects": {"Health": -2, "Happiness": 4}, "set": ["paramedic_run"],
+       "result": "Merdivenleri ikişer çıktın. Adamın kalbi dördüncü şokta yeniden attı."},
+      {"id": "honk", "text": "Korna çal, arabanın sahibini bekle.", "effects": {"Happiness": -4},
+       "result": "Sahip altı dakika sonra geldi. O altı dakikayı hiç unutmadın."},
+      {"id": "neighbors", "text": "Mahalleliyi çağır, arabayı birlikte iteleyin.", "effects": {"Social": 3, "Happiness": 2},
+       "result": "Dört adam arabayı kaldırıp kenara koydu. Ambulans geçerken pencerelerden alkış geldi."}
+    ]
+  },
+  {
+    "id": "job_paramedic_2", "title": "Saldırgan Hasta", "category": "Career", "minAge": 21, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:paramedic", "MinCareerLevel:2"],
+    "description": "Gece yarısı bir kavga ihbarına gittiniz; yaralı adam alkollü ve sana yumruk sallıyor. Polis on dakika uzakta, adamın başından kan akıyor. Partnerin seni geri çekmeye çalışıyor.",
+    "choices": [
+      {"id": "wait", "text": "Geri çekil, polisi bekle.", "effects": {"Health": 1, "Happiness": -2},
+       "result": "Polis geldiğinde adam bilincini kaybetmişti. Hastaneye yetiştirdiniz, son anda."},
+      {"id": "calm", "text": "Sakin bir sesle konuş, yaklaş.", "requires": ["MinStat:Social:50"], "effects": {"Happiness": 4, "Social": 2},
+       "result": "Adı Murat'mış. Annesinden söz ettiğinde ağlamaya başladı ve sedyeye kendisi uzandı."},
+      {"id": "restrain", "text": "Partnerinle birlikte zaptet ve müdahale et.", "effects": {"Health": -3, "Happiness": 1, "Education": 1},
+       "result": "Kaşına bir dirsek geldi, üç dikiş. Ama adamın kafasındaki kanama zamanında durdu."}
+    ]
+  },
+  {
+    "id": "job_paramedic_3", "title": "İstasyon", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:paramedic", "MinCareerLevel:3"],
+    "description": "İstasyon sorumlusu oldun; artık her çağrıya sen gitmiyorsun. Genç bir ekip, ilk çocuk ölümünü yaşadıkları vakadan sessizce döndü. Kimse yemek yemiyor, kimse konuşmuyor.",
+    "choices": [
+      {"id": "debrief", "text": "Hepsini toplayıp vakayı birlikte konuş.", "effects": {"Social": 4, "Happiness": 3},
+       "result": "Önce kimse konuşmadı, sonra herkes. Gece biterken biri, «Teşekkür ederim,» dedi."},
+      {"id": "leave", "text": "Hepsine bir gün izin ver.", "effects": {"Happiness": 1, "Social": 1},
+       "result": "Ertesi gün döndüler, ama ikisi o vakayı hiç konuşmadı. Biri bir yıl sonra meslekten ayrıldı."},
+      {"id": "story", "text": "Onlara o dar sokakta koştuğun geceyi ve kurtaramadığın vakaları anlat.", "requires": ["HasFlag:paramedic_run"], "effects": {"Happiness": 7, "Social": 5},
+       "result": "Kurtardıklarını da, kurtaramadıklarını da anlattın. Gençlerden biri, «Demek sen de,» dedi; bu yetti."}
+    ]
+  },
+
+  {
+    "id": "job_veterinarian_1", "title": "Bekleme Salonu", "category": "Career", "minAge": 23, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:veterinarian"],
+    "description": "Bir çocuk, kucağında arabanın çarptığı sokak köpeğiyle kliniğe dalıyor; hiç parası yok. Köpeğin bacağı kırık, ameliyat pahalı. Patron veteriner arka odadan sana bakıyor.",
+    "choices": [
+      {"id": "free", "text": "Ameliyatı ücretsiz yap, masrafı maaşından kes.", "effects": {"Money": -8000, "Happiness": 5, "Social": 2}, "set": ["veterinarian_stray"],
+       "result": "Köpek üç bacakla ama kuyruğunu sallayarak çıktı. Çocuk her hafta onunla kliniğin önünden geçti."},
+      {"id": "basic", "text": "Ağrısını dindir, belediye barınağına yönlendir.", "effects": {"Happiness": -2, "Education": 1},
+       "result": "Barınak onu aldı. Çocuğun gözlerindeki şeyi uzun süre unutamadın."},
+      {"id": "fund", "text": "Klinikte bir bağış kutusu başlat.", "effects": {"Social": 3, "Happiness": 2},
+       "result": "Bir haftada ameliyat parası toplandı. Kutu kliniğin kalıcı bir parçası oldu."}
+    ]
+  },
+  {
+    "id": "job_veterinarian_2", "title": "Yarış Atı", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:veterinarian", "MinCareerLevel:2"],
+    "description": "Zengin bir at sahibi, sakatlanmış yarış atının ağrısını yarışa kadar bastıracak bir iğne istiyor. Atın bacağı bu yükü kaldırmazsa kırılabilir. Adam çek defterini çıkarıyor.",
+    "choices": [
+      {"id": "refuse", "text": "Reddet ve atı yarıştan çek.", "effects": {"Happiness": 4, "Money": -5000, "Social": -1},
+       "result": "Adam başka bir veteriner buldu. At yarışa katılmadı; sahibinin kendisi geri çekti."},
+      {"id": "inject", "text": "İğneyi yap; senin işin değil.", "effects": {"Money": 30000, "Happiness": -6},
+       "result": "At yarışı ikinci bitirdi. Ertesi haftaki haber, okuyamayacağın kadar kısaydı."},
+      {"id": "report", "text": "Yarış komitesine bildir.", "effects": {"Happiness": 3, "Social": -3, "Education": 1},
+       "result": "At muayeneye alındı. Hipodromda adın bir süre fısıltıyla anıldı."}
+    ]
+  },
+  {
+    "id": "job_veterinarian_3", "title": "Kendi Kliniğin", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:veterinarian", "MinCareerLevel:3"],
+    "description": "Sonunda kendi kliniğini açacak kadar birikimin var. Bir zincir pet hastanesi seni ortak olarak istiyor; garantili gelir, belirlenmiş fiyatlar. Ya da mahallede küçük bir dükkân, her şeyiyle senin.",
+    "choices": [
+      {"id": "chain", "text": "Zincire ortak ol.", "effects": {"Money": 120000, "Happiness": -1},
+       "result": "Kazancın iyi, mesain düzenliydi. Fiyat listesi ise hiç senin değildi."},
+      {"id": "small", "text": "Mahallede küçük kliniğini aç.", "cost": 60000, "effects": {"Happiness": 6, "Social": 3},
+       "result": "İlk ay kimse gelmedi. Bir yıl sonra bekleme salonu mahallenin buluşma yeriydi."},
+      {"id": "stray", "text": "Kliniğinin bir köşesini sokak hayvanlarına ayır; o üç bacaklı köpek maskotun olsun.", "requires": ["HasFlag:veterinarian_stray"], "effects": {"Happiness": 9, "Social": 4, "Money": -10000},
+       "result": "Köpek yaşlanmıştı ama kapıda herkesi karşıladı. O çocuk, artık veterinerlik öğrencisi olarak stajını sende yaptı."}
+    ]
+  },
+
+  {
+    "id": "job_physiotherapist_1", "title": "On Adım", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:physiotherapist"],
+    "description": "İnme geçirmiş bir öğretmen, paralel barların arasında duruyor; kaşları ter içinde. Bugün hedef on adım. Üçüncü adımda bacağı titriyor ve «Yapamıyorum,» diyor.",
+    "choices": [
+      {"id": "push", "text": "«Bir adım daha,» de ve bekle.", "effects": {"Happiness": 3, "Social": 2}, "set": ["physiotherapist_steps"],
+       "result": "Dördüncü, beşinci... yedide durdu. Ama gülüyordu."},
+      {"id": "rest", "text": "Otur, bugünlük bu kadar.", "effects": {"Education": 2, "Happiness": 1},
+       "result": "Ertesi gün daha dinç geldi ve sekiz adım attı."},
+      {"id": "music", "text": "Sevdiği bir şarkıyı aç, ritimle yürüsün.", "effects": {"Happiness": 4, "Education": 2},
+       "result": "Eski bir türkü çaldı ve ayakları ritmi buldu. On adımı geçti, saymayı unuttu."}
+    ]
+  },
+  {
+    "id": "job_physiotherapist_2", "title": "Sigortanın Sınırı", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:physiotherapist", "MinCareerLevel:2"],
+    "description": "Bir hastanın sigortası yalnızca on seans ödüyor; tam iyileşme için en az otuz gerekiyor. Ailesinin ek seansları karşılayacak parası yok. Klinik müdürü, «Kurallar kurallar,» diyor.",
+    "choices": [
+      {"id": "home", "text": "Ona evde yapabileceği bir program hazırla.", "effects": {"Education": 2, "Happiness": 3},
+       "result": "Haftalık telefonlarla takip ettin. Yavaş ama düzenli ilerledi."},
+      {"id": "extra", "text": "Mesai dışında ücretsiz seanslar ver.", "effects": {"Health": -2, "Happiness": 4, "Social": 2},
+       "result": "Akşamların küçüldü. Bir yıl sonra hasta, düğününde dans etti ve seni de çağırdı."},
+      {"id": "appeal", "text": "Sigortaya ayrıntılı bir itiraz yaz.", "requires": ["MinStat:Education:60"], "effects": {"Education": 2, "Happiness": 2},
+       "result": "İtiraz kabul edildi; on beş ek seans. Bürokrasiyle de rehabilitasyon yapılabiliyormuş."}
+    ]
+  },
+  {
+    "id": "job_physiotherapist_3", "title": "Sporcunun Dönüşü", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:physiotherapist", "MinCareerLevel:3"],
+    "description": "Ünlü bir futbolcu çapraz bağ ameliyatından sonra seninle çalışıyor. Kulübü onu üç ay erken sahaya sürmek istiyor; final maçı var. Dizinin henüz hazır olmadığını biliyorsun.",
+    "choices": [
+      {"id": "sign", "text": "Kulübün takvimine onay ver.", "effects": {"Money": 60000, "Happiness": -4},
+       "result": "Final kazanıldı. İkinci yarıda dizi yeniden koptu ve bir daha profesyonel oynayamadı."},
+      {"id": "refuse", "text": "Hazır olmadığını yazılı olarak bildir.", "effects": {"Happiness": 4, "Social": -2},
+       "result": "Kulüp seni değiştirdi. Futbolcu ise bir yıl sonra seni bulup teşekkür etti."},
+      {"id": "steps", "text": "Ona o öğretmenin on adımını anlat; sabır, en hızlı yoldur.", "requires": ["HasFlag:physiotherapist_steps"], "effects": {"Happiness": 7, "Social": 3, "Money": 20000},
+       "result": "Finali tribünden izledi ama ertesi sezon on yıl daha oynayacak bir dizle sahaya döndü."}
+    ]
+  },
+
+  {
+    "id": "job_pharmacist_1", "title": "Reçetesiz", "category": "Career", "minAge": 23, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:pharmacist"],
+    "description": "Gece nöbetinde, yaşlı bir kadın titreyen elleriyle boş bir antibiyotik kutusu uzatıyor. Reçetesi yok, doktoru tatilde ve torunu ateşler içinde. Kutunun üstünde senin bile okuyamadığın bir el yazısı var.",
+    "choices": [
+      {"id": "refuse", "text": "Kuralı uygula, acile yönlendir.", "effects": {"Happiness": -2, "Education": 1},
+       "result": "Kadın sessizce gitti. Sabah acil servisten torunun iyi olduğunu öğrendin; yine de içinde bir ağırlık kaldı."},
+      {"id": "call", "text": "Nöbetçi hekimi ara, telefonla reçete iste.", "effects": {"Social": 3, "Happiness": 3}, "set": ["pharmacist_care"],
+       "result": "Yirmi dakika telefonla uğraştın. Kadın ilacı alırken ellerini öptü."},
+      {"id": "give", "text": "İlacı ver, sonra halledersin.", "effects": {"Happiness": 1, "Money": -1000},
+       "result": "Torun iyileşti. Ama denetimde bu kayıt seni sorguya çekti."}
+    ]
+  },
+  {
+    "id": "job_pharmacist_2", "title": "Kampanya", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:pharmacist", "MinCareerLevel:2"],
+    "description": "Bir ilaç firması temsilcisi, belirli bir takviyeyi önerirsen yüklü bir prim teklif ediyor. Takviyenin etkisi bilimsel olarak tartışmalı. Temsilci, «Herkes öneriyor,» diyerek gülümsüyor.",
+    "choices": [
+      {"id": "push", "text": "Öner; zararı yok.", "effects": {"Money": 25000, "Happiness": -3},
+       "result": "Kutular hızla tükendi. Müşterilerden biri, «Hiçbir işe yaramadı,» dediğinde gözlerini kaçırdın."},
+      {"id": "no", "text": "Reddet; yalnızca kanıtlı ürünler öner.", "effects": {"Happiness": 3, "Social": 2},
+       "result": "Temsilci bir daha uğramadı. Müşteriler ise seni «dürüst eczacı» diye tavsiye etti."},
+      {"id": "honest", "text": "Kanıtlarla birlikte anlat, kararı müşteriye bırak.", "requires": ["MinStat:Education:65"], "effects": {"Education": 2, "Money": 8000, "Happiness": 2},
+       "result": "Daha az sattın ama hiç kimse geri dönüp şikâyet etmedi."}
+    ]
+  },
+  {
+    "id": "job_pharmacist_3", "title": "Mahallenin Eczanesi", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:pharmacist", "MinCareerLevel:3"],
+    "description": "Kendi eczanen yirmi yıldır aynı köşede. Büyük bir zincir hemen karşıya şube açıyor ve sana devir teklifi yapıyor. Tezgâhının arkasında, yaşlı müşterilerinin ilaç saatlerini not ettiğin bir defter var.",
+    "choices": [
+      {"id": "sell", "text": "Devret ve emekliliğe hazırlan.", "effects": {"Money": 250000, "Happiness": -2, "Social": -2},
+       "result": "Zincirin vitrinleri parlıyordu. Defterin ise bir çekmecede kaldı."},
+      {"id": "fight", "text": "Kal ve rekabet et.", "effects": {"Happiness": 3, "Money": -20000, "Health": -1},
+       "result": "Ciron düştü ama müşterilerinin çoğu kaldı. Bazıları zincirden alıp sana danışmaya geldi."},
+      {"id": "care", "text": "O gece reçete için telefonla uğraştığın gibi; ilaçları yaşlılara eve götüren bir hizmet başlat.", "requires": ["HasFlag:pharmacist_care"], "effects": {"Happiness": 8, "Social": 5},
+       "result": "Bisikletli bir kurye tuttun. Mahallede kimse zincire geçmedi; sen bir eczaneden fazlasıydın."}
+    ]
+  },
+
+  {
+    "id": "job_dietitian_1", "title": "Mucize Diyet", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:dietitian"],
+    "description": "Danışanın, düğününe bir ay kala on beş kilo vermek istiyor ve internetten bulduğu bir detoks programını gösteriyor. Programın sağlıksız olduğunu biliyorsun. Ama o kararlı ve başka bir diyetisyene gitmeye hazır.",
+    "choices": [
+      {"id": "honest", "text": "Gerçekçi bir hedef koy ve nedenini anlat.", "effects": {"Social": 2, "Happiness": 2, "Education": 1}, "set": ["dietitian_honest"],
+       "result": "Biraz kırıldı ama kaldı. Düğünde beş kilo vermişti ve kendini harika hissediyordu."},
+      {"id": "compromise", "text": "Hızlı ama denetimli bir program yap.", "effects": {"Money": 4000, "Happiness": -1, "Health": -1},
+       "result": "Hedefe yaklaştı. Düğünden sonraki ay hepsini geri aldı."},
+      {"id": "lose", "text": "Kararını değiştirmeyeceksen seninle çalışamayacağımı söyle.", "effects": {"Happiness": 1, "Money": -3000},
+       "result": "Kapıdan çıktı. Üç ay sonra yorgun ve mutsuz geri döndü."}
+    ]
+  },
+  {
+    "id": "job_dietitian_2", "title": "Okul Kantini", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:dietitian", "MinCareerLevel:2"],
+    "description": "Belediye seni ilkokulların kantin menüsünü yenilemekle görevlendirdi. Kantinciler kâr eden şekerli ürünleri bırakmak istemiyor; çocuklar da sebzeli menüyü sevmiyor. Velilerin yarısı seni destekliyor, yarısı karşı.",
+    "choices": [
+      {"id": "ban", "text": "Şekerli ürünleri tamamen kaldır.", "effects": {"Happiness": 1, "Social": -3},
+       "result": "Kantinler protesto etti, çocuklar okul kapısında çikolata aldı. Ama kantin menüsü değişti."},
+      {"id": "taste", "text": "Çocuklarla tadım günleri düzenle.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 5, "Social": 3},
+       "result": "Çocuklar kendi menülerini seçti. Brokolili börek beklenmedik bir yıldız oldu."},
+      {"id": "slow", "text": "Kademeli bir geçiş planı hazırla.", "effects": {"Education": 2, "Happiness": 2},
+       "result": "Değişim yavaştı ve kimse fark etmedi. İki yıl sonra kantinlerde meyve satışı üç katına çıktı."}
+    ]
+  },
+  {
+    "id": "job_dietitian_3", "title": "Kitap Teklifi", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:dietitian", "MinCareerLevel:3"],
+    "description": "Bir yayınevi senden bir diyet kitabı istiyor; ama başlığın «21 Günde Yeni Sen» gibi bir şey olmasını şart koşuyor. Rafların hep böyle kitaplarla dolu olduğunu biliyorsun. Avans, bir yıllık kazancın kadar.",
+    "choices": [
+      {"id": "sell", "text": "Başlığı kabul et; içi seninki olsun.", "effects": {"Money": 150000, "Happiness": -2},
+       "result": "Kitap çok sattı. Yorumların yarısı, başlığın vaat ettiğini içinde bulamadıklarını yazdı."},
+      {"id": "own", "text": "Kendi başlığınla, daha küçük bir yayınevine git.", "effects": {"Money": 30000, "Happiness": 5, "Education": 2},
+       "result": "Az sattı ama yıllarca sattı. Danışanların onu çantalarında taşıdı."},
+      {"id": "honest", "text": "İlk danışanının düğün hikâyesiyle başlayan dürüst bir kitap yaz.", "requires": ["HasFlag:dietitian_honest"], "effects": {"Happiness": 8, "Social": 3, "Money": 50000},
+       "result": "«Beş kilo ve bir ömür» adını taşıyan kitap, bir kulaktan kulağa başarısı oldu."}
+    ]
+  },
+
+  {
+    "id": "job_caregiver_1", "title": "Unutulan İsim", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:caregiver"],
+    "description": "Bakımını üstlendiğin seksen yaşındaki kadın, bu sabah seni ölen kızının adıyla çağırıyor. Gözlerinde yıllardır görmediği birine kavuşmuş gibi bir ışık var. Düzeltmek mi, yoksa o ışığı söndürmemek mi?",
+    "choices": [
+      {"id": "play", "text": "Düzeltme; o adla cevap ver.", "effects": {"Happiness": 2, "Social": 2},
+       "result": "Bütün gün ona kızı gibi baktın. Akşam uykuya dalarken «Geldiğin için teşekkürler,» dedi."},
+      {"id": "correct", "text": "Nazikçe kim olduğunu hatırlat.", "effects": {"Happiness": -2, "Education": 1},
+       "result": "Gözleri karardı, sonra özür diledi. Öğleden sonra seni kendi adınla çağırdı."},
+      {"id": "listen", "text": "Kızını anlatmasını iste.", "effects": {"Social": 3, "Happiness": 3}, "set": ["caregiver_stories"],
+       "result": "Saatlerce anlattı. O günden sonra her sabah, ondan yeni bir hikâye dinledin."}
+    ]
+  },
+  {
+    "id": "job_caregiver_2", "title": "Aile Toplantısı", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:caregiver", "MinCareerLevel:2"],
+    "description": "Baktığın yaşlı adamın çocukları, onu bir huzurevine yerleştirmek istiyor. Adam seninle konuşurken evinden ayrılmak istemediğini defalarca söyledi. Çocuklar senin fikrini soruyor; maaşını onlar ödüyor.",
+    "choices": [
+      {"id": "voice", "text": "Adamın isteğini açıkça aktar.", "effects": {"Happiness": 3, "Social": -1},
+       "result": "Çocuklar sessizleşti. Bir yıl daha evinde kaldı ve kendi bahçesinde öldü."},
+      {"id": "neutral", "text": "Kararı aileye bırak.", "effects": {"Happiness": -3},
+       "result": "Huzurevine yerleşti. Onu ziyaret ettiğinde pencereden bahçeye bakıyordu."},
+      {"id": "plan", "text": "Evde kalabileceği bir bakım planı öner.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 4, "Social": 3, "Health": -1},
+       "result": "Haftada üç gün sen, iki gün bir gündüz merkezi. Herkesin razı olduğu bir orta yol."}
+    ]
+  },
+  {
+    "id": "job_caregiver_3", "title": "Görünmeyen Emek", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:caregiver", "MinCareerLevel:3"],
+    "description": "Yıllardır başkalarının yaşlılığına eşlik ettin; şimdi kendi sırtın ağrıyor. Bir belediye, bakım çalışanları için bir eğitim programı kurmanı istiyor. Maaşı düşük ama etkisi büyük olabilir.",
+    "choices": [
+      {"id": "program", "text": "Programı kur.", "effects": {"Happiness": 5, "Social": 4, "Money": -5000},
+       "result": "İlk dönem yirmi kişi mezun oldu. Hepsinin cebinde, senin yazdığın küçük bir el kitabı vardı."},
+      {"id": "private", "text": "Özel bir aileyle yüksek ücretli çalış.", "effects": {"Money": 60000, "Happiness": 1},
+       "result": "Kazancın iyileşti, sırtın biraz dinlendi. Ama o programı kimin kurduğunu merak ettin."},
+      {"id": "stories", "text": "Yıllardır dinlediğin hikâyeleri bir kitapta topla, programın ders kitabı yap.", "requires": ["HasFlag:caregiver_stories"], "effects": {"Happiness": 9, "Social": 4},
+       "result": "Kitabın adı «Sabah Hikâyeleri» oldu. İlk sayfada, seni kızının adıyla çağıran kadının hikâyesi vardı."}
+    ]
+  },
+
+  {
+    "id": "job_dentist_1", "title": "Korku", "category": "Career", "minAge": 23, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:dentist"],
+    "description": "Koltukta yetişkin bir adam, tırnaklarını koltuk kollarına geçirmiş; yirmi yıldır dişçiye gelmemiş. Ağzında üç çürük ve bir apse var. Daha aleti eline almadan tansiyonu yükseliyor.",
+    "choices": [
+      {"id": "slow", "text": "Bugün sadece konuş ve ona aletleri göster.", "effects": {"Social": 3, "Happiness": 2, "Money": -2000}, "set": ["dentist_gentle"],
+       "result": "Seansın sonunda gülüyordu. Gelecek hafta kendi isteğiyle geldi."},
+      {"id": "fast", "text": "Uyuşturucuyu yap ve hızlıca bitir.", "effects": {"Money": 4000, "Happiness": -1},
+       "result": "İş bitti ama adam bir daha randevu almadı."},
+      {"id": "sedation", "text": "Sedasyon öner.", "effects": {"Money": 3000, "Education": 1},
+       "result": "Hiçbir şey hatırlamadan uyandı. Bir sonraki kontrolde de aynı şeyi istedi."}
+    ]
+  },
+  {
+    "id": "job_dentist_2", "title": "Gülüş Tasarımı", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:dentist", "MinCareerLevel:2"],
+    "description": "Yirmi iki yaşında bir genç, sosyal medyada gördüğü bembeyaz gülüş için sağlıklı dişlerinin hepsini kaplatmak istiyor. Bu işlem dişlerini kalıcı olarak törpülemek demek. Ödeme peşin, bir aylık kliniğin kirası.",
+    "choices": [
+      {"id": "do", "text": "Yap; yetişkin bir insan.", "effects": {"Money": 80000, "Happiness": -3},
+       "result": "Gülüşü kusursuzdu. On yıl sonra hassasiyet şikâyetiyle başka bir klinikte olduğunu duydun."},
+      {"id": "whiten", "text": "Daha az müdahaleci bir beyazlatma öner.", "effects": {"Money": 15000, "Happiness": 3},
+       "result": "Önce hayal kırıklığına uğradı, sonra aynada gülümsedi. «Doğal duruyor,» dedi."},
+      {"id": "no", "text": "Sağlıklı dişlere dokunmayacağını söyle.", "effects": {"Happiness": 2, "Money": -2000},
+       "result": "Kapıdan çıkıp başka bir kliniğe gitti. Sen ellerini temiz hissettin, cebin boş."}
+    ]
+  },
+  {
+    "id": "job_dentist_3", "title": "Köy Kliniği", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:dentist", "MinCareerLevel:3"],
+    "description": "Bir sivil toplum kuruluşu, dağ köylerinde gezici bir diş kliniği için gönüllü hekim arıyor. Her ay bir hafta kliniğini kapatman gerekecek. Köylerde çocukların çoğu hiç diş fırçası görmemiş.",
+    "choices": [
+      {"id": "go", "text": "Gönüllü ol.", "effects": {"Happiness": 6, "Social": 3, "Money": -30000},
+       "result": "Bir minibüs, bir koltuk ve uzun kuyruklar. Bir kız çocuğu, aldığı ilk diş fırçasını göğsüne bastırdı."},
+      {"id": "donate", "text": "Para ve malzeme bağışla.", "effects": {"Money": -15000, "Happiness": 3},
+       "result": "Bağışın iki yıl boyunca malzeme sağladı. Fotoğrafları kliniğinin duvarına astın."},
+      {"id": "gentle", "text": "Korkan hastalar için geliştirdiğin yavaş yöntemi köy çocuklarına uyarla.", "requires": ["HasFlag:dentist_gentle"], "effects": {"Happiness": 9, "Social": 4, "Money": -20000},
+       "result": "Hiçbir çocuk ağlamadı. Bir yıl sonra o köyden biri, diş hekimliği fakültesine girdi."}
+    ]
+  },
+
+  {
+    "id": "job_herbalist_1", "title": "Kavanozlar", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:herbalist"],
+    "description": "Dükkânın loş ışığında, bir anne kızının sürekli öksürüğü için «doğal bir şey» istiyor. Öksürük üç haftadır sürüyormuş ve çocuk hiç doktora götürülmemiş. Raflarda ıhlamur, kekik, adaçayı.",
+    "choices": [
+      {"id": "doctor", "text": "Bir bitki çayı ver ama önce doktora gitmesini şart koş.", "effects": {"Social": 2, "Happiness": 3}, "set": ["herbalist_honest"],
+       "result": "Anne bir hafta sonra döndü; çocukta astım başlangıcı çıkmıştı. Çay da iyi gelmişti, ama ilaç da gerekiyordu."},
+      {"id": "sell", "text": "En güçlü karışımını sat.", "effects": {"Money": 2000, "Happiness": -2},
+       "result": "Öksürük azaldı, sonra yeniden başladı. Anne başka bir aktara gitti."},
+      {"id": "teach", "text": "Hangi otun ne işe yaradığını ve sınırlarını anlat.", "effects": {"Education": 2, "Social": 1},
+       "result": "Anne not aldı ve çok soru sordu. Sonraki gelişinde komşusunu da getirdi."}
+    ]
+  },
+  {
+    "id": "job_herbalist_2", "title": "Kanser Çayı", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:herbalist", "MinCareerLevel:2"],
+    "description": "Bir tedarikçi sana «kanseri iyileştiren» bir bitki karışımı satmayı öneriyor; kâr marjı çok yüksek. Mahallende tedavi gören birkaç hasta, umutla senin dükkânına geliyor. Paket üzerinde bilimsel hiçbir şey yok.",
+    "choices": [
+      {"id": "sell", "text": "Sat; umut da bir ilaçtır.", "effects": {"Money": 40000, "Happiness": -7},
+       "result": "Satışlar patladı. Bir hasta kemoterapiyi bıraktığını söylediğinde kasayı kapattın."},
+      {"id": "refuse", "text": "Reddet, hastalara açıkça söyle.", "effects": {"Happiness": 4, "Money": -3000},
+       "result": "Bazı müşteriler kızdı. Ama bir onkolog, hastalarını sana yatıştırıcı çaylar için göndermeye başladı."},
+      {"id": "support", "text": "Yalnızca bulantı ve uykusuzluk için destekleyici çaylar hazırla.", "requires": ["MinStat:Education:40"], "effects": {"Money": 10000, "Happiness": 3, "Education": 2},
+       "result": "Hastalar tedavilerine devam etti ve geceleri biraz daha rahat uyudu."}
+    ]
+  },
+  {
+    "id": "job_herbalist_3", "title": "Eski Defter", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:herbalist", "MinCareerLevel:3"],
+    "description": "Ustandan kalan, el yazısıyla dolu yüz yıllık bir tarif defteri var. Bir kozmetik şirketi defter için büyük para teklif ediyor. Bir üniversite ise içindeki bitkileri bilimsel olarak incelemek istiyor.",
+    "choices": [
+      {"id": "sell", "text": "Defteri şirkete sat.", "effects": {"Money": 120000, "Happiness": -3},
+       "result": "Tariflerden biri bir krem markası oldu. Ustanın adı ambalajda yoktu."},
+      {"id": "university", "text": "Üniversiteyle paylaş.", "effects": {"Happiness": 4, "Education": 3, "Social": 2},
+       "result": "Üç tarifin gerçekten etkili olduğu kanıtlandı, birinin ise zararlı olduğu. Defter bir makaleye dönüştü."},
+      {"id": "honest", "text": "Defteri kanıtlarla birlikte yeniden yaz; neyin işe yarayıp neyin yaramadığını dürüstçe not düş.", "requires": ["HasFlag:herbalist_honest"], "effects": {"Happiness": 8, "Education": 3, "Social": 3},
+       "result": "Yeni defter, aktarların ve doktorların birlikte okuduğu nadir kitaplardan biri oldu."}
+    ]
+  }
+]

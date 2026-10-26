@@ -1,0 +1,336 @@
+[
+  {"id": "wealth_poor_1", "title": "Okul Gezisi", "category": "Childhood", "minAge": 7, "maxAge": 12, "weight": 14,
+   "conditions": ["HasFlag:family_poor"],
+   "description": "Sınıf müzeye geziye gidecek ve herkes ücretini yarın getirecek. Evde bu parayı istemenin ne anlama geleceğini biliyorsun; geçen hafta elektrik faturası konuşulurken sesler yükselmişti.",
+   "choices": [
+     {"id": "teacher", "text": "Öğretmene durumu sessizce anlat.", "effects": {"Social": 2, "Happiness": 3},
+      "result": "Öğretmen ücreti kimseye söylemeden karşıladı. Müzede en çok soru soran sen oldun."},
+     {"id": "earn", "text": "Bir hafta boyunca pazarda poşet sat.", "effects": {"Money": 150, "Health": -1, "Happiness": 2},
+      "result": "Parayı kendin topladın. Otobüste camdan bakarken, her şeyin biraz daha değerli göründüğünü fark ettin."},
+     {"id": "skip", "text": "Hastayım de ve evde kal.", "effects": {"Happiness": -3},
+      "result": "Ertesi gün herkes müzeyi anlattı. Sen dinledin ve hiçbir şey söylemedin."}
+   ]},
+  {"id": "wealth_poor_2", "title": "Okuldan Sonra İş", "category": "School", "minAge": 13, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:family_poor"],
+   "description": "Mahalledeki oto tamircisi, okuldan sonra çırak arıyor; haftalık para eve büyük bir nefes olur. Ama sınav yılındasın ve akşamlar ders çalışmak için tek zamanın.",
+   "choices": [
+     {"id": "work", "text": "İşi kabul et.", "effects": {"Money": 3000, "Education": -3, "Social": 1},
+      "result": "Ellerin yağa bulandı, cebin para gördü. Bazı geceler kitabın açık, gözlerin kapalı uyudun."},
+     {"id": "study", "text": "Derslerine odaklan.", "effects": {"Education": 4, "Happiness": -1},
+      "result": "Evde kimse bir şey demedi ama hesap yapan bakışları gördün. Notların, o bakışlara bir cevaptı."},
+     {"id": "weekend", "text": "Yalnızca hafta sonları çalış.", "effects": {"Money": 1500, "Education": 1, "Health": -1},
+      "result": "Haftanın beş günü okul, iki günü atölye. Dinlenmek, büyüyünce yapılacak bir şey oldu."}
+   ]},
+  {"id": "wealth_poor_3", "title": "Ailenin İlk Üniversitelisi", "category": "School", "minAge": 18, "maxAge": 24, "weight": 18,
+   "conditions": ["HasFlag:family_poor", "HasFlag:studying", "MinEducation:HighSchool"],
+   "description": "Ailende üniversiteye giden ilk kişisin; kayıt gününde ailenin büyüğü kampüsün kapısında ağladı. Şimdi bir vakfın burs mülakatındasın ve masanın öbür tarafındakiler hayatını soruyor.",
+   "choices": [
+     {"id": "story", "text": "Ailenin hikâyesini dürüstçe anlat.", "requires": ["MinStat:Education:55"], "effects": {"Money": 40000, "Happiness": 5, "Social": 2},
+      "result": "Burs çıktı. Ay sonlarında yemekhanede iki tabak alabildiğin ilk dönem başladı."},
+     {"id": "parttime", "text": "Bursa güvenme, yarı zamanlı işe gir.", "effects": {"Money": 15000, "Education": -2, "Health": -1},
+      "result": "Bir kafede akşam vardiyası. Derslere yorgun girdin ama kimseye muhtaç kalmadın."},
+     {"id": "debt", "text": "Öğrenim kredisine başvur.", "effects": {"Money": 25000, "Happiness": -1},
+      "result": "Kredi geldi; mezuniyetten sonra ödenecekti. Rahatlık ile kaygı aynı cüzdana girdi."}
+   ]},
+  {"id": "wealth_poor_4", "title": "Eve Para", "category": "Social", "minAge": 20, "maxAge": 40, "weight": 14,
+   "conditions": ["HasFlag:family_poor", "MinCareerLevel:1"],
+   "description": "Maaşın yattığı gün telefon çalıyor; evin kirası birikmiş. Kimse açıkça istemiyor ama herkes senin artık kazandığını biliyor.",
+   "choices": [
+     {"id": "send", "text": "Maaşının bir kısmını her ay düzenli gönder.", "effects": {"Money": -30000, "Social": 3, "Happiness": 3},
+      "result": "Kendi bütçen daraldı. Ama bayramda evin yeni perdelerini görünce gözlerin doldu."},
+     {"id": "once", "text": "Bir kerelik yardım et.", "effects": {"Money": -10000, "Social": 1, "Happiness": 1},
+      "result": "Kira kapandı. Bir sonraki ay da aynı telefon geldi."},
+     {"id": "boundary", "text": "Önce kendi ayağının üstünde durmak istediğini anlat.", "effects": {"Money": 2000, "Social": -2, "Happiness": -1},
+      "result": "Anladılar, ya da anlamış gibi yaptılar. Sesindeki suçluluk uzun süre gitmedi."}
+   ]},
+  {"id": "wealth_poor_5", "title": "Kira Evinin Kapısı", "category": "Random", "minAge": 30, "maxAge": 58, "weight": 14,
+   "conditions": ["HasFlag:family_poor"],
+   "description": "Ailenin otuz yıldır kirada oturduğu ev satıldı ve yeni sahibi onları çıkarmak istiyor. Yaşlanan ellerle eşya toplamak zor; ailenin büyüğü telefonda «Bir yer buluruz,» diyor.",
+   "choices": [
+     {"id": "buy", "text": "Onlara küçük bir daire al.", "cost": 150000, "effects": {"Happiness": 8, "Social": 4},
+      "result": "Anahtarı verdiğinde kimse konuşamadı. Ailenin ilk tapusu, senin adınla değil onların adıyla çıktı."},
+     {"id": "rent", "text": "Yeni bir evin kirasına destek ol.", "effects": {"Money": -40000, "Social": 2, "Happiness": 2},
+      "result": "Bir sokak ötede, balkonlu bir ev buldunuz. Taşınma günü bütün mahalle yardıma geldi."},
+     {"id": "home", "text": "Senin yanına taşınmalarını teklif et.", "effects": {"Social": 3, "Happiness": 1, "Health": -1},
+      "result": "Ev kalabalıklaştı, sessizlik kalmadı. Ama akşam yemekleri, çocukluğunun sofralarına benzedi."}
+   ]},
+  {"id": "wealth_poor_6", "title": "Eski Mahalle", "category": "Social", "minAge": 40, "maxAge": 75, "weight": 16,
+   "conditions": ["HasFlag:family_poor", "MinStat:Money:1000000"],
+   "description": "Doğduğun mahallenin sokaklarında yürüyorsun; ev yıkılmış, yerinde bir otopark var. Köşedeki bakkal hâlâ açık ve yaşlı bakkal seni tanıyor: «Sen o veresiye defterindeki çocuk değil misin?»",
+   "choices": [
+     {"id": "scholarship", "text": "Mahallenin çocukları için bir burs fonu kur.", "cost": 80000, "effects": {"Happiness": 8, "Social": 4},
+      "result": "İlk burs, senin oturduğun sokaktaki bir kıza verildi. Mülakatta ona kendi hikâyeni anlattın."},
+     {"id": "debt", "text": "Ailenin yıllar önceki veresiye borcunu öde.", "effects": {"Money": -5000, "Happiness": 5, "Social": 2},
+      "result": "Bakkal parayı almak istemedi; sonra aldı ve bir çocuğun borcunu sildi. Defter böyle devam etti."},
+     {"id": "walk", "text": "Sessizce yürü ve git.", "effects": {"Happiness": 1},
+      "result": "Otoparkın köşesinde bir an durdun. Nereden geldiğini unutmamak, bazen yalnızca hatırlamaktı."}
+   ]},
+
+  {"id": "wealth_low_1", "title": "İkinci El Önlük", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:family_low"],
+   "description": "Okulun ilk gününde önlüğün, kuzeninden kalma ve kolları biraz uzun. Bir çocuk bunu fark edip gülüyor.",
+   "choices": [
+     {"id": "laugh", "text": "Sen de gül ve kollarını kıvır.", "effects": {"Social": 3, "Happiness": 2},
+      "result": "Gülen çocuk şaşırdı. Teneffüste yanına geldi; ertesi gün arkadaştınız."},
+     {"id": "cry", "text": "Eve gelince ağla.", "effects": {"Happiness": -2, "Social": 1},
+      "result": "Ailen kolları gece boyunca dikip kısalttı. Sabah önlük sana tam olarak oturuyordu."},
+     {"id": "story", "text": "Önlüğün kuzeninin şanslı önlüğü olduğunu anlat.", "effects": {"Happiness": 3, "Education": 1},
+      "result": "Uydurduğun hikâye sınıfta yayıldı. Yıl sonunda herkes o önlüğü denemek istedi."}
+   ]},
+  {"id": "wealth_low_2", "title": "Dershane Parası", "category": "School", "minAge": 14, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:family_low"],
+   "description": "Ailen, sınav hazırlığın için dershane parasını ödemeye karar verdi; bunun için büyükannenin bileziği satılacak. Masada bilezik ve kayıt formu yan yana.",
+   "choices": [
+     {"id": "accept", "text": "Kabul et ve her dersine sonuna kadar çalış.", "effects": {"Education": 5, "Happiness": 1},
+      "result": "Her ders, bir bileziğin halkası gibi geldi. Sınav sonucunu ilk büyükannene söyledin."},
+     {"id": "alone", "text": "Bileziği satmayın, kendi başıma çalışırım de.", "requires": ["MinStat:Education:45"], "effects": {"Education": 3, "Happiness": 3},
+      "result": "Kütüphanede sabahladın, internetteki ücretsiz derslerle çalıştın. Bilezik büyükannenin kolunda kaldı."},
+     {"id": "refuse", "text": "Okumanın sana göre olmadığını söyle.", "effects": {"Happiness": -1, "Social": 1},
+      "result": "Ailen bir süre sessiz kaldı. Bilezik çekmeceye geri kondu."}
+   ]},
+  {"id": "wealth_low_3", "title": "İlk Maaş", "category": "Random", "minAge": 18, "maxAge": 28, "weight": 14,
+   "conditions": ["HasFlag:family_low", "MinCareerLevel:1"],
+   "description": "İlk maaşın hesabına yattı ve hayatında hiç bu kadar parayı bir arada görmedin. Aklında bir sürü şey var; ama ailen yıllarca senin için kendinden kısmıştı.",
+   "choices": [
+     {"id": "gift", "text": "Ailene bir hediye al.", "effects": {"Money": -8000, "Happiness": 5, "Social": 3},
+      "result": "Yeni bir buzdolabı. Ailenin büyüğü kapağı açıp kapatıp durdu, sanki bir mucizeymiş gibi."},
+     {"id": "save", "text": "Yarısını biriktir.", "effects": {"Money": 2000, "Education": 1},
+      "result": "Banka hesabının ilk kez sıfır olmadığını görmek, beklediğinden daha güzel bir histi."},
+     {"id": "party", "text": "Arkadaşlarınla kutla.", "effects": {"Money": -5000, "Happiness": 4, "Social": 2},
+      "result": "Gece yarısına kadar güldünüz. Ay sonu biraz zor geldi ama o gece unutulmadı."}
+   ]},
+  {"id": "wealth_low_4", "title": "Kefil", "category": "Social", "minAge": 25, "maxAge": 45, "weight": 14,
+   "conditions": ["HasFlag:family_low"],
+   "description": "Kardeşin küçük bir dükkân açmak için kredi çekiyor ve senin kefil olmanı istiyor. Banka formu masada; imzan onun hayalinin anahtarı, ama riskin de.",
+   "choices": [
+     {"id": "sign", "text": "Kefil ol.", "effects": {"Social": 3, "Happiness": 2},
+      "result": "Dükkân açıldı. İlk yıl zor geçti ama kardeşin taksitleri hiç aksatmadı."},
+     {"id": "partner", "text": "Kefil olmak yerine küçük bir ortaklık öner.", "cost": 20000, "effects": {"Social": 2, "Money": 10000, "Happiness": 2},
+      "result": "Ortak oldunuz. Dükkânın tabelasında ikinizin soyadı yan yana yazıyor."},
+     {"id": "no", "text": "Bu riski alamayacağını söyle.", "effects": {"Social": -3},
+      "result": "Kardeşin başka bir kefil buldu. Bayramda sofrada bir sessizlik vardı."}
+   ]},
+  {"id": "wealth_low_5", "title": "Ailenin Evi", "category": "Random", "minAge": 35, "maxAge": 60, "weight": 14,
+   "conditions": ["HasFlag:family_low"],
+   "description": "Ailenin yıllarca taksitle ödediği evin çatısı akıyor ve duvarlar rutubetten kararmış. Tamir için yeterli birikimleri yok.",
+   "choices": [
+     {"id": "fix", "text": "Tamir masrafını üstlen.", "cost": 40000, "effects": {"Happiness": 5, "Social": 3},
+      "result": "Ustalar bir ay çalıştı. İlk yağmurda hiçbir kova kullanılmadı."},
+     {"id": "hands", "text": "Hafta sonları kendin tamir et.", "effects": {"Health": -2, "Social": 2, "Happiness": 3},
+      "result": "Çatıya çıkıp kiremit dizdin. Ailenin büyüğü aşağıdan, çocukken seni izlediği gibi izledi."},
+     {"id": "move", "text": "Evi satıp daha küçük bir yere taşınmalarını öner.", "effects": {"Social": -1, "Money": 5000},
+      "result": "Ev satıldı. Yeni dairede eski evin kokusu yoktu ama çatısı akmıyordu."}
+   ]},
+  {"id": "wealth_low_6", "title": "Bayram Harçlığı", "category": "Social", "minAge": 40, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:family_low"],
+   "description": "Bayram sabahı akrabaların çocukları kapında; ellerinde kesecikler, gözlerinde beklenti. Çocukken senin keseciğine giren bozuk paraları hatırlıyorsun.",
+   "choices": [
+     {"id": "generous", "text": "Herkese cömert bir harçlık ver.", "effects": {"Money": -3000, "Happiness": 4, "Social": 3},
+      "result": "Çocukların çığlıkları apartmanda yankılandı. Bir an, kendi çocukluğunun sesini duydun."},
+     {"id": "books", "text": "Para yerine her birine bir kitap hediye et.", "effects": {"Money": -1500, "Social": 2, "Happiness": 2},
+      "result": "Bazıları burun kıvırdı, biri kitabı akşam bitirdi. O biri, yıllar sonra sana teşekkür etti."},
+     {"id": "coin", "text": "Çocukken aldığın gibi, birer bozuk para ve bir hikâye ver.", "effects": {"Happiness": 3, "Social": 1},
+      "result": "Çocuklar önce şaşırdı, sonra hikâyeyi sonuna kadar dinledi."}
+   ]},
+
+  {"id": "wealth_middle_1", "title": "Yaz Tatili", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 12,
+   "conditions": ["HasFlag:family_middle"],
+   "description": "Ailen bu yaz için iki seçenek konuşuyor: köydeki büyükannenin evi ya da birkaç günlük bir deniz tatili. Senin fikrini soruyorlar.",
+   "choices": [
+     {"id": "village", "text": "Büyükannenin köyü.", "effects": {"Social": 3, "Health": 2},
+      "result": "Ahırda buzağı, bahçede erik, akşam ateş başında hikâyeler. Şehre döndüğünde dizlerin yara içindeydi."},
+     {"id": "sea", "text": "Deniz tatili.", "effects": {"Happiness": 4, "Health": 1},
+      "result": "İlk kez yüzmeyi öğrendin. Kum kaleni dalgalar yıktı ve yenisini yaptın."},
+     {"id": "camp", "text": "İzci kampına gitmek istediğini söyle.", "effects": {"Social": 2, "Education": 2},
+      "result": "Çadır kurmayı, ateş yakmayı ve yalnız uyumayı öğrendin."}
+   ]},
+  {"id": "wealth_middle_2", "title": "Özel Ders", "category": "School", "minAge": 13, "maxAge": 17, "weight": 12,
+   "conditions": ["HasFlag:family_middle"],
+   "description": "Matematikte zorlanıyorsun ve ailen haftada iki gün özel öğretmen tutmayı öneriyor. Bu, aile bütçesinden yaz tatilinin çıkması demek.",
+   "choices": [
+     {"id": "accept", "text": "Özel dersi kabul et.", "effects": {"Education": 4, "Happiness": -1},
+      "result": "Öğretmenin, sayıları bir hikâye gibi anlatıyordu. Karne günü yaz tatilini unuttun."},
+     {"id": "group", "text": "Arkadaşlarınla bir çalışma grubu kur.", "effects": {"Education": 3, "Social": 2},
+      "result": "Birbirinize öğrettiniz. Tatil de gitmedi, notlar da düzeldi."},
+     {"id": "no", "text": "Kendi başına halledeceğini söyle.", "effects": {"Education": 1, "Happiness": 1},
+      "result": "Biraz zorlandın ama yine de geçtin. Tatil kurtuldu."}
+   ]},
+  {"id": "wealth_middle_3", "title": "Üniversite Şehri", "category": "School", "minAge": 18, "maxAge": 23, "weight": 12,
+   "conditions": ["HasFlag:family_middle", "HasFlag:studying", "MinEducation:HighSchool"],
+   "description": "Başka bir şehirde okuyorsun ve ailen için ev kirası ağır bir yük. Yurtta yer var ama dört kişilik bir odada.",
+   "choices": [
+     {"id": "dorm", "text": "Yurtta kal.", "effects": {"Social": 3, "Money": 5000, "Happiness": -1},
+      "result": "Dört kişilik oda, sonsuz sohbet. Oda arkadaşların ömür boyu dostların oldu."},
+     {"id": "flat", "text": "Arkadaşlarla ev tut.", "effects": {"Happiness": 3, "Money": -10000},
+      "result": "Kendi mutfağın, kendi düzenin. Faturaları bölüşmek de bir ders oldu."},
+     {"id": "work", "text": "Kiranı kendin ödemek için çalış.", "effects": {"Money": 2000, "Education": -2, "Health": -1},
+      "result": "Ailenden bir şey istemedin. Gurur ile yorgunluk aynı yatağa uzandı."}
+   ]},
+  {"id": "wealth_middle_4", "title": "Peşinat", "category": "Random", "minAge": 26, "maxAge": 42, "weight": 12,
+   "conditions": ["HasFlag:family_middle", "NotHasFlag:owns_house"],
+   "description": "Ailen birikimlerinin bir kısmını sana ev peşinatı için vermek istiyor; «Kirada yaşama,» diyorlar. Ama o para onların emeklilik güvencesi.",
+   "choices": [
+     {"id": "accept", "text": "Kabul et ve borç olarak kabul ettiğini söyle.", "effects": {"Money": 80000, "Social": 2},
+      "result": "Peşinatı yatırdın. Her ay, onlara küçük bir miktar geri gönderdin."},
+     {"id": "refuse", "text": "Paralarını kendilerine saklamalarını söyle.", "effects": {"Happiness": 2, "Social": 1},
+      "result": "Biraz kırıldılar ama sonra rahatladılar. Ev hayalin biraz daha bekledi."},
+     {"id": "half", "text": "Yarısını kabul et.", "effects": {"Money": 40000, "Social": 2, "Happiness": 1},
+      "result": "Herkesin biraz rahat ettiği bir orta yol. Sofrada bu konu bir daha açılmadı."}
+   ]},
+  {"id": "wealth_middle_5", "title": "Emeklilik Planı", "category": "Social", "minAge": 40, "maxAge": 62, "weight": 12,
+   "conditions": ["HasFlag:family_middle"],
+   "description": "Ailen emekli oldu ve birikimlerini bir tanıdıklarının önerdiği «garantili» bir yatırıma koymak istiyor. Faiz oranı gerçek olamayacak kadar yüksek.",
+   "choices": [
+     {"id": "stop", "text": "Onları vazgeçirmek için ikna et.", "requires": ["MinStat:Social:45"], "effects": {"Social": 3, "Happiness": 3},
+      "result": "Uzun bir akşam oldu. Altı ay sonra o «yatırım» bir dolandırıcılık haberi olarak televizyona çıktı."},
+     {"id": "research", "text": "Birlikte araştırın, kararı onlara bırak.", "effects": {"Education": 2, "Social": 2},
+      "result": "Belgeleri birlikte okudunuz ve şüpheli noktaları kendileri buldular."},
+     {"id": "leave", "text": "Onların parası, karışma.", "effects": {"Happiness": -3, "Money": -20000},
+      "result": "Paranın yarısı battı. Açığı kapatmak için onlara destek olmak zorunda kaldın."}
+   ]},
+  {"id": "wealth_middle_6", "title": "Miras", "category": "Random", "minAge": 45, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:family_middle"],
+   "description": "Ailenin büyükleri vefat etti; geriye bir daire, biraz birikim ve kardeşler arasında paylaşılacak anılar kaldı. Avukatın odasında herkes sessiz.",
+   "choices": [
+     {"id": "equal", "text": "Her şeyi eşit paylaşın.", "effects": {"Money": 150000, "Social": 2},
+      "result": "Kâğıtlar imzalandı. Kardeşlerinle eski albümlere bakarken uzun süre güldünüz."},
+     {"id": "caregiver", "text": "Son yıllarda bakımı üstlenen kardeşine daha fazla pay ver.", "effects": {"Money": 80000, "Social": 4, "Happiness": 3},
+      "result": "Kardeşin gözyaşlarını tutamadı. Kimsenin dile getirmediği bir yük, sonunda görülmüştü."},
+     {"id": "keep", "text": "Daireyi satmayın, aile evi olarak kalsın.", "effects": {"Money": 50000, "Happiness": 3, "Social": 1},
+      "result": "Bayramlarda herkes o evde toplanmaya devam ediyor. Duvardaki fotoğraflar yerinde."}
+   ]},
+
+  {"id": "wealth_wealthy_1", "title": "Özel Okul", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:family_wealthy"],
+   "description": "Ailen seni şehrin en pahalı özel okuluna yazdırmak istiyor. Mahalledeki en yakın arkadaşın ise semt okuluna gidecek.",
+   "choices": [
+     {"id": "private", "text": "Özel okula git.", "effects": {"Education": 4, "Social": -1},
+      "result": "Laboratuvarlar, yabancı öğretmenler, yüzme havuzu. Mahalle arkadaşınla yollarınız yavaş yavaş ayrıldı."},
+     {"id": "local", "text": "Arkadaşınla semt okuluna gitmek istediğini söyle.", "effects": {"Social": 4, "Happiness": 2},
+      "result": "Ailen şaşırdı ama kabul etti. Sınıfında, hayatı senden çok farklı olan çocuklarla büyüdün."},
+     {"id": "both", "text": "Özel okula git ama hafta sonları mahallede oyna.", "effects": {"Education": 3, "Social": 2},
+      "result": "İki dünya arasında gidip geldin. İki dilde konuşmayı öğrendin; birini okulda, birini sokakta."}
+   ]},
+  {"id": "wealth_wealthy_2", "title": "Yurt Dışında Yaz Okulu", "category": "School", "minAge": 13, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:family_wealthy"],
+   "description": "Ailen seni bir yaz boyunca İngiltere'de bir dil okuluna gönderebilir. Sınıf arkadaşlarının çoğu yazı şehirde, yaz işlerinde geçirecek.",
+   "choices": [
+     {"id": "go", "text": "Yaz okuluna git.", "effects": {"Education": 4, "Happiness": 3}, "set": ["traveled_abroad", "learned_language"],
+      "result": "Yağmurlu sabahlar, yeni bir dil ve dünyanın her yerinden arkadaşlar. Döndüğünde biraz farklıydın."},
+     {"id": "work", "text": "Bu yaz bir işte çalışmak istediğini söyle.", "effects": {"Social": 3, "Money": 3000, "Happiness": 2},
+      "result": "Bir kitapçıda çalıştın. Kendi kazandığın ilk paranın, ailenin verdiğinden farklı bir ağırlığı vardı."},
+     {"id": "volunteer", "text": "Yerel bir gönüllü projesine katıl.", "effects": {"Social": 4, "Happiness": 3}, "set": ["volunteer"],
+      "result": "Bir köy okulunu boyadınız. Yurt dışındaki arkadaşların fotoğraf paylaşırken senin ellerin boya içindeydi."}
+   ]},
+  {"id": "wealth_wealthy_3", "title": "On Sekizinci Yaş Hediyesi", "category": "Random", "minAge": 18, "maxAge": 19, "weight": 20,
+   "conditions": ["HasFlag:family_wealthy", "NotHasFlag:owns_car"],
+   "description": "On sekizinci doğum gününde kapının önünde kurdeleli bir araba duruyor. Arkadaşların ellerini ağızlarına götürüyor; ailen gururla gülümsüyor.",
+   "choices": [
+     {"id": "car", "text": "Arabayı sevinçle kabul et.", "effects": {"Happiness": 5, "Social": 2}, "set": ["owns_car"],
+      "result": "İlk tur, bütün arkadaşlarınla oldu. Benzin ve bakım masraflarının kime ait olduğu ise sonra konuşuldu."},
+     {"id": "money", "text": "Arabayı iade edip parayı eğitimin için istemeyi teklif et.", "effects": {"Money": 120000, "Education": 1},
+      "result": "Ailen önce şaşırdı, sonra «Bu çocuk akıllı,» dedi. Para bir hesapta seni bekliyor."},
+     {"id": "refuse", "text": "Bunu hak etmediğini söyle.", "effects": {"Happiness": 2, "Social": -1},
+      "result": "Ortam bir an buz kesti. Araba bir süre garajda kaldı; sonra küçük kardeşin aldı."}
+   ]},
+  {"id": "wealth_wealthy_4", "title": "Aile Mesleği", "category": "Social", "minAge": 22, "maxAge": 35, "weight": 14,
+   "conditions": ["HasFlag:family_wealthy"],
+   "description": "Ailen, senin de onların yolunda ilerlemeni bekliyor ve başka bir şey seçersen desteğini keseceğini ima ediyor. Senin kalbin başka bir yerde.",
+   "choices": [
+     {"id": "own", "text": "Kendi yolunu seç ve desteği reddet.", "effects": {"Happiness": 5, "Money": -20000, "Social": -1},
+      "result": "İlk yıllar zordu; küçük bir dairede, kendi maaşınla. Ama hayatın sana aitti."},
+     {"id": "follow", "text": "Aileni dinle.", "effects": {"Money": 30000, "Happiness": -3},
+      "result": "Masan, unvanın ve maaşın hazırdı. Bazı sabahlar aynada başkasını gördün."},
+     {"id": "talk", "text": "Neden bunu istediğini onlara anlat.", "requires": ["MinStat:Social:50"], "effects": {"Social": 3, "Happiness": 3},
+      "result": "Uzun bir akşam oldu. Sonunda ailenin büyüğü, kendisinin de bir zamanlar başka bir hayal kurduğunu itiraf etti."}
+   ]},
+  {"id": "wealth_wealthy_5", "title": "Sarsılan Servet", "category": "Random", "minAge": 30, "maxAge": 60, "weight": 14,
+   "conditions": ["HasFlag:family_wealthy"],
+   "description": "Ekonomik kriz, ailenin yatırımlarının yarısını eritti; kâhyalar gitti, evin bir kısmı satılığa çıkarıldı. Ailen ilk kez senden yardım istiyor.",
+   "choices": [
+     {"id": "help", "text": "Birikiminle onlara destek ol.", "effects": {"Money": -100000, "Social": 4, "Happiness": 2},
+      "result": "Ev kurtuldu. Ailenin büyüğü, hayatında ilk kez sana «teşekkür ederim» dedi."},
+     {"id": "plan", "text": "Para yerine bir tasarruf planı hazırla.", "requires": ["MinStat:Education:55"], "effects": {"Social": 2, "Education": 2, "Happiness": 1},
+      "result": "Lüks harcamalar kesildi, mülkler yeniden düzenlendi. İki yıl içinde aile ayağa kalktı."},
+     {"id": "distance", "text": "Kendi hayatını riske atamayacağını söyle.", "effects": {"Money": 5000, "Social": -3},
+      "result": "Ailen sessizce anladı. Bayramlar artık daha küçük bir evde, daha sessiz geçiyor."}
+   ]},
+  {"id": "wealth_wealthy_6", "title": "Varlıklı Bir Miras", "category": "Random", "minAge": 45, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:family_wealthy"],
+   "description": "Ailenin büyükleri vefat etti ve sana önemli bir miras kaldı: daireler, hisseler ve bir yazlık. Avukat, vergi ve paylaşım ayrıntılarını anlatırken aklın çocukluğundaki bahçede.",
+   "choices": [
+     {"id": "keep", "text": "Mirası olduğu gibi devral.", "effects": {"Money": 600000, "Happiness": 1},
+      "result": "Banka hesabın bir gecede değişti. Yazlığın anahtarı, çocukluğundaki gibi kapının yanında asılı."},
+     {"id": "donate", "text": "Bir kısmını onların adına bir okula bağışla.", "effects": {"Money": 400000, "Happiness": 5, "Social": 3},
+      "result": "Okulun yeni kütüphanesi ailenin adını taşıyor. Açılışta bir öğrenci, ailenin hikâyesini okudu."},
+     {"id": "siblings", "text": "Kardeşlerinle eşit paylaşmak için kendi payından vazgeç.", "effects": {"Money": 300000, "Social": 5, "Happiness": 3},
+      "result": "Kâğıt üzerindeki adaletsizliği düzelttin. Sofrada artık kimse mirası konuşmuyor."}
+   ]},
+
+  {"id": "wealth_rich_1", "title": "Mürebbiye", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:family_rich"],
+   "description": "Ailen yine iş seyahatinde ve seni büyüten mürebbiye, doğum gününde pastanı getiriyor. Telefonda ailenden bir ses kayıt mesajı geliyor.",
+   "choices": [
+     {"id": "nanny", "text": "Pastayı mürebbiyeyle birlikte kes.", "effects": {"Happiness": 3, "Social": 3}, "set": ["rich_nanny"],
+      "result": "Mutfakta, sadece ikiniz. Yıllar sonra bu doğum gününü en güzeli olarak hatırladın."},
+     {"id": "call", "text": "Ailene video araması yapmak istediğini söyle.", "effects": {"Happiness": 1, "Social": 1},
+      "result": "Bir otel lobisinden, iki dakikalık bir arama. Pasta, kapattıktan sonra kesildi."},
+     {"id": "angry", "text": "Pastayı istemiyorum de ve odana kapan.", "effects": {"Happiness": -3},
+      "result": "Mürebbiye kapının önünde oturup sana masal okudu. Kapıyı açtığında pasta hâlâ oradaydı."}
+   ]},
+  {"id": "wealth_rich_2", "title": "Magazin", "category": "Social", "minAge": 13, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:family_rich"],
+   "description": "Bir magazin sitesi, okul çıkışı arkadaşlarınla çekilmiş bir fotoğrafını «Ünlü ailenin çocuğu çılgın gecede» başlığıyla paylaştı. Oysa sadece hamburger yiyordunuz.",
+   "choices": [
+     {"id": "laugh", "text": "Arkadaşlarınla buna gül.", "effects": {"Social": 3, "Happiness": 2},
+      "result": "Haberin ekran görüntüsünü çerçevelettiniz. Saçmalıkla dalga geçmek, en iyi cevaptı."},
+     {"id": "lawyer", "text": "Ailenin avukatlarından haberi kaldırmasını iste.", "effects": {"Happiness": 1, "Social": -1},
+      "result": "Haber bir saatte silindi. Gücün ne kadar kolay kullanılabildiğini görmek seni biraz rahatsız etti."},
+     {"id": "hide", "text": "Bir süre dışarı çıkma.", "effects": {"Happiness": -3, "Social": -2},
+      "result": "Haftalarca evde kaldın. Yüksek duvarlar korudu ama hapsetti de."}
+   ]},
+  {"id": "wealth_rich_3", "title": "Güven Fonu", "category": "Random", "minAge": 18, "maxAge": 25, "weight": 18,
+   "conditions": ["HasFlag:family_rich"],
+   "description": "Doğduğun gün açılan güven fonuna artık erişebilirsin. Banka müdürü sana belgeleri uzatırken gülümsüyor; rakam, çoğu insanın ömür boyu kazancından fazla.",
+   "choices": [
+     {"id": "invest", "text": "Fonu dokunmadan yatırımda tut.", "effects": {"Money": 300000, "Education": 1},
+      "result": "Para sessizce büyümeye devam etti. Kendi maaşınla yaşamayı seçtin; fon bir güvence oldu, bir hayat değil."},
+     {"id": "spend", "text": "Bir yıl boyunca dünyayı gez.", "effects": {"Money": 150000, "Happiness": 6, "Social": 2}, "set": ["traveled_abroad"],
+      "result": "Yirmi ülke, yüzlerce yabancı. Döndüğünde hesabın yarıya inmişti ama defterlerin dolmuştu."},
+     {"id": "give", "text": "Fonun bir kısmıyla bir burs vakfı kur.", "effects": {"Money": 200000, "Social": 4, "Happiness": 4},
+      "result": "İlk burs alanlar senden yaşça büyük öğrencilerdi. Onların hikâyeleri sana paradan çok şey öğretti."}
+   ]},
+  {"id": "wealth_rich_4", "title": "Gerçek mi?", "category": "Social", "minAge": 20, "maxAge": 40, "weight": 14,
+   "conditions": ["HasFlag:family_rich"],
+   "description": "Yeni tanıştığın biriyle her şey çok güzel gidiyor. Ama ailen, onun geçmişini araştırmak için bir dedektif tutmayı öneriyor ve sen de içten içe merak ediyorsun.",
+   "choices": [
+     {"id": "trust", "text": "Araştırma yapma, ona güven.", "effects": {"Happiness": 4, "Social": 3},
+      "result": "Zamanla gerçek olduğunu kendi gözlerinle gördün. Güvenmek, bir risk olduğu kadar bir hediyeydi de."},
+     {"id": "detective", "text": "Ailenin önerisini kabul et.", "effects": {"Happiness": -3, "Social": -2},
+      "result": "Rapor temiz çıktı. Ama o bunu öğrendiğinde aranızdaki bir şey kırıldı."},
+     {"id": "tell", "text": "Ona ailenin zenginliğini ve korkunu açıkça anlat.", "effects": {"Social": 3, "Happiness": 2},
+      "result": "Güldü: «Ben de senin bütçeni dert ediyordum.» O akşam ikiniz de biraz hafifledik."}
+   ]},
+  {"id": "wealth_rich_5", "title": "Aile Vakfı", "category": "Social", "minAge": 35, "maxAge": 60, "weight": 14,
+   "conditions": ["HasFlag:family_rich"],
+   "description": "Ailenin vakfının başkanlığı sana teklif ediliyor. Vakıf yıllardır yalnızca gala yemekleri ve vergi avantajı için kullanılıyor gibi görünüyor.",
+   "choices": [
+     {"id": "reform", "text": "Başkanlığı al ve vakfı gerçekten bir şeyi değiştiren bir kuruma dönüştür.", "effects": {"Happiness": 6, "Social": 4, "Health": -1},
+      "result": "Galalar kaldırıldı, bütçe köy okullarına gitti. Ailenin bazı üyeleri seni hain ilan etti."},
+     {"id": "gala", "text": "Başkanlığı al, geleneği sürdür.", "effects": {"Social": 3, "Happiness": 1},
+      "result": "Şık davetler, fotoğraflar, plaketler. Her şey eskisi gibi; belki de sorun buydu."},
+     {"id": "decline", "text": "Teklifi reddet.", "effects": {"Happiness": 1},
+      "result": "Bir kuzenin başkan oldu. Vakfın haberlerini bir süre takip ettin, sonra bıraktın."}
+   ]},
+  {"id": "wealth_rich_6", "title": "Büyük Miras", "category": "Random", "minAge": 45, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:family_rich"],
+   "description": "Ailenin büyüğü vefat etti ve vasiyet okunuyor; servetin büyük kısmı sana bırakılmış. Kardeşlerinin yüzleri bembeyaz, avukatlar kapıda bekliyor.",
+   "choices": [
+     {"id": "accept", "text": "Vasiyete uy ve mirası al.", "effects": {"Money": 2000000, "Social": -4, "Happiness": -1},
+      "result": "Servet hesabına geçti. Kardeşlerin seni bir daha bayram sofrasına çağırmadı."},
+     {"id": "share", "text": "Mirası kardeşlerinle eşit paylaş.", "effects": {"Money": 800000, "Social": 5, "Happiness": 4},
+      "result": "Avukatlar şaşırdı, kardeşlerin ağladı. Ailenin dağılmasını bir imzayla önledin."},
+     {"id": "nanny", "text": "Bir payı seni büyüten mürebbiyeye ve ailesine ayır.", "requires": ["HasFlag:rich_nanny"], "effects": {"Money": 1200000, "Happiness": 7, "Social": 3},
+      "result": "Mürebbiye artık çok yaşlıydı. Ona bir ev aldığında, «Pastayı hatırlıyor musun?» diye sordu; hatırlıyordun."}
+   ]}
+]

@@ -1,0 +1,545 @@
+[
+  {
+    "id": "baby_welcome",
+    "title": "Dünyaya Merhaba",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 0,
+    "description": "İlk kez gözlerini açıyorsun. {caregiver} yanında tanıdık bir ses, yumuşak bir battaniye ve seni bekleyen kollar var. Bu ilk günlerde kararları bakım verenlerin alıyor.",
+    "weight": 50,
+    "repeatable": false,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "arms",
+        "text": "Sakin bir kucak ve tanıdık bir sesle karşıla.",
+        "effects": {
+          "Happiness": 2,
+          "Social": 1
+        },
+        "result": "Sıcak bir kucakta sakinleştin. Hikâyen güvenli bir başlangıç yaptı."
+      },
+      {
+        "id": "quiet",
+        "text": "Ortamı sakinleştir, dinlenmesine zaman tanı.",
+        "effects": {
+          "Health": 1,
+          "Happiness": 1
+        },
+        "result": "Sesler hafifledi, uykuya daldın. İlk günün huzurla geçti."
+      }
+    ],
+    "turnDays": 7
+  },
+  {
+    "id": "baby_lullaby",
+    "title": "Bir Ninninin İçinde",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Akşam oluyor. Gün boyunca yeni sesler duydun. {caregiver} uyku öncesi sakin bir rutin kurmak istiyor.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "sing",
+        "text": "Yumuşak bir ninni söyle.",
+        "effects": {
+          "Social": 1,
+          "Happiness": 2
+        },
+        "result": "Tekrarlanan melodi sana tanıdık gelmeye başladı."
+      },
+      {
+        "id": "quiet",
+        "text": "Sessizce yanında otur.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Yanında birinin olduğunu bilmek seni rahatlattı."
+      }
+    ]
+  },
+  {
+    "id": "baby_faces",
+    "title": "Tanıdık Yüzler",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Bir yüz sana gülümsüyor. Gülümsemenin nasıl karşılık bulacağını keşfediyorsun.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "mirror",
+        "text": "Gülümsemesine karşılık ver, yüz yüze oyna.",
+        "effects": {
+          "Social": 2
+        },
+        "result": "İlk gülümsemeler evde küçük bir bayrama dönüştü."
+      },
+      {
+        "id": "pause",
+        "text": "Yorulunca ara ver ve dinlen.",
+        "effects": {
+          "Health": 1,
+          "Happiness": 1
+        },
+        "result": "Kısa oyunların ardından dinlenmek iyi geldi."
+      }
+    ]
+  },
+  {
+    "id": "baby_sounds",
+    "title": "Minik Sesler",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Bir heceye benzeyen sesler çıkarıyorsun. Bakım verenin bu yeni sesleri heyecanla dinliyor.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "answer",
+        "text": "Seslerine cevap ver.",
+        "effects": {
+          "Social": 1,
+          "Education": 1
+        },
+        "result": "Sıra sende, sıra bende: ilk sohbetiniz böyle başladı."
+      },
+      {
+        "id": "book",
+        "text": "Resimli bir kitabı birlikte incele.",
+        "effects": {
+          "Education": 2
+        },
+        "result": "Renkler ve kelimeler yavaşça birbirine bağlandı."
+      }
+    ]
+  },
+  {
+    "id": "baby_floor",
+    "title": "Yerde Bir Dünya",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Güvenli oyun alanında yumuşak oyuncaklar seni bekliyor. Yakınındaki bir yetişkin hareketlerini izliyor.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "reach",
+        "text": "Oyuncağa uzanmasını destekle.",
+        "effects": {
+          "Health": 1,
+          "Education": 1
+        },
+        "result": "Kendi çabanla oyuncağa ulaşmanın sevincini yaşadın."
+      },
+      {
+        "id": "together",
+        "text": "Yanına oturup birlikte keşfet.",
+        "effects": {
+          "Social": 1,
+          "Happiness": 1
+        },
+        "result": "Birlikte geçen küçük anlar güvenini büyüttü."
+      }
+    ]
+  },
+  {
+    "id": "baby_visit",
+    "title": "İlk Misafirler",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Eve gelen yakınlar seni görmek istiyor. Kalabalık ve sesler bazen yorucu olabiliyor.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "short",
+        "text": "Ziyareti kısa ve sakin tut.",
+        "effects": {
+          "Health": 1,
+          "Happiness": 1
+        },
+        "result": "Tanışma kısa sürdü, ardından rahatça dinlendin."
+      },
+      {
+        "id": "familiar",
+        "text": "Tanıdık bakım verenin yanında kalsın.",
+        "effects": {
+          "Social": 1,
+          "Happiness": 1
+        },
+        "result": "Yeni yüzleri güvendiğin kucaktan izledin."
+      }
+    ]
+  },
+  {
+    "id": "baby_steps",
+    "title": "Küçük Adımlar",
+    "category": "Childhood",
+    "minAge": 1,
+    "maxAge": 2,
+    "description": "Bir koltuğa tutunup ayağa kalkıyorsun. Yakınındaki yetişkin acele etmeden seni destekliyor.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "try",
+        "text": "Güvenli alanda kendi hızında denesin.",
+        "effects": {
+          "Health": 2
+        },
+        "result": "Dengeni bulmak için zamanın vardı. Her deneme biraz daha kolaylaştı."
+      },
+      {
+        "id": "hand",
+        "text": "Elini uzat, isterse destek olsun.",
+        "effects": {
+          "Social": 1,
+          "Health": 1
+        },
+        "result": "Uzanabileceğin bir el cesaret verdi."
+      }
+    ]
+  },
+  {
+    "id": "baby_words",
+    "title": "İlk Kelimeler",
+    "category": "Childhood",
+    "minAge": 1,
+    "maxAge": 2,
+    "description": "Günlük nesneleri gösterip sesler çıkarıyorsun. Anlatmak istediğin çok şey var.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "name",
+        "text": "Gösterdiği nesneleri adlandır.",
+        "effects": {
+          "Education": 2
+        },
+        "result": "Kelimeler dünyana yeni kapılar açtı."
+      },
+      {
+        "id": "listen",
+        "text": "Sözünü tamamlamasını sabırla bekle.",
+        "effects": {
+          "Social": 2
+        },
+        "result": "Dinlendiğini hissettin; yeniden anlatmak istedin."
+      }
+    ]
+  },
+  {
+    "id": "baby_blocks",
+    "title": "Üç Küplük Kule",
+    "category": "Childhood",
+    "minAge": 1,
+    "maxAge": 3,
+    "description": "Küpleri üst üste koyuyorsun. Kule devrilince yüzün düşüyor.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "again",
+        "text": "Birlikte yeniden dene.",
+        "effects": {
+          "Education": 1,
+          "Happiness": 1
+        },
+        "result": "Yıkılan bir şeyin yeniden kurulabileceğini keşfettin."
+      },
+      {
+        "id": "break",
+        "text": "Biraz ara verip başka bir oyun seç.",
+        "effects": {
+          "Happiness": 2
+        },
+        "result": "Ara vermek de oyunun bir parçasıydı."
+      }
+    ]
+  },
+  {
+    "id": "baby_park",
+    "title": "Parkta Bir Sabah",
+    "category": "Childhood",
+    "minAge": 1,
+    "maxAge": 3,
+    "description": "Bakım vereninle parkı izliyorsun. Yapraklar, kuşlar ve başka çocuklar dikkatini çekiyor.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "nature",
+        "text": "Yaprakları ve kuşları birlikte gözlemle.",
+        "effects": {
+          "Education": 1,
+          "Happiness": 1
+        },
+        "result": "Küçük bir yaprak kocaman bir meraka dönüştü."
+      },
+      {
+        "id": "hello",
+        "text": "Yakındaki çocuğa birlikte merhaba de.",
+        "effects": {
+          "Social": 2
+        },
+        "result": "Kısa bir merhaba, ilk oyun arkadaşlığının başlangıcı oldu."
+      }
+    ]
+  },
+  {
+    "id": "baby_colors",
+    "title": "Renklerle Tanışma",
+    "category": "Childhood",
+    "minAge": 2,
+    "maxAge": 5,
+    "description": "Önünde yaşına uygun boyalar ve geniş bir kağıt var. Ortaya ne çıkacağını sen de bilmiyorsun.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "free",
+        "text": "İstediğin renklerle özgürce çiz.",
+        "effects": {
+          "Happiness": 2
+        },
+        "result": "Resmin kimseye benzemiyordu; tam da bu yüzden senindi."
+      },
+      {
+        "id": "share",
+        "text": "Çizdiklerini bakım verenine anlat.",
+        "effects": {
+          "Social": 1,
+          "Education": 1
+        },
+        "result": "Kağıttaki izler sen anlatınca bir hikâyeye dönüştü."
+      }
+    ]
+  },
+  {
+    "id": "baby_sharing",
+    "title": "Sıra Kimde?",
+    "category": "Childhood",
+    "minAge": 2,
+    "maxAge": 5,
+    "description": "Bir oyuncağı başka bir çocuk da istiyor. İkiniz de bırakmak istemiyorsunuz.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "turn",
+        "text": "Bir yetişkinin yardımıyla sırayla oyna.",
+        "effects": {
+          "Social": 2
+        },
+        "result": "Beklemek kolay değildi ama sıra sana da geldi."
+      },
+      {
+        "id": "other",
+        "text": "Birlikte kullanılabilecek başka bir oyun bul.",
+        "effects": {
+          "Education": 1,
+          "Happiness": 1
+        },
+        "result": "Yeni bir oyun ikinize de alan açtı."
+      }
+    ]
+  },
+  {
+    "id": "baby_why",
+    "title": "Neden, Neden, Neden?",
+    "category": "Childhood",
+    "minAge": 3,
+    "maxAge": 5,
+    "description": "Gökyüzü neden mavi? Yağmur nereye gidiyor? Soruların birbirini izliyor.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "ask",
+        "text": "Birlikte resimli kitaptan cevap ara.",
+        "effects": {
+          "Education": 2
+        },
+        "result": "Cevaptan daha güzeli, birlikte merak etmekti."
+      },
+      {
+        "id": "imagine",
+        "text": "Önce kendi fikrini anlat.",
+        "effects": {
+          "Social": 1,
+          "Happiness": 1
+        },
+        "result": "Fikrini seslendirmek sana güven verdi."
+      }
+    ]
+  },
+  {
+    "id": "baby_preschool",
+    "title": "Yeni Bir Sınıf",
+    "category": "Childhood",
+    "minAge": 3,
+    "maxAge": 5,
+    "description": "Oyun grubunda yeni oyuncaklar ve yeni yüzler var. Kapıda biraz duraksıyorsun.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "slow",
+        "text": "Tanıdık yetişkinle kısa bir keşif yap.",
+        "effects": {
+          "Social": 1,
+          "Happiness": 1
+        },
+        "result": "Oda yavaşça yabancı olmaktan çıktı."
+      },
+      {
+        "id": "observe",
+        "text": "Önce kenardan oyunları izle.",
+        "effects": {
+          "Education": 1,
+          "Happiness": 1
+        },
+        "result": "Hazır olduğunda katıldın; acele etmek gerekmedi."
+      }
+    ]
+  },
+  {
+    "id": "baby_garden",
+    "title": "Küçük Bahçıvan",
+    "category": "Childhood",
+    "minAge": 3,
+    "maxAge": 5,
+    "description": "Bir saksıya tohum ekiyorsunuz. Her gün bir şey değişmesini bekliyorsun.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "care",
+        "text": "Bir yetişkinle bakım günlüğü tut.",
+        "effects": {
+          "Education": 2
+        },
+        "result": "Her değişimi fark ettin. Beklemek de öğrenmenin parçasıydı."
+      },
+      {
+        "id": "draw",
+        "text": "Bitkinin hayalindeki halini çiz.",
+        "effects": {
+          "Happiness": 2
+        },
+        "result": "Hayalindeki ağaç sayfadan taşacak kadar büyüktü."
+      }
+    ]
+  },
+  {
+    "id": "baby_feelings",
+    "title": "Duyguların Adı",
+    "category": "Childhood",
+    "minAge": 2,
+    "maxAge": 5,
+    "description": "Bir oyunun bitmesine üzüldün. Ne hissettiğini anlatacak kelimeyi arıyorsun.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "name",
+        "text": "Birlikte duygunun adını bul.",
+        "effects": {
+          "Social": 2
+        },
+        "result": "Üzgün olduğunu söyleyebilmek biraz rahatlattı."
+      },
+      {
+        "id": "hug",
+        "text": "İstersen sarıl, sakinleşmek için zaman ayır.",
+        "effects": {
+          "Happiness": 2
+        },
+        "result": "Duygunun geçmesi için acele etmen gerekmedi."
+      }
+    ]
+  },
+  {
+    "id": "baby_story",
+    "title": "Masalın Sonu",
+    "category": "Childhood",
+    "minAge": 3,
+    "maxAge": 5,
+    "description": "Her akşam dinlediğin masalın sonunu artık biliyorsun. Bu kez başka türlü bitebilir mi?",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "invent",
+        "text": "Yeni bir son uydur.",
+        "effects": {
+          "Education": 1,
+          "Happiness": 1
+        },
+        "result": "Masalın kahramanı bu kez senin fikrini izledi."
+      },
+      {
+        "id": "act",
+        "text": "Masalı oyuncaklarla canlandır.",
+        "effects": {
+          "Social": 1,
+          "Happiness": 1
+        },
+        "result": "Küçük bir sahnede kocaman bir hikâye oynandı."
+      }
+    ]
+  },
+  {
+    "id": "baby_school_bag",
+    "title": "Okul Çantasına Doğru",
+    "category": "Childhood",
+    "minAge": 5,
+    "maxAge": 5,
+    "description": "Yakında okul başlayacak. {birthplace} sokakları artık biraz daha tanıdık. Çantandaki eşyaları merakla inceliyorsun.",
+    "weight": 12,
+    "repeatable": true,
+    "cooldownDays": 120,
+    "choices": [
+      {
+        "id": "prepare",
+        "text": "Çantanı birlikte hazırla.",
+        "effects": {
+          "Education": 2
+        },
+        "result": "Yeni başlangıç biraz daha tanıdık hissettirdi."
+      },
+      {
+        "id": "talk",
+        "text": "Heyecanını ve kaygını anlat.",
+        "effects": {
+          "Social": 2
+        },
+        "result": "Soru sormanın ve yardım istemenin iyi olduğunu öğrendin."
+      }
+    ]
+  }
+]

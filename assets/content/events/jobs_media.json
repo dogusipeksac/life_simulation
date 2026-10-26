@@ -1,0 +1,401 @@
+[
+  {
+    "id": "job_war_correspondent_1", "title": "Kontrol Noktası", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:war_correspondent"],
+    "description": "Bir kriz bölgesinde, kameramanınla bir kontrol noktasında bekliyorsun. Askerler kameranın kaydını silmeni istiyor; içinde sivil bir köyün yıkıntıları var. Rehberin titreyen bir sesle, «Ver gitsin,» diyor.",
+    "choices": [
+      {"id": "delete", "text": "Kaydı sil, güvenle geç.", "effects": {"Happiness": -4, "Health": 1},
+       "result": "Geçtiniz. O köyün adını hiçbir haberde göremedin."},
+      {"id": "hide", "text": "Kartı gizle, sahte bir kartı ver.", "effects": {"Happiness": 4, "Health": -2}, "set": ["war_correspondent_truth"],
+       "result": "Nefesini tutarak geçtin. Görüntüler üç gün sonra dünya basınındaydı."},
+      {"id": "negotiate", "text": "Basın kartını göster, haklarını anlat.", "requires": ["MinStat:Social:55"], "effects": {"Social": 2, "Happiness": 1},
+       "result": "Bir saat sürdü. Subay sonunda başını salladı ve seni geçirdi; ama kamerayı izlediler."}
+    ]
+  },
+  {
+    "id": "job_war_correspondent_2", "title": "Fotoğraftaki Çocuk", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:war_correspondent", "MinCareerLevel:2"],
+    "description": "Bir saldırının ardından çektiğin fotoğrafta, yaralı bir çocuğun yüzü açıkça görünüyor. Editör kapağa koymak istiyor; fotoğraf dünyayı sarsabilir. Ama çocuğun ailesi, kimliğinin açıklanmasının onları tehlikeye atacağını söyledi.",
+    "choices": [
+      {"id": "publish", "text": "Fotoğrafı olduğu gibi yayımla.", "effects": {"Money": 20000, "Happiness": -5, "Social": 2},
+       "result": "Fotoğraf ödül aldı. Ailenin taşınmak zorunda kaldığını bir yıl sonra öğrendin."},
+      {"id": "blur", "text": "Yüzü bulanıklaştır.", "effects": {"Happiness": 3, "Education": 1},
+       "result": "Editör hayal kırıklığına uğradı. Ama fotoğraf yine de konuşuldu."},
+      {"id": "other", "text": "Yüz göstermeyen başka bir kare seç.", "effects": {"Happiness": 4, "Education": 2},
+       "result": "Bir çocuk ayakkabısı, enkazın üzerinde. Kimse yüzünü görmedi ama herkes anladı."}
+    ]
+  },
+  {
+    "id": "job_war_correspondent_3", "title": "Masaya Dönüş", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:war_correspondent", "MinCareerLevel:3"],
+    "description": "Haber müdürlüğü teklifi geldi; artık sahaya değil, masadan başkalarını göndereceksin. Gece kabusların seyrekleşmedi. Genç muhabirler, ilk kriz bölgesi görevi için sırada.",
+    "choices": [
+      {"id": "desk", "text": "Teklifi kabul et.", "effects": {"Health": 4, "Happiness": 2, "Money": 30000},
+       "result": "İlk aylar telefona her baktığında midene bir kramp girdi. Sonra alıştın; neredeyse."},
+      {"id": "field", "text": "Sahada kal.", "effects": {"Health": -4, "Happiness": 3, "Education": 2},
+       "result": "Bir kriz daha, bir rapor daha. Bir gün, sahada kalmanın da bir bedeli olduğunu kabul edeceksin."},
+      {"id": "truth", "text": "Gençleri göndermeden önce onlara o kontrol noktasını ve gizlediğin kartı anlat.", "requires": ["HasFlag:war_correspondent_truth"], "effects": {"Happiness": 7, "Social": 4, "Health": 2},
+       "result": "Bir güvenlik ve etik eğitimi kurdun. Gönderdiğin herkes sağ döndü; haberleri de."}
+    ]
+  },
+
+  {
+    "id": "job_novelist_1", "title": "Boş Sayfa", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:novelist"],
+    "description": "İlk romanının teslimine üç ay var ve sayfa bomboş. Çayın soğudu, imleç yanıp sönüyor. Bir arkadaşın, popüler bir dizinin hikâyesini biraz değiştirip yazmanı öneriyor.",
+    "choices": [
+      {"id": "own", "text": "Kendi hikâyeni, ne kadar sürerse sürsün yaz.", "effects": {"Happiness": 3, "Health": -1, "Education": 2}, "set": ["novelist_voice"],
+       "result": "Teslimi iki ay geçirdin. Ama editörün son sayfayı okuduğunda seni aradı ve uzun süre hiçbir şey demedi."},
+      {"id": "copy", "text": "Arkadaşının önerisini uygula.", "effects": {"Money": 10000, "Happiness": -3},
+       "result": "Kitap zamanında çıktı ve iyi sattı. Bir eleştirmen benzerliği fark etti."},
+      {"id": "walk", "text": "Bilgisayarı kapat ve şehirde dolaş.", "effects": {"Happiness": 2, "Social": 2},
+       "result": "Bir otobüs durağında, yaşlı bir kadının söylediği tek bir cümle bütün romanın açılışı oldu."}
+    ]
+  },
+  {
+    "id": "job_novelist_2", "title": "Uyarlama", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:novelist", "MinCareerLevel:2"],
+    "description": "Bir yapım şirketi romanını diziye uyarlamak istiyor. Şartları: sonu mutlu bitecek, ana karakterin cinsiyeti değişecek ve senaryoda söz hakkın olmayacak. Teklif, birkaç yıllık kazancın kadar.",
+    "choices": [
+      {"id": "sell", "text": "Hakları sat.", "effects": {"Money": 200000, "Happiness": -3},
+       "result": "Dizi çok izlendi. İnsanlar seni «o dizinin yazarı» olarak tanıdı; ama dizi senin romanın değildi."},
+      {"id": "refuse", "text": "Reddet.", "effects": {"Happiness": 3, "Money": -5000},
+       "result": "Roman kitap olarak kaldı. Okuyucuların, hayal ettikleri yüzleri kendileri çizmeye devam etti."},
+      {"id": "co_write", "text": "Senaryoyu birlikte yazmayı şart koş.", "requires": ["MinStat:Social:55"], "effects": {"Money": 100000, "Happiness": 4, "Health": -2},
+       "result": "Yorucu bir yıl oldu. Ama dizi, romanın ruhunu taşıyordu."}
+    ]
+  },
+  {
+    "id": "job_novelist_3", "title": "Son Roman", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:novelist", "MinCareerLevel:3"],
+    "description": "Tanınmış bir yazar oldun ve yayınevi en çok satan serinin bir devamını istiyor. Aklında ise kimsenin beklemediği, küçük ve kişisel bir kitap var. Masandaki defter, yıllardır biriken notlarla dolu.",
+    "choices": [
+      {"id": "series", "text": "Seriye devam et.", "effects": {"Money": 150000, "Happiness": -1},
+       "result": "Okurların sevindi. Sen yazarken, karakterlerinin seninle artık konuşmadığını fark ettin."},
+      {"id": "personal", "text": "Kişisel kitabı yaz.", "effects": {"Happiness": 6, "Education": 2},
+       "result": "Az sattı. Ama gelen her mektup, bir okurun hayatından bir sayfaydı."},
+      {"id": "voice", "text": "İlk romanını yazdığın o uzun aylara dön; o otobüs durağındaki kadını yeniden yaz.", "requires": ["HasFlag:novelist_voice"], "effects": {"Happiness": 9, "Social": 3},
+       "result": "Kitap, ilk romanının bir yankısı oldu. Eleştirmenler onu kariyerinin zirvesi saydı."}
+    ]
+  },
+
+  {
+    "id": "job_editor_1", "title": "Kırmızı Kalem", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:editor"],
+    "description": "Ünlü bir yazarın yeni romanının dosyası masanda ve son üç bölümü kötü; aceleyle yazılmış. Yazar, hiçbir değişikliği kabul etmeyeceğini söyledi. Yayın yönetmeni ise kitabın zamanında çıkmasını istiyor.",
+    "choices": [
+      {"id": "honest", "text": "Yazara açık ve saygılı bir not yaz.", "effects": {"Happiness": 2, "Education": 2}, "set": ["editor_honest"],
+       "result": "Yazar öfkeli bir cevap yazdı. İki hafta sonra yeni bölümler geldi; çok daha iyiydi."},
+      {"id": "quiet", "text": "Sadece imla düzelt ve gönder.", "effects": {"Happiness": -2},
+       "result": "Kitap çıktı; eleştirmenler son bölümlerden yakındı. Yazar suçu editörlüğe attı."},
+      {"id": "boss", "text": "Kararı yayın yönetmenine bırak.", "effects": {"Social": 1},
+       "result": "Yayın yönetmeni yazarı aradı ve uzun bir konuşma oldu. Kitap bir ay gecikti."}
+    ]
+  },
+  {
+    "id": "job_editor_2", "title": "Sansür", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:editor", "MinCareerLevel:2"],
+    "description": "Yayınevinin yeni bir kitabında, güçlü bir iş insanını eleştiren bir bölüm var. Avukatlar riskli olduğunu söylüyor; patron bölümün çıkarılmasını istiyor. Yazar ise bölüm olmadan kitabın anlamını yitireceğini düşünüyor.",
+    "choices": [
+      {"id": "cut", "text": "Bölümü çıkar.", "effects": {"Happiness": -4, "Money": 5000},
+       "result": "Kitap sorunsuz çıktı. Yazar bir sonraki kitabını başka bir yayınevine verdi."},
+      {"id": "lawyer", "text": "Bölümü avukatlarla birlikte belgelere dayandır.", "requires": ["MinStat:Education:60"], "effects": {"Happiness": 4, "Education": 2},
+       "result": "Her iddia bir kaynağa bağlandı. İş insanı dava açmakla tehdit etti ama açmadı."},
+      {"id": "keep", "text": "Bölümü olduğu gibi bırak, riski üstlen.", "effects": {"Happiness": 3, "Money": -15000, "Social": 1},
+       "result": "Dava açıldı ve iki yıl sürdü. Kazandınız; ama yayınevi o yıl zor günler geçirdi."}
+    ]
+  },
+  {
+    "id": "job_editor_3", "title": "Yayınevi", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:editor", "MinCareerLevel:3"],
+    "description": "Küçük bir yayınevi satılık ve onu alabilecek birikimin var. Raflar dolusu çok satan kitap mı, yoksa hiç kimsenin basmak istemediği genç şairler mi? Matbaadan gelen mürekkep kokusu seni çağırıyor.",
+    "choices": [
+      {"id": "bestseller", "text": "Çok satanlara odaklan.", "effects": {"Money": 80000, "Happiness": 1},
+       "result": "Yayınevi kâr etti. Raflar parlak kapaklarla doldu."},
+      {"id": "poets", "text": "Genç şairlerin evi ol.", "effects": {"Happiness": 6, "Social": 3, "Money": -20000},
+       "result": "Para kaybettin. Ama on yıl sonra edebiyat ödüllerinin yarısı senin yazarlarına gitti."},
+      {"id": "honest", "text": "Her kitaba, yazarına yazdığın o ilk dürüst not gibi bir editör mektubu ekle.", "requires": ["HasFlag:editor_honest"], "effects": {"Happiness": 8, "Social": 4, "Money": 20000},
+       "result": "Okurlar kitapların sonundaki mektupları sevdi. Yazarlar, eleştiriyi kaldırabilecek tek editör olarak seni aradı."}
+    ]
+  },
+
+  {
+    "id": "job_voice_actor_1", "title": "Kabin", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:voice_actor"],
+    "description": "Karanlık bir kabinde, kulaklıkla bir çizgi film karakterine ses veriyorsun. Yönetmen, karakterin bir aksanla konuşmasını istiyor; aksan, belirli bir bölgenin insanlarıyla alay eder gibi. Senaryodaki cümleler ekranda kayıyor.",
+    "choices": [
+      {"id": "do", "text": "İsteneni yap.", "effects": {"Money": 5000, "Happiness": -3},
+       "result": "Bölüm yayınlandı ve bir dernek şikâyet etti. Sesin, o şikâyet mektubunda bir örnekti."},
+      {"id": "suggest", "text": "Saygılı ama renkli başka bir ses öner.", "effects": {"Happiness": 3, "Education": 2}, "set": ["voice_actor_respect"],
+       "result": "Yönetmen önce kaşlarını çattı, sonra denedi. Karakter, dizinin en sevilenlerinden biri oldu."},
+      {"id": "refuse", "text": "Bu karakteri seslendirmeyeceğini söyle.", "effects": {"Happiness": 2, "Money": -3000},
+       "result": "Rol başkasına gitti. Sen bir belgesel anlatımı aldın."}
+    ]
+  },
+  {
+    "id": "job_voice_actor_2", "title": "Yapay Ses", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:voice_actor", "MinCareerLevel:2"],
+    "description": "Bir şirket, sesini yapay zekâyla klonlamak için bir lisans teklif ediyor; bir kez öde, sonsuza dek kullan. Para büyük, ama bir daha kabine çağrılmayabilirsin. Meslektaşların bir sendika toplantısında.",
+    "choices": [
+      {"id": "sell", "text": "Lisansı sat.", "effects": {"Money": 150000, "Happiness": -3, "Social": -2},
+       "result": "Sesin artık reklamlarda, navigasyonlarda, bilmediğin yerlerde. Hiçbirini sen söylemedin."},
+      {"id": "union", "text": "Sendikaya katıl ve toplu sözleşme için savaş.", "effects": {"Social": 4, "Happiness": 3, "Money": -5000},
+       "result": "Bir yıl süren müzakereler, klonlanan her ses için telif hakkı getirdi."},
+      {"id": "limited", "text": "Sınırlı ve süreli bir lisans pazarlık et.", "requires": ["MinStat:Social:50"], "effects": {"Money": 60000, "Happiness": 2},
+       "result": "Üç yıl, belirli projeler. Sesin hâlâ büyük ölçüde senindi."}
+    ]
+  },
+  {
+    "id": "job_voice_actor_3", "title": "Dublaj Yönetmeni", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:voice_actor", "MinCareerLevel:3"],
+    "description": "Dublaj yönetmeni oldun ve büyük bir animasyon filminin Türkçe dublajı sende. Stüdyo, ünlü ama deneyimsiz oyuncuları seçmeni istiyor; afişte isimleri iyi duracak. Kabinde yıllardır çalışan usta sesler var.",
+    "choices": [
+      {"id": "stars", "text": "Ünlüleri seç.", "effects": {"Money": 40000, "Happiness": -2},
+       "result": "Afişler çarpıcıydı. Eleştirmenler dublajın «tahta» olduğunu yazdı."},
+      {"id": "masters", "text": "Usta sesleri seç.", "effects": {"Happiness": 4, "Social": 3},
+       "result": "Film, dublajı nedeniyle orijinalinden bile çok sevildi. Ustalar sana teşekkür etti."},
+      {"id": "respect", "text": "İlk kabinde reddettiğin o aksanı hatırla; yerel ağızları saygıyla kullanan bir kadro kur.", "requires": ["HasFlag:voice_actor_respect"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "Her karakter farklı bir yöreden konuşuyordu ve hiçbiri alay konusu değildi. Film bir dublaj ödülü aldı."}
+    ]
+  },
+
+  {
+    "id": "job_copywriter_1", "title": "Kırk Taslak", "category": "Career", "minAge": 21, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:copywriter"],
+    "description": "Bir banka reklamı için slogan arıyorsun; otuz dokuzuncu taslak da reddedildi. Kreatif direktör, bir rakip ajansın eski bir sloganını «biraz değiştirip» kullanmanı öneriyor. Sunum yarın sabah.",
+    "choices": [
+      {"id": "fortieth", "text": "Kırkıncı taslağı yaz, gece boyunca.", "effects": {"Health": -1, "Happiness": 3, "Education": 2}, "set": ["copywriter_draft"],
+       "result": "Sabaha karşı, beş kelimelik bir cümle geldi. Müşteri ilk okumada kabul etti."},
+      {"id": "borrow", "text": "Eski sloganı değiştir.", "effects": {"Money": 3000, "Happiness": -3},
+       "result": "Kampanya yayına girdi. Rakip ajansın sahibi, bir sektör ödül töreninde sana gülümsedi."},
+      {"id": "ask", "text": "Banka çalışanlarıyla konuş, gerçek bir hikâye bul.", "effects": {"Social": 3, "Education": 2},
+       "result": "Bir veznedarın anlattığı hikâye kampanyanın kendisi oldu."}
+    ]
+  },
+  {
+    "id": "job_copywriter_2", "title": "Siyasi Kampanya", "category": "Career", "minAge": 23, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:copywriter", "MinCareerLevel:2"],
+    "description": "Ajans bir seçim kampanyası aldı ve metinleri sen yazacaksın. Adayın görüşlerinin bir kısmını onaylamıyorsun. Ücret, ajansın bir yıllık kârı kadar.",
+    "choices": [
+      {"id": "write", "text": "Profesyonel ol, yaz.", "effects": {"Money": 30000, "Happiness": -3},
+       "result": "Sloganların her köşede. Bazı arkadaşların seninle bu konuyu konuşmamayı seçti."},
+      {"id": "decline", "text": "Bu projeden çekil.", "effects": {"Happiness": 3, "Money": -5000, "Social": -1},
+       "result": "Kreatif direktör anlayış gösterdi ama primin yandı."},
+      {"id": "facts", "text": "Yalnızca doğrulanabilir iddialar yazacağını şart koş.", "requires": ["MinStat:Education:55"], "effects": {"Money": 15000, "Happiness": 2, "Education": 1},
+       "result": "Kampanya ekibiyle sık sık tartıştın. Ama hiçbir metnin yalanlanmadı."}
+    ]
+  },
+  {
+    "id": "job_copywriter_3", "title": "Kreatif Direktör", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:copywriter", "MinCareerLevel:3"],
+    "description": "Kreatif direktör oldun. Ajansa yapay zekâ metin araçları girdi ve yönetim, metin yazarı kadrosunu yarıya indirmek istiyor. Genç yazarlar sana bakıyor.",
+    "choices": [
+      {"id": "cut", "text": "Kadroyu küçült.", "effects": {"Money": 40000, "Happiness": -4},
+       "result": "Maliyetler düştü. Ajansın metinleri, diğer ajanslarınkine benzemeye başladı."},
+      {"id": "train", "text": "Yazarları araçları kullanmaya eğit, kadroyu koru.", "effects": {"Happiness": 3, "Social": 3},
+       "result": "Ekip daha hızlı ve daha iddialı oldu. Müşteriler insan dokunuşu için ek ücret ödedi."},
+      {"id": "draft", "text": "Gençlere kırkıncı taslağı yazdığın o geceyi anlat: makinenin yazamadığı, vazgeçmeyen insandır.", "requires": ["HasFlag:copywriter_draft"], "effects": {"Happiness": 7, "Social": 4, "Education": 2},
+       "result": "Ajansın yeni manifestosu «Kırkıncı Taslak» oldu. Yönetim kadroyu korudu; ödüller geldi."}
+    ]
+  },
+
+  {
+    "id": "job_translator_1", "title": "Duruşmada", "category": "Career", "minAge": 21, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:translator"],
+    "description": "Bir mahkemede yabancı bir sanığın tercümanlığını yapıyorsun. Sanık, bir deyim kullanıyor; kelimesi kelimesine çevirirsen itiraf gibi duracak, anlamını çevirirsen değil. Hâkim sana bakıyor.",
+    "choices": [
+      {"id": "meaning", "text": "Anlamını çevir ve deyim olduğunu açıkla.", "effects": {"Happiness": 3, "Education": 2}, "set": ["translator_meaning"],
+       "result": "Hâkim not aldı. Sanığın avukatı duruşmadan sonra sana teşekkür etti."},
+      {"id": "literal", "text": "Kelimesi kelimesine çevir; senin işin bu.", "effects": {"Happiness": -3},
+       "result": "Savcı o cümleye yapıştı. Kararı okuduğunda, o cümlenin altını çizilmiş gördün."},
+      {"id": "both", "text": "İki çeviriyi de ver, mahkeme karar versin.", "effects": {"Education": 2, "Happiness": 1},
+       "result": "Mahkeme bir dil bilirkişisi atadı. Dava iki ay uzadı ama adil bir yere vardı."}
+    ]
+  },
+  {
+    "id": "job_translator_2", "title": "Makine Çevirisi", "category": "Career", "minAge": 23, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:translator", "MinCareerLevel:2"],
+    "description": "Bir yayınevi, bir romanın makine çevirisini «düzeltmen» için sana çevirinin dörtte biri ücret öneriyor. Metin, şiirsel bir dille yazılmış ve makine her metaforu öldürmüş. Ay sonu kira günü.",
+    "choices": [
+      {"id": "accept", "text": "Kabul et, hızlıca düzelt.", "effects": {"Money": 8000, "Happiness": -3},
+       "result": "Kitap çıktı ve adın kapakta. Okur yorumları, çevirinin «kuru» olduğunu yazdı."},
+      {"id": "full", "text": "Sıfırdan çevir, tam ücret iste.", "requires": ["MinStat:Social:50"], "effects": {"Money": 20000, "Happiness": 4, "Health": -1},
+       "result": "Yayınevi pazarlık etti ama kabul etti. Çeviri, yılın edebi çevirileri arasına girdi."},
+      {"id": "decline", "text": "Reddet.", "effects": {"Happiness": 1, "Money": -3000},
+       "result": "Başka biri aldı. Sen bir şiir antolojisine geçtin; az para, çok keyif."}
+    ]
+  },
+  {
+    "id": "job_translator_3", "title": "Konferans Kabini", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:translator", "MinCareerLevel:3"],
+    "description": "Uluslararası bir barış konferansında simultane tercümansın. Bir lider, öfkeyle karşı tarafa bir hakaret savuruyor. Çevirirsen müzakereler çökebilir.",
+    "choices": [
+      {"id": "exact", "text": "Aynen çevir; tarafsızlık esastır.", "effects": {"Education": 2, "Happiness": -1},
+       "result": "Salon dondu, toplantıya ara verildi. Ertesi gün iki taraf da daha temkinliydi."},
+      {"id": "soften", "text": "Tonu yumuşat.", "effects": {"Happiness": 1, "Social": -1},
+       "result": "Müzakere devam etti. Ama bir gazeteci kayıtları karşılaştırdı ve haber yaptı."},
+      {"id": "meaning", "text": "Mahkemedeki deyim gibi; cümlenin arkasındaki öfkeyi ve kırgınlığı, hakaret olmadan aktar.", "requires": ["HasFlag:translator_meaning"], "effects": {"Happiness": 8, "Education": 2, "Social": 3},
+       "result": "Karşı taraf hakareti değil, kırgınlığı duydu ve cevap verdi. Kabinden çıktığında elin titriyordu."}
+    ]
+  },
+
+  {
+    "id": "job_pr_specialist_1", "title": "Basın Bülteni", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:pr_specialist"],
+    "description": "Müşterinin fabrikasında bir iş kazası oldu ve bir işçi yaralandı. Müşteri, bülteni «küçük bir aksaklık» olarak yazmanı istiyor. İşçinin adı ve durumu hakkında hiçbir şey söylemek istemiyor.",
+    "choices": [
+      {"id": "spin", "text": "İstenen bülteni yaz.", "effects": {"Money": 5000, "Happiness": -4},
+       "result": "Bülten yayımlandı. İki gün sonra işçinin ailesi bir televizyon kanalına konuştu."},
+      {"id": "honest", "text": "Açık bir özür ve yardım taahhüdü içeren bülten öner.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 4, "Social": 2}, "set": ["pr_specialist_honest"],
+       "result": "Müşteri itiraz etti, sonra kabul etti. Kriz bir haftada söndü; ailenin teşekkürüyle."},
+      {"id": "delay", "text": "Bülteni ertele, önce gerçekleri öğren.", "effects": {"Education": 2, "Happiness": 1},
+       "result": "Bir gün kaybettiniz ama yanlış bir şey söylemediniz."}
+    ]
+  },
+  {
+    "id": "job_pr_specialist_2", "title": "Sızan Belge", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:pr_specialist", "MinCareerLevel:2"],
+    "description": "Müşterinin iç yazışmaları sızdı: ürünlerindeki bir güvenlik sorununu yıllardır bildiklerini gösteriyor. CEO senden sahte olduklarını iddia eden bir açıklama istiyor. Telefonun gazetecilerden çalıyor.",
+    "choices": [
+      {"id": "deny", "text": "Sahte olduklarını açıkla.", "effects": {"Money": 30000, "Happiness": -7},
+       "result": "Bir hafta sonra belgeler doğrulandı. Senin açıklaman, haberin ikinci paragrafındaydı."},
+      {"id": "resign", "text": "Müşteriyi bırak.", "effects": {"Happiness": 3, "Money": -15000},
+       "result": "Ajans büyük bir müşteri kaybetti. Ama adın o haberde hiç geçmedi."},
+      {"id": "recall", "text": "CEO'yu ürünü geri çağırıp hatayı kabul etmeye ikna et.", "requires": ["MinStat:Social:65"], "effects": {"Happiness": 5, "Social": 3, "Money": 10000},
+       "result": "Zor bir gece toplantısı. Ertesi sabah geri çağırma duyuruldu ve şirketin hisseleri, beklenenin aksine toparlandı."}
+    ]
+  },
+  {
+    "id": "job_pr_specialist_3", "title": "Kendi Krizin", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:pr_specialist", "MinCareerLevel:3"],
+    "description": "İletişim direktörüsün ve bu kez kriz senin: yıllar önce yazdığın yanıltıcı bir bülten ortaya çıktı. Gazeteciler aynı soruları soruyor, bu sefer sana. Bütün tekniklerini biliyorsun.",
+    "choices": [
+      {"id": "technique", "text": "Bildiğin her tekniği kullan.", "effects": {"Happiness": -3, "Social": -1},
+       "result": "Haber bir haftada söndü. Ama aynada, müşterilerine benzeyen birini gördün."},
+      {"id": "apologize", "text": "Sade bir özür yaz.", "effects": {"Happiness": 4, "Social": 2},
+       "result": "Özrün kısa ve gerçekti. Bir sektör dergisi onu «yılın en iyi kriz iletişimi» seçti."},
+      {"id": "honest", "text": "Kariyerinde yazdığın dürüst bültenleri de yan yana koy ve kendi hikâyeni anlat.", "requires": ["HasFlag:pr_specialist_honest"], "effects": {"Happiness": 7, "Social": 4},
+       "result": "Bir hatayı ve bir dönüşümü anlattın. Genç iletişimciler o konuşmayı bir ders gibi izledi."}
+    ]
+  },
+
+  {
+    "id": "job_podcaster_1", "title": "Canlı Yayın", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:podcaster"],
+    "description": "Gece yarısı canlı yayınındasın ve bir dinleyici ağlayarak arıyor; hayatına son vermeyi düşünüyor. Kırmızı lamba yanıyor, binlerce kişi dinliyor. Prodüktör camın arkasından reklam arası işareti yapıyor.",
+    "choices": [
+      {"id": "stay", "text": "Reklamı iptal et ve onunla konuşmaya devam et.", "effects": {"Happiness": 5, "Social": 3, "Health": -1}, "set": ["podcaster_listener"],
+       "result": "Bir saat konuştunuz; prodüktör bu sırada destek hattını aradı. Ertesi hafta dinleyici bir teşekkür mesajı gönderdi."},
+      {"id": "private", "text": "Yayını kes ve onu özel hatta al.", "effects": {"Happiness": 3, "Social": 2},
+       "result": "Destek hattına bağladın. Yayın akışı bozuldu ama doğru olan buydu."},
+      {"id": "break", "text": "Reklama gir, sonra dönersin.", "effects": {"Happiness": -6},
+       "result": "Döndüğünde hat kapanmıştı. O dinleyiciyi yıllarca düşündün."}
+    ]
+  },
+  {
+    "id": "job_podcaster_2", "title": "Sponsor ve Konuk", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:podcaster", "MinCareerLevel:2"],
+    "description": "Programın büyüdü ve bir kripto para şirketi sponsor olmak istiyor. Şartı, kurucularını konuk edip sorularını önceden onaylamak. Dinleyicilerinin çoğu genç ve birikimi az.",
+    "choices": [
+      {"id": "accept", "text": "Kabul et.", "effects": {"Money": 50000, "Happiness": -4},
+       "result": "Bölüm çok dinlendi. Altı ay sonra şirket battı ve yorumlar senin adını andı."},
+      {"id": "decline", "text": "Reddet.", "effects": {"Happiness": 3, "Money": -5000},
+       "result": "Bağımsızlığını korudun. Dinleyicilerin bunu fark etti ve Patreon destekçilerin arttı."},
+      {"id": "critical", "text": "Konuğu al ama soruları sen sor.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 3, "Social": 2, "Education": 1},
+       "result": "Şirket sponsorluktan çekildi. Konuk geldi ve sert sorulara dayanamadı; bölüm viral oldu."}
+    ]
+  },
+  {
+    "id": "job_podcaster_3", "title": "Yayın Ağı", "category": "Career", "minAge": 28, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:podcaster", "MinCareerLevel:3"],
+    "description": "Büyük bir dijital platform, programını ve katalogunu satın almak istiyor; ama bölümler yalnızca onların uygulamasında olacak. Yıllardır seni ücretsiz dinleyen insanlar var. Mikrofonunun önünde kararsız duruyorsun.",
+    "choices": [
+      {"id": "exclusive", "text": "Özel anlaşmayı imzala.", "effects": {"Money": 300000, "Happiness": -2, "Social": -2},
+       "result": "Banka hesabın kabardı. Dinleyici sayın ise yarıya düştü."},
+      {"id": "free", "text": "Bağımsız ve ücretsiz kal.", "effects": {"Happiness": 4, "Social": 3},
+       "result": "Para az, ama ses senin. Dinleyicilerin seninle birlikte yaşlandı."},
+      {"id": "listener", "text": "O gece yayında konuştuğun dinleyiciyi konuk al ve bir ruh sağlığı programı başlat.", "requires": ["HasFlag:podcaster_listener"], "effects": {"Happiness": 9, "Social": 5},
+       "result": "Artık bir psikolog adayıydı. Program, gece yarısı yalnız hisseden binlerce kişinin buluşma yeri oldu."}
+    ]
+  },
+
+  {
+    "id": "job_comic_artist_1", "title": "Mürekkep", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:comic_artist"],
+    "description": "Bir çizgi roman dergisinin teslimine bir gece var ve mürekkep şişesi masaya devrildi; üç sayfa kapkara. Parmakların mürekkep lekeli, gözlerin yanıyor. Editör sabah sekizde arayacak.",
+    "choices": [
+      {"id": "redraw", "text": "Üç sayfayı sabaha kadar yeniden çiz.", "effects": {"Health": -2, "Happiness": 3, "Education": 2}, "set": ["comic_artist_ink"],
+       "result": "Sabah yedi elli dokuzda bitti. Yeniden çizilen sayfalar, ilkinden daha iyiydi."},
+      {"id": "digital", "text": "Dijitalde hızlıca tamamla.", "effects": {"Happiness": 1, "Education": 1},
+       "result": "Sayfalar yetişti. Okurlardan biri çizgilerin farklı göründüğünü yazdı."},
+      {"id": "use", "text": "Lekeyi hikâyeye dahil et: bir gece sahnesi.", "effects": {"Happiness": 4, "Education": 2},
+       "result": "Kapkara sayfaların üstüne beyaz yıldızlar çizdin. Okurlar o sayfaları en sevdikleri sahne seçti."}
+    ]
+  },
+  {
+    "id": "job_comic_artist_2", "title": "Karakterin Hakları", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:comic_artist", "MinCareerLevel:2"],
+    "description": "Yarattığın karakter sevildi ve bir yayınevi seriyi devam ettirmek istiyor. Sözleşmeye göre karakterin bütün hakları yayınevine geçecek. Avukat arkadaşın, «Bir gün film olursa senin hiçbir hakkın olmaz,» diyor.",
+    "choices": [
+      {"id": "sign", "text": "İmzala; şimdi fırsat var.", "effects": {"Money": 40000, "Happiness": -2},
+       "result": "Seri on yıl sürdü. Karakter bir oyuncak oldu; sen bir kutu hediye aldın."},
+      {"id": "keep", "text": "Hakları kendinde tutan bir sözleşme iste.", "requires": ["MinStat:Social:50"], "effects": {"Money": 20000, "Happiness": 4},
+       "result": "Yayınevi istemeye istemeye kabul etti. Karakter senin olarak kaldı."},
+      {"id": "self", "text": "Kendin yayımla.", "effects": {"Money": -10000, "Happiness": 5, "Health": -1},
+       "result": "Kitapları evden postaladın. Okurların seni doğrudan buldu."}
+    ]
+  },
+  {
+    "id": "job_comic_artist_3", "title": "Usta Çizer", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:comic_artist", "MinCareerLevel:3"],
+    "description": "Bir çizgi roman festivalinde onur konuğusun. Sırada imza bekleyen bir çocuk, kendi çizdiği karakterleri sana göstermek istiyor. Organizatörler, sıranın uzun olduğunu hatırlatıyor.",
+    "choices": [
+      {"id": "sign", "text": "Hızlıca imzala ve devam et.", "effects": {"Social": 2, "Happiness": 1},
+       "result": "Yüzlerce kitap imzaladın. Çocuğun yüzünü sonra hatırlamaya çalıştın."},
+      {"id": "look", "text": "Sırayı durdur ve çocuğun çizimlerine bak.", "effects": {"Happiness": 5, "Social": 2},
+       "result": "Çizimlerine ipuçları verdin. Kuyruktakiler sabırla bekledi; bazıları da çizimlerini çıkardı."},
+      {"id": "ink", "text": "Ona bir şişe mürekkep hediye et ve devrilen o geceyi anlat.", "requires": ["HasFlag:comic_artist_ink"], "effects": {"Happiness": 8, "Social": 3},
+       "result": "Çocuk mürekkebi göğsüne bastırdı. Yıllar sonra kendi ilk albümünün teşekkür sayfasında adın vardı."}
+    ]
+  },
+
+  {
+    "id": "job_music_producer_1", "title": "Sabaha Karşı Stüdyo", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:music_producer"],
+    "description": "Saat dört, stüdyoda genç bir şarkıcıyla çalışıyorsun. Sesi ham ve kırılgan; doğru düzeltmelerle mükemmel bir pop şarkısı olur. Ama o çatlak, şarkının ruhu gibi.",
+    "choices": [
+      {"id": "raw", "text": "Çatlağı bırak.", "effects": {"Happiness": 4, "Education": 2}, "set": ["music_producer_raw"],
+       "result": "Şarkı radyolarda az çaldı ama dinleyenler onu unutmadı. Şarkıcı, o kaydı kariyerinin başlangıcı saydı."},
+      {"id": "tune", "text": "Ses düzeltmesiyle mükemmelleştir.", "effects": {"Money": 10000, "Happiness": -1},
+       "result": "Şarkı listelere girdi. Canlı performansında ise ses kayıttan çok farklıydı."},
+      {"id": "retake", "text": "Bir gün dinlenip yeniden kaydedin.", "effects": {"Health": 1, "Happiness": 2},
+       "result": "Ertesi gün sesi daha güçlüydü ama o çatlak hâlâ oradaydı; bu kez kontrollü."}
+    ]
+  },
+  {
+    "id": "job_music_producer_2", "title": "Örnekleme", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:music_producer", "MinCareerLevel:2"],
+    "description": "Bir hit şarkıya, eski bir Anadolu türküsünden örnek almak istiyorsun. Türkünün kaynağı, bir köyde yaşayan yaşlı bir aşık. Lisans süreci aylar sürebilir; şarkı ise haftaya çıkmalı.",
+    "choices": [
+      {"id": "use", "text": "İzin almadan kullan.", "effects": {"Money": 30000, "Happiness": -4},
+       "result": "Şarkı patladı. Aşığın torunu, bir videoda bunu anlattığında yorumlar seni yerden yere vurdu."},
+      {"id": "visit", "text": "Köye git ve aşıktan izin iste.", "effects": {"Happiness": 5, "Social": 3, "Money": -5000},
+       "result": "Bir akşam saz eşliğinde sohbet ettiniz. Şarkı iki hafta gecikti; künyede onun adı vardı."},
+      {"id": "replace", "text": "Kendi melodini yaz.", "effects": {"Happiness": 2, "Education": 2},
+       "result": "Şarkı biraz daha az etkileyiciydi. Ama tamamen senindi."}
+    ]
+  },
+  {
+    "id": "job_music_producer_3", "title": "Plak Şirketi", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:music_producer", "MinCareerLevel:3"],
+    "description": "Kendi plak şirketini kurdun ve iki aday var: algoritmaların sevdiği, garantili hit yapan bir sanatçı ve kimsenin anlamadığı ama seni ağlatan bir genç. Bütçen yalnızca birine yetiyor.",
+    "choices": [
+      {"id": "hit", "text": "Garantili hiti seç.", "effects": {"Money": 100000, "Happiness": 1},
+       "result": "Şirket ilk yılında kâr etti. Hitler birbirine benziyordu ama ödemeler düzenliydi."},
+      {"id": "young", "text": "Genç sanatçıyı seç.", "effects": {"Happiness": 5, "Money": -20000},
+       "result": "İlk albüm satmadı. İkinci albüm, on yılın en etkili albümlerinden biri seçildi."},
+      {"id": "raw", "text": "Sabaha karşı stüdyoda bıraktığın o çatlak sesi hatırla; gencin kaydını hiç düzeltmeden yap.", "requires": ["HasFlag:music_producer_raw"], "effects": {"Happiness": 8, "Social": 3, "Money": 20000},
+       "result": "Albüm, «kusurlarıyla güzel» diye anıldı. Şirketinin felsefesi o oldu."}
+    ]
+  }
+]

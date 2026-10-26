@@ -1,0 +1,115 @@
+[
+  {
+    "id": "career_overtime", "title": "Fazla Mesai", "category": "Career", "minAge": 18, "maxAge": 64, "repeatable": true, "cooldownDays": 300, "weight": 10,
+    "conditions": ["MinCareerLevel:1"],
+    "description": "Proje teslimi yaklaşıyor. Yöneticin bu ay hafta sonları da çalışıp çalışamayacağını soruyor; ek ödeme yapılacak.",
+    "choices": [
+      {"id": "accept", "text": "Kabul et, hafta sonlarını feda et.", "effects": {"Money": 8000, "Health": -3, "Happiness": -2},
+       "result": "Hesabına yatan ek ödeme güzeldi. Pazar akşamları ise hep yorgundun."},
+      {"id": "decline", "text": "Kibarca reddet.", "effects": {"Happiness": 2},
+       "result": "Yöneticin başını salladı. Hafta sonun senindi."},
+      {"id": "negotiate", "text": "Ek ödeme yerine izin günü iste.", "requires": ["MinStat:Social:50"], "effects": {"Happiness": 3, "Social": 1},
+       "result": "Pazarlık işe yaradı. Projeden sonra üç günlük bir kaçamak yaptın."}
+    ]
+  },
+  {
+    "id": "career_difficult_manager", "title": "Zor Bir Yönetici", "category": "Career", "minAge": 18, "maxAge": 64, "repeatable": true, "cooldownDays": 700, "weight": 8,
+    "conditions": ["MinCareerLevel:1"],
+    "description": "Yeni yöneticin herkesin önünde eleştirmeyi seviyor. Bu sabahki toplantıda sıra sana geldi.",
+    "choices": [
+      {"id": "endure", "text": "Sesini çıkarma, işini yap.", "effects": {"Happiness": -5},
+       "result": "Toplantılar uzadıkça içindeki sessizlik büyüdü."},
+      {"id": "talk_privately", "text": "Toplantıdan sonra yüz yüze konuş.", "requires": ["MinStat:Social:45"], "effects": {"Happiness": 3, "Social": 2},
+       "result": "Şaşırdı, sonra özür diledi. İlişkiniz yavaş yavaş düzeldi."},
+      {"id": "complain", "text": "İnsan kaynaklarına yazılı şikâyet et.", "effects": {"Happiness": 1, "Social": -2},
+       "result": "Süreç uzun sürdü. Ofiste kimin tarafında olduğun konuşuldu."}
+    ]
+  },
+  {
+    "id": "career_burnout", "title": "Tükenmişlik", "category": "Career", "minAge": 22, "maxAge": 64, "repeatable": true, "cooldownDays": 420, "weight": 18,
+    "conditions": ["MinCareerLevel:1"],
+    "description": "Sabahları yataktan kalkmak giderek zorlaşıyor. E-postaları açmadan önce derin bir nefes alıyorsun.",
+    "choices": [
+      {"id": "take_leave", "text": "Ücretsiz izin al, bir ay uzaklaş.", "effects": {"Money": -15000, "Health": 6, "Happiness": 8}, "remove": ["burnout"],
+       "result": "İlk hafta telefonun aklındaydı. Dördüncü hafta denizin rengini fark ettin."},
+      {"id": "therapy", "text": "Bir terapistle görüşmeye başla.", "cost": 5000, "effects": {"Happiness": 10, "Health": 2}, "remove": ["burnout"],
+       "result": "Haftalık seanslar, kendine nasıl davrandığını görmeni sağladı."},
+      {"id": "push_through", "text": "Dişini sık, devam et.", "effects": {"Health": -6, "Happiness": -2}, "set": ["burnout"],
+       "result": "Devam ettin. Ama bir şeyler içinde çatırdamaya başladı."}
+    ]
+  },
+  {
+    "id": "career_side_business", "title": "Hafta Sonu Girişimi", "category": "Career", "minAge": 24, "maxAge": 58, "weight": 8,
+    "conditions": ["NotHasFlag:side_business", "MinStat:Money:60000"],
+    "description": "Yıllardır aklındaki fikri hayata geçirmek için küçük bir sermaye yeter. El yapımı ürünler satan bir çevrimiçi dükkân.",
+    "choices": [
+      {"id": "invest", "text": "Birikimini yatır, dükkânı aç.", "cost": 50000, "effects": {"Happiness": 4}, "set": ["side_business"],
+       "result": "İlk siparişin geldiğinde odada tek başına alkışladın kendini."},
+      {"id": "not_now", "text": "Riskli, şimdilik bekle.", "effects": {"Happiness": -1},
+       "result": "Fikir bir deftere geri döndü. Kapağı kapattın."}
+    ]
+  },
+  {
+    "id": "career_side_business_year", "title": "Dükkânın Bir Yılı", "category": "Career", "minAge": 25, "maxAge": 80, "repeatable": true, "cooldownDays": 365, "weight": 20,
+    "conditions": ["HasFlag:side_business"],
+    "description": "Çevrimiçi dükkânın bir yılını daha geride bıraktı. Hesap tabloları önünde, karar vermen gerekiyor.",
+    "choices": [
+      {"id": "grow", "text": "Gece mesaisiyle büyütmeye devam et.", "effects": {"Money": 45000, "Health": -2},
+       "result": "Siparişler arttı. Kargo kutuları salonu ele geçirdi."},
+      {"id": "sell", "text": "Dükkânı devret.", "effects": {"Money": 120000, "Happiness": 2}, "remove": ["side_business"],
+       "result": "Sözleşmeyi imzalarken hem hüzünlü hem gururluydun."},
+      {"id": "close", "text": "Kapat, artık yoruldun.", "effects": {"Happiness": -2, "Health": 3}, "remove": ["side_business"],
+       "result": "Son siparişi paketledin ve ışıkları kapattın."}
+    ]
+  },
+  {
+    "id": "career_conference", "title": "Sektör Konferansı", "category": "Career", "minAge": 20, "maxAge": 64, "repeatable": true, "cooldownDays": 500, "weight": 8,
+    "conditions": ["MinCareerLevel:1"],
+    "description": "Şirket seni sektörün en büyük konferansına gönderiyor. Bir oturumda konuşma yapma fırsatı da var.",
+    "choices": [
+      {"id": "present", "text": "Sahneye çık, deneyimini anlat.", "requires": ["MinStat:Education:50"], "effects": {"Education": 3, "Social": 5, "Happiness": 3},
+       "result": "Elindeki kâğıtlar titriyordu ama sesin titremedi. Sonunda alkış aldın."},
+      {"id": "network", "text": "Kahve molalarında yeni insanlarla tanış.", "effects": {"Social": 5},
+       "result": "Cebin kartvizitle doldu. Bazıları yıllarca aklında kaldı."},
+      {"id": "hotel", "text": "Otel odasında dinlen.", "effects": {"Health": 2, "Happiness": 1},
+       "result": "Şehrin ışıklarını pencereden izledin."}
+    ]
+  },
+  {
+    "id": "career_new_intern", "title": "Genç Stajyer", "category": "Career", "minAge": 26, "maxAge": 64, "repeatable": true, "cooldownDays": 700, "weight": 8,
+    "conditions": ["MinCareerLevel:3"],
+    "description": "Ekibe yeni katılan stajyer, ilk haftasında sana sürekli soru soruyor. Senin de yapacak işlerin var.",
+    "choices": [
+      {"id": "mentor", "text": "Her gün yarım saatini ona ayır.", "effects": {"Social": 4, "Happiness": 4},
+       "result": "Aylar sonra bir toplantıda senin cümlelerinle konuştuğunu duydun ve gülümsedin."},
+      {"id": "delegate", "text": "Onu başka bir ekip arkadaşına yönlendir.", "effects": {"Happiness": 1},
+       "result": "İşlerin aksamadı. Stajyer seni pek tanımadan ayrıldı."},
+      {"id": "ignore", "text": "Sorularını geçiştir.", "effects": {"Social": -3},
+       "result": "Stajyer başka masalara gitmeye başladı."}
+    ]
+  },
+  {
+    "id": "career_relocation", "title": "Başka Şehirde Pozisyon", "category": "Career", "minAge": 24, "maxAge": 55, "weight": 6,
+    "conditions": ["MinCareerLevel:2"],
+    "description": "Şirket, başka bir şehirdeki ofiste daha iyi koşullarda bir pozisyon öneriyor. Taşınma desteği de var.",
+    "choices": [
+      {"id": "move", "text": "Kabul et, yeni bir şehre taşın.", "effects": {"Money": 40000, "Social": -6, "Happiness": 2},
+       "result": "İlk aylar sokak isimlerini ezberlemekle geçti. Sonra şehir seni benimsedi."},
+      {"id": "stay", "text": "Burada kalmak istediğini söyle.", "effects": {"Social": 3},
+       "result": "Dostlarınla aynı masada oturmaya devam ettin."}
+    ]
+  },
+  {
+    "id": "career_layoff_rumor", "title": "Küçülme Söylentisi", "category": "Career", "minAge": 25, "maxAge": 64, "repeatable": true, "cooldownDays": 900, "weight": 6,
+    "conditions": ["MinCareerLevel:1"],
+    "description": "Koridorlarda şirketin küçüleceği konuşuluyor. Kimse bir şey bilmiyor ama herkes tedirgin.",
+    "choices": [
+      {"id": "upskill", "text": "Akşamları sertifika programına yazıl.", "cost": 4000, "effects": {"Education": 4, "Health": -1},
+       "result": "Sertifikan geldiğinde söylentiler de yatışmıştı. Ama artık daha hazırdın."},
+      {"id": "work_harder", "text": "Daha görünür olmak için mesaiyi uzat.", "effects": {"Money": 5000, "Health": -2},
+       "result": "Ofisten çıkan son kişi sen oldun. Liste açıklandığında adın yoktu."},
+      {"id": "stay_calm", "text": "Panik yapma, bekle.", "effects": {"Happiness": 1},
+       "result": "Söylentiler birkaç hafta sonra kendiliğinden söndü."}
+    ]
+  }
+]

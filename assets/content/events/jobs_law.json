@@ -1,0 +1,401 @@
+[
+  {
+    "id": "job_defense_lawyer_1", "title": "İlk Müvekkil", "category": "Career", "minAge": 23, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:defense_lawyer"],
+    "description": "Adliyenin rutubet kokan görüşme odasında, hırsızlıkla suçlanan on dokuz yaşında biri karşında. Gözleri yere bakıyor ve «Yapmadım,» diyor; sana ilk kez bir müvekkil yalan söylüyor olabilir. Dosya ince, kanıt bulanık.",
+    "choices": [
+      {"id": "believe", "text": "Ona inan ve tüm gücünle savun.", "effects": {"Happiness": 3, "Education": 2, "Health": -1}, "set": ["defense_lawyer_believe"],
+       "result": "Kamera kayıtlarını sen buldun ve beraat etti. Adliyenin merdivenlerinde annesi elini öptü."},
+      {"id": "plea", "text": "İndirimli ceza için anlaşma öner.", "effects": {"Money": 3000, "Happiness": -2},
+       "result": "Altı ay ceza aldı. Yıllar sonra gerçek hırsızın yakalandığını bir gazetede okudun."},
+      {"id": "truth", "text": "Ona ne olursa olsun gerçeği söylemesi gerektiğini anlat.", "requires": ["MinStat:Social:50"], "effects": {"Social": 3, "Happiness": 2},
+       "result": "Bir sessizlikten sonra konuştu: arkadaşını koruyormuş. Savunma stratejin tamamen değişti."}
+    ]
+  },
+  {
+    "id": "job_defense_lawyer_2", "title": "Suçlu Olduğunu Biliyorsun", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:defense_lawyer", "MinCareerLevel:2"],
+    "description": "Zengin bir müvekkil, kendisine özel olarak suçlu olduğunu itiraf etti. Savcılığın dosyasında bir usul hatası var; onu kullanırsan beraat eder. Mağdurun ailesi her duruşmada ön sırada oturuyor.",
+    "choices": [
+      {"id": "use", "text": "Usul hatasını kullan; savunma hakkı herkesin.", "effects": {"Money": 80000, "Happiness": -4, "Education": 2},
+       "result": "Müvekkil beraat etti. Mağdurun annesi koridorda sana tek kelime söylemeden baktı."},
+      {"id": "withdraw", "text": "Davadan çekil.", "effects": {"Happiness": 2, "Money": -10000},
+       "result": "Başka bir avukat aynı hatayı kullandı. En azından imzan o dosyada yoktu."},
+      {"id": "plea", "text": "Müvekkilini suçunu kabul etmeye ikna et.", "requires": ["MinStat:Social:60"], "effects": {"Happiness": 4, "Social": 2, "Money": 20000},
+       "result": "Uzun bir gece konuşması. Ertesi sabah mahkemede suçunu kabul etti ve mağdurun ailesinden özür diledi."}
+    ]
+  },
+  {
+    "id": "job_defense_lawyer_3", "title": "Masumiyet Projesi", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:defense_lawyer", "MinCareerLevel:3"],
+    "description": "Büro ortağı oldun ve büyük şirket davaları kapında. Aynı hafta, yirmi yıldır cezaevinde olan bir adamın mektubu geliyor; yeni bir DNA testiyle masum olduğunu kanıtlayabileceğini yazıyor. İkisine birden zamanın yok.",
+    "choices": [
+      {"id": "corporate", "text": "Şirket davasını al.", "effects": {"Money": 200000, "Happiness": -1},
+       "result": "Büron büyüdü. Mektup bir çekmecede kaldı."},
+      {"id": "innocence", "text": "Ücretsiz olarak mektubun peşine düş.", "effects": {"Happiness": 6, "Social": 3, "Money": -20000},
+       "result": "Üç yıl sürdü. Adam elli yaşında cezaevinden çıktığında, kapıda seni buldu."},
+      {"id": "believe", "text": "İlk müvekkilinin hikâyesini genç avukatlara anlat ve bir gönüllü masumiyet birimi kur.", "requires": ["HasFlag:defense_lawyer_believe"], "effects": {"Happiness": 9, "Social": 5},
+       "result": "Birimin ilk davası o mektuptu. Yıllar önce beraat ettirdiğin genç, artık bir avukat olarak ekibindeydi."}
+    ]
+  },
+
+  {
+    "id": "job_private_investigator_1", "title": "Park Halindeki Araba", "category": "Career", "minAge": 21, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:private_investigator"],
+    "description": "Gece yarısı, soğuk kahve ve buğulanmış camlar. Bir kocanın eşini aldattığını kanıtlamak için tutuldun. Kadının girdiği bina bir otel değil, bir kanser kliniği.",
+    "choices": [
+      {"id": "report", "text": "Gördüğünü olduğu gibi müvekkile raporla.", "effects": {"Money": 5000, "Happiness": -1},
+       "result": "Koca telefonda uzun süre sustu. Bir hafta sonra ikisini birlikte klinik kapısında gördün."},
+      {"id": "warn", "text": "Önce kadınla konuş.", "effects": {"Social": 2, "Happiness": 3}, "set": ["private_investigator_mercy"],
+       "result": "Ailesini korumak için gizlediğini söyledi. Ona kocasına kendisinin söylemesi için bir hafta verdin."},
+      {"id": "drop", "text": "Davayı bırak, ücretini iade et.", "effects": {"Money": -3000, "Happiness": 2},
+       "result": "Koca başka bir dedektif tuttu. Gerçeği nasıl öğrendiğini hiç bilmedin."}
+    ]
+  },
+  {
+    "id": "job_private_investigator_2", "title": "Kayıp Genç", "category": "Career", "minAge": 23, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:private_investigator", "MinCareerLevel:2"],
+    "description": "Zengin bir aile, evden kaçan on yedi yaşındaki kızlarını bulmanı istiyor. Onu buldun: bir arkadaşının yanında, güvende ve ağlayarak evdeki şiddeti anlatıyor. Aile, adresi bekliyor.",
+    "choices": [
+      {"id": "address", "text": "Adresi aileye ver; sözleşme bu.", "effects": {"Money": 30000, "Happiness": -6},
+       "result": "Aile onu eve götürdü. Bir daha ondan haber alamadın."},
+      {"id": "social", "text": "Sosyal hizmetlere bildir.", "effects": {"Happiness": 4, "Money": -10000},
+       "result": "Aile seni dava etmekle tehdit etti. Kız koruma altına alındı ve on sekizinde sana bir mesaj attı."},
+      {"id": "lie", "text": "Aileye onu bulamadığını söyle.", "effects": {"Happiness": 2, "Money": -5000, "Social": -1},
+       "result": "Sırrını taşıdın. Kız birkaç ay sonra kendi başına bir yurt buldu."}
+    ]
+  },
+  {
+    "id": "job_private_investigator_3", "title": "Soğuk Dosya", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:private_investigator", "MinCareerLevel:3"],
+    "description": "Yirmi yıl önce çözülemeyen bir kayıp vakasının dosyası masana geldi; kayıp kişinin kız kardeşi artık yaşlı ve son bir umut istiyor. Ücret ödeyemiyor. Elinde, kimsenin bakmadığı yeni bir ipucu var.",
+    "choices": [
+      {"id": "free", "text": "Ücretsiz üstlen.", "effects": {"Happiness": 5, "Money": -10000, "Health": -2},
+       "result": "Bir yıl süren bir arayış. Sonunda bir mezarlık kaydı buldun; kız kardeş en azından çiçek bırakabildi."},
+      {"id": "decline", "text": "Kibarca reddet; büronun ödenecek kirası var.", "effects": {"Money": 10000, "Happiness": -3},
+       "result": "Kadın teşekkür edip gitti. İpucu bir çekmecede kaldı."},
+      {"id": "mercy", "text": "Yıllar önce klinik kapısında öğrendiğin gibi; her ipucunun arkasında bir insan olduğunu hatırla ve aileyle birlikte çalış.", "requires": ["HasFlag:private_investigator_mercy"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "Kız kardeşin anıları ipucunu tamamladı. Kayıp kişi başka bir şehirde, hafızasını kaybetmiş ama hayattaydı."}
+    ]
+  },
+
+  {
+    "id": "job_firefighter_1", "title": "İlk Yangın", "category": "Career", "minAge": 19, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:firefighter"],
+    "description": "Bir apartmanın üçüncü katı alevler içinde ve senin ilk büyük yangının. Komutan dışarıda beklemeni söylüyor; ama pencerede bir kedi miyavlıyor ve küçük bir çocuk aşağıda ağlıyor. Ekipmanın ağır, kalbin hızlı.",
+    "choices": [
+      {"id": "order", "text": "Emre uy, dışarıda bekle.", "effects": {"Education": 2, "Happiness": -1}, "set": ["firefighter_discipline"],
+       "result": "İçeri giren ekip kediyi de çıkardı. Komutan sırtına vurdu: «İlk ders, sağ kalmak.»"},
+      {"id": "go", "text": "Merdivene koş.", "effects": {"Health": -3, "Happiness": 3, "Social": -1},
+       "result": "Kediyi kurtardın ama komutan seni bir hafta mutfak nöbetine verdi."},
+      {"id": "child", "text": "Çocuğu sakinleştir.", "effects": {"Social": 3, "Happiness": 2},
+       "result": "Kedi kurtarılıp kucağına verildiğinde çocuk sana sarıldı. Kask hâlâ kafandaydı."}
+    ]
+  },
+  {
+    "id": "job_firefighter_2", "title": "Çöken Çatı", "category": "Career", "minAge": 21, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:firefighter", "MinCareerLevel:2"],
+    "description": "Bir depo yangınında, çatı kirişlerinin çatırdadığını duyuyorsun. İçeride bir ekip arkadaşının telsizi sustu. Çıkış için otuz saniyen var, belki daha az.",
+    "choices": [
+      {"id": "in", "text": "Arkadaşın için içeri dal.", "effects": {"Health": -6, "Happiness": 5, "Social": 4},
+       "result": "Onu sırtında çıkardın. Arkanızdan çatı çöktü; sen de iki hafta hastanede kaldın."},
+      {"id": "out", "text": "Kuralı uygula, çık ve yardım iste.", "effects": {"Happiness": -3, "Health": 1},
+       "result": "Kurtarma ekibi onu bir dakika sonra buldu. Hayattaydı, ama o bir dakikayı hiç unutmadın."},
+      {"id": "radio", "text": "Telsizle konumunu iste, sesine yönel.", "requires": ["MinStat:Health:55"], "effects": {"Health": -3, "Happiness": 4, "Education": 2},
+       "result": "Zayıf bir ses duydun ve onu buldun. Çatı çöktüğünde ikiniz de dışarıdaydınız."}
+    ]
+  },
+  {
+    "id": "job_firefighter_3", "title": "İstasyon Amiri", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:firefighter", "MinCareerLevel:3"],
+    "description": "İstasyon amiri oldun ve yangın sezonu kapıda. Bütçe ya yeni bir merdivenli araca ya da mahallelerde yangın eğitimlerine yetiyor. Genç itfaiyeciler yeni aracı istiyor.",
+    "choices": [
+      {"id": "truck", "text": "Yeni aracı al.", "effects": {"Social": 2, "Happiness": 2},
+       "result": "Araç parlak ve hızlıydı. O yıl yüksek binalarda iki kurtarma yaptınız."},
+      {"id": "education", "text": "Mahalle eğitimlerine yatır.", "effects": {"Happiness": 4, "Social": 3},
+       "result": "Yangın çağrıları yüzde otuz düştü. En iyi yangın, hiç çıkmayan yangındı."},
+      {"id": "discipline", "text": "Gençlere ilk yangınında dışarıda beklediğin günü ve «ilk ders, sağ kalmak» sözünü anlat.", "requires": ["HasFlag:firefighter_discipline"], "effects": {"Happiness": 7, "Social": 4, "Health": 2},
+       "result": "O sezon istasyonunda tek bir yaralanma olmadı. Gençler bu sözü kasklarının içine yazdı."}
+    ]
+  },
+
+  {
+    "id": "job_diplomat_1", "title": "Tercüme Hatası", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:diplomat"],
+    "description": "Büyükelçiliğin resmî yemeğinde, tercümanın bir cümleyi yanlış çevirdiğini fark ediyorsun; karşı taraf rahatsız olmuş görünüyor. Büyükelçi farkında değil. Sen yalnızca üçüncü kâtipsin.",
+    "choices": [
+      {"id": "correct", "text": "Nazikçe araya gir ve düzelt.", "effects": {"Social": 3, "Happiness": 2}, "set": ["diplomat_words"],
+       "result": "Karşı tarafın yüzü yumuşadı. Büyükelçi yemekten sonra seni odasına çağırıp teşekkür etti."},
+      {"id": "note", "text": "Büyükelçiye gizlice not ilet.", "effects": {"Education": 2, "Happiness": 1},
+       "result": "Büyükelçi notu okudu ve zarifçe toparladı. Kimse ne olduğunu anlamadı."},
+      {"id": "silent", "text": "Sus; protokol dışına çıkma.", "effects": {"Happiness": -2},
+       "result": "Görüşme soğuk bitti. Bir hafta sonra müzakereler ertelendi."}
+    ]
+  },
+  {
+    "id": "job_diplomat_2", "title": "Vize", "category": "Career", "minAge": 26, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:diplomat", "MinCareerLevel:2"],
+    "description": "Konsoloslukta, savaştan kaçan bir ailenin vize başvurusu önünde; evrakları eksik. Kurallar açık: başvuru reddedilmeli. Ailenin küçük kızı camın öbür tarafında resim yapıyor.",
+    "choices": [
+      {"id": "reject", "text": "Kurala uy, reddet.", "effects": {"Happiness": -6},
+       "result": "Aile sessizce gitti. Kızın bıraktığı resim masanda kaldı."},
+      {"id": "humanitarian", "text": "İnsani gerekçeyle istisna talep et.", "requires": ["MinStat:Social:65"], "effects": {"Happiness": 5, "Social": 2},
+       "result": "Ankara'yla saatlerce yazıştın. Vize çıktı; aile bir ay sonra güvendeydi."},
+      {"id": "help", "text": "Eksik evrakları tamamlamalarına yardım et.", "effects": {"Happiness": 3, "Health": -1, "Education": 1},
+       "result": "Bir hafta boyunca mesai dışı çalıştın. Evraklar tamamlandı ve başvuru yasal olarak onaylandı."}
+    ]
+  },
+  {
+    "id": "job_diplomat_3", "title": "Müzakere Masası", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:diplomat", "MinCareerLevel:3"],
+    "description": "Sınır anlaşmazlığı için kritik bir müzakerenin başındasın. Başkentten gelen talimat sert; karşı taraf ise uzlaşmaya hazır görünüyor. Gece yarısı, otelin koridorunda karşı tarafın baş müzakerecisiyle karşılaşıyorsun.",
+    "choices": [
+      {"id": "orders", "text": "Talimatlara harfiyen uy.", "effects": {"Happiness": -2, "Social": 1},
+       "result": "Müzakere tıkandı. Başkent memnundu; sınırdaki köyler değil."},
+      {"id": "backchannel", "text": "Koridorda resmî olmayan bir sohbet başlat.", "requires": ["MinStat:Social:70"], "effects": {"Happiness": 5, "Social": 4, "Education": 2},
+       "result": "Sabaha kadar konuştunuz. Ertesi gün masaya, iki tarafın da başkentine satılabilecek bir formül geldi."},
+      {"id": "words", "text": "Kariyerinin ilk yemeğindeki gibi; tek bir yanlış çevrilmiş kelimeyi bul ve düzelt.", "requires": ["HasFlag:diplomat_words"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "Anlaşmazlığın yarısı, iki dildeki bir kelimenin farklı anlamlarından doğuyordu. Bir dipnot, bir savaşı önledi."}
+    ]
+  },
+
+  {
+    "id": "job_urban_planner_1", "title": "Bisiklet Yolu", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:urban_planner"],
+    "description": "Tasarladığın bisiklet yolu, bir caddedeki esnafın park yerlerini kaldıracak. Esnaf toplantıda öfkeyle bağırıyor; bisikletli dernekler ise salonun arkasında pankartlarla bekliyor. Toplantıyı sen yönetiyorsun.",
+    "choices": [
+      {"id": "data", "text": "Benzer şehirlerdeki verilerle esnafı ikna etmeye çalış.", "requires": ["MinStat:Education:60"], "effects": {"Education": 2, "Social": 2, "Happiness": 2},
+       "result": "Bazıları ikna oldu. Bir yıl sonra caddedeki kafeler masalarını kaldırıma çıkarmıştı."},
+      {"id": "pilot", "text": "Üç aylık deneme öner.", "effects": {"Social": 3, "Happiness": 3}, "set": ["urban_planner_listen"],
+       "result": "Deneme sonunda esnafın yarısı memnundu. Yol kalıcı oldu; park yerlerinin bir kısmı geri geldi."},
+      {"id": "cancel", "text": "Projeyi iptal et.", "effects": {"Happiness": -3},
+       "result": "Esnaf alkışladı. Bisikletliler pankartlarını katlayıp sessizce gitti."}
+    ]
+  },
+  {
+    "id": "job_urban_planner_2", "title": "İmar Değişikliği", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:urban_planner", "MinCareerLevel:2"],
+    "description": "Bir şehir parkının imarının konut alanına çevrilmesi için bir teklif geldi. Belediye başkanı yanlısı; müteahhit, başkanın kampanyasına bağış yapmış. Teknik raporu sen yazacaksın.",
+    "choices": [
+      {"id": "approve", "text": "Raporu olumlu yaz.", "effects": {"Money": 20000, "Happiness": -5},
+       "result": "Park bloklara dönüştü. Mahallenin çocukları artık oto parkta top oynuyor."},
+      {"id": "reject", "text": "Raporu teknik gerçeklere göre olumsuz yaz.", "effects": {"Happiness": 4, "Social": -2},
+       "result": "Başkan seni başka bir birime atadı. Park, mahkemede kurtuldu."},
+      {"id": "public", "text": "Teklifi halkın görüşüne aç.", "requires": ["MinStat:Social:55"], "effects": {"Social": 4, "Happiness": 3},
+       "result": "Binlerce itiraz geldi. Teklif sessizce geri çekildi."}
+    ]
+  },
+  {
+    "id": "job_urban_planner_3", "title": "Yirmi Yıllık Plan", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:urban_planner", "MinCareerLevel:3"],
+    "description": "Şehrin yirmi yıllık nazım planını hazırlayan ekibin başındasın. Haritanın üzerinde bir otoyol, bir metro hattı ve bir sahil parkı var; bütçe yalnızca ikisine yetiyor. Bu kararın sonuçlarını sen göremeyebilirsin.",
+    "choices": [
+      {"id": "highway", "text": "Otoyol ve metro.", "effects": {"Money": 30000, "Social": 1},
+       "result": "Trafik bir süre rahatladı, sonra yine tıkandı. Sahil, ileride başka bir plana kaldı."},
+      {"id": "metro_park", "text": "Metro ve sahil parkı.", "effects": {"Happiness": 5, "Social": 3},
+       "result": "Arabacılar söylendi. Yirmi yıl sonra torunun, o sahil parkında yürümeyi öğrendi."},
+      {"id": "listen", "text": "Bisiklet yolu denemesinde olduğu gibi: her semtte bir halk toplantısı yap ve planı birlikte çizin.", "requires": ["HasFlag:urban_planner_listen"], "effects": {"Happiness": 8, "Social": 5},
+       "result": "Plan iki yıl gecikti ama hiçbir mahkeme onu durduramadı; çünkü herkes onu kendi planı sayıyordu."}
+    ]
+  },
+
+  {
+    "id": "job_judge_1", "title": "İlk Karar", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:judge"],
+    "description": "Aday hâkim olarak ilk küçük davan: bir anne, marketten bebek maması çalmış. Kanıt kesin, yasa açık. Kadın sanık sandalyesinde, kucağında bebeğiyle oturuyor.",
+    "choices": [
+      {"id": "law", "text": "Yasaya göre ceza ver.", "effects": {"Education": 2, "Happiness": -3},
+       "result": "Cezayı ertelenmiş olarak verdin. Kadın sessizce ağladı; bebek uyuyordu."},
+      {"id": "mitigate", "text": "Hafifletici nedenleri sonuna kadar uygula.", "effects": {"Happiness": 3, "Education": 2}, "set": ["judge_mercy"],
+       "result": "Kadın hükmün açıklanmasının geri bırakılmasıyla çıktı. Gerekçeli kararını bir hukuk dergisi yayımladı."},
+      {"id": "social", "text": "Kararla birlikte sosyal hizmetlere yönlendir.", "effects": {"Social": 2, "Happiness": 2},
+       "result": "Kadın bir destek programına alındı. Bir yıl sonra, bir iş bulduğunu yazan bir mektup geldi."}
+    ]
+  },
+  {
+    "id": "job_judge_2", "title": "Telefon", "category": "Career", "minAge": 28, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:judge", "MinCareerLevel:2"],
+    "description": "Önemli bir davanın karar duruşmasından önceki gece, tanımadığın bir numara arıyor. Ses, davanın sonucunun «yukarıda» önemsendiğini ve tayinin yaklaştığını hatırlatıyor. Telefonu kapattıktan sonra mutfakta uzun süre duruyorsun.",
+    "choices": [
+      {"id": "ignore", "text": "Telefonu hiç olmamış say ve dosyaya göre karar ver.", "effects": {"Happiness": 3, "Education": 2},
+       "result": "Kararın dosyaya uygundu. Tayinin bir yıl gecikti; ama gecikti, o kadar."},
+      {"id": "report", "text": "Görüşmeyi Hâkimler Kurulu'na tutanakla bildir.", "effects": {"Happiness": 4, "Social": -3},
+       "result": "Soruşturma açıldı. Meslektaşlarının bazıları sana sessizce destek verdi, bazıları uzak durdu."},
+      {"id": "recuse", "text": "Kendini davadan çek.", "effects": {"Happiness": -1},
+       "result": "Dava başka bir hâkime geçti. Sonucunu gazetede okudun."}
+    ]
+  },
+  {
+    "id": "job_judge_3", "title": "Ağır Ceza", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:judge", "MinCareerLevel:3"],
+    "description": "Ülkenin konuştuğu bir cinayet davasının heyet başkanısın. Kamuoyu en ağır cezayı istiyor; ama dosyadaki kanıtlar, sanığın suçu tek başına işlemediğini gösteriyor. Duruşma salonunun dışında kalabalık bağırıyor.",
+    "choices": [
+      {"id": "crowd", "text": "Kamuoyunun beklediği kararı ver.", "effects": {"Social": 2, "Happiness": -6},
+       "result": "Kalabalık alkışladı. Yıllar sonra diğer failler yakalandığında dosya yeniden açıldı."},
+      {"id": "evidence", "text": "Kanıtlara göre karar ver ve soruşturmanın genişletilmesini iste.", "effects": {"Happiness": 4, "Social": -3, "Education": 2},
+       "result": "Basın seni topa tuttu. Bir yıl sonra diğer failler yakalandığında, gerekçeli kararın okunmaya başlandı."},
+      {"id": "mercy", "text": "Kariyerinin ilk kararındaki gibi gerekçeni insanların anlayacağı bir dille yaz ve duruşmada kendin oku.", "requires": ["HasFlag:judge_mercy"], "effects": {"Happiness": 8, "Social": 3, "Education": 2},
+       "result": "Salon sessizleşti. Kararın kamuoyunu ikiye böldü ama herkes neden verildiğini anladı."}
+    ]
+  },
+
+  {
+    "id": "job_police_officer_1", "title": "Devriye", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:police_officer"],
+    "description": "Gece devriyesinde, bir markette ekmek çalarken yakalanan on üç yaşında bir çocuk. Market sahibi şikâyetçi olmak istiyor. Çocuğun ayakkabıları delik ve gözleri korkuyla dolu.",
+    "choices": [
+      {"id": "process", "text": "Prosedürü uygula, tutanak tut.", "effects": {"Education": 1, "Happiness": -3},
+       "result": "Çocuk karakolda ailesini bekledi. Kimse gelmedi; sabah sosyal hizmetler aldı."},
+      {"id": "pay", "text": "Ekmeğin parasını öde, market sahibini ikna et.", "effects": {"Money": -200, "Happiness": 4, "Social": 2}, "set": ["police_officer_kind"],
+       "result": "Market sahibi şikâyetten vazgeçti. Çocuğu evine bıraktın ve mahalle muhtarına durumu anlattın."},
+      {"id": "social", "text": "Çocuk şube ve sosyal hizmetleri ara.", "effects": {"Education": 2, "Happiness": 2},
+       "result": "Bir sosyal hizmet uzmanı geldi. Çocuğun ailesinin bir yardım programına alındığını sonra öğrendin."}
+    ]
+  },
+  {
+    "id": "job_police_officer_2", "title": "Kayıp Delil", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:police_officer", "MinCareerLevel:2"],
+    "description": "Olay yeri inceleme uzmanı olarak, bir kıdemli komiserin delil zincirini bozduğunu fark ediyorsun; bir parmak izi kartı kayıp. Sanığın suçlu olduğundan herkes emin. Komiser, «Bunu aramızda tutalım,» diyor.",
+    "choices": [
+      {"id": "report", "text": "Durumu tutanakla bildir.", "effects": {"Happiness": 3, "Social": -4, "Education": 1},
+       "result": "Dava düştü ve sanık serbest kaldı. Karakolda seninle kahve içen kimse kalmadı; ama prosedür değişti."},
+      {"id": "silent", "text": "Sus ve devam et.", "effects": {"Happiness": -5},
+       "result": "Sanık mahkûm oldu. Yıllar sonra bir itiraz davasında adın tanık listesindeydi."},
+      {"id": "recover", "text": "Kayıp kartı bulmak için arşivi baştan tara.", "effects": {"Health": -2, "Education": 3, "Happiness": 2},
+       "result": "Üç gece arşivde kaldın ve kartı yanlış bir dosyada buldun. Delil zinciri kurtuldu."}
+    ]
+  },
+  {
+    "id": "job_police_officer_3", "title": "Komiser", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:police_officer", "MinCareerLevel:3"],
+    "description": "Komiser oldun ve bölgende gençler arasında suç oranı artıyor. Merkez, sert operasyonlar ve gece baskınları istiyor. Mahalledeki spor salonu ise bütçe yüzünden kapanmak üzere.",
+    "choices": [
+      {"id": "raids", "text": "Operasyonları başlat.", "effects": {"Money": 20000, "Social": -2},
+       "result": "Yakalama sayıları arttı. Bir yıl sonra aynı gençler yeniden karakoldaydı."},
+      {"id": "gym", "text": "Spor salonunu yaşatmak için belediyeyle işbirliği yap.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 5, "Social": 4},
+       "result": "Salon açık kaldı ve polisler hafta sonları gönüllü antrenörlük yaptı. Suç oranı yavaşça düştü."},
+      {"id": "kind", "text": "Yıllar önce ekmeğinin parasını ödediğin o çocuğu bul; artık genç bir adam.", "requires": ["HasFlag:police_officer_kind"], "effects": {"Happiness": 9, "Social": 4},
+       "result": "Bir mahalle derneğinin başkanıydı. Birlikte bir gençlik programı kurdunuz; ilk katılımcılar onun eski arkadaşlarıydı."}
+    ]
+  },
+
+  {
+    "id": "job_customs_officer_1", "title": "Bavul", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:customs_officer"],
+    "description": "Sınır kapısında yaşlı bir kadının bavulunda, beyan edilmemiş üç kilo ilaç buluyorsun. Kadın, hasta torunu için başka ülkeden ucuza aldığını söylüyor. Arkada uzun bir kuyruk sabırsızlanıyor.",
+    "choices": [
+      {"id": "seize", "text": "Kurala göre el koy.", "effects": {"Education": 1, "Happiness": -3},
+       "result": "Kadın ağlayarak sınırı geçti. İlaçlar depoda imha listesine girdi."},
+      {"id": "declare", "text": "Beyan etmesine yardım et ve vergisini hesapla.", "effects": {"Happiness": 3, "Social": 2}, "set": ["customs_officer_fair"],
+       "result": "Vergi küçüktü, kadın ödedi. İlaçlar yasal olarak geçti ve kuyruk yalnızca on dakika bekledi."},
+      {"id": "wave", "text": "Görmezden gel.", "effects": {"Happiness": 1, "Social": -1},
+       "result": "Kadın teşekkür edip geçti. Amirin kamerada seni izliyordu."}
+    ]
+  },
+  {
+    "id": "job_customs_officer_2", "title": "Rüşvet", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:customs_officer", "MinCareerLevel:2"],
+    "description": "Bir tır şoförü, belgeleri eksik konteyneri için evrak çantasının içine bir zarf koymuş. Konteynerde ne olduğu belli değil. Vardiyandaki diğer memurun başını çevirdiğini görüyorsun.",
+    "choices": [
+      {"id": "search", "text": "Zarfı reddet, konteyneri aç.", "effects": {"Happiness": 4, "Education": 2},
+       "result": "İçinde kaçak sigara vardı. Operasyon gazetede çıktı ama adın geçmedi; öyle olması da iyiydi."},
+      {"id": "take", "text": "Zarfı al, geçir.", "effects": {"Money": 40000, "Happiness": -7},
+       "result": "Para hesabındaydı. Bir ay sonra o tırın taşıdığının silah olduğunu öğrendin."},
+      {"id": "report", "text": "Diğer memuru da kapsayan bir rapor yaz.", "effects": {"Happiness": 3, "Social": -4},
+       "result": "Soruşturma açıldı. Kapıdaki herkes sana farklı bakmaya başladı."}
+    ]
+  },
+  {
+    "id": "job_customs_officer_3", "title": "Kapı Müdürü", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:customs_officer", "MinCareerLevel:3"],
+    "description": "Sınır kapısının müdürü oldun. Kuyruklar kilometrelerce uzun, memurlar yorgun ve rüşvet söylentileri bitmiyor. Bakanlık bir dijital beyan sistemi deneme fırsatı sunuyor ama personelin yarısı buna karşı.",
+    "choices": [
+      {"id": "digital", "text": "Sistemi uygula.", "effects": {"Happiness": 3, "Social": -2, "Education": 2},
+       "result": "İlk ay kaos oldu. Altıncı ay, kuyruk yarıya indi ve zarflar azaldı."},
+      {"id": "slow", "text": "Kademeli geçiş planla.", "effects": {"Happiness": 2, "Social": 2},
+       "result": "Değişim yavaştı ama personel direnç göstermedi. Bir yıl sonra sistem tam çalışıyordu."},
+      {"id": "fair", "text": "Yaşlı kadının ilaçlarını beyan ettirdiğin gün gibi; yolculara yardım masası kur.", "requires": ["HasFlag:customs_officer_fair"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "Beyan etmek kolaylaşınca kaçakçılık azaldı. Kapın, ülkenin en çok teşekkür alan gümrük kapısı oldu."}
+    ]
+  },
+
+  {
+    "id": "job_ngo_director_1", "title": "Gönüllüler", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ngo_director"],
+    "description": "Depremden sonra derneğin deposu yardım kolileriyle doldu taştı. Gönüllüler tükenmiş, bazıları üç gündür uyumadı. Bir televizyon kanalı canlı yayın için yarım saat sonra gelecek.",
+    "choices": [
+      {"id": "rest", "text": "Gönüllüleri dinlenmeye gönder, yayını sen idare et.", "effects": {"Happiness": 3, "Social": 3, "Health": -2}, "set": ["ngo_director_care"],
+       "result": "Kameraların önünde yalnızdın ama gönüllüler ertesi gün dinç geldi. Hiçbiri bırakıp gitmedi."},
+      {"id": "show", "text": "Herkesi yayına çıkar, bağış toplansın.", "effects": {"Money": 20000, "Happiness": -2},
+       "result": "Bağışlar yağdı. Ertesi gün iki gönüllü bayıldı."},
+      {"id": "cancel", "text": "Yayını ertele.", "effects": {"Happiness": 1, "Money": -5000},
+       "result": "Kanal başka bir derneğe gitti. Sen de bir gece uyudun."}
+    ]
+  },
+  {
+    "id": "job_ngo_director_2", "title": "Bağışçının Şartı", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ngo_director", "MinCareerLevel:2"],
+    "description": "Büyük bir şirket, derneğe yıllık bütçenin iki katı bağış teklif ediyor. Şartı, çevre kirliliğiyle suçlanan fabrikalarının bulunduğu bölgede yaptığınız çalışmaların raporlarında adlarının geçmemesi. Dernek, bu bağışla üç yeni proje açabilir.",
+    "choices": [
+      {"id": "accept", "text": "Kabul et; daha çok insana ulaşırsınız.", "effects": {"Money": 30000, "Happiness": -4},
+       "result": "Projeler açıldı. Bir gazeteci, raporlardaki boşluğu fark ettiğinde güvenilirliğiniz sarsıldı."},
+      {"id": "refuse", "text": "Reddet.", "effects": {"Happiness": 4, "Money": -5000},
+       "result": "Bütçe dar kaldı. Ama bağımsızlığınız, küçük bağışçıların sayısını artırdı."},
+      {"id": "counter", "text": "Şartsız, daha küçük bir bağış öner.", "requires": ["MinStat:Social:60"], "effects": {"Money": 15000, "Happiness": 3, "Social": 2},
+       "result": "Şirket şaşırdı ve kabul etti. Raporlarınız yine her şeyi yazdı."}
+    ]
+  },
+  {
+    "id": "job_ngo_director_3", "title": "Kendini Gereksiz Kılmak", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ngo_director", "MinCareerLevel:3"],
+    "description": "Derneğin yirmi yıldır bir mahallede eğitim desteği veriyor. Artık mahallenin kendi gençleri, işi sürdürebilecek kadar güçlü. Derneği oradan çekmek, kendi işinin bittiği anlamına geliyor.",
+    "choices": [
+      {"id": "stay", "text": "Kal; ihtiyaç hep olacak.", "effects": {"Money": 10000, "Happiness": 1},
+       "result": "Dernek büyümeye devam etti. Mahalle gençleri gönüllü olarak kaldı ama hiç yönetici olmadı."},
+      {"id": "handover", "text": "Projeyi mahalle gençlerine devret.", "effects": {"Happiness": 6, "Social": 4},
+       "result": "Devir töreninde eski öğrencilerin konuştu. Sen arka sıradan, kendi gereksizliğinle gururla izledin."},
+      {"id": "care", "text": "Deprem gecesi gönüllülerini dinlendirdiğin gibi, devri de onları yormadan, yıllara yayarak yap.", "requires": ["HasFlag:ngo_director_care"], "effects": {"Happiness": 8, "Social": 4, "Health": 2},
+       "result": "Üç yıl boyunca adım adım geri çekildin. Proje yeni ellerde hiç sendelemedi."}
+    ]
+  },
+
+  {
+    "id": "job_notary_1", "title": "İmzanın Ağırlığı", "category": "Career", "minAge": 26, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:notary"],
+    "description": "Yaşlı bir adam, evini oğluna bağışlamak için karşında. Oğlu hemen yanında, kâğıtları hızla önüne sürüyor. Adamın gözleri bulanık ve ne imzaladığını anladığından emin değilsin.",
+    "choices": [
+      {"id": "sign", "text": "Evrak tamam, imzalat.", "effects": {"Money": 3000, "Happiness": -4},
+       "result": "İşlem tamamlandı. Bir yıl sonra adamın huzurevinde olduğunu duydun."},
+      {"id": "alone", "text": "Oğlu dışarı çıkar ve adamla yalnız konuş.", "effects": {"Happiness": 4, "Social": 1}, "set": ["notary_careful"],
+       "result": "Adam yalnız kalınca ağladı; imzalamak istemiyormuş. İşlem iptal edildi ve oğlu kapıyı çarparak çıktı."},
+      {"id": "report", "text": "Sağlık raporu iste.", "effects": {"Education": 2, "Happiness": 2},
+       "result": "Rapor, adamın karar verme yetisinin zayıfladığını gösterdi. Bir vasi atandı."}
+    ]
+  },
+  {
+    "id": "job_notary_2", "title": "Acele Satış", "category": "Career", "minAge": 28, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:notary", "MinCareerLevel:2"],
+    "description": "Bir şirket, akşam saatlerinde onlarca vekâletnameyi aceleyle onaylatmak istiyor. İmzalar düzgün görünüyor ama kimlik fotokopilerinde tuhaflıklar var. Şirket avukatı, «Yarın sabaha yetişmeli,» diyor.",
+    "choices": [
+      {"id": "rush", "text": "Onayla; sorumluluk onlarda.", "effects": {"Money": 25000, "Happiness": -5},
+       "result": "Bir ay sonra bir dolandırıcılık soruşturmasında senin mühürlerin vardı."},
+      {"id": "check", "text": "Her kimliği tek tek doğrula.", "effects": {"Happiness": 3, "Education": 2, "Health": -1},
+       "result": "Üç kimliğin sahte olduğunu buldun. Savcılığa bildirdin ve bir şebeke çöktü."},
+      {"id": "postpone", "text": "İşlemi ertesi haftaya ertele.", "effects": {"Happiness": 1, "Money": -5000},
+       "result": "Şirket başka bir notere gitti. O noter bir yıl sonra görevden alındı."}
+    ]
+  },
+  {
+    "id": "job_notary_3", "title": "Vasiyet", "category": "Career", "minAge": 35, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:notary", "MinCareerLevel:3"],
+    "description": "Ölmekte olan bir kadın, hastaneden seni çağırıyor; bütün mal varlığını yıllardır bakımını yapan komşusuna bırakmak istiyor. Kadının çocukları kapıda, avukatlarıyla bekliyor. Kadının sesi zayıf ama gözleri berrak.",
+    "choices": [
+      {"id": "witness", "text": "Vasiyeti usulüne göre düzenle.", "effects": {"Happiness": 4, "Education": 2, "Social": -1},
+       "result": "Çocuklar itiraz davası açtı ama kaybetti. Komşu, kadının mezarına her hafta çiçek götürdü."},
+      {"id": "family", "text": "Çocukları da içeri çağır ve konuşmalarını sağla.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 3, "Social": 3},
+       "result": "Uzun, gözyaşlı bir konuşma oldu. Kadın varlığını bölüştürdü; komşuya da evini bıraktı."},
+      {"id": "careful", "text": "Yıllar önce o yaşlı adamla yaptığın gibi; kadınla yalnız konuş, kararının ona ait olduğunu belgele.", "requires": ["HasFlag:notary_careful"], "effects": {"Happiness": 8, "Education": 2},
+       "result": "Bir doktor ve iki tanıkla, her şeyi kayda geçirdin. Vasiyet, hiçbir mahkemede sorgulanamadı."}
+    ]
+  }
+]

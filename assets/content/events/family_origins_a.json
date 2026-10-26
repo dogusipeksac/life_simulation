@@ -1,0 +1,541 @@
+[
+  {"id": "origin_fisher_1", "title": "Şafakta Tekne", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:origin_fisher"],
+   "description": "Sabahın dördünde biri omzuna dokunuyor: «Bugün sen de geliyorsun.» Liman zifiri karanlık, motorun sesi göğsünde titriyor. Ağlar suya inerken soğuk serpintiler yüzüne çarpıyor.",
+   "choices": [
+     {"id": "help", "text": "Ağları çekmeye yardım et.", "effects": {"Health": 2, "Happiness": 3}, "set": ["fisher_roots"],
+      "result": "Ellerin üşüdü, sırtın ağrıdı. Ama ağdan çıkan ilk gümüş balığı sen tuttun ve bunu hiç unutmadın."},
+     {"id": "watch", "text": "Teknenin burnunda oturup güneşin doğuşunu izle.", "effects": {"Happiness": 4},
+      "result": "Deniz turuncuya döndü, martılar uyandı. O sabahın renklerini yıllarca resimlerinde aradın."},
+     {"id": "sick", "text": "Midene söz geçiremiyorum, karaya dönelim de.", "effects": {"Health": -1, "Social": 1},
+      "result": "Erken döndünüz. Kimse kızmadı; «Deniz herkese aynı açmaz,» dediler."}
+   ]},
+  {"id": "origin_fisher_2", "title": "Tekneyi Kim Devralacak?", "category": "School", "minAge": 12, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:origin_fisher"],
+   "description": "Bir akşam sofrada teknenin geleceği konuşuluyor; büyüklerin bakışları sana dönüyor. Okulda öğretmenin seni şehirdeki fen lisesine hazırlanman için teşvik ediyor. İki yol da aynı denize bakıyor, ama farklı kıyılardan.",
+   "choices": [
+     {"id": "study", "text": "Okula odaklanacağını söyle.", "effects": {"Education": 4, "Social": -1},
+      "result": "Masada kısa bir sessizlik oldu. Sonra biri tabağına bir parça daha balık koydu; onay böyle verilirdi bu evde."},
+     {"id": "boat", "text": "Yazları teknede çalışacağına söz ver.", "effects": {"Health": 2, "Social": 2, "Money": 3000},
+      "result": "Yaz boyunca güneşte yandın. Cebine giren ilk para, denizin tuzunu taşıyordu."},
+     {"id": "both", "text": "İkisini birden yapmayı dene.", "effects": {"Education": 2, "Health": -2, "Happiness": 1},
+      "result": "Sabahları ağ, öğleden sonra kitap. Yorgundun ama hiçbir kapı kapanmadı."}
+   ]},
+  {"id": "origin_fisher_3", "title": "Fırtınadan Sonra", "category": "Random", "minAge": 18, "maxAge": 30, "weight": 14,
+   "conditions": ["HasFlag:origin_fisher"],
+   "description": "Gece kopan fırtına, limandaki teknelerin yarısını parçaladı; ailenin teknesi de hasarlı. Telefonda ses titriyor: tamir parası yok. Sen artık kendi hayatını kurmaya başlamıştın.",
+   "choices": [
+     {"id": "pay", "text": "Birikiminden tamir parasını gönder.", "effects": {"Money": -25000, "Happiness": 3, "Social": 2},
+      "result": "Tekne bir ay sonra yeniden denize açıldı. Kıçında senin adını taşıyan yeni bir yazı vardı."},
+     {"id": "go", "text": "İzin alıp tamire kendin git.", "effects": {"Health": -2, "Social": 3, "Money": -5000},
+      "result": "İki hafta boyunca zift ve tahta kokusu. Limanda herkes ellerinin hâlâ işi bildiğini gördü."},
+     {"id": "sell", "text": "Tekneyi satmalarını öner; artık denizden ekmek çıkmıyor.", "effects": {"Happiness": -3, "Money": 5000},
+      "result": "Haklıydın belki. Ama limandan geçerken başka birinin o tekneye binişini izlemek zordu."}
+   ]},
+  {"id": "origin_fisher_4", "title": "Limandaki Kahve", "category": "Social", "minAge": 35, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:origin_fisher"],
+   "description": "Yıllar sonra doğduğun limana dönüyorsun. Kahvede yaşlı balıkçılar seni hemen tanıyor ve ailenin teknesinin artık çürümeye bırakıldığını anlatıyorlar. Tekne iskelede, boyası dökülmüş, adıyla duruyor.",
+   "choices": [
+     {"id": "restore", "text": "Tekneyi satın al ve restore ettir.", "cost": 60000, "effects": {"Happiness": 6, "Social": 2},
+      "result": "Bir yaz boyunca zımparaladın, boyadın. İlk seferde dümende sen vardın."},
+     {"id": "museum", "text": "Belediyeye bağışla, bir denizcilik müzesine konsun.", "effects": {"Happiness": 3, "Social": 3},
+      "result": "Tekne bir müzenin bahçesine yerleştirildi. Yanındaki tabelada ailenin hikâyesi yazıyor."},
+     {"id": "roots", "text": "İlk kez ağ çektiğin o sabahı anlat ve çocukları denize çıkar.", "requires": ["HasFlag:fisher_roots"], "effects": {"Happiness": 8, "Social": 4},
+      "result": "Limanın çocuklarıyla şafakta açıldınız. İlk balığı tutan küçük kızın gözlerinde kendini gördün."}
+   ]},
+
+  {"id": "origin_farmer_1", "title": "Hasat Sofrası", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:origin_farmer"],
+   "description": "Hasat günü, bütün köy tarlada. Güneş ensende, buğday başakları bacaklarına batıyor. Öğle vakti tarlanın kenarına uzun bir sofra kuruluyor ve biri sana ilk kez orak tutmayı göstermek istiyor.",
+   "choices": [
+     {"id": "learn", "text": "Orağı tut, büyüklerin hareketini taklit et.", "effects": {"Health": 2, "Happiness": 3}, "set": ["farmer_roots"],
+      "result": "Bir demet başağı kendi elinle biçtin. Akşam herkes, o demetten yapılan ekmekten bir parça yedi."},
+     {"id": "water", "text": "Çalışanlara su taşı.", "effects": {"Social": 3, "Happiness": 2},
+      "result": "Bütün gün testiyle koştun. Yaşlı bir adam sana kendi çocukluğunun hasat şarkısını öğretti."},
+     {"id": "shade", "text": "Ağacın gölgesinde kitabını oku.", "effects": {"Education": 2, "Social": -1},
+      "result": "Biri «Okusun, bizim gibi olmasın,» dedi. Sesinde gurur mu vardı hüzün mü, anlayamadın."}
+   ]},
+  {"id": "origin_farmer_2", "title": "Kuraklık Yılı", "category": "School", "minAge": 12, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:origin_farmer"],
+   "description": "Bu yıl yağmur yağmadı ve tarla çatladı. Evde kimse yüksek sesle konuşmuyor; büyükler bankaya gidip yorgun dönüyor. Okulun düzenlediği ücretli bir bilim kampına katılmak istiyordun.",
+   "choices": [
+     {"id": "skip", "text": "Kampı hiç açma, ailenin yanında kal.", "effects": {"Happiness": -2, "Social": 2},
+      "result": "Yaz boyunca su tankerlerinin peşinden koştun. Ailenle hiç olmadığı kadar yakındın."},
+     {"id": "scholarship", "text": "Kamp için burs başvurusu yaz.", "requires": ["MinStat:Education:45"], "effects": {"Education": 4, "Happiness": 3},
+      "result": "Burs çıktı. Kampta sulama sistemleri üzerine bir proje hazırladın ve köye döndüğünde onu anlattın."},
+     {"id": "work", "text": "Kasabada yaz işi bul, ailene katkı ver.", "effects": {"Money": 4000, "Health": -1, "Social": 1},
+      "result": "Pazarda kasa başında durdun. Kazandığın para, mutfak masasına sessizce bırakıldı."}
+   ]},
+  {"id": "origin_farmer_3", "title": "Toprağı Satmak", "category": "Random", "minAge": 18, "maxAge": 30, "weight": 14,
+   "conditions": ["HasFlag:origin_farmer"],
+   "description": "Köyün yakınından otoyol geçecek ve ailenin tarlası için iyi bir teklif geldi. Büyükler senin fikrini soruyor; kardeşlerin satmak, yaşlılar kalmak istiyor. Toprak kokusu telefonun öbür ucundan bile geliyor.",
+   "choices": [
+     {"id": "sell", "text": "Satmalarını öner.", "effects": {"Money": 40000, "Happiness": -2, "Social": -1},
+      "result": "Para herkesin işine yaradı. Otoyol açıldığında, arabanın camından tarlanın olduğu yere bakmamak için başını çevirdin."},
+     {"id": "keep", "text": "Toprak kalsın de.", "effects": {"Happiness": 2, "Social": 1},
+      "result": "Tarla aile içinde kaldı. Yıllar sonra o kararın neden önemli olduğunu herkes anladı."},
+     {"id": "coop", "text": "Kooperatif kurup tarlayı birlikte işlemeyi öner.", "requires": ["MinStat:Social:50"], "effects": {"Happiness": 4, "Social": 3, "Money": 5000},
+      "result": "Köydeki üç aile birleşti. İlk hasat beklenenden iyi geldi."}
+   ]},
+  {"id": "origin_farmer_4", "title": "Köye Dönüş", "category": "Random", "minAge": 35, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:origin_farmer"],
+   "description": "Şehirde geçen yıllardan sonra köydeki eski eve gidiyorsun. Ev boş, bahçe yabani otlarla kaplı; ama kapının yanındaki dut ağacı hâlâ meyve veriyor. Bir komşu, toprağın satın alınmak istendiğini söylüyor.",
+   "choices": [
+     {"id": "garden", "text": "Evi onar, yazları bahçeyle uğraş.", "cost": 30000, "effects": {"Happiness": 6, "Health": 3},
+      "result": "Ellerin toprağa yeniden alıştı. Domateslerin ilk yılında beklenmedik kadar güzel oldu."},
+     {"id": "sell", "text": "Toprağı sat.", "effects": {"Money": 60000, "Happiness": -2},
+      "result": "Satış hızlı oldu. Dut ağacının hâlâ orada olup olmadığını hiç sormadın."},
+     {"id": "roots", "text": "Orakla ilk demeti biçtiğin tarlaya git ve köyün çocuklarına hasat günü düzenle.", "requires": ["HasFlag:farmer_roots"], "effects": {"Happiness": 8, "Social": 5},
+      "result": "Uzun sofra yeniden kuruldu. Bir çocuk elindeki başakları sana uzatırken, kendi çocukluğunu tuttun."}
+   ]},
+
+  {"id": "origin_shopkeeper_1", "title": "Tezgâhın Arkası", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:origin_shopkeeper"],
+   "description": "Okuldan sonra dükkândasın; büyükler bir işle çıkarken tezgâh sana emanet. Yaşlı bir müşteri girip veresiye bir şeyler istiyor ve defterde adının yanında zaten uzun bir liste var.",
+   "choices": [
+     {"id": "write", "text": "Deftere yaz ve gülümseyerek ver.", "effects": {"Social": 3, "Happiness": 2}, "set": ["shopkeeper_roots"],
+      "result": "Akşam büyükler defteri görünce sana baktı, sonra başını okşadı. «İyi esnaf, insanı tanır,» dediler."},
+     {"id": "wait", "text": "Büyükler gelene kadar beklemesini rica et.", "effects": {"Education": 1},
+      "result": "Kadın sabırla bekledi. Büyükler geldiğinde her şeyi yine deftere yazdılar."},
+     {"id": "refuse", "text": "Veresiye yok de.", "effects": {"Social": -2},
+      "result": "Kadın eli boş gitti. Akşam bunu anlattığında kimse kızmadı ama sofrada bir sessizlik oldu."}
+   ]},
+  {"id": "origin_shopkeeper_2", "title": "Karşıya Market Açıldı", "category": "School", "minAge": 12, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:origin_shopkeeper"],
+   "description": "Dükkânın tam karşısına parlak ışıklı bir zincir market açıldı. Müşteriler azaldı, büyükler gece geç saatlere kadar hesap yapıyor. Okulda bilgisayar dersinde internetten satış yapmayı öğrendin.",
+   "choices": [
+     {"id": "online", "text": "Dükkân için bir internet sayfası kur.", "requires": ["MinStat:Education:40"], "effects": {"Education": 3, "Happiness": 3, "Money": 2000},
+      "result": "İlk sipariş başka bir şehirden geldi. Büyükler ekrana uzun uzun baktı."},
+     {"id": "help", "text": "Her gün dükkânda çalış, kasaya yardım et.", "effects": {"Social": 2, "Education": -1},
+      "result": "Notların biraz düştü ama müdavimler senin için geliyordu artık."},
+     {"id": "focus", "text": "Kendi derslerine odaklan; dükkân senin derdin değil.", "effects": {"Education": 3, "Social": -1},
+      "result": "Karnen iyi geldi. Dükkânın ışıklarının giderek daha erken kapandığını fark ettin."}
+   ]},
+  {"id": "origin_shopkeeper_3", "title": "Dükkânın Anahtarı", "category": "Random", "minAge": 18, "maxAge": 30, "weight": 14,
+   "conditions": ["HasFlag:origin_shopkeeper"],
+   "description": "Büyükler yoruldu ve dükkânın anahtarını sana uzatıyor. Kabul edersen bütün hayatın o köşede geçebilir; reddedersen kırk yıllık tabela inecek. Anahtar avucunda soğuk ve ağır.",
+   "choices": [
+     {"id": "take", "text": "Anahtarı al, dükkânı yenile.", "cost": 20000, "effects": {"Happiness": 4, "Social": 3},
+      "result": "Raflar yenilendi, tabela kaldı. Müdavimler yeni haliyle de dükkânı sevdi."},
+     {"id": "rent", "text": "Dükkânı kiraya ver, gelir aileye kalsın.", "effects": {"Money": 15000, "Happiness": -1},
+      "result": "Yerine bir telefoncu açıldı. Kira her ay düzenli geldi; tabela ise depoda."},
+     {"id": "close", "text": "Kapatın; artık kimsenin zamanı yok.", "effects": {"Happiness": -3, "Money": 8000},
+      "result": "Son gün mahalleli veda etmeye geldi. Veresiye defteri ailenin bir çekmecesinde kaldı."}
+   ]},
+  {"id": "origin_shopkeeper_4", "title": "Veresiye Defteri", "category": "Social", "minAge": 35, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:origin_shopkeeper"],
+   "description": "Evin eşyalarını toplarken eski veresiye defteri elinde kalıyor. Sayfalarda onlarca isim ve hiç ödenmemiş borçlar var; bazılarını tanıyorsun. Bir isim, bugün şehrin tanınmış bir iş insanına ait.",
+   "choices": [
+     {"id": "forgive", "text": "Defteri yak; borçlar silinsin.", "effects": {"Happiness": 4},
+      "result": "Sayfalar alev alırken içinde bir hafiflik hissettin. Bazı borçlar, ödenmemiş haliyle güzeldi."},
+     {"id": "call", "text": "O iş insanını ara.", "effects": {"Money": 20000, "Social": 1},
+      "result": "Önce şaşırdı, sonra güldü ve fazlasıyla ödedi. «O bakkal olmasa okuyamazdım,» dedi."},
+     {"id": "roots", "text": "Çocukken kendi elinle yazdığın o veresiye satırını bul ve hikâyesini mahallede anlat.", "requires": ["HasFlag:shopkeeper_roots"], "effects": {"Happiness": 8, "Social": 5},
+      "result": "Yaşlı kadının torunu seni buldu ve teşekkür etti. Mahallede bir askıda ekmek dolabı kuruldu; adı ailenin dükkânıydı."}
+   ]},
+
+  {"id": "origin_civil_servant_1", "title": "Lojman Bahçesi", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:origin_civil_servant"],
+   "description": "Lojmanın bahçesinde her akşam aynı çocuklar toplanıyor; herkesin ailesi aynı dairede çalışıyor. Bugün yeni gelen bir çocuk köşede tek başına duruyor. Oyun başlamak üzere.",
+   "choices": [
+     {"id": "invite", "text": "Onu oyuna çağır.", "effects": {"Social": 4, "Happiness": 2}, "set": ["civil_servant_roots"],
+      "result": "Adı Can'mış, ailesi başka bir şehirden tayinle gelmiş. Yıllarca en yakın arkadaşın oldu."},
+     {"id": "play", "text": "Kendi oyununa devam et.", "effects": {"Happiness": 2},
+      "result": "Akşam güzel geçti. Yeni çocuk birkaç hafta sonra kendi arkadaşlarını buldu."},
+     {"id": "rules", "text": "Ona lojmanın kurallarını anlat.", "effects": {"Social": 1, "Education": 1},
+      "result": "Bir yetişkin gibi konuştun. Çocuk dinledi ama oyuna katılmadı."}
+   ]},
+  {"id": "origin_civil_servant_2", "title": "Güvenceli Bir İş", "category": "School", "minAge": 12, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:origin_civil_servant"],
+   "description": "Evde herkes aynı şeyi söylüyor: «Devlet kapısı garantidir.» Senin aklında ise müzik, tasarım ya da bilinmeyen bir şey var. Sınav kitapları masada, gitar köşede.",
+   "choices": [
+     {"id": "exam", "text": "Kamu sınavına hazırlanmaya başla.", "effects": {"Education": 4, "Happiness": -2},
+      "result": "Masa başında geçen akşamlar. Büyüklerin gözündeki rahatlık, gitarın sessizliğine değdi mi bilemedin."},
+     {"id": "passion", "text": "Kendi ilgini takip edeceğini söyle.", "effects": {"Happiness": 4, "Social": -1},
+      "result": "Tartışma uzun sürdü. Sonunda biri, «Bari iyi yap,» dedi."},
+     {"id": "both", "text": "İkisine de zaman ayır.", "effects": {"Education": 2, "Happiness": 2, "Health": -1},
+      "result": "Haftanın dört günü test, üç günü gitar. Yorgundun ama kendinden vazgeçmedin."}
+   ]},
+  {"id": "origin_civil_servant_3", "title": "Torpil", "category": "Random", "minAge": 18, "maxAge": 30, "weight": 14,
+   "conditions": ["HasFlag:origin_civil_servant"],
+   "description": "Ailenin tanıdığı bir müdür, seni bir kamu kurumuna «ayarlayabileceğini» söylüyor. Sınavsız, mülakatsız, sadece bir telefonla. Aynı kadroya aylardır hazırlanan bir arkadaşın var.",
+   "choices": [
+     {"id": "accept", "text": "Teklifi kabul et.", "effects": {"Money": 15000, "Happiness": -4, "Social": -2},
+      "result": "Bir masa ve bir kart verildi. Arkadaşın sınavı kazanamadığında ona bakamadın."},
+     {"id": "refuse", "text": "Teşekkür et, kendi yolunla girmek istediğini söyle.", "effects": {"Happiness": 3, "Education": 1},
+      "result": "Ailen biraz bozuldu. Ama kazandığın her şeyin sana ait olduğunu bilmek iyi geldi."},
+     {"id": "friend", "text": "Arkadaşının hazırlanmasına yardım et.", "effects": {"Social": 4, "Happiness": 2},
+      "result": "Akşamları birlikte çalıştınız. O kazandı, sen de başka bir yolda kendini buldun."}
+   ]},
+  {"id": "origin_civil_servant_4", "title": "Emeklilik Plaketi", "category": "Social", "minAge": 35, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:origin_civil_servant"],
+   "description": "Ailenin büyüğü kırk yıl çalıştığı daireden emekli oluyor ve küçük bir tören var. Bir plaket, bir buket ve birkaç cümlelik bir konuşma. Senden de bir şey söylemen isteniyor.",
+   "choices": [
+     {"id": "speech", "text": "Kısa ve içten bir konuşma yap.", "effects": {"Social": 3, "Happiness": 4},
+      "result": "Sesin bir yerde titredi. Salondaki herkes, o titremenin neden olduğunu anladı."},
+     {"id": "gift", "text": "Ona hayalindeki yolculuğu hediye et.", "cost": 25000, "effects": {"Happiness": 5, "Social": 2},
+      "result": "Kırk yıl beklediği deniz kenarındaki tatile gitti. Döndüğünde sana bir deniz kabuğu getirdi."},
+     {"id": "roots", "text": "Lojman bahçesinde oyuna çağırdığın Can'ı törene davet et.", "requires": ["HasFlag:civil_servant_roots"], "effects": {"Happiness": 8, "Social": 4},
+      "result": "Can, o bahçedeki ilk günü anlattı. Ailenin büyüğü gözlerini sildi: «Hayatımın en güzel yılları o lojmandaydı.»"}
+   ]},
+
+  {"id": "origin_factory_1", "title": "Gece Vardiyası", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:origin_factory"],
+   "description": "Evin büyükleri gece vardiyasından dönmek üzere ve sen uyanıksın. Mutfakta, sabah için bir şey hazırlamayı düşünüyorsun. Ocağı tek başına yakmana izin yok.",
+   "choices": [
+     {"id": "breakfast", "text": "Ekmek ve peynirle soğuk bir kahvaltı hazırla.", "effects": {"Happiness": 4, "Social": 2}, "set": ["factory_roots"],
+      "result": "Kapı açıldığında masa hazırdı. Yorgun yüzlerde bir gülümseme belirdi; o gülümsemeyi yıllarca hatırladın."},
+     {"id": "sleep", "text": "Uyumaya çalış.", "effects": {"Health": 1},
+      "result": "Sabah onlar uyurken okula gittin. Evde sessizce dolaşmayı çok erken öğrendin."},
+     {"id": "wait", "text": "Kapının önünde bekle.", "effects": {"Happiness": 2, "Health": -1},
+      "result": "Seni kucakta yatağa götürdüler. Fabrikanın yağ kokusu montlarına sinmişti."}
+   ]},
+  {"id": "origin_factory_2", "title": "Grev", "category": "Social", "minAge": 12, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:origin_factory"],
+   "description": "Fabrikada grev başladı; evin büyükleri günlerdir kapının önünde ateş başında bekliyor. Okulda bazı arkadaşların grevcilerle alay ediyor. Akşam eve gelen yorgun yüzler, bir şey söylemeni bekliyor gibi.",
+   "choices": [
+     {"id": "visit", "text": "Okul çıkışı grev çadırına çorba götür.", "effects": {"Social": 3, "Happiness": 2},
+      "result": "İşçiler seni alkışladı. O gün dayanışmanın ne demek olduğunu bir kitaptan değil, bir tencereden öğrendin."},
+     {"id": "defend", "text": "Okulda arkadaşlarına karşı ailenin hakkını savun.", "effects": {"Social": -1, "Happiness": 3, "Education": 1},
+      "result": "Tartışma büyüdü ama sözlerini geri almadın. Öğretmenin, kompozisyon ödevinin konusunu sana bıraktı."},
+     {"id": "silent", "text": "Konuyu açma.", "effects": {"Happiness": -2},
+      "result": "Okulda sessiz kaldın. Evde de. Grev bittiğinde, bunun hakkında hiç konuşmadınız."}
+   ]},
+  {"id": "origin_factory_3", "title": "İş Kazası", "category": "Random", "minAge": 18, "maxAge": 30, "weight": 14,
+   "conditions": ["HasFlag:origin_factory"],
+   "description": "Telefon çalıyor: ailenin büyüğü fabrikada makineye elini kaptırmış. Fabrika «dikkatsizlik» diyor ve tazminat önermiyor. Hastane koridorunda bir avukatın kartı elinde.",
+   "choices": [
+     {"id": "sue", "text": "Avukatla dava aç.", "cost": 10000, "effects": {"Money": 60000, "Happiness": 2, "Health": -1},
+      "result": "Dava iki yıl sürdü ve kazandınız. Fabrika makinelerine sonunda koruma kafesleri taktı."},
+     {"id": "care", "text": "İşini bırak, iyileşene kadar bakımını üstlen.", "effects": {"Social": 3, "Happiness": 1, "Money": -15000},
+      "result": "Aylarca fizik tedavi seanslarına götürdün. Bir gün parmaklar yeniden bir çay bardağını tuttu."},
+     {"id": "accept", "text": "Fabrikanın küçük teklifini kabul et.", "effects": {"Money": 10000, "Happiness": -3},
+      "result": "Mesele kapandı. Ama haksızlığın tadı yıllarca ağzında kaldı."}
+   ]},
+  {"id": "origin_factory_4", "title": "Fabrika Müzeye Dönüştü", "category": "Random", "minAge": 35, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:origin_factory"],
+   "description": "Ailenin yıllarca çalıştığı fabrika kapandı ve bir sanat merkezine dönüştürülüyor. Açılış davetiyesi geldi; şık giyimli insanlar o makinelerin arasında kokteyl yapacak. İşçilerden hiç kimse davetli değil.",
+   "choices": [
+     {"id": "attend", "text": "Davete git.", "effects": {"Social": 2, "Happiness": -1},
+      "result": "Makinelerin yanında kadeh tokuşturuldu. Kimse o makinelerde kimin elini kaybettiğini bilmiyordu."},
+     {"id": "exhibit", "text": "Eski işçilerin fotoğraflarından bir sergi öner.", "requires": ["MinStat:Social:50"], "effects": {"Happiness": 5, "Social": 4},
+      "result": "Sergi açıldığında salon yaşlı işçiler ve torunlarıyla doldu. Kokteyl tabakları yerine çay ikram edildi."},
+     {"id": "roots", "text": "Gece vardiyasından dönenlere hazırladığın kahvaltıyı hatırla; açılışta işçilere bir sabah kahvaltısı düzenle.", "requires": ["HasFlag:factory_roots"], "effects": {"Happiness": 8, "Social": 5},
+      "result": "Fabrikanın avlusunda uzun bir masa kuruldu. Ailenin büyüğü, yıllar sonra ilk kez o kapıdan gülerek girdi."}
+   ]},
+
+  {"id": "origin_migrant_1", "title": "İki Dil", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:origin_migrant"],
+   "description": "Evde başka bir dil, okulda başka bir dil konuşuluyor. Bugün öğretmen veli toplantısı için bir mektup verdi ve ailen onu okuyamıyor. Herkes sana bakıyor.",
+   "choices": [
+     {"id": "translate", "text": "Mektubu kelime kelime tercüme et.", "effects": {"Education": 3, "Social": 2}, "set": ["migrant_roots"],
+      "result": "O akşam ailenin tercümanı oldun. Bu rol, sandığından çok daha uzun sürdü."},
+     {"id": "teacher", "text": "Öğretmenden ailenle konuşmasını iste.", "effects": {"Social": 1, "Happiness": 1},
+      "result": "Öğretmen bir tercüman buldu. Toplantıda ailen ilk kez kendini anlatabildi."},
+     {"id": "hide", "text": "Mektubu sakla; utanıyorsun.", "effects": {"Happiness": -3},
+      "result": "Ailen toplantıya gitmedi. Utancın, aylar sonra yerini pişmanlığa bıraktı."}
+   ]},
+  {"id": "origin_migrant_2", "title": "Neredensin?", "category": "Social", "minAge": 12, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:origin_migrant"],
+   "description": "Yeni okulunda biri sana yine aynı soruyu soruyor: «Aslen neredensin?» Sesinde merak mı var alay mı, anlamıyorsun. Cevabın, bütün sınıfın önünde verilecek.",
+   "choices": [
+     {"id": "proud", "text": "Ailenin hikâyesini gururla anlat.", "effects": {"Social": 3, "Happiness": 3},
+      "result": "Sınıf sessizce dinledi. Ertesi gün biri, kendi büyükannesinin göç hikâyesini anlattı."},
+     {"id": "joke", "text": "Espriyle geçiştir.", "effects": {"Social": 1},
+      "result": "Herkes güldü ve konu kapandı. Ama soru, aklında açık kaldı."},
+     {"id": "here", "text": "«Buralıyım,» de.", "effects": {"Happiness": -1, "Social": 1},
+      "result": "Bu da doğruydu. Ama evde, büyükannenin anlattığı şehri düşündün."}
+   ]},
+  {"id": "origin_migrant_3", "title": "Eski Ülkeye Yolculuk", "category": "Random", "minAge": 18, "maxAge": 30, "weight": 14,
+   "conditions": ["HasFlag:origin_migrant"],
+   "description": "Ailenin geldiği yere ilk kez gitme fırsatın var; uçak bileti pahalı ama büyükannen yaşlanıyor. Orada kimseyi tanımıyorsun, yalnızca fotoğraflardan bildiğin sokaklar var.",
+   "choices": [
+     {"id": "go", "text": "Büyükanneyle birlikte git.", "cost": 20000, "effects": {"Happiness": 6, "Social": 3}, "set": ["traveled_abroad"],
+      "result": "Büyükannen eski evinin kapısına dokunduğunda ağladı. Sen de, hiç yaşamadığın bir yeri özlemenin mümkün olduğunu öğrendin."},
+     {"id": "later", "text": "Daha sonra gideriz de.", "effects": {"Money": 2000},
+      "result": "Birikimin yerinde kaldı. «Sonra» kelimesinin bazen hiç gelmediğini yıllar sonra anlayacaktın."},
+     {"id": "record", "text": "Gidemiyorsan, büyükannenin anılarını kaydet.", "effects": {"Social": 2, "Happiness": 3, "Education": 1},
+      "result": "Saatlerce ses kaydı yaptın. O kayıtlar, ailenin en değerli hazinesi oldu."}
+   ]},
+  {"id": "origin_migrant_4", "title": "Yeni Gelenler", "category": "Social", "minAge": 35, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:origin_migrant"],
+   "description": "Apartmana yeni bir göçmen aile taşındı; çocukları kapıda bir mektupla bekliyor ve okuyamıyor. Bu sahneyi tanıyorsun.",
+   "choices": [
+     {"id": "help", "text": "Mektubu oku ve ne yapmaları gerektiğini anlat.", "effects": {"Social": 3, "Happiness": 3},
+      "result": "Ailenin babası elini kalbine koydu. Ertesi gün kapına bir tepsi baklava bırakıldı."},
+     {"id": "course", "text": "Mahallede ücretsiz dil kursu başlat.", "effects": {"Social": 4, "Happiness": 4, "Health": -1},
+      "result": "Haftada iki akşam, apartmanın sığınağında. Yirmi kişi, ilk dilekçesini kendi yazdı."},
+     {"id": "roots", "text": "Çocuğa, ailesi için tercüme ettiğin ilk mektubu anlat ve ona bir sözlük hediye et.", "requires": ["HasFlag:migrant_roots"], "effects": {"Happiness": 8, "Social": 4},
+      "result": "Çocuk sözlüğü göğsüne bastırdı. Yıllar sonra bir tercüman olarak sana teşekkür mektubu yazdı."}
+   ]},
+
+  {"id": "origin_artist_1", "title": "Duvara Resim", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:origin_artist"],
+   "description": "Evdeki boyaları bulup salonun beyaz duvarına kocaman bir resim yaptın. Ailen eve girip duvarın önünde duruyor; yüzlerinde okunması zor bir ifade var.",
+   "choices": [
+     {"id": "explain", "text": "Resmi anlat: bu, rüyanda gördüğün bir şehir.", "effects": {"Happiness": 4, "Education": 1}, "set": ["artist_roots"],
+      "result": "Uzun bir sessizlik oldu, sonra biri fırçayı alıp şehrine bir güneş ekledi. Duvar yıllarca boyanmadı."},
+     {"id": "sorry", "text": "Özür dile, birlikte temizleyelim de.", "effects": {"Social": 2},
+      "result": "Birlikte sildiniz. Ertesi gün sana kocaman bir tuval aldılar."},
+     {"id": "hide", "text": "Odana kaç.", "effects": {"Happiness": -2},
+      "result": "Seni bulup güldüler. «Bu evde duvarlar zaten bunun için var,» dediler."}
+   ]},
+  {"id": "origin_artist_2", "title": "Gerçek Bir Meslek", "category": "School", "minAge": 12, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:origin_artist"],
+   "description": "Ailenin sanatçı çevresinde herkes senin de sanatçı olacağını varsayıyor. Ama sen matematikte iyisin ve mühendisliği merak ediyorsun. Bunu söylemek, evde bir isyan gibi duracak.",
+   "choices": [
+     {"id": "say", "text": "Mühendislik istediğini söyle.", "effects": {"Education": 3, "Happiness": 2},
+      "result": "Önce şaşırdılar, sonra köprülerin de birer heykel olduğunu söylediler. Hiç beklemediğin bir destek."},
+     {"id": "art", "text": "Sanat lisesinin sınavına gir.", "effects": {"Happiness": 2, "Social": 2},
+      "result": "Kazandın. Atölyelerde güzel günler geçti, ama matematik defterini hiç atmadın."},
+     {"id": "secret", "text": "Merakını kendine sakla, gizlice çalış.", "effects": {"Education": 2, "Happiness": -1},
+      "result": "Geceleri fizik videoları izledin. Sırların ağırlığı, bazen kitaplardan ağır geldi."}
+   ]},
+  {"id": "origin_artist_3", "title": "Mirasın Hakları", "category": "Random", "minAge": 18, "maxAge": 30, "weight": 14,
+   "conditions": ["HasFlag:origin_artist"],
+   "description": "Ailenin bir eseri, bir müzayede evinin ilgisini çekti; satılırsa iyi bir para getirecek. Eser, büyük büyükannenin portresi ve ailenin en sevdiği resim.",
+   "choices": [
+     {"id": "sell", "text": "Satmalarını öner.", "effects": {"Money": 50000, "Happiness": -3},
+      "result": "Portre başka bir şehrin müzesine gitti. Duvarda, çerçevesinin bıraktığı açık renkli iz kaldı."},
+     {"id": "keep", "text": "Portre ailede kalsın.", "effects": {"Happiness": 3, "Social": 1},
+      "result": "Resim yerinde kaldı. Büyük büyükannen, salonda herkese bakmaya devam etti."},
+     {"id": "lend", "text": "Bir müzeye süreli ödünç ver.", "effects": {"Social": 3, "Happiness": 2},
+      "result": "Ailenin adı bir sergi duvarında yazdı. Bir yıl sonra portre eve döndü."}
+   ]},
+  {"id": "origin_artist_4", "title": "Atölyenin Kapısı", "category": "Random", "minAge": 35, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:origin_artist"],
+   "description": "Ailenin eski atölyesi boşaltılmak üzere. Tozlu tuvaller, kurumuş boya tüpleri ve duvarlara karalanmış notlar. Bir galeri, hepsini toplu satın almak istiyor.",
+   "choices": [
+     {"id": "sell", "text": "Galeriye sat.", "effects": {"Money": 70000, "Happiness": -2},
+      "result": "Eserler dağıldı, isimler etiketlere yazıldı. Atölye boşaldığında yankı bile yabancıydı."},
+     {"id": "open", "text": "Atölyeyi genç sanatçılara ücretsiz aç.", "effects": {"Happiness": 5, "Social": 4, "Money": -5000},
+      "result": "Atölye yeniden boya kokmaya başladı. Bir öğrenci, duvardaki eski notları kendi resmine kattı."},
+     {"id": "roots", "text": "Çocukken duvara çizdiğin rüya şehrini atölyenin duvarına yeniden çiz.", "requires": ["HasFlag:artist_roots"], "effects": {"Happiness": 9, "Social": 2},
+      "result": "Fırçayı aldığında elin titremedi. Şehrine, yıllar önce birinin eklediği güneşi de koydun."}
+   ]},
+
+  {"id": "origin_academic_1", "title": "Kitaplarla Dolu Oda", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:origin_academic"],
+   "description": "Ailenin çalışma odası tavana kadar kitaplarla dolu ve sana girmek yasak. Bugün kapı aralık kalmış; masada yarım bırakılmış bir makale ve garip çizimler var.",
+   "choices": [
+     {"id": "read", "text": "Gir ve bir kitabı rastgele aç.", "effects": {"Education": 4, "Happiness": 2}, "set": ["academic_roots"],
+      "result": "Yıldızlar hakkında resimli bir kitaptı. Seni yakaladıklarında kızmadılar; bir saat boyunca gezegenleri anlattılar."},
+     {"id": "ask", "text": "Kapıyı çal ve ne yazdıklarını sor.", "effects": {"Education": 2, "Social": 2},
+      "result": "Karmaşık bir şeyi sana göre anlatmaya çalıştılar. İkiniz de bir şey öğrendiniz."},
+     {"id": "away", "text": "Kuralı bozma, uzaklaş.", "effects": {"Happiness": -1},
+      "result": "Kapı kapandı. Odayı merak etmeye devam ettin."}
+   ]},
+  {"id": "origin_academic_2", "title": "Beklenti", "category": "School", "minAge": 12, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:origin_academic"],
+   "description": "Karnende bir ders orta geldi ve evde sanki biri vefat etmiş gibi bir hava var. «Bizim ailede böyle not olmaz,» deniyor. Oysa o dersi sevmiyorsun ve sevmek zorunda olduğunu da düşünmüyorsun.",
+   "choices": [
+     {"id": "work", "text": "O derse daha çok çalış.", "effects": {"Education": 4, "Happiness": -2},
+      "result": "Bir sonraki karnede not düzeldi. Ama o dersi yine sevmedin."},
+     {"id": "talk", "text": "Beklentilerin seni ezdiğini anlat.", "requires": ["MinStat:Social:40"], "effects": {"Happiness": 4, "Social": 2},
+      "result": "Ailen bir süre sustu, sonra kendi çocukluğundaki baskıyı anlattı. O akşam bir şey değişti."},
+     {"id": "rebel", "text": "Notlarını umursamadığını göster.", "effects": {"Happiness": 1, "Education": -2, "Social": -1},
+      "result": "Evde gergin haftalar geçti. İsyanın, kimseyi tam olarak özgürleştirmedi."}
+   ]},
+  {"id": "origin_academic_3", "title": "Ailenin Adı", "category": "Random", "minAge": 18, "maxAge": 30, "weight": 14,
+   "conditions": ["HasFlag:origin_academic"],
+   "description": "Başvurduğun bir programın jürisinde ailenin eski bir öğrencisi var. Bir telefonla işin kolaylaşabilir. Kendi başarına güveniyorsun ama rekabet çok sert.",
+   "choices": [
+     {"id": "call", "text": "Ailenden bir telefon açmasını iste.", "effects": {"Education": 2, "Happiness": -3},
+      "result": "Kabul edildin. Ama koridorlarda kimin çocuğu olduğun fısıldandı."},
+     {"id": "own", "text": "Kimseye bir şey söyleme, kendi başvurunla gir.", "effects": {"Education": 3, "Happiness": 3},
+      "result": "Kabul edildin ve bunun tamamen sana ait olduğunu biliyordun."},
+     {"id": "recuse", "text": "Jüriden çekilmesini iste.", "effects": {"Happiness": 2, "Social": 1},
+      "result": "Biraz garip karşılandı ama saygı gördü. Sonuç ne olursa olsun, temizdi."}
+   ]},
+  {"id": "origin_academic_4", "title": "Kütüphanenin Mirası", "category": "Random", "minAge": 35, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:origin_academic"],
+   "description": "Ailenin büyüğü vefat etti ve on bin ciltlik kütüphane sana kaldı. Bir sahaf hepsini toplu almak istiyor; bir köy okulu ise kütüphanesizliğinden şikâyet ediyor.",
+   "choices": [
+     {"id": "sell", "text": "Sahafa sat.", "effects": {"Money": 40000, "Happiness": -2},
+      "result": "Kitaplar kamyona yüklendi. Bazı sayfalarda büyüğünün el yazısıyla notlar vardı."},
+     {"id": "school", "text": "Köy okuluna bağışla.", "effects": {"Happiness": 6, "Social": 4},
+      "result": "Okulun bir odası kütüphane oldu ve ailenin adını aldı. Çocuklar her teneffüste oraya koşuyor."},
+     {"id": "roots", "text": "Çocukken gizlice açtığın o yıldız kitabını kendine ayır, gerisini okula bağışla.", "requires": ["HasFlag:academic_roots"], "effects": {"Happiness": 9, "Social": 3},
+      "result": "Kitabın arasında, büyüğünün yıllar önce bıraktığı bir not vardı: «Merakını kaybetme.»"}
+   ]},
+
+  {"id": "origin_doctor_1", "title": "Gece Yarısı Kapı", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:origin_doctor"],
+   "description": "Gece yarısı kapı çalınıyor; bir komşu, ateşler içindeki bebeğini getirmiş. Ailen çantasını kapıyor ve sana ışığı tutmanı söylüyor. Ellerin titriyor.",
+   "choices": [
+     {"id": "hold", "text": "El fenerini sabit tut ve dikkatle izle.", "effects": {"Education": 3, "Happiness": 3}, "set": ["doctor_roots"],
+      "result": "Bebeğin ateşi sabaha doğru düştü. Anne, ışığı tutan sana da teşekkür etti."},
+     {"id": "water", "text": "Mutfağa koş, ılık su getir.", "effects": {"Social": 2, "Happiness": 2},
+      "result": "Islak bezler bebeğin alnına konuldu. Bir şeye yardım etmiş olmanın hissi içini ısıttı."},
+     {"id": "scared", "text": "Korkup odana dön.", "effects": {"Happiness": -1},
+      "result": "Sabah her şeyin iyi bittiğini öğrendin. Ailen, korkmanın da normal olduğunu söyledi."}
+   ]},
+  {"id": "origin_doctor_2", "title": "Beyaz Önlük", "category": "School", "minAge": 12, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:origin_doctor"],
+   "description": "Doğum gününde sana küçük bir beyaz önlük hediye edildi; herkes doktor olacağını konuşuyor. Ama kan görünce bayılıyorsun ve bunu kimse bilmiyor.",
+   "choices": [
+     {"id": "tell", "text": "Gerçeği söyle.", "effects": {"Happiness": 3, "Social": 1},
+      "result": "Bir süre şaşkınlıkla baktılar, sonra güldüler. «Tıpta kan görmeyen bölümler de var,» dediler; ama baskı azaldı."},
+     {"id": "train", "text": "Korkunu yenmek için hastanede gönüllü ol.", "effects": {"Education": 3, "Health": -1, "Happiness": 1},
+      "result": "İlk haftalar zordu. Sonra korkunun yerini merak aldı."},
+     {"id": "other", "text": "Başka bir hayal kurduğunu açıkla.", "effects": {"Happiness": 2, "Social": -1},
+      "result": "Önlük dolaba asıldı. Ailen hayal kırıklığını gizlemeye çalıştı; ama denediler."}
+   ]},
+  {"id": "origin_doctor_3", "title": "Ailenin Hastası", "category": "Random", "minAge": 18, "maxAge": 30, "weight": 14,
+   "conditions": ["HasFlag:origin_doctor"],
+   "description": "Bir arkadaşının annesi ağır hasta ve hastanede sıra bekliyor. Ailenin bir telefonuyla sıranın öne alınabileceğini biliyorsun. Sırada bekleyen başka hastalar da var.",
+   "choices": [
+     {"id": "call", "text": "Ailenden yardım iste.", "effects": {"Social": 3, "Happiness": -1},
+      "result": "Ameliyat bir hafta öne alındı. Arkadaşın sana sarıldı; sıradaki başka birinin ne olduğunu düşünmemeye çalıştın."},
+     {"id": "advice", "text": "Sıra yerine, doğru uzmana yönlendirmeleri için akıl iste.", "effects": {"Social": 2, "Happiness": 2, "Education": 1},
+      "result": "Ailen başka bir hastaneyi önerdi; orada sıra kısaydı. Kimsenin hakkı yenmeden çözüldü."},
+     {"id": "no", "text": "Torpil yapmayacağını söyle.", "effects": {"Happiness": 1, "Social": -2},
+      "result": "Arkadaşın anlayış göstermeye çalıştı ama aranızda bir mesafe oluştu."}
+   ]},
+  {"id": "origin_doctor_4", "title": "Muayenehanenin Anahtarı", "category": "Random", "minAge": 35, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:origin_doctor"],
+   "description": "Ailenin büyüğü emekli oldu ve eski muayenehane boş kaldı. İçeride sararmış hasta kartları, eski bir stetoskop ve bekleme salonunda onlarca yılın izleri var.",
+   "choices": [
+     {"id": "rent", "text": "Muayenehaneyi kiraya ver.", "effects": {"Money": 30000, "Happiness": -1},
+      "result": "Bir diş kliniği açıldı. Tabelada artık başka bir isim yazıyor."},
+     {"id": "clinic", "text": "Ücretsiz bir mahalle sağlık noktasına dönüştür.", "effects": {"Happiness": 5, "Social": 4, "Money": -10000},
+      "result": "Gönüllü hekimler haftada iki gün hasta bakıyor. Bekleme salonu yeniden doldu."},
+     {"id": "roots", "text": "Gece yarısı ışık tuttuğun o bebeği bul; artık genç bir hekim, muayenehaneyi ona emanet et.", "requires": ["HasFlag:doctor_roots"], "effects": {"Happiness": 9, "Social": 4},
+      "result": "Stetoskobu ona verdin. «Hayatımı kurtaranların evinde çalışmak,» dedi; sesi titriyordu."}
+   ]},
+
+  {"id": "origin_family_business_1", "title": "Soyadın", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:origin_family_business"],
+   "description": "Öğretmen yoklamada soyadını okuduğunda sınıfta fısıltılar başlıyor; herkes ailenin kim olduğunu biliyor ya da bildiğini sanıyor. Teneffüste bir çocuk, «Siz zenginsiniz,» ya da «Siz battınız,» diyor.",
+   "choices": [
+     {"id": "self", "text": "«Ben benim,» de ve oyununa dön.", "effects": {"Happiness": 3, "Social": 2}, "set": ["family_business_roots"],
+      "result": "Çocuk bir süre baktı, sonra oyuna katıldı. Soyadının ağırlığını erkenden taşımayı öğrendin."},
+     {"id": "proud", "text": "Ailenin hikâyesini anlat.", "effects": {"Social": 1, "Happiness": 1},
+      "result": "Bazıları etkilendi, bazıları gözlerini devirdi. Hikâye senin değil, ailenindi."},
+     {"id": "quiet", "text": "Kimseyle konuşma.", "effects": {"Social": -2},
+      "result": "Teneffüsleri tek başına geçirdin. Soyadın bir duvar gibi önünde durdu."}
+   ]},
+  {"id": "origin_family_business_2", "title": "Yaz Stajı", "category": "School", "minAge": 12, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:origin_family_business"],
+   "description": "Ailen yazı şirkette «stajyer» olarak geçirmeni istiyor; masan zaten hazırlanmış. Arkadaşların bir kampa gidiyor. Şirkette herkes sana patronun çocuğu gibi bakacak.",
+   "choices": [
+     {"id": "intern", "text": "Stajı kabul et ve en alttan başla.", "effects": {"Education": 3, "Social": 2},
+      "result": "Depoda kutu taşıdın, kahve yaptın. Çalışanların bazıları, seni yalnızca adınla tanıdığı için şaşırdı."},
+     {"id": "camp", "text": "Arkadaşlarınla kampa git.", "effects": {"Happiness": 4, "Social": 2},
+      "result": "Yaz, ateş başında şarkılarla geçti. Şirket bir yaz daha bekleyebilirdi."},
+     {"id": "elsewhere", "text": "Başka bir şirkette, adını söylemeden çalış.", "effects": {"Education": 2, "Happiness": 3},
+      "result": "Kimse kim olduğunu bilmiyordu. İlk kez bir övgünün tamamen sana ait olduğunu hissettin."}
+   ]},
+  {"id": "origin_family_business_3", "title": "Yönetim Kurulu", "category": "Random", "minAge": 18, "maxAge": 30, "weight": 14,
+   "conditions": ["HasFlag:origin_family_business"],
+   "description": "Ailenin şirketi zor bir dönemden geçiyor ve sana yönetim kurulunda bir yer teklif ediliyor. Hiç deneyimin yok ama soyadın var. Kuzenlerin de aynı koltuğu istiyor.",
+   "choices": [
+     {"id": "accept", "text": "Koltuğu kabul et.", "effects": {"Money": 30000, "Social": -2, "Happiness": 1},
+      "result": "Toplantılarda çok dinledin, az konuştun. Kuzenlerin bayram sofrasında sana soğuk davrandı."},
+     {"id": "earn", "text": "Önce başka yerde deneyim kazanmak istediğini söyle.", "effects": {"Education": 3, "Happiness": 2},
+      "result": "Ailen önce kırıldı, sonra saygı duydu. Döndüğünde, koltuğunu hak etmiştin."},
+     {"id": "cousin", "text": "Koltuğu en yetkin kuzenine bırak.", "effects": {"Social": 3, "Happiness": 2},
+      "result": "Kuzenin şaşırdı ve teşekkür etti. Aile içinde ender bir barış dönemi başladı."}
+   ]},
+  {"id": "origin_family_business_4", "title": "Satış mı, Devam mı?", "category": "Random", "minAge": 35, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:origin_family_business"],
+   "description": "Büyük bir yabancı şirket, aile işini satın almak istiyor; teklif herkesi zengin edecek ama çalışanların yarısı işini kaybedecek. Aile toplantısında son söz sende.",
+   "choices": [
+     {"id": "sell", "text": "Sat.", "effects": {"Money": 150000, "Happiness": -3, "Social": -2},
+      "result": "Banka hesapları kabardı. Eski bir çalışan, sokakta seni görünce başını çevirdi."},
+     {"id": "keep", "text": "Satma, şirketi dönüştür.", "effects": {"Happiness": 3, "Health": -2},
+      "result": "Zor yıllar geçti ama şirket ayakta kaldı. Çalışanların çocukları da şimdi orada çalışıyor."},
+     {"id": "roots", "text": "Çocukken «Ben benim» dediğin günü hatırla; şirketi çalışanlarına hisse vererek kooperatife dönüştür.", "requires": ["HasFlag:family_business_roots"], "effects": {"Happiness": 8, "Social": 5, "Money": 30000},
+      "result": "Soyadın tabeladan indi, yerine çalışanların ortak adı geldi. İlk kez bir isimden değil, bir karardan gurur duydun."}
+   ]},
+
+  {"id": "origin_nomad_1", "title": "Göç Yolu", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:origin_nomad"],
+   "description": "Bahar geldi ve sürü yaylaya çıkacak. Sırtında küçük bir heybe, önünde kuzular; yol uzun ve dik. Yaşlı bir çoban sana, kaybolan kuzuyu bulma işini veriyor.",
+   "choices": [
+     {"id": "search", "text": "Kayalıkların arasında kuzuyu ara.", "effects": {"Health": 2, "Happiness": 3}, "set": ["nomad_roots"],
+      "result": "Kuzuyu bir çalılığın dibinde buldun ve kucağında taşıdın. Çoban sana kendi kavalını hediye etti."},
+     {"id": "call", "text": "Köpekleri çağır.", "effects": {"Education": 2, "Happiness": 1},
+      "result": "Köpekler kuzuyu buldu. Sürüyle konuşmanın bir dil olduğunu o gün öğrendin."},
+     {"id": "tired", "text": "Yorgunum, başkası bulsun de.", "effects": {"Health": 1, "Social": -1},
+      "result": "Biri gidip buldu. Akşam ateş başında herkes kendi hikâyesini anlattı; senin anlatacak bir şeyin yoktu."}
+   ]},
+  {"id": "origin_nomad_2", "title": "Kasabanın Okulu", "category": "School", "minAge": 12, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:origin_nomad"],
+   "description": "Ailen yaylaya çıkarken sen kasabadaki yatılı okulda kalabilirsin. Kalırsan sınavlara hazırlanırsın; gidersen bir yazı daha gökyüzünün altında geçirirsin.",
+   "choices": [
+     {"id": "stay", "text": "Yatılı okulda kal.", "effects": {"Education": 4, "Happiness": -2},
+      "result": "Yatakhanede yıldızları özledin. Ama karnende ailenin hiç görmediği notlar vardı."},
+     {"id": "go", "text": "Yaylaya git, kitaplarını da götür.", "effects": {"Happiness": 3, "Health": 2, "Education": 1},
+      "result": "Çadırda gaz lambasının ışığında ders çalıştın. Yayla, en sessiz kütüphaneydi."},
+     {"id": "between", "text": "Yazın ilk yarısında okul, ikinci yarısında yayla.", "effects": {"Education": 2, "Happiness": 2},
+      "result": "İki dünya arasında gidip geldin. Belki de en doğrusu buydu."}
+   ]},
+  {"id": "origin_nomad_3", "title": "Mera Yasağı", "category": "Random", "minAge": 18, "maxAge": 30, "weight": 14,
+   "conditions": ["HasFlag:origin_nomad"],
+   "description": "Ailenin yüzyıllardır kullandığı yayla, bir maden şirketine ruhsatlandı ve sürünün çıkması yasaklandı. Büyükler çaresiz; sen okumuş olan, yazıları anlayan kişisin.",
+   "choices": [
+     {"id": "court", "text": "Hukuki itiraz dilekçesi hazırla.", "requires": ["MinStat:Education:45"], "effects": {"Education": 2, "Happiness": 4, "Social": 2},
+      "result": "İtiraz kabul edildi; yayla iki yıllığına kurtuldu. Köyde artık sana «avukat» diyorlar."},
+     {"id": "media", "text": "Bir gazeteciyle iletişime geç.", "effects": {"Social": 3, "Happiness": 2},
+      "result": "Haber yayıldı. Ruhsat askıya alındı, ama tehdit hiç tamamen bitmedi."},
+     {"id": "sell", "text": "Sürüyü satmalarını öner; bu yolun sonu geldi.", "effects": {"Money": 20000, "Happiness": -4},
+      "result": "Sürü satıldı. Kaval, bir dolabın en üst rafında kaldı."}
+   ]},
+  {"id": "origin_nomad_4", "title": "Yaylaya Son Göç", "category": "Random", "minAge": 35, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:origin_nomad"],
+   "description": "Ailenin en yaşlısı, son kez yaylaya çıkmak istiyor. Yol artık ona çok zor, ama gözlerinde yalvaran bir ışık var.",
+   "choices": [
+     {"id": "carry", "text": "Bir at kirala ve onu yaylaya götür.", "cost": 8000, "effects": {"Happiness": 6, "Social": 3},
+      "result": "Zirvede çadırın önüne oturdu ve uzun süre konuşmadı. Bir hafta sonra huzurla gitti."},
+     {"id": "photos", "text": "Yaylanın fotoğraflarını çekip ona getir.", "effects": {"Happiness": 2, "Social": 2},
+      "result": "Fotoğraflara saatlerce baktı ve her taşın adını söyledi."},
+     {"id": "roots", "text": "Çobanın hediye ettiği kavalı al ve onun yanında, yaylanın yolunda çal.", "requires": ["HasFlag:nomad_roots"], "effects": {"Happiness": 9, "Social": 3},
+      "result": "Kavalın sesi vadide yankılandı. Yaşlı göçebe gözlerini kapattı ve eski bir türküyle sana eşlik etti."}
+   ]},
+
+  {"id": "origin_officer_1", "title": "Yine Taşınıyoruz", "category": "Childhood", "minAge": 6, "maxAge": 11, "weight": 14,
+   "conditions": ["HasFlag:origin_officer"],
+   "description": "Tayin haberi geldi; üç yılda üçüncü şehir. Kolilerin arasında en sevdiğin oyuncakları seçmen gerekiyor, çünkü hepsi sığmayacak. En yakın arkadaşın kapıda bekliyor.",
+   "choices": [
+     {"id": "letter", "text": "Arkadaşına mektup yazacağına söz ver.", "effects": {"Social": 3, "Happiness": 2}, "set": ["officer_roots"],
+      "result": "Yıllarca mektuplaştınız. Her yeni şehirde ilk iş, ona adresini yazmak oldu."},
+     {"id": "toy", "text": "En sevdiğin oyuncağı ona hediye et.", "effects": {"Social": 2, "Happiness": 1},
+      "result": "Ağlayarak sarıldınız. O oyuncak, onun odasında yıllarca durdu."},
+     {"id": "angry", "text": "Kimseye veda etme.", "effects": {"Happiness": -2, "Social": -1},
+      "result": "Arabanın arka camından baktın. Vedalaşmamak, acıyı azaltmadı."}
+   ]},
+  {"id": "origin_officer_2", "title": "Disiplin", "category": "Social", "minAge": 12, "maxAge": 17, "weight": 14,
+   "conditions": ["HasFlag:origin_officer"],
+   "description": "Evde saat dokuzda ışıklar kapanıyor ve hafta sonu bile yataklar askerî düzende toplanıyor. Arkadaşların bir konsere gidiyor; dönüş gece yarısı.",
+   "choices": [
+     {"id": "ask", "text": "Açıkça izin iste ve dönüş saatini taahhüt et.", "effects": {"Social": 2, "Happiness": 3},
+      "result": "Biraz düşündüler ve kabul ettiler. Saatinde döndüğünde, güvenin bir rütbe gibi kazanıldığını anladın."},
+     {"id": "sneak", "text": "Gizlice kaç.", "effects": {"Happiness": 3, "Social": -2},
+      "result": "Konser harikaydı. Yakalandığında ceza, konserden daha uzun sürdü."},
+     {"id": "stay", "text": "Evde kal.", "effects": {"Happiness": -2},
+      "result": "Arkadaşların ertesi gün her şeyi anlattı. Sen yalnızca dinledin."}
+   ]},
+  {"id": "origin_officer_3", "title": "Harbiye Formu", "category": "Random", "minAge": 18, "maxAge": 30, "weight": 14,
+   "conditions": ["HasFlag:origin_officer"],
+   "description": "Ailen, askerî okula başvuru formunu masaya bırakmış; kuşaklardır bu ailede bir subay var. Senin aklında başka bir hayat var ama formun yanında büyük büyükbabanın fotoğrafı duruyor.",
+   "choices": [
+     {"id": "apply", "text": "Formu doldur.", "effects": {"Health": 2, "Education": 2, "Happiness": -1},
+      "result": "Başvurunu yaptın. Sonuç ne olursa olsun, ailenin gözlerindeki ışık sana yetti."},
+     {"id": "refuse", "text": "Kendi yolunu seçtiğini söyle.", "effects": {"Happiness": 3, "Social": -1},
+      "result": "Ailen bir süre sessiz kaldı. Sonra fotoğrafı kaldırıp yerine senin mezuniyet fotoğrafını koydu."},
+     {"id": "talk", "text": "Büyük büyükbabanın hikâyesini dinle, sonra karar ver.", "effects": {"Social": 2, "Education": 1, "Happiness": 1},
+      "result": "Onun da bir zamanlar ressam olmak istediğini öğrendin. Karar, artık daha hafifti."}
+   ]},
+  {"id": "origin_officer_4", "title": "Eski Şehirler", "category": "Random", "minAge": 35, "maxAge": 75, "weight": 14,
+   "conditions": ["HasFlag:origin_officer"],
+   "description": "Bir kutunun içinde, çocukken yaşadığın bütün şehirlerin okul karneleri ve fotoğrafları var. Hepsine geri gitmek, bir hayatın haritasını yeniden çizmek gibi.",
+   "choices": [
+     {"id": "trip", "text": "Bir yaz bütün o şehirleri dolaş.", "cost": 30000, "effects": {"Happiness": 6, "Health": 1},
+      "result": "Lojmanların çoğu yıkılmıştı ama okullar yerindeydi. Bir öğretmenin seni hatırladığına inanamadın."},
+     {"id": "album", "text": "Fotoğraflardan bir anı albümü yap.", "effects": {"Happiness": 3, "Social": 1},
+      "result": "Albümün kapağına «Valizlerin çocuğu» yazdın."},
+     {"id": "roots", "text": "Mektuplaştığın o çocukluk arkadaşını bul ve ilk şehrinizde buluşun.", "requires": ["HasFlag:officer_roots"], "effects": {"Happiness": 9, "Social": 5},
+      "result": "Aynı parkta, aynı bankta oturdunuz. Elinde, yıllar önce yazdığın ilk mektup vardı."}
+   ]}
+]

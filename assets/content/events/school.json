@@ -1,0 +1,101 @@
+[
+  {
+    "id": "school_university_gate", "title": "Üniversite Kapısı", "category": "School", "minAge": 18, "maxAge": 20, "education": "HighSchool", "weight": 60,
+    "conditions": ["NotHasFlag:studying"],
+    "description": "Lise bitti. Masanın üstünde sınav başvuru formu, telefonda bir arkadaşının iş teklifi var. Herkesin bir fikri var ama karar senin.",
+    "choices": [
+      {"id": "go_university", "text": "Sınava hazırlan, üniversiteye yazıl.", "requires": ["MinStat:Education:45"], "effects": {"Happiness": 3}, "set": ["enroll_university"],
+       "result": "Kayıt gününde kampüsün kalabalığında kayboldun; ama yolun belliydi."},
+      {"id": "start_working", "text": "Okumayı bırak, hemen çalışmaya başla.", "effects": {"Social": 2, "Happiness": 1},
+       "result": "Kendi paranı kazanma fikri sana iyi geldi. İş ilanlarına bakmaya başladın."},
+      {"id": "gap_year", "text": "Bir yıl ara ver, ne istediğini düşün.", "effects": {"Happiness": 6, "Health": 3},
+       "result": "Uzun yürüyüşler, geç kalkılan sabahlar. Kafan biraz olsun durulmuştu."}
+    ]
+  },
+  {
+    "id": "school_masters_offer", "title": "Yüksek Lisans Daveti", "category": "School", "minAge": 22, "maxAge": 40, "education": "University",
+    "repeatable": true, "cooldownDays": 365, "weight": 15,
+    "conditions": ["NotHasFlag:studying", "NotHasFlag:masters_started", "NotHasFlag:no_masters", "MinStat:Education:60"],
+    "description": "Eski bir hocandan e-posta: yüksek lisans programına başvuru dönemi açılmış ve seni önermek istiyor. Harç ücreti var, ama kapılar da açılabilir.",
+    "choices": [
+      {"id": "enroll_masters", "text": "Başvur ve harcı yatır.", "cost": 15000, "effects": {"Education": 3, "Happiness": 2}, "set": ["enroll_master", "masters_started"],
+       "result": "Kabul mektubunu okurken ellerin hafifçe titriyordu."},
+      {"id": "not_now", "text": "Şimdi zamanı değil, belki seneye.", "effects": {"Happiness": -1},
+       "result": "E-postayı bir klasöre taşıdın. Unutmadın ama."},
+      {"id": "never_masters", "text": "Akademi bana göre değil.", "effects": {"Happiness": 1}, "set": ["no_masters"],
+       "result": "Hocana kibar bir teşekkür yazdın ve konuyu kapattın."}
+    ]
+  },
+  {
+    "id": "school_cheat_sheet", "title": "Kopya Kağıdı", "category": "School", "minAge": 14, "maxAge": 17, "weight": 10,
+    "description": "Fizik sınavından önceki akşam bir arkadaşın, cevapların yazılı olduğu küçük bir kâğıdın fotoğrafını gönderiyor.",
+    "choices": [
+      {"id": "study_instead", "text": "Fotoğrafı sil, gece yarısına kadar çalış.", "effects": {"Education": 3, "Health": -1},
+       "result": "Sınavdan yetmiş aldın. Hepsi senindi."},
+      {"id": "use_it", "text": "Ezberle, sınava öyle gir.", "effects": {"Happiness": 2, "Education": -2},
+       "result": "Not yüksek geldi, ama bir sonraki konuda hiçbir şey anlamadın."},
+      {"id": "warn_friend", "text": "Arkadaşına bunun kötü bir fikir olduğunu yaz.", "effects": {"Social": -2, "Education": 2},
+       "result": "\"Sen bilirsin\" diye cevap verdi. Bir hafta konuşmadınız."}
+    ]
+  },
+  {
+    "id": "school_first_crush", "title": "Sıra Arkadaşı", "category": "School", "minAge": 14, "maxAge": 17, "weight": 12,
+    "description": "Sıra arkadaşın her sabah sana gülümsüyor. Defterinin kenarına adını yazıp sildiğin oldu.",
+    "choices": [
+      {"id": "write_note", "text": "Küçük bir not yazıp çantasına bırak.", "effects": {"Happiness": 6, "Social": 3},
+       "result": "Ertesi gün notun altına bir gülen yüz çizilmiş olarak geri geldi."},
+      {"id": "stay_silent", "text": "Hiçbir şey söyleme, sadece bak.", "effects": {"Happiness": -2},
+       "result": "Dönem bitti, sınıflar değişti. Bazen hâlâ aklına geliyor."},
+      {"id": "focus_study", "text": "Kafanı derslere ver.", "effects": {"Education": 3},
+       "result": "Not ortalaman yükseldi. Gönül işleri bekleyebilirdi."}
+    ]
+  },
+  {
+    "id": "school_summer_job", "title": "Yaz İşi", "category": "School", "minAge": 15, "maxAge": 17, "weight": 12,
+    "description": "Mahalledeki fırın yaz için yardımcı arıyor. Öte yandan okulun yaz kampı da başlamak üzere.",
+    "choices": [
+      {"id": "bakery", "text": "Fırında çalış.", "effects": {"Money": 3000, "Social": 2, "Health": -1},
+       "result": "Sabah beşte kalkmak zordu, ama ilk maaşını eline aldığında her şeye değdi."},
+      {"id": "summer_camp", "text": "Yaz kampına katıl.", "effects": {"Education": 4, "Social": 2},
+       "result": "Robotik atölyesinde yaptığınız araba, sahada tam iki tur attı."},
+      {"id": "rest", "text": "Bu yaz sadece dinlen.", "effects": {"Happiness": 4, "Health": 1},
+       "result": "Deniz, kumsal ve geç kalkılan sabahlar."}
+    ]
+  },
+  {
+    "id": "school_exam_stress", "title": "Sınav Yılı", "category": "School", "minAge": 17, "maxAge": 18, "weight": 20,
+    "description": "Üniversite sınavına aylar kaldı. Deneme sonuçları dalgalı; herkes sana ne yapman gerektiğini söylüyor.",
+    "choices": [
+      {"id": "grind", "text": "Her şeyi bırak, günde on saat çalış.", "effects": {"Education": 5, "Health": -3, "Happiness": -3},
+       "result": "Netlerin yükseldi. Aynadaki yorgun yüzü tanımakta zorlandın."},
+      {"id": "balance", "text": "Programlı çalış, sporu ve uykuyu bırakma.", "effects": {"Education": 3, "Happiness": 1},
+       "result": "Ne en hızlıydın ne en yavaş. Ama hiç tükenmedin."},
+      {"id": "let_go", "text": "Bu sınav hayatımı belirlemeyecek, de.", "effects": {"Happiness": 3, "Education": -2},
+       "result": "Omuzlarındaki yük hafifledi. Notlar biraz düştü."}
+    ]
+  },
+  {
+    "id": "school_dorm_roommate", "title": "Yurt Odası", "category": "School", "minAge": 18, "maxAge": 26, "education": "HighSchool", "weight": 15,
+    "conditions": ["HasFlag:studying"],
+    "description": "Yurt odanı paylaştığın kişi gece yarısı gitar çalıyor, sabah erkenden de koşuya çıkıyor. Bir dönem birlikte yaşayacaksınız.",
+    "choices": [
+      {"id": "befriend", "text": "Bir akşam çay demle, tanışın.", "effects": {"Social": 6, "Happiness": 3}, "set": ["best_friend"],
+       "result": "O gece sabaha kadar konuştunuz. Yıllar sonra düğününde sağdıcı olacaktın."},
+      {"id": "study_alone", "text": "Kulaklığını tak, kütüphaneye taşın.", "effects": {"Education": 4, "Social": -2},
+       "result": "Kütüphanenin üçüncü katı senin ikinci evin oldu."},
+      {"id": "party", "text": "Onunla her partiye git.", "effects": {"Happiness": 5, "Health": -2, "Education": -2},
+       "result": "Kampüste herkes adını biliyordu. Vize notların ise biraz utangaçtı."}
+    ]
+  },
+  {
+    "id": "school_exchange_program", "title": "Değişim Programı", "category": "School", "minAge": 19, "maxAge": 26, "education": "HighSchool", "weight": 10,
+    "conditions": ["HasFlag:studying", "MinStat:Education:55"],
+    "description": "Bir dönemliğine yurt dışındaki bir üniversitede okuma fırsatı çıktı. Burs yolu karşılıyor, ama cep harçlığı senden.",
+    "choices": [
+      {"id": "go_abroad", "text": "Başvur ve git.", "cost": 20000, "effects": {"Education": 5, "Social": 5, "Happiness": 6}, "set": ["traveled_abroad", "learned_language"],
+       "result": "İlk hafta kaybolup durdun. Son hafta ise dönmek istemedin."},
+      {"id": "stay_home", "text": "Burada kal, düzenini bozma.", "effects": {"Happiness": -1, "Education": 1},
+       "result": "Arkadaşlarının fotoğraflarına bakıp bir süre iç çektin."}
+    ]
+  }
+]

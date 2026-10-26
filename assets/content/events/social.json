@@ -1,0 +1,107 @@
+[
+  {
+    "id": "social_coffee_queue", "title": "Kahve Sırasında", "category": "Social", "minAge": 16, "maxAge": 85, "repeatable": true, "cooldownDays": 500, "weight": 8,
+    "description": "Kahve sırasında önündeki kişiyle aynı kitabı okuduğunuzu fark ettiniz. Sohbet kendiliğinden başladı.",
+    "choices": [
+      {"id": "exchange_numbers", "text": "Numaralarınızı paylaşın, kitap kulübü kurun.", "effects": {"Social": 5, "Happiness": 3}, "set": ["best_friend"],
+       "result": "Ayda bir buluşan küçük bir kulüp oldunuz. Yıllarca sürdü."},
+      {"id": "polite_goodbye", "text": "Güzel bir sohbetti, de ve yoluna devam et.", "effects": {"Happiness": 1},
+       "result": "Gün boyu yüzünde hafif bir gülümseme kaldı."}
+    ]
+  },
+  {
+    "id": "social_first_date", "title": "İlk Buluşma", "category": "Social", "minAge": 19, "maxAge": 50, "weight": 20,
+    "conditions": ["NotHasFlag:married", "NotHasFlag:dating"],
+    "description": "Bir arkadaşın, seninle tanışmasını istediği birinden bahsediyor. \"Bir kahve içersiniz, ne kaybedersin?\"",
+    "choices": [
+      {"id": "go_date", "text": "Git, bakalım.", "effects": {"Happiness": 5, "Social": 3}, "set": ["dating"],
+       "result": "Kahve akşam yemeğine, akşam yemeği uzun bir yürüyüşe dönüştü."},
+      {"id": "not_ready", "text": "Şu an hazır değilsin.", "effects": {"Happiness": -1},
+       "result": "Arkadaşın omuz silkti: \"Kapı her zaman açık.\""}
+    ]
+  },
+  {
+    "id": "social_proposal", "title": "Evlilik Teklifi", "category": "Social", "minAge": 22, "maxAge": 60, "repeatable": true, "cooldownDays": 365, "weight": 24,
+    "conditions": ["HasFlag:dating", "NotHasFlag:married"],
+    "description": "Bir süredir birliktesiniz. Bir akşam yemeğinde ikiniz de aynı soruyu düşünüyorsunuz: Sırada ne var?",
+    "choices": [
+      {"id": "marry", "text": "Evlenmeye karar verin; töreni ve bütçeyi birlikte planlayın.", "effects": {"Happiness": 3, "Social": 2}, "set": ["dating"],
+       "result": "Birlikte geleceğinizi konuştunuz. Şimdi nasıl bir başlangıç istediğinizi planlayacaksınız."},
+      {"id": "wait", "text": "Acele etmeyin, bir süre daha böyle devam edin.", "effects": {"Happiness": -1},
+       "result": "Konu bir süreliğine rafa kalktı."},
+      {"id": "break_up", "text": "Yollarınız ayrılıyor, bunu konuşun.", "effects": {"Happiness": -6, "Social": -2}, "remove": ["dating"],
+       "result": "Zor bir konuşmaydı. İkiniz de haklıydınız."}
+    ]
+  },
+  {
+    "id": "social_new_baby", "title": "Yeni Bir Hayat", "category": "Social", "minAge": 23, "maxAge": 45, "repeatable": true, "cooldownDays": 400, "weight": 24,
+    "conditions": ["HasFlag:married", "NotHasFlag:has_child"],
+    "description": "Bir pazar sabahı eşin sessizce sana bakıyor: \"Bir çocuğumuz olsun mu?\"",
+    "choices": [
+      {"id": "have_child", "text": "\"Evet\" de.", "effects": {"Happiness": 10, "Health": -2}, "set": ["has_child"],
+       "result": "Bir yıl sonra uykusuz geceler başladı. Ve hayatının en güzel kahkahası."},
+      {"id": "not_yet_child", "text": "\"Biraz daha bekleyelim\" de.", "effects": {"Happiness": 1},
+       "result": "Bu konuyu yeniden konuşmak üzere sözleştiniz."}
+    ]
+  },
+  {
+    "id": "social_second_child", "title": "Kardeş İsteği", "category": "Social", "minAge": 24, "maxAge": 55, "weight": 26,
+    "conditions": ["HasFlag:has_child", "NotHasFlag:second_child"],
+    "description": "Çocuğun akşam yemeğinde ciddi bir yüzle bir kardeş istediğini söylüyor.",
+    "choices": [
+      {"id": "second_yes", "text": "Aileyi büyütün.", "effects": {"Happiness": 6, "Health": -1}, "set": ["second_child"],
+       "result": "Ev daha gürültülü, sofra daha kalabalık oldu."},
+      {"id": "second_no", "text": "Bir çocuk yeter, diye anlat.", "effects": {"Happiness": 1},
+       "result": "Biraz surat astı, sonra bir kedi istemeye başladı."}
+    ]
+  },
+  {
+    "id": "social_holiday_table", "title": "Bayram Sofrası", "category": "Social", "minAge": 18, "maxAge": 100, "repeatable": true, "cooldownDays": 365, "weight": 8,
+    "description": "Bayram geldi. Aile büyükleri herkesi sofraya çağırıyor; yol uzun, işler yoğun.",
+    "choices": [
+      {"id": "go_table", "text": "Yola çık, sofrada yerini al.", "effects": {"Social": 4, "Happiness": 3},
+       "result": "Kalabalık sofrada eski hikâyeler bir kez daha anlatıldı."},
+      {"id": "video_call", "text": "Görüntülü ara, gönlünü al.", "effects": {"Social": 1},
+       "result": "Ekranın öbür ucunda herkes aynı anda konuşuyordu."},
+      {"id": "skip_holiday", "text": "Bu sefer gitme, dinlen.", "effects": {"Social": -3, "Health": 1},
+       "result": "Ev çok sessizdi. Fazla sessiz."}
+    ]
+  },
+  {
+    "id": "social_volunteer", "title": "Gönüllü Çağrısı", "category": "Social", "minAge": 16, "maxAge": 85, "weight": 8,
+    "conditions": ["NotHasFlag:volunteer"],
+    "description": "Mahalledeki kütüphane, çocuklara okuma saati düzenleyecek gönüllüler arıyor.",
+    "choices": [
+      {"id": "join_volunteer", "text": "Haftada bir gün gönüllü ol.", "effects": {"Social": 5, "Happiness": 4}, "set": ["volunteer"],
+       "result": "Küçük bir kız her hafta aynı kitabı okumanı istedi. Hiç sıkılmadın."},
+      {"id": "donate_books", "text": "Kitap bağışla.", "cost": 1500, "effects": {"Happiness": 3},
+       "result": "Bağışladığın kitapların rafta yan yana durduğunu görmek güzeldi."},
+      {"id": "pass_volunteer", "text": "Vaktin yok.", "effects": {"Happiness": -1},
+       "result": "İlanın önünden her geçişinde biraz yavaşladın."}
+    ]
+  },
+  {
+    "id": "social_marriage_crisis", "title": "Evlilikte Kriz", "category": "Social", "minAge": 24, "maxAge": 80, "repeatable": true, "cooldownDays": 700, "weight": 20,
+    "conditions": ["HasFlag:married"],
+    "description": "Son zamanlarda eşinle aynı evde iki yabancı gibisiniz. Akşam yemekleri sessiz geçiyor.",
+    "choices": [
+      {"id": "counseling", "text": "Çift terapisine gitmeyi öner.", "cost": 6000, "effects": {"Happiness": 7, "Social": 2},
+       "result": "İlk seans zordu. Onuncu seansta birlikte güldünüz."},
+      {"id": "separate", "text": "Ayrılmaya karar verin.", "effects": {"Happiness": -8, "Social": -3}, "set": ["divorced"], "remove": ["married"],
+       "result": "Eşyalar kutulara, anılar daha derin kutulara girdi."},
+      {"id": "endure_marriage", "text": "Geçer, diye bekle.", "effects": {"Happiness": -3},
+       "result": "Sessizlik bir süre daha sürdü."}
+    ]
+  },
+  {
+    "id": "social_grandchild", "title": "Torun Haberi", "category": "Social", "minAge": 50, "maxAge": 95, "weight": 15,
+    "conditions": ["HasFlag:has_child", "NotHasFlag:grandparent"],
+    "description": "Telefonda çocuğunun sesi titriyor: \"Büyükanne-büyükbaba olmaya hazır mısın?\"",
+    "choices": [
+      {"id": "celebrate", "text": "Sevinçten havalara uç, hemen yanlarına git.", "effects": {"Happiness": 10, "Social": 4}, "set": ["grandparent"],
+       "result": "Bebeği ilk kucağına aldığında zaman bir an durdu."},
+      {"id": "babysitter", "text": "Haftada iki gün bakıcılık teklif et.", "effects": {"Happiness": 8, "Social": 6, "Health": -1}, "set": ["grandparent"],
+       "result": "Ninniler geri döndü. Bu sefer daha sabırlıydın."}
+    ]
+  }
+]

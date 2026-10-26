@@ -1,0 +1,17 @@
+[
+  {"id": "ach_first_life", "title": "İlk Hayat", "description": "Bir hayatı baştan sona yaşa.", "atGameOver": true},
+  {"id": "ach_centenarian", "title": "Asırlık Çınar", "description": "95 yaşına ulaş.", "conditions": ["MinAge:95"]},
+  {"id": "ach_millionaire", "title": "Milyoner", "description": "Hesabında 10.000.000 ₺ olsun.", "conditions": ["MinStat:Money:10000000"]},
+  {"id": "ach_professor", "title": "Profesör", "description": "Akademide 4. basamağa yüksel.", "conditions": ["HasCareer:academic", "MinCareerLevel:4"]},
+  {"id": "ach_tech_director", "title": "Teknik Direktör", "description": "Yazılım kariyerinin zirvesine çık.", "conditions": ["HasCareer:software_dev", "MinCareerLevel:5"]},
+  {"id": "ach_honest_child", "title": "Dürüst Çocuk", "description": "Bulduğun cüzdanı sahibine götür.", "conditions": ["HasFlag:returned_wallet"]},
+  {"id": "ach_phoenix", "title": "Küllerinden Doğan", "description": "İflasın eşiğinden dönüp tüm borçlarını kapat.", "conditions": ["HasFlag:recovered_from_bankruptcy"], "secret": true},
+  {"id": "ach_goal_hunter", "title": "Hedef Avcısı", "description": "Bir hayatta üç hedefin hepsini tamamla.", "conditions": ["MinCompletedGoals:3"]},
+  {"id": "ach_masters", "title": "Akademik Unvan", "description": "Yüksek lisans mezunu ol.", "conditions": ["MinEducation:Master"]},
+  {"id": "ach_big_family", "title": "Kalabalık Sofra", "description": "İki çocuk sahibi ol.", "conditions": ["HasFlag:second_child"]},
+  {"id": "ach_globetrotter", "title": "Gezgin", "description": "Yurt dışını gör.", "conditions": ["HasFlag:traveled_abroad"]},
+  {"id": "ach_iron_health", "title": "Demir Gibi", "description": "70 yaşında sağlığın 80'in üstünde olsun.", "conditions": ["MinAge:70", "MinStat:Health:80"], "secret": true},
+  {"id": "ach_homeowner", "title": "Anahtar Teslim", "description": "Kendi evini al.", "conditions": ["HasFlag:owns_house"]},
+  {"id": "ach_rags_to_riches", "title": "Sınıf Atlayan", "description": "Yoksul bir ailede doğ, hesabında 5.000.000 ₺ biriktir.", "conditions": ["HasFlag:family_poor", "MinStat:Money:5000000"], "secret": true},
+  {"id": "ach_self_made", "title": "Kendi Yolunu Çizen", "description": "Zengin bir ailede doğ ve kendi mesleğinde en üst basamağa çık.", "conditions": ["HasFlag:family_rich", "MinCareerLevel:4"], "secret": true}
+]

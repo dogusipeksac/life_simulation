@@ -1,0 +1,373 @@
+[
+  {
+    "id": "social_new_neighbor",
+    "title": "Yeni Bir Komşu",
+    "category": "Social",
+    "minAge": 18,
+    "maxAge": 90,
+    "description": "Apartmana yeni taşınan biri kapıda kutularla bekliyor. İkinizin de biraz zamanı var.",
+    "weight": 10,
+    "repeatable": true,
+    "cooldownDays": 730,
+    "choices": [
+      {
+        "id": "help",
+        "text": "Bir kutuyu taşımayı teklif et.",
+        "effects": {
+          "Social": 3,
+          "Happiness": 1
+        },
+        "result": "Kısa bir yardım uzun bir sohbetin kapısını açtı.",
+        "set": [
+          "neighbor_friend"
+        ]
+      },
+      {
+        "id": "hello",
+        "text": "Kendini tanıt, uygun bir gün buluşmayı öner.",
+        "effects": {
+          "Social": 2
+        },
+        "result": "İkiniz de acele etmeden tanışmak istediniz."
+      },
+      {
+        "id": "space",
+        "text": "Gülümseyip yerleşmesi için alan bırak.",
+        "effects": {
+          "Happiness": 1
+        },
+        "result": "Bazen iyi komşuluk, alan tanımakla başlar."
+      }
+    ]
+  },
+  {
+    "id": "social_friend_distance",
+    "title": "Uzakta Kalan Dost",
+    "category": "Social",
+    "minAge": 18,
+    "maxAge": 90,
+    "description": "Eski dostun başka bir şehre taşındı. Mesafe artınca alışkanlıklarınız değişiyor.",
+    "weight": 10,
+    "repeatable": true,
+    "cooldownDays": 730,
+    "choices": [
+      {
+        "id": "call",
+        "text": "Düzenli bir konuşma günü belirleyin.",
+        "effects": {
+          "Social": 4
+        },
+        "result": "Takvimdeki küçük bir yer, dostluğa büyük bir alan açtı."
+      },
+      {
+        "id": "letter",
+        "text": "Birlikte yaşadığınız bir anıyı yazıp gönder.",
+        "effects": {
+          "Happiness": 2,
+          "Social": 2
+        },
+        "result": "Bir mesajla yıllar önceki kahkahaya geri döndünüz."
+      },
+      {
+        "id": "later",
+        "text": "Bu dönemde biraz geri çekil.",
+        "effects": {
+          "Social": -2,
+          "Health": 1
+        },
+        "result": "Kendine zaman ayırdın. İleride yeniden aramak hâlâ mümkündü."
+      }
+    ],
+    "conditions": [
+      "HasFlag:best_friend"
+    ]
+  },
+  {
+    "id": "social_shared_budget",
+    "title": "Ortak Bir Bütçe",
+    "category": "Social",
+    "minAge": 20,
+    "maxAge": 85,
+    "description": "Birlikte yaşarken harcamalar üzerine konuşmanın zamanı geldi. Aynı önceliklere sahip olmadığınızı fark ediyorsunuz.",
+    "weight": 10,
+    "repeatable": true,
+    "cooldownDays": 730,
+    "choices": [
+      {
+        "id": "listen",
+        "text": "Önce birbirinizin önceliklerini dinleyin.",
+        "effects": {
+          "Social": 4,
+          "Happiness": 1
+        },
+        "result": "Rakamların arkasında farklı ihtiyaçlar olduğunu gördünüz."
+      },
+      {
+        "id": "plan",
+        "text": "İkinize de alan bırakan bir plan kurun.",
+        "effects": {
+          "Education": 2,
+          "Happiness": 2
+        },
+        "result": "Ortak ihtiyaçlarla kişisel istekler için ayrı yer açtınız."
+      },
+      {
+        "id": "avoid",
+        "text": "Konuşmayı sonraya bırak.",
+        "effects": {
+          "Happiness": -2
+        },
+        "result": "Konu kapanmadı; sadece bir süre sessizleşti."
+      }
+    ],
+    "conditions": [
+      "HasFlag:married"
+    ]
+  },
+  {
+    "id": "social_child_question",
+    "title": "Çocuğunun Sorusu",
+    "category": "Social",
+    "minAge": 22,
+    "maxAge": 85,
+    "description": "Çocuğun, büyüdüğünde ne olmak istediğini soruyor. Kendi hayallerini yeniden düşünüyorsun.",
+    "weight": 10,
+    "repeatable": true,
+    "cooldownDays": 730,
+    "choices": [
+      {
+        "id": "honest",
+        "text": "Hayallerinin zamanla değiştiğini anlat.",
+        "effects": {
+          "Social": 3,
+          "Happiness": 1
+        },
+        "result": "Tek bir doğru yol olmadığını birlikte fark ettiniz."
+      },
+      {
+        "id": "listen",
+        "text": "Önce onun hayalini dinle.",
+        "effects": {
+          "Social": 4
+        },
+        "result": "Cevabından çok, onu dinlemen aklında kaldı."
+      },
+      {
+        "id": "draw",
+        "text": "Birlikte geleceğin resmini çizin.",
+        "effects": {
+          "Happiness": 3
+        },
+        "result": "Resimde beklemediğin kadar çok renk vardı."
+      }
+    ],
+    "conditions": [
+      "HasFlag:has_child"
+    ]
+  },
+  {
+    "id": "random_home_corner",
+    "title": "Sana Ait Bir Köşe",
+    "category": "Random",
+    "minAge": 18,
+    "maxAge": 90,
+    "description": "Evin bir köşesini uzun zamandır istediğin uğraşa ayırabilirsin. Büyük bir tadilat gerekmiyor.",
+    "weight": 10,
+    "repeatable": true,
+    "cooldownDays": 730,
+    "choices": [
+      {
+        "id": "books",
+        "text": "Okuma köşesi oluştur.",
+        "effects": {
+          "Education": 3
+        },
+        "result": "Küçük bir lamba ve birkaç kitap, yeni bir alışkanlığa yetti."
+      },
+      {
+        "id": "art",
+        "text": "Üretmek için bir masa ayır.",
+        "effects": {
+          "Happiness": 3
+        },
+        "result": "Bir şey üretmek için her seferinde yeniden yer açman gerekmiyordu."
+      },
+      {
+        "id": "invite",
+        "text": "Sohbet için rahat bir alan hazırla.",
+        "effects": {
+          "Social": 3
+        },
+        "result": "Evin, sevdiğin insanların sesleriyle biraz daha ev oldu."
+      }
+    ],
+    "conditions": [
+      "HasFlag:owns_house"
+    ]
+  },
+  {
+    "id": "health_routine_reset",
+    "title": "Ritmini Yeniden Bulmak",
+    "category": "Health",
+    "minAge": 18,
+    "maxAge": 100,
+    "description": "Son zamanlarda günler birbirine karıştı. Kendine sürdürülebilir bir rutin kurmak istiyorsun.",
+    "weight": 10,
+    "repeatable": true,
+    "cooldownDays": 730,
+    "choices": [
+      {
+        "id": "walk",
+        "text": "Kısa ve düzenli yürüyüşlere zaman ayır.",
+        "effects": {
+          "Health": 2,
+          "Happiness": 1
+        },
+        "result": "Küçük bir alışkanlık günlük ritmine yerleşti."
+      },
+      {
+        "id": "rest",
+        "text": "Dinlenmeye takviminde yer aç.",
+        "effects": {
+          "Health": 2
+        },
+        "result": "Boş zamanın da planlanabileceğini gördün."
+      },
+      {
+        "id": "friend",
+        "text": "Bir arkadaşla birlikte plan yap.",
+        "effects": {
+          "Social": 2,
+          "Happiness": 1
+        },
+        "result": "Birlikte düşünmek planı daha ulaşılabilir kıldı."
+      }
+    ]
+  },
+  {
+    "id": "career_mentor",
+    "title": "Deneyimini Paylaşmak",
+    "category": "Career",
+    "minAge": 35,
+    "maxAge": 64,
+    "description": "İşe yeni başlayan biri senden yol göstermeni istiyor. Bir zamanlar sen de aynı soruları soruyordun.",
+    "weight": 10,
+    "repeatable": true,
+    "cooldownDays": 730,
+    "choices": [
+      {
+        "id": "teach",
+        "text": "Bildiklerini örneklerle anlat.",
+        "effects": {
+          "Social": 3,
+          "Education": 1
+        },
+        "result": "Anlatırken kendi deneyimini de yeniden düzenledin."
+      },
+      {
+        "id": "together",
+        "text": "Bir işi birlikte yapmayı öner.",
+        "effects": {
+          "Education": 2,
+          "Happiness": 1
+        },
+        "result": "Yan yana çalışmak, uzun bir açıklamadan daha etkili oldu."
+      },
+      {
+        "id": "boundaries",
+        "text": "Yardım edebileceğin zamanı açıkça belirt.",
+        "effects": {
+          "Health": 1,
+          "Social": 1
+        },
+        "result": "Sınır koymak yardım etmene engel olmadı."
+      }
+    ],
+    "conditions": [
+      "MinCareerLevel:1"
+    ]
+  },
+  {
+    "id": "social_memory_box",
+    "title": "Anı Kutusu",
+    "category": "Social",
+    "minAge": 55,
+    "maxAge": 100,
+    "description": "Eski fotoğraflar, biletler ve notlarla dolu bir kutu buldun. Her parçanın bir hikâyesi var.",
+    "weight": 10,
+    "repeatable": true,
+    "cooldownDays": 730,
+    "choices": [
+      {
+        "id": "write",
+        "text": "Anılarını küçük notlarla kaydet.",
+        "effects": {
+          "Education": 2,
+          "Happiness": 2
+        },
+        "result": "Unutulacağını sandığın ayrıntılar kelimelerle geri geldi."
+      },
+      {
+        "id": "share",
+        "text": "Yakınlarınla bir anı akşamı düzenle.",
+        "effects": {
+          "Social": 4
+        },
+        "result": "Aynı anıyı herkesin farklı hatırladığı ortaya çıktı."
+      },
+      {
+        "id": "keep",
+        "text": "Kendine saklayıp yavaşça gözden geçir.",
+        "effects": {
+          "Happiness": 3
+        },
+        "result": "Geçmişine sessizce eşlik ettin."
+      }
+    ]
+  },
+  {
+    "id": "random_retirement_project",
+    "title": "Yeni Bir Sayfa",
+    "category": "Random",
+    "minAge": 65,
+    "maxAge": 100,
+    "description": "İş yaşamının ardından zamanını nasıl değerlendirmek istediğini düşünüyorsun.",
+    "weight": 10,
+    "repeatable": true,
+    "cooldownDays": 730,
+    "choices": [
+      {
+        "id": "learn",
+        "text": "Uzun zamandır merak ettiğin bir konuyu öğren.",
+        "effects": {
+          "Education": 3
+        },
+        "result": "Öğrenmenin yaşı olmadığını bir kez daha gördün."
+      },
+      {
+        "id": "volunteer",
+        "text": "Bir gönüllü grubuna katıl.",
+        "effects": {
+          "Social": 3,
+          "Happiness": 1
+        },
+        "result": "Deneyimin başka birinin işini kolaylaştırdı.",
+        "set": [
+          "volunteer"
+        ]
+      },
+      {
+        "id": "slow",
+        "text": "Günlerini daha sakin bir ritme bırak.",
+        "effects": {
+          "Health": 2,
+          "Happiness": 1
+        },
+        "result": "Yetişmek zorunda olmadığın bir sabahın tadını çıkardın."
+      }
+    ],
+    "conditions": [
+      "HasFlag:retired"
+    ]
+  }
+]

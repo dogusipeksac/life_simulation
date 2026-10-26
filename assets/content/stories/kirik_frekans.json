@@ -1,0 +1,739 @@
+{
+  "Id": "kirik_frekans",
+  "Title": "Kırık Frekans",
+  "Subtitle": "Yarın seni ararsa telefonu açar mısın?",
+  "Description": "Bir kıyı kasabasının gece radyosunda, ertesi günün haberini kendi sesinden duyuyorsun. Birini kurtarmak geleceği değiştirmekse, kimin hatırladığına güvenebilirsin?",
+  "Genre": "Bilimkurgu & gizem",
+  "Color": "706caa",
+  "Symbol": "◎",
+  "ProductId": "vita.story.kirik_frekans",
+  "Start": "start",
+  "FreeChapters": 1,
+  "Chapters": [
+    "Gece yayını",
+    "Yankı",
+    "Kesinti",
+    "Sabah"
+  ],
+  "StatNames": {
+    "logic": "Mantık",
+    "empathy": "Empati",
+    "resolve": "Kararlılık"
+  },
+  "ContentNote": "Kurgusal olaylar ve karakterler. Kayıp, aile çatışmaları ve zor kararlar içerir.",
+  "Nodes": {
+    "start": {
+      "Title": "02.17 · Açık mikrofon",
+      "Text": "Kasabanın radyosunda geceyi kapatıyorsun. Dışarıda yağmur, içeride bozuk bir floresanın sesi var. Sıradaki şarkı başlamadan önce hoparlörden kendi sesin geliyor:\n\n“Yarın saat 08.10’da kuzey iskelesine gitmeyin. Deniz, beni duyuyorsan kapıyı açma.”\n\nAdın Deniz değil. O, üç yıl önce kasabadan ayrılan kardeşin. Ses sensin. Yayın masasındaki saat bir dakika ileri atlıyor. Dış kapı çalıyor.",
+      "Choices": [
+        {
+          "Text": "Kapıyı açmadan kimin geldiğini sor.",
+          "Next": "door",
+          "Result": "Korkunu bir soruya dönüştürdün.",
+          "Effects": {
+            "resolve": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Yayını kaydet ve saatleri karşılaştır.",
+          "Next": "tape",
+          "Result": "İlk iş olarak elindeki bilgiyi korudun.",
+          "Effects": {
+            "logic": 10
+          },
+          "SetFlags": [
+            "recorded"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Kardeşini ara.",
+          "Next": "brother",
+          "Result": "Sesin işaret ettiği kişiyi bulmak istedin.",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "door": {
+      "Title": "Yağmurdaki kadın",
+      "Text": "Camın ardından belediye elektrikçisi Asya’yı görüyorsun. Elindeki fenerde pil kalmamış. “Eski vericinin olduğu binada elektrik var,” diyor. “Oranın hattı yıllar önce kesildi.”\n\nOna yayını anlatınca şaşırmıyor. “Ben de yarınki arıza raporunu aldım. Altında kendi imzam var.” İkiniz de birbirinizden daha sağlam bir açıklama bekliyorsunuz.",
+      "Choices": [
+        {
+          "Text": "Asya’yı içeri al, kayıtları karşılaştırın.",
+          "Next": "compare",
+          "Result": "Bu gece ikinci bir çift gözün var.",
+          "Effects": {
+            "empathy": 5
+          },
+          "SetFlags": [
+            "asya"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Önce verici binasının anahtarını iste.",
+          "Next": "transmitter",
+          "Result": "Sorunu kaynağında görmek istiyorsun.",
+          "Effects": {
+            "resolve": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "tape": {
+      "Title": "İki saat",
+      "Text": "Bilgisayar 02.18 diyor. Duvar saati 02.17’de takılı. Kayıt dosyasının tarihi yarın sabah 08.10. İnternet bağlantısı yok ama dosya bir yerden gelmiş.\n\nKapı bir kez daha çalıyor. Bu kez dışarıdan bir ses geliyor: “Ben Asya. Elektrik arızası için geldim.” Ekranda henüz açmadığın dosyanın adı değişiyor: ASYA_GİRDİ.",
+      "Choices": [
+        {
+          "Text": "Asya’yı içeri al ve ekranı göster.",
+          "Next": "compare",
+          "Result": "Bilgiyi gizlemedin.",
+          "Effects": {
+            "logic": 5,
+            "empathy": 5
+          },
+          "SetFlags": [
+            "asya"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Dosyanın başka bir kopyasını çıkar.",
+          "Next": "transmitter",
+          "Result": "Özgün kaydı sakladın.",
+          "Effects": {
+            "logic": 10
+          },
+          "SetFlags": [
+            "copy"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "brother": {
+      "Title": "Uzak bir odanın sesi",
+      "Text": "Deniz telefonu açıyor. İlk söylediği cümle “Yine o yayın mı?” oluyor.\n\nSanki senin bilmen gereken bir şeyi unutmuşsun. “Daha önce de mi oldu?” diye soruyorsun. Hattın öbür ucunda bir sandalye gıcırdıyor. “Bunu sana kaç kez anlattığımı bilmiyorum,” diyor. “Benim için üç yıl geçti. Sen her defasında bu gece arıyorsun.”",
+      "Choices": [
+        {
+          "Text": "Deniz’den bildiği bütün ayrıntıları yazmasını iste.",
+          "Next": "compare",
+          "Result": "Hafızanın yerine ortak bir kayıt koydun.",
+          "Effects": {
+            "logic": 5,
+            "empathy": 5
+          },
+          "SetFlags": [
+            "brother"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Ondan kasabaya dönmesini iste.",
+          "Next": "transmitter",
+          "Result": "Bu kez aranızdaki mesafeyi azaltmak istedin.",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [
+            "return"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "compare": {
+      "Title": "Aynı cümlenin farkı",
+      "Text": "Asya’nın raporu ile radyo kaydını masaya yayıyorsunuz. Her ikisinde de kuzey iskelesi ve 08.10 var. Ama raporun bir satırı elle çizilmiş: “Tahliye başarılı.”\n\n“Bir şey her defasında biraz değişiyor,” diyorsun. Asya başını sallıyor. “Belki gelecek haber vermiyor. Belki birileri bizi deniyor.”\n\nKuzey iskelesinde sabah ilk feribot kalkacak. İçinde kardeşinin adı olan bir yolcu listesi telefonuna düşüyor.",
+      "Choices": [
+        {
+          "Text": "Vericiyi incelemeye gidin.",
+          "Next": "transmitter",
+          "Result": "Yayın ile iskelenin bağlantısını aramaya çıktınız.",
+          "Effects": {
+            "logic": 5
+          },
+          "SetFlags": [
+            "asya"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "İskeleyi şimdiden kapattırmayı dene.",
+          "Next": "warning",
+          "Result": "Belirsizlikte de önlem almayı seçtin.",
+          "Effects": {
+            "resolve": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "transmitter": {
+      "Title": "Kesilmiş hat",
+      "Text": "Eski verici binası paslı bir kilitle kapalı. İçeriden düzenli bir tık sesi geliyor. Kapının altına sıkışmış kâğıdı çekiyorsun: üzerinde senin el yazın var. “Anahtar taşın altında değil. Buna bir daha zaman harcama.”\n\nKâğıdın arkasında bir elektrik şeması çizili. Asya’ya göre bina kendi elektriğini üretmiyor; kıyıdaki acil durum hattından güç alıyor. Vericiyi kapatmak iskeleyi de karanlık bırakabilir.",
+      "Choices": [
+        {
+          "Text": "Şemayı takip et, hattı ayırmanın yolunu bul.",
+          "Next": "circuit",
+          "Result": "Tek bir düğmeye basmadan önce bağlantıları araştırdın.",
+          "Effects": {
+            "logic": 10
+          },
+          "SetFlags": [
+            "diagram"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Binaya gir ve çalışan cihazı bul.",
+          "Next": "inside",
+          "Result": "Zaman kaybetmeden kaynağa ulaştın.",
+          "Effects": {
+            "resolve": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "İnsanları uyarmak için radyoya dön.",
+          "Next": "warning",
+          "Result": "Açıklama bulmadan da harekete geçilebilir.",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "warning": {
+      "Title": "Henüz olmamış bir kaza",
+      "Text": "İskele görevlisi, gelecekteki bir kazayı gerekçe göstererek sefer iptal edemeyeceğini söylüyor. Sesi kaba değil, uykulu. “Somut bir arıza var mı?”\n\nElindeki kayıt, onun için bozuk bir ses dosyası. Senin için kardeşinin adı. Aradaki farkı öfkeyle kapatamıyorsun. Ama insanların hayatı yalnızca bir dosyaya bağlı kalmamalı.",
+      "Choices": [
+        {
+          "Text": "Asya’dan elektrik arızası için resmi kontrol iste.",
+          "Next": "inspection",
+          "Result": "Uyarını incelenebilir bir duruma dönüştürdün.",
+          "Effects": {
+            "logic": 10
+          },
+          "SetFlags": [
+            "inspection"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Gece yayınını açıp herkese anlat.",
+          "Next": "broadcast",
+          "Result": "İnsanların kararını kendilerinin vermesini istedin.",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [
+            "public"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "İskeleye gidip ilk yolcuları karşıla.",
+          "Next": "quay",
+          "Result": "Kendini haberin yanına koydun.",
+          "Effects": {
+            "resolve": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "circuit": {
+      "Title": "Şemadaki boşluk",
+      "Text": "Şemada verici ile acil durum aydınlatması aynı aküye bağlı. Ama eski depoda bir yedek hat var. Asya bütün gece çalışırsa iskeleyi karartmadan vericiyi ayırabilir.\n\nBir kablonun yanında kurşun kalemle yazılmış notu görüyorsun: “Bu yol işe yaradı. Bedelini unutma.” Notun altındaki tarih üç yıl sonrası.",
+      "Choices": [
+        {
+          "Text": "Yedek hattı kurmaya yardım et.",
+          "Next": "inside",
+          "Result": "Gelecekteki notu bir talimat değil, veri olarak kullandın.",
+          "Effects": {
+            "logic": 10
+          },
+          "SetFlags": [
+            "backup"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Önce Deniz’e notu anlat.",
+          "Next": "brother_again",
+          "Result": "Kardeşinin hangi bedeli bildiğini öğrenmek istedin.",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "inside": {
+      "Title": "Kendi sesinin odası",
+      "Text": "İçeride bir verici, bir mikrofon ve duvara asılı onlarca kâğıt var. Her kâğıt aynı gecenin farklı bir özetini anlatıyor. Bazılarında feribot iptal edilmiş, bazılarında yayın kesilmiş. Birinde yalnızca “Deniz döndü” yazıyor.\n\nMasadaki kulaklıktan kendi sesin geliyor: “Bu kez beni dinleme. Ben de senden önceki birinin notlarını okudum.”",
+      "Choices": [
+        {
+          "Text": "Notları karşılaştır, değişmeyen ayrıntıyı bul.",
+          "Next": "pattern",
+          "Result": "Kesinlik aramak yerine ortak deseni aradın.",
+          "Effects": {
+            "logic": 10
+          },
+          "SetFlags": [
+            "pattern"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Mikrofondan gelecekteki kendine soru sor.",
+          "Next": "future",
+          "Result": "Bir talimat yerine konuşma başlattın.",
+          "Effects": {
+            "resolve": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Deniz’i yeniden ara.",
+          "Next": "brother_again",
+          "Result": "Bu hikâyeyi tek başına çözemeyeceğini kabul ettin.",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "inspection": {
+      "Title": "Kırmızı mühür",
+      "Text": "Asya kuzey iskelesinin acil aydınlatmasında gerçek bir arıza buluyor. Bu, kaydın doğru olduğunu kanıtlamıyor; kontrol için somut bir neden yaratıyor. Görevli ilk seferi geçici olarak durduruyor.\n\nO sırada radyo kendiliğinden açılıyor. Bu defa yayında kazadan değil, kayıp bir elektrikçiden söz ediliyor. Asya kendi adını duyunca elindeki tornavidayı masaya bırakıyor.",
+      "Choices": [
+        {
+          "Text": "Asya’yı yalnız bırakma, vericiye birlikte gidin.",
+          "Next": "pattern",
+          "Result": "Birini kurtarmak için başkasını gözden çıkarmadın.",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [
+            "asya_safe"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Vericiyi uzaktan kapatmanın yolunu ara.",
+          "Next": "circuit",
+          "Result": "Yeni uyarıyı aynı bağlantılar üzerinden sınadın.",
+          "Effects": {
+            "logic": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Uyarıyı herkese açık yayına taşı.",
+          "Next": "broadcast",
+          "Result": "Bilginin yalnızca ikinizde kalmasını istemedin.",
+          "Effects": {
+            "resolve": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "brother_again": {
+      "Title": "Üç yılın içindeki sabah",
+      "Text": "Deniz “Ben o sabah kasabaya dönmedim,” diyor. “Ama sen beni geri getirmek için her defasında başka bir şeyi değiştirdin. Belki beni kurtarmaya çalışmıyorsun. Belki gitmiş olmamı kabul edemiyorsun.”\n\nDışarıda yağmur hafifliyor. Vericideki bütün notların, çözüm kadar özlemden de yazılmış olabileceğini düşünüyorsun. Deniz hattı açık tutuyor. Bir şey istemeni beklemiyor; konuşmanı bekliyor.",
+      "Choices": [
+        {
+          "Text": "Onu dönmeye zorlamayacağını söyle.",
+          "Next": "future",
+          "Result": "Birinin güvenliğini onun yerine karar vermekle karıştırmadın.",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [
+            "release"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Bu geceki tehlikeyi olduğu gibi anlat.",
+          "Next": "pattern",
+          "Result": "Onu gerçeğin dışında tutmadın.",
+          "Effects": {
+            "resolve": 5,
+            "empathy": 5
+          },
+          "SetFlags": [
+            "brother"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 3,
+      "Ending": ""
+    },
+    "pattern": {
+      "Title": "Değişmeyen şey",
+      "Text": "Notların her birinde kazanın saati değişiyor. Yolcu sayısı, hava, ilk arayan kişi bile değişiyor. Değişmeyen tek şey, senin son anda tek başına karar vermen.\n\nAsya kâğıtları sıraya diziyor. “Belki sorun hangi kararı verdiğin değil,” diyor. “Onu tek başına vermen.” Vericinin ekranında yeni bir dosya açılıyor: ORTAK_KAYIT.",
+      "Choices": [
+        {
+          "Text": "Bütün kayıtları ve belirsizlikleri halka açıkla.",
+          "Next": "broadcast",
+          "Result": "Bilginin sahibini değiştirdin.",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [
+            "shared"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Yedek hattı kullanarak vericiyi güvenle ayır.",
+          "Next": "switch",
+          "Result": "Teknik çözümü insanları koruyarak uygulamak istedin.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "backup",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Gelecekteki sesinle son kez konuş.",
+          "Next": "future",
+          "Result": "Cevabı kolaylaştırmadan dinledin.",
+          "Effects": {
+            "resolve": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 3,
+      "Ending": ""
+    },
+    "future": {
+      "Title": "Karşı taraftaki sen",
+      "Text": "“Sana ne yapacağını söyleyemem,” diyor sesin. “Çünkü ben bütün cevapları bildiğimi sandığım için buradayım.”\n\nHattın arkasında deniz sesi var. Aynı deniz ama daha uzaktan. “Birini kaybetmemek için zamanı durdurursan, onun seçebileceği her şeyi de durdurursun.” Sesin bunu bir bilgelik gibi değil, geç anlaşılan bir hata gibi söylüyor.",
+      "Choices": [
+        {
+          "Text": "Kaydı bir uyarı olarak yayımla; emre dönüştürme.",
+          "Next": "broadcast",
+          "Result": "İnsanlara korku değil bilgi vermeyi seçtin.",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Vericiyi ayır, sabahı kendi akışına bırak.",
+          "Next": "switch",
+          "Result": "Kontrol etmekle sorumluluk almayı ayırdın.",
+          "Effects": {
+            "resolve": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Kayıtlar arasındaki zaman farkını ölç.",
+          "Next": "measure",
+          "Result": "Son bir doğrulanabilir veri aradın.",
+          "Effects": {
+            "logic": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 3,
+      "Ending": ""
+    },
+    "broadcast": {
+      "Title": "Dinleyen kasaba",
+      "Text": "Mikrofonun kırmızı ışığı yanıyor. Bir mucize anlatmıyorsun. Bilinenleri, bilinmeyenleri, elektrik arızasını ve ilk seferin neden kontrol edilmesi gerektiğini söylüyorsun.\n\nTelefonlar çalmaya başlıyor. Biri doktor, biri servis şoförü, biri iskelenin gece bekçisi. Her biri küçük bir şey yapabilecek durumda. İlk kez haberin tek muhatabı sen değilsin.",
+      "Choices": [
+        {
+          "Text": "Bilgiyi açık tut, tahliyeyi görevlilerle koordine et.",
+          "Next": "ending_shared",
+          "Result": "Kasaba tek bir kahramana ihtiyaç duymadı.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "empathy",
+          "MinValue": 65
+        },
+        {
+          "Text": "Yayını sürdürürken Asya hattı ayırsın.",
+          "Next": "ending_ground",
+          "Result": "Birbirinizin yerini doldurmadan birlikte çalıştınız.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "backup",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "İskeledeki insanlara katıl.",
+          "Next": "quay",
+          "Result": "Mikrofondan sonra insanlarla yüz yüze geldin.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 3,
+      "Ending": ""
+    },
+    "measure": {
+      "Title": "Bir saniyelik yer",
+      "Text": "Dosyaları zaman çizelgesine koyunca farkı görüyorsun. Yayın geleceği göstermiyor; elektromanyetik bir arıza, aynı kaydı farklı saatlere taşıyor. Ama kayıtların içeriği neden değişiyor?\n\nBuna henüz cevabın yok. Yine de bütün gerçeği bilmeden düzeltebileceğin bir arıza var. Asya ölçümleri görünce gülümsüyor. “İşte bununla çalışabilirim.”",
+      "Choices": [
+        {
+          "Text": "Ölçümleri Asya’ya ver ve hattı ayırın.",
+          "Next": "ending_ground",
+          "Result": "Bilginin sınırlarını kabul ederek işe yaradın.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "logic",
+          "MinValue": 70
+        },
+        {
+          "Text": "Verileri yayımla, bağımsız inceleme iste.",
+          "Next": "ending_shared",
+          "Result": "Açıklamayı tek bir sesin elinde bırakmadın.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Vericiyi çalışır tutup incelemeyi sürdür.",
+          "Next": "ending_loop",
+          "Result": "Bir cevap daha almak için bir sabahı daha riske attın.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 4,
+      "Ending": ""
+    },
+    "quay": {
+      "Title": "08.09 · Kuzey iskelesi",
+      "Text": "İskelede insanlar bekliyor. Kimi iptale kızgın, kimi denize bakıyor. Deniz burada değil; telefonunda “Ben iyiyim” mesajı var.\n\nSaat 08.10 oluyor. Hiçbir şey olmuyor. Bu, hiçbir tehlike olmadığı anlamına gelebilir. Bir şeyleri değiştirdiğiniz anlamına da. Asya sana bakıyor. İkiniz de bütün ömrünüzü hangi açıklamanın doğru olduğunu bulmaya harcayabilirsiniz.",
+      "Choices": [
+        {
+          "Text": "İnsanların güvenliğini doğrula ve bu sabahı yaşamaya başla.",
+          "Next": "ending_morning",
+          "Result": "Kesinlik olmadan da güne devam ettin.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Bütün kayıtları paylaş, araştırmayı birlikte sürdürün.",
+          "Next": "ending_shared",
+          "Result": "Bilme isteğini ortak bir işe dönüştürdün.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "empathy",
+          "MinValue": 60
+        },
+        {
+          "Text": "Vericiye dön; bu kez daha fazlasını öğrenebilirsin.",
+          "Next": "ending_loop",
+          "Result": "Sonraki soruyu bu sabahın önüne koydun.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 4,
+      "Ending": ""
+    },
+    "switch": {
+      "Title": "Son düğme",
+      "Text": "Vericiye giden hattın anahtarı elinde. Yedek hat varsa iskele aydınlık kalacak. Yoksa görevlinin bütün alanı boşaltmasını beklemelisin. Kestirme bir çözümün bedeli başka birinin karanlığı olabilir.\n\nKulaklıktan son bir cümle geliyor: “Bu kez kaydı bitiren sen ol.”",
+      "Choices": [
+        {
+          "Text": "Yedek hatla güvenli biçimde kapat.",
+          "Next": "ending_ground",
+          "Result": "İnsanların güvenliğini bir deneyin önüne koydun.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "backup",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Tahliye tamamlanana kadar bekle, sonra kapat.",
+          "Next": "ending_morning",
+          "Result": "Yavaş davranmak bu kez bir kayıp değildi.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Son bir kayıt almak için açık bırak.",
+          "Next": "ending_loop",
+          "Result": "Merakın sabahın önüne geçti.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 4,
+      "Ending": ""
+    },
+    "ending_shared": {
+      "Title": "Ortak kayıt",
+      "Text": "Kayıtları kasabanın arşivine verdiniz. Bir üniversiteden ekip geldi, saatlerin bazıları açıklanabildi, bazı sesler açıklanamadı. Kimse bütün cevapları bulmuş gibi davranmadı.\n\nDeniz birkaç ay sonra ziyarete geldi. Onu istasyonda karşıladın; dönmesini sağlayan bir yayın yoktu. Kendi kararıyla gelmişti.\n\nGece radyosunun telefonları artık başka şeyler için de çalıyor. Bir iş arayan, bir şarkı isteyen, yalnızca ses duymak isteyen. Geleceği değiştirmek bazen bugünün dinleyicisini çoğaltmakmış.",
+      "Choices": [],
+      "Chapter": 4,
+      "Ending": "Ortak kayıt"
+    },
+    "ending_ground": {
+      "Title": "Toprak hattı",
+      "Text": "Verici kapandığında duvar saatiyle bilgisayar ilk kez aynı dakikayı gösterdi. Asya yerde oturup gülmeye başladı. Sen de oturdun. Bir mucizeyi çözmüş gibi değil, bütün gece çalışmış iki insan gibi yorulmuştunuz.\n\nİskele ışıkları sönmedi. İlk feribot kontrolün ardından kalktı. Deniz yolculuk yapmadı; o gün işteydi. Akşam seni arayıp sıradan bir gününü anlattı.\n\nGelecekteki sesini bir daha duymadın. Bazı akşamlar kendi sesinin bugüne yetmesi iyi geliyor.",
+      "Choices": [],
+      "Chapter": 4,
+      "Ending": "Toprak hattı"
+    },
+    "ending_morning": {
+      "Title": "Sıradan bir sabah",
+      "Text": "Saat 08.11’de bir martı simidini çaldı. Bütün gece geleceği düşünmüş biri için bundan daha gülünç bir sürpriz olamazdı.\n\nAsya feribota yetişmek için koştu. Deniz mesajına bir fotoğraf ekledi: penceresindeki küçük bitki çiçek açmıştı. Herkesin hayatı sen bakmıyorken de devam ediyordu.\n\nRadyoya döndün, mikrofonu açtın. “Günaydın,” dedin. Bu kez bir uyarı değil, bir selamdı.",
+      "Choices": [],
+      "Chapter": 4,
+      "Ending": "Sıradan bir sabah"
+    },
+    "ending_loop": {
+      "Title": "02.17 · Açık mikrofon",
+      "Text": "Bir sonraki kaydı açıyorsun. Bu kez bütün ayrıntıları bildiğinden eminsin. Kasabanın radyosunda geceyi kapatıyorsun. Dışarıda yağmur, içeride bozuk bir floresanın sesi var.\n\nSıradaki şarkı başlamadan önce hoparlörden kendi sesin geliyor. Ne söyleyeceğini biliyorsun. Yine de kapıya bakıyorsun.\n\nBelki bu kez başka birini dinlersin.",
+      "Choices": [],
+      "Chapter": 4,
+      "Ending": "Aynı frekans"
+    }
+  }
+}

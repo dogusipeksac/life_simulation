@@ -1,0 +1,401 @@
+[
+  {
+    "id": "job_portfolio_manager_1", "title": "Kırmızı Ekran", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:portfolio_manager"],
+    "description": "Sabah açılışta borsa yüzde yedi düştü ve ekranların hepsi kırmızı. Telefonda emekli bir müşteri, birikiminin yarısını kaybettiğini söyleyip ağlıyor ve her şeyi satmanı istiyor. Analizlerin düşüşün geçici olduğunu gösteriyor.",
+    "choices": [
+      {"id": "sell", "text": "Müşterinin isteğine uy, sat.", "effects": {"Happiness": -2, "Social": 1},
+       "result": "Kayıp kesinleşti. İki ay sonra piyasa toparlandığında müşteri seni bir daha aramadı."},
+      {"id": "calm", "text": "Onu sakinleştir, verileri birlikte incele.", "requires": ["MinStat:Social:50"], "effects": {"Social": 3, "Happiness": 3}, "set": ["portfolio_manager_calm"],
+       "result": "Bir saat konuştunuz ve satmamaya karar verdi. Altı ay sonra sana bir teşekkür kartı gönderdi."},
+      {"id": "buy", "text": "Kendi hesabına düşüşten alım yap.", "effects": {"Money": 30000, "Happiness": 1, "Health": -1},
+       "result": "Doğru tahmin ettin ve kazandın. Ama o emekli müşterinin sesi aklından çıkmadı."}
+    ]
+  },
+  {
+    "id": "job_portfolio_manager_2", "title": "İçeriden Bilgi", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:portfolio_manager", "MinCareerLevel:2"],
+    "description": "Bir akşam yemeğinde eski bir okul arkadaşın, şirketinin yarın bir satın alma duyuracağını ağzından kaçırıyor. Bu bilgiyle fonun bir gecede büyük kazanabilir. Telefonun cebinde ağırlaşıyor.",
+    "choices": [
+      {"id": "trade", "text": "Bilgiyi kullan.", "effects": {"Money": 150000, "Happiness": -6},
+       "result": "Fon rekor kırdı. Altı ay sonra bir düzenleyici kurum yazısı masana geldiğinde ellerin titredi."},
+      {"id": "ignore", "text": "Bilgiyi duymamış gibi davran.", "effects": {"Happiness": 2},
+       "result": "Ertesi gün haber çıktı ve hisse uçtu. Fırsatı kaçırdın ama gece rahat uyudun."},
+      {"id": "compliance", "text": "Uyum birimine bildir.", "effects": {"Happiness": 3, "Social": -2},
+       "result": "Arkadaşın seninle konuşmayı kesti. Şirketin seni bir dürüstlük ödülüne aday gösterdi."}
+    ]
+  },
+  {
+    "id": "job_portfolio_manager_3", "title": "Fon Müdürü", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:portfolio_manager", "MinCareerLevel:3"],
+    "description": "Bir silah üreticisinin hisseleri yükselişte ve fon kurulu portföye eklemek istiyor. Fon yatırımcılarının çoğu emekli öğretmenler. Getiri iyi olacak; ama senin adın da o kararın altında olacak.",
+    "choices": [
+      {"id": "add", "text": "Hisseleri ekle.", "effects": {"Money": 80000, "Happiness": -3},
+       "result": "Fon iyi performans gösterdi. Yatırımcı toplantısında bir öğretmen bu kararı sordu."},
+      {"id": "esg", "text": "Etik bir yatırım politikası öner.", "requires": ["MinStat:Education:70"], "effects": {"Happiness": 4, "Education": 2, "Money": 20000},
+       "result": "Kurulu ikna etmek aylar sürdü. Yeni politika, yeni bir yatırımcı kitlesi getirdi."},
+      {"id": "ask", "text": "Yıllar önce sakinleştirdiğin emekli müşteri gibi, yatırımcılara sor.", "requires": ["HasFlag:portfolio_manager_calm"], "effects": {"Happiness": 7, "Social": 4, "Money": 30000},
+       "result": "Bir anket yaptın; yüzde sekseni istemedi. Kurul, onların sesini dinlemek zorunda kaldı."}
+    ]
+  },
+
+  {
+    "id": "job_startup_founder_1", "title": "Son Üç Ay", "category": "Career", "minAge": 18, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:startup_founder"],
+    "description": "Kasada üç aylık para kaldı. Bir yatırımcı, şirketin yüzde kırkı karşılığında para vermeyi teklif ediyor; şartlar ağır. Kurucu ortağın mutfakta, gece yarısı, yorgun yüzünle bakışıyor.",
+    "choices": [
+      {"id": "accept", "text": "Teklifi kabul et.", "effects": {"Money": 50000, "Happiness": -2},
+       "result": "Şirket hayatta kaldı. Ama yönetim kurulu toplantılarında artık son sözü sen söylemiyordun."},
+      {"id": "bootstrap", "text": "Maaşları kes, müşteriyle büyü.", "effects": {"Money": -15000, "Happiness": 3, "Health": -2}, "set": ["startup_founder_lean"],
+       "result": "Üç ay boyunca makarna yediniz. Dördüncü ay ilk büyük müşteri imzaladı."},
+      {"id": "negotiate", "text": "Şartları pazarlık et.", "requires": ["MinStat:Social:55"], "effects": {"Money": 40000, "Happiness": 2, "Social": 2},
+       "result": "Yüzde yirmi beşe indirdin. Yatırımcı, «Sertsin ama adilsin,» dedi."}
+    ]
+  },
+  {
+    "id": "job_startup_founder_2", "title": "Kurucu Ortak", "category": "Career", "minAge": 20, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:startup_founder", "MinCareerLevel:2"],
+    "description": "Kurucu ortağın ve en yakın arkadaşın, şirketin yeni aşamasına ayak uyduramıyor. Yatırımcılar onun ayrılmasını istiyor. Onunla, üniversite yurdunda ilk çizimleri yaptığınız geceyi hatırlıyorsun.",
+    "choices": [
+      {"id": "fire", "text": "Ayrılmasını iste.", "effects": {"Money": 30000, "Happiness": -5, "Social": -3},
+       "result": "Şirket büyüdü. Arkadaşın düğününe seni çağırmadı."},
+      {"id": "protect", "text": "Onu koru, yatırımcılara direnç göster.", "effects": {"Happiness": 3, "Social": 2, "Money": -10000},
+       "result": "Bir yatırım turunu kaçırdın. Ama ikiniz hâlâ aynı masada çalışıyordunuz."},
+      {"id": "new_role", "text": "Ona yeteneğine uygun yeni bir rol öner.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 4, "Social": 3},
+       "result": "Ürün vizyonunun başına geçti ve parladı. Yatırımcılar sustu."}
+    ]
+  },
+  {
+    "id": "job_startup_founder_3", "title": "Satın Alma Teklifi", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:startup_founder", "MinCareerLevel:3"],
+    "description": "Bir teknoloji devi şirketini satın almak istiyor; teklif hayatını değiştirecek kadar büyük. Ama ürününün kapatılacağı ve ekibinin dağıtılacağı söyleniyor. Ofisin duvarında, ilk müşterinin teşekkür mektubu asılı.",
+    "choices": [
+      {"id": "sell", "text": "Sat.", "effects": {"Money": 600000, "Happiness": -2, "Social": -2},
+       "result": "Banka hesabındaki sıfırları saymak zordu. Ürünün, altı ay sonra sessizce kapatıldı."},
+      {"id": "grow", "text": "Reddet ve büyümeye devam et.", "effects": {"Happiness": 4, "Health": -2},
+       "result": "Zor yıllar seni bekliyordu. Ama ürün yaşadı ve ekip birlikte kaldı."},
+      {"id": "lean", "text": "Makarna aylarında birlikte dayandığın ekibe hisse dağıt, kararı birlikte verin.", "requires": ["HasFlag:startup_founder_lean"], "effects": {"Happiness": 8, "Social": 5, "Money": 300000},
+       "result": "Ekip, satışın daha iyi şartlarla yapılmasını istedi. Herkes zengin oldu; ürün bağımsız bir birim olarak yaşadı."}
+    ]
+  },
+
+  {
+    "id": "job_real_estate_agent_1", "title": "Rutubet", "category": "Career", "minAge": 19, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:real_estate_agent"],
+    "description": "Genç bir çift ilk evini almak için daireyi geziyor ve bayılıyor. Yatak odasının dolabının arkasında, ev sahibinin boyayla kapattığı bir rutubet lekesi var. Komisyonun, iki aylık kazancın kadar.",
+    "choices": [
+      {"id": "show", "text": "Rutubeti göster.", "effects": {"Happiness": 3, "Social": 2, "Money": -3000}, "set": ["real_estate_agent_honest"],
+       "result": "Çift fiyatı pazarlık etti ve evi aldı. Ev sahibi seni bir daha aramadı; çift ise üç arkadaşını gönderdi."},
+      {"id": "hide", "text": "Sessiz kal.", "effects": {"Money": 15000, "Happiness": -4},
+       "result": "Satış tamamlandı. İlk kışta çiftin mesajı geldi: «Dolabın arkasını biliyor muydunuz?»"},
+      {"id": "owner", "text": "Ev sahibinden önce tamir etmesini iste.", "requires": ["MinStat:Social:50"], "effects": {"Money": 8000, "Happiness": 2},
+       "result": "Ev sahibi homurdanarak tamir etti. Satış iki hafta gecikti ama temizdi."}
+    ]
+  },
+  {
+    "id": "job_real_estate_agent_2", "title": "Kiracı", "category": "Career", "minAge": 21, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:real_estate_agent", "MinCareerLevel:2"],
+    "description": "Bir yatırımcı, yaşlı bir kadının otuz yıldır kiracı olduğu binayı satın aldı ve onu çıkarmanı istiyor. Kadın, eşinin anılarıyla dolu dairesinden ayrılmak istemiyor. Yasal olarak yatırımcı haklı.",
+    "choices": [
+      {"id": "evict", "text": "Tahliye sürecini başlat.", "effects": {"Money": 20000, "Happiness": -5},
+       "result": "Kadın, kızının yanına taşındı. Kutularını taşırken sen merdivende durdun."},
+      {"id": "help", "text": "Kadına yakın ve uygun bir ev bul.", "effects": {"Happiness": 4, "Social": 3, "Money": 5000},
+       "result": "Bir sokak ötede, balkonlu bir daire buldun. Taşınma günü komşular yardıma geldi."},
+      {"id": "refuse", "text": "Bu işi almayacağını söyle.", "effects": {"Happiness": 2, "Money": -5000},
+       "result": "Yatırımcı başka bir ofise gitti. Sen yine de kadının kapısını çalıp ona haklarını anlattın."}
+    ]
+  },
+  {
+    "id": "job_real_estate_agent_3", "title": "Mahallenin Değişimi", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:real_estate_agent", "MinCareerLevel:3"],
+    "description": "Eski bir işçi mahallesi hızla değerleniyor; kafeler, galeriler ve fiyatlar yükseliyor. Ofisinin büyük bir dönüşüm projesinin satış yetkilisi olması teklif ediliyor. Mahallenin eski sakinleri birer birer gidiyor.",
+    "choices": [
+      {"id": "sell", "text": "Projeyi al, büyük satışlar yap.", "effects": {"Money": 200000, "Happiness": -2, "Social": -2},
+       "result": "Ofisin büyüdü, tabelan parladı. Mahallenin eski bakkalı kapandı."},
+      {"id": "social", "text": "Projede sosyal konut kontenjanı için bastır.", "requires": ["MinStat:Social:60"], "effects": {"Happiness": 4, "Social": 3, "Money": 60000},
+       "result": "Daire sayısının beşte biri eski sakinlere ayrıldı. Belki az, ama gerçek."},
+      {"id": "honest", "text": "Yıllar içinde dürüstlüğünle kazandığın müşteri ağını eski sakinlerin hakları için seferber et.", "requires": ["HasFlag:real_estate_agent_honest"], "effects": {"Happiness": 8, "Social": 5, "Money": 30000},
+       "result": "O ilk çiftin gönderdiği arkadaşlar, kendi arkadaşlarını getirdi. Bir mahalle kooperatifi kuruldu ve eski sakinler binalarından birini satın aldı."}
+    ]
+  },
+
+  {
+    "id": "job_hr_specialist_1", "title": "Mülakat", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:hr_specialist"],
+    "description": "Mülakattaki aday, pozisyon için en yetkin kişi. Ama yöneticin, kadının yakın zamanda evlendiğini öğrenince «Hamile kalır,» diyerek başkasını almanı istiyor. Aday, umutla yüzüne bakıyor.",
+    "choices": [
+      {"id": "fight", "text": "Adayı savun ve yöneticine bunun ayrımcılık olduğunu söyle.", "effects": {"Happiness": 4, "Social": -2}, "set": ["hr_specialist_fair"],
+       "result": "Yönetici geri adım attı. Aday işe alındı ve iki yıl sonra departmanın en iyisi oldu."},
+      {"id": "comply", "text": "Yöneticinin isteğine uy.", "effects": {"Happiness": -5},
+       "result": "Adaya bir ret e-postası yazdın. Yazarken, kendi annenin hikâyesi aklına geldi."},
+      {"id": "process", "text": "Puanlama sistemine göre karar verilmesini öner.", "requires": ["MinStat:Education:50"], "effects": {"Education": 2, "Happiness": 2},
+       "result": "Kör puanlama sistemi kuruldu ve aday birinci çıktı. Yönetici itiraz edemedi."}
+    ]
+  },
+  {
+    "id": "job_hr_specialist_2", "title": "İşten Çıkarma Listesi", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:hr_specialist", "MinCareerLevel:2"],
+    "description": "Şirket küçülüyor ve kırk kişilik bir liste önünde. İsimleri sen bildireceksin, birer birer, küçük bir odada. Listede, eşi kanser tedavisi gören bir mühendis de var.",
+    "choices": [
+      {"id": "follow", "text": "Listeyi olduğu gibi uygula.", "effects": {"Happiness": -5, "Health": -1},
+       "result": "Kırk görüşme, kırk sessizlik. O hafta eve gelip yemek yiyemedin."},
+      {"id": "argue", "text": "Mühendis için istisna iste.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 3, "Social": 2},
+       "result": "Yönetim kabul etti; listeden başka biri çıkarıldı. Bu sefer de o kişinin hikâyesini öğrendin."},
+      {"id": "support", "text": "Herkes için kariyer danışmanlığı ve kıdem paketi için bastır.", "effects": {"Happiness": 2, "Social": 3, "Money": -5000},
+       "result": "Paketler biraz iyileşti. Ayrılanlardan bazıları sana teşekkür e-postası attı."}
+    ]
+  },
+  {
+    "id": "job_hr_specialist_3", "title": "Şirket Kültürü", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:hr_specialist", "MinCareerLevel:3"],
+    "description": "İK direktörü olarak şirketin kültürünü yeniden yazma fırsatın var. CEO, «performans kültürü» istiyor: her yıl en düşük yüzde onu çıkarma. Çalışanların anketleri ise tükenmişlik çığlıkları atıyor.",
+    "choices": [
+      {"id": "rank", "text": "CEO'nun sistemini uygula.", "effects": {"Money": 40000, "Happiness": -4},
+       "result": "Performans grafikleri yükseldi. İstifa oranı da."},
+      {"id": "wellbeing", "text": "Esnek çalışma ve gelişim planları öner.", "requires": ["MinStat:Social:60"], "effects": {"Happiness": 4, "Social": 3},
+       "result": "CEO kuşkuyla bir yıl denemeye razı oldu. Yıl sonunda verimlilik de mutluluk da arttı."},
+      {"id": "fair", "text": "Yıllar önce savunduğun o adayı, artık bir direktör olarak, CEO'ya sunum yaparken dinlet.", "requires": ["HasFlag:hr_specialist_fair"], "effects": {"Happiness": 8, "Social": 4},
+       "result": "Kendi hikâyesini anlattı: neredeyse işe alınmayan biri olarak. CEO sistemi rafa kaldırdı."}
+    ]
+  },
+
+  {
+    "id": "job_logistics_manager_1", "title": "Liman Grevi", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:logistics_manager"],
+    "description": "Büyük bir müşterinin bayram öncesi siparişleri limanda bekliyor ve liman işçileri grevde. Müşteri her saat arıyor. Bir aracı, grev kırıcı işçilerle konteynerleri çıkarabileceğini söylüyor.",
+    "choices": [
+      {"id": "scab", "text": "Aracıyı kullan.", "effects": {"Money": 15000, "Happiness": -4, "Social": -2},
+       "result": "Konteynerler çıktı. Liman işçileri bir sonraki ay senin şirketinin yüklerini en sona bıraktı."},
+      {"id": "air", "text": "Kritik ürünleri uçakla getir.", "cost": 10000, "effects": {"Happiness": 2, "Education": 2}, "set": ["logistics_manager_plan"],
+       "result": "Pahalıydı ama müşteri bayrama yetişti. Bir yedek tedarik planı yazmanın vakti gelmişti."},
+      {"id": "honest", "text": "Müşteriye durumu dürüstçe anlat.", "effects": {"Social": 2, "Happiness": 1},
+       "result": "Müşteri kızdı ama anladı. Grev bitince ilk konteyner onun oldu."}
+    ]
+  },
+  {
+    "id": "job_logistics_manager_2", "title": "Şoförlerin Saati", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:logistics_manager", "MinCareerLevel:2"],
+    "description": "Yeni teslimat algoritması, kurye şoförlerinin günde on dört saat çalışmasını öngörüyor. Teslimat süreleri düşecek, müşteriler mutlu olacak. Bir şoför, öğle arasında araçta uyurken gördün.",
+    "choices": [
+      {"id": "apply", "text": "Algoritmayı uygula.", "effects": {"Money": 20000, "Happiness": -4},
+       "result": "Teslimatlar hızlandı. Bir ay sonra bir şoför kaza yaptı."},
+      {"id": "limit", "text": "Çalışma süresine üst sınır koy.", "effects": {"Happiness": 4, "Social": 3, "Money": -5000},
+       "result": "Teslimat süreleri biraz uzadı. Şoförlerin istifa oranı yarıya düştü."},
+      {"id": "optimize", "text": "Rotaları şoförlerle birlikte yeniden planla.", "requires": ["MinStat:Education:55"], "effects": {"Education": 3, "Happiness": 3},
+       "result": "Şoförler algoritmanın bilmediği kestirmeleri gösterdi. Hem süre hem mesai düştü."}
+    ]
+  },
+  {
+    "id": "job_logistics_manager_3", "title": "Küresel Kriz", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:logistics_manager", "MinCareerLevel:3"],
+    "description": "Bir kanalda karaya oturan dev bir gemi, dünya ticaretini durdurdu. Şirketinin bütün tedarik zinciri kilitlendi ve fabrikalar parça bekliyor. Yönetim kurulu senden bir mucize bekliyor.",
+    "choices": [
+      {"id": "reroute", "text": "Afrika'yı dolanan pahalı bir rota seç.", "effects": {"Money": -20000, "Happiness": 2, "Health": -2},
+       "result": "Parçalar üç hafta geç geldi ama geldi. Rakiplerin hâlâ bekliyordu."},
+      {"id": "wait", "text": "Bekle; kriz geçecek.", "effects": {"Happiness": -2},
+       "result": "Kriz geçti ama fabrikalar on gün durdu. Yönetim kurulu toplantısı uzun sürdü."},
+      {"id": "plan", "text": "Yıllar önceki grevden sonra yazdığın yedek tedarik planını devreye sok.", "requires": ["HasFlag:logistics_manager_plan"], "effects": {"Happiness": 8, "Money": 40000, "Social": 3},
+       "result": "Yerel tedarikçiler bir günde harekete geçti. Fabrikalar tek bir gün bile durmadı; plan bir iş dergisine kapak oldu."}
+    ]
+  },
+
+  {
+    "id": "job_brand_strategist_1", "title": "Slogan", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:brand_strategist"],
+    "description": "Bir gazlı içecek markası, «sağlıklı» kelimesini kampanyaya koymanı istiyor. Ürün şeker dolu. Brief'te, hedef kitle olarak «gençler» yazıyor.",
+    "choices": [
+      {"id": "use", "text": "Kelimeyi kullan; yasal sınırlarda kal.", "effects": {"Money": 20000, "Happiness": -3},
+       "result": "Kampanya ödül aldı. Bir beslenme derneği onu «yılın en yanıltıcı reklamı» seçti."},
+      {"id": "fun", "text": "«Sağlıklı» yerine «eğlence» üzerine kurgula.", "effects": {"Money": 15000, "Happiness": 3, "Education": 1}, "set": ["brand_strategist_honest"],
+       "result": "Müşteri önce emin değildi. Kampanya dürüstlüğüyle konuşuldu ve iyi sattı."},
+      {"id": "decline", "text": "Projeyi reddet.", "effects": {"Happiness": 2, "Money": -5000},
+       "result": "Ajans müşteriyi kaybetmedi; başka biri yaptı. Sen bir müzenin kampanyasına geçtin."}
+    ]
+  },
+  {
+    "id": "job_brand_strategist_2", "title": "Kriz Tweeti", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:brand_strategist", "MinCareerLevel:2"],
+    "description": "Yönettiğin markanın sosyal medya hesabından, bir stajyer yanlışlıkla kişisel ve kırıcı bir mesaj paylaştı. Gece yarısı, mesaj yüz bin kez paylaşıldı. Marka sahibi stajyerin hemen kovulmasını istiyor.",
+    "choices": [
+      {"id": "fire", "text": "Stajyeri kov, açıklamayı yap.", "effects": {"Happiness": -3, "Money": 5000},
+       "result": "Kriz iki günde söndü. Stajyerin adı internette bir aylığına bir meme oldu."},
+      {"id": "own", "text": "Hatayı marka olarak üstlen ve özür dile.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 4, "Social": 3},
+       "result": "Özür mesajın da paylaşıldı, bu sefer övgüyle. Stajyer, sana el yazısıyla bir mektup yazdı."},
+      {"id": "humor", "text": "Durumu mizahla geçiştir.", "effects": {"Social": 1, "Happiness": -1},
+       "result": "Bazıları güldü, çoğu kızdı. Kriz bir hafta daha sürdü."}
+    ]
+  },
+  {
+    "id": "job_brand_strategist_3", "title": "Markanın Ruhu", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:brand_strategist", "MinCareerLevel:3"],
+    "description": "Yüz yıllık bir aile şirketi seni markayı «gençleştirmek» için tuttu. Yönetim kurulu logoyu, adı, her şeyi değiştirmek istiyor. Şirketin kurucusunun torunu ise eski tabelayı sana gösteriyor.",
+    "choices": [
+      {"id": "rebrand", "text": "Radikal bir yeniden markalaşma yap.", "effects": {"Money": 60000, "Happiness": 1},
+       "result": "Yeni logo modern ve keskin. Eski müşteriler markayı tanımadı, yeniler ise hızla geldi."},
+      {"id": "heritage", "text": "Mirası öne çıkaran bir kampanya kur.", "effects": {"Happiness": 4, "Social": 2, "Money": 30000},
+       "result": "Eski fotoğraflar, el yazısı tarifler. Gençler, büyükannelerinin hikâyelerini paylaşmaya başladı."},
+      {"id": "honest", "text": "Kariyerinin ilk kampanyasındaki gibi dürüst ol: ürünün ne olduğunu, ne olmadığını anlat.", "requires": ["HasFlag:brand_strategist_honest"], "effects": {"Happiness": 7, "Social": 3, "Money": 40000},
+       "result": "«Yüz yıldır aynı, değişmeyeceğiz,» dedin. Bu slogan, gençleştirme kampanyalarından daha genç göründü."}
+    ]
+  },
+
+  {
+    "id": "job_accountant_1", "title": "Bir Kuruşluk Fark", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:accountant"],
+    "description": "Gece on bir, beyanname teslimine bir saat var ve hesaplar tutmuyor. Fark küçük, ama nereden geldiğini bilmiyorsun. Patronun, «Yuvarla, kimse bakmaz,» diyor.",
+    "choices": [
+      {"id": "find", "text": "Farkı bulana kadar bakmaya devam et.", "effects": {"Health": -1, "Education": 3, "Happiness": 2}, "set": ["accountant_precise"],
+       "result": "Teslimden on dakika önce buldun: tekrarlanmış bir fatura. Arkasında, bir çalışanın küçük ama sistematik bir hırsızlığı vardı."},
+      {"id": "round", "text": "Yuvarla ve teslim et.", "effects": {"Happiness": -2},
+       "result": "Beyanname zamanında gitti. Fark ertesi ay biraz daha büyüdü."},
+      {"id": "extend", "text": "Ek süre için başvur.", "effects": {"Money": -2000, "Education": 2},
+       "result": "Ceza ödendi ama hesaplar temiz çıktı."}
+    ]
+  },
+  {
+    "id": "job_accountant_2", "title": "Yaratıcı Muhasebe", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:accountant", "MinCareerLevel:2"],
+    "description": "En büyük müşterin, kişisel harcamalarını şirket gideri olarak göstermeni istiyor; tatilleri, araba, düğün. Bürosunun gelirinin yarısı ondan geliyor. «Herkes yapıyor,» diyor.",
+    "choices": [
+      {"id": "do", "text": "Yap.", "effects": {"Money": 30000, "Happiness": -5},
+       "result": "Müşteri mutlu, sen değil. Bir vergi denetimi mektubu geldiğinde ellerin titredi."},
+      {"id": "refuse", "text": "Reddet ve yasal alternatifleri göster.", "effects": {"Happiness": 3, "Money": -15000},
+       "result": "Müşteri gitti. Sen, dürüst muhasebeci olarak tavsiye edilmeye başladın."},
+      {"id": "explain", "text": "Riskleri ve cezaları ona ayrıntılı göster.", "requires": ["MinStat:Education:60"], "effects": {"Education": 2, "Happiness": 2, "Money": 5000},
+       "result": "Rakamları görünce vazgeçti. Kalan işleri seninle yasal yoldan yaptı."}
+    ]
+  },
+  {
+    "id": "job_accountant_3", "title": "Büronun Geleceği", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:accountant", "MinCareerLevel:3"],
+    "description": "Muhasebe yazılımları, büronun yaptığı işin yarısını otomatik yapıyor. Genç çalışanların işini kaybetmekten korkuyor. Bir yazılım şirketi, müşteri portföyünü satın almak istiyor.",
+    "choices": [
+      {"id": "sell", "text": "Portföyü sat.", "effects": {"Money": 150000, "Happiness": -2, "Social": -2},
+       "result": "Çalışanlarının yarısı yazılım şirketine geçti, yarısı gitti. Sen erken emekliliği düşünmeye başladın."},
+      {"id": "advise", "text": "Büroyu danışmanlığa dönüştür.", "effects": {"Happiness": 4, "Education": 2, "Money": 20000},
+       "result": "Rakamları yazılım yaptı, anlamını sizler anlattınız. Müşteriler artık sizden strateji istiyordu."},
+      {"id": "precise", "text": "Gençlere o bir kuruşluk farkı nasıl bulduğunu öğret: makinenin göremediği şeyi.", "requires": ["HasFlag:accountant_precise"], "effects": {"Happiness": 7, "Social": 3, "Money": 30000},
+       "result": "Büron, adli muhasebede uzmanlaştı. Yazılımların kaçırdığı yolsuzlukları siz buldunuz."}
+    ]
+  },
+
+  {
+    "id": "job_ecommerce_specialist_1", "title": "İndirim Gecesi", "category": "Career", "minAge": 19, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ecommerce_specialist"],
+    "description": "Büyük indirim gecesi, saat 00.01 ve site trafikten çöktü. Siparişler kayboluyor, müşteriler sosyal medyada öfkeli. Patron, «Fiyatları biraz yükselt, sonra indirim yap,» önerisini hatırlatıyor; geçen yıl öyle yapmışlar.",
+    "choices": [
+      {"id": "fix", "text": "Teknik ekiple siteyi ayağa kaldır.", "effects": {"Health": -2, "Education": 2, "Happiness": 2}, "set": ["ecommerce_specialist_honest"],
+       "result": "Saat üçte site düzeldi. Kaybolan siparişler için herkese özür kuponu gönderdin."},
+      {"id": "fake", "text": "Fiyat oyununu uygula.", "effects": {"Money": 10000, "Happiness": -3},
+       "result": "Satışlar iyiydi. Bir tüketici sitesi, fiyat geçmişinin ekran görüntülerini paylaştı."},
+      {"id": "extend", "text": "İndirimi bir gün uzat ve duyur.", "effects": {"Social": 2, "Happiness": 2},
+       "result": "Müşteriler sakinleşti. İkinci gün sakin ve verimli geçti."}
+    ]
+  },
+  {
+    "id": "job_ecommerce_specialist_2", "title": "Sahte Yorumlar", "category": "Career", "minAge": 21, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ecommerce_specialist", "MinCareerLevel:2"],
+    "description": "Rakip satıcı, binlerce sahte beş yıldızlı yorumla listelerin en üstünde. Bir ajans, sana da aynı hizmeti ucuza veriyor. Senin gerçek yorumların az ama dürüst.",
+    "choices": [
+      {"id": "buy", "text": "Sahte yorum satın al.", "cost": 5000, "effects": {"Money": 25000, "Happiness": -4},
+       "result": "Satışlar uçtu. Platform bir tarama yaptığında hesabın üç ay askıya alındı."},
+      {"id": "report", "text": "Rakibi platforma bildir.", "effects": {"Happiness": 2, "Social": 1},
+       "result": "Platform yavaş davrandı ama sonunda rakibin yorumlarını sildi."},
+      {"id": "real", "text": "Müşterilerinden gerçek yorum iste, karşılığında küçük bir teşekkür gönder.", "effects": {"Social": 3, "Happiness": 3, "Money": 5000},
+       "result": "Yorumlar yavaş geldi ama samimiydi. Müşteriler fotoğraflarıyla birlikte yazdı."}
+    ]
+  },
+  {
+    "id": "job_ecommerce_specialist_3", "title": "Kendi Mağazan", "category": "Career", "minAge": 25, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:ecommerce_specialist", "MinCareerLevel:3"],
+    "description": "Yıllarca başkalarının mağazalarını büyüttün. Şimdi kendi markanı kurmak için hem bilgin hem birikimin var. Hangi ürünü satacağına sen karar vereceksin.",
+    "choices": [
+      {"id": "dropship", "text": "Hızlı ve ucuz ürünlerle stoksuz satış.", "effects": {"Money": 60000, "Happiness": -1},
+       "result": "Kâr marjı iyiydi. Ürün iadeleri ve şikâyetler de."},
+      {"id": "artisan", "text": "Yerel zanaatkârların ürünlerini sat.", "effects": {"Happiness": 5, "Social": 4, "Money": 20000},
+       "result": "Köylerdeki dokumacılar, çömlekçiler dünyaya açıldı. Her paketle bir hikâye gitti."},
+      {"id": "honest", "text": "İndirim gecesinde verdiğin sözü markana dönüştür: «Sahte indirim yok, her zaman aynı fiyat.»", "requires": ["HasFlag:ecommerce_specialist_honest"], "effects": {"Happiness": 7, "Social": 3, "Money": 40000},
+       "result": "Kampanya yapmayan bir mağaza, kampanya kadar konuşuldu. Müşteriler sana güvendi."}
+    ]
+  },
+
+  {
+    "id": "job_insurance_adjuster_1", "title": "Sel Basmış Ev", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:insurance_adjuster"],
+    "description": "Sel basmış bir evin bodrumunda, diz boyu çamurun içindesin. Yaşlı bir çift, poliçelerinin seli kapsamadığını bilmiyor. Teknik olarak hasarın bir kısmı «boru patlaması» olarak da yazılabilir.",
+    "choices": [
+      {"id": "strict", "text": "Poliçeye harfiyen uy.", "effects": {"Happiness": -4, "Money": 3000},
+       "result": "Talep reddedildi. Çift bodrumu kendi elleriyle temizledi."},
+      {"id": "fair", "text": "Gerçekten boru kaynaklı olan hasarı dürüstçe ayır ve öde.", "effects": {"Happiness": 3, "Education": 2}, "set": ["insurance_adjuster_fair"],
+       "result": "Hasarın üçte biri ödendi. Çift, en azından mutfaklarını yeniledi."},
+      {"id": "stretch", "text": "Hepsini boru patlaması olarak yaz.", "effects": {"Happiness": 2, "Social": 1},
+       "result": "Çift kurtuldu. Bir iç denetimde raporun sorgulandı ve uyarı aldın."}
+    ]
+  },
+  {
+    "id": "job_insurance_adjuster_2", "title": "Sahte Kaza", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:insurance_adjuster", "MinCareerLevel:2"],
+    "description": "Bir trafik kazası dosyasında, fotoğraflardaki hasar tutarsız; birinin kasıtlı çarptığını düşünüyorsun. Talep eden, üç çocuklu ve işini yeni kaybetmiş biri. Kanıtın kesin değil.",
+    "choices": [
+      {"id": "investigate", "text": "Derin bir soruşturma başlat.", "effects": {"Education": 2, "Happiness": -1},
+       "result": "Sahtecilik kanıtlandı ve adam ceza aldı. Çocuklarının ne olduğunu düşünmeden edemedin."},
+      {"id": "pay", "text": "Şüpheni not et ama öde.", "effects": {"Happiness": 1, "Money": -2000},
+       "result": "Adam parayı aldı. Bir yıl sonra benzer bir dosyada adı yeniden geçti."},
+      {"id": "talk", "text": "Adamla yüz yüze konuş.", "requires": ["MinStat:Social:50"], "effects": {"Social": 3, "Happiness": 3},
+       "result": "Gözleri doldu ve itiraf etti. Talebi geri çekti; sen de onu bir istihdam programına yönlendirdin."}
+    ]
+  },
+  {
+    "id": "job_insurance_adjuster_3", "title": "Deprem Dosyaları", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:insurance_adjuster", "MinCareerLevel:3"],
+    "description": "Büyük bir depremden sonra binlerce dosya önünde. Şirket, ödemeleri yavaşlatman ve mümkün olan her talebi reddetmen için baskı yapıyor. Çadırlarda yaşayan insanlar bekliyor.",
+    "choices": [
+      {"id": "slow", "text": "Şirketin talimatına uy.", "effects": {"Money": 50000, "Happiness": -6},
+       "result": "Şirket kâr açıkladı. Bir çadır kentteki öfkeli kalabalığın fotoğrafı, şirketin logosuyla gazetelerdeydi."},
+      {"id": "fast", "text": "Ekibini hızlı ödeme için seferber et.", "effects": {"Happiness": 4, "Health": -3, "Social": 3},
+       "result": "Üç ayda dosyaların çoğu kapandı. Şirketin itibarı, rakiplerinin aksine yükseldi."},
+      {"id": "fair", "text": "Yıllar önce sel basmış o evde yaptığın gibi: her dosyada adil olanı ayır, gerekçesini yaz.", "requires": ["HasFlag:insurance_adjuster_fair"], "effects": {"Happiness": 8, "Social": 4, "Education": 2},
+       "result": "Gerekçeli raporların sektörde standart oldu. Ne şirket batırıldı ne de insanlar yalnız bırakıldı."}
+    ]
+  },
+
+  {
+    "id": "job_procurement_specialist_1", "title": "Yılbaşı Hediyesi", "category": "Career", "minAge": 22, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:procurement_specialist"],
+    "description": "Bir tedarikçi, ihale haftasında kapına pahalı bir saat gönderdi; kutunun içinde «Yeni yılınız kutlu olsun» notu var. Şirket politikası net ama herkesin bu hediyeleri aldığı biliniyor. Saat, bir aylık maaşın kadar.",
+    "choices": [
+      {"id": "return", "text": "Hediyeyi iade et ve kayda geçir.", "effects": {"Happiness": 3, "Social": -1}, "set": ["procurement_specialist_clean"],
+       "result": "Tedarikçi bozuldu. Ama ihaleyi gerçekten en iyi teklif kazandı."},
+      {"id": "keep", "text": "Sakla; kimse bilmeyecek.", "effects": {"Money": 20000, "Happiness": -4},
+       "result": "Saati hiç takamadın. İhalede o tedarikçiyi seçtiğinde, nedenini kendine bile açıklayamadın."},
+      {"id": "charity", "text": "Bir hayır kurumuna bağışla ve tedarikçiye bildir.", "effects": {"Happiness": 4, "Social": 2},
+       "result": "Tedarikçi mesajı aldı. Bir daha hediye göndermedi."}
+    ]
+  },
+  {
+    "id": "job_procurement_specialist_2", "title": "Ucuz Tedarikçi", "category": "Career", "minAge": 24, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:procurement_specialist", "MinCareerLevel:2"],
+    "description": "Yeni bir tedarikçi, piyasanın yüzde otuz altında fiyat veriyor. Fabrikasına yaptığın ziyarette, işçilerin yaşının küçük olduğunu fark ettin. Bütçe hedefin bu fiyatla tutuyor.",
+    "choices": [
+      {"id": "sign", "text": "Sözleşmeyi imzala.", "effects": {"Money": 25000, "Happiness": -6},
+       "result": "Bütçe hedefi tuttu ve prim aldın. Bir belgesel ekibi o fabrikayı çektiğinde, ekrana bakamadın."},
+      {"id": "audit", "text": "Bağımsız bir denetim iste.", "effects": {"Happiness": 3, "Education": 2},
+       "result": "Denetim çocuk işçiliğini doğruladı. Sözleşme iptal edildi ve fabrika kapatıldı."},
+      {"id": "improve", "text": "Koşulları iyileştirmeyi sözleşme şartı yap.", "requires": ["MinStat:Social:55"], "effects": {"Happiness": 4, "Social": 3},
+       "result": "Fiyat biraz yükseldi. Ama fabrikada çocukların yerini yetişkinler aldı ve okul servisi kuruldu."}
+    ]
+  },
+  {
+    "id": "job_procurement_specialist_3", "title": "Büyük İhale", "category": "Career", "minAge": 30, "maxAge": 64, "weight": 15,
+    "conditions": ["HasCareer:procurement_specialist", "MinCareerLevel:3"],
+    "description": "Bir hastane inşaatının dev ihalesi senin masanda. Bir yönetim kurulu üyesi, akrabasının şirketinin kazanmasını «tavsiye ediyor». Teklifler kapalı zarflarda bekliyor.",
+    "choices": [
+      {"id": "favor", "text": "Tavsiyeye uy.", "effects": {"Money": 100000, "Happiness": -7},
+       "result": "İnşaat iki yıl gecikti ve bütçe ikiye katlandı. Hastanenin açılış töreninde sen yoktun."},
+      {"id": "merit", "text": "En iyi teklifi seç, ne olursa olsun.", "effects": {"Happiness": 4, "Social": -2},
+       "result": "Kurul üyesi sana soğuk davrandı. Hastane zamanında ve bütçesinde açıldı."},
+      {"id": "clean", "text": "Yıllar önce iade ettiğin saatten beri tuttuğun hediye kayıtlarını ve tavsiyeyi denetim kuruluna sun.", "requires": ["HasFlag:procurement_specialist_clean"], "effects": {"Happiness": 8, "Social": 3},
+       "result": "Kayıtların, kurulun itiraz edemeyeceği kadar düzenliydi. İhale şeffaf bir şekilde yapıldı ve kurul üyesi istifa etti."}
+    ]
+  }
+]

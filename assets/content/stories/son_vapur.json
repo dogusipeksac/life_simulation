@@ -1,0 +1,669 @@
+{
+  "Id": "son_vapur",
+  "Title": "Son Vapur",
+  "Subtitle": "Bir gece. Bir zarf. Üç ihtimal.",
+  "Description": "Babanın kayboluşundan on yıl sonra, son vapurda onun el yazısıyla bir not buluyorsun. Gerçeği açığa çıkarmakla aileni korumak aynı şey olmayabilir.",
+  "Genre": "Şehir gizemi",
+  "Color": "507f91",
+  "Symbol": "≈",
+  "ProductId": "",
+  "Start": "start",
+  "FreeChapters": 1,
+  "Chapters": [
+    "Zarf",
+    "Kayıt",
+    "Sabaha karşı"
+  ],
+  "StatNames": {
+    "insight": "Sezgi",
+    "trust": "Güven",
+    "courage": "Cesaret"
+  },
+  "ContentNote": "Kurgusal olaylar ve karakterler. Kayıp, aile çatışmaları ve zor kararlar içerir.",
+  "Nodes": {
+    "start": {
+      "Title": "23.40 · Karaköy",
+      "Text": "Yağmur vapurun camında ince yollar açıyor. Büfeci, çayının altına eski bir zarf bırakıyor. Üstünde yalnızca adın var. İçinden çıkan kâğıtta babanın el yazısını hemen tanıyorsun: “Son seferde arka güverteye gel. Beni arama; neyi sakladığımı bul.”\n\nBaban on yıl önce kayboldu. Polis dosyası kapanalı çok oldu. Kâğıdın köşesindeyse bugünün tarihi var. Telefonun titriyor. Ablan İpek: “Eve geliyor musun?”",
+      "Choices": [
+        {
+          "Text": "İpek’e zarfın fotoğrafını gönder.",
+          "Next": "ipek",
+          "Result": "Bu sırrı tek başına taşımamayı seçtin.",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Zarfı cebine koy, arka güverteye çık.",
+          "Next": "deck",
+          "Result": "Önce kendi gözlerinle görmek istiyorsun.",
+          "Effects": {
+            "courage": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Büfeciye zarfı kimin bıraktığını sor.",
+          "Next": "buffet",
+          "Result": "Küçük bir ayrıntının peşine düştün.",
+          "Effects": {
+            "insight": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "ipek": {
+      "Title": "Telefondaki sessizlik",
+      "Text": "İpek fotoğrafı görünce aramayı kesiyor. Sonra tek cümle yazıyor: “Mavi atkılı birini görürsen onunla gitme.”\n\nOnu arıyorsun. “Bunu nereden biliyorsun?” diye sorunca nefes alışını duyuyorsun. “Çünkü aynı zarfı dün ben aldım.” Aranızdaki on yıllık sessizliğin, yalnızca acıdan ibaret olmadığını ilk kez anlıyorsun.",
+      "Choices": [
+        {
+          "Text": "Benden ne saklıyorsun diye sor.",
+          "Next": "deck",
+          "Result": "İpek, babanın eski iş arkadaşı Leyla’dan söz etti.",
+          "Effects": {
+            "insight": 5
+          },
+          "SetFlags": [
+            "leyla"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Bu gece birbirimize güvenelim de.",
+          "Next": "deck",
+          "Result": "İpek konumunu paylaşmanı istedi.",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [
+            "sister"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "buffet": {
+      "Title": "Büfecinin hatırladığı",
+      "Text": "Adam tezgâhın altından bir anahtarlık çıkarıyor. “Zarfı bırakan kadın bunu unuttu. Kır saçlıydı, acele etmiyordu. Her şeyi bildiği hâlde birine nasıl anlatacağını bulamayan insanlar gibi duruyordu.”\n\nAnahtarlıkta küçük bir tersane logosu var. Babanın çalıştığı yerin logosu. Arkasında, elinizde kalan son fotoğraftaki dolabın numarası: 17.",
+      "Choices": [
+        {
+          "Text": "Anahtarlığı al, güverteye çık.",
+          "Next": "deck",
+          "Result": "Dolap 17 aklında kaldı.",
+          "Effects": {
+            "insight": 5
+          },
+          "SetFlags": [
+            "key"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Kadının adını bilip bilmediğini sor.",
+          "Next": "deck",
+          "Result": "Büfeci kadının adının Leyla olduğunu hatırladı.",
+          "Effects": {
+            "trust": 5
+          },
+          "SetFlags": [
+            "leyla"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "deck": {
+      "Title": "Arka güverte",
+      "Text": "Mavi atkılı kadın seni korkuluğun yanında bekliyor. Başını çevirince yüzündeki yorgunluk dikkatini çekiyor. “Ben Leyla. Babanla çalışıyordum. Onun adına konuşmaya hakkım yok. Ama sustuğum her gün senin adına bir şey seçtim.”\n\nSana su geçirmez bir kayıt cihazı uzatıyor. “Bunu kıyıya varmadan dinle. İstersen sonra beni polise götür.”",
+      "Choices": [
+        {
+          "Text": "Cihazı al ama Leyla’dan uzak dur.",
+          "Next": "recording",
+          "Result": "Kontrolü elinde tutmayı seçtin.",
+          "Effects": {
+            "courage": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "On yıl boyunca neden sustuğunu sor.",
+          "Next": "leyla",
+          "Result": "Cevabı duymadan hüküm vermedin.",
+          "Effects": {
+            "trust": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Anahtarlığı göster.",
+          "Next": "locker",
+          "Result": "Leyla, dolap numarasını görünce konuşmaya başladı.",
+          "Effects": {
+            "insight": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "key",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "leyla": {
+      "Title": "On yılın ağırlığı",
+      "Text": "“Bir iş kazası değildi,” diyor Leyla. “Güvenlik raporlarını değiştirmişlerdi. Baban belgeleri çıkardı. Sonra üç kişi ortadan kayboldu. İkisi bir daha bulunamadı. Babanın yaşadığını söyleyemem; yalnızca son kaydını benden sakladıklarını öğrendim.”\n\nSesi titriyor. “Korktum. Sonra korkunun kendisi hayatım oldu.” Haklı çıkmaya çalışmıyor. Bu, öfkeni daha da zor bir yere koyuyor.",
+      "Choices": [
+        {
+          "Text": "Kaydı birlikte dinleyin.",
+          "Next": "recording",
+          "Result": "Leyla’nın yanında kalmasına izin verdin.",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [
+            "witness"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Kaydı tek başına dinle.",
+          "Next": "recording",
+          "Result": "Ona inanmakla onu affetmeyi ayırdın.",
+          "Effects": {
+            "courage": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "locker": {
+      "Title": "Dolap 17",
+      "Text": "Leyla anahtarlığı avucunda çeviriyor. “Cihazın kopyası o dolaptaydı. Ama fotoğrafı saklayan kişi ablandı.”\n\nİpek’e mesaj atıyorsun. Cevabı hemen geliyor: “Babam o fotoğrafın arkasına bir tarih yazmıştı. Sana söylememi istemedi. Seni koruduğumu sandım.” Fotoğrafın arkasındaki tarih kaybolduğu gün değil; raporun değiştirildiği gün.",
+      "Choices": [
+        {
+          "Text": "İpek’ten fotoğrafı göndermesini iste.",
+          "Next": "recording",
+          "Result": "Tarihi doğrulayacak ikinci bir parçan var.",
+          "Effects": {
+            "insight": 10
+          },
+          "SetFlags": [
+            "date"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Şimdi kaydı dinle.",
+          "Next": "recording",
+          "Result": "Geçmişi bir kez daha ertelemiyorsun.",
+          "Effects": {
+            "courage": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 1,
+      "Ending": ""
+    },
+    "recording": {
+      "Title": "Babanın sesi",
+      "Text": "Cihazdan önce motor uğultusu, sonra babanın sesi geliyor. On yıldır rüyanda bile bu kadar net duymamıştın.\n\n“Bunu dinliyorsan başaramadım. Beni bir kahraman yapmayın. Raporları ilk değiştirenlerden biri bendim. Sonra geri dönmeye çalıştım. Defterde herkesin adı var; benimki de.”\n\nKayıt burada kesiliyor. Babanı ararken, hiç tanımadığın bir adamın sorumluluğunu buldun.",
+      "Choices": [
+        {
+          "Text": "Kayıttaki arka plan seslerini dikkatle dinle.",
+          "Next": "sound",
+          "Result": "Bir anons ve bir saat sesi seçtin.",
+          "Effects": {
+            "insight": 10
+          },
+          "SetFlags": [
+            "sound"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "İpek’i ara ve kaydı ona dinlet.",
+          "Next": "sister",
+          "Result": "Gerçeğin ikinizin arasında bölünmesine izin vermedin.",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Leyla’dan defteri iste.",
+          "Next": "notebook",
+          "Result": "Sorularını doğrudan sordun.",
+          "Effects": {
+            "courage": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "sound": {
+      "Title": "Eksik dört dakika",
+      "Text": "Kulaklığın sesini biraz açınca bir anons duyuyorsun: “Bakım havuzu boşaltılacak.” Dosyanın süresiyle cihazın ekranındaki süre arasında dört dakika var. Kayıt kesilmemiş; bir bölümü silinmiş.\n\nLeyla ekrana bakıyor. “Bunu ben yapmadım.” İnanmak için bir nedenin var, kuşkulanmak için de. Güven, bu gece kesinlik anlamına gelmiyor.",
+      "Choices": [
+        {
+          "Text": "Orijinal dosyanın peşine düş.",
+          "Next": "notebook",
+          "Result": "Eksik kayıt daha sonra işe yarayabilir.",
+          "Effects": {
+            "insight": 5
+          },
+          "SetFlags": [
+            "missing"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Elindeki kanıtı yedekle.",
+          "Next": "backup",
+          "Result": "Kusurlu da olsa kaydı korumayı seçtin.",
+          "Effects": {
+            "courage": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "sister": {
+      "Title": "İpek’in cevabı",
+      "Text": "İpek ağlamıyor. “Onun iyi biri olduğuna inanmak, onsuz yaşamama yardım etti. Yaşamak için kurduğum hikâyeyi şimdi yıkmam mı gerekiyor?”\n\nSöyleyecek kolay bir cümlen yok. Camdaki yansımanda babanın kaşlarını görüyorsun. Bir insanın yüzünü taşımak, yaptıklarını taşımak zorunda olmak mı?",
+      "Choices": [
+        {
+          "Text": "İyi anılarımız da gerçek, yaptıkları da de.",
+          "Next": "notebook",
+          "Result": "İpek sabaha kadar yanında olacağını söyledi.",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [
+            "sister"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Önce defteri bulmalıyız de.",
+          "Next": "notebook",
+          "Result": "Cevabı daha sonraya bıraktın.",
+          "Effects": {
+            "courage": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "notebook": {
+      "Title": "İsimlerin defteri",
+      "Text": "Leyla küçük, siyah bir defter çıkarıyor. Sayfalarda yalnızca isimler değil, ödemeler, vardiyalar, güvenlik testleri var. Son sayfada babanın imzasının yanında başka bir imza görüyorsun: annenin.\n\n“Annen muhasebeciydi,” diyor Leyla. “Paranın nereye gittiğini ilk o gördü. Sonra size başka bir hayat kurdu. Bunun için onu yargılayamam. Ama senden saklamayı sürdüremem.”",
+      "Choices": [
+        {
+          "Text": "Anneni ara.",
+          "Next": "mother",
+          "Result": "Onun hikâyesini de duymayı seçtin.",
+          "Effects": {
+            "trust": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Belgeleri güvenli bir yere kopyala.",
+          "Next": "backup",
+          "Result": "Kanıtı kişisel hesaplaşmanın önüne koydun.",
+          "Effects": {
+            "insight": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Leyla’ya defteri neden şimdi verdiğini sor.",
+          "Next": "why_now",
+          "Result": "Zamanlamayı sorguladın.",
+          "Effects": {
+            "courage": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "mother": {
+      "Title": "Açık kalan hat",
+      "Text": "Annen telefonu ikinci çalışta açıyor. Nerede olduğunu sormuyor. “Artık biliyorsun,” diyor.\n\n“Sizi korumak için her şeyi yapardım diye düşündüm. Sonra ‘her şey’in içine yalan da girdi. Defterdeki imza benim. Bir banka transferini durdurdum; sonra durdurduğumu inkâr ettim. Bunun başkalarına neye mal olduğunu bilmiyordum.”\n\nHattı açık tutuyor. Bu kez konuşmayı senin bitirmeni bekliyor.",
+      "Choices": [
+        {
+          "Text": "Sabah birlikte ifade verelim de.",
+          "Next": "backup",
+          "Result": "Annen gelmeyi kabul etti.",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [
+            "mother"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Bu gece tek başıma karar vermeliyim de.",
+          "Next": "backup",
+          "Result": "Bir sınır çizdin.",
+          "Effects": {
+            "courage": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "why_now": {
+      "Title": "Son seferin nedeni",
+      "Text": "“Tersane arşivi yarın yıkıma gidiyor,” diyor Leyla. “Ben de orada çalışmayı bırakıyorum. Babanın cihazı üç hafta önce bir kutudan çıktı. Yıllarca cesaret edemedim; üç haftadır bir zarf hazırlıyorum.”\n\nBüyük sırların arkasında bazen tek bir büyük plan değil, birbirini büyüten küçük kaçışlar oluyor. Leyla’nınki onu masum yapmıyor; anlaşılır yapıyor.",
+      "Choices": [
+        {
+          "Text": "İfadesini kayda al.",
+          "Next": "backup",
+          "Result": "Leyla adını ve bildiklerini kameraya söyledi.",
+          "Effects": {
+            "insight": 10
+          },
+          "SetFlags": [
+            "witness"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Birlikte kıyıya çıkacağınızı söyle.",
+          "Next": "backup",
+          "Result": "Onun da kaçmasını istemedin.",
+          "Effects": {
+            "trust": 5
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 2,
+      "Ending": ""
+    },
+    "backup": {
+      "Title": "Bağlantı kuruluyor",
+      "Text": "Belgeleri telefonuna aktarırken ekranda bir mesaj beliriyor. Bilinmeyen numara: “Aileni düşün. Defterin bir fiyatı var.”\n\nVapur iskeleye yaklaşıyor. İpek konumunu soruyor, Leyla kıyıya bakıyor. Belgeleri bir gazeteciye, savcılığa ya da yalnızca ailene gönderebilirsin. Her yol birini incitecek. Hiçbir şey yapmamak da bir yol; yalnızca bedelini başkaları ödeyebilir.",
+      "Choices": [
+        {
+          "Text": "Bir gazeteciye şifreli kopya gönder.",
+          "Next": "journalist",
+          "Result": "Bir başka tanık daha yarattın.",
+          "Effects": {
+            "courage": 10
+          },
+          "SetFlags": [
+            "press"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Belgeleri yalnızca savcılığa teslim et.",
+          "Next": "courthouse",
+          "Result": "Önce resmi kaydı oluşturmayı seçtin.",
+          "Effects": {
+            "insight": 10
+          },
+          "SetFlags": [
+            "legal"
+          ],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "İpek’le buluş, kararı birlikte verin.",
+          "Next": "meeting",
+          "Result": "Ailenin sesini dinlemek istedin.",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 3,
+      "Ending": ""
+    },
+    "journalist": {
+      "Title": "Haberi bekleyen kişi",
+      "Text": "Gazeteci, defterin tamamını yayımlamak istemiyor. “İsimler kadar bağlam da lazım. Bu insanların bazıları tanık olabilir.” Sana babanın dosyasından bir tarama gönderiyor. Kayıp tutanağındaki tarih, fotoğraftakiyle uyuşmuyor.\n\nGerçeği duyurmak, en yüksek sesle konuşmak demek değil. Elindeki hikâyenin eksik olduğunu kabul etmek de cesaret istiyor.",
+      "Choices": [
+        {
+          "Text": "Kaydı ve tarih uyuşmazlığını doğrulat.",
+          "Next": "ending_truth",
+          "Result": "Haberi bir yarışa çevirmedin.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "insight",
+          "MinValue": 65
+        },
+        {
+          "Text": "Leyla’nın da tanıklık etmesini sağla.",
+          "Next": "ending_witness",
+          "Result": "Tek bir kayıttan çok, birden fazla ses yarattın.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "witness",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Elindeki belgelerle soruşturmanın açılmasını iste.",
+          "Next": "ending_open",
+          "Result": "Bütün cevapları bilmeden soruyu görünür kıldın.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 3,
+      "Ending": ""
+    },
+    "courthouse": {
+      "Title": "Sabah nöbeti",
+      "Text": "Adliyenin önündeki simitçi kepengini yeni açıyor. Elinde sabaha kadar koruduğun defter var. Sıradan bir dosya kâğıdı gibi görünüyor. İçindeyse bütün çocukluğun yer değiştirdi.\n\nİpek yanında beliriyor. “Ben de geldim.” Biraz ileride anneni görüyorsun. Geldiyse, bu onun kararı. Senin kararın kapıdan girip girmemek.",
+      "Choices": [
+        {
+          "Text": "Ailenle ve Leyla’yla birlikte içeri gir.",
+          "Next": "ending_witness",
+          "Result": "Gerçeği birlikte taşımaya başladınız.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "trust",
+          "MinValue": 65
+        },
+        {
+          "Text": "Defteri ve kayıt kopyasını teslim et.",
+          "Next": "ending_open",
+          "Result": "Soruşturmayı kendi adınla başlattın.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Eksik dört dakikanın incelenmesini özellikle iste.",
+          "Next": "ending_truth",
+          "Result": "Bir ayrıntı dosyanın yönünü değiştirdi.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "missing",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 3,
+      "Ending": ""
+    },
+    "meeting": {
+      "Title": "İskelede üç bardak çay",
+      "Text": "İpek seni ilk gördüğünde sarılmıyor; önce gerçekten orada olup olmadığına bakıyor. Sonra sıkıca tutunuyor.\n\n“Bunu yayımlarsan ailemiz değişecek,” diyor. “Yayımlamazsan da değişti zaten.” Üçüncü çayı, baban için söylemediğinizi ikiniz de biliyorsunuz. Sabah gelecek kişi annen. Bu kez masada onun için de yer var.",
+      "Choices": [
+        {
+          "Text": "Ailenle yüzleş, belgeleri sonra birlikte teslim edin.",
+          "Next": "ending_witness",
+          "Result": "İyileşmeyi gizlemekle karıştırmadınız.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "trust",
+          "MinValue": 65
+        },
+        {
+          "Text": "Belgeleri teslim et; yakınlaşmayı zamana bırak.",
+          "Next": "ending_open",
+          "Result": "Sınırlarınla birlikte gerçeği de korudun.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        },
+        {
+          "Text": "Defteri sakla ve bu sabah aileni seç.",
+          "Next": "ending_silence",
+          "Result": "Bazı soruların peşinden gitmemeyi seçtin.",
+          "Effects": {},
+          "SetFlags": [],
+          "NeedFlag": "",
+          "NeedStat": "",
+          "MinValue": 0
+        }
+      ],
+      "Chapter": 3,
+      "Ending": ""
+    },
+    "ending_truth": {
+      "Title": "Eksik dört dakika",
+      "Text": "Kayıt uzmanı silinen bölümün bir kısmını kurtardı. Babanın sesi geri geldiğinde bir itiraf daha duyuldu: kayıp tutanağı, başka bir işçinin ölümüyle aynı dosyada değiştirilmişti.\n\nBabanın nerede olduğunu hâlâ bilmiyorsun. Ama başkalarının başına ne geldiği artık yalnızca bir söylenti değil. Tersanenin kapısına ilk kez bir anma levhası kondu. Üstündeki isimlerden biri senin bildiğin bir soyadı.\n\nKapanış sandığın şey, bir sorunun doğru biçimde sorulmasıymış.",
+      "Choices": [],
+      "Chapter": 3,
+      "Ending": "Gerçeğin izi"
+    },
+    "ending_witness": {
+      "Title": "Birlikte taşınan şeyler",
+      "Text": "İfade vermek hiçbirinizi bir anda rahatlatmadı. Annen bazı geceler konuşmadı; İpek bazen sana kızdı. Leyla dosyaya kendi adıyla girdi.\n\nAylar sonra ilk kez aynı masada yemek yediniz. Babanın boş sandalyesi hakkında kimse bir şey söylemedi. O boşluğun ne anlama geldiğine artık tek bir yalan karar vermiyordu.\n\nAile bazen aynı hikâyeye inanmak değil; birbirinin gerçeğini dinlemeyi sürdürmekti.",
+      "Choices": [],
+      "Chapter": 3,
+      "Ending": "Açık kalan hat"
+    },
+    "ending_open": {
+      "Title": "Dosya yeniden açıldı",
+      "Text": "Defteri teslim ettiğin gün hayatında bir müzik çalmadı. Haberler hemen çıkmadı. İnsanlar işlerine, vapurlar seferlerine devam etti.\n\nBir ay sonra telefonuna bir dosya numarası geldi. Küçücük bir sayı dizisi. On yıldır kapalı duran bir kapının artık bir numarası vardı.\n\nO akşam aynı vapura bindin. Bu kez arka güvertede birini beklemedin. Kıyıların ışıklarına baktın. Cevapsız sorularla da yaşamaya devam edilebileceğini ilk kez düşündün.",
+      "Choices": [],
+      "Chapter": 3,
+      "Ending": "Yeni bir dosya"
+    },
+    "ending_silence": {
+      "Title": "Çekmecedeki zarf",
+      "Text": "Defter evdeki çekmecede kaldı. Annenle yeniden konuştun, İpek’le bir tatil planladın. Dışarıdan bakınca hayatın düzeldi.\n\nYalnızca vapur anonslarını duyunca elin cebine gidiyor. Artık orada bir zarf yok. Yine de bazen kâğıdın köşesini hissediyorsun.\n\nBu sabah aileni seçtin. Başka insanların sabahlarına ne olduğunu bilmemeyi de seçtin. Hikâyenin son cümlesi, kararının huzurlu olduğu anlamına gelmiyor.",
+      "Choices": [],
+      "Chapter": 3,
+      "Ending": "Saklanan sayfa"
+    }
+  }
+}

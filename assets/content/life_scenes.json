@@ -1,0 +1,6026 @@
+[
+  {
+    "Id": "lived_first_nights",
+    "Title": "Evdeki ilk geceler",
+    "Text": "Gece lambası açık. {caregiver} bir yandan seni sakinleştiriyor, bir yandan ertesi günün işini düşünüyor. Bu ilk dönemde kararları senin adına bakım verenlerin alıyor.",
+    "Domain": "childhood",
+    "MinAge": 0,
+    "MaxAge": 1,
+    "Priority": 80,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "share",
+        "Text": "Bakımı yakınlarla paylaşsınlar.",
+        "Result": "Evin her köşesinde farklı bir tanıdık ses var. Bakım verenlerin biraz dinlenebildi.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 3,
+        "PartnerBond": 0,
+        "Next": "lived_care_network",
+        "DelayDays": 90
+      },
+      {
+        "Id": "routine",
+        "Text": "Sakin bir bakım düzeni kursunlar.",
+        "Result": "Günlerin aynı seslerle, aynı kucakla başlaması sana güven verdi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 3
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "support",
+        "Text": "Uygun bakım desteği arasınlar.",
+        "Result": "Yardım istemek ilk başta zor geldi. Sonra hiç kimsenin her şeyi tek başına yapamayacağını fark ettiler.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2,
+          "Social": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [
+          "care_network"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_care_network",
+    "Title": "Kapıyı çalan komşu",
+    "Text": "İlk haftalarda yardım isteyen bakım verenin, bu kez kapıya gelen komşunun da desteğe ihtiyacı olduğunu öğreniyor. Yakınlık yalnızca yardım almakla kurulmuyor.",
+    "Domain": "family",
+    "MinAge": 0,
+    "MaxAge": 4,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "reciprocate",
+        "Text": "Küçük bir yardımla karşılık versinler.",
+        "Result": "Evde yardımlaşmanın dili yerleşmeye başladı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "community": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "boundary",
+        "Text": "Güçleri yettiği kadarını açıkça söylesinler.",
+        "Result": "Herkesi memnun etmek yerine sürdürülebilir bir destek kurdular.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_return_work",
+    "Title": "Bakım verenin işe dönüyor",
+    "Text": "Evin sabah sesi değişiyor. {caregiver} işe dönecek; seni kimin karşılayacağı konuşuluyor. Gelir ihtiyacıyla birlikte geçirilen zaman arasında kolay bir denge yok.",
+    "Domain": "family",
+    "MinAge": 1,
+    "MaxAge": 3,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "relative",
+        "Text": "Güvendikleri bir yakınla bakım planlasınlar.",
+        "Result": "Tanıdık bir kucak vardı; bakımın bütün yükünü tek kişiye bırakmamayı da öğrendiler.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 3,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "daycare",
+        "Text": "Uygun bir kreş araştırıp geçişi yavaş yapsınlar.",
+        "Result": "Yeni yüzlere alışman zaman aldı. Bir gün kapıdan girerken el salladın.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "part_time",
+        "Text": "Bir süre çalışma saatlerini azaltsınlar.",
+        "Result": "Evde daha çok zaman vardı; bütçede daha az hareket alanı.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_tiny_independence",
+    "Title": "Kendi ayakkabın",
+    "Text": "Ayakkabını kendin giymek istiyorsun. Dışarıda sizi bekleyen biri var. Bakım verenin saati gösteriyor; sen bağcığı bırakmıyorsun.",
+    "Domain": "childhood",
+    "MinAge": 2,
+    "MaxAge": 5,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "try",
+        "Text": "Denemene zaman tanısın.",
+        "Result": "Bağcık yamuktu ama gülümsemen kocamandı.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "autonomy": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "together",
+        "Text": "Birini sen, birini o yapsın.",
+        "Result": "Yardım almakla kendi başına yapmanın aynı oyunda yeri olduğunu öğrendin.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "later",
+        "Text": "Şimdi yardım etsin, evde tekrar deneyin.",
+        "Result": "Yetiştiniz. Akşam halının üstünde yeniden denemek için vakit ayırdınız.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_play_conflict",
+    "Title": "Kırmızı kamyon",
+    "Text": "Parkta iki çocuk aynı oyuncağı istiyor. Ağlamak, elinden çekmek ve beklemek arasında ilk büyük dünyanı yaşıyorsun. Bakım verenlerin oyuna nasıl eşlik edecek?",
+    "Domain": "childhood",
+    "MinAge": 3,
+    "MaxAge": 5,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "turns",
+        "Text": "Sırayla oynamayı göstersinler.",
+        "Result": "Sıranın yeniden geldiğini görmek beklemeyi biraz kolaylaştırdı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "name",
+        "Text": "Öfkeni anlamlandırmana yardım etsinler.",
+        "Result": "İstemek ile her istediğine sahip olmak arasındaki ilk farkı öğrendin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "other",
+        "Text": "Birlikte başka bir oyun kursunlar.",
+        "Result": "Başka bir çocuğu da oyuna kattınız. Kamyonun yanına kâğıttan bir yol geldi.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "autonomy": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_school_gate",
+    "Title": "Okul kapısındaki el",
+    "Text": "Okulun kapısında {caregiver} elini biraz daha sıkı tutuyor. İçeride herkes birini arıyor. İlk günün nasıl geçeceği yalnızca bildiğin harflere bağlı değil.",
+    "Domain": "school",
+    "MinAge": 6,
+    "MaxAge": 7,
+    "Priority": 90,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "hello",
+        "Text": "Yanındaki çocuğa merhaba de.",
+        "Result": "Adını söylediğinde bir masa artık daha az yabancıydı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 4
+        },
+        "Qualities": {
+          "community": 5
+        },
+        "Set": [
+          "school_friend"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "observe",
+        "Text": "Önce etrafı izle, sonra öğretmene sor.",
+        "Result": "Sınıfın düzenini anlamak sana güven verdi.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "hug",
+        "Text": "Bakım verenine sarıl, sonra içeri gir.",
+        "Result": "Vedayı aceleye getirmemek içeri girmene yardım etti.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_school_friend",
+    "Title": "Yanındaki boş sandalye",
+    "Text": "Dün yanında oturan arkadaşın bugün sessiz. Teneffüste kimsenin yanına gitmiyor. Her zaman ne söyleyeceğini bilmek zorunda değilsin.",
+    "Domain": "school",
+    "MinAge": 6,
+    "MaxAge": 11,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "school_friend"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "invite",
+        "Text": "Oyununa katılmasını iste.",
+        "Result": "Bir davet her şeyi çözmedi ama yalnız kalmak zorunda olmadığını gösterdi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "listen",
+        "Text": "Yanında oturup dinle.",
+        "Result": "Bazen birinin sözünü tamamlamadan beklemek arkadaşlığı büyüttü.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "family": 2,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "teacher",
+        "Text": "Öğretmenden destek iste.",
+        "Result": "Sorunu kendi başına taşımamayı öğrendin.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_move_child",
+    "Title": "Kutuların arasındaki oda",
+    "Text": "Ailende iş koşulları değişti. Eşyalar kolilere giriyor; yeni bir semt, belki yeni bir okul konuşuluyor. Senin fikrin de ilk kez masada soruluyor.",
+    "Domain": "family",
+    "MinAge": 7,
+    "MaxAge": 13,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "stay_touch",
+        "Text": "Eski arkadaşlarınla görüşme planı yap.",
+        "Result": "Uzaklaşmak vedalaşmak zorunda olmak değildi; düzenli haberleşmek emek istedi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [
+          "moved_city"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "lived_old_friend",
+        "DelayDays": 90
+      },
+      {
+        "Id": "new",
+        "Text": "Yeni yerde bir kulübe katılmak iste.",
+        "Result": "İlk gün çekindin. Bir hafta sonra kapıyı sen açtın.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2,
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [
+          "moved_city"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "feel",
+        "Text": "Gitmek istemediğini dürüstçe anlat.",
+        "Result": "Karar değişmedi ama duyguların duyuldu. Taşınma günü odandaki son resmi sen indirdin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 1
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [
+          "moved_city"
+        ],
+        "Remove": [],
+        "FamilyBond": 3,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_old_friend",
+    "Title": "Ekrandaki eski arkadaş",
+    "Text": "Eski arkadaşın başka birinin yanında gülüyor. Aranızın açıldığını sanmak kolay. Hayatınızın aynı hızda değişmediğini fark ediyorsun.",
+    "Domain": "relationship",
+    "MinAge": 8,
+    "MaxAge": 25,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "call",
+        "Text": "Özlediğini söyle, bir görüşme ayarla.",
+        "Result": "Konuşmanın ilk dakikası tutuktu. Sonra eski bir şaka geri geldi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "accept",
+        "Text": "Yeni arkadaşlıklarını da kurmaya devam et.",
+        "Result": "Eski bağı tek bağın yapmadan korumayı denedin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_first_talent",
+    "Title": "Defterin kenarındaki çizim",
+    "Text": "Öğretmenin defterindeki çizimleri fark ediyor. Evde herkes bunun hobi olarak kalmasını düşünüyor. Bir ilginin mesleğe dönüşmesi şart mı?",
+    "Domain": "school",
+    "MinAge": 8,
+    "MaxAge": 14,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "practice",
+        "Text": "Düzenli pratik için zaman ayır.",
+        "Result": "Çizimler gelişti. Bir şeyi sevmenin görünmeyen kısmı tekrar etmekmiş.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5
+        },
+        "Set": [
+          "creative_habit"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "lived_creative_return",
+        "DelayDays": 730
+      },
+      {
+        "Id": "share",
+        "Text": "Ailene bir çizimini hediye et.",
+        "Result": "Resmin buzdolabında yer bulması, ilk küçük sergin oldu.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 3,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "explore",
+        "Text": "Başka ilgilerini de dene.",
+        "Result": "Kendini tek bir yetenekle tanımlamayı aceleye getirmedin.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_bully",
+    "Title": "Gülüşmelerin öbür tarafı",
+    "Text": "Sınıf grubunda bir çocuğun fotoğrafı izinsiz paylaşılıyor. Kimse ilk dur diyen olmak istemiyor. Ekranda gördüğün kişi yarın yanında oturacak.",
+    "Domain": "school",
+    "MinAge": 10,
+    "MaxAge": 17,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "object",
+        "Text": "Paylaşımı durdurmalarını iste.",
+        "Result": "Herkes seni alkışlamadı. Ama yalnız kalan kişi yalnız olmadığını gördü.",
+        "Cost": 0,
+        "Stats": {
+          "Social": -1,
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 6,
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "adult",
+        "Text": "Güvendiğin bir yetişkinden yardım iste.",
+        "Result": "Sorunun adı kondu. Yardım istemek ispiyonculuk olmak zorunda değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "private",
+        "Text": "Fotoğrafı paylaşma, arkadaşına özelden destek ol.",
+        "Result": "Gösterişli bir hareket değildi; yine de birine iyi geldi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "community": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_family_budget_child",
+    "Title": "Bu ay alamıyoruz",
+    "Text": "İstediğin kursun ücretini duyunca evde kısa bir sessizlik oluyor. Ailen bu ay karşılayamayacağını söylüyor. Bunun senin değerinden ayrı bir şey olduğunu anlamak zaman alıyor.",
+    "Domain": "family",
+    "MinAge": 9,
+    "MaxAge": 16,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "free",
+        "Text": "Ücretsiz bir seçenek araştırın.",
+        "Result": "Bir belediye atölyesinde başka bir kapı açıldı.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [
+          "resourceful"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "save",
+        "Text": "Küçük bir birikim planı yapın.",
+        "Result": "Beklemek hevesini bitirmedi; hedefini somutlaştırdı.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 1
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [
+          "budget_plan"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "talk",
+        "Text": "Hayal kırıklığını suçlamadan anlat.",
+        "Result": "Ailen hemen çözüm bulamadı ama bu konuşmayı birlikte taşıdınız.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 4,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_privacy_teen",
+    "Title": "Kapalı bir kapı",
+    "Text": "Odanın kapısını kapatmak istiyorsun. Ailen bunu uzaklaşmak gibi algılıyor. Seninse bazen yalnız kalmaya ihtiyacın var.",
+    "Domain": "family",
+    "MinAge": 13,
+    "MaxAge": 17,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "boundary",
+        "Text": "Birlikte sınırlar konuş.",
+        "Result": "Kapı çalınmaya başladı. Sen de evdeki sorumluluklarını daha açık konuşmayı öğrendin.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 5,
+          "family": 2
+        },
+        "Set": [
+          "family_boundaries"
+        ],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "ritual",
+        "Text": "Kendi zamanınla aile zamanını ayır.",
+        "Result": "Akşam yemeği ortak, sonraki saatler sana ait oldu.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "journal",
+        "Text": "Önce ne istediğini bir deftere yaz.",
+        "Result": "Yalnızlık isteğini bir kırgınlıktan ayırabildin.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_exam_path",
+    "Title": "Tek bir sınav mı?",
+    "Text": "Tercih kılavuzu masada. Meslek eğitimi, üniversite ve doğrudan çalışma farklı kapılar açıyor. Çevrendekiler bir yolu başarıyla eş anlamlı kullanıyor; sen ne istediğini anlamaya çalışıyorsun.",
+    "Domain": "school",
+    "MinAge": 16,
+    "MaxAge": 19,
+    "Priority": 90,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "university",
+        "Text": "Üniversite hedefi için çalışma planı yap.",
+        "Result": "Hedefini seçtin. Bu yolun hem emek hem maddi destek gerektirdiğini de gördün.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 5,
+          "Happiness": -1
+        },
+        "Qualities": {
+          "purpose": 5
+        },
+        "Set": [
+          "university_goal"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "vocational",
+        "Text": "Meslek eğitimi ve uygulamalı işleri araştır.",
+        "Result": "Bir ustayla geçirdiğin gün, bir diplomanın dışında da öğrenme olduğunu gösterdi.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "autonomy": 5,
+          "purpose": 3
+        },
+        "Set": [
+          "vocational_path"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "gap",
+        "Text": "Çalışıp düşünmek için süre ayır.",
+        "Result": "Hızlı karar vermek yerine kendine bir takvim koydun.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 5
+        },
+        "Set": [
+          "gap_year"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_first_boundary",
+    "Title": "Herkes geliyor",
+    "Text": "Arkadaşların bir gece planı yapıyor. İstemediğin bir şeyi denemen için üstüne geliyorlar. Grubun içinde kalmakla kendine kulak vermek aynı anda mümkün mü?",
+    "Domain": "relationship",
+    "MinAge": 15,
+    "MaxAge": 20,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "no",
+        "Text": "İstemediğini net söyle.",
+        "Result": "Bazıları bozuldu, bazıları rahatladı. Bir sınırın da arkadaşlık hakkında bilgi verdi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "autonomy": 6
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "alternative",
+        "Text": "Sana uyan başka bir plan öner.",
+        "Result": "Başka bir masada eğlenmek de mümkünmüş.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "leave",
+        "Text": "Güvendiğin birine haber verip ayrıl.",
+        "Result": "O geceyi bir açıklama borcuna dönüştürmeden bitirdin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_adult_papers",
+    "Title": "Kendi imzan",
+    "Text": "İlk kez kendi adına bir belge imzalıyorsun. Kimlikteki yaş değişti diye her şeyi bilmen bekleniyor. Eve dönünce hâlâ bir şeyleri sormak istiyorsun.",
+    "Domain": "personal",
+    "MinAge": 18,
+    "MaxAge": 21,
+    "Priority": 95,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "learn",
+        "Text": "Sözleşmeyi oku, anlamadığını sor.",
+        "Result": "İmzanın yanına bir soru işareti koyabilmek önemli bir alışkanlık oldu.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "autonomy": 5
+        },
+        "Set": [
+          "reads_contracts"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "budget",
+        "Text": "Gelir ve giderlerini yazmaya başla.",
+        "Result": "Küçük rakamlar ilk kez bir hayat planına dönüştü.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [
+          "budget_plan"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "ask",
+        "Text": "Ailenden destek iste ama kararı kendin ver.",
+        "Result": "Yardım almak büyümeyi geçersiz kılmadı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "family": 3,
+          "autonomy": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_first_rent",
+    "Title": "Anahtarın ağırlığı",
+    "Text": "İlk ev ilanlarına bakıyorsun. Kira, depozito ve ulaşım aynı rakamın farklı yüzleri. Tek başına yaşamak yalnızca bir kapıyı kapatabilmek değil.",
+    "Domain": "personal",
+    "MinAge": 18,
+    "MaxAge": 32,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "roommate",
+        "Text": "Ev arkadaşıyla masraf paylaşmayı dene.",
+        "Result": "Ortak alanın kuralları da faturalar kadar konuşulması gereken şeylermiş.",
+        "Cost": 6000,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [
+          "shared_home"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "lived_house_rules",
+        "DelayDays": 90
+      },
+      {
+        "Id": "family",
+        "Text": "Bir süre aile yanında kalıp birikim yap.",
+        "Result": "Daha az masrafın yanında daha çok müzakere vardı. Kendi alanını konuşmaya devam ettin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 1
+        },
+        "Qualities": {
+          "family": 3
+        },
+        "Set": [
+          "saving_home"
+        ],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "small",
+        "Text": "Daha küçük bir evle bağımsızlığını dene.",
+        "Result": "Anahtar avucunda hafifti; bütçede bıraktığı yer değildi.",
+        "Cost": 15000,
+        "Stats": {
+          "Happiness": 4
+        },
+        "Qualities": {
+          "autonomy": 6
+        },
+        "Set": [
+          "independent_home"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_house_rules",
+    "Title": "Bulaşıkların etrafındaki konu",
+    "Text": "Ev arkadaşınla tartışma bulaşıktan başladı, fakat konu aslında zaman ve saygıydı. Aynı evde yaşamak birbirinin aklını okumak anlamına gelmiyor.",
+    "Domain": "relationship",
+    "MinAge": 18,
+    "MaxAge": 60,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "rules",
+        "Text": "Somut görev ve ödeme planı yapın.",
+        "Result": "Yazılı bir planın romantik olmaması işe yaramasını engellemedi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "listen",
+        "Text": "Önce birbirinizin gününü dinleyin.",
+        "Result": "Bir yorgunluk, bir saygısızlık sanılmıştı.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "change",
+        "Text": "Uymayan düzeni değiştirmeyi konuş.",
+        "Result": "Her ortaklığın sonsuza kadar sürmek zorunda olmadığını gördün.",
+        "Cost": 0,
+        "Stats": {
+          "Social": -1
+        },
+        "Qualities": {
+          "autonomy": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_job_offer",
+    "Title": "İlk teklifin satır arası",
+    "Text": "{career} olarak önüne bir ek görev konuyor. Tecrübe kazanacaksın ama saatler belirsiz. “Başlangıçta herkes böyle yapar” cümlesi sorularını ortadan kaldırmıyor.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 64,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "working",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "clarify",
+        "Text": "Görev ve saatleri yazılı netleştir.",
+        "Result": "İstekli olmakla sınırsızca müsait olmak arasına bir çizgi koydun.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "autonomy": 5,
+          "purpose": 2
+        },
+        "Set": [
+          "work_boundaries"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "mentor",
+        "Text": "Deneyimli birinden görüş al.",
+        "Result": "Bir başkasının geçmişi senin geleceğini garanti etmedi; yine de sorularını çoğalttı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "purpose": 4
+        },
+        "Set": [
+          "has_mentor"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "try",
+        "Text": "Belirli bir süre deneyip yeniden konuşmayı öner.",
+        "Result": "Bir deneme süresi tanımlamak çıkış kapısını da açık tuttu.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": -1,
+          "Education": 3
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_jobless",
+    "Title": "Gönderilen özgeçmişler",
+    "Text": "Her başvurudan sonra posta kutunu yeniliyorsun. Bir reddedilme mektubu, yalnızca o işe uygun bulunmadığını söylüyor; sen bazen bütün hayatına söylenmiş gibi duyuyorsun.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 64,
+    "Priority": 45,
+    "CooldownDays": 365,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "unemployed",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "skills",
+        "Text": "Kısa bir beceri planı yap.",
+        "Result": "Her sabahın yalnızca bir cevap beklemekten ibaret olmaması iyi geldi.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 4
+        },
+        "Qualities": {
+          "purpose": 5
+        },
+        "Set": [
+          "retraining"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "network",
+        "Text": "Eski bir tanıdığa haber ver.",
+        "Result": "Yardım istemek kendini pazarlamak gibi hissettirdi. Konuşma yine de bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 4
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "routine",
+        "Text": "Başvuru saatlerini sınırla, günlük düzenini koru.",
+        "Result": "İş aramak bütün kimliğini kaplamamaya başladı.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 3
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_salary_prices",
+    "Title": "Maaşın aynı, etiketler başka",
+    "Text": "Market fişini geçen aykiyle karşılaştırıyorsun. Ülkenin hayat pahalılığı yalnızca haberlerdeki bir sayı olmaktan çıkıp akşam yemeğine karışıyor.",
+    "Domain": "economy",
+    "MinAge": 18,
+    "MaxAge": 90,
+    "Priority": 35,
+    "CooldownDays": 500,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "plan",
+        "Text": "Zorunlu giderleri yeniden planla.",
+        "Result": "Nereden kısamayacağını da en az nereden kısabileceğin kadar net gördün.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [
+          "budget_plan"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "raise",
+        "Text": "Gelir koşullarını yeniden konuşmaya hazırlan.",
+        "Result": "Bir pazarlığın arkasına somut bir hesap koydun.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle ortak alışveriş düzeni kur.",
+        "Result": "Küçük bir dayanışma, bir sıkışmayı görünür kıldı.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_family_choice",
+    "Title": "Aynı sofrada farklı oylar",
+    "Text": "Seçim konuşması aile yemeğine geliyor. Biriniz iş imkanlarını, biriniz kamu hizmetlerini önemsiyor. Sevdiğin birine katılmamakla onu küçümsemek aynı şey değil.",
+    "Domain": "civic",
+    "MinAge": 16,
+    "MaxAge": 100,
+    "Priority": 20,
+    "CooldownDays": 1825,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "parent_alive",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "listen",
+        "Text": "Önce onun ne yaşadığını sor.",
+        "Result": "Bir görüşün arkasında bir iş kaybı, bir hastane kuyruğu, bir korku olabildiğini gördün.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "family": 3,
+          "community": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 3,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "boundary",
+        "Text": "Konuşmayı hakaretsiz sürdürmek için sınır koy.",
+        "Result": "Fikirler aynı kalabildi. Sofranın dağılmaması da bir sonuçtu.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 1
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "read",
+        "Text": "Kaynakları karşılaştırıp sonra konuşmayı öner.",
+        "Result": "Doğrulanmamış bir haberi paylaşmadan önce durmayı seçtin.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [
+          "checks_sources"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_career_move",
+    "Title": "Başka şehirden teklif",
+    "Text": "Başka bir şehirde bir iş fırsatı çıkıyor. Daha yüksek gelir kadar, burada kurduğun hayatı da düşünüyorsun. Yakın olmakla yerinde kalmak aynı şey olmayabilir.",
+    "Domain": "work",
+    "MinAge": 22,
+    "MaxAge": 60,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "working",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "move",
+        "Text": "Taşınmayı somut bir bütçeyle değerlendir.",
+        "Result": "Yeni başlangıç masrafını gördün. Eski bağların kendi kendine korunmayacağını da.",
+        "Cost": 12000,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "autonomy": 6
+        },
+        "Set": [
+          "moved_for_work"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "lived_distance",
+        "DelayDays": 90
+      },
+      {
+        "Id": "remote",
+        "Text": "Uzaktan ya da kademeli geçişi görüş.",
+        "Result": "İki dünya arasında bir köprü kurmayı denedin.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "stay",
+        "Text": "Bu kez bulunduğun yerde kal.",
+        "Result": "Kalmak da verilmiş bir karardı; vazgeçiş olarak adlandırmak zorunda değildin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 3,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_distance",
+    "Title": "Aramalar kısalınca",
+    "Text": "Uzakta kurduğun hayatın hızı artıyor. Evden gelen aramalar giderek “iyiyiz” cümlesine sığıyor. Bir bağın yalnızca iyi niyetle sürmediğini hissediyorsun.",
+    "Domain": "family",
+    "MinAge": 20,
+    "MaxAge": 80,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "schedule",
+        "Text": "Gerçekçi bir görüşme düzeni kur.",
+        "Result": "Takvime yazılmış bir arama mekanik hissettirdi, sonra alışkanlığa dönüştü.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 4,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "visit",
+        "Text": "Bir ziyarete bütçe ayır.",
+        "Result": "Birlikte geçirilen sıradan bir öğleden sonra, uzun mesajlardan farklıydı.",
+        "Cost": 2500,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 4,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "honest",
+        "Text": "Yetişemediğini saklamadan anlat.",
+        "Result": "Her zaman müsait olmadığını söylemek, ilgisiz olduğun anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "autonomy": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_home_setup",
+    "Title": "Boş evin ilk akşamı",
+    "Text": "Kutlamanın sesi bitti. {partner} ile bir masa, bir yatak ve önümüzdeki ayın faturaları arasında dolaşıyorsunuz. Takılar ve aile desteği konuşuluyor; ama ortak yaşamın her masrafını başkasından beklemek mümkün değil.",
+    "Domain": "relationship",
+    "MinAge": 18,
+    "MaxAge": 100,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "partner",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "essentials",
+        "Text": "Önce ihtiyaçları alın, kalanını zamana bırakın.",
+        "Result": "Evin her köşesi hazır değildi. Birlikte karar verebildiğiniz bir köşe vardı.",
+        "Cost": 5000,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [
+          "household_plan"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 3,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "family",
+        "Text": "Ailelerden ödünç eşya ve destek isteyin.",
+        "Result": "Birinin koltuğu, birinin tenceresi geldi. Nerede sınır çizeceğinizi de konuşmaya başladınız.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 2,
+        "Next": "lived_inlaw_boundaries",
+        "DelayDays": 90
+      },
+      {
+        "Id": "wait",
+        "Text": "Nakit yetmiyorsa alışverişi erteleyip plan yapın.",
+        "Result": "Eksik eşyaları bir başarısızlık gibi görmemeyi birlikte öğrendiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 1
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 2,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_inlaw_boundaries",
+    "Title": "Yardımın yanındaki söz",
+    "Text": "Alınan desteğin ardından evin nasıl düzenleneceği hakkında yorumlar gelmeye başlıyor. Minnettar olmakla her kararı başkasına bırakmak arasında bir alan arıyorsunuz.",
+    "Domain": "family",
+    "MinAge": 18,
+    "MaxAge": 100,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "partner",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "together",
+        "Text": "Önce {partner} ile ortak sınır belirle.",
+        "Result": "Ailelerin önünde birbirinizi yalnız bırakmadan konuşmayı denediniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "autonomy": 4,
+          "family": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 4,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "thank",
+        "Text": "Desteğe teşekkür edip kararınızı açıkla.",
+        "Result": "Herkes memnun olmadı ama kararın size ait olduğu anlaşıldı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": -1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "patient",
+        "Text": "Kırmadan konuşmak için uygun zamanı bekle.",
+        "Result": "Ertelemek bazen yumuşattı, bazen konuyu büyüttü. Beklemek de bir seçim oldu.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": -1
+        },
+        "Qualities": {
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_parent_question",
+    "Title": "Aile olmak üzerine",
+    "Text": "Çocuk sahibi olmak, olmamak veya bakım yoluyla aileyi büyütmek konuşuluyor. Bir akşamın cevabı bütün yılları taşıyamaz. İsteklerinizin aynı olup olmadığını anlamak istiyorsunuz.",
+    "Domain": "relationship",
+    "MinAge": 23,
+    "MaxAge": 45,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "partner",
+    "Needs": [],
+    "Forbids": [
+      "has_child"
+    ],
+    "Choices": [
+      {
+        "Id": "plan",
+        "Text": "İstek, bakım yükü ve bütçeyi açıkça konuşun.",
+        "Result": "Bir gelecek hayalini yalnızca güzel anlarıyla değil, sorumluluğuyla da düşündünüz.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [
+          "parenting_plan"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 4,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "childfree",
+        "Text": "Çocuksuz bir hayat istediğini paylaş.",
+        "Result": "Bu kararın dışarıya açıklanması kadar, birbirinize dürüst olması da önemliydi.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "autonomy": 5
+        },
+        "Set": [
+          "childfree_choice"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 2,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "later",
+        "Text": "Henüz bilmiyorsan kendine zaman tanı.",
+        "Result": "Belirsizliği gizli bir evet ya da hayır gibi kullanmamayı denediniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 1,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_child_nights",
+    "Title": "Uykusuz bir sabah",
+    "Text": "{child} gece boyunca uyumadı. Gündüz işin, evin ve bakımın ritmi devam ediyor. Sevmek yorgunluğu ortadan kaldırmıyor.",
+    "Domain": "family",
+    "MinAge": 23,
+    "MaxAge": 65,
+    "Priority": 20,
+    "CooldownDays": 1000,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "child",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "divide",
+        "Text": "Bakımı ve dinlenme saatlerini paylaşın.",
+        "Result": "Görevler görünür olduğunda “yardım etmek” yerine sorumluluk almak konuşuldu.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 3
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 3,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "support",
+        "Text": "Güvenilir destek arayın.",
+        "Result": "Desteğin bir lüks değil, sürdürülebilirlik meselesi olabildiğini gördünüz.",
+        "Cost": 2500,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "simplify",
+        "Text": "Bir süre başka beklentileri azaltın.",
+        "Result": "Ev kusursuz değildi. Herkes biraz daha nefes alabildi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2,
+          "Social": -1
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_child_school",
+    "Title": "Çocuğunun okul kapısı",
+    "Text": "Bir zamanlar senin durduğun okul kapısında bu kez {child} duruyor. Ona kendi çocukluğunda eksik kalan her şeyi vermek istiyorsun. Onun ihtiyacının seninkiyle aynı olup olmadığını soruyorsun.",
+    "Domain": "family",
+    "MinAge": 28,
+    "MaxAge": 65,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "child",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "ask",
+        "Text": "Önce onun ne istediğini dinle.",
+        "Result": "Kendi hayalini onun hayatından ayırmak her gün yeniden öğrenilen bir şeydi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "opportunity",
+        "Text": "Uygun bir ilgi alanına destek ver.",
+        "Result": "Bir kursun değeri, yalnızca başarı belgesi değildi.",
+        "Cost": 3000,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "purpose": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "time",
+        "Text": "Birlikte düzenli zaman yarat.",
+        "Result": "Büyük bir plan yerine devam eden küçük bir yakınlık kurdunuz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_promotion_home",
+    "Title": "Kutlamanın ardından",
+    "Text": "{career} işinde yeni bir sorumluluk ihtimali var. Eve daha geç dönmek, daha fazla kazanmak ve sevdiklerinin hayatında daha az görünmek birbiriyle aynı teklifin içinde.",
+    "Domain": "work",
+    "MinAge": 28,
+    "MaxAge": 60,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "working",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "terms",
+        "Text": "Yetki kadar destek ve çalışma saatlerini de görüş.",
+        "Result": "Yeni unvanın tek başına bir çözüm olmadığını söyledin.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "autonomy": 4,
+          "purpose": 3
+        },
+        "Set": [
+          "work_boundaries"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "accept",
+        "Text": "Bu dönemde işine ağırlık ver.",
+        "Result": "Bir kapı açıldı; başka bir kapının daha seyrek çalınacağını gördün.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": -2
+        },
+        "Qualities": {
+          "purpose": 6,
+          "family": -3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": -2,
+        "PartnerBond": -2,
+        "Next": "lived_burnout",
+        "DelayDays": 90
+      },
+      {
+        "Id": "decline",
+        "Text": "Şu anda başka önceliklerin olduğunu söyle.",
+        "Result": "Hırsının olmadığı söylenebildi. Sen neye zaman verdiğini biliyordun.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 2,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_burnout",
+    "Title": "Pazar akşamının ağırlığı",
+    "Text": "Telefonunda pazartesi bildirimleri birikiyor. Dinlenirken bile işteymiş gibi hissediyorsun. Sorunu iradenin zayıflığına indirgemek kolay ama işe yaramıyor.",
+    "Domain": "work",
+    "MinAge": 22,
+    "MaxAge": 70,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "working",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "change",
+        "Text": "İş yükü ve sınırlar için somut değişiklik iste.",
+        "Result": "Yorulduğunu söylemek, işini önemsemediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 4
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "help",
+        "Text": "Uygun profesyonel destek araştır.",
+        "Result": "Bir konuşmada her şey düzelmedi. Yalnız taşımamak yine de bir başlangıçtı.",
+        "Cost": 2000,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Mümkün olan küçük bir dinlenme aralığı aç.",
+        "Result": "Büyük bir kaçış değil, ertesi haftaya bırakılmayan bir mola buldun.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 3
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_business_risk",
+    "Title": "Kendi işinin kapısı",
+    "Text": "Bir iş fikri var. Seni heyecanlandırdığı kadar, her ay düzenli gelen paranın yokluğu korkutuyor. {partner} ile ya da tek başına düşündüğünde riskin yüzü değişiyor.",
+    "Domain": "work",
+    "MinAge": 25,
+    "MaxAge": 60,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "working",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "pilot",
+        "Text": "Küçük bir denemeyle talebi ölç.",
+        "Result": "İlk müşterinin fikri, sunumundaki en parlak cümleden daha yararlıydı.",
+        "Cost": 5000,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5
+        },
+        "Set": [
+          "business_pilot"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "lived_customer_promise",
+        "DelayDays": 90
+      },
+      {
+        "Id": "save",
+        "Text": "Önce acil durum birikimi oluştur.",
+        "Result": "Beklemek pasif kalmak değildi; hangi riski alabileceğini hesapladın.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 1
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [
+          "business_buffer"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "no",
+        "Text": "İyi bir fikri şimdi yapmama hakkını kullan.",
+        "Result": "Başkasının cesaret tanımını kendi bütçenin önüne koymadın.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_customer_promise",
+    "Title": "Verdiğin teslim sözü",
+    "Text": "İlk müşteriye verdiğin söz, işin tahmin ettiğinden uzun sürmesiyle karşı karşıya. Para kazanmakla güven kazanmak her zaman aynı takvimde ilerlemiyor.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 70,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "tell",
+        "Text": "Gecikmeyi erken söyle, yeni bir plan öner.",
+        "Result": "Kolay bir konuşma değildi. Karşı tarafın planını yok saymadan çözüm aradın.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "purpose": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "help",
+        "Text": "İşin bir kısmı için destek al.",
+        "Result": "Kazancın azaldı; sözün yalnızca gecelerine bağlı olmaktan çıktı.",
+        "Cost": 2000,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "finish",
+        "Text": "Bu işi bitir, sonra kapasiteni yeniden hesapla.",
+        "Result": "Teslim ettin. Bunun sürekli bir çalışma biçimi olamayacağını da not ettin.",
+        "Cost": 0,
+        "Stats": {
+          "Health": -2,
+          "Education": 2
+        },
+        "Qualities": {
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_care_parent",
+    "Title": "Bir ziyaretin içindeki değişim",
+    "Text": "Bir aile büyüğün aynı soruyu yeniden soruyor, merdivende daha çok duruyor. İhtiyaç artarken senin işin ve kendi hayatın da devam ediyor. Bakım yükü kendi kendine eşit dağılmayacak.",
+    "Domain": "family",
+    "MinAge": 35,
+    "MaxAge": 80,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "care_parent",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "share",
+        "Text": "Aile içinde görev ve ziyaret planı yap.",
+        "Result": "Yardımın kimin üzerine sessizce kaldığını konuşmak gerilimi azalttı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [
+          "care_support"
+        ],
+        "Remove": [],
+        "FamilyBond": 4,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "services",
+        "Text": "Uygun bakım ve sağlık hizmetlerini araştır.",
+        "Result": "Tek bir kişinin her şeyi yapması gerekmediğini gördünüz.",
+        "Cost": 1500,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [
+          "care_support"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "limits",
+        "Text": "Yapabileceklerini ve sınırlarını dürüstçe söyle.",
+        "Result": "Suçluluk hemen geçmedi. Verdiğin sözler daha gerçekçi oldu.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": -1
+        },
+        "Qualities": {
+          "autonomy": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_parent_loss",
+    "Title": "Çalmayan telefon",
+    "Text": "Bir aile büyüğünün yokluğu büyük günlerden çok küçük anlarda beliriyor. Telefonu eline alıp arayamayacağını yeniden fark ediyorsun. Yasın tek bir doğru takvimi yok.",
+    "Domain": "family",
+    "MinAge": 18,
+    "MaxAge": 95,
+    "Priority": 60,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "parent_lost",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "remember",
+        "Text": "Güvendiğin biriyle bir anını paylaş.",
+        "Result": "Bir hikâye anlatınca yokluk ortadan kalkmadı. Anının yanında başka bir ses oldu.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "family": 4,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "ritual",
+        "Text": "Kendine anlamlı küçük bir anma biçimi bul.",
+        "Result": "Sana ait bir veda, başkalarınınkine benzemek zorunda değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "autonomy": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "support",
+        "Text": "Taşımakta zorlanıyorsan destek ara.",
+        "Result": "Yardım istemek sevginin azaldığı anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_inheritance",
+    "Title": "Aynı evin farklı anlamı",
+    "Text": "Aile içinde bir eşyanın, bir evin veya bir hatıranın kime kalacağı konuşuluyor. Rakamın yanında bakım emeği ve yıllardır söylenmemiş kırgınlıklar da masaya geliyor.",
+    "Domain": "family",
+    "MinAge": 25,
+    "MaxAge": 90,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "parent_lost",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "transparent",
+        "Text": "Önce şeffaf bir paylaşım ve gerekirse uzman desteği iste.",
+        "Result": "Bir simülasyon kararı gerçek miras kurallarını çözmez; burada amaç acele sözler vermemekti.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "family": 3,
+          "autonomy": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "memory",
+        "Text": "Maddi paydan önce senin için önemli hatırayı konuş.",
+        "Result": "Bir fotoğrafın herkes için aynı şeyi taşımadığını fark ettiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Gerilim yükseldiyse konuşmayı ertele.",
+        "Result": "Beklemek bir çözüm olmayabilir; incitici bir cümleyi geri almaktan daha kolaydı.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_health_midlife",
+    "Title": "Ertelenen randevu",
+    "Text": "Uzun zamandır ertelediğin rutin kontrol için bir boşluk buluyorsun. Çevrendeki herkesin bir fikri var. Sağlığını bir internet yorumuna göre yönetmek istemiyorsun.",
+    "Domain": "health",
+    "MinAge": 35,
+    "MaxAge": 75,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "appointment",
+        "Text": "Uygun bir sağlık randevusu planla.",
+        "Result": "Sonuç burada bir teşhis değil; kendin için zaman ayırma kararıydı.",
+        "Cost": 1000,
+        "Stats": {
+          "Health": 4
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "routine",
+        "Text": "Günlük düzenindeki sürdürülebilir değişikliği seç.",
+        "Result": "Küçük bir yürüyüş ve daha düzenli dinlenme, büyük bir vaat kadar gösterişli değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 3
+        },
+        "Qualities": {
+          "autonomy": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "ask",
+        "Text": "Güvendiğin biriyle destek planı konuş.",
+        "Result": "Kendi ihtiyaçlarını en sona yazmamayı denedin.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "family": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_midlife_other",
+    "Title": "Ben başka biri olabilir miydim?",
+    "Text": "Eski bir fotoğrafta başka bir meslek, başka bir şehir, başka bir sen var gibi görünüyor. Yapmadığın seçimlerin içindeki hayatı bütünüyle bilemezsin. Yine de bugün değiştirebileceğin bir şey olabilir.",
+    "Domain": "personal",
+    "MinAge": 35,
+    "MaxAge": 65,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "small",
+        "Text": "Özlediğin şey için küçük bir deneme yap.",
+        "Result": "Bütün hayatını yıkmadan yeni bir parça ekledin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "autonomy": 5
+        },
+        "Set": [
+          "second_path"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "lived_second_start",
+        "DelayDays": 180
+      },
+      {
+        "Id": "talk",
+        "Text": "Sevdiğin biriyle pişmanlığın ne anlattığını konuş.",
+        "Result": "Pişmanlık bazen bir kişi değil, kaybettiğin bir ihtiyaç hakkında konuşuyordu.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "family": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 2,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "value",
+        "Text": "Bugünkü hayatının görünmeyen değerlerini yaz.",
+        "Result": "Zorlukları inkâr etmeden iyi gelen şeyleri de gördün.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "purpose": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_second_start",
+    "Title": "Yeniden acemi olmak",
+    "Text": "Yeni uğraşında senden genç biri sana bir şeyi öğretiyor. İyi olduğun bir hayattan, bilmediğin bir odaya girmek beklediğinden zor.",
+    "Domain": "personal",
+    "MinAge": 35,
+    "MaxAge": 85,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "learn",
+        "Text": "Acemi olmayı kabul edip devam et.",
+        "Result": "Bir şeyin değerli olması için hemen başarılı olman gerekmiyordu.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "together",
+        "Text": "Bir öğrenme arkadaşı bul.",
+        "Result": "Yavaş ilerleyen iki insanın birbirine iyi geldiğini gördün.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "adjust",
+        "Text": "Sana uymayan hedefi değiştir.",
+        "Result": "Vazgeçmekle yön değiştirmeyi ayırabildin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_creative_return",
+    "Title": "Eski defter yeniden açıldı",
+    "Text": "Yıllar önce düzenli denediğin uğraşın için küçük bir fırsat çıkıyor. Kimse bunu büyük bir kariyer olarak sunmuyor. Sadece yeniden yapmak isteyip istemediğini soruyorlar.",
+    "Domain": "personal",
+    "MinAge": 10,
+    "MaxAge": 90,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "",
+    "Needs": [
+      "creative_habit"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "return",
+        "Text": "Uğraşa yeniden zaman ayır.",
+        "Result": "Bir beceri kadar, kendinle kurduğun bir bağ da geri geldi.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2,
+          "Happiness": 2
+        },
+        "Qualities": {
+          "purpose": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Bir başkasına öğrendiğini göster.",
+        "Result": "Kendine küçük gelen şey başka biri için başlangıç oldu.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "keep",
+        "Text": "Onu güzel bir hatıra olarak bırak.",
+        "Result": "Her eski hayalin yeniden açılması gerekmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 1
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_empty_nest",
+    "Title": "Bir odanın yeni sessizliği",
+    "Text": "{child} kendi hayatı için daha çok dışarıda. Ona bağımsızlık vermek istediğini biliyordun; evin sesi değişince kendinle ne yapacağını yeniden soruyorsun.",
+    "Domain": "family",
+    "MinAge": 45,
+    "MaxAge": 80,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "child",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "new",
+        "Text": "Kendi sosyal düzenini yeniden kur.",
+        "Result": "Hayatının tek rolünün bakım vermek olmadığını hatırladın.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "autonomy": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "respect",
+        "Text": "Görüşme düzenini onunla birlikte belirle.",
+        "Result": "Özlem bir denetim aracına dönüşmeden de konuşulabiliyordu.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "learn",
+        "Text": "Uzun zamandır ertelediğin uğraşa başla.",
+        "Result": "Boşalan zamanın tamamı bir kayıp olmak zorunda değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_age_bias",
+    "Title": "Deneyim mi, yaş mı?",
+    "Text": "İşle ilgili bir konuşmada birisi senin yeni bir şeyi öğrenmek istemeyeceğini varsayıyor. Deneyiminin değersizleştirilmesi, değişmeyi reddetmek zorunda olduğun anlamına gelmiyor.",
+    "Domain": "work",
+    "MinAge": 45,
+    "MaxAge": 67,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "working",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "show",
+        "Text": "Yeni becerini somut bir işte göster.",
+        "Result": "Sözünü bir gösteriye değil, işin kendisine dayandırdın.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "name",
+        "Text": "Varsayımı açıkça ama sakin biçimde sorgula.",
+        "Result": "Sorun senin yaşın değil, senin adına verilmiş bir karardı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "mentor",
+        "Text": "Kuşaklar arasında birlikte çalışmayı öner.",
+        "Result": "Birinin hızıyla diğerinin tecrübesi aynı masada yer buldu.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 5
+        },
+        "Set": [
+          "mentoring"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_retirement_threshold",
+    "Title": "Unvanın dışındaki sen",
+    "Text": "Emeklilik konuşulurken herkes “artık dinlenirsin” diyor. İş yalnızca maaş değildi; gününün ritmi, insanları ve bazen bütün kimliğindi.",
+    "Domain": "work",
+    "MinAge": 60,
+    "MaxAge": 70,
+    "Priority": 80,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "plan",
+        "Text": "Gelir kadar zamanını da planla.",
+        "Result": "Takvimdeki boşluğu bir başarısızlık gibi görmeden doldurmayı denedin.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "mentor",
+        "Text": "Bildiklerini paylaşabileceğin bir alan bul.",
+        "Result": "Yılların değeri bir kurum kartının süresine bağlı kalmadı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "purpose": 5
+        },
+        "Set": [
+          "mentoring"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "rest",
+        "Text": "Önce dinlenmeye hakkın olduğunu kabul et.",
+        "Result": "Yeni bir performans listesi yapmadan da emekli olabilirdin.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 3
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_retired_day",
+    "Title": "Salı gününün anlamı",
+    "Text": "Artık hafta içi ile hafta sonu arasında eskisi kadar fark yok. Bir sabah çayını içerken bu özgürlüğün yanına biraz yalnızlık geldiğini fark ediyorsun.",
+    "Domain": "personal",
+    "MinAge": 65,
+    "MaxAge": 90,
+    "Priority": 20,
+    "CooldownDays": 730,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "retired",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "club",
+        "Text": "Düzenli bir topluluk buluşmasına katıl.",
+        "Result": "Büyük bir amaçtan önce salı günü seni bekleyen bir yüz oldu.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 4
+        },
+        "Qualities": {
+          "community": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "project",
+        "Text": "Kendi hızında küçük bir proje seç.",
+        "Result": "Bitirmekten çok devam etmek iyi geldi.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "purpose": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "connect",
+        "Text": "Eski bir dostu ara.",
+        "Result": "Geçen yılları saymadan konuştuğun bir saat oldu.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "family": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_widowhood",
+    "Title": "İki fincanlık alışkanlık",
+    "Text": "Sabah alışkanlıkların bir yokluğun etrafında sürüyor. Bir fincanı dolaba geri koymak, bir hayata ihanet etmek gibi hissettirebiliyor. Bunun için kendini suçlamak zorunda değilsin.",
+    "Domain": "relationship",
+    "MinAge": 45,
+    "MaxAge": 100,
+    "Priority": 85,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "widowed"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "talk",
+        "Text": "İyi gelen biriyle kaybını konuş.",
+        "Result": "Konuşmak unutmak değildi; bir anıyı tek başına taşımamaktı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "ritual",
+        "Text": "Kendi anma ve günlük yaşam düzenini kur.",
+        "Result": "Hayatın devam etmesi sevginin bittiği anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "support",
+        "Text": "İhtiyacın varsa uygun destek ara.",
+        "Result": "Yasın takvimini başkasına uydurmak yerine destek almayı denedin.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_grandchild_time",
+    "Title": "Torununun sorusu",
+    "Text": "Küçük biri sana gençliğinde neleri sevdiğini soruyor. Yalnızca ailedeki bir unvan değil, başka hayalleri olmuş bir insan olarak dinleniyorsun.",
+    "Domain": "family",
+    "MinAge": 50,
+    "MaxAge": 95,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "grandparent"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "story",
+        "Text": "Bir anını olduğu gibi anlat.",
+        "Result": "Yanlış kararlarını da saklamadığın bir hikâye oldu.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "together",
+        "Text": "Birlikte küçük bir şey yapın.",
+        "Result": "Bir becerinin yanında geçirilen zaman da aktarıldı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "purpose": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "listen",
+        "Text": "Sen de onun neye heves ettiğini sor.",
+        "Result": "Konuşma yalnızca geçmişten geleceğe akmak zorunda değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_independent_old",
+    "Title": "Yardımın biçimi",
+    "Text": "Yakınların bazı işleri senin yerine yapmaya başlıyor. İyi niyet bazen sesinin duyulmamasına dönüşebiliyor. Yardıma ihtiyaç duymak bütün kararlarını bırakmak demek değil.",
+    "Domain": "personal",
+    "MinAge": 75,
+    "MaxAge": 100,
+    "Priority": 80,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "decide",
+        "Text": "Hangi desteği istediğini kendin tarif et.",
+        "Result": "Bağımsızlığı her işi tek başına yapmakla ölçmemeyi denedin.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 6
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "plan",
+        "Text": "Birlikte güvenli ve gerçekçi bir düzen kur.",
+        "Result": "Yardımın ne zaman ve nasıl geleceğini bilmek iyi geldi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 3
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "peer",
+        "Text": "Benzer deneyimdeki insanlarla konuş.",
+        "Result": "Bir ihtiyacın yalnızca sana ait olmadığını gördün.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_memory_box",
+    "Title": "Kutudaki bilet",
+    "Text": "Bir kutunun içinden eski bir bilet, bir fotoğraf ve unutulmuş bir not çıkıyor. Aynı hayatı başka bir sırayla anlatsan başka biri gibi duyulabilirsin.",
+    "Domain": "personal",
+    "MinAge": 70,
+    "MaxAge": 100,
+    "Priority": 70,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "write",
+        "Text": "Hatırladıklarını yaz ya da kaydet.",
+        "Result": "Bir hayatın kusursuz olması gerekmiyordu; sana ait olması yeterliydi.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "purpose": 5
+        },
+        "Set": [
+          "kept_memories"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Hatırayı bir yakınınla paylaş.",
+        "Result": "Onun hatırladığı ayrıntı, seninkinden farklıydı. İkisi de masada kaldı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "private",
+        "Text": "Bazı anıların yalnızca sana kalmasına izin ver.",
+        "Result": "Paylaşmamak, onların daha az gerçek olduğu anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_century",
+    "Title": "Bir asra yaklaşırken",
+    "Text": "Dünyanın kullandığı kelimeler değişti. Bir zamanlar yeni sayılan eşyalar müzelerde. Senin hayatınsa yalnızca değişen ülkeden değil, verilen küçük kararlardan da oluşuyor.",
+    "Domain": "personal",
+    "MinAge": 90,
+    "MaxAge": 100,
+    "Priority": 85,
+    "CooldownDays": 1095,
+    "Milestone": true,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "legacy",
+        "Text": "Neyin hatırlanmasını istediğini anlat.",
+        "Result": "Bir unvan yerine bir davranışın hatırlanmasını istedin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "purpose": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "present",
+        "Text": "Bugünkü küçük bir keyfe zaman ayır.",
+        "Result": "Bir hayatın son yılları yalnızca geçmişi anlatmak zorunda değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "autonomy": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "connection",
+        "Text": "Yakın birinin bugünkü hayatını dinle.",
+        "Result": "Dünyayla bağın yalnızca hatırladıkların üzerinden kurulmadı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_sector_49",
+    "Title": "Vardiyanın son dakikası",
+    "Text": "Sağlık ve bakım işinde gün bitmek üzereyken bir ihtiyaç daha çıkıyor. Ekip de sen de yoruldunuz. İnsanlara yardım etmek kendi sınırlarını yok saymak zorunda mı?",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 67,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "sector:Sağlık ve Bakım",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "responsible",
+        "Text": "Güvenli bir devir ve ekip desteği planla.",
+        "Result": "Sorumluluğu tek bir kahramanın omzuna bırakmadınız.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5,
+          "autonomy": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "team",
+        "Text": "Deneyimli bir ekip arkadaşıyla birlikte değerlendir.",
+        "Result": "Yalnız karar vermemek, sorumluluğu başkasına atmak değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Karar için gereken zamanı talep et.",
+        "Result": "Acele etmekle çalışkan olmak aynı şey değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_sector_50",
+    "Title": "Yayına alınan hata",
+    "Text": "Bir sistem hatası ortaya çıktı. Sorunu sessizce düzeltmek hızlı görünüyor; kullanıcıların neyi bilmesi gerektiği daha zor bir soru.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 67,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "sector:Teknoloji ve Dijital",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "responsible",
+        "Text": "Etkiyi açıkla, düzeltme ve izleme planı çıkar.",
+        "Result": "Teknik bir hatanın yanında güven sorumluluğunu da üstlendin.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5,
+          "autonomy": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "team",
+        "Text": "Deneyimli bir ekip arkadaşıyla birlikte değerlendir.",
+        "Result": "Yalnız karar vermemek, sorumluluğu başkasına atmak değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Karar için gereken zamanı talep et.",
+        "Result": "Acele etmekle çalışkan olmak aynı şey değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_sector_51",
+    "Title": "Sıranın arkasındaki kişi",
+    "Text": "Masandaki işlerin arkasında birer insan var. Bir tanıdığın sırayı öne almanı istiyor. Küçük bir ayrıcalığın diğer insanlara yükünü görüyorsun.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 67,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "sector:Hukuk ve Kamu",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "responsible",
+        "Text": "İşlemi şeffaf sırayla yürüt.",
+        "Result": "Yakının bozuldu; sırada bekleyen birinin hakkı görünmez kalmadı.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5,
+          "autonomy": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "team",
+        "Text": "Deneyimli bir ekip arkadaşıyla birlikte değerlendir.",
+        "Result": "Yalnız karar vermemek, sorumluluğu başkasına atmak değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Karar için gereken zamanı talep et.",
+        "Result": "Acele etmekle çalışkan olmak aynı şey değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_sector_52",
+    "Title": "Kalabalık servis",
+    "Text": "Serviste bir sipariş yanlış gidiyor. Mutfak ile salon birbirini suçlamaya başlıyor. Müşterinin önünde değil, ekip içinde bir çözüm gerekiyor.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 67,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "sector:Gastronomi ve Ağırlama",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "responsible",
+        "Text": "Hatayı sahiplenip ortak çözüm kur.",
+        "Result": "Suçlu aramak yerine işin nerede aksadığını konuştunuz.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5,
+          "autonomy": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "team",
+        "Text": "Deneyimli bir ekip arkadaşıyla birlikte değerlendir.",
+        "Result": "Yalnız karar vermemek, sorumluluğu başkasına atmak değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Karar için gereken zamanı talep et.",
+        "Result": "Acele etmekle çalışkan olmak aynı şey değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_sector_53",
+    "Title": "Görünürlük karşılığında",
+    "Text": "İşine ücret yerine görünürlük teklif ediliyor. Bir fırsatla emeğinin değeri birbirine karışıyor.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 67,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "sector:Sanat ve Zanaat",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "responsible",
+        "Text": "Ücret ve kullanım koşullarını açıkça konuş.",
+        "Result": "Sevdiğin işi yapmanın ücretsiz çalışmak anlamına gelmediğini söyledin.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5,
+          "autonomy": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "team",
+        "Text": "Deneyimli bir ekip arkadaşıyla birlikte değerlendir.",
+        "Result": "Yalnız karar vermemek, sorumluluğu başkasına atmak değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Karar için gereken zamanı talep et.",
+        "Result": "Acele etmekle çalışkan olmak aynı şey değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_sector_54",
+    "Title": "Yayımlamadan önce",
+    "Text": "Çok ilgi çekecek bir hikâye var; içindeki iddianın bir kısmı doğrulanmamış. Hız ile güvenilirlik aynı masada.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 67,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "sector:Medya ve Edebiyat",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "responsible",
+        "Text": "Doğrulamayı tamamlamadan yayımlama.",
+        "Result": "Bir fırsatı geciktirdin; başkasının hayatını bir söylentiye teslim etmedin.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5,
+          "autonomy": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "team",
+        "Text": "Deneyimli bir ekip arkadaşıyla birlikte değerlendir.",
+        "Result": "Yalnız karar vermemek, sorumluluğu başkasına atmak değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Karar için gereken zamanı talep et.",
+        "Result": "Acele etmekle çalışkan olmak aynı şey değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_sector_55",
+    "Title": "Havanın değiştiği gün",
+    "Text": "Doğayla çalışan mesleğinde plan, hava koşullarıyla karşılaşıyor. Gelir kaybını önlemek için güvenliği ertelemek kolay görünüyor.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 67,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "sector:Deniz, Doğa ve Tarım",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "responsible",
+        "Text": "Planı koşullara göre yeniden düzenle.",
+        "Result": "Kaybı kabul etmek bazen daha büyük bir riski önledi.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5,
+          "autonomy": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "team",
+        "Text": "Deneyimli bir ekip arkadaşıyla birlikte değerlendir.",
+        "Result": "Yalnız karar vermemek, sorumluluğu başkasına atmak değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Karar için gereken zamanı talep et.",
+        "Result": "Acele etmekle çalışkan olmak aynı şey değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_sector_56",
+    "Title": "Hesap ile teslim tarihi",
+    "Text": "Projede bir ölçüm beklenenden farklı. Takvim dar; her şeyin yolunda olduğunu söylemek rahatlatıcı olacak.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 67,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "sector:Bilim ve Mühendislik",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "responsible",
+        "Text": "Şüpheli ölçümü yeniden kontrol et.",
+        "Result": "Hata aramak işi yavaşlatmış görünse de güvenilirliğin bir parçasıydı.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5,
+          "autonomy": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "team",
+        "Text": "Deneyimli bir ekip arkadaşıyla birlikte değerlendir.",
+        "Result": "Yalnız karar vermemek, sorumluluğu başkasına atmak değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Karar için gereken zamanı talep et.",
+        "Result": "Acele etmekle çalışkan olmak aynı şey değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_sector_57",
+    "Title": "Kârlı ama belirsiz",
+    "Text": "Bir anlaşma kazanç vaat ediyor, koşullarının bir kısmı belirsiz. Karşı taraf acele etmeni istiyor.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 67,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "sector:Ticaret ve Finans",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "responsible",
+        "Text": "Koşulları ve riskleri anlaşılır biçimde yazdır.",
+        "Result": "Bir imzanın heyecanı, anlaşılmamış bir riski küçültmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5,
+          "autonomy": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "team",
+        "Text": "Deneyimli bir ekip arkadaşıyla birlikte değerlendir.",
+        "Result": "Yalnız karar vermemek, sorumluluğu başkasına atmak değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Karar için gereken zamanı talep et.",
+        "Result": "Acele etmekle çalışkan olmak aynı şey değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_sector_58",
+    "Title": "Performansın sınırı",
+    "Text": "Performans isteyen işinde bir sınırına geliyorsun. Bir beklentiyi karşılayamamakla güvenliği riske atmak arasındaki fark belirginleşiyor.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 67,
+    "Priority": 20,
+    "CooldownDays": 1095,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "sector:Spor, Havacılık ve Özel Beceriler",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "responsible",
+        "Text": "Güvenli sınırı açıkça belirt.",
+        "Result": "Bir itirazın profesyonelliğin dışında değil, içinde olduğunu gösterdin.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5,
+          "autonomy": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "team",
+        "Text": "Deneyimli bir ekip arkadaşıyla birlikte değerlendir.",
+        "Result": "Yalnız karar vermemek, sorumluluğu başkasına atmak değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Karar için gereken zamanı talep et.",
+        "Result": "Acele etmekle çalışkan olmak aynı şey değildi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_school_meal",
+    "Title": "Aynı masada",
+    "Text": "Okulda bir arkadaşının yemeği yok. Yardım etmek isterken onu herkesin önünde utandırmamak da önemli.",
+    "Domain": "school",
+    "MinAge": 6,
+    "MaxAge": 14,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_sibling",
+    "Title": "Evdeki rolün",
+    "Text": "Evde senden bir kardeş gibi değil, küçük bir yetişkin gibi sorumluluk bekleniyor. Yardım etmekle çocukluğunun tamamını bırakmak aynı şey değil.",
+    "Domain": "family",
+    "MinAge": 8,
+    "MaxAge": 17,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_first_wage",
+    "Title": "İlk kazancın",
+    "Text": "Kendi emeğinle kazandığın ilk para elinde. Onu harcamak, eve katkı yapmak ve saklamak farklı anlamlar taşıyor.",
+    "Domain": "economy",
+    "MinAge": 16,
+    "MaxAge": 27,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_new_city",
+    "Title": "Yabancı bir sokak",
+    "Text": "Yeni bir yerde yolunu bulmaya çalışıyorsun. Kalabalığın içinde kimsenin seni tanımaması hem özgürlük hem yalnızlık gibi.",
+    "Domain": "personal",
+    "MinAge": 18,
+    "MaxAge": 45,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_friend_wedding",
+    "Title": "Arkadaşının düğünü",
+    "Text": "Yakın bir arkadaşının düğün davetiyesi geliyor. Yol, hediye ve zaman bütçeni zorluyor; yokluğunun sevgisizlik sanılmasını istemiyorsun.",
+    "Domain": "relationship",
+    "MinAge": 20,
+    "MaxAge": 65,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_saying_no",
+    "Title": "Ödünç istenen para",
+    "Text": "Bir yakının ödünç para istiyor. Onu önemsemekle kendi temel giderlerini riske atmak arasında bir sınır arıyorsun.",
+    "Domain": "family",
+    "MinAge": 20,
+    "MaxAge": 90,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_comparison",
+    "Title": "Başkasının fotoğrafı",
+    "Text": "Bir arkadaşın ev, terfi veya çocuk fotoğrafı paylaşıyor. Kendi hayatını tek karelik bir yarışa çevirdiğini fark ediyorsun.",
+    "Domain": "personal",
+    "MinAge": 20,
+    "MaxAge": 60,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_social_isolation",
+    "Title": "İptal edilen buluşmalar",
+    "Text": "Son birkaç buluşmayı erteledin. Bir süre sonra davetler de azalmaya başladı. Sosyal bağlarının kendi kendine ayakta kalmadığını görüyorsun.",
+    "Domain": "relationship",
+    "MinAge": 25,
+    "MaxAge": 95,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_adult_learning",
+    "Title": "Derslikte yeni bir sıra",
+    "Text": "Yeni bir şey öğrenmek için açılan kursa bakıyorsun. Yaşıtlarının ne diyeceğinden önce kendinin neye heves ettiğini sorabilirsin.",
+    "Domain": "personal",
+    "MinAge": 30,
+    "MaxAge": 85,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_hospital_wait",
+    "Title": "Bekleme salonu",
+    "Text": "Bir yakınını beklerken koridorda zaman uzuyor. Herkese güçlü görünmek istiyorsun, fakat senin de bir bardak suya ve bir sese ihtiyacın var.",
+    "Domain": "family",
+    "MinAge": 25,
+    "MaxAge": 95,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_neighbors",
+    "Title": "Apartman toplantısı",
+    "Text": "Binanın ortak bir masrafı var. Herkesin geliri ve önceliği aynı değil. Aynı kapıdan girmek ortak karar vermeyi kolaylaştırmıyor.",
+    "Domain": "civic",
+    "MinAge": 20,
+    "MaxAge": 90,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_bad_news",
+    "Title": "Haberlerin ardından",
+    "Text": "Ülkeden gelen zor haberler gününün içine sızıyor. Bilgi almakla bütün gün aynı kaygıyı taşımak arasındaki dengeyi arıyorsun.",
+    "Domain": "civic",
+    "MinAge": 18,
+    "MaxAge": 100,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_rest",
+    "Title": "Dinlenmeyi hak etmek",
+    "Text": "Boş bir saatin var. Yapılacaklar listesi, o saati dinlenerek geçirmenin bir eksiklik olduğunu fısıldıyor.",
+    "Domain": "health",
+    "MinAge": 18,
+    "MaxAge": 100,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_old_friend_return",
+    "Title": "Yıllar sonra bir isim",
+    "Text": "Uzun zamandır konuşmadığın birinin adını görüyorsun. Eski hâlinizi özlüyorsun; bugünkü insanların da tanışması gerekebilir.",
+    "Domain": "relationship",
+    "MinAge": 35,
+    "MaxAge": 95,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_accessibility",
+    "Title": "Sokağın uzunluğu",
+    "Text": "Eskiden kısa gelen bir yol, bir merdiven ya da bir sıra şimdi daha çok emek istiyor. Yaşadığın çevrenin ihtiyaçlarına uyup uymadığını düşünüyorsun.",
+    "Domain": "civic",
+    "MinAge": 65,
+    "MaxAge": 100,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_farewell_letter",
+    "Title": "Yazılmamış mektup",
+    "Text": "Uzun zamandır söylemek istediğin bir söz var. Bir teşekkür, bir özür veya bir sınır. Onu söylemek için kusursuz bir an bekledikçe yıllar geçiyor.",
+    "Domain": "personal",
+    "MinAge": 55,
+    "MaxAge": 100,
+    "Priority": 20,
+    "CooldownDays": 1460,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "speak",
+        "Text": "İhtiyacını ve sınırını dürüstçe konuş.",
+        "Result": "Konuşma her şeyi çözmedi. Ama karşındaki insanın tahmin etmesini beklemekten farklı bir kapı açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 3,
+          "resilience": 2
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share",
+        "Text": "Güvendiğin biriyle küçük, somut bir destek planla.",
+        "Result": "Büyük bir söz yerine devam edebilecek küçük bir adım seçtiniz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "pause",
+        "Text": "Acele karar vermeden kendine düşünme zamanı ayır.",
+        "Result": "Bir cevabı hemen verememek, hiçbir şey hissetmediğin anlamına gelmedi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_family_repair",
+    "Title": "Bir konuşmanın eksik yanı",
+    "Text": "Son zamanlarda birbirinizi daha çok yanlış anlıyorsunuz. Yakınlığın azalması her zaman sevginin bittiği anlamına gelmiyor; bazen biriken söylenmemiş şeyler var.",
+    "Domain": "family",
+    "MinAge": 18,
+    "MaxAge": 95,
+    "Context": "parent_alive",
+    "Priority": 30,
+    "CooldownDays": 1095,
+    "Choices": [
+      {
+        "Id": "repair",
+        "Text": "Önce kendi payına düşeni anlat.",
+        "Result": "Özür dilemek her şeyi onarmadı; yeni bir konuşmaya yer açtı.",
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "family": 7
+        },
+        "FamilyBond": 6
+      },
+      {
+        "Id": "listen",
+        "Text": "Onun deneyimini savunmaya geçmeden dinle.",
+        "Result": "Katılmadığın kısmı da duyabildin.",
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "FamilyBond": 4
+      },
+      {
+        "Id": "boundary",
+        "Text": "Yakınlaşmayı zorlamadan sınırını koru.",
+        "Result": "Bir mesafe bazen aynı hatayı yeniden yapmamak için gerekliydi.",
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "autonomy": 5
+        }
+      }
+    ],
+    "MaxQualities": {
+      "family": 40
+    }
+  },
+  {
+    "Id": "lived_trusted_family",
+    "Title": "Arayabileceğin bir numara",
+    "Text": "Zor bir günün ardından arayabileceğin birini düşünüyorsun. Birlikte geçirilen sıradan günler, bugün ihtiyacın olan güveni biriktirmiş.",
+    "Domain": "family",
+    "MinAge": 18,
+    "MaxAge": 95,
+    "Context": "parent_alive",
+    "Priority": 30,
+    "CooldownDays": 1095,
+    "Choices": [
+      {
+        "Id": "ask",
+        "Text": "Desteğe ihtiyacını açıkça söyle.",
+        "Result": "Bu yakınlığın her şeyin çözülmesi değil, yalnız kalmamak olduğunu gördün.",
+        "Stats": {
+          "Happiness": 4
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "FamilyBond": 2
+      },
+      {
+        "Id": "share",
+        "Text": "Yalnızca iyi haberleri değil zorlandığın şeyi de paylaş.",
+        "Result": "Sevildiğin hâlin her zaman güçlü görünmen gerekmiyordu.",
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "FamilyBond": 3
+      },
+      {
+        "Id": "offer",
+        "Text": "Sen de onun nasıl olduğunu sor.",
+        "Result": "Bağınızın iki yönlü olması onu daha gerçek yaptı.",
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "FamilyBond": 3
+      }
+    ],
+    "MinQualities": {
+      "family": 70
+    }
+  },
+  {
+    "Id": "lived_purpose_low",
+    "Title": "Kendine yabancı bir gün",
+    "Text": "Yaptığın işler, beklenen roller ve gerçekten önemsediğin şeyler birbirinden uzaklaşmış gibi. Bir hayatın dışarıdan düzgün görünmesi, içinden de anlamlı hissedileceği anlamına gelmiyor.",
+    "Domain": "personal",
+    "MinAge": 18,
+    "MaxAge": 95,
+    "Context": "",
+    "Priority": 30,
+    "CooldownDays": 1095,
+    "Choices": [
+      {
+        "Id": "values",
+        "Text": "Sana ait üç önceliği yaz.",
+        "Result": "Her şeyi değiştirmedin; neyi değiştirmek istediğin biraz netleşti.",
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "purpose": 6
+        }
+      },
+      {
+        "Id": "try",
+        "Text": "Küçük ve geri dönülebilir bir deneme yap.",
+        "Result": "Bütün bir geleceğe söz vermeden yeni bir şey denedin.",
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "autonomy": 4,
+          "purpose": 3
+        },
+        "Set": [
+          "second_path"
+        ],
+        "Next": "lived_second_start",
+        "DelayDays": 120
+      },
+      {
+        "Id": "talk",
+        "Text": "Uygun bir destek veya danışmanlık görüşmesi araştır.",
+        "Result": "Cevapları tek başına üretmen gerekmiyordu.",
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 5
+        }
+      }
+    ],
+    "MaxQualities": {
+      "purpose": 40
+    }
+  },
+  {
+    "Id": "lived_purpose_high",
+    "Title": "Sana sorulan ilk soru",
+    "Text": "Birisi yaptığın işi veya verdiğin kararları nasıl öğrendiğini soruyor. Başkalarına küçük görünen birikiminin aktarılabilir olduğunu fark ediyorsun.",
+    "Domain": "personal",
+    "MinAge": 18,
+    "MaxAge": 95,
+    "Context": "",
+    "Priority": 30,
+    "CooldownDays": 1095,
+    "Choices": [
+      {
+        "Id": "mentor",
+        "Text": "Bildiklerini bir başlangıç rehberine dönüştür.",
+        "Result": "Kendi hataların başka birinin başlangıcını kolaylaştırdı.",
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 5
+        },
+        "Set": [
+          "mentoring"
+        ]
+      },
+      {
+        "Id": "learn",
+        "Text": "Onun bakış açısından sen de bir şey öğren.",
+        "Result": "Deneyim sahibi olmak merakı bitirmek zorunda değildi.",
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 3
+        }
+      },
+      {
+        "Id": "limits",
+        "Text": "Sürekli yardım sözü vermeden destek ol.",
+        "Result": "İyi niyetini tüketmeden paylaşmanın bir yolunu aradın.",
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        }
+      }
+    ],
+    "MinQualities": {
+      "purpose": 70
+    }
+  },
+  {
+    "Id": "lived_retraining_return",
+    "Title": "Yeniden öğrenmenin ilk karşılığı",
+    "Text": "İş ararken geliştirdiğin bir beceriyle ilgili bir fırsat çıkıyor. Bir sertifika her kapıyı açmıyor ama kendini anlatırken artık somut bir örneğin var.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 95,
+    "Context": "unemployed",
+    "Priority": 30,
+    "CooldownDays": 1095,
+    "Choices": [
+      {
+        "Id": "apply",
+        "Text": "Bu beceriyi gösteren bir başvuru hazırla.",
+        "Result": "Bir unvan yerine yapabildiğin bir işi görünür kıldın.",
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "purpose": 5
+        }
+      },
+      {
+        "Id": "portfolio",
+        "Text": "Önce küçük bir örnek çalışma tamamla.",
+        "Result": "Başvurunun yanına bir kanıt koydun.",
+        "Stats": {
+          "Education": 4
+        },
+        "Qualities": {
+          "resilience": 3
+        }
+      },
+      {
+        "Id": "ask",
+        "Text": "Birinden yapıcı geri bildirim iste.",
+        "Result": "Eleştiriyi bütün kimliğine söylenmiş bir cümleye çevirmemeyi denedin.",
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "autonomy": 3
+        }
+      }
+    ],
+    "Needs": [
+      "retraining"
+    ],
+    "Milestone": true
+  },
+  {
+    "Id": "lived_work_boundary_return",
+    "Title": "Sınır koyduğun yerde",
+    "Text": "Bir zamanlar çalışma saatlerini netleştirdiğin konuşma yeniden gündeme geliyor. Bu kez senden “bir defalığına” esnemen isteniyor.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 95,
+    "Context": "working",
+    "Priority": 30,
+    "CooldownDays": 1095,
+    "Choices": [
+      {
+        "Id": "conditions",
+        "Text": "İstisnanın süresini ve karşılığını yazılı konuş.",
+        "Result": "Bir kez yardım etmek, sonsuza kadar müsait olacağın anlamına gelmedi.",
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "autonomy": 5
+        }
+      },
+      {
+        "Id": "no",
+        "Text": "Bu kez uygun olmadığını söyle.",
+        "Result": "Sınırın ancak hiç kimse zorlamadığında geçerli bir şey değildi.",
+        "Stats": {
+          "Health": 3
+        },
+        "Qualities": {
+          "resilience": 3
+        }
+      },
+      {
+        "Id": "share",
+        "Text": "İşi ekip içinde paylaşacak bir düzen öner.",
+        "Result": "Bir kişinin fedakârlığı yerine bir çalışma biçimi düşündünüz.",
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "community": 4
+        }
+      }
+    ],
+    "Needs": [
+      "work_boundaries"
+    ]
+  },
+  {
+    "Id": "lived_layoff",
+    "Title": "Daralan işin odası",
+    "Text": "Ülkedeki iş olanakları daralırken çalıştığın yerde görevlerin azaltılması konuşuluyor. Bunun senin değerinin ölçüsü olmadığını bilmek, masadaki rakamları daha kolay yapmıyor.",
+    "Domain": "work",
+    "MinAge": 18,
+    "MaxAge": 64,
+    "Context": "weak_jobs",
+    "Priority": 30,
+    "CooldownDays": 1095,
+    "Choices": [
+      {
+        "Id": "negotiate",
+        "Text": "Görev ve çalışma düzenini yeniden görüş.",
+        "Result": "Koşullarının ne kadarının değişebileceğini somut biçimde sordun.",
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "autonomy": 4
+        }
+      },
+      {
+        "Id": "exit",
+        "Text": "Bu işi kapatıp yeni bir yol aramaya karar ver.",
+        "Result": "Son gün masanı toplarken, bir işin bütün hayatın olmadığını kendine hatırlattın.",
+        "Stats": {
+          "Happiness": -3
+        },
+        "Qualities": {
+          "purpose": 2,
+          "resilience": 3
+        },
+        "CareerExit": true,
+        "Set": [
+          "retraining"
+        ]
+      },
+      {
+        "Id": "prepare",
+        "Text": "Karar gelmeden beceri ve bütçe planını hazırla.",
+        "Result": "Kontrolünde olmayan şeylerin yanında kontrol edebildiğin küçük alanlar buldun.",
+        "Stats": {
+          "Education": 3
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [
+          "budget_plan"
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "lived_public_queue",
+    "Title": "Hizmetin uzayan sırası",
+    "Text": "Ülkedeki kamu hizmetlerinin zorlandığı bu dönemde bir randevu ya da işlem için daha uzun bekliyorsun. Zamanın da bütçenin de sınırlı.",
+    "Domain": "civic",
+    "MinAge": 18,
+    "MaxAge": 95,
+    "Context": "services_strain",
+    "Priority": 30,
+    "CooldownDays": 1095,
+    "Choices": [
+      {
+        "Id": "organize",
+        "Text": "Gerekli bilgileri doğrulayıp bir plan yap.",
+        "Result": "Bir belirsizliği tamamen kaldıramadın ama gereksiz bir yolculuğu önledin.",
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "resilience": 4
+        }
+      },
+      {
+        "Id": "solidarity",
+        "Text": "Benzer durumdaki insanlarla bilgi paylaş.",
+        "Result": "Söylentiyi büyütmeden birbirinizin işini kolaylaştırdınız.",
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        }
+      },
+      {
+        "Id": "budget",
+        "Text": "Özel bir seçeneği yalnızca bütçene uygunsa değerlendir.",
+        "Result": "Kolaylık için ayırdığın paranın başka bir ihtiyacı ertelediğini gördün.",
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "autonomy": 2
+        },
+        "Cost": 2000
+      }
+    ]
+  },
+  {
+    "Id": "lived_inflation_shared",
+    "Title": "Pahalılaşan ortak hayat",
+    "Text": "Kurgusal ülkenin fiyatları arttıkça daha önce verdiğin sözlerin masrafı da değişiyor. Bir gezi, bir kurs ya da aileye destek planı yeniden hesap istiyor.",
+    "Domain": "economy",
+    "MinAge": 18,
+    "MaxAge": 95,
+    "Context": "inflation",
+    "Priority": 30,
+    "CooldownDays": 1095,
+    "Choices": [
+      {
+        "Id": "revise",
+        "Text": "Söz verdiğin kişiyle planı yeniden konuş.",
+        "Result": "Değişen koşulu saklamak yerine birlikte uyarladınız.",
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "PartnerBond": 2
+      },
+      {
+        "Id": "smaller",
+        "Text": "Daha küçük ama sürdürülebilir bir seçenek bul.",
+        "Result": "Planın boyutu küçüldü; anlamı mutlaka küçülmedi.",
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "autonomy": 3
+        }
+      },
+      {
+        "Id": "delay",
+        "Text": "Zorunlu giderleri koruyup bu planı ertele.",
+        "Result": "Bir hayali ertelemek bütün gelecekten vazgeçmek değildi.",
+        "Stats": {
+          "Health": 1
+        },
+        "Qualities": {
+          "resilience": 4
+        }
+      }
+    ]
+  },
+  {
+    "Id": "lived_childfree_revisit",
+    "Title": "Yıllar sonra aynı soru",
+    "Text": "Bir zamanlar verdiğiniz çocuksuz hayat kararını yeniden konuşuyorsunuz. Fikriniz aynı kalabilir, değişebilir; hiçbirinin yalnızca çevrenin beklentisi olması gerekmiyor.",
+    "Domain": "relationship",
+    "MinAge": 28,
+    "MaxAge": 55,
+    "Context": "partner",
+    "Priority": 30,
+    "CooldownDays": 1095,
+    "Choices": [
+      {
+        "Id": "keep",
+        "Text": "Bu kararın hâlâ size ait olduğunu söyleyin.",
+        "Result": "Ailenizi yalnızca bir eksik üzerinden tanımlamadınız.",
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "autonomy": 5
+        },
+        "PartnerBond": 3
+      },
+      {
+        "Id": "care",
+        "Text": "Bakım ve yakınlık kurmanın başka yollarını araştırın.",
+        "Result": "Birinin hayatında yer almak tek bir aile biçimine bağlı değildi.",
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        }
+      },
+      {
+        "Id": "revisit",
+        "Text": "Artık farklı düşündüğünüzü açıkça konuşun.",
+        "Result": "Geçmişteki kendinize ihanet etmeden fikrinizi yeniden değerlendirdiniz.",
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "Remove": [
+          "childfree_choice"
+        ],
+        "Set": [
+          "parenting_plan"
+        ]
+      }
+    ],
+    "Needs": [
+      "childfree_choice"
+    ]
+  },
+  {
+    "Id": "lived_debt_shame",
+    "Title": "Açılmayan fatura",
+    "Text": "Borç yalnızca hesapta görünmüyor; telefonu açarken, bir daveti reddederken, markette beklerken de yanında. Utanmak hesabı küçültmüyor.",
+    "Domain": "economy",
+    "MinAge": 18,
+    "MaxAge": 95,
+    "Context": "debt",
+    "Priority": 30,
+    "CooldownDays": 365,
+    "Choices": [
+      {
+        "Id": "list",
+        "Text": "Borç ve zorunlu giderlerini açıkça listele.",
+        "Result": "Sorunun büyüklüğünü görmek rahatsız ediciydi; belirsizliğinden daha kullanılabilir bir şeydi.",
+        "Stats": {
+          "Education": 2
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [
+          "budget_plan"
+        ]
+      },
+      {
+        "Id": "support",
+        "Text": "Güvendiğin biriyle veya uygun bir danışmanla konuş.",
+        "Result": "Birinin seni dinlemesi borcu silmedi ama yalnızlığını azalttı.",
+        "Stats": {
+          "Social": 2
+        },
+        "Qualities": {
+          "community": 4
+        }
+      },
+      {
+        "Id": "limits",
+        "Text": "Yapamayacağın masraflara hayır de.",
+        "Result": "Bir sınır koyarken bütün hikâyeni açıklamak zorunda değildin.",
+        "Stats": {
+          "Health": 2
+        },
+        "Qualities": {
+          "autonomy": 5
+        }
+      }
+    ]
+  },
+  {
+    "Id": "lived_late_companion",
+    "Title": "Beklenmedik bir yakınlık",
+    "Text": "Yıllar sonra yeni bir insanla konuşurken zamanın nasıl geçtiğini anlamıyorsun. Yaşınla ilgili beklentiler, yakınlık ihtiyacını ortadan kaldırmıyor.",
+    "Domain": "relationship",
+    "MinAge": 60,
+    "MaxAge": 95,
+    "Context": "living_alone",
+    "Priority": 30,
+    "CooldownDays": 1095,
+    "Choices": [
+      {
+        "Id": "know",
+        "Text": "Tanışmayı kendi hızında sürdür.",
+        "Result": "Bir ilişkiyi açıklamak zorunda kalmadan önce yaşamaya hakkın vardı.",
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "autonomy": 5
+        }
+      },
+      {
+        "Id": "friend",
+        "Text": "Önce dostluk kurmayı seç.",
+        "Result": "Yakınlığın tek bir adı olmak zorunda değildi.",
+        "Stats": {
+          "Social": 3
+        },
+        "Qualities": {
+          "community": 4
+        }
+      },
+      {
+        "Id": "space",
+        "Text": "Şu anda yalnız yaşamayı tercih ettiğini söyle.",
+        "Result": "Yalnız olmakla yalnız hissetmek arasındaki farkı sen tarif ettin.",
+        "Stats": {
+          "Happiness": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        }
+      }
+    ]
+  }
+]
