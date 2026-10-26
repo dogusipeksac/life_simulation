@@ -49,13 +49,14 @@ void main() {
   });
 
   Future<void> tap(WidgetTester tester, String label) async {
-    if (find.text(label).evaluate().isEmpty)
+    if (find.text(label).evaluate().isEmpty) {
       await tester.dragUntilVisible(
         find.text(label),
         find.byType(Scrollable).last,
         const Offset(0, -250),
         maxIteration: 80,
       );
+    }
     await tester.ensureVisible(find.text(label).first);
     await tester.pumpAndSettle();
     await tester.tap(find.text(label).first);

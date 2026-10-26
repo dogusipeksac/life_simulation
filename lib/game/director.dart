@@ -54,8 +54,9 @@ class NarrativeDirector {
       memory.directedAge = s.age;
       memory.directedThisAge = 0;
     }
-    if (memory.directedThisAge >= 4 || s.day - memory.lastDirectedDay < 14)
+    if (memory.directedThisAge >= 4 || s.day - memory.lastDirectedDay < 14) {
       return null;
+    }
     final available =
         scenes.values
             .where((sc) => !sc.followUpOnly && eligible(s, sc))
@@ -109,8 +110,9 @@ class NarrativeDirector {
   bool eligible(GameState s, LifeScene scene, {bool ignoreHistory = false}) {
     if (s.age < scene.minAge || s.age > scene.maxAge) return false;
     if (scene.needs.any((f) => !s.flags.contains(f)) ||
-        scene.forbids.any(s.flags.contains))
+        scene.forbids.any(s.flags.contains)) {
       return false;
+    }
     final q = s.simulation.qualities;
     if (scene.minQualities.entries.any((e) => (q[e.key] ?? 50) < e.value) ||
         scene.maxQualities.entries.any((e) => (q[e.key] ?? 50) > e.value)) {
@@ -144,11 +146,13 @@ class NarrativeDirector {
     if (!context) return false;
     if (!ignoreHistory &&
         scene.milestone &&
-        s.completedEventIds.contains(scene.id))
+        s.completedEventIds.contains(scene.id)) {
       return false;
+    }
     final seen = s.eventLastSeenDay[scene.id];
-    if (!ignoreHistory && seen != null && s.day - seen < scene.cooldownDays)
+    if (!ignoreHistory && seen != null && s.day - seen < scene.cooldownDays) {
       return false;
+    }
     return scene.choices.any(
       (c) => c.cost <= 0 || s.money >= _price(s, c.cost),
     );
@@ -160,8 +164,9 @@ class NarrativeDirector {
   EventDef _build(GameState s, LifeScene scene, {bool track = true}) {
     var description = fillScene(s, scene.text);
     final echo = s.simulation.domainEcho[scene.domain];
-    if (!scene.followUpOnly && echo != null && echo.isNotEmpty)
+    if (!scene.followUpOnly && echo != null && echo.isNotEmpty) {
       description += '\n\nBu alanda aklında kalan: $echo';
+    }
     if (s.simulation.lastDecisionEcho.isNotEmpty && scene.followUpOnly) {
       description =
           'Daha önce: ${s.simulation.lastDecisionEcho}\n\n$description';
