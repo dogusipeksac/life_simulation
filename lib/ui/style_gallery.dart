@@ -5,6 +5,7 @@ import '../design/components.dart';
 import '../design/illustrations.dart';
 import '../design/palette.dart';
 import '../design/theme.dart';
+import 'shell.dart';
 
 /// P0 stil galerisi: bütün tasarım bileşenleri gerçek bir oyun ekranının
 /// iskeleti içinde (künye şeridi + yüzen sekme çubuğu) gösterilir.
@@ -43,7 +44,7 @@ class _StyleGalleryState extends State<StyleGallery> {
           child: SafeArea(
             bottom: false,
             child: Column(children: [
-              const _Kunye(),
+              const VitaKunye(name: 'Deniz Yılmaz', detail: '32 yaş · İzmir', money: '₺42.150'),
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.fromLTRB(18, 4, 18, 120),
@@ -55,7 +56,7 @@ class _StyleGalleryState extends State<StyleGallery> {
             ]),
           ),
         ),
-        bottomNavigationBar: _FloatingTabBar(
+        bottomNavigationBar: VitaTabBar(
           index: _tab,
           onSelect: (i) => setState(() => _tab = i),
           onNewAge: () => ScaffoldMessenger.of(context).showSnackBar(
@@ -182,131 +183,6 @@ class _StyleGalleryState extends State<StyleGallery> {
         const SizedBox(height: 18),
         VitaButton(label: 'Hikâyeye devam et', onPressed: () => Navigator.pop(context)),
       ]),
-    );
-  }
-}
-
-/// Üstteki ince künye şeridi.
-class _Kunye extends StatelessWidget {
-  const _Kunye();
-
-  @override
-  Widget build(BuildContext context) {
-    final p = context.vita;
-    return Container(
-      height: 48,
-      padding: const EdgeInsets.symmetric(horizontal: 18),
-      decoration: BoxDecoration(border: Border(bottom: BorderSide(color: p.border.withValues(alpha: .6)))),
-      child: Row(children: [
-        Text('vita ✦', style: VitaType.serif(18, p.accent, weight: FontWeight.w600)),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Text('Deniz Yılmaz · 32 yaş · İzmir',
-              overflow: TextOverflow.ellipsis, style: VitaType.caption(p).copyWith(color: p.ink)),
-        ),
-        Text('₺42.150', style: VitaType.caption(p).copyWith(color: p.accent, fontWeight: FontWeight.w600)),
-      ]),
-    );
-  }
-}
-
-/// Altta yüzen 5 duraklı sekme çubuğu; ortada kehribar "Yeni yaş".
-class _FloatingTabBar extends StatelessWidget {
-  const _FloatingTabBar({required this.index, required this.onSelect, required this.onNewAge});
-  final int index;
-  final ValueChanged<int> onSelect;
-  final VoidCallback onNewAge;
-
-  static const _tabs = [
-    (Icons.auto_stories_outlined, 'Hikâye'),
-    (Icons.work_outline, 'Kariyer'),
-    (Icons.people_outline, 'İlişkiler'),
-    (Icons.person_outline, 'Kişisel'),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    final p = context.vita;
-    Widget tab(int i) {
-      final (icon, label) = _tabs[i];
-      final selected = i == index;
-      final c = selected ? p.accent : p.muted;
-      return Expanded(
-        child: Semantics(
-          selected: selected,
-          button: true,
-          child: InkResponse(
-            onTap: () {
-              HapticFeedback.selectionClick();
-              onSelect(i);
-            },
-            radius: 32,
-            child: SizedBox(
-              height: 60,
-              child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Icon(icon, size: 22, color: c),
-                const SizedBox(height: 3),
-                Text(label,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 11, color: c, fontWeight: selected ? FontWeight.w600 : FontWeight.w400)),
-              ]),
-            ),
-          ),
-        ),
-      );
-    }
-
-    return SafeArea(
-      top: false,
-      minimum: const EdgeInsets.only(bottom: 10),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14),
-        child: Container(
-          height: 64,
-          decoration: BoxDecoration(
-            color: p.surface.withValues(alpha: .96),
-            borderRadius: BorderRadius.circular(22),
-            border: Border.all(color: p.border),
-            boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: p.isDark ? .4 : .08), blurRadius: 20, offset: const Offset(0, 6))],
-          ),
-          child: Row(children: [
-            tab(0),
-            tab(1),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: Semantics(
-                button: true,
-                label: 'Yeni yaş',
-                child: Material(
-                  color: p.accent,
-                  shape: const StadiumBorder(),
-                  child: InkWell(
-                    customBorder: const StadiumBorder(),
-                    onTap: () {
-                      HapticFeedback.mediumImpact();
-                      onNewAge();
-                    },
-                    child: SizedBox(
-                      height: 48,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 14),
-                        child: Row(mainAxisSize: MainAxisSize.min, children: [
-                          Icon(Icons.cake_outlined, size: 18, color: p.background),
-                          const SizedBox(width: 6),
-                          Text('Yeni yaş', style: TextStyle(color: p.background, fontWeight: FontWeight.w700, fontSize: 13.5)),
-                        ]),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            tab(2),
-            tab(3),
-          ]),
-        ),
-      ),
     );
   }
 }
