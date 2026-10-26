@@ -351,14 +351,23 @@ void _validateStory(String file, Json book, ContentIssues e) {
   if ((book['Id'] ?? '') == '' || (book['Title'] ?? '') == '') e.error(where, "'Id' ve 'Title' zorunlu");
   final start = book['Start'] as String? ?? 'start';
   if (!nodes.containsKey(start)) e.error(where, "başlangıç düğümü '$start' yok");
+  if (chapters == 0 || (book['FreeChapters'] as num? ?? 1) < 1) {
+    e.error(where, 'bölüm tanımı eksik');
+  }
   nodes.forEach((id, n) {
     final nw = '$where/$id';
     final choices = (n['Choices'] as List? ?? const []).cast<Json>();
     final ending = (n['Ending'] as String? ?? '').isNotEmpty;
     if (!ending && choices.isEmpty) e.error(nw, 'son olmayan düğümde seçenek yok');
+    if ((n['Text'] as String? ?? '').isEmpty) e.error(nw, 'sahne metni boş');
+    if (ending && choices.isNotEmpty) e.error(nw, 'son sahnesinde seçenek var');
+    if (!ending && !choices.any((c) => (c['NeedFlag'] as String? ?? '').isEmpty && (c['NeedStat'] as String? ?? '').isEmpty)) {
+      e.error(nw, 'koşulsuz çıkış gerekli');
+    }
     final chapter = (n['Chapter'] as num? ?? 1).toInt();
     if (chapter < 1 || chapter > chapters) e.error(nw, 'bölüm $chapter geçersiz (1–$chapters)');
     for (final c in choices) {
+      if ((c['Text'] as String? ?? '').isEmpty) e.error(nw, 'boş seçim');
       final next = c['Next'] as String? ?? '';
       if (!nodes.containsKey(next)) e.error(nw, "Next '$next' bulunamadı");
       final need = c['NeedStat'] as String? ?? '';
@@ -368,4 +377,14 @@ void _validateStory(String file, Json book, ContentIssues e) {
       }
     }
   });
+  final reached = <String>{}, pending = [start];
+  while (pending.isNotEmpty) {
+    final id = pending.removeLast();
+    if (!nodes.containsKey(id) || !reached.add(id)) continue;
+    for (final c in (nodes[id]!['Choices'] as List? ?? const []).cast<Json>()) {
+      pending.add(c['Next'] as String? ?? '');
+    }
+  }
+  if (reached.length != nodes.length) e.error(where, 'erişilemeyen sahneler var');
+  if (!nodes.values.any((n) => (n['Ending'] as String? ?? '').isNotEmpty)) e.error(where, 'en az bir son gerekli');
 }

@@ -89,6 +89,30 @@ void main() {
       expect(validateContent(raw).errors, contains(contains("'kayip_dugum'")));
     });
 
+    test('kitapta erişilemeyen sahne', () {
+      final nodes = raw.stories.values.first['Nodes'] as Map;
+      nodes['unreachable'] = {'Title': 'Gizli', 'Text': 'Metin', 'Chapter': 1, 'Ending': 'Son', 'Choices': []};
+      expect(validateContent(raw).errors, contains(contains('erişilemeyen sahneler')));
+    });
+
+    test('kitapta kilitli bütün çıkışlar ve boş metin', () {
+      final book = raw.stories.values.first;
+      final start = (book['Nodes'] as Map)[book['Start']] as Json;
+      start['Text'] = '';
+      for (final choice in start['Choices'] as List) { choice['NeedFlag'] = 'impossible'; }
+      expect(validateContent(raw).errors, contains(contains('koşulsuz çıkış gerekli')));
+      expect(validateContent(raw).errors, contains(contains('sahne metni boş')));
+    });
+
+    test('kitapta son sahnesinde seçenek ve ücretsiz bölüm tanımı', () {
+      final book = raw.stories.values.first;
+      book['FreeChapters'] = 0;
+      final ending = (book['Nodes'] as Map).values.firstWhere((n) => (n['Ending'] ?? '') != '') as Json;
+      ending['Choices'] = [{'Text': 'Devam', 'Next': book['Start']}];
+      expect(validateContent(raw).errors, contains(contains('son sahnesinde seçenek var')));
+      expect(validateContent(raw).errors, contains(contains('bölüm tanımı eksik')));
+    });
+
     test('yükleyici hatada açılmıyor', () async {
       final broken = jsonDecode(await readFile('flags.json')) as List;
       broken.removeWhere((f) => f['key'] == 'studying');

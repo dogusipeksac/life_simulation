@@ -9,6 +9,7 @@ import '../game/session.dart';
 import '../game/state.dart';
 import '../game/text.dart';
 import 'game_controller.dart';
+import 'story_library_screen.dart';
 
 /// Açılış: logo, atmosfer şeridi, kayıtlı hayata devam, yeni hayat.
 class TitleScreen extends StatelessWidget {
@@ -53,6 +54,8 @@ class TitleScreen extends StatelessWidget {
                     onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CreationWizard(game: game))),
                   ),
                 ),
+                const SizedBox(height: 10),
+                VitaButton(label: 'Hikâye kütüphanesi', secondary: true, onPressed: () => openStoryLibrary(context, game)),
                 const SizedBox(height: 28),
                 Text(
                   'Bütün karakterler, kurumlar ve olaylar kurgusaldır. Oyun çevrimdışı çalışır; hesap ya da izleme yoktur.',

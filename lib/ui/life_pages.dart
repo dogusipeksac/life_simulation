@@ -16,6 +16,7 @@ import '../game/voice.dart';
 import '../game/wedding.dart';
 import '../game/world.dart';
 import 'game_controller.dart';
+import 'story_library_screen.dart';
 import 'mini_game.dart';
 
 /// P3 sayfaları yalnızca durumu okur ve controller'a niyet gönderir.
@@ -581,6 +582,7 @@ class _LifePageState extends State<LifePage> {
       caption: 'Kararların, aile ve evlilik hazırlığın',
       onTap: () => go('life'),
     ),
+    MenuRow(icon: Icons.library_books_outlined, title: 'Hikâye kütüphanesi', caption: 'Başka bir hayat, başka bir ihtimal', onTap: () => openStoryLibrary(context, game)),
     MenuRow(
       icon: Icons.home_outlined,
       title: 'Ana menüye dön',

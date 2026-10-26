@@ -4,9 +4,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class VitaPreferences extends ChangeNotifier {
   SharedPreferences? _store;
+  int readingSize = 38;
   bool dark = true, motion = true, sound = true, haptics = true;
   Future<void> load() async {
     _store = await SharedPreferences.getInstance();
+    readingSize = (_store!.getInt('readingSize') ?? 38).clamp(32, 50);
     dark = _store!.getBool('dark') ?? true;
     motion = _store!.getBool('motion') ?? true;
     sound = _store!.getBool('sound') ?? true;
@@ -29,6 +31,12 @@ class VitaPreferences extends ChangeNotifier {
     }
     notifyListeners();
     await _store?.setBool(key, value);
+  }
+
+  Future<void> setReadingSize(int value) async {
+    readingSize = value.clamp(32, 50);
+    notifyListeners();
+    await _store?.setInt('readingSize', readingSize);
   }
 
   void feedback({bool strong = false}) {

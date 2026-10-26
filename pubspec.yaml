@@ -37,6 +37,7 @@ dependencies:
   google_fonts: ^9.0.0
   path_provider: ^2.1.6
   shared_preferences: ^2.5.6
+  flutter_svg: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,7 @@ flutter:
     - assets/content/
     - assets/content/events/
     - assets/content/stories/
+    - assets/stories/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
