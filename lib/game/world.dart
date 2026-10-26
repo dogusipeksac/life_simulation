@@ -33,10 +33,11 @@ abstract final class World {
             : 'Ülkede seçim dönemi başladı; evde konuşulanlar değişiyor.',
       );
     }
-    if (prices >= 3)
+    if (prices >= 3) {
       r?.notes.add(
         'Hayat pahalılığı arttı; aylık bütçenin ülke koşulları satırını kontrol edebilirsin.',
       );
+    }
   }
 
   static void month(GameState s, GameRandom rng, TurnReport? r) {
@@ -82,8 +83,9 @@ abstract final class World {
     final w = s.simulation;
     if (s.age < 18 ||
         !electionOpen(s) ||
-        w.lastVotedElection == w.electionNumber)
+        w.lastVotedElection == w.electionNumber) {
       return null;
+    }
     return EventDef(
       id: electionId,
       title: 'Sandığa giderken',
@@ -114,11 +116,12 @@ abstract final class World {
     final w = s.simulation;
     w.lastVotedElection = w.electionNumber;
     w.lastVote = platforms[choice] ?? 'Oy kullanmadı';
-    if (choice != 'abstain')
+    if (choice != 'abstain') {
       w.qualities['community'] = ((w.qualities['community'] ?? 50) + 3).clamp(
         0,
         100,
       );
+    }
     r.resultText +=
         '\n\nTercihin: ${w.lastVote}. Sonuçlar seçim dönemi kapanınca hayat günlüğüne yazılacak.';
   }

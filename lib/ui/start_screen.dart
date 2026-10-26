@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import '../design/preferences.dart';
 
 import '../design/components.dart';
 import '../design/illustrations.dart';
@@ -119,7 +119,7 @@ class _CreationWizardState extends State<CreationWizard> {
       ..caregiver = _caregiver.text;
     final family = widget.game.previewFamily(_seed);
     if (family != null) profile.familyId = family.id;
-    HapticFeedback.mediumImpact();
+    preferences.feedback(strong: true);
     widget.game.startNewGame(_name.text, seed: _seed, profile: profile);
     Navigator.of(context).popUntil((r) => r.isFirst);
   }

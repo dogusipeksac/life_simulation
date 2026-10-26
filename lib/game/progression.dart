@@ -101,16 +101,18 @@ class Progression {
     final c = content.careers[id];
     if (c == null) return (false, 'Böyle bir meslek yok.');
     final blocked = blockers(s, c);
-    if (blocked.isNotEmpty || s.careerId == id)
+    if (blocked.isNotEmpty || s.careerId == id) {
       return (
         false,
         blocked.isEmpty ? 'Zaten bu işte çalışıyorsun.' : blocked.join(', '),
       );
-    if (cooldown(s, id) > 0)
+    }
+    if (cooldown(s, id) > 0) {
       return (
         false,
         'Bu işe yakın zamanda başvurdun. ${cooldown(s, id)} gün sonra tekrar dene.',
       );
+    }
     if (rng.rangeInt(1, 100) > chance(s, c)) {
       s.careerApplicationDay[id] = s.day;
       return (false, '${c.name} başvurun olumsuz sonuçlandı.');
@@ -123,14 +125,16 @@ class Progression {
   }
 
   (bool, String) fate(GameState s, GameRandom rng) {
-    if (s.careerId != null)
+    if (s.careerId != null) {
       return (false, 'Kaderine güvenmek için önce işinden ayrılmalısın.');
+    }
     final wait = cooldown(s, '~kader', 365);
-    if (wait > 0)
+    if (wait > 0) {
       return (
         false,
         'Kader yakın zamanda konuştu. $wait gün sonra tekrar dene.',
       );
+    }
     final pool = careers
         .where((c) => blockers(s, c).isEmpty && cooldown(s, c.id) == 0)
         .toList();
@@ -157,8 +161,9 @@ class Progression {
     if (c == null ||
         s.careerLevel >= c.levels.length ||
         (s.day - s.careerLevelStartDay) ~/ 30 < c.promotionMonths ||
-        s.getStat(c.promotionStat!) < c.promotionMinStat)
+        s.getStat(c.promotionStat!) < c.promotionMinStat) {
       return;
+    }
     if (rng.rangeInt(1, 100) > c.promotionChance) return;
     s.careerLevel++;
     s.careerLevelStartDay = s.day;
@@ -216,8 +221,9 @@ class Progression {
     if (s.studyLevel != null) return;
     for (final st in stages) {
       if (st.$2 != s.educationLevel ||
-          s.flags.contains('failed_${educationName(st.$1)}'))
+          s.flags.contains('failed_${educationName(st.$1)}')) {
         continue;
+      }
       if (st.$7.isEmpty
           ? s.age >= st.$4 && s.age < st.$4 + st.$5
           : s.flags.remove(st.$7)) {
@@ -255,8 +261,9 @@ class Progression {
     final studying = s.studyLevel != null;
     int share(int value) =>
         value * [50, 75, 100, 150, 250][s.profile.wealth.index] ~/ 100;
-    if (c != null)
+    if (c != null) {
       lines.add(('Maaş (${titleAt(c, s.careerLevel)})', salary(s)));
+    }
     if (s.pensionMonthly > 0) lines.add(('Emekli maaşı', s.pensionMonthly));
     if (s.age < 18) {
       if (s.age >= 10) lines.add(('Harçlık', share(300)));
@@ -268,8 +275,9 @@ class Progression {
       lines.add(('Aile / işsizlik desteği', share(6000)));
     }
     final earned = lines.fold(0, (v, l) => v + l.$2);
-    if (c != null || s.pensionMonthly > 0)
+    if (c != null || s.pensionMonthly > 0) {
       lines.add(('Yaşam tarzı harcamaları', -earned * 20 ~/ 100));
+    }
     final percent = studying ? 60 : 100;
     for (final (name, amount, required, waived) in const [
       ('Kira', 9000, '', 'owns_house'),
@@ -282,11 +290,13 @@ class Progression {
       ('İkinci çocuk masrafları', 4000, 'second_child', ''),
     ]) {
       if ((required.isEmpty || s.flags.contains(required)) &&
-          (waived.isEmpty || !s.flags.contains(waived)))
+          (waived.isEmpty || !s.flags.contains(waived))) {
         lines.add((name, -amount * percent ~/ 100));
+      }
     }
-    if (s.money < 0)
+    if (s.money < 0) {
       lines.add(('Borç faizi', -((-s.money * 15 + 999) ~/ 1000)));
+    }
     final expenses = -lines.where((l) => l.$2 < 0).fold(0, (v, l) => v + l.$2);
     final w = s.simulation, base = salary(s);
     final adjustment =
@@ -294,8 +304,9 @@ class Progression {
         base * (w.employment - 55) ~/ 250 -
         expenses * (w.costIndex - 100) ~/ 100 +
         (studying ? (w.publicServices - 55) * 40 : 0);
-    if (adjustment != 0)
+    if (adjustment != 0) {
       lines.add(('Ülke koşulları (oyun modeli)', adjustment));
+    }
     return lines;
   }
 
@@ -317,13 +328,15 @@ class Progression {
       if (s.flags.remove('bankrupt')) s.flags.add('recovered_from_bankruptcy');
       if (recovered) r?.notes.add('Borçlarının hepsini kapattın.');
     } else {
-      if (s.flags.add('in_debt'))
+      if (s.flags.add('in_debt')) {
         r?.notes.add('Hesabın eksiye düştü; artık borç faizi işliyor.');
+      }
       if (s.money <= -150000) {
-        if (s.flags.add('bankrupt'))
+        if (s.flags.add('bankrupt')) {
           r?.notes.add(
             'Borç limitine dayandın. Ödeyemediğin faturalar birikiyor.',
           );
+        }
         effects.applyStat(s, Stat.happiness, -3);
       } else {
         s.flags.remove('bankrupt');

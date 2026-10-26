@@ -31,7 +31,11 @@ class GameController extends ChangeNotifier {
 
   Family? previewFamily(int seed) => rollFamily(session.content.families, seed);
 
-  void startNewGame(String name, {required int seed, CharacterProfile? profile}) {
+  void startNewGame(
+    String name, {
+    required int seed,
+    CharacterProfile? profile,
+  }) {
     session.startNewGame(name, seed: seed, profile: profile);
     notice = null;
     if (state!.pendingMoment == null) session.requestNextEvent();
@@ -43,7 +47,9 @@ class GameController extends ChangeNotifier {
     final r = session.continueGame();
     switch (r.status) {
       case LoadStatus.loaded:
-        if (!state!.isGameOver && state!.pendingMoment == null) session.requestNextEvent();
+        if (!state!.isGameOver && state!.pendingMoment == null) {
+          session.requestNextEvent();
+        }
         notice = null;
         notifyListeners();
         return true;
@@ -58,7 +64,8 @@ class GameController extends ChangeNotifier {
     return false;
   }
 
-  List<ChoiceView> get choices => event == null ? const [] : session.choiceViews(event!);
+  List<ChoiceView> get choices =>
+      event == null ? const [] : session.choiceViews(event!);
 
   String get eventText => session.describeCurrent();
 
@@ -84,6 +91,28 @@ class GameController extends ChangeNotifier {
     notifyListeners();
     return r;
   }
+
+  ActionResult _update(ActionResult result) {
+    notifyListeners();
+    return result;
+  }
+
+  ActionResult applyCareer(String id) => _update(session.applyCareer(id));
+  ActionResult trustFate() => _update(session.trustFate());
+  void quitCareer() {
+    session.quitCareer();
+    notifyListeners();
+  }
+
+  ActionResult doAction(String id, {String? personId}) =>
+      _update(session.doAction(id, personId: personId));
+  ActionResult setFocus(String focus) => _update(session.setFocus(focus));
+  ActionResult transferBank(int amount, {required bool deposit}) =>
+      _update(session.transferBank(amount, deposit: deposit));
+  ActionResult sellGold(int units) => _update(session.sellGold(units));
+  ActionResult startMiniGame(String id) => _update(session.startMiniGame(id));
+  ActionResult finishMiniGame(String token, int score) =>
+      _update(session.finishMiniGame(token, score));
 
   void leaveToTitle() {
     session.save();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import '../design/preferences.dart';
 
 import '../design/palette.dart';
 import '../design/theme.dart';
@@ -58,7 +58,7 @@ class VitaTabBar extends StatelessWidget {
           button: true,
           child: InkResponse(
             onTap: () {
-              HapticFeedback.selectionClick();
+              preferences.feedback();
               onSelect(i);
             },
             radius: 32,
@@ -105,7 +105,7 @@ class VitaTabBar extends StatelessWidget {
                   child: InkWell(
                     customBorder: const StadiumBorder(),
                     onTap: () {
-                      HapticFeedback.mediumImpact();
+                      preferences.feedback(strong: true);
                       onNewAge();
                     },
                     child: SizedBox(

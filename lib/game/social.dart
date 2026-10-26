@@ -348,17 +348,22 @@ abstract final class Social {
   static String? blocked(GameState s, LifeAction a, [RelationshipPerson? p]) {
     if (s.isGameOver) return 'Bu hayat sona erdi.';
     if (s.age < a.minAge) return '${a.minAge} yaşında açılır.';
-    if (p != null && !p.alive)
+    if (p != null && !p.alive) {
       return 'Bu kişi artık hayatta değil. Anısı günlüğünde yaşıyor.';
-    if (remaining(s) == 0)
+    }
+    if (remaining(s) == 0) {
       return 'Bu yılın 12 etkinlik hakkını kullandın. Zamanı ilerlet.';
+    }
     final last = s.actionLastDay['${p?.id ?? 'activity'}:${a.id}'];
-    if (last != null && s.day - last < 30)
+    if (last != null && s.day - last < 30) {
       return '${30 - (s.day - last)} gün sonra yeniden yapabilirsin.';
-    if (a.cost > 0 && s.money < a.cost)
+    }
+    if (a.cost > 0 && s.money < a.cost) {
       return '${formatMoney(a.cost)} nakit gerekli.';
-    if (a.id == 'toy' && s.age >= 13)
+    }
+    if (a.id == 'toy' && s.age >= 13) {
       return 'Çocukluk etkinliği; diğer hobileri keşfet.';
+    }
     final flag = {
       'pet': 'pet_owner',
       'car': 'owns_car',
@@ -366,8 +371,9 @@ abstract final class Social {
     }[a.id];
     if (flag != null && s.flags.contains(flag)) return 'Zaten hayatında var.';
     if (a.id == 'meet' &&
-        s.relationships.where((p) => p.role == 'Arkadaş').length >= 8)
+        s.relationships.where((p) => p.role == 'Arkadaş').length >= 8) {
       return 'Arkadaş çevren dolu; mevcut dostluklarına zaman ayır.';
+    }
     if (a.id == 'ask' &&
         p != null &&
         ![
@@ -376,19 +382,24 @@ abstract final class Social {
           'Koruyucu anne',
           'Koruyucu baba',
           'Büyükanne',
-        ].contains(p.role))
+        ].contains(p.role)) {
       return 'Harçlık aile üyelerinden istenir.';
+    }
     if (a.id == 'date' && p != null) {
-      if (p.role != 'Arkadaş' || p.ageNow(s) < 18)
+      if (p.role != 'Arkadaş' || p.ageNow(s) < 18) {
         return 'Yetişkin arkadaşlar arasında kullanılabilir.';
-      if (s.flags.contains('dating') || s.flags.contains('married'))
+      }
+      if (s.flags.contains('dating') || s.flags.contains('married')) {
         return 'Önce mevcut ilişkini bitirmelisin.';
+      }
       if (p.bond < 70) return 'En az 70 ilişki gerekli.';
     }
-    if (a.id == 'marry' && p != null && (p.role != 'Partner' || p.bond < 85))
+    if (a.id == 'marry' && p != null && (p.role != 'Partner' || p.bond < 85)) {
       return 'Partnerinle en az 85 ilişki gerekli.';
-    if (a.id == 'breakup' && p != null && !p.isPartner)
+    }
+    if (a.id == 'breakup' && p != null && !p.isPartner) {
       return 'Yalnızca partnerin veya eşin için kullanılabilir.';
+    }
     return null;
   }
 

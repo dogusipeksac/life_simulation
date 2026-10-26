@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'content/asset_content_loader.dart';
 import 'design/components.dart';
 import 'design/palette.dart';
+import 'design/preferences.dart';
 import 'design/theme.dart';
 import 'game/save.dart';
 import 'game/session.dart';
@@ -28,9 +29,12 @@ class VitaApp extends StatefulWidget {
   final Future<GameController> Function() loadGame;
 
   static Future<GameController> defaultLoadGame() async {
+    await preferences.load();
     final content = await loadBundledContent();
     final dir = await getApplicationSupportDirectory();
-    return GameController(GameSession(content, SaveService('${dir.path}/savegame.json')));
+    return GameController(
+      GameSession(content, SaveService('${dir.path}/savegame.json')),
+    );
   }
 
   @override
@@ -38,9 +42,6 @@ class VitaApp extends StatefulWidget {
 }
 
 class _VitaAppState extends State<VitaApp> with WidgetsBindingObserver {
-  // P3'te ayarlar ekranıyla shared_preferences'a taşınacak.
-  bool _dark = true;
-  bool _motion = true;
   late final Future<GameController> _game = widget.loadGame();
   GameController? _controller;
 
@@ -59,47 +60,60 @@ class _VitaAppState extends State<VitaApp> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // Mobilde arka plana atılan uygulama uyarısız öldürülebilir.
-    if (state == AppLifecycleState.paused || state == AppLifecycleState.inactive) _controller?.save();
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.inactive) {
+      _controller?.save();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Motion(
-      enabled: _motion,
-      child: MaterialApp(
-        title: 'vita',
-        debugShowCheckedModeBanner: false,
-        theme: buildVitaTheme(VitaPalette.light),
-        darkTheme: buildVitaTheme(VitaPalette.dark),
-        themeMode: _dark ? ThemeMode.dark : ThemeMode.light,
-        home: FutureBuilder<GameController>(
-          future: _game,
-          builder: (context, snap) {
-            if (snap.hasError) return _Failure(error: snap.error!);
-            final game = _controller = snap.data;
-            if (game == null) return const _Splash();
-            return ListenableBuilder(
-              listenable: game,
-              builder: (context, _) => game.inGame
-                  ? StoryScreen(game: game)
-                  : TitleScreen(game: game, onGallery: kDebugMode ? () => _openGallery(context) : null),
-            );
-          },
+    return ListenableBuilder(
+      listenable: preferences,
+      builder: (context, _) => Motion(
+        enabled: preferences.motion,
+        child: MaterialApp(
+          title: 'vita',
+          debugShowCheckedModeBanner: false,
+          theme: buildVitaTheme(VitaPalette.light),
+          darkTheme: buildVitaTheme(VitaPalette.dark),
+          themeMode: preferences.dark ? ThemeMode.dark : ThemeMode.light,
+          home: FutureBuilder<GameController>(
+            future: _game,
+            builder: (context, snap) {
+              if (snap.hasError) return _Failure(error: snap.error!);
+              final game = _controller = snap.data;
+              if (game == null) return const _Splash();
+              return ListenableBuilder(
+                listenable: game,
+                builder: (context, _) => game.inGame
+                    ? StoryScreen(game: game)
+                    : TitleScreen(
+                        game: game,
+                        onGallery: kDebugMode
+                            ? () => _openGallery(context)
+                            : null,
+                      ),
+              );
+            },
+          ),
         ),
       ),
     );
   }
 
-  void _openGallery(BuildContext context) => Navigator.of(context).push(MaterialPageRoute(
-        builder: (_) => StatefulBuilder(
-          builder: (context, set) => StyleGallery(
-            dark: _dark,
-            motion: _motion,
-            onDarkChanged: (v) => setState(() => _dark = v),
-            onMotionChanged: (v) => setState(() => _motion = v),
-          ),
+  void _openGallery(BuildContext context) => Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (_) => StatefulBuilder(
+        builder: (context, set) => StyleGallery(
+          dark: preferences.dark,
+          motion: preferences.motion,
+          onDarkChanged: (v) => preferences.set('dark', v),
+          onMotionChanged: (v) => preferences.set('motion', v),
         ),
-      ));
+      ),
+    ),
+  );
 }
 
 class _Splash extends StatelessWidget {
@@ -110,7 +124,12 @@ class _Splash extends StatelessWidget {
     final p = context.vita;
     return Scaffold(
       backgroundColor: p.background,
-      body: Center(child: Text('vita ✦', style: VitaType.display(p).copyWith(color: p.accent))),
+      body: Center(
+        child: Text(
+          'vita ✦',
+          style: VitaType.display(p).copyWith(color: p.accent),
+        ),
+      ),
     );
   }
 }
@@ -128,7 +147,10 @@ class _Failure extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
-          child: SelectableText('$error', style: VitaType.body(p).copyWith(color: p.negative)),
+          child: SelectableText(
+            '$error',
+            style: VitaType.body(p).copyWith(color: p.negative),
+          ),
         ),
       ),
     );

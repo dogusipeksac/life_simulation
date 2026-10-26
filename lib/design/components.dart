@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'preferences.dart';
 
 import 'palette.dart';
 import 'theme.dart';
@@ -128,7 +128,7 @@ class DecisionCard extends StatelessWidget {
             onTap: locked
                 ? null
                 : () {
-                    HapticFeedback.selectionClick();
+                    preferences.feedback();
                     onTap?.call();
                   },
             child: ConstrainedBox(

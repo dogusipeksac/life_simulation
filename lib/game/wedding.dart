@@ -18,10 +18,12 @@ abstract final class Wedding {
         p.ageNow(s) < 18 ||
         !p.alive ||
         p.role != 'Partner' ||
-        s.flags.contains('married'))
+        s.flags.contains('married')) {
       return (false, 'Bu ilişki için evlilik planı açılamıyor.');
-    if (s.simulation.wedding.pending)
+    }
+    if (s.simulation.wedding.pending) {
       return (false, 'Zaten bir evlilik hazırlığınız var.');
+    }
     s.simulation.wedding = WeddingRecord()
       ..pending = true
       ..partnerId = p.id;

@@ -40,7 +40,7 @@ abstract final class TimeConfig {
       totalDay * monthsPerYear ~/ daysPerYear;
 }
 
-/// Godot: Data/Config/EconomyConfig.tres DebtLimit. P3'te ekonomi config'iyle birlikte taşınacak.
+/// Godot: Data/Config/EconomyConfig.tres DebtLimit.
 const debtLimit = 150000;
 
 class ActionResult {
@@ -78,8 +78,9 @@ class GameSession {
   static String? validatePlayerName(String name) {
     final t = name.trim();
     if (t.isEmpty) return 'Bir isim yazmalısın.';
-    if (t.length > maxPlayerNameLength)
+    if (t.length > maxPlayerNameLength) {
       return 'İsim en fazla $maxPlayerNameLength karakter olabilir.';
+    }
     return null;
   }
 
@@ -208,14 +209,16 @@ class GameSession {
     final s = state, rng = _rng, ev = currentEvent;
     if (s == null || rng == null || ev == null) return null;
     final choice = ev.findChoice(choiceId);
-    if (choice == null || !EventManager.isChoiceAvailable(s, choice))
+    if (choice == null || !EventManager.isChoiceAvailable(s, choice)) {
       return null;
+    }
 
     final result = effects.applyChoice(s, ev, choice);
     director.resolve(s, ev, choice, result);
     if (ev.id == World.electionId) World.vote(s, choice.id, result);
-    if (ev.id == Wedding.eventId)
+    if (ev.id == Wedding.eventId) {
       Wedding.resolve(s, choice.id, rng, effects, result);
+    }
     if (ev.id == 'social_proposal' && choice.id == 'marry') {
       Wedding.reconcile(s);
       final partner = s.relationships
@@ -252,8 +255,9 @@ class GameSession {
   /// "Yeni yaş": doğum gününe atlar; seçimlerle aynı aylık/yaşlanma hattından geçer.
   ActionResult advanceToBirthday() {
     final s = state;
-    if (s == null || s.isGameOver)
+    if (s == null || s.isGameOver) {
       return const ActionResult(false, 'Bu hayat sona erdi.');
+    }
     if (currentEvent != null ||
         (s.currentEventId ?? '').isNotEmpty ||
         (s.pendingEventId ?? '').isNotEmpty) {
@@ -293,8 +297,9 @@ class GameSession {
   }
 
   ActionResult doAction(String id, {String? personId}) {
-    if (state == null)
+    if (state == null) {
       return const ActionResult(false, 'Önce bir hayata başla.');
+    }
     final result = Social.perform(state!, effects, id, personId);
     if (result.$1) return _commit(result);
     return ActionResult(false, result.$2);
@@ -302,11 +307,13 @@ class GameSession {
 
   ActionResult setFocus(String focus) {
     final s = state;
-    if (s == null || s.isGameOver || !lifeFocuses.contains(focus))
+    if (s == null || s.isGameOver || !lifeFocuses.contains(focus)) {
       return const ActionResult(false, 'Öncelik değiştirilemedi.');
+    }
     final wait = 90 - (s.day - s.focusChangedDay);
-    if (wait > 0)
+    if (wait > 0) {
       return ActionResult(false, '$wait gün sonra yeniden değiştirebilirsin.');
+    }
     s.lifeFocus = focus;
     s.focusChangedDay = s.day;
     _autoSave();
@@ -315,23 +322,29 @@ class GameSession {
 
   ActionResult transferBank(int amount, {required bool deposit}) {
     final s = state;
-    if (s == null || s.isGameOver)
+    if (s == null || s.isGameOver) {
       return const ActionResult(false, 'Oyun devam etmiyor.');
-    if (s.age < 18)
+    }
+    if (s.age < 18) {
       return const ActionResult(false, 'Banka hesabı 18 yaşında açılır.');
-    if (amount <= 0 || amount > 1000000000000)
+    }
+    if (amount <= 0 || amount > 1000000000000) {
       return const ActionResult(false, 'Geçerli bir tutar gir.');
-    if (deposit && (s.money < amount || s.bankBalance > 1000000000000 - amount))
+    }
+    if (deposit &&
+        (s.money < amount || s.bankBalance > 1000000000000 - amount)) {
       return const ActionResult(
         false,
         'Nakit yetersiz veya hesap limitine ulaştın.',
       );
+    }
     if (!deposit &&
-        (s.bankBalance < amount || s.money > 0x7FFFFFFFFFFFFFFF - amount))
+        (s.bankBalance < amount || s.money > 0x7FFFFFFFFFFFFFFF - amount)) {
       return const ActionResult(
         false,
         'Banka bakiyesi yetersiz veya nakit limitine ulaştın.',
       );
+    }
     effects.applyStat(s, Stat.money, deposit ? -amount : amount);
     s.bankBalance += deposit ? amount : -amount;
     final message =
@@ -345,26 +358,26 @@ class GameSession {
     if (s == null ||
         s.isGameOver ||
         units <= 0 ||
-        units > s.simulation.goldWallet)
-      return const ActionResult(
-        false,
-        'Takı cüzdanında yeterli oyun altını yok.',
-      );
+        units > s.simulation.goldWallet) {
+      return const ActionResult(false, 'Geçerli bir oyun altını miktarı seç.');
+    }
     s.simulation.goldWallet -= units;
     final amount = units * Wedding.goldValue(s);
     effects.applyStat(s, Stat.money, amount);
     final message =
-        '$units oyun altını ${formatMoney(amount)} karşılığında nakde çevrildi.';
+        '$units oyun altını ${formatMoney(amount)} nakde çevrildi. Bu değer gerçek altın fiyatını temsil etmez.';
     remember(s, 'Takı cüzdanı', message);
     return _commit((true, message));
   }
 
   ActionResult startMiniGame(String game) {
     final s = state;
-    if (s == null || s.isGameOver)
+    if (s == null || s.isGameOver) {
       return const ActionResult(false, 'Oyun devam etmiyor.');
-    if (!['memory', 'balls'].contains(game))
+    }
+    if (!['memory', 'balls'].contains(game)) {
       return const ActionResult(false, 'Oyun bulunamadı.');
+    }
     final reason = Social.blocked(
       s,
       const LifeAction('minigame', '✿', 'Zihin oyunu', '', '', 3),
@@ -382,8 +395,9 @@ class GameSession {
     if (s == null ||
         s.isGameOver ||
         token.isEmpty ||
-        s.miniGameSession != token)
+        s.miniGameSession != token) {
       return const ActionResult(false, 'Bu oyun oturumu sona erdi.');
+    }
     score = score.clamp(0, 5);
     s.miniGameSession = '';
     effects.applyStat(s, Stat.education, score);
@@ -472,8 +486,9 @@ class GameSession {
   void _aging(GameState s) {
     final c = content.life;
     if (s.age < c.declineStartAge) {
-      if (c.recoveryPerYear > 0)
+      if (c.recoveryPerYear > 0) {
         effects.applyStat(s, Stat.health, c.recoveryPerYear);
+      }
       return;
     }
     final loss = yearlyHealthLoss(s, c);
@@ -527,12 +542,13 @@ class GameSession {
     s.simulation.careerTheme = content.careers[s.careerId]?.theme ?? '';
   }
 
-  /// Künyedeki kısa durum. P3'te kariyer/eğitim kademesiyle tamamlanacak.
+  /// Künyedeki kısa meslek / öğrenim durumu.
   String describeOccupation() {
     final s = state;
     if (s == null) return '';
-    if (s.age < 6)
+    if (s.age < 6) {
       return s.age < 2 ? 'Dünyayı tanımaya başlıyor' : 'Oyunlarla büyüyor';
+    }
     final career = content.careers[s.careerId];
     if (career != null && career.levels.isNotEmpty) {
       return career.levels[(s.careerLevel - 1).clamp(
@@ -540,8 +556,9 @@ class GameSession {
         career.levels.length - 1,
       )];
     }
-    if (s.studyLevel != null)
+    if (s.studyLevel != null) {
       return '${educationDisplay(s.studyLevel!)} öğrencisi';
+    }
     if (s.flags.contains('retired')) return 'Emekli';
     return s.age >= 18 ? 'İşsiz' : 'Okul dışında';
   }
