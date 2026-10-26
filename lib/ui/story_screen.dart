@@ -169,7 +169,7 @@ class _EventPage extends StatelessWidget {
     final scene = s.simulation.currentSceneId == ev.id && ev.managedByDirector ? s.simulation.currentSceneReason : '';
     final choices = game.choices;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      Text('${s.lifeStage} · ${_categoryLabel(ev.category)}'.toUpperCase(), style: VitaType.overline(p)),
+      Text(upperTr('${s.lifeStage} · ${_categoryLabel(ev.category)}'), style: VitaType.overline(p)),
       const SizedBox(height: 6),
       Semantics(header: true, child: Text(ev.title, style: VitaType.title(p))),
       const SizedBox(height: 12),

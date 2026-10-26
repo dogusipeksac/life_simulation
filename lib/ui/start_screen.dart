@@ -247,7 +247,7 @@ class _CreationWizardState extends State<CreationWizard> {
 
   Widget _label(VitaPalette p, String text) => Padding(
         padding: const EdgeInsets.only(top: 14, bottom: 8),
-        child: Text(text.toUpperCase(), style: VitaType.overline(p)),
+        child: Text(upperTr(text), style: VitaType.overline(p)),
       );
 
   Widget _field(VitaPalette p, String label, TextEditingController c, String hint, int max) => Padding(

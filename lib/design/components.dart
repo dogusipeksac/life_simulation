@@ -52,7 +52,7 @@ class SectionHeader extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(text.toUpperCase(), style: VitaType.overline(p)),
+            Text(upperTr(text), style: VitaType.overline(p)),
             const SizedBox(height: 6),
             Container(height: .6, color: p.border),
           ],

@@ -71,3 +71,6 @@ ThemeData buildVitaTheme(VitaPalette p) {
     }),
   );
 }
+
+/// Türkçe büyük harf: Dart'ın toUpperCase'i 'i'yi 'I' yapar, Türkçede 'İ' olmalı.
+String upperTr(String s) => s.replaceAll('i', 'İ').toUpperCase();
