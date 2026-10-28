@@ -10,6 +10,8 @@ import '../game/state.dart';
 import '../game/text.dart';
 import 'game_controller.dart';
 import 'story_library_screen.dart';
+import 'achievements_screen.dart';
+import 'privacy_screen.dart';
 
 /// Açılış: logo, atmosfer şeridi, kayıtlı hayata devam, yeni hayat.
 class TitleScreen extends StatelessWidget {
@@ -56,9 +58,12 @@ class TitleScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 VitaButton(label: 'Hikâye kütüphanesi', secondary: true, onPressed: () => openStoryLibrary(context, game)),
+                const SizedBox(height: 10),
+                VitaButton(label: 'Başarımlar', secondary: true, onPressed: () => openAchievements(context, game)),
+                TextButton(onPressed: () => openPrivacy(context), child: const Text('Gizlilik ve bağlantılar')),
                 const SizedBox(height: 28),
                 Text(
-                  'Bütün karakterler, kurumlar ve olaylar kurgusaldır. Oyun çevrimdışı çalışır; hesap ya da izleme yoktur.',
+                  'Bütün karakterler, kurumlar ve olaylar kurgusaldır. Ana oyun çevrimdışı çalışır. Reklam ve mağaza özellikleri bağlantı kullanır.',
                   textAlign: TextAlign.center,
                   style: VitaType.caption(p),
                 ),

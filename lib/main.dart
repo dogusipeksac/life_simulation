@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,6 +13,8 @@ import 'design/preferences.dart';
 import 'design/theme.dart';
 import 'game/save.dart';
 import 'game/session.dart';
+import 'platform/play_billing.dart';
+import 'platform/google_ads.dart';
 import 'ui/game_controller.dart';
 import 'ui/start_screen.dart';
 import 'ui/story_screen.dart';
@@ -39,9 +43,13 @@ class VitaApp extends StatefulWidget {
     await preferences.load();
     final content = await loadBundledContent();
     final dir = await getApplicationSupportDirectory();
-    return GameController(
+    final game = GameController(
       GameSession(content, SaveService('${dir.path}/savegame.json')),
+      billing: PlayBilling(),
+      ads: GoogleAds(),
     );
+    unawaited(game.initializePlatformServices());
+    return game;
   }
 
   @override
@@ -61,11 +69,13 @@ class _VitaAppState extends State<VitaApp> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    if (widget.loadGame == VitaApp.defaultLoadGame) _controller?.dispose();
     super.dispose();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) _controller?.onResume();
     // Mobilde arka plana atılan uygulama uyarısız öldürülebilir.
     if (state == AppLifecycleState.paused ||
         state == AppLifecycleState.inactive) {

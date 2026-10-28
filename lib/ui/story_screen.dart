@@ -13,6 +13,7 @@ import '../game/text.dart';
 import 'game_controller.dart';
 import 'shell.dart';
 import 'life_pages.dart';
+import 'life_summary_panel.dart';
 
 /// Ana ekran: hikâye → karar → sonuç → hikâye. Oyun sonunda final sayfası.
 class StoryScreen extends StatefulWidget {
@@ -66,9 +67,9 @@ class _StoryScreenState extends State<StoryScreen> {
     _toTop();
   }
 
-  void _continue() {
-    game.continueStory();
-    _toTop();
+  Future<void> _continue() async {
+    await game.continueAfterAd();
+    if (mounted) _toTop();
   }
 
   void _newAge() {
@@ -126,7 +127,7 @@ class _StoryScreenState extends State<StoryScreen> {
         return PopScope(
           canPop: false,
           onPopInvokedWithResult: (didPop, _) async {
-            if (didPop) return;
+            if (didPop || game.rewardBusy || game.transitionBusy) return;
             if (_page == 'person') {
               _navigate('relationships');
               return;
@@ -226,7 +227,7 @@ class _StoryScreenState extends State<StoryScreen> {
     final Widget page;
     final String key;
     if (s.isGameOver && s.pendingMoment == null) {
-      page = _GameOver(game: game);
+      page = LifeSummaryPanel(game: game);
       key = 'end';
     } else if (s.pendingMoment != null) {
       page = _ResultPage(
@@ -411,60 +412,6 @@ class _ResultPage extends StatelessWidget {
       if (t.expenses > 0) '−${formatMoney(t.expenses)} gider',
     ];
     return [when, ...money].join(' · ');
-  }
-}
-
-class _GameOver extends StatelessWidget {
-  const _GameOver({required this.game});
-  final GameController game;
-
-  @override
-  Widget build(BuildContext context) {
-    final p = context.vita;
-    final s = game.state!;
-    final ending = game.session.ending;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text('HAYATIN SONU', style: VitaType.overline(p)),
-        const SizedBox(height: 6),
-        Text(
-          ending?.title ?? 'Bir Hayat',
-          style: VitaType.display(p).copyWith(fontSize: 32),
-        ),
-        const SizedBox(height: 12),
-        if (s.gameOverReason != null)
-          Text(
-            gameOverDisplay(s.gameOverReason!),
-            style: VitaType.body(p).copyWith(color: p.muted),
-          ),
-        const SizedBox(height: 12),
-        if ((ending?.text ?? '').isNotEmpty)
-          Text(ending!.text, style: VitaType.prose(p)),
-        const SectionHeader('Son durum'),
-        VitaCard(
-          child: Column(
-            children: [
-              StatBar(label: 'Sağlık', value: s.health, color: p.health),
-              StatBar(
-                label: 'Mutluluk',
-                value: s.happiness,
-                color: p.happiness,
-              ),
-              StatBar(label: 'Eğitim', value: s.education, color: p.education),
-              StatBar(label: 'Sosyal', value: s.social, color: p.social),
-            ],
-          ),
-        ),
-        const SizedBox(height: 10),
-        Text(
-          '${s.age} yıl · ${s.totalChoices} karar · ${formatMoney(s.money)}',
-          style: VitaType.caption(p),
-        ),
-        const SizedBox(height: 20),
-        VitaButton(label: 'Yeni bir hayat', onPressed: game.leaveToTitle),
-      ],
-    );
   }
 }
 

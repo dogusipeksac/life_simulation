@@ -2,7 +2,12 @@
 //
 // Kariyer, okul, ekonomi, ülke ve ilişki kuralları aynı zaman hattından geçer.
 
+import 'dart:io';
+
 import '../content/game_content.dart';
+import 'achievements.dart';
+import 'atomic_file.dart';
+import 'life_summary.dart';
 import '../content/models.dart';
 import 'catalog.dart';
 import 'conditions.dart';
@@ -52,6 +57,10 @@ class ActionResult {
 class GameSession {
   GameSession(this.content, this.saves)
     : director = NarrativeDirector(content.scenes) {
+    achievements = AchievementService(
+      content.achievements,
+      AtomicTextFile('${File(saves.savePath).parent.path}/achievements.json'),
+    )..load();
     events
       ..register(content.events.values.map(EventDef.fromContent))
       ..register(buildLifeCatalog())
@@ -60,6 +69,7 @@ class GameSession {
 
   static const maxPlayerNameLength = 20;
 
+  late final AchievementService achievements;
   final GameContent content;
   final SaveService saves;
   final EventManager events = EventManager();
@@ -135,8 +145,14 @@ class GameSession {
       progression.enroll(s, null);
       progression.assignGoals(s, _rng!);
       currentEvent = null;
-      // Yedekten yüklendi: sağlam hali hemen asıl dosyaya yaz.
-      if (result.loadedFrom != saves.savePath) _autoSave();
+      final recordedBefore = s.achievementsThisLife.length;
+      _recordAchievements(s, false, null);
+      if (s.isGameOver) _recordAchievements(s, true, null);
+      // Yedekten yüklenen veya yeni başarım eklenen kayıtları hemen yaz.
+      if (result.loadedFrom != saves.savePath ||
+          s.achievementsThisLife.length != recordedBefore) {
+        _autoSave();
+      }
     }
     return result;
   }
@@ -512,7 +528,7 @@ class GameSession {
     final s = state!;
     Wedding.reconcile(s);
     progression.checkGoals(s, report);
-    // Başarımlar P5 aşamasında bağlanacak.
+    _recordAchievements(s, false, report);
     if (!s.isGameOver) {
       if (s.health <= 0) {
         s.isGameOver = true;
@@ -522,7 +538,97 @@ class GameSession {
         s.gameOverReason = GameOverReason.oldAge;
       }
     }
-    if (s.isGameOver) s.endingId = _pickEnding(s)?.id;
+    if (s.isGameOver) {
+      s.endingId = _pickEnding(s)?.id;
+      _recordAchievements(s, true, report);
+    }
+  }
+
+  void _recordAchievements(GameState s, bool atGameOver, TurnReport? report) {
+    for (final a in achievements.check(s, atGameOver: atGameOver)) {
+      if (!s.achievementsThisLife.contains(a.id)) {
+        s.achievementsThisLife.add(a.id);
+      }
+      report?.notes.add('Başarım açıldı: ${a.title}');
+    }
+  }
+
+  int get breathsRemaining =>
+      state == null ? 0 : (3 - state!.rewardedBreathsUsed).clamp(0, 3);
+  bool get canSecondChance =>
+      state != null &&
+      state!.isGameOver &&
+      !state!.secondChanceUsed &&
+      state!.gameOverReason == GameOverReason.healthDepleted;
+  ActionResult grantBreath(GameState expectedState) {
+    final s = state;
+    if (s == null ||
+        !identical(s, expectedState) ||
+        s.isGameOver ||
+        breathsRemaining == 0) {
+      return const ActionResult(false, 'Bu hayatta nefes hakkı kalmadı.');
+    }
+    s.rewardedBreathsUsed++;
+    effects.applyStat(s, Stat.happiness, 6);
+    _autoSave();
+    return const ActionResult(true, 'Derin bir nefes: +6 Mutluluk.');
+  }
+
+  ActionResult grantSecondChance(GameState expectedState) {
+    final s = state;
+    if (s == null || !identical(s, expectedState) || !canSecondChance) {
+      return const ActionResult(false, 'İkinci şans bu hayatta kullanılamaz.');
+    }
+    s.secondChanceUsed = true;
+    s.isGameOver = false;
+    s.gameOverReason = null;
+    s.endingId = null;
+    if (s.health < 20) effects.applyStat(s, Stat.health, 20 - s.health);
+    s.pendingMoment = null;
+    currentEvent = null;
+    s.currentEventId = null;
+    _autoSave();
+    return const ActionResult(true, "İkinci şans. Sağlığın 20'ye çıktı.");
+  }
+
+  LifeSummary? buildLifeSummary() {
+    final s = state;
+    if (s == null) return null;
+    final milestones = <String>[];
+    for (final id in s.completedEventIds) {
+      final ev = events.getById(id);
+      if (ev != null && !ev.repeatable) milestones.add(ev.title);
+    }
+    final occupation =
+        content.careers[s.careerId ?? s.lastCareerId]?.name ??
+        describeOccupation();
+    final goals = content.goals
+        .where((g) => s.activeGoalIds.contains(g.id))
+        .toList();
+    return LifeSummary(
+      name: s.playerName,
+      age: s.age,
+      money: s.money,
+      educationLevel: s.educationLevel,
+      career: occupation,
+      reason: s.gameOverReason,
+      health: s.health,
+      happiness: s.happiness,
+      education: s.education,
+      social: s.social,
+      eventsLived: s.completedEventIds.length,
+      highlights: milestones
+          .skip((milestones.length - 6).clamp(0, milestones.length))
+          .toList(),
+      endingTitle: ending?.title ?? 'Bir Hayat',
+      endingText: ending?.text ?? '',
+      goals: goals,
+      completedGoals: s.completedGoalIds.toSet(),
+      achievements: s.achievementsThisLife.map(achievements.title).toList(),
+      portrait: '${s.profile.personality} · ${s.profile.dream}',
+      story: lifeStory(s, occupation, origin: familyOf(s)),
+      memories: recentMemories(s, 3),
+    );
   }
 
   /// Koşulları sağlanan en yüksek öncelikli son; eşitlikte ID sırası. (Godot: EndingSystem.cs)

@@ -17,6 +17,8 @@ import '../game/wedding.dart';
 import '../game/world.dart';
 import 'game_controller.dart';
 import 'story_library_screen.dart';
+import 'achievements_screen.dart';
+import 'privacy_screen.dart';
 import 'mini_game.dart';
 
 /// P3 sayfaları yalnızca durumu okur ve controller'a niyet gönderir.
@@ -582,7 +584,12 @@ class _LifePageState extends State<LifePage> {
       caption: 'Kararların, aile ve evlilik hazırlığın',
       onTap: () => go('life'),
     ),
-    MenuRow(icon: Icons.library_books_outlined, title: 'Hikâye kütüphanesi', caption: 'Başka bir hayat, başka bir ihtimal', onTap: () => openStoryLibrary(context, game)),
+    MenuRow(
+      icon: Icons.library_books_outlined,
+      title: 'Hikâye kütüphanesi',
+      caption: 'Başka bir hayat, başka bir ihtimal',
+      onTap: () => openStoryLibrary(context, game),
+    ),
     MenuRow(
       icon: Icons.home_outlined,
       title: 'Ana menüye dön',
@@ -596,6 +603,61 @@ class _LifePageState extends State<LifePage> {
         }
       },
     ),
+    MenuRow(
+      icon: Icons.workspace_premium_outlined,
+      title: 'Rozetler',
+      caption:
+          '${game.session.achievements.unlockedCount} / ${game.session.achievements.definitions.length} başarım açıldı',
+      onTap: () => openAchievements(context, game),
+    ),
+    const SectionHeader('Bir mola'),
+    text(
+      'Bu hayatta ${game.session.breathsRemaining} / 3 nefes hakkın var. İsteğe bağlı reklamı tamamla: +6 mutluluk.',
+      caption: true,
+    ),
+    button(
+      game.rewardBusy ? 'Reklam bekleniyor…' : 'Derin bir nefes · bir reklam',
+      !game.rewardBusy &&
+              !s.isGameOver &&
+              game.session.breathsRemaining > 0 &&
+              game.ads.rewardedAvailable
+          ? () async {
+              final r = await game.rewardedBreath();
+              if (mounted) result(r);
+            }
+          : null,
+    ),
+    text(game.ads.status, caption: true),
+    if (!game.ads.rewardedAvailable)
+      button('Reklamı yeniden dene', game.rewardBusy ? null : game.refreshAds),
+    const SectionHeader('Mağaza'),
+    text(game.storyStore.status, caption: true),
+    if (game.storyStore.notice.isNotEmpty) text(game.storyStore.notice),
+    button(
+      game.storyStore.adsRemoved
+          ? 'Reklamlar kapalı'
+          : game.storyStore.price('remove_ads').isEmpty
+          ? 'Reklamları kaldır · mağaza hazır değil'
+          : "Reklamları kaldır · ${game.storyStore.price('remove_ads')}",
+      game.storyStore.canPurchase('remove_ads')
+          ? () => result(game.purchaseStory('remove_ads'))
+          : null,
+    ),
+    text(
+      'Reklamları kaldırmak ara reklamları kapatır. Ödüllü reklamlar isteğe bağlı kalır.',
+      caption: true,
+    ),
+    button(
+      'Satın alımları geri yükle',
+      game.storyStore.busy ? null : () => result(game.restoreStories()),
+    ),
+    MenuRow(
+      icon: Icons.privacy_tip_outlined,
+      title: 'Gizlilik ve bağlantılar',
+      onTap: () => openPrivacy(context),
+    ),
+    if (game.ads.privacyOptionsRequired)
+      button('Reklam gizlilik seçenekleri', game.showAdPrivacyOptions),
     const SectionHeader('Ayarlar'),
     for (final (key, title, value) in [
       ('sound', 'Dokunma sesleri', preferences.sound),

@@ -30,6 +30,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
   String? _bookId;
   String _filter = 'Tümü', _message = '';
   bool _choosing = false;
+  String get _shownMessage => game.storyStore.notice.isNotEmpty ? game.storyStore.notice : _message;
   GameController get game => widget.game;
   @override
   void dispose() {
@@ -163,12 +164,12 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
                 controller: _scroll,
                 padding: const EdgeInsets.fromLTRB(18, 16, 18, 32),
                 children: [
-                  if (_message.isNotEmpty)
+                  if (_shownMessage.isNotEmpty)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 14),
                       child: Semantics(
                         liveRegion: true,
-                        child: VitaCard(child: _text(_message)),
+                        child: VitaCard(child: _text(_shownMessage)),
                       ),
                     ),
                   if (game.stories.loadNotice.isNotEmpty)

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'dart:io';
 
@@ -5,6 +6,8 @@ import 'package:flutter/foundation.dart';
 
 import '../content/models.dart';
 import '../game/events.dart';
+import '../game/billing.dart';
+import '../game/monetization.dart';
 import '../game/atomic_file.dart';
 import '../game/story_library.dart';
 import '../game/story_store.dart';
@@ -15,17 +18,26 @@ import '../game/state.dart';
 
 /// Widget'ların tek kapısı: okur ve niyet gönderir, hesap yapmaz.
 class GameController extends ChangeNotifier {
-  GameController(this.session) {
+  GameController(
+    this.session, {
+    BillingGateway? billing,
+    AdGateway? ads,
+    InterstitialPolicy? interstitialPolicy,
+  }) : ads = ads ?? NoAds(),
+       interstitialPolicy = interstitialPolicy ?? InterstitialPolicy() {
     final directory = File(session.saves.savePath).parent.path;
     storyStore = StoryStore(
       session.content.stories.values.map((b) => b.productId),
       AtomicTextFile('$directory/story-entitlements.json'),
+      gateway: billing,
     )..load();
     stories = StoryLibrary(
       session.content.stories,
       AtomicTextFile('$directory/story-progress.json'),
       ownsProduct: storyStore.owns,
     )..load();
+    storyStore.onChanged = _platformChanged;
+    this.ads.onChanged = _platformChanged;
   }
   late final StoryLibrary stories;
   late final StoryStore storyStore;
@@ -40,6 +52,115 @@ class GameController extends ChangeNotifier {
   ActionResult restoreStories() => _update(storyStore.restore());
   ActionResult purchaseStory(String product) =>
       _update(storyStore.purchase(product));
+
+  final AdGateway ads;
+  final InterstitialPolicy interstitialPolicy;
+  bool rewardBusy = false, transitionBusy = false, _disposed = false;
+  String monetizationNotice = '';
+  void _platformChanged() {
+    if (!_disposed) notifyListeners();
+  }
+
+  Future<void> initializePlatformServices() async {
+    await Future.wait([
+      () async {
+        await storyStore.initialize();
+        if (!_disposed && (storyStore.gateway?.available ?? false)) {
+          storyStore.restore();
+        }
+      }(),
+      ads.initialize(),
+    ]);
+    _platformChanged();
+  }
+
+  void onResume() {
+    if (storyStore.gateway?.available == true && !storyStore.busy) {
+      storyStore.restore();
+    }
+  }
+
+  Future<void> refreshAds() async {
+    await ads.initialize();
+    _platformChanged();
+  }
+
+  Future<void> showAdPrivacyOptions() async {
+    await ads.showPrivacyOptions();
+    _platformChanged();
+  }
+
+  Future<ActionResult> rewardedBreath() => _reward(false);
+  Future<ActionResult> secondChance() => _reward(true);
+  Future<ActionResult> _reward(bool secondChance) async {
+    final expected = state;
+    if (rewardBusy || transitionBusy || expected == null) {
+      return const ActionResult(false, 'Devam eden işlemi bekle.');
+    }
+    if (secondChance
+        ? !session.canSecondChance
+        : expected.isGameOver || session.breathsRemaining == 0) {
+      return const ActionResult(false, 'Bu hayatta bu ödül kullanılamaz.');
+    }
+    if (!ads.rewardedAvailable) return ActionResult(false, ads.status);
+    rewardBusy = true;
+    _platformChanged();
+    ActionResult result;
+    try {
+      final earned = await ads.showRewarded();
+      if (_disposed) return const ActionResult(false, 'Oturum sona erdi.');
+      result = earned
+          ? (secondChance
+                ? session.grantSecondChance(expected)
+                : session.grantBreath(expected))
+          : const ActionResult(false, 'Reklam tamamlanmadı. Ödül verilmedi.');
+      if (result.success && secondChance) session.requestNextEvent();
+    } catch (_) {
+      result = const ActionResult(
+        false,
+        'Reklam gösterilemedi. Ödül verilmedi.',
+      );
+    } finally {
+      rewardBusy = false;
+      _platformChanged();
+    }
+    monetizationNotice = result.message;
+    _platformChanged();
+    return result;
+  }
+
+  Future<void> continueAfterAd() async {
+    if (transitionBusy || rewardBusy || state == null || state!.isGameOver) {
+      return;
+    }
+    final expected = state!;
+    transitionBusy = true;
+    _platformChanged();
+    try {
+      if (interstitialPolicy.due(
+        expected,
+        adsRemoved: storyStore.adsRemoved,
+        ready: ads.interstitialAvailable,
+      )) {
+        if (await ads.showInterstitial()) interstitialPolicy.record(expected);
+      }
+    } catch (_) {
+      /* Reklam hatası hikâyeyi durdurmaz. */
+    }
+    // Aynı karede gelen ikinci dokunma, reklam gösterilmese de kararı atlamasın.
+    await Future<void>.value();
+    if (!_disposed && identical(state, expected)) continueStory();
+    transitionBusy = false;
+    _platformChanged();
+  }
+
+  @override
+  void dispose() {
+    _disposed = true;
+    storyStore.dispose();
+    ads.dispose();
+    super.dispose();
+  }
 
   final GameSession session;
 
