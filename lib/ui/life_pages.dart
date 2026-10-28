@@ -616,11 +616,15 @@ class _LifePageState extends State<LifePage> {
       caption: true,
     ),
     button(
-      game.rewardBusy ? 'Reklam bekleniyor…' : 'Derin bir nefes · bir reklam',
+      game.rewardBusy
+          ? 'Reklam bekleniyor…'
+          : game.retryBreathAvailable
+          ? 'Nefes ödülünü kaydet'
+          : 'Derin bir nefes · bir reklam',
       !game.rewardBusy &&
               !s.isGameOver &&
               game.session.breathsRemaining > 0 &&
-              game.ads.rewardedAvailable
+              (game.ads.rewardedAvailable || game.retryBreathAvailable)
           ? () async {
               final r = await game.rewardedBreath();
               if (mounted) result(r);
@@ -628,7 +632,7 @@ class _LifePageState extends State<LifePage> {
           : null,
     ),
     text(game.ads.status, caption: true),
-    if (!game.ads.rewardedAvailable)
+    if (!game.ads.rewardedAvailable && !game.retryBreathAvailable)
       button('Reklamı yeniden dene', game.rewardBusy ? null : game.refreshAds),
     const SectionHeader('Mağaza'),
     text(game.storyStore.status, caption: true),

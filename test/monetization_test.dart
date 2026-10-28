@@ -54,11 +54,13 @@ class FakeBilling implements BillingGateway {
   @override
   void Function()? onChanged;
   RestoreResult restored = const RestoreResult(false, {}, 'Bağlantı yok');
+  final Map<String, Completer<ActionResult>> purchaseReplies = {};
   Completer<RestoreResult>? pendingRestore;
   @override
   Future<void> initialize(Set<String> products) async {}
   @override
   Future<ActionResult> purchase(String product) async =>
+      purchaseReplies[product]?.future ??
       const ActionResult(true, 'Bekleniyor');
   @override
   Future<RestoreResult> restore() async =>
@@ -73,6 +75,13 @@ class FailingFile extends AtomicTextFile {
   FailingFile(super.path);
   @override
   bool write(String text) => false;
+}
+
+class ToggleSaveService extends SaveService {
+  ToggleSaveService(super.path);
+  bool fail = false;
+  @override
+  bool save(GameState state) => fail ? false : super.save(state);
 }
 
 void main() {
@@ -338,6 +347,77 @@ void main() {
       );
     },
   );
+  test('failed reward save restores the previous state and keeps the reward unclaimed', () async {
+    final save = ToggleSaveService('${dir.path}/reward-save.json');
+    final active = GameSession(content, save)..startNewGame('Deniz', seed: 12);
+    final ads = FakeAds();
+    final game = GameController(active, ads: ads);
+    addTearDown(game.dispose);
+    final s = active.state!, happiness = active.state!.happiness;
+    save.fail = true;
+    expect((await game.rewardedBreath()).success, isFalse);
+    expect(s.happiness, happiness);
+    expect(s.rewardedBreathsUsed, 0);
+    expect(game.retryBreathAvailable, isTrue);
+    save.fail = false;
+    ads.ready = false;
+    expect((await game.rewardedBreath()).success, isTrue);
+    expect(ads.rewards, 1);
+    expect(s.rewardedBreathsUsed, 1);
+    expect(game.retryBreathAvailable, isFalse);
+    s.health = 0;
+    s.isGameOver = true;
+    s.gameOverReason = GameOverReason.healthDepleted;
+    s.pendingMoment = SavedMoment(title: 'Veda');
+    save.fail = true;
+    ads.ready = true;
+    expect((await game.secondChance()).success, isFalse);
+    expect(s.isGameOver, isTrue);
+    expect(s.health, 0);
+    expect(s.secondChanceUsed, isFalse);
+    expect(s.pendingMoment?.title, 'Veda');
+    expect(game.retrySecondChanceAvailable, isTrue);
+    save.fail = false;
+    ads.ready = false;
+    expect((await game.secondChance()).success, isTrue);
+    expect(ads.rewards, 2);
+    expect(s.isGameOver, isFalse);
+    expect(s.secondChanceUsed, isTrue);
+  });
+  test(
+    'a late failed purchase response cannot cancel a newer purchase',
+    () async {
+      final gateway = FakeBilling();
+      gateway.prices['other'] = '₺40';
+      gateway.purchaseReplies['story'] = Completer<ActionResult>();
+      gateway.purchaseReplies['other'] = Completer<ActionResult>();
+      final store = StoryStore(
+        ['story', 'other'],
+        AtomicTextFile('${dir.path}/race.json'),
+        gateway: gateway,
+      );
+      addTearDown(store.dispose);
+      await store.initialize();
+      expect(store.purchase('story').success, isTrue);
+      gateway.events.add(
+        const BillingUpdate('story', BillingState.verified, 'ok'),
+      );
+      expect(store.purchase('other').success, isTrue);
+      gateway.purchaseReplies['story']!.complete(
+        const ActionResult(false, 'Eski hata'),
+      );
+      await flush();
+      expect(store.busy, isTrue);
+      gateway.events.add(
+        const BillingUpdate('other', BillingState.verified, 'ok'),
+      );
+      gateway.purchaseReplies['other']!.complete(
+        const ActionResult(true, 'ok'),
+      );
+      await flush();
+      expect(store.owns('other'), isTrue);
+    },
+  );
   test(
     'RSA receipt validates signature and signed package/product/token/state',
     () {
@@ -378,6 +458,31 @@ void main() {
         'purchaseState': 0,
       });
       final signature = sign(receipt);
+      final spki = ASN1Sequence(
+        elements: [
+          ASN1Sequence(
+            elements: [
+              ASN1ObjectIdentifier([1, 2, 840, 113549, 1, 1, 1]),
+              ASN1Null(),
+            ],
+          ),
+          ASN1BitString(stringValues: sequence.encode()),
+        ],
+      );
+      final playConsoleVerifier = PlayPurchaseVerifier(
+        base64Encode(spki.encode()),
+        'app.vita',
+      );
+      expect(playConsoleVerifier.configured, isTrue);
+      expect(
+        playConsoleVerifier.verify(
+          originalJson: receipt,
+          signature: signature,
+          product: 'story',
+          token: 'token',
+        ),
+        isTrue,
+      );
       expect(verifier.configured, isTrue);
       expect(
         verifier.verify(

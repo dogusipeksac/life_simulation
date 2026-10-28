@@ -20,7 +20,7 @@ import 'package:life_simulation/ui/life_summary_panel.dart';
 import 'package:life_simulation/ui/story_library_screen.dart';
 
 import 'content_test.dart' show contentPaths, readFile;
-import 'monetization_test.dart' show FakeAds, FakeBilling;
+import 'monetization_test.dart' show FakeAds, FakeBilling, ToggleSaveService;
 
 void main() {
   late GameContent content;
@@ -77,6 +77,35 @@ void main() {
     expect(game.state!.isGameOver, isFalse);
     expect(ads.rewards, 1);
     expect(session.saves.load().state!.secondChanceUsed, isTrue);
+  });
+  testWidgets('reward save retry remains available without another ad', (
+    tester,
+  ) async {
+    final save = ToggleSaveService('${dir.path}/save-retry.json');
+    final active = GameSession(content, save);
+    final ads = FakeAds();
+    final game = GameController(active, ads: ads)
+      ..startNewGame('Deniz', seed: 42);
+    addTearDown(game.dispose);
+    game.state!
+      ..health = 0
+      ..isGameOver = true
+      ..gameOverReason = GameOverReason.healthDepleted;
+    game.acknowledgeMoment();
+    save.fail = true;
+    await tester.pumpWidget(VitaApp(loadGame: () => SynchronousFuture(game)));
+    await tester.pumpAndSettle();
+    await tap(tester, find.text('İkinci şans · bir reklam'));
+    expect(game.state!.isGameOver, isTrue);
+    expect(game.retrySecondChanceAvailable, isTrue);
+    ads.ready = false;
+    save.fail = false;
+    await game.refreshAds();
+    await tester.pumpAndSettle();
+    await tap(tester, find.text('İkinci şans ödülünü kaydet'));
+    expect(game.state!.isGameOver, isFalse);
+    expect(game.state!.health, 20);
+    expect(ads.rewards, 1);
   });
   testWidgets('menu purchase unlocks only after verified store update', (
     tester,

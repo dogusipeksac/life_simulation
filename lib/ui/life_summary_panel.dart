@@ -100,9 +100,14 @@ class _LifeSummaryPanelState extends State<LifeSummaryPanel> {
           VitaButton(
             label: game.rewardBusy
                 ? 'Reklam bekleniyor…'
+                : game.retrySecondChanceAvailable
+                ? 'İkinci şans ödülünü kaydet'
                 : 'İkinci şans · bir reklam',
             secondary: true,
-            onPressed: !game.rewardBusy && game.ads.rewardedAvailable
+            onPressed:
+                !game.rewardBusy &&
+                    (game.ads.rewardedAvailable ||
+                        game.retrySecondChanceAvailable)
                 ? () async {
                     final r = await game.secondChance();
                     if (mounted) setState(() => _notice = r.message);
@@ -111,7 +116,7 @@ class _LifeSummaryPanelState extends State<LifeSummaryPanel> {
           ),
           const SizedBox(height: 8),
           Text(game.ads.status, style: VitaType.caption(p)),
-          if (!game.ads.rewardedAvailable)
+          if (!game.ads.rewardedAvailable && !game.retrySecondChanceAvailable)
             TextButton(
               onPressed: game.rewardBusy ? null : game.refreshAds,
               child: const Text('Reklamı yeniden dene'),

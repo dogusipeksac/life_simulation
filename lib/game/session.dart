@@ -568,9 +568,17 @@ class GameSession {
         breathsRemaining == 0) {
       return const ActionResult(false, 'Bu hayatta nefes hakkı kalmadı.');
     }
+    final previousHappiness = s.happiness;
     s.rewardedBreathsUsed++;
     effects.applyStat(s, Stat.happiness, 6);
-    _autoSave();
+    if (autoSaveEnabled && !saves.save(s)) {
+      s.rewardedBreathsUsed--;
+      s.happiness = previousHappiness;
+      return const ActionResult(
+        false,
+        'Ödül kaydedilemedi. Depolama alanını kontrol edip yeniden dene.',
+      );
+    }
     return const ActionResult(true, 'Derin bir nefes: +6 Mutluluk.');
   }
 
@@ -579,6 +587,12 @@ class GameSession {
     if (s == null || !identical(s, expectedState) || !canSecondChance) {
       return const ActionResult(false, 'İkinci şans bu hayatta kullanılamaz.');
     }
+    final previousHealth = s.health;
+    final previousReason = s.gameOverReason;
+    final previousEnding = s.endingId;
+    final previousMoment = s.pendingMoment;
+    final previousEvent = currentEvent;
+    final previousEventId = s.currentEventId;
     s.secondChanceUsed = true;
     s.isGameOver = false;
     s.gameOverReason = null;
@@ -587,7 +601,20 @@ class GameSession {
     s.pendingMoment = null;
     currentEvent = null;
     s.currentEventId = null;
-    _autoSave();
+    if (autoSaveEnabled && !saves.save(s)) {
+      s.secondChanceUsed = false;
+      s.isGameOver = true;
+      s.gameOverReason = previousReason;
+      s.endingId = previousEnding;
+      s.health = previousHealth;
+      s.pendingMoment = previousMoment;
+      currentEvent = previousEvent;
+      s.currentEventId = previousEventId;
+      return const ActionResult(
+        false,
+        'İkinci şans kaydedilemedi. Depolama alanını kontrol edip yeniden dene.',
+      );
+    }
     return const ActionResult(true, "İkinci şans. Sağlığın 20'ye çıktı.");
   }
 

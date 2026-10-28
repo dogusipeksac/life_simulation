@@ -22,9 +22,22 @@ P4: hikâye kütüphanesi, okuyucu ve bölüm kilidi tamamlandı.
 - Koşullu kararlar, hikâyeye özel statlar, seçim sonuçları ve 12 farklı sonun koleksiyonu.
 - Okuyucuda A−/A+ yazı boyutu tercihi, otomatik kayıt, kaldığın yerden devam ve sonları koruyarak yeniden başlatma. Noto Serif Regular/Medium/SemiBold fontları lisansıyla paketlenir; çalışma anında font indirme kapalıdır.
 - Hikâyeler ayrı `story-progress.json` dosyasına atomik yazılır. Bozuk kayıt kurtarma ve yazım hatasında kararın geri alınması desteklenir. Yeni hayat başlatmak kitap ilerlemesini silmez.
-- Ücretli bölüm sınırı oyun servisinde uygulanır. P4'te gerçek mağaza bağlantısı yoktur: satın alma düğmesi devre dışıdır ve geri yükleme açıklama gösterir. Gerçek satın alma/mağaza bağlantısı P5 kapsamındadır.
+- Ücretli bölüm sınırı oyun servisinde uygulanır; mağaza ve sahiplik bağlantısı P5'te eklenmiştir.
 
-Sıradaki aşamalar: P5 satın alma, reklam, başarımlar ve kapsamlı final/ikinci şans; P6 son erişilebilirlik, performans ve release imzalama. Release yapılandırması geliştirme anahtarıyla imzalanır; mağaza yayınına hazır değildir.
+P5: başarımlar, hayat özeti, ödüllü reklamlar ve Android satın alma altyapısı eklendi.
+
+- Başarımlar hayat kayıtlarından ayrı saklanır; hayat sonunda özet ve koşullar uygunsa ikinci şans sunulur. Ödüllü reklamla nefes alma ve ikinci şans, kayıt başarısız olduğunda aynı oturumda yeniden kaydedilebilir.
+- AdMob varsayılan olarak resmi test kimlikleriyle çalışır. Reklam isteği öncesinde UMP gizlilik/onay durumu kontrol edilir; gizlilik seçeneklerine uygulamadan erişilebilir.
+- Google Play satın almaları paket adı, ürün, durum ve RSA imzasıyla doğrulanıp onaylandıktan sonra sahiplik verir. Play açık anahtarı yapılandırılmadığında gerçek satın alma kapalıdır. iOS satın alımları StoreKit doğrulaması uygulanana kadar kullanılamaz.
+- Doğrulama sonuçları ve cihaz testi sınırları [P5 doğrulama notlarında](docs/P5_VALIDATION.md) yer alır.
+
+Sıradaki aşama P6: erişilebilirlik, performans, boyut iyileştirmesi ve release imzalama. Mevcut release geliştirme anahtarıyla imzalanır; mağaza yayınına hazır değildir.
+
+### Canlı mağaza ve reklam yapılandırması
+
+Canlı kullanıma geçmeden önce Play Console'da ürünler tanımlanmalı, gerçek imzalama anahtarı kullanılmalı ve satın alma akışı test edilmelidir. Derlemeye `--dart-define=PLAY_BILLING_PUBLIC_KEY=<base64-DER-açık-anahtar>` verilir; doğrulayıcının varsayılan paket adı `com.life.simulation.life_simulation` değeridir. Paket adı değiştirilirse `BILLING_PACKAGE_NAME` da eşleştirilmelidir. Kaynak Godot projesinin paket adı `com.dogusipeksac.vita` olduğundan mevcut Play uygulamasına güncelleme ve eski satın almaların geri yüklenmesi için paket adı ve imzalama anahtarı sürekliliği ayrıca doğrulanmalıdır.
+
+Canlı AdMob için Android uygulama kimliği Gradle `vitaAdmobAppId` özelliğiyle (ör. `ORG_GRADLE_PROJECT_vitaAdmobAppId` ortam değişkeni), reklam birimleri ise `--dart-define=AD_REWARDED_UNIT=...` ve `--dart-define=AD_INTERSTITIAL_UNIT=...` ile tanımlanır; `--dart-define=AD_TEST_MODE=false` kullanılır. iOS uygulama kimliği de canlıya geçmeden yapılandırılmalıdır. Bkz. [AdMob Flutter kurulumu](https://developers.google.com/admob/flutter/quick-start) ve [UMP gizlilik rehberi](https://developers.google.com/admob/flutter/privacy).
 
 ## Çalıştırma ve doğrulama
 

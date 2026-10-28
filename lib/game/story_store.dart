@@ -16,6 +16,7 @@ class StoryStore {
   StreamSubscription<BillingUpdate>? _subscription;
   Timer? _purchaseTimeout;
   String? _buying;
+  int _purchaseGeneration = 0;
   bool _restoring = false, _disposed = false, _initialized = false;
   final Set<String> _verifiedDuringRestore = {};
   String notice = '';
@@ -66,27 +67,34 @@ class StoryStore {
       );
     }
     _buying = product;
+    final generation = ++_purchaseGeneration;
     notice = 'Mağaza işlemi başlatılıyor…';
     _changed();
     _purchaseTimeout = Timer(const Duration(minutes: 2), () {
+      if (generation != _purchaseGeneration) return;
       _endPurchase();
       notice = 'İşlem henüz sonuçlanmadı. Mağazadan geri yükleyerek kontrol edebilirsin.';
       _changed();
     });
-    unawaited(_purchase(product));
+    unawaited(_purchase(product, generation));
     return ActionResult(true, notice);
   }
 
-  Future<void> _purchase(String product) async {
+  Future<void> _purchase(String product, int generation) async {
     try {
       final result = await gateway!.purchase(product);
-      if (_disposed) return;
+      if (_disposed || generation != _purchaseGeneration || _buying != product) {
+        return;
+      }
       if (!result.success) {
         _endPurchase();
         notice = result.message;
         _changed();
       }
     } catch (_) {
+      if (_disposed || generation != _purchaseGeneration || _buying != product) {
+        return;
+      }
       _endPurchase();
       notice =
           'Satın alma başlatılamadı. Mağazadan geri yüklemeyi deneyebilirsin.';
@@ -146,6 +154,7 @@ class StoryStore {
   }
 
   void _endPurchase() {
+    _purchaseGeneration++;
     _purchaseTimeout?.cancel();
     _purchaseTimeout = null;
     _buying = null;

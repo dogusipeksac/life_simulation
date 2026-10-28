@@ -56,7 +56,20 @@ class GameController extends ChangeNotifier {
   final AdGateway ads;
   final InterstitialPolicy interstitialPolicy;
   bool rewardBusy = false, transitionBusy = false, _disposed = false;
+  GameState? _pendingRewardState;
+  bool? _pendingRewardIsSecondChance;
   String monetizationNotice = '';
+  bool get retryBreathAvailable =>
+      identical(state, _pendingRewardState) &&
+      _pendingRewardIsSecondChance == false;
+  bool get retrySecondChanceAvailable =>
+      identical(state, _pendingRewardState) &&
+      _pendingRewardIsSecondChance == true;
+  void _clearPendingReward() {
+    _pendingRewardState = null;
+    _pendingRewardIsSecondChance = null;
+  }
+
   void _platformChanged() {
     if (!_disposed) notifyListeners();
   }
@@ -102,18 +115,28 @@ class GameController extends ChangeNotifier {
         : expected.isGameOver || session.breathsRemaining == 0) {
       return const ActionResult(false, 'Bu hayatta bu ödül kullanılamaz.');
     }
-    if (!ads.rewardedAvailable) return ActionResult(false, ads.status);
+    final retry = secondChance
+        ? retrySecondChanceAvailable
+        : retryBreathAvailable;
+    if (!retry && !ads.rewardedAvailable) {
+      return ActionResult(false, ads.status);
+    }
     rewardBusy = true;
     _platformChanged();
     ActionResult result;
     try {
-      final earned = await ads.showRewarded();
+      final earned = retry || await ads.showRewarded();
       if (_disposed) return const ActionResult(false, 'Oturum sona erdi.');
+      if (earned && identical(state, expected)) {
+        _pendingRewardState = expected;
+        _pendingRewardIsSecondChance = secondChance;
+      }
       result = earned
           ? (secondChance
                 ? session.grantSecondChance(expected)
                 : session.grantBreath(expected))
           : const ActionResult(false, 'Reklam tamamlanmadı. Ödül verilmedi.');
+      if (result.success || !identical(state, expected)) _clearPendingReward();
       if (result.success && secondChance) session.requestNextEvent();
     } catch (_) {
       result = const ActionResult(
@@ -185,6 +208,7 @@ class GameController extends ChangeNotifier {
     required int seed,
     CharacterProfile? profile,
   }) {
+    _clearPendingReward();
     session.startNewGame(name, seed: seed, profile: profile);
     notice = null;
     if (state!.pendingMoment == null) session.requestNextEvent();
@@ -264,6 +288,7 @@ class GameController extends ChangeNotifier {
       _update(session.finishMiniGame(token, score));
 
   void leaveToTitle() {
+    _clearPendingReward();
     session.save();
     session.state = null;
     session.currentEvent = null;
