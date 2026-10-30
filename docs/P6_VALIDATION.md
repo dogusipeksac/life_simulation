@@ -11,7 +11,7 @@ P6; erişilebilirlik geçişi, boyut optimizasyonu ve yayın imzası hazırlığ
 ## Erişilebilirlik düzeltmeleri
 
 - Açık ("kâğıt") temada üç renk kontrast sınırının altındaydı (3,6–4,4:1). Aynı tonda koyulaştırıldı:
-  `muted` 7C7488 → 696374, `accent` A9682B → 905825, `positive` 38714C ← 3F7F55. Koyu tema değişmedi (zaten 5,4:1 ve üstü).
+  `muted` 7C7488 → 696374, `accent` A9682B → 905825, `positive` 3F7F55 → 38714C. Koyu tema değişmedi (zaten 5,4:1 ve üstü).
 - Alt sekme çubuğunda dar ekranda dört sekme 40 dp'ye iniyordu. "Yeni yaş" sabit 76 dp genişlikte, ikon üstte / etiket altta düzene geçti; sekmeler 320 dp'de bile ≥ 48 dp.
 
 ## Boyut
