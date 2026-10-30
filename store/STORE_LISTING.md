@@ -45,8 +45,10 @@ Başka bir hayat dene: şifre çözdüğün, kanıtları sıraladığın, frekan
 İlk sürüm: kaderle başlayan hayatlar, 66 etkileşimli an, yeniden tasarlanan kariyer ve ilişkiler, uzun hikâye kitapları. Bu sürümde reklam ve satın alma yok; tüm içerik açık.
 
 ## Veri güvenliği (Play) · gizlilik etiketi (App Store)
-- Oyun verisi yalnızca cihazda; hesap yok, analitik SDK'sı yok.
-- AdMob (reklam) etkinse: reklam kimliği ve yaklaşık konum/cihaz bilgisi reklam sağlayıcısınca toplanabilir → "Reklam veya pazarlama" amaçlı, üçüncü tarafla paylaşılan veri olarak beyan edilmeli. Reklamlar kapalı yayınlanırsa "veri toplanmıyor".
+- Oyun verisi yalnızca cihazda, AES-256-GCM ile kilitli; hesap yok, analitik SDK'sı yok, yedekleme kapalı.
+- **İlk sürüm (reklam/IAP kapalı):** "veri toplanmıyor".
+- AdMob (reklam) sonraki sürümde açılırsa: reklam kimliği ve cihaz bilgisi reklam sağlayıcısınca toplanabilir → "Reklam veya pazarlama", üçüncü tarafla paylaşılan veri.
+- Gizlilik politikası: `store/privacy.html` (web sitesine yükle; Play/App Store formuna URL yaz).
 
 ## 14 günlük kapalı test (yeni kişisel geliştirici hesapları)
 Kural: üretime çıkmadan önce kapalı testte **en az 12 test kullanıcısı**, **14 gün kesintisiz** katılmış olmalı.

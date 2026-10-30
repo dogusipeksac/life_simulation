@@ -5,6 +5,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'local_crypto.dart';
 import 'state.dart';
 
 enum LoadStatus { loaded, noSave, corrupted, unsupportedVersion }
@@ -49,7 +50,7 @@ class SaveService {
     try {
       final temp = File(tempPath);
       temp.parent.createSync(recursive: true);
-      temp.writeAsStringSync(serialize(state), flush: true);
+      temp.writeAsStringSync(LocalCrypto.seal(serialize(state)), flush: true);
       final main = File(savePath);
       if (main.existsSync()) {
         final backup = File(backupPath);
@@ -79,7 +80,7 @@ class SaveService {
       if (!f.existsSync()) continue;
       anyFile = true;
       try {
-        return LoadResult(LoadStatus.loaded, state: deserialize(f.readAsStringSync()), loadedFrom: path, problems: problems);
+        return LoadResult(LoadStatus.loaded, state: deserialize(LocalCrypto.open(f.readAsStringSync())), loadedFrom: path, problems: problems);
       } on UnsupportedSaveVersion catch (e) {
         unsupported = true;
         problems.add('$path: $e');

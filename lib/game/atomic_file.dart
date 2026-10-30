@@ -1,6 +1,8 @@
 // Godot AtomicFile: yarıda kesilen yazımdan sonra asıl → .tmp → .bak.
 import 'dart:io';
 
+import 'local_crypto.dart';
+
 class AtomicTextFile {
   AtomicTextFile(this.path);
   final String path;
@@ -13,8 +15,10 @@ class AtomicTextFile {
   List<String> get readOrder => [path, _extension('.tmp'), _extension('.bak')];
   String? read(String file) {
     try {
-      return File(file).readAsStringSync();
+      return LocalCrypto.open(File(file).readAsStringSync());
     } on FileSystemException {
+      return null;
+    } on FormatException {
       return null;
     }
   }
@@ -23,7 +27,7 @@ class AtomicTextFile {
     try {
       final temp = File(readOrder[1]);
       temp.parent.createSync(recursive: true);
-      temp.writeAsStringSync(text, flush: true);
+      temp.writeAsStringSync(LocalCrypto.seal(text), flush: true);
       final main = File(path);
       if (main.existsSync()) {
         final backup = File(readOrder[2]);

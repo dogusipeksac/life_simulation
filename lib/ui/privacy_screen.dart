@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../design/components.dart';
 import '../design/illustrations.dart';
 import '../design/palette.dart';
 import '../design/theme.dart';
 import '../game/features.dart';
+
+/// Web sitesine koyduğun gizlilik sayfasının adresi (Play / App Store formu için).
+const privacyPolicyUrl = String.fromEnvironment(
+  'PRIVACY_POLICY_URL',
+  defaultValue: '',
+);
 
 void openPrivacy(BuildContext context) =>
     Navigator.of(context)
@@ -27,33 +34,46 @@ class PrivacyScreen extends StatelessWidget {
               Text('Hayatın bu cihazda', style: VitaType.title(p)),
               const SizedBox(height: 12),
               Text(
-                'Hayat kaydın, hikâye ilerlemen, başarımların ve tercihlerin bu cihazda saklanır. Hesap veya bulut kayıt sistemi yoktur. Ana oyun ve edinilmiş hikâyeler çevrimdışı kullanılabilir.',
+                'Hayat kaydın, hikâye ilerlemen, başarımların ve tercihlerin yalnızca bu telefonda durur. Hesap yok, bulut yok. Dosyalar AES-256-GCM ile kilitlenir; anahtar cihazın güvenli deposundadır. Birinin dosyayı kopyalaması düz metin okumaya yetmez.',
+                style: VitaType.body(p),
+              ),
+              const SectionHeader('Şifreleme'),
+              Text(
+                'Kayıt anahtarı Android Keystore veya iOS Keychain’de üretilir ve oradan çıkmaz. Uygulamayı silersen kayıt ve anahtar da silinir. Kök alınmış cihazlarda işletim sistemi koruması zayıflayabilir.',
                 style: VitaType.body(p),
               ),
               if (Features.fullAccess) ...[
                 const SectionHeader('Reklamlar ve mağaza'),
                 Text(
-                  'Bu sürümde reklam ve uygulama içi satın alma kapalıdır. Tüm hikâyelere erişebilirsin; sonraki sürümlerde mağaza ve isteğe bağlı reklamlar açılabilir.',
+                  'Bu sürümde reklam ve uygulama içi satın alma kapalıdır. Tüm hikâyelere erişebilirsin; sonraki sürümlerde mağaza ve isteğe bağlı reklamlar açılabilir. Açılırsa Google reklam kimliği işleyebilir; o zaman bu metin güncellenir.',
                   style: VitaType.body(p),
                 ),
               ] else ...[
                 const SectionHeader('Reklamlar'),
                 Text(
-                  'Ödüllü reklamlar isteğe bağlıdır. Reklamı tamamlamadan ödül verilmez; reklam izlemek oyuna devam etmek için zorunlu değildir. Reklam ve gizlilik hizmetleri Google Mobile Ads üzerinden internet bağlantısı kullanır. Bu hizmetler reklam sunumu için cihaz ve bağlantı bilgilerini işleyebilir. Gerekli olduğunda reklam gizlilik seçeneklerine oyun menüsünden ulaşabilirsin.',
+                  'Ödüllü reklamlar isteğe bağlıdır. Reklamı tamamlamadan ödül verilmez. Google Mobile Ads cihaz ve reklam kimliği işleyebilir. Gizlilik seçeneklerine oyun menüsünden ulaşabilirsin.',
                   style: VitaType.body(p),
                 ),
-                if (const bool.fromEnvironment(
-                  'AD_TEST_MODE',
-                  defaultValue: true,
-                ))
-                  Text(
-                    'Bu geliştirme sürümünde resmi test reklam kimlikleri kullanılır.',
-                    style: VitaType.caption(p),
-                  ),
                 const SectionHeader('Satın almalar'),
                 Text(
-                  'Hikâyeler ve reklamları kaldırma ayrı, tek seferlik ürünlerdir; abonelik değildir. Fiyatı ve ödemeyi mağaza gösterir. Ödeme bilgilerini oyun almaz. Cihazda yalnızca doğrulanmış ürün kimlikleri önbelleğe alınır. Farklı bir cihazda aynı mağaza hesabıyla geri yükleme gerekir.',
+                  'Hikâyeler ve reklamları kaldırma tek seferliktir; abonelik yoktur. Ödeme bilgisi mağazadadır, oyuna gelmez.',
                   style: VitaType.body(p),
+                ),
+              ],
+              if (privacyPolicyUrl.isNotEmpty) ...[
+                const SectionHeader('Tam metin'),
+                Text(privacyPolicyUrl, style: VitaType.caption(p)),
+                VitaButton(
+                  label: 'Adresi kopyala',
+                  secondary: true,
+                  onPressed: () async {
+                    await Clipboard.setData(const ClipboardData(text: privacyPolicyUrl));
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Gizlilik adresi kopyalandı.')),
+                      );
+                    }
+                  },
                 ),
               ],
               const SectionHeader('Lisanslar'),

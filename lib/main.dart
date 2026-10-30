@@ -12,6 +12,7 @@ import 'design/palette.dart';
 import 'design/preferences.dart';
 import 'design/theme.dart';
 import 'game/features.dart';
+import 'game/local_crypto.dart';
 import 'game/monetization.dart';
 import 'game/save.dart';
 import 'game/session.dart';
@@ -42,6 +43,7 @@ class LifeSimulationApp extends StatefulWidget {
 
   static Future<GameController> defaultLoadGame() async {
     await preferences.load();
+    await LocalCrypto.unlock();
     final content = await loadBundledContent();
     final dir = await getApplicationSupportDirectory();
     final game = GameController(

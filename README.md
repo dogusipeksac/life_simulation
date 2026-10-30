@@ -39,6 +39,8 @@ Canlı kullanıma geçmeden önce Play Console'da ürünler tanımlanmalı, ger�
 
 **İlk sürüm:** `MONETIZATION_LIVE` varsayılan `false` — reklam ve IAP kapalı, tüm hikâyeler açık (`lib/game/features.dart`). Açmak: `--dart-define=MONETIZATION_LIVE=true` veya `MONETIZATION_LIVE=true ./tools/build_android_release.sh`.
 
+Kayıtlar AES-256-GCM ile kilitlenir; anahtar Keystore/Keychain’dedir. Gizlilik politikası: `store/privacy.html` (web sitesine yükle).
+
 Android ve iOS AdMob kimlikleri projede. Geliştirmede `AD_TEST_MODE=true`. Canlı reklam birimleri için `AD_TEST_MODE=false`. Bkz. [AdMob Flutter](https://developers.google.com/admob/flutter/quick-start).
 
 ## Çalıştırma ve doğrulama

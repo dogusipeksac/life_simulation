@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gizlilik Politikası · Hayat Simülasyonu</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0; font-family: Georgia, "Times New Roman", serif;
+      background: #0e0c16; color: #efeae0; line-height: 1.55;
+    }
+    main { max-width: 42rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+    h1 { font-size: 2rem; color: #e0b472; font-weight: 600; margin: 0 0 .4rem; }
+    h2 { font-size: 1.15rem; color: #e0b472; margin: 2rem 0 .6rem; }
+    p, li { color: #efeae0; }
+    .muted { color: #9c93a8; font-size: .95rem; }
+    a { color: #e0b472; }
+    ul { padding-left: 1.2rem; }
+  </style>
+</head>
+<body>
+<main>
+  <p class="muted">Hayat Simülasyonu</p>
+  <h1>Gizlilik Politikası</h1>
+  <p class="muted">Yürürlük: 30 Ekim 2026 · Geliştirici: Doğuş İpeksaç</p>
+
+  <p>Hayat Simülasyonu, kararlarınla bir hayatı baştan sona yaşadığın çevrimdışı bir oyundur. Hesap açmaz, buluta kayıt göndermez ve oyun ilerlemeni kendi sunucularımızda tutmayız.</p>
+
+  <h2>1. Hangi veriler cihazda kalır</h2>
+  <p>Oyun yalnızca bu cihazda şunları saklar:</p>
+  <ul>
+    <li>Hayat kaydı (ad, yaş, seçimler, istatistikler, günlük)</li>
+    <li>Hikâye ilerlemesi ve başarımlar</li>
+    <li>Görünüm tercihleri (tema, yazı boyutu, ses, titreşim)</li>
+  </ul>
+  <p>Bu veriler internete yüklenmez. Uygulamayı silersen cihazdaki kayıt da silinir.</p>
+
+  <h2>2. Şifreleme</h2>
+  <p>Hayat kaydı, hikâye ilerlemesi, başarımlar ve satın alım önbelleği dosyaları <strong>AES-256-GCM</strong> ile kilitlenir. Anahtar bu cihazın güvenli deposunda durur (Android Keystore / iOS Keychain). Dosyayı bir bilgisayara kopyalayan biri düz metin okuyamaz.</p>
+  <p>Anahtar cihazdan ayrılmaz; bir sunucuya yedeklenmez. Telefonda kilit açıkken oyun kendi kaydını okur; kök alınmış veya kırılmış cihazlarda işletim sistemi koruması zayıflayabilir. Android yedekleme ve cihaz transferi oyun verisini dışarı çıkarmaz.</p>
+
+  <h2>3. Toplamadığımız şeyler</h2>
+  <ul>
+    <li>Hesap, e-posta, telefon veya gerçek kimlik</li>
+    <li>Konum takibi (oyunun kendisi)</li>
+    <li>Analitik veya çökme raporlama SDK’sı</li>
+    <li>Kendi sunucumuza giden oyun kaydı</li>
+  </ul>
+
+  <h2>4. Reklam ve satın alma</h2>
+  <p><strong>İlk sürümde reklam ve uygulama içi satın alma kapalıdır.</strong> Tüm hikâyeler açıktır. Bu dönemde Google Mobile Ads veya Play Faturalandırma çağrılmaz.</p>
+  <p>Sonraki bir sürümde reklam veya mağaza açılırsa:</p>
+  <ul>
+    <li>İsteğe bağlı ödüllü reklamlar ve ara sıra geçiş reklamları Google AdMob üzerinden gösterilebilir.</li>
+    <li>Google, reklam kimliği, yaklaşık konum ve cihaz bilgisi işleyebilir. Ayrıntı: <a href="https://policies.google.com/privacy">Google Gizlilik Politikası</a>.</li>
+    <li>Tek seferlik satın alımlar Google Play / App Store üzerinden yürür; ödeme bilgisi mağazadadır, oyuna gelmez.</li>
+    <li>Uygulama içinden reklam gizlilik seçeneklerine (UMP) erişilebilir.</li>
+  </ul>
+  <p>O değişiklik bu politikada ve mağaza açıklamasında duyurulur.</p>
+
+  <h2>5. Çocuklar</h2>
+  <p>Oyun genel kitle içindir; 13 yaşından küçüklerden bile bile veri toplanmaz. Reklamlar açıldığında hedefleme yaş sınırlarına Google politikaları uygulanır.</p>
+
+  <h2>6. Hakların</h2>
+  <p>Verin cihazındadır. Silmek için uygulamayı kaldır veya oyunda yeni bir hayat başlat (eski hayat kaydı üzerine yazılır). Bize iletilecek bir hesap veya bulut kopyası yoktur; dolayısıyla “hesabı sil” talebi uygulanmaz.</p>
+
+  <h2>7. İletişim</h2>
+  <p>Soruların için Play Console / App Store geliştirici iletişimini veya bu sitenin iletişim adresini kullan.</p>
+  <p class="muted">Paket adı: com.life.simulation</p>
+</main>
+</body>
+</html>
