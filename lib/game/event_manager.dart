@@ -15,6 +15,9 @@ class EventManager {
   /// Pencerede aynı kategoriden k olay varsa ağırlık 1 / (1 + ceza·k) ile çarpılır.
   static const diversityPenalty = 0.75;
 
+  /// Tekrarlanabilir bir olay bir hayatta en fazla bu kadar sunulur (Godot'da sınır yoktu).
+  static const repeatCapPerLife = 3;
+
   final Map<String, EventDef> _events = {};
   // Aynı seed ile aynı seçim için ID'ye göre sabit sıra (ordinal).
   final List<EventDef> _sorted = [];
@@ -101,6 +104,7 @@ class EventManager {
     final lastSeen = s.eventLastSeenDay[ev.id];
     if (!ev.repeatable && (lastSeen != null || s.completedEventIds.contains(ev.id))) return false;
     if (lastSeen != null && s.day - lastSeen < ev.cooldownDays) return false;
+    if ((s.eventShowCounts[ev.id] ?? 0) >= repeatCapPerLife) return false;
     return hasAnyAvailableChoice(s, ev);
   }
 

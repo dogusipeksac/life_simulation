@@ -5,6 +5,7 @@
 
 import '../content/models.dart';
 import 'effects.dart';
+import 'event_manager.dart';
 import 'events.dart';
 import 'rng.dart';
 import 'state.dart';
@@ -151,6 +152,10 @@ class NarrativeDirector {
     }
     final seen = s.eventLastSeenDay[scene.id];
     if (!ignoreHistory && seen != null && s.day - seen < scene.cooldownDays) {
+      return false;
+    }
+    // Takip sahneleri (ignoreHistory) sınırdan muaf: bir kararın devamı her zaman gelir.
+    if (!ignoreHistory && (s.eventShowCounts[scene.id] ?? 0) >= EventManager.repeatCapPerLife) {
       return false;
     }
     return scene.choices.any(

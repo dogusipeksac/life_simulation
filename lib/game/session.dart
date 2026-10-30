@@ -204,12 +204,7 @@ class GameSession {
     }
     if (currentEvent == null) {
       _updateNarrativeContext();
-      currentEvent = (s.pendingEventId ?? '').isNotEmpty
-          ? events.getNextEvent(s, rng)
-          : World.election(s) ??
-                Wedding.prepare(s) ??
-                director.next(s, rng) ??
-                events.getNextEvent(s, rng);
+      currentEvent = _selectNext(s, rng);
       if (currentEvent == null) {
         _passCalmTurn();
         return null;
@@ -426,11 +421,34 @@ class GameSession {
 
   // ------------------------------------------------------------------ İç akış
 
+  EventDef? _selectNext(GameState s, GameRandom rng) => (s.pendingEventId ?? '').isNotEmpty
+      ? events.getNextEvent(s, rng)
+      : World.election(s) ?? Wedding.prepare(s) ?? director.next(s, rng) ?? events.getNextEvent(s, rng);
+
+  /// Uygun olay yokken zaman, bir olay uygun olana kadar (en fazla bir yıl) ilerler ve
+  /// tek bir "Sakin Bir Dönem" sayfası olur. Bulunan olay sayfadan sonra sunulur.
   void _passCalmTurn() {
-    final s = state!;
-    final report = _advanceTime(_defaultTurnDays(s, _rng!));
-    _afterTurn(report);
-    s.pendingMoment = _calmMoment(s, report);
+    final s = state!, rng = _rng!;
+    final total = TurnReport();
+    while (true) {
+      final report = _advanceTime(_defaultTurnDays(s, rng));
+      _afterTurn(report);
+      total
+        ..days += report.days
+        ..income += report.income
+        ..expenses += report.expenses
+        ..notes.addAll(report.notes);
+      if (s.isGameOver || report.days == 0 || total.days >= TimeConfig.daysPerYear) break;
+      _updateNarrativeContext();
+      final next = _selectNext(s, rng);
+      if (next != null) {
+        currentEvent = next;
+        s.pendingEventId = null;
+        s.currentEventId = next.id;
+        break;
+      }
+    }
+    s.pendingMoment = _calmMoment(s, total);
     _autoSave();
   }
 

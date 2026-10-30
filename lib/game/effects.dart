@@ -85,6 +85,7 @@ class EffectProcessor {
   static void _recordEvent(GameState s, EventDef ev) {
     if (!s.completedEventIds.contains(ev.id)) s.completedEventIds.add(ev.id);
     s.eventLastSeenDay[ev.id] = s.day;
+    s.eventShowCounts[ev.id] = (s.eventShowCounts[ev.id] ?? 0) + 1;
     s.recentEventIds.add(ev.id);
     if (s.recentEventIds.length > recentEventHistoryLength) s.recentEventIds.removeAt(0);
   }

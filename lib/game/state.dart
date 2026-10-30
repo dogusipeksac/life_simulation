@@ -375,7 +375,7 @@ class LifeSimulationState {
 }
 
 class GameState {
-  static const currentSaveVersion = 6;
+  static const currentSaveVersion = 7;
   static const statMin = 0, statMax = 100;
 
   int saveVersion = currentSaveVersion;
@@ -419,6 +419,9 @@ class GameState {
   int studyStartAge = 0;
   List<String> completedEventIds = [];
   Map<String, int> eventLastSeenDay = {};
+
+  /// Olay/sahne kimliği → bu hayatta kaç kez sunuldu (v7). Tekrar sınırı bunu okur.
+  Map<String, int> eventShowCounts = {};
   Set<String> flags = {};
   List<String> recentEventIds = [];
   String? pendingEventId;
@@ -511,6 +514,7 @@ class GameState {
     studyStartAge = _i(j, 'StudyStartAge');
     completedEventIds = _ls(j, 'CompletedEventIds');
     eventLastSeenDay = _mi(j, 'EventLastSeenDay');
+    eventShowCounts = _mi(j, 'EventShowCounts');
     flags = _ls(j, 'Flags').toSet();
     recentEventIds = _ls(j, 'RecentEventIds');
     pendingEventId = j['PendingEventId'] as String?;
@@ -547,7 +551,7 @@ class GameState {
         'CareerStartDay': careerStartDay, 'CareerLevelStartDay': careerLevelStartDay, 'LastCareerId': lastCareerId,
         'CareerApplicationDay': careerApplicationDay, 'PensionMonthly': pensionMonthly,
         'StudyLevel': studyLevel == null ? null : educationName(studyLevel!), 'StudyStartAge': studyStartAge,
-        'CompletedEventIds': completedEventIds, 'EventLastSeenDay': eventLastSeenDay, 'Flags': flags.toList(),
+        'CompletedEventIds': completedEventIds, 'EventLastSeenDay': eventLastSeenDay, 'EventShowCounts': eventShowCounts, 'Flags': flags.toList(),
         'RecentEventIds': recentEventIds, 'PendingEventId': pendingEventId, 'CurrentEventId': currentEventId,
         'LastEconomyProcessedMonth': lastEconomyProcessedMonth, 'RngSeed': rngSeed, 'RngState': rngState,
         'ActiveGoalIds': activeGoalIds, 'CompletedGoalIds': completedGoalIds,

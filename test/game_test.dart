@@ -5,6 +5,7 @@ import 'package:life_simulation/content/game_content.dart';
 import 'package:life_simulation/content/models.dart';
 import 'package:life_simulation/game/catalog.dart';
 import 'package:life_simulation/game/effects.dart';
+import 'package:life_simulation/game/event_manager.dart';
 import 'package:life_simulation/game/events.dart';
 import 'package:life_simulation/game/family.dart';
 import 'package:life_simulation/game/rng.dart';
@@ -123,6 +124,49 @@ void main() {
     });
   });
 
+  group('tekrar sınırı', () {
+    test('tekrarlanabilir olay bir hayatta en fazla 3 kez sunulur', () {
+      final session = newSession()..startNewGame('Deniz', seed: 42);
+      final s = session.state!..age = 30;
+      final ev = EventDef(
+        id: 'rep', title: '', description: '', category: EventCategory.random, repeatable: true,
+        choices: [ChoiceDef(id: 'a', text: '', result: '')],
+      );
+      final fx = EffectProcessor();
+      for (var i = 0; i < EventManager.repeatCapPerLife; i++) {
+        expect(session.events.isEligible(s, ev), isTrue);
+        fx.applyChoice(s, ev, ev.choices.first);
+        s.day += 1000;
+      }
+      expect(s.eventShowCounts['rep'], EventManager.repeatCapPerLife);
+      expect(session.events.isEligible(s, ev), isFalse);
+    });
+
+    test('tam bir hayatta takip/seçim dışında hiçbir olay 3 kereden fazla gelmez', () {
+      final session = newSession()..autoSaveEnabled = false;
+      session.startNewGame('Deniz', seed: 2026, profile: CharacterProfile()..detailedLife = true);
+      final counts = <String, int>{};
+      var calmInRow = 0, maxCalmInRow = 0;
+      for (var i = 0; i < 5000 && !session.state!.isGameOver; i++) {
+        final ev = session.requestNextEvent();
+        if (ev == null) {
+          calmInRow++;
+          maxCalmInRow = calmInRow > maxCalmInRow ? calmInRow : maxCalmInRow;
+          continue;
+        }
+        calmInRow = 0;
+        counts[ev.id] = (counts[ev.id] ?? 0) + 1;
+        session.submitChoice(session.choiceViews(ev).firstWhere((c) => c.isAvailable).id);
+      }
+      final over = counts.entries.where((e) => e.value > 3 && !e.key.startsWith('sim_') && !e.key.startsWith('wedding'));
+      final followUps = session.content.scenes.values.where((sc) => sc.followUpOnly).map((sc) => sc.id).toSet();
+      expect(over.where((e) => !followUps.contains(e.key)), isEmpty);
+      // Boş dönemler en fazla bir yıllık tek sayfada birleşir; arka arkaya ikinci sayfa
+      // ancak bütün bir yıl hiçbir olay uygun olmadıysa çıkar.
+      expect(maxCalmInRow, lessThanOrEqualTo(2));
+    });
+  });
+
   group('yaşlanma', () {
     test('35 yaşından sonra yıllık kayıp ve 13 yılda bir ek kayıp', () {
       final s = GameState.createNew('Test', 0, 1);
@@ -202,7 +246,12 @@ void main() {
       expect(corruptedSaveMessage, contains('yeni bir hayata'));
     });
 
-    test('v1 kaydı v6\'ya taşınır', () {
+    test('v6 kaydında görülen olaylar bir kez sayılır', () {
+      final s = SaveService.deserialize('{"SaveVersion":6,"PlayerName":"Eski","EventLastSeenDay":{"health_flu":400}}');
+      expect(s.eventShowCounts, {'health_flu': 1});
+    });
+
+    test('v1 kaydı güncel sürüme taşınır', () {
       final s = SaveService.deserialize(
           '{"SaveVersion":1,"PlayerName":"Eski","Age":30,"Health":70,"CareerId":"barista","CompletedEventIds":["a","b"]}');
       expect(s.saveVersion, GameState.currentSaveVersion);

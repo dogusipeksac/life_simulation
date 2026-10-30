@@ -126,6 +126,11 @@ class SaveService {
           root['ActionLastDay'] ??= <String, dynamic>{};
         case 5:
           root['Simulation'] ??= <String, dynamic>{};
+        case 6:
+          // Gerçek sayılar bilinmez; görülmüş her olay en az bir kez sayılır.
+          root['EventShowCounts'] ??= <String, dynamic>{
+            for (final id in ((root['EventLastSeenDay'] as Map?) ?? const {}).keys) id as String: 1,
+          };
         default:
           throw FormatException('v$v → v${v + 1} için migration tanımlı değil.');
       }
