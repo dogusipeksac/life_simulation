@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.life.simulation" "\0"
-            VALUE "FileDescription", "life_simulation" "\0"
+            VALUE "FileDescription", "Hayat Simülasyonu" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "life_simulation" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.life.simulation. All rights reserved." "\0"
             VALUE "OriginalFilename", "life_simulation.exe" "\0"
-            VALUE "ProductName", "life_simulation" "\0"
+            VALUE "ProductName", "Hayat Simülasyonu" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

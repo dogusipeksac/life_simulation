@@ -35,7 +35,7 @@ class _LifeSummaryPanelState extends State<LifeSummaryPanel> {
         if (summary.endingText.isNotEmpty)
           Text(summary.endingText, style: VitaType.prose(p)),
         const SectionHeader('Bir hayatın özeti'),
-        VitaCard(
+        LifeSimulationCard(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

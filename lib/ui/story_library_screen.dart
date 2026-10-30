@@ -76,7 +76,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
   );
   Widget _card(List<Widget> children) => Padding(
     padding: const EdgeInsets.only(bottom: 16),
-    child: VitaCard(
+    child: LifeSimulationCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: children,
@@ -151,7 +151,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
           backgroundColor: p.background,
           appBar: AppBar(
             leading: IconButton(
-              tooltip: book == null ? "Vita'ya dön" : 'Hikâye kütüphanesi',
+              tooltip: book == null ? 'Ana menüye dön' : 'Hikâye kütüphanesi',
               icon: const Icon(Icons.arrow_back),
               onPressed: _back,
             ),
@@ -169,7 +169,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
                       padding: const EdgeInsets.only(bottom: 14),
                       child: Semantics(
                         liveRegion: true,
-                        child: VitaCard(child: _text(_shownMessage)),
+                        child: LifeSimulationCard(child: _text(_shownMessage)),
                       ),
                     ),
                   if (game.stories.loadNotice.isNotEmpty)

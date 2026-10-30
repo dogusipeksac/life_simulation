@@ -78,7 +78,7 @@ class _LifePageState extends State<LifePage> {
   );
   Widget card(String title, List<Widget> children) => Padding(
     padding: const EdgeInsets.only(bottom: 12),
-    child: VitaCard(
+    child: LifeSimulationCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -167,7 +167,7 @@ class _LifePageState extends State<LifePage> {
             padding: const EdgeInsets.only(bottom: 14),
             child: Semantics(
               liveRegion: true,
-              child: VitaCard(child: text(_message)),
+              child: LifeSimulationCard(child: text(_message)),
             ),
           ),
         ...children,
@@ -401,7 +401,7 @@ class _LifePageState extends State<LifePage> {
     for (final p in s.relationships)
       Padding(
         padding: const EdgeInsets.only(bottom: 12),
-        child: VitaCard(
+        child: LifeSimulationCard(
           onTap: () => go('person:${p.id}'),
           child: Row(
             children: [
@@ -547,7 +547,7 @@ class _LifePageState extends State<LifePage> {
       ]),
   ];
   List<Widget> menu() => [
-    Text("Senin Vita'n", style: VitaType.title(context.vita)),
+    Text('Menü', style: VitaType.title(context.vita)),
     MenuRow(
       icon: Icons.auto_stories_outlined,
       title: 'Hikâyeye dön',
@@ -678,7 +678,7 @@ class _LifePageState extends State<LifePage> {
           setState(() {});
         },
       ),
-    card('VITA · HAYAT SİMÜLASYONU', [
+    card('HAYAT SİMÜLASYONU', [
       text(
         'Seçimlerin, ilişkilerin ve hikâyelerin bu cihazda saklanır. Oyun temposu: ${s.profile.detailedLife ? 'Uzun hayat' : 'Klasik'}.',
         caption: true,

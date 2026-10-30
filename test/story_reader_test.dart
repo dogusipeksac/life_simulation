@@ -60,7 +60,7 @@ void main() {
   }
 
   Future<void> app(WidgetTester tester) async {
-    await tester.pumpWidget(VitaApp(loadGame: () => SynchronousFuture(game)));
+    await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
     await tester.pumpAndSettle();
     await tap(tester, find.text('Hikâye kütüphanesi'));
   }
@@ -142,7 +142,7 @@ void main() {
       await tester.ensureVisible(find.text(paid.title));
       await tester.pumpAndSettle();
       final card = find
-          .ancestor(of: find.text(paid.title), matching: find.byType(VitaCard))
+          .ancestor(of: find.text(paid.title), matching: find.byType(LifeSimulationCard))
           .first;
       await tap(
         tester,
@@ -294,7 +294,7 @@ void main() {
           final paidCard = find
               .ancestor(
                 of: find.text(paid.title),
-                matching: find.byType(VitaCard),
+                matching: find.byType(LifeSimulationCard),
               )
               .first;
           final open = find.descendant(

@@ -87,7 +87,7 @@ class _MiniGameScreenState extends State<MiniGameScreen> {
               for (var i = 0; i < names.length; i++)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 12),
-                  child: VitaCard(
+                  child: LifeSimulationCard(
                     child: Row(
                       children: [
                         PersonMedallion(name: names[i], female: i != 1),

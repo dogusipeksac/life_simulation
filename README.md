@@ -1,4 +1,4 @@
-# vita · Hayat Simülasyonu
+# Hayat Simülasyonu
 
 Godot/C# kaynak oyunun çevrimdışı Flutter dönüşümü. Türkçe içerik ve oyun dengesi kaynak projeden taşınır. Android önceliklidir; oyun kuralları `lib/game/` altında saf Dart'tır.
 

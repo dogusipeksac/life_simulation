@@ -89,7 +89,7 @@ class _StyleGalleryState extends State<StyleGallery> {
       const SizedBox(height: 10),
       const DecisionCard(index: 2, text: 'Avukata danışırsın.', lockedReason: 'Önce bir işin olmalı'),
       const SectionHeader('Durum'),
-      VitaCard(
+      LifeSimulationCard(
         child: Column(children: [
           StatBar(label: 'Sağlık', value: 82, color: p.health),
           StatBar(label: 'Mutluluk', value: 61, color: p.happiness),
@@ -118,7 +118,7 @@ class _StyleGalleryState extends State<StyleGallery> {
         VitaChip('12 aksiyon hakkı'),
       ]),
       const SectionHeader('Menü'),
-      VitaCard(
+      LifeSimulationCard(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
         child: Column(children: [
           MenuRow(icon: Icons.menu_book_outlined, title: 'Hayat günlüğü', caption: 'Yaşadıkların, yıl yıl', onTap: () {}),
@@ -127,7 +127,7 @@ class _StyleGalleryState extends State<StyleGallery> {
         ]),
       ),
       const SectionHeader('Ayarlar'),
-      VitaCard(
+      LifeSimulationCard(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
         child: Column(children: [
           _SwitchRow('Koyu tema', widget.dark, widget.onDarkChanged),

@@ -30,12 +30,12 @@ void main() {
   });
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  runApp(const VitaApp());
+  runApp(const LifeSimulationApp());
 }
 
 /// İçeriği ve kaydı hazırlayan kök. [loadGame] testlerde değiştirilir.
-class VitaApp extends StatefulWidget {
-  const VitaApp({super.key, this.loadGame = defaultLoadGame});
+class LifeSimulationApp extends StatefulWidget {
+  const LifeSimulationApp({super.key, this.loadGame = defaultLoadGame});
 
   final Future<GameController> Function() loadGame;
 
@@ -53,10 +53,10 @@ class VitaApp extends StatefulWidget {
   }
 
   @override
-  State<VitaApp> createState() => _VitaAppState();
+  State<LifeSimulationApp> createState() => _LifeSimulationAppState();
 }
 
-class _VitaAppState extends State<VitaApp> with WidgetsBindingObserver {
+class _LifeSimulationAppState extends State<LifeSimulationApp> with WidgetsBindingObserver {
   late final Future<GameController> _game = widget.loadGame();
   GameController? _controller;
 
@@ -69,7 +69,7 @@ class _VitaAppState extends State<VitaApp> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    if (widget.loadGame == VitaApp.defaultLoadGame) _controller?.dispose();
+    if (widget.loadGame == LifeSimulationApp.defaultLoadGame) _controller?.dispose();
     super.dispose();
   }
 
@@ -90,7 +90,7 @@ class _VitaAppState extends State<VitaApp> with WidgetsBindingObserver {
       builder: (context, _) => Motion(
         enabled: preferences.motion,
         child: MaterialApp(
-          title: 'vita',
+          title: 'Hayat Simülasyonu',
           debugShowCheckedModeBanner: false,
           theme: buildVitaTheme(VitaPalette.light),
           darkTheme: buildVitaTheme(VitaPalette.dark),
@@ -143,7 +143,7 @@ class _Splash extends StatelessWidget {
       backgroundColor: p.background,
       body: Center(
         child: Text(
-          'vita ✦',
+          'Hayat Simülasyonu',
           style: VitaType.display(p).copyWith(color: p.accent),
         ),
       ),

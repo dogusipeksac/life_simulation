@@ -5,8 +5,8 @@ import 'palette.dart';
 import 'theme.dart';
 
 /// Temel kart: surface, radius 12, 1px kenar. Açık temada çok hafif gölge.
-class VitaCard extends StatelessWidget {
-  const VitaCard({super.key, required this.child, this.onTap, this.padding});
+class LifeSimulationCard extends StatelessWidget {
+  const LifeSimulationCard({super.key, required this.child, this.onTap, this.padding});
 
   final Widget child;
   final VoidCallback? onTap;

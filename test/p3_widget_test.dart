@@ -129,7 +129,7 @@ void main() {
     'tabs, relationship action, menu bank and back preserve pending story',
     (tester) async {
       final eventId = game.event!.id;
-      await tester.pumpWidget(VitaApp(loadGame: () => SynchronousFuture(game)));
+      await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
       await tester.pumpAndSettle();
       await tap(tester, 'Kariyer');
       expect(find.text('Geleceğini şekillendir'), findsOneWidget);

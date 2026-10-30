@@ -67,7 +67,7 @@ void main() {
     testWidgets('açılış ve sihirbaz ${w}dp', (tester) async {
       await sized(tester, size);
       final game = controller();
-      await tester.pumpWidget(VitaApp(loadGame: () => SynchronousFuture(game)));
+      await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
       await tester.pumpAndSettle();
       await tapText(tester, 'Yeni bir hayat');
       await tester.enterText(find.byType(TextField).first, 'Deniz Yılmaz');
@@ -84,7 +84,7 @@ void main() {
     testWidgets('hikâye → sonuç → hikâye ${w}dp', (tester) async {
       await sized(tester, size);
       final game = controller()..startNewGame('Deniz', seed: 9);
-      await tester.pumpWidget(VitaApp(loadGame: () => SynchronousFuture(game)));
+      await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
       await tester.pumpAndSettle();
       for (var round = 0; round < 6; round++) {
         final card = find.byType(DecisionCard).first;
@@ -107,7 +107,7 @@ void main() {
   testWidgets('bozuk kayıtta Türkçe açıklama', (tester) async {
     File('${tmp.path}/savegame.json').writeAsStringSync('bozuk');
     final game = controller();
-    await tester.pumpWidget(VitaApp(loadGame: () => SynchronousFuture(game)));
+    await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
     await tester.pumpAndSettle();
     await tapText(tester, 'Kayıtlı hayata devam et');
     expect(find.text(corruptedSaveMessage), findsOneWidget);

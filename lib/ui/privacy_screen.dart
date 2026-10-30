@@ -52,7 +52,7 @@ class PrivacyScreen extends StatelessWidget {
                 label: 'Açık kaynak lisansları',
                 secondary: true,
                 onPressed: () =>
-                    showLicensePage(context: context, applicationName: 'vita'),
+                    showLicensePage(context: context, applicationName: 'Hayat Simülasyonu'),
               ),
             ],
           ),

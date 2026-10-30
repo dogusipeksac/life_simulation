@@ -19,7 +19,7 @@ class VitaKunye extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 18),
       decoration: BoxDecoration(border: Border(bottom: BorderSide(color: p.border.withValues(alpha: .6)))),
       child: Row(children: [
-        Text('vita ✦', style: VitaType.serif(18, p.accent, weight: FontWeight.w600)),
+        Text('Hayat Simülasyonu', style: VitaType.serif(15, p.accent, weight: FontWeight.w600)),
         const SizedBox(width: 12),
         Expanded(
           child: Text('$name · $detail',

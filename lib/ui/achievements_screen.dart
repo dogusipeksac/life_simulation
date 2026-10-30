@@ -45,7 +45,7 @@ class AchievementsScreen extends StatelessWidget {
                 for (final view in views)
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12),
-                    child: VitaCard(
+                    child: LifeSimulationCard(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

@@ -37,7 +37,7 @@ Release paketi açılışta çöküyordu: `Failed to create an instance of andro
 
 - `android/app/build.gradle.kts` artık `android/key.properties` dosyasını okur; yoksa yerel denemeler için debug anahtarıyla imzalar.
 - Şablon: `android/key.properties.example` (anahtar üretme komutu içinde). `key.properties` ve `*.jks` `.gitignore`'da.
-- Uygulama adı Android ve iOS'ta "vita" oldu.
+- Uygulama adı Android ve iOS'ta "Hayat Simülasyonu" oldu.
 
 ## Açık işler (yayın öncesi)
 

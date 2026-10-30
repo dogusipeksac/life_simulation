@@ -68,7 +68,7 @@ void main() {
       ..isGameOver = true
       ..gameOverReason = GameOverReason.healthDepleted;
     game.acknowledgeMoment();
-    await tester.pumpWidget(VitaApp(loadGame: () => SynchronousFuture(game)));
+    await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
     await tester.pumpAndSettle();
     expect(find.text('BİR HAYATIN ÖZETİ'), findsOneWidget);
     await tap(tester, find.text('İkinci şans · bir reklam'));
@@ -93,7 +93,7 @@ void main() {
       ..gameOverReason = GameOverReason.healthDepleted;
     game.acknowledgeMoment();
     save.fail = true;
-    await tester.pumpWidget(VitaApp(loadGame: () => SynchronousFuture(game)));
+    await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
     await tester.pumpAndSettle();
     await tap(tester, find.text('İkinci şans · bir reklam'));
     expect(game.state!.isGameOver, isTrue);
@@ -115,7 +115,7 @@ void main() {
       ..startNewGame('Deniz', seed: 42);
     addTearDown(game.dispose);
     await game.storyStore.initialize();
-    await tester.pumpWidget(VitaApp(loadGame: () => SynchronousFuture(game)));
+    await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
     await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Menü'));
     await tester.pumpAndSettle();
@@ -181,7 +181,7 @@ void main() {
       const Offset(0, -240),
     );
     final card = find
-        .ancestor(of: find.text(book.title), matching: find.byType(VitaCard))
+        .ancestor(of: find.text(book.title), matching: find.byType(LifeSimulationCard))
         .first;
     await tap(
       tester,

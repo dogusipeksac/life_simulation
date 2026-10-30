@@ -31,14 +31,14 @@ class TitleScreen extends StatelessWidget {
             builder: (context, _) => ListView(
               padding: const EdgeInsets.fromLTRB(20, 32, 20, 24),
               children: [
-                EnterAnimation(child: Text('vita ✦', textAlign: TextAlign.center, style: VitaType.display(p).copyWith(color: p.accent))),
+                EnterAnimation(child: Text('Hayat Simülasyonu', textAlign: TextAlign.center, style: VitaType.display(p).copyWith(color: p.accent))),
                 const SizedBox(height: 6),
                 Text('Bir hayatın kitabı', textAlign: TextAlign.center, style: VitaType.serif(16, p.muted)),
                 const SizedBox(height: 24),
                 const EnterAnimation(index: 1, child: AtmosphereStrip(stage: 0, height: 150)),
                 const SizedBox(height: 24),
                 if (game.notice != null) ...[
-                  VitaCard(child: Text(game.notice!, style: VitaType.body(p))),
+                  LifeSimulationCard(child: Text(game.notice!, style: VitaType.body(p))),
                   const SizedBox(height: 16),
                 ],
                 if (game.hasSave) ...[
@@ -234,7 +234,7 @@ class _CreationWizardState extends State<CreationWizard> {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       Text('Doğacağın aileyi sen seçmiyorsun. Zar atıldı:', style: VitaType.body(p).copyWith(color: p.muted)),
       const SizedBox(height: 12),
-      VitaCard(
+      LifeSimulationCard(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           if (family?.tier != null) VitaChip(wealthDisplay(family!.tier!), icon: Icons.casino_outlined),
           const SizedBox(height: 10),
