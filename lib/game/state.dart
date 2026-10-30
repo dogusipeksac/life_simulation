@@ -375,7 +375,7 @@ class LifeSimulationState {
 }
 
 class GameState {
-  static const currentSaveVersion = 7;
+  static const currentSaveVersion = 8;
   static const statMin = 0, statMax = 100;
 
   int saveVersion = currentSaveVersion;
@@ -422,6 +422,11 @@ class GameState {
 
   /// Olay/sahne kimliği → bu hayatta kaç kez sunuldu (v7). Tekrar sınırı bunu okur.
   Map<String, int> eventShowCounts = {};
+
+  /// Ekrandaki olayın anı oynandıysa "olay@gün" (v8); not ve etkiler karar sonucuna eklenir.
+  String momentKey = '';
+  String momentNote = '';
+  List<StatChange> momentChanges = [];
   Set<String> flags = {};
   List<String> recentEventIds = [];
   String? pendingEventId;
@@ -515,6 +520,9 @@ class GameState {
     completedEventIds = _ls(j, 'CompletedEventIds');
     eventLastSeenDay = _mi(j, 'EventLastSeenDay');
     eventShowCounts = _mi(j, 'EventShowCounts');
+    momentKey = _s(j, 'MomentKey');
+    momentNote = _s(j, 'MomentNote');
+    momentChanges = _lo(j, 'MomentChanges', StatChange.fromJson);
     flags = _ls(j, 'Flags').toSet();
     recentEventIds = _ls(j, 'RecentEventIds');
     pendingEventId = j['PendingEventId'] as String?;
@@ -551,7 +559,8 @@ class GameState {
         'CareerStartDay': careerStartDay, 'CareerLevelStartDay': careerLevelStartDay, 'LastCareerId': lastCareerId,
         'CareerApplicationDay': careerApplicationDay, 'PensionMonthly': pensionMonthly,
         'StudyLevel': studyLevel == null ? null : educationName(studyLevel!), 'StudyStartAge': studyStartAge,
-        'CompletedEventIds': completedEventIds, 'EventLastSeenDay': eventLastSeenDay, 'EventShowCounts': eventShowCounts, 'Flags': flags.toList(),
+        'CompletedEventIds': completedEventIds, 'EventLastSeenDay': eventLastSeenDay, 'EventShowCounts': eventShowCounts,
+        'MomentKey': momentKey, 'MomentNote': momentNote, 'MomentChanges': [for (final c in momentChanges) c.toJson()], 'Flags': flags.toList(),
         'RecentEventIds': recentEventIds, 'PendingEventId': pendingEventId, 'CurrentEventId': currentEventId,
         'LastEconomyProcessedMonth': lastEconomyProcessedMonth, 'RngSeed': rngSeed, 'RngState': rngState,
         'ActiveGoalIds': activeGoalIds, 'CompletedGoalIds': completedGoalIds,

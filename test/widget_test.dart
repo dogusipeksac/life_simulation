@@ -86,12 +86,24 @@ void main() {
       final game = controller()..startNewGame('Deniz', seed: 9);
       await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
       await tester.pumpAndSettle();
+      var moments = 0;
       for (var round = 0; round < 6; round++) {
-        final card = find.byType(DecisionCard).first;
-        await tester.ensureVisible(card);
-        await tester.pumpAndSettle();
-        await tester.tap(card);
-        await tester.pumpAndSettle();
+        // Sahnenin başında bir an varsa önce o oynanır (burada geçilir).
+        if (find.text('Bu anı geç').evaluate().isNotEmpty) {
+          moments++;
+          await tapText(tester, 'Bu anı geç');
+          expect(find.text('BU ANDA'), findsOneWidget);
+        }
+        // Süreli anda pumpAndSettle süreyi bitirip kararı kendiliğinden verebilir.
+        if (find.text('SONUÇ').evaluate().isEmpty) {
+          final card = find.byType(DecisionCard).first;
+          await tester.ensureVisible(card);
+          await tester.pumpAndSettle();
+          if (find.byType(DecisionCard).evaluate().isNotEmpty) {
+            await tester.tap(find.byType(DecisionCard).first);
+            await tester.pumpAndSettle();
+          }
+        }
         expect(find.text('SONUÇ'), findsOneWidget);
         // Sakin dönemler de sonuç sayfası gösterir; karar gelene kadar devam.
         while (find.text('SONUÇ').evaluate().isNotEmpty) {
@@ -99,6 +111,7 @@ void main() {
         }
       }
       expect(game.state!.totalChoices, 6);
+      expect(moments, greaterThan(0), reason: 'ilk yıllarda en az bir an oynanmalı');
       expect(File('${tmp.path}/savegame.json').existsSync(), isTrue);
       expect(tester.takeException(), isNull);
     });

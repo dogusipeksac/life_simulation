@@ -267,7 +267,8 @@
         "Seconds": 30,
         "Hint": "Mira yarıdan az, Kerem üçte birden fazla vermek istemiyor.",
         "Success": 0,
-        "Fail": 1
+        "Fail": 1,
+        "Unit": "%"
       },
       "Choices": [
         {

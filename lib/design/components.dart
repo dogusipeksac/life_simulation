@@ -388,3 +388,202 @@ class _EnterAnimationState extends State<EnterAnimation> with SingleTickerProvid
     );
   }
 }
+
+// ---------------------------------------------------------------- Uygulama menüsü parçaları
+
+/// Menü ızgarasındaki kutucuk: renkli rozet, başlık, canlı bir alt bilgi ve isteğe bağlı nokta.
+class AppTile extends StatelessWidget {
+  const AppTile({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.caption,
+    required this.color,
+    this.onTap,
+    this.badge,
+  });
+
+  final IconData icon;
+  final String title, caption;
+  final Color color;
+  final VoidCallback? onTap;
+
+  /// Sağ üstte küçük sayaç ya da "yeni" etiketi.
+  final String? badge;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.vita;
+    return Semantics(
+      button: true,
+      label: '$title. $caption${badge == null ? '' : '. $badge'}',
+      excludeSemantics: true,
+      child: Material(
+        color: p.surface,
+        borderRadius: BorderRadius.circular(16),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: onTap == null
+              ? null
+              : () {
+                  preferences.feedback();
+                  onTap!();
+                },
+          child: Container(
+            constraints: const BoxConstraints(minHeight: 118),
+            padding: const EdgeInsets.fromLTRB(14, 14, 14, 12),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: p.border),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [color.withValues(alpha: p.isDark ? .16 : .10), p.surface],
+              ),
+            ),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: color.withValues(alpha: p.isDark ? .22 : .16),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Icon(icon, size: 21, color: color),
+                ),
+                const Spacer(),
+                if (badge != null)
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                    decoration: BoxDecoration(color: p.accent, borderRadius: BorderRadius.circular(99)),
+                    child: Text(badge!, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: p.background)),
+                  ),
+              ]),
+              const SizedBox(height: 12),
+              Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: VitaType.serif(16, p.ink, weight: FontWeight.w600)),
+              const SizedBox(height: 3),
+              Text(caption, maxLines: 2, overflow: TextOverflow.ellipsis, style: VitaType.caption(p)),
+            ]),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// İki sütunlu, dar ekranda tek sütuna inen kutucuk ızgarası.
+class AppTileGrid extends StatelessWidget {
+  const AppTileGrid({super.key, required this.children});
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) => LayoutBuilder(builder: (context, c) {
+        final scale = MediaQuery.textScalerOf(context).scale(1);
+        final cols = c.maxWidth < 300 || scale > 1.3 ? 1 : 2;
+        final w = (c.maxWidth - 10 * (cols - 1)) / cols;
+        return Wrap(spacing: 10, runSpacing: 10, children: [
+          for (final child in children) SizedBox(width: w, child: child),
+        ]);
+      });
+}
+
+/// Küçük halka gösterge: profil kartındaki dört stat.
+class StatRing extends StatelessWidget {
+  const StatRing({super.key, required this.label, required this.value, required this.color});
+  final String label;
+  final int value;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.vita;
+    return Semantics(
+      label: '$label $value',
+      excludeSemantics: true,
+      child: Column(mainAxisSize: MainAxisSize.min, children: [
+        SizedBox.square(
+          dimension: 46,
+          child: Stack(alignment: Alignment.center, children: [
+            SizedBox.square(
+              dimension: 46,
+              child: CircularProgressIndicator(
+                value: value.clamp(0, 100) / 100,
+                strokeWidth: 4,
+                color: color,
+                backgroundColor: p.surfaceSunken,
+              ),
+            ),
+            Text('$value', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: p.ink)),
+          ]),
+        ),
+        const SizedBox(height: 4),
+        FittedBox(fit: BoxFit.scaleDown, child: Text(label, style: VitaType.caption(p).copyWith(fontSize: 11))),
+      ]),
+    );
+  }
+}
+
+/// Ayar grubunda ikonlu satır (anahtar ya da ok).
+class SettingRow extends StatelessWidget {
+  const SettingRow({super.key, required this.icon, required this.title, this.value, this.onChanged, this.onTap, this.caption});
+  final IconData icon;
+  final String title;
+  final String? caption;
+  final bool? value;
+  final ValueChanged<bool>? onChanged;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.vita;
+    final row = Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+      child: Row(children: [
+        Icon(icon, size: 20, color: p.accent),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
+            Text(title, style: VitaType.body(p)),
+            if (caption != null) Text(caption!, style: VitaType.caption(p)),
+          ]),
+        ),
+        if (value != null)
+          Switch(value: value!, onChanged: onChanged)
+        else
+          Icon(Icons.chevron_right, color: p.muted),
+      ]),
+    );
+    return MergeSemantics(
+      child: InkWell(
+        onTap: value != null ? () => onChanged?.call(!value!) : onTap,
+        child: ConstrainedBox(constraints: const BoxConstraints(minHeight: 56), child: row),
+      ),
+    );
+  }
+}
+
+/// Ayar satırlarını tek bir yuvarlak kartta toplar, aralarına ince çizgi koyar.
+class SettingGroup extends StatelessWidget {
+  const SettingGroup({super.key, required this.children});
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.vita;
+    return Container(
+      decoration: BoxDecoration(
+        color: p.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: p.border),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(children: [
+        for (final (i, c) in children.indexed) ...[
+          if (i > 0) Divider(height: 1, indent: 46, color: p.border),
+          c,
+        ],
+      ]),
+    );
+  }
+}

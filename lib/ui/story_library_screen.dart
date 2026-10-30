@@ -418,7 +418,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
         storyInteraction(
           node.interaction!,
           key: ValueKey('interaction-$expectedNode-${p.decisions}'),
-          onOutcome: (outcome, {found = const {}}) => _resolve(b, outcome, expectedNode, found),
+          onOutcome: (outcome, {found = const {}, indices = const {}}) => _resolve(b, outcome, expectedNode, found),
         ),
         const SizedBox(height: 12),
         _button(

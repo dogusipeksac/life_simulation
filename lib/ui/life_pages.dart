@@ -546,145 +546,236 @@ class _LifePageState extends State<LifePage> {
         ),
       ]),
   ];
-  List<Widget> menu() => [
-    Text('Menü', style: VitaType.title(context.vita)),
-    MenuRow(
-      icon: Icons.auto_stories_outlined,
-      title: 'Hikâyeye dön',
-      caption: 'Seni bekleyen kararı gör',
-      onTap: () => go('story'),
-    ),
-    MenuRow(
-      icon: Icons.local_activity_outlined,
-      title: 'Aktiviteler',
-      caption: 'Hobiler, alışveriş ve mini oyunlar',
-      onTap: () => go('activities'),
-    ),
-    MenuRow(
-      icon: Icons.history,
-      title: 'Hayat günlüğü',
-      caption: 'Doğumundan bugüne bütün anıların',
-      onTap: () => go('journal'),
-    ),
-    MenuRow(
-      icon: Icons.account_balance_wallet_outlined,
-      title: 'Finans & banka',
-      caption: 'Nakit, birikim ve aylık bütçe',
-      onTap: () => go('finance'),
-    ),
-    MenuRow(
-      icon: Icons.public,
-      title: 'Ülke & gündelik hayat',
-      caption: 'Seçimler, hayat pahalılığı ve iş koşulları',
-      onTap: () => go('world'),
-    ),
-    MenuRow(
-      icon: Icons.favorite_outline,
-      title: 'Hayatının izleri',
-      caption: 'Kararların, aile ve evlilik hazırlığın',
-      onTap: () => go('life'),
-    ),
-    MenuRow(
-      icon: Icons.library_books_outlined,
-      title: 'Hikâye kütüphanesi',
-      caption: 'Başka bir hayat, başka bir ihtimal',
-      onTap: () => openStoryLibrary(context, game),
-    ),
-    MenuRow(
-      icon: Icons.home_outlined,
-      title: 'Ana menüye dön',
-      caption: 'Hayatını kaydet ve açılış ekranına dön',
-      onTap: () async {
-        if (await confirm(
-          'Ana menüye dön?',
-          'Hayatın kaydedilecek. Kaldığın yerden devam edebilir veya yeni bir hayat başlatabilirsin.',
-        )) {
-          if (mounted) game.leaveToTitle();
-        }
-      },
-    ),
-    MenuRow(
-      icon: Icons.workspace_premium_outlined,
-      title: 'Rozetler',
-      caption:
-          '${game.session.achievements.unlockedCount} / ${game.session.achievements.definitions.length} başarım açıldı',
-      onTap: () => openAchievements(context, game),
-    ),
-    const SectionHeader('Bir mola'),
-    text(
-      'Bu hayatta ${game.session.breathsRemaining} / 3 nefes hakkın var. İsteğe bağlı reklamı tamamla: +6 mutluluk.',
-      caption: true,
-    ),
-    button(
-      game.rewardBusy
-          ? 'Reklam bekleniyor…'
-          : game.retryBreathAvailable
-          ? 'Nefes ödülünü kaydet'
-          : 'Derin bir nefes · bir reklam',
-      !game.rewardBusy &&
-              !s.isGameOver &&
-              game.session.breathsRemaining > 0 &&
-              (game.ads.rewardedAvailable || game.retryBreathAvailable)
-          ? () async {
-              final r = await game.rewardedBreath();
-              if (mounted) result(r);
+  List<Widget> menu() {
+    final p = context.vita;
+    final books = game.stories.books.values;
+    final endingsFound = books.fold<int>(0, (a, b) => a + (game.stories.progress[b.id]?.endings.length ?? 0));
+    final endingsAll = books.fold<int>(0, (a, b) => a + b.nodes.values.where((n) => n.ending.isNotEmpty).length);
+    final lastMemory = s.journal.isEmpty ? 'Henüz bir anı yok' : s.journal.last.title;
+    final ach = game.session.achievements;
+    final people = s.relationships.where((r) => r.alive).length;
+    return [
+      // Profil kartı: kim olduğun, bir bakışta.
+      Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: p.border),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [p.accent.withValues(alpha: p.isDark ? .22 : .14), p.surface],
+          ),
+        ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          Row(children: [
+            PersonMedallion(name: s.playerName, female: s.profile.gender == 'Kadın', size: 62),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(s.playerName, maxLines: 1, overflow: TextOverflow.ellipsis, style: VitaType.title(p).copyWith(fontSize: 21)),
+                const SizedBox(height: 2),
+                Text('${s.ageText} · ${game.session.describeOccupation()}',
+                    maxLines: 2, overflow: TextOverflow.ellipsis, style: VitaType.caption(p)),
+                const SizedBox(height: 6),
+                VitaChip(formatMoney(s.money + s.bankBalance), icon: Icons.account_balance_wallet_outlined),
+              ]),
+            ),
+          ]),
+          const SizedBox(height: 16),
+          Row(children: [
+            for (final (label, value, color) in [
+              ('Sağlık', s.health, p.health),
+              ('Mutluluk', s.happiness, p.happiness),
+              ('Eğitim', s.education, p.education),
+              ('Sosyal', s.social, p.social),
+            ])
+              Expanded(child: StatRing(label: label, value: value, color: color)),
+          ]),
+        ]),
+      ),
+      const SizedBox(height: 14),
+      AppTile(
+        icon: Icons.auto_stories,
+        title: 'Hikâyeye dön',
+        caption: game.event != null ? 'Seni bir karar bekliyor: ${game.event!.title}' : 'Hayatın kaldığı yerden devam ediyor',
+        color: p.accent,
+        badge: game.event != null ? 'Karar' : null,
+        onTap: () => go('story'),
+      ),
+      const SectionHeader('Hayatın'),
+      AppTileGrid(children: [
+        AppTile(
+          icon: Icons.local_activity_outlined,
+          title: 'Aktiviteler',
+          caption: 'Bu yıl ${Social.remaining(s)} / 12 hak',
+          color: p.happiness,
+          badge: Social.remaining(s) > 0 ? '${Social.remaining(s)}' : null,
+          onTap: () => go('activities'),
+        ),
+        AppTile(
+          icon: Icons.history_edu,
+          title: 'Hayat günlüğü',
+          caption: 'Son: $lastMemory',
+          color: p.education,
+          onTap: () => go('journal'),
+        ),
+        AppTile(
+          icon: Icons.account_balance_wallet_outlined,
+          title: 'Finans & banka',
+          caption: 'Nakit ${formatMoney(s.money)} · banka ${formatMoney(s.bankBalance)}',
+          color: p.positive,
+          onTap: () => go('finance'),
+        ),
+        AppTile(
+          icon: Icons.public,
+          title: 'Ülke',
+          caption: 'Hayat pahalılığı ${s.simulation.costIndex} · ${s.simulation.country}',
+          color: p.social,
+          onTap: () => go('world'),
+        ),
+        AppTile(
+          icon: Icons.favorite_outline,
+          title: 'Hayatının izleri',
+          caption: '$people yakının · ${s.totalChoices} karar',
+          color: p.health,
+          onTap: () => go('life'),
+        ),
+        AppTile(
+          icon: Icons.workspace_premium_outlined,
+          title: 'Rozetler',
+          caption: '${ach.unlockedCount} / ${ach.definitions.length} başarım',
+          color: p.happiness,
+          onTap: () => openAchievements(context, game),
+        ),
+      ]),
+      const SectionHeader('Başka bir hayat'),
+      AppTile(
+        icon: Icons.library_books_outlined,
+        title: 'Hikâye kütüphanesi',
+        caption: '${books.length} kitap · $endingsFound / $endingsAll son keşfedildi · şifreler, kanıtlar, frekanslar',
+        color: p.education,
+        badge: endingsFound == 0 ? 'Yeni' : null,
+        onTap: () => openStoryLibrary(context, game),
+      ),
+      const SectionHeader('Bir mola'),
+      LifeSimulationCard(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(children: [
+            Icon(Icons.air, color: p.accent),
+            const SizedBox(width: 10),
+            Expanded(child: Text('Derin bir nefes', style: VitaType.cardTitle(p))),
+            for (var i = 0; i < 3; i++)
+              Container(
+                width: 10,
+                height: 10,
+                margin: const EdgeInsets.only(left: 4),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: i < game.session.breathsRemaining ? p.accent : p.surfaceSunken,
+                ),
+              ),
+          ]),
+          const SizedBox(height: 6),
+          text('Bu hayatta ${game.session.breathsRemaining} / 3 nefes hakkın var. İsteğe bağlı reklamı tamamla: +6 mutluluk.', caption: true),
+          button(
+            game.rewardBusy
+                ? 'Reklam bekleniyor…'
+                : game.retryBreathAvailable
+                ? 'Nefes ödülünü kaydet'
+                : 'Derin bir nefes · bir reklam',
+            !game.rewardBusy &&
+                    !s.isGameOver &&
+                    game.session.breathsRemaining > 0 &&
+                    (game.ads.rewardedAvailable || game.retryBreathAvailable)
+                ? () async {
+                    final r = await game.rewardedBreath();
+                    if (mounted) result(r);
+                  }
+                : null,
+          ),
+          text(game.ads.status, caption: true),
+          if (!game.ads.rewardedAvailable && !game.retryBreathAvailable)
+            button('Reklamı yeniden dene', game.rewardBusy ? null : game.refreshAds),
+        ]),
+      ),
+      const SectionHeader('Mağaza'),
+      LifeSimulationCard(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          text(game.storyStore.status, caption: true),
+          if (game.storyStore.notice.isNotEmpty) text(game.storyStore.notice),
+          button(
+            game.storyStore.adsRemoved
+                ? 'Reklamlar kapalı'
+                : game.storyStore.price('remove_ads').isEmpty
+                ? 'Reklamları kaldır · mağaza hazır değil'
+                : "Reklamları kaldır · ${game.storyStore.price('remove_ads')}",
+            game.storyStore.canPurchase('remove_ads')
+                ? () => result(game.purchaseStory('remove_ads'))
+                : null,
+          ),
+          text('Reklamları kaldırmak ara reklamları kapatır. Ödüllü reklamlar isteğe bağlı kalır.', caption: true),
+          button(
+            'Satın alımları geri yükle',
+            game.storyStore.busy ? null : () => result(game.restoreStories()),
+          ),
+        ]),
+      ),
+      const SectionHeader('Ayarlar'),
+      SettingGroup(children: [
+        for (final (key, icon, title, value) in [
+          ('sound', Icons.volume_up_outlined, 'Dokunma sesleri', preferences.sound),
+          ('haptics', Icons.vibration, 'Titreşim', preferences.haptics),
+          ('motion', Icons.animation, 'Animasyonlar', preferences.motion),
+          ('dark', Icons.dark_mode_outlined, 'Karanlık tema', preferences.dark),
+        ])
+          SettingRow(
+            icon: icon,
+            title: title,
+            value: value,
+            onChanged: (v) {
+              preferences.set(key, v);
+              setState(() {});
+            },
+          ),
+      ]),
+      const SizedBox(height: 12),
+      SettingGroup(children: [
+        SettingRow(
+          icon: Icons.privacy_tip_outlined,
+          title: 'Gizlilik ve bağlantılar',
+          onTap: () => openPrivacy(context),
+        ),
+        if (game.ads.privacyOptionsRequired)
+          SettingRow(
+            icon: Icons.ads_click,
+            title: 'Reklam gizlilik seçenekleri',
+            onTap: game.showAdPrivacyOptions,
+          ),
+        SettingRow(
+          icon: Icons.home_outlined,
+          title: 'Ana menüye dön',
+          caption: 'Hayatın kaydedilir',
+          onTap: () async {
+            if (await confirm(
+              'Ana menüye dön?',
+              'Hayatın kaydedilecek. Kaldığın yerden devam edebilir veya yeni bir hayat başlatabilirsin.',
+            )) {
+              if (mounted) game.leaveToTitle();
             }
-          : null,
-    ),
-    text(game.ads.status, caption: true),
-    if (!game.ads.rewardedAvailable && !game.retryBreathAvailable)
-      button('Reklamı yeniden dene', game.rewardBusy ? null : game.refreshAds),
-    const SectionHeader('Mağaza'),
-    text(game.storyStore.status, caption: true),
-    if (game.storyStore.notice.isNotEmpty) text(game.storyStore.notice),
-    button(
-      game.storyStore.adsRemoved
-          ? 'Reklamlar kapalı'
-          : game.storyStore.price('remove_ads').isEmpty
-          ? 'Reklamları kaldır · mağaza hazır değil'
-          : "Reklamları kaldır · ${game.storyStore.price('remove_ads')}",
-      game.storyStore.canPurchase('remove_ads')
-          ? () => result(game.purchaseStory('remove_ads'))
-          : null,
-    ),
-    text(
-      'Reklamları kaldırmak ara reklamları kapatır. Ödüllü reklamlar isteğe bağlı kalır.',
-      caption: true,
-    ),
-    button(
-      'Satın alımları geri yükle',
-      game.storyStore.busy ? null : () => result(game.restoreStories()),
-    ),
-    MenuRow(
-      icon: Icons.privacy_tip_outlined,
-      title: 'Gizlilik ve bağlantılar',
-      onTap: () => openPrivacy(context),
-    ),
-    if (game.ads.privacyOptionsRequired)
-      button('Reklam gizlilik seçenekleri', game.showAdPrivacyOptions),
-    const SectionHeader('Ayarlar'),
-    for (final (key, title, value) in [
-      ('sound', 'Dokunma sesleri', preferences.sound),
-      ('haptics', 'Titreşim', preferences.haptics),
-      ('motion', 'Animasyonlar', preferences.motion),
-      ('dark', 'Karanlık tema', preferences.dark),
-    ])
-      SwitchListTile(
-        contentPadding: EdgeInsets.zero,
-        title: text(title),
-        value: value,
-        onChanged: (v) {
-          preferences.set(key, v);
-          setState(() {});
-        },
+          },
+        ),
+      ]),
+      const SizedBox(height: 14),
+      Center(
+        child: text(
+          'Seçimlerin, ilişkilerin ve hikâyelerin bu cihazda saklanır · ${s.profile.detailedLife ? 'Uzun hayat' : 'Klasik'} tempo',
+          caption: true,
+        ),
       ),
-    card('HAYAT SİMÜLASYONU', [
-      text(
-        'Seçimlerin, ilişkilerin ve hikâyelerin bu cihazda saklanır. Oyun temposu: ${s.profile.detailedLife ? 'Uzun hayat' : 'Klasik'}.',
-        caption: true,
-      ),
-    ]),
-  ];
+    ];
+  }
+
   List<Widget> finance() {
     final assets =
         (s.flags.contains('owns_house') ? 2500000 : 0) +

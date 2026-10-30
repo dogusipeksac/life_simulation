@@ -11,6 +11,7 @@ import '../design/theme.dart';
 import '../game/state.dart';
 import '../game/text.dart';
 import 'game_controller.dart';
+import 'story_interactions.dart';
 import 'shell.dart';
 import 'life_pages.dart';
 import 'life_summary_panel.dart';
@@ -284,6 +285,7 @@ class _EventPage extends StatelessWidget {
         ? s.simulation.currentSceneReason
         : '';
     final choices = game.choices;
+    final moment = game.lifeMoment;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -302,7 +304,50 @@ class _EventPage extends StatelessWidget {
           const SizedBox(height: 10),
           Text(scene, style: VitaType.caption(p)),
         ],
+        if (moment != null && !moment.timed) ...[
+          const SectionHeader('Önce bir an'),
+          storyInteraction(
+            moment.interaction,
+            key: ValueKey('moment-${ev.id}-${s.day}'),
+            onOutcome: (outcome, {found = const {}, indices = const {}}) =>
+                WidgetsBinding.instance.addPostFrameCallback((_) => game.resolveMoment(outcome, indices: indices)),
+          ),
+          const SizedBox(height: 8),
+          Center(
+            child: TextButton(
+              onPressed: () => game.resolveMoment(moment.interaction.type == 'search' ? 'done' : 'fail'),
+              style: TextButton.styleFrom(foregroundColor: p.muted, minimumSize: const Size(48, 48)),
+              child: const Text('Bu anı geç'),
+            ),
+          ),
+        ] else ...[
+        if (game.momentNote.isNotEmpty) ...[
+          const SizedBox(height: 14),
+          Semantics(
+            liveRegion: true,
+            child: LifeSimulationCard(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(upperTr('Bu anda'), style: VitaType.overline(p)),
+                const SizedBox(height: 6),
+                Text(game.momentNote, style: VitaType.body(p)),
+                if (game.momentChanges.any((c) => c.applied != 0)) ...[
+                  const SizedBox(height: 8),
+                  Wrap(spacing: 12, runSpacing: 4, children: [
+                    for (final c in game.momentChanges.where((c) => c.applied != 0))
+                      StatDelta(label: statDisplay(c.stat), delta: c.applied),
+                  ]),
+                ],
+              ]),
+            ),
+          ),
+        ],
         const SectionHeader('Ne yaparsın?'),
+        if (moment != null && moment.timed)
+          TimedChoiceBar(
+            key: ValueKey('timer-${ev.id}-${s.day}'),
+            interaction: moment.interaction,
+            onTimeout: game.momentTimeout,
+          ),
         for (final (i, c) in choices.indexed) ...[
           EnterAnimation(
             index: i + 1,
@@ -320,6 +365,7 @@ class _EventPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
+        ],
         ],
       ],
     );

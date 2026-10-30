@@ -65,6 +65,7 @@ class RawContent {
     required this.life,
     required this.scenes,
     required this.stories,
+    this.moments = const [],
   });
 
   final List<Json> flags, careers, families, goals, achievements, endings, scenes;
@@ -75,6 +76,9 @@ class RawContent {
 
   /// dosya adı → kitap.
   final Map<String, Json> stories;
+
+  /// moments.json: ana hayat anları.
+  final List<Json> moments;
 }
 
 ContentIssues validateContent(RawContent c) {
@@ -274,6 +278,7 @@ ContentIssues validateContent(RawContent c) {
 
   _validateScenes(c.scenes, e);
   c.stories.forEach((file, book) => _validateStory(file, book, e));
+  _validateMoments(c, e);
   return e;
 }
 
@@ -392,7 +397,7 @@ void _validateStory(String file, Json book, ContentIssues e) {
   if (!nodes.values.any((n) => (n['Ending'] as String? ?? '').isNotEmpty)) e.error(where, 'en az bir son gerekli');
 }
 
-void _validateInteraction(String nw, Json i, List<Json> choices, bool ending, ContentIssues e) {
+void _validateInteraction(String nw, Json i, List<Json> choices, bool ending, ContentIssues e, {bool momentMode = false}) {
   final type = i['Type'] as String? ?? '';
   if (!storyInteractionTypes.contains(type)) return e.error(nw, "etkileşim türü '$type' geçersiz");
   if (ending) e.error(nw, 'son sahnesinde etkileşim olamaz');
@@ -402,11 +407,13 @@ void _validateInteraction(String nw, Json i, List<Json> choices, bool ending, Co
     'timer' => ['Timeout'],
     _ => ['Success', 'Fail'],
   };
-  for (final o in outcomes) {
+  for (final o in momentMode ? const <String>[] : outcomes) {
     final idx = i[o];
     if (idx is! int || idx < 0 || idx >= choices.length) e.error(nw, "etkileşim sonucu '$o' geçerli bir seçenek değil");
   }
-  if (type != 'timer') {
+  if (momentMode) {
+    // Anlarda sonuçlar seçenek değil, etkidir; seçenek eşlemesi denetlenmez.
+  } else if (type != 'timer') {
     // Sonuç seçenekleri kart olarak gösterilmez; kilit koşulu taşıyamaz.
     for (final c in choices) {
       if ((c['NeedFlag'] as String? ?? '').isNotEmpty || (c['NeedStat'] as String? ?? '').isNotEmpty) {
@@ -443,6 +450,24 @@ void _validateInteraction(String nw, Json i, List<Json> choices, bool ending, Co
       final rounds = (i['Rounds'] as num? ?? 3), need = (i['Need'] as num? ?? 2), zone = (i['Zone'] as num? ?? .2);
       if (need < 1 || need > rounds) e.error(nw, 'zamanlamada gereken isabet tur sayısını aşamaz');
       if (zone < .08 || zone > .5) e.error(nw, 'zamanlama bölgesi 0,08–0,5 olmalı');
+    case 'memory':
+      final items = (i['Items'] as List? ?? const []);
+      if (items.length < 3 || items.length > 6 || items.toSet().length != items.length) {
+        e.error(nw, 'hafıza oyunu 3–6 farklı çift içermeli');
+      }
+    case 'budget':
+      final buckets = (i['Buckets'] as List? ?? const []).cast<Json>();
+      final total = (i['Total'] as num? ?? 10).toInt();
+      final mins = buckets.fold<int>(0, (a, b) => a + (b['Min'] as num? ?? 0).toInt());
+      if (buckets.length < 2 || buckets.length > 5) e.error(nw, 'bütçe 2–5 kalem içermeli');
+      if (mins > total) e.error(nw, 'bütçe alt sınırlarının toplamı toplamı aşıyor');
+      if (mins == total) e.error(nw, 'bütçede seçim payı yok; alt sınırlar toplama eşit');
+    case 'hold':
+      if ((i['Rounds'] as num? ?? 3) < 1 || (i['HoldMs'] as num? ?? 1500) < 600) e.error(nw, 'nefes en az 1 tur ve 600 ms olmalı');
+    case 'quiz':
+      final items = (i['Items'] as List? ?? const []);
+      final a = (i['AnswerIndex'] as num? ?? -1).toInt();
+      if (items.length < 2 || items.length > 4 || a < 0 || a >= items.length) e.error(nw, 'soru 2–4 seçenek ve geçerli cevap içermeli');
     case 'search':
       final spots = (i['Spots'] as List? ?? const []).cast<Json>();
       final picks = (i['Picks'] as num? ?? 3).toInt();
@@ -450,5 +475,67 @@ void _validateInteraction(String nw, Json i, List<Json> choices, bool ending, Co
       for (final sp in spots) {
         if ((sp['Label'] as String? ?? '').isEmpty || (sp['Text'] as String? ?? '').isEmpty) e.error(nw, 'inceleme noktası boş');
       }
+  }
+}
+
+const _momentKeys = {
+  'Id', 'Target', 'Type', 'Prompt', 'Hint', 'Answer', 'Attempts', 'Items', 'Spots', 'Picks', 'Min', 'Max', //
+  'Tolerance', 'HoldMs', 'Seconds', 'Rounds', 'Need', 'Zone', 'Speed', 'AnswerIndex', 'Total',
+  'Buckets', 'Success', 'Fail', 'TimeoutChoice', 'Goal', 'Unit',
+};
+
+/// Ana hayat anları: hedef sahne/olay var olmalı, her hedefe tek an, etkiler küçük kalmalı.
+void _validateMoments(RawContent c, ContentIssues e) {
+  final events = {for (final f in c.events.values) for (final ev in f) ev['id'] as String: ev};
+  final scenes = {for (final s in c.scenes) s['Id'] as String: s};
+  final ids = <String>{}, targets = <String>{};
+  for (final m in c.moments) {
+    final id = m['Id'] as String? ?? '';
+    final where = 'moments.json/$id';
+    if (id.isEmpty || !ids.add(id)) e.error(where, 'id boş ya da tekrar ediyor');
+    for (final k in m.keys) {
+      if (!_momentKeys.contains(k)) e.error(where, "bilinmeyen alan '$k'");
+    }
+    final target = m['Target'] as String? ?? '';
+    // "Target" hem hedef kimliği hem tune hedefi olarak kullanılamaz: tune anlarında "Goal" kullanılır.
+    final ev = events[target], sc = scenes[target];
+    if (ev == null && sc == null) {
+      e.error(where, "hedef '$target' bir olay ya da sahne değil");
+      continue;
+    }
+    if (!targets.add(target)) e.error(where, "'$target' için birden çok an var");
+    final type = m['Type'] as String? ?? '';
+    final choices = [
+      for (final ch in (ev?['choices'] ?? sc?['Choices']) as List) (ch as Json),
+    ];
+    if (type == 'timer') {
+      final t = m['TimeoutChoice'] as String? ?? '';
+      final ch = choices.where((x) => (x['id'] ?? x['Id']) == t).firstOrNull;
+      if (ch == null) {
+        e.error(where, "süre dolunca seçilecek '$t' hedefte yok");
+      } else if ((ch['cost'] ?? ch['Cost'] ?? 0) != 0 || (ch['requires'] as List? ?? const []).isNotEmpty) {
+        e.error(where, 'süre dolunca seçilecek seçenek ücretsiz ve koşulsuz olmalı');
+      }
+      if ((m['Seconds'] as num? ?? 20) < 8) e.error(where, 'süreli karar en az 8 saniye olmalı');
+    } else {
+      if (type == 'search' && !(m['Spots'] as List? ?? const []).any((s) => (s as Map)['Key'] == true)) {
+        e.error(where, 'incelemede en az bir anahtar nokta (Key) olmalı');
+      }
+      if (type == 'tune') {
+        final goal = (m['Goal'] as num?)?.toDouble();
+        if (goal == null) e.error(where, "frekans anında hedef 'Goal' alanıyla verilir");
+      }
+      // Ortak etkileşim kuralları; seçenek eşlemesi anlarda yoktur.
+      final probe = {...m, 'Success': 0, 'Fail': 0, 'Done': 0, if (type == 'tune') 'Target': m['Goal']};
+      _validateInteraction(where, probe, const [{'Text': 'x'}], false, e, momentMode: true);
+      for (final o in ['Success', 'Fail']) {
+        final r = m[o] as Map?;
+        if (r == null || (r['Text'] as String? ?? '').isEmpty) e.error(where, "'$o' metni zorunlu");
+        (r?['Stats'] as Map? ?? const {}).forEach((k, v) {
+          if (!_stats.contains(k) || k == 'Money') e.error(where, "$o etkisinde geçersiz stat '$k'");
+          if (v is! int || v.abs() > 4) e.error(where, '$o etkisi ±4 ile sınırlı ($k: $v)');
+        });
+      }
+    }
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +34,7 @@ void main() {
         home: Scaffold(
           body: SingleChildScrollView(
             padding: const EdgeInsets.all(16),
-            child: build((o, {found = const {}}) => outcomes.add((o, found))),
+            child: build((o, {found = const {}, indices = const {}}) => outcomes.add((o, found))),
           ),
         ),
       ),
@@ -166,6 +168,97 @@ void main() {
     expect(find.textContaining('süre durduruldu'), findsOneWidget);
   });
 
+  LifeMoment mom(String target) => content.moments[target]!;
+
+  testWidgets('hafıza: bütün çiftler bulununca success', (tester) async {
+    final i = mom('baby_colors').interaction;
+    final out = await pump(tester, (cb) => MemoryPairs(interaction: i, onOutcome: cb));
+    final cards = [...i.items, ...i.items]..shuffle(Random(i.items.join().length));
+    final tiles = find.descendant(of: find.byType(Wrap), matching: find.byType(InkWell));
+    expect(tiles, findsNWidgets(cards.length));
+    for (final item in i.items) {
+      final a = cards.indexOf(item), b = cards.lastIndexOf(item);
+      await tester.tap(tiles.at(a));
+      await tester.pump();
+      await tester.tap(tiles.at(b));
+      await tester.pump();
+    }
+    expect(out.single.$1, 'success');
+  });
+
+  testWidgets('hafıza: hata hakkı bitince fail', (tester) async {
+    final i = mom('baby_colors').interaction;
+    final out = await pump(tester, (cb) => MemoryPairs(interaction: i, onOutcome: cb));
+    final cards = [...i.items, ...i.items]..shuffle(Random(i.items.join().length));
+    // Her seferinde eşleşmeyen iki kart.
+    final a = 0, b = cards.indexWhere((c) => c != cards[0]);
+    for (var k = 0; k <= i.attempts; k++) {
+      final tiles = find.descendant(of: find.byType(Wrap), matching: find.byType(InkWell));
+      await tester.tap(tiles.at(a));
+      await tester.pump();
+      await tester.tap(tiles.at(b));
+      await tester.pump(const Duration(milliseconds: 800));
+    }
+    expect(out.single.$1, 'fail');
+  });
+
+  testWidgets('bütçe: alt sınırlar sağlanınca success, eksikse fail', (tester) async {
+    final i = mom('lived_family_budget_child').interaction;
+    var out = await pump(tester, (cb) => BudgetSplit(interaction: i, onOutcome: cb));
+    for (final b in i.buckets) {
+      for (var k = 0; k < b.min; k++) {
+        await tester.tap(find.byTooltip('${b.label} artır'));
+        await tester.pump();
+      }
+    }
+    final rest = i.total - i.buckets.fold<int>(0, (a, b) => a + b.min);
+    for (var k = 0; k < rest; k++) {
+      await tester.tap(find.byTooltip('${i.buckets[1].label} artır'));
+      await tester.pump();
+    }
+    await tapText(tester, 'Planı onayla');
+    expect(out.single.$1, 'success');
+
+    out = await pump(tester, (cb) => BudgetSplit(key: UniqueKey(), interaction: i, onOutcome: cb));
+    await tapText(tester, 'Planı onayla');
+    expect(out.single.$1, 'fail');
+  });
+
+  testWidgets('nefes: basılı tutunca tur sayılır, erken bırakınca hak gider', (tester) async {
+    final i = mom('lived_rest').interaction;
+    final out = await pump(tester, (cb) => HoldBreath(interaction: i, onOutcome: cb));
+    final target = find.text('Al');
+    for (var r = 0; r < i.rounds; r++) {
+      final g = await tester.startGesture(tester.getCenter(find.byType(CircularProgressIndicator).first));
+      await tester.pump(); // ilk karede animasyonun saati başlar
+      await tester.pump(Duration(milliseconds: i.holdMs + 50));
+      await g.up();
+      await tester.pump();
+    }
+    expect(out.single.$1, 'success');
+    expect(target, findsWidgets);
+
+    final out2 = await pump(tester, (cb) => HoldBreath(key: UniqueKey(), interaction: i, onOutcome: cb));
+    for (var k = 0; k <= i.attempts; k++) {
+      final g = await tester.startGesture(tester.getCenter(find.byType(CircularProgressIndicator).first));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 200));
+      await g.up();
+      await tester.pump();
+    }
+    expect(out2.single.$1, 'fail');
+  });
+
+  testWidgets('soru: doğru şık success, yanlış şık fail', (tester) async {
+    final i = mom('baby_why').interaction;
+    var out = await pump(tester, (cb) => QuizCard(interaction: i, onOutcome: cb));
+    await tapText(tester, i.items[i.answerIndex]);
+    expect(out.single.$1, 'success');
+    out = await pump(tester, (cb) => QuizCard(key: UniqueKey(), interaction: i, onOutcome: cb));
+    await tapText(tester, i.items[(i.answerIndex + 1) % i.items.length]);
+    expect(out.single.$1, 'fail');
+  });
+
   for (final palette in [VitaPalette.dark, VitaPalette.light]) {
     testWidgets('etkileşimler ve görünümler erişilebilir · ${palette.isDark ? 'koyu' : 'açık'}', (tester) async {
       final handle = tester.ensureSemantics();
@@ -174,6 +267,10 @@ void main() {
         (cb) => CodeLock(interaction: of('son_vapur', 'locker'), onOutcome: cb),
         (cb) => OrderPuzzle(interaction: of('son_vapur', 'sounds'), onOutcome: cb),
         (cb) => SearchScene(interaction: of('son_vapur', 'deck_search'), onOutcome: cb),
+        (cb) => MemoryPairs(interaction: mom('lived_memory_box').interaction, onOutcome: cb),
+        (cb) => BudgetSplit(interaction: mom('lived_first_rent').interaction, onOutcome: cb),
+        (cb) => HoldBreath(interaction: mom('lived_rest').interaction, onOutcome: cb),
+        (cb) => QuizCard(interaction: mom('lived_hospital_wait').interaction, onOutcome: cb),
         (_) => Column(children: [
               ChatThread(text: b.nodes['ipek_msg']!.text),
               PaperNote(text: b.nodes['mother_letter']!.text),

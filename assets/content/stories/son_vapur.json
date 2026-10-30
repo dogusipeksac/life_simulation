@@ -841,7 +841,8 @@
         "Seconds": 25,
         "Hint": "Standart makara hızları: 4,75 · 9,5 · 19. Yaşar Bey’in zarfı da bir şey söylüyordu.",
         "Success": 0,
-        "Fail": 1
+        "Fail": 1,
+        "Unit": "cm/sn"
       },
       "Choices": [
         {

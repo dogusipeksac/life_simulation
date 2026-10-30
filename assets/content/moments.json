@@ -1,0 +1,1592 @@
+[
+ {
+  "Id": "m_first_nights",
+  "Target": "lived_first_nights",
+  "Type": "hold",
+  "Prompt": "{caregiver} seni kucağında sallıyor. Nefesini onun ritmine uydur: halka dolana kadar bekle, sonra bırak.",
+  "HoldMs": 1600,
+  "Rounds": 3,
+  "Attempts": 2,
+  "Success": {
+   "Text": "Üçüncü nefeste gözlerin kapandı. {caregiver} kıpırdamadan bir süre daha seni tuttu.",
+   "Stats": {
+    "Health": 2
+   }
+  },
+  "Fail": {
+   "Text": "Bir türlü sakinleşemedin. Sabaha kadar odada ninni sesi eksik olmadı.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_lullaby",
+  "Target": "baby_lullaby",
+  "Type": "hold",
+  "Prompt": "Ninninin her dizesi bir nefes. Halka dolarken nefes al, dolunca bırak.",
+  "HoldMs": 1400,
+  "Rounds": 3,
+  "Attempts": 2,
+  "Success": {
+   "Text": "Ninninin son dizesinde uykuya daldın; ağzın hâlâ gülümsüyordu.",
+   "Stats": {
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Ninni bitti ama sen hâlâ tavandaki gölgeleri izliyordun.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_blocks",
+  "Target": "baby_blocks",
+  "Type": "timing",
+  "Prompt": "Küp sallanıyor. Tam ortaya geldiğinde bırak; üç küpten ikisini düzgün koyarsan kule ayakta kalır.",
+  "Rounds": 3,
+  "Need": 2,
+  "Zone": 0.28,
+  "Speed": 0.8,
+  "Success": {
+   "Text": "Üç küplük kule ayakta kaldı. Kendine alkış tuttun; alkışın da sallandı.",
+   "Stats": {
+    "Education": 2,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Kule devrildi. Ses o kadar hoşuna gitti ki yeniden dizmek istedin.",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
+ },
+ {
+  "Id": "m_colors",
+  "Target": "baby_colors",
+  "Type": "memory",
+  "Prompt": "Renk kartlarını çevir, aynı renkleri bul.",
+  "Items": [
+   "Kırmızı",
+   "Mavi",
+   "Sarı"
+  ],
+  "Attempts": 3,
+  "Success": {
+   "Text": "Bütün renkleri eşleştirdin. Sarıyı en çok sevdin; bütün gün sarı bir şey aradın.",
+   "Stats": {
+    "Education": 2
+   }
+  },
+  "Fail": {
+   "Text": "Kırmızıyla turuncu birbirine karıştı. Yine de kartları ağzına götürmedin; bu da bir başarı.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_baby_steps",
+  "Target": "baby_steps",
+  "Type": "timing",
+  "Prompt": "Bir adım, bir denge. Ağırlığın tam ortadayken adım at.",
+  "Rounds": 3,
+  "Need": 2,
+  "Zone": 0.3,
+  "Speed": 0.7,
+  "Success": {
+   "Text": "Üç adım. Sonra oturdun, ama üç adım.",
+   "Stats": {
+    "Health": 2
+   }
+  },
+  "Fail": {
+   "Text": "Popo üstü oturdun. Kimse gülmedi; sen güldün.",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
+ },
+ {
+  "Id": "m_baby_sharing",
+  "Target": "baby_sharing",
+  "Type": "timer",
+  "Prompt": "Öbür çocuk oyuncağa uzanıyor. Hemen bir şey yap.",
+  "Seconds": 10,
+  "TimeoutChoice": "turn"
+ },
+ {
+  "Id": "m_baby_garden",
+  "Target": "baby_garden",
+  "Type": "order",
+  "Prompt": "Fasulye büyütmenin sırasını bul.",
+  "Items": [
+   "Toprağa çukur aç",
+   "Tohumu koy",
+   "Üstünü ört",
+   "Su ver",
+   "Güneşe koy"
+  ],
+  "Attempts": 2,
+  "Success": {
+   "Text": "Bir hafta sonra topraktan yeşil bir kıvrım çıktı. Her sabah ona günaydın dedin.",
+   "Stats": {
+    "Education": 2,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Tohum suyu bekledi, güneş toprağı bekledi. Ama sonunda bir şey çıktı; tohumlar sabırlıdır.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_baby_why",
+  "Target": "baby_why",
+  "Type": "quiz",
+  "Prompt": "“Gökyüzü neden mavi?” diye soruyorsun. {caregiver} sana üç cevap veriyor; hangisi doğru?",
+  "Items": [
+   "Denizin rengini yansıttığı için",
+   "Güneş ışığının mavi kısmı havada daha çok saçıldığı için",
+   "Bulutlar maviyi sevdiği için"
+  ],
+  "AnswerIndex": 1,
+  "Success": {
+   "Text": "“Saçılma” kelimesini bütün hafta söyledin. Kimse ne demek olduğunu tam anlatamadı ama sen biliyordun.",
+   "Stats": {
+    "Education": 3
+   }
+  },
+  "Fail": {
+   "Text": "Bir süre gökyüzünün denizden boya aldığına inandın. Güzel bir yanlıştı.",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
+ },
+ {
+  "Id": "m_school_bag",
+  "Target": "baby_school_bag",
+  "Type": "search",
+  "Prompt": "Okul çantasına ne koyacaksın? İki şey seçebilirsin.",
+  "Picks": 2,
+  "Spots": [
+   {
+    "Label": "Suluk",
+    "Text": "Mavi kapaklı suluk. Teneffüste susayacaksın.",
+    "Key": true
+   },
+   {
+    "Label": "Boya kalemleri",
+    "Text": "On iki renk. Sarı en kısası.",
+    "Key": true
+   },
+   {
+    "Label": "Oyuncak dinozor",
+    "Text": "Çantaya sığmadı. Cebine koydun.",
+    "Key": false
+   },
+   {
+    "Label": "Battaniye",
+    "Text": "Okulda uyku yokmuş, öğrendin.",
+    "Key": false
+   }
+  ],
+  "Success": {
+   "Text": "Çanta tam olması gerektiği kadar ağırdı. Kapıdan çıkarken kendini büyük hissettin.",
+   "Stats": {
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Çantadan dinozor ve battaniye çıktı. Öğretmen gülümsedi; sen kızardın.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_tiny_independence",
+  "Target": "lived_tiny_independence",
+  "Type": "timing",
+  "Prompt": "Bağcığı ilmeğin içinden geçir: tam zamanında çek.",
+  "Rounds": 3,
+  "Need": 2,
+  "Zone": 0.26,
+  "Speed": 0.8,
+  "Success": {
+   "Text": "Fiyonk biraz yamuk ama kendi fiyonkun.",
+   "Stats": {
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Bağcık düğüm oldu. {caregiver} çözdü, sen yeniden denedin.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_first_bike",
+  "Target": "childhood_first_bike",
+  "Type": "timing",
+  "Prompt": "Pedalı çevir ve dengeni bul. İşaret ortadayken bas.",
+  "Rounds": 3,
+  "Need": 2,
+  "Zone": 0.22,
+  "Speed": 1.0,
+  "Success": {
+   "Text": "Arkanı döndüğünde kimse seni tutmuyordu. Tutmadığını bile fark etmemiştin.",
+   "Stats": {
+    "Health": 2,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Dizinde bir sıyrık, kalbinde bir inat. Yarın yine.",
+   "Stats": {
+    "Health": -1
+   }
+  }
+ },
+ {
+  "Id": "m_science_fair",
+  "Target": "childhood_science_fair",
+  "Type": "order",
+  "Prompt": "Bir bilim projesinin adımlarını sırala.",
+  "Items": [
+   "Bir soru sor",
+   "Tahminini yaz",
+   "Deneyi kur",
+   "Gözlemle ve not al",
+   "Sonucu anlat"
+  ],
+  "Attempts": 2,
+  "Success": {
+   "Text": "Posterin en düzenli poster seçildi. Jüri tahminini yanlış çıktığı için ayrıca övdü.",
+   "Stats": {
+    "Education": 3
+   }
+  },
+  "Fail": {
+   "Text": "Deneyi kurmadan sonucu yazmışsın. Öğretmenin “Bilim tersten yapılmaz,” dedi gülerek.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_found_wallet",
+  "Target": "childhood_found_wallet",
+  "Type": "search",
+  "Prompt": "Cüzdanın içine bak. Sahibini bulmana yardım edecek bir şey var mı? İki bölmeye bakabilirsin.",
+  "Picks": 2,
+  "Spots": [
+   {
+    "Label": "Kimlik bölmesi",
+    "Text": "Bir kimlik kartı: adı, fotoğrafı, mahallenin adı.",
+    "Key": true
+   },
+   {
+    "Label": "Kartvizit",
+    "Text": "Bir terzi kartviziti, arkasında el yazısıyla bir telefon numarası.",
+    "Key": true
+   },
+   {
+    "Label": "Para bölmesi",
+    "Text": "Birkaç banknot. Hızlıca kapattın.",
+    "Key": false
+   },
+   {
+    "Label": "Fotoğraf",
+    "Text": "İki çocuğun fotoğrafı, kenarları yıpranmış.",
+    "Key": false
+   }
+  ],
+  "Success": {
+   "Text": "Cüzdanın sahibini nasıl bulacağını artık biliyorsun.",
+   "Stats": {
+    "Education": 1,
+    "Social": 1
+   }
+  },
+  "Fail": {
+   "Text": "Sahibine dair bir ipucu bulamadın. Cüzdan elinde ağırlaştı.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_music_lessons",
+  "Target": "childhood_music_lessons",
+  "Type": "memory",
+  "Prompt": "Öğretmen bir oyun öneriyor: notaları eşleştir.",
+  "Items": [
+   "Do",
+   "Re",
+   "Mi",
+   "Sol"
+  ],
+  "Attempts": 3,
+  "Success": {
+   "Text": "“Kulağın iyi,” dedi öğretmen. Bunu ilk kez biri söylüyordu.",
+   "Stats": {
+    "Education": 2,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Re ile Mi’yi hep karıştırdın. Öğretmen “Herkes karıştırır,” dedi; inanmadın.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_stray_kitten",
+  "Target": "childhood_stray_kitten",
+  "Type": "hold",
+  "Prompt": "Kedi korkuyor. Elini yavaşça uzat: halka dolana kadar kıpırdama.",
+  "HoldMs": 1800,
+  "Rounds": 2,
+  "Attempts": 2,
+  "Success": {
+   "Text": "Yavru kedi burnunu parmağına sürdü. Bir saniye; ama sonsuz bir saniye.",
+   "Stats": {
+    "Happiness": 3
+   }
+  },
+  "Fail": {
+   "Text": "Kedi bir sıçrayışta arabaların altına kaçtı. Sonra yine başını uzattı.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_village_summer",
+  "Target": "childhood_village_summer",
+  "Type": "order",
+  "Prompt": "Ninenin bahçesinde sabah işleri. Sırayla yap.",
+  "Items": [
+   "Tavuklara yem ver",
+   "Yumurtaları topla",
+   "Domatesleri sula",
+   "Kahvaltıyı kur"
+  ],
+  "Attempts": 2,
+  "Success": {
+   "Text": "Ninen yumurtaları sayınca “Bu yaz sen ev sahibisin,” dedi.",
+   "Stats": {
+    "Health": 2,
+    "Social": 1
+   }
+  },
+  "Fail": {
+   "Text": "Tavuklar yemi beklerken yumurtaları gizlemeyi seçti. Ninen güldü: “Önce karın doyar.”",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
+ },
+ {
+  "Id": "m_school_friend",
+  "Target": "lived_school_friend",
+  "Type": "timer",
+  "Prompt": "Teneffüs bitmek üzere. Zil çalmadan karar ver.",
+  "Seconds": 12,
+  "TimeoutChoice": "listen"
+ },
+ {
+  "Id": "m_bully_photo",
+  "Target": "lived_bully",
+  "Type": "timer",
+  "Prompt": "Fotoğraf saniyeler içinde yayılıyor. Hemen karar ver.",
+  "Seconds": 12,
+  "TimeoutChoice": "private"
+ },
+ {
+  "Id": "m_family_budget_child",
+  "Target": "lived_family_budget_child",
+  "Type": "budget",
+  "Prompt": "Bu ay harçlığın sekiz jeton. Okul için gerekenleri ayır, kalanını sen paylaştır.",
+  "Total": 8,
+  "Hint": "Kırtasiyeye en az 3, birikime en az 2 jeton.",
+  "Buckets": [
+   {
+    "Label": "Kırtasiye",
+    "Min": 3
+   },
+   {
+    "Label": "Atıştırmalık",
+    "Min": 0
+   },
+   {
+    "Label": "Birikim",
+    "Min": 2
+   }
+  ],
+  "Success": {
+   "Text": "Ay sonunda kumbarada iki jeton daha vardı. Evde kimse bunu senden beklemiyordu.",
+   "Stats": {
+    "Education": 2
+   }
+  },
+  "Fail": {
+   "Text": "Silgi ayın ortasında bitti. Atıştırmalıklar ise ilk haftada.",
+   "Stats": {
+    "Happiness": -1
+   }
+  }
+ },
+ {
+  "Id": "m_birth_winter",
+  "Target": "birth_winter",
+  "Type": "memory",
+  "Prompt": "Doğum günü oyunu: kar eşyalarını eşleştir.",
+  "Items": [
+   "Kardan adam",
+   "Atkı",
+   "Eldiven",
+   "Kızak"
+  ],
+  "Attempts": 3,
+  "Success": {
+   "Text": "Oyunu sen kazandın; ödül, kardan adama senin atkını takmaktı.",
+   "Stats": {
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Eldivenler hep tek kaldı. Sokakta da öyle olurdu zaten.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_school_bully",
+  "Target": "childhood_school_bully",
+  "Type": "timer",
+  "Prompt": "Üst sınıftaki çocuk elini beslenme çantana uzatıyor.",
+  "Seconds": 10,
+  "TimeoutChoice": "tell_teacher"
+ },
+ {
+  "Id": "m_exam_stress",
+  "Target": "school_exam_stress",
+  "Type": "hold",
+  "Prompt": "Kalbin hızlı atıyor. Dört say, nefes al; halka dolunca ver.",
+  "HoldMs": 2000,
+  "Rounds": 3,
+  "Attempts": 2,
+  "Success": {
+   "Text": "Masanın üstündeki elin artık titremiyordu. Soruyu ikinci kez okudun ve anladın.",
+   "Stats": {
+    "Health": 1,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Nefesin yarıda kaldı. Ama en azından fark ettin; fark etmek de bir başlangıç.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_exam_path",
+  "Target": "lived_exam_path",
+  "Type": "order",
+  "Prompt": "Sınav sabahı. Hiçbir şeyi unutmamak için sırayı kur.",
+  "Items": [
+   "Alarmla uyan",
+   "Kahvaltı yap",
+   "Kimliğini kontrol et",
+   "Sınav binasına git",
+   "Optik formu doldur"
+  ],
+  "Attempts": 2,
+  "Success": {
+   "Text": "Kapıdan kimliğinle, karnın tok ve saatinden emin girdin.",
+   "Stats": {
+    "Education": 2
+   }
+  },
+  "Fail": {
+   "Text": "Kimliği evde unutup son dakika geri döndün. Yetiştin; ama nefes nefese.",
+   "Stats": {
+    "Health": -1
+   }
+  }
+ },
+ {
+  "Id": "m_summer_job",
+  "Target": "school_summer_job",
+  "Type": "timing",
+  "Prompt": "Fırının sabah telaşı: simitleri tepsiye tam zamanında diz.",
+  "Rounds": 3,
+  "Need": 2,
+  "Zone": 0.2,
+  "Speed": 1.2,
+  "Success": {
+   "Text": "Usta tepsiye bakıp başını salladı. İlk “aferin”in un kokuyordu.",
+   "Stats": {
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "İki simit yere düştü. Usta birini sana, birini kediye verdi.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_privacy_teen",
+  "Target": "lived_privacy_teen",
+  "Type": "code",
+  "Prompt": "Günlüğünün üç haneli kilidi. Şifreyi unutmamak için sınıfını ve sıra numaranı yan yana yazmıştın: 9. sınıf, 14 numara.",
+  "Answer": "914",
+  "Attempts": 3,
+  "Hint": "Önce sınıf, sonra sıra numarası.",
+  "Success": {
+   "Text": "Kilit açıldı. Son sayfada kendine yazdığın bir not: “Kapını kapatmak kalbini kapatmak değil.”",
+   "Stats": {
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Kilit açılmadı. Günlük bu gece kapalı kaldı; belki iyi ki.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_first_boundary",
+  "Target": "lived_first_boundary",
+  "Type": "timer",
+  "Prompt": "Herkes sana bakıyor ve bekliyor.",
+  "Seconds": 12,
+  "TimeoutChoice": "leave"
+ },
+ {
+  "Id": "m_first_crush",
+  "Target": "school_first_crush",
+  "Type": "timer",
+  "Prompt": "Zil çalmak üzere. Not kâğıdı elinde.",
+  "Seconds": 12,
+  "TimeoutChoice": "stay_silent"
+ },
+ {
+  "Id": "m_first_cigarette",
+  "Target": "health_first_cigarette",
+  "Type": "timer",
+  "Prompt": "Paket sana uzatılmış, herkes bekliyor.",
+  "Seconds": 10,
+  "TimeoutChoice": "refuse"
+ },
+ {
+  "Id": "m_cheat_sheet",
+  "Target": "school_cheat_sheet",
+  "Type": "timer",
+  "Prompt": "Öğretmen sıraların arasında, sana doğru yürüyor.",
+  "Seconds": 12,
+  "TimeoutChoice": "study_instead"
+ },
+ {
+  "Id": "m_adult_papers",
+  "Target": "lived_adult_papers",
+  "Type": "search",
+  "Prompt": "Resmi işlem için hangi belgeleri götüreceksin? Üç tanesini çantana koyabilirsin.",
+  "Picks": 3,
+  "Spots": [
+   {
+    "Label": "Kimlik kartı",
+    "Text": "Fotoğrafında on altı yaşındasın. Hâlâ geçerli.",
+    "Key": true
+   },
+   {
+    "Label": "İkametgâh belgesi",
+    "Text": "Dün gece e-Devlet’ten çıktısını almıştın.",
+    "Key": true
+   },
+   {
+    "Label": "Vesikalık fotoğraf",
+    "Text": "İki tane, arkalarına adını yazdın.",
+    "Key": true
+   },
+   {
+    "Label": "Eski karne",
+    "Text": "Neden çantada olduğunu bilmiyorsun.",
+    "Key": false
+   }
+  ],
+  "Success": {
+   "Text": "Memur belgelere baktı ve ilk kez “Eksik yok,” dedi. Kendi işini kendin halletmenin tadı başkaydı.",
+   "Stats": {
+    "Education": 1,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Bir belge eksik çıktı. Ertesi sabah aynı sırada yine bekledin.",
+   "Stats": {
+    "Happiness": -1
+   }
+  }
+ },
+ {
+  "Id": "m_first_rent",
+  "Target": "lived_first_rent",
+  "Type": "budget",
+  "Prompt": "İlk maaşın on iki parça. Kirayı, faturaları ve mutfağı ayır; kalanını sen bil.",
+  "Total": 12,
+  "Hint": "Kira en az 5, faturalar en az 2, mutfak en az 2 parça.",
+  "Buckets": [
+   {
+    "Label": "Kira",
+    "Min": 5
+   },
+   {
+    "Label": "Faturalar",
+    "Min": 2
+   },
+   {
+    "Label": "Mutfak",
+    "Min": 2
+   },
+   {
+    "Label": "Birikim",
+    "Min": 0
+   },
+   {
+    "Label": "Keyif",
+    "Min": 0
+   }
+  ],
+  "Success": {
+   "Text": "Ayın son günü buzdolabında hâlâ peynir vardı. Küçük ama gerçek bir zafer.",
+   "Stats": {
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Ayın yirmi beşinde makarnayla tanıştın. Uzun bir ilişki olacaktı.",
+   "Stats": {
+    "Health": -1
+   }
+  }
+ },
+ {
+  "Id": "m_job_offer",
+  "Target": "lived_job_offer",
+  "Type": "search",
+  "Prompt": "Teklif mektubunu oku. İki maddeye dikkatle bakacak vaktin var.",
+  "Picks": 2,
+  "Spots": [
+   {
+    "Label": "Deneme süresi",
+    "Text": "Altı ay deneme süresi; bu sürede iki tarafın da ihbarsız ayrılma hakkı var.",
+    "Key": true
+   },
+   {
+    "Label": "Fazla mesai",
+    "Text": "“Gerektiğinde fazla mesai yapılır” yazıyor; karşılığı yazılmamış.",
+    "Key": true
+   },
+   {
+    "Label": "Yemek kartı",
+    "Text": "Günlük yemek kartı; bölgedeki fiyatlara göre makul.",
+    "Key": false
+   },
+   {
+    "Label": "Ofis adresi",
+    "Text": "Evden iki aktarma uzakta.",
+    "Key": false
+   }
+  ],
+  "Success": {
+   "Text": "Ne soracağını biliyorsun artık. Bu, çoğu insanın ilk işinde bilmediği bir şey.",
+   "Stats": {
+    "Education": 2
+   }
+  },
+  "Fail": {
+   "Text": "En önemli satırları atladın. Sonra öğrenecektin; biraz pahalı bir dersle.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_jobless",
+  "Target": "lived_jobless",
+  "Type": "order",
+  "Prompt": "İş başvurusunun doğru sırası hangisi?",
+  "Items": [
+   "İlanı dikkatle oku",
+   "Özgeçmişi ilana göre düzenle",
+   "Kısa bir ön yazı yaz",
+   "Başvuruyu gönder",
+   "Mülakata hazırlan"
+  ],
+  "Attempts": 2,
+  "Success": {
+   "Text": "Bu kez otomatik bir ret değil, bir insanın imzasıyla bir cevap geldi.",
+   "Stats": {
+    "Education": 1,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Aynı özgeçmiş otuz ilana gitti. Otuz sessizlik döndü.",
+   "Stats": {
+    "Happiness": -1
+   }
+  }
+ },
+ {
+  "Id": "m_dorm_roommate",
+  "Target": "school_dorm_roommate",
+  "Type": "memory",
+  "Prompt": "Yurdun ilk gecesi: koridordaki isimleri odalarla eşleştir.",
+  "Items": [
+   "Ece",
+   "Bora",
+   "Selin",
+   "Kaan"
+  ],
+  "Attempts": 3,
+  "Success": {
+   "Text": "Ertesi sabah herkese adıyla günaydın dedin. Kahvaltı masasında senin için yer açtılar.",
+   "Stats": {
+    "Social": 3
+   }
+  },
+  "Fail": {
+   "Text": "Bora’ya iki kez Kaan dedin. Bora bunu bir yıl unutmadı; ama gülerek.",
+   "Stats": {
+    "Social": 1
+   }
+  }
+ },
+ {
+  "Id": "m_conference",
+  "Target": "career_conference",
+  "Type": "tune",
+  "Prompt": "Konuşmadan önce mikrofonun sesini ayarla: salon ne cızırdasın ne fısıltıya dönsün.",
+  "Min": 0,
+  "Max": 100,
+  "Goal": 65,
+  "Tolerance": 4,
+  "HoldMs": 1200,
+  "Seconds": 25,
+  "Hint": "Salon büyük; ortanın biraz üstü.",
+  "Success": {
+   "Text": "İlk cümlende arka sıradakiler bile başını kaldırdı.",
+   "Stats": {
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "Mikrofon ilk cümlende cızırdadı. Gülüşmeler oldu; sen de güldün ve devam ettin.",
+   "Stats": {}
+  },
+  "Unit": "%"
+ },
+ {
+  "Id": "m_first_date",
+  "Target": "social_first_date",
+  "Type": "hold",
+  "Prompt": "Kapının önündesin. İçeri girmeden önce iki derin nefes.",
+  "HoldMs": 1600,
+  "Rounds": 2,
+  "Attempts": 2,
+  "Success": {
+   "Text": "Kapıyı açtığında sesin titremedi. Gülümsemen kendiliğinden geldi.",
+   "Stats": {
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "İçeri girerken kapı koluna takıldın. Tuhaf bir şekilde buz kırıldı.",
+   "Stats": {
+    "Social": 1
+   }
+  }
+ },
+ {
+  "Id": "m_house_rules",
+  "Target": "lived_house_rules",
+  "Type": "budget",
+  "Prompt": "Haftanın ev işlerini sekiz parçaya böl. Hiçbir iş sahipsiz kalmasın.",
+  "Total": 8,
+  "Hint": "Bulaşık, çamaşır ve temizlik en az ikişer parça.",
+  "Buckets": [
+   {
+    "Label": "Bulaşık",
+    "Min": 2
+   },
+   {
+    "Label": "Çamaşır",
+    "Min": 2
+   },
+   {
+    "Label": "Temizlik",
+    "Min": 2
+   },
+   {
+    "Label": "Alışveriş",
+    "Min": 0
+   }
+  ],
+  "Success": {
+   "Text": "Buzdolabının kapağına bir çizelge asıldı. Bir ay boyunca kimse kimseye bulaşık yüzünden küsmedi.",
+   "Stats": {
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "Çamaşır sahipsiz kaldı. Bir hafta sonra herkes aynı gömleği ikinci kez giyiyordu.",
+   "Stats": {
+    "Happiness": -1
+   }
+  }
+ },
+ {
+  "Id": "m_used_car",
+  "Target": "random_used_car",
+  "Type": "search",
+  "Prompt": "Arabayı almadan önce incele. Üç yere bakabilirsin.",
+  "Picks": 3,
+  "Spots": [
+   {
+    "Label": "Lastikler",
+    "Text": "Ön lastikler düzensiz aşınmış; rot ayarı bozuk olabilir.",
+    "Key": true
+   },
+   {
+    "Label": "Motor sesi",
+    "Text": "Soğuk motorda bir tıkırtı var. Satıcı “Normal,” diyor.",
+    "Key": true
+   },
+   {
+    "Label": "Kaput altı",
+    "Text": "Yağ seviyesi düşük, kenarlarda sızıntı izi.",
+    "Key": true
+   },
+   {
+    "Label": "Koltuk kılıfları",
+    "Text": "Yeni takılmış. Altını görmek zor.",
+    "Key": false
+   },
+   {
+    "Label": "Radyo",
+    "Text": "Çalışıyor. Hep aynı istasyonda takılı.",
+    "Key": false
+   }
+  ],
+  "Success": {
+   "Text": "Gördüklerini satıcıya sıraladın. Fiyat bir anda konuşulabilir hale geldi.",
+   "Stats": {
+    "Education": 1
+   }
+  },
+  "Fail": {
+   "Text": "Arabanın yalnızca iyi görünen yerlerine baktın. Satıcı seni sevdi.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_new_city",
+  "Target": "lived_new_city",
+  "Type": "memory",
+  "Prompt": "Yeni mahallen: yerleri yollarla eşleştir.",
+  "Items": [
+   "Fırın",
+   "Eczane",
+   "Durak",
+   "Park"
+  ],
+  "Attempts": 3,
+  "Success": {
+   "Text": "Üçüncü gün fırıncı seni tanıdı. Şehir biraz küçüldü.",
+   "Stats": {
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "Eczaneyi ararken aynı parkın etrafında üç kez döndün. Parkı iyi tanıdın en azından.",
+   "Stats": {
+    "Health": 1
+   }
+  }
+ },
+ {
+  "Id": "m_overtime",
+  "Target": "career_overtime",
+  "Type": "timer",
+  "Prompt": "Yöneticin kapıda, cevabını bekliyor.",
+  "Seconds": 12,
+  "TimeoutChoice": "accept"
+ },
+ {
+  "Id": "m_customer_promise",
+  "Target": "lived_customer_promise",
+  "Type": "timing",
+  "Prompt": "Teslimata dakikalar var. Paketleri doğru anda kapat.",
+  "Rounds": 3,
+  "Need": 2,
+  "Zone": 0.2,
+  "Speed": 1.2,
+  "Success": {
+   "Text": "Son paket kurye kapıdan çıkarken kapandı. Müşteri teşekkür mesajı attı.",
+   "Stats": {
+    "Social": 1,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Bir paket açık gitti. Müşteri fotoğrafını gönderdi; neyse ki gülen bir emojiyle.",
+   "Stats": {
+    "Happiness": -1
+   }
+  }
+ },
+ {
+  "Id": "m_difficult_manager",
+  "Target": "career_difficult_manager",
+  "Type": "hold",
+  "Prompt": "Toplantı odasında sesler yükseliyor. Cevap vermeden önce nefesini sabit tut.",
+  "HoldMs": 1800,
+  "Rounds": 2,
+  "Attempts": 2,
+  "Success": {
+   "Text": "Sesin yükselmedi. Yöneticin bunu fark etti ve kendi sesini indirdi.",
+   "Stats": {
+    "Health": 1
+   }
+  },
+  "Fail": {
+   "Text": "Bir cümle ağzından istediğinden sert çıktı. Akşam aklından çıkmadı.",
+   "Stats": {
+    "Happiness": -1
+   }
+  }
+ },
+ {
+  "Id": "m_salary_prices",
+  "Target": "lived_salary_prices",
+  "Type": "budget",
+  "Prompt": "Market fişi uzadı. Bu ayın on parçalık bütçesini yeniden paylaştır.",
+  "Total": 10,
+  "Hint": "Zorunlu giderler en az 4, faturalar en az 3.",
+  "Buckets": [
+   {
+    "Label": "Zorunlu gıda",
+    "Min": 4
+   },
+   {
+    "Label": "Faturalar",
+    "Min": 3
+   },
+   {
+    "Label": "Ulaşım",
+    "Min": 1
+   },
+   {
+    "Label": "Keyif",
+    "Min": 0
+   }
+  ],
+  "Success": {
+   "Text": "Nereden kısamayacağını gördün. Bu, kısabileceğin yeri de gösterdi.",
+   "Stats": {
+    "Education": 1,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Fatura ayın sonunda geldi ve hesap tutmadı. Bir dahaki ay daha erken başlayacaksın.",
+   "Stats": {
+    "Happiness": -1
+   }
+  }
+ },
+ {
+  "Id": "m_shared_budget",
+  "Target": "social_shared_budget",
+  "Type": "budget",
+  "Prompt": "Ortak bütçe: on iki parçayı birlikte paylaştırın.",
+  "Total": 12,
+  "Hint": "Ev en az 5, birikim en az 2; birinize de en az bir parça keyif kalsın.",
+  "Buckets": [
+   {
+    "Label": "Ev",
+    "Min": 5
+   },
+   {
+    "Label": "Birikim",
+    "Min": 2
+   },
+   {
+    "Label": "Senin keyfin",
+    "Min": 1
+   },
+   {
+    "Label": "Onun keyfi",
+    "Min": 1
+   }
+  ],
+  "Success": {
+   "Text": "Tabloyu birlikte doldurdunuz. Kimse kimseye hesap sormadı; tablo sordu.",
+   "Stats": {
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "Birinin keyif payı sıfır kaldı. Akşam yemeği sessiz geçti.",
+   "Stats": {
+    "Happiness": -1
+   }
+  }
+ },
+ {
+  "Id": "m_child_nights",
+  "Target": "lived_child_nights",
+  "Type": "hold",
+  "Prompt": "Bebek ağlıyor. Onu göğsüne yasla; nefesin onunkini yavaşlatsın.",
+  "HoldMs": 1800,
+  "Rounds": 3,
+  "Attempts": 2,
+  "Success": {
+   "Text": "Üçüncü nefeste ağlama hıçkırığa, hıçkırık uykuya döndü. Sen de oturduğun yerde uyudun.",
+   "Stats": {
+    "Health": 1,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Sabaha kadar koridorda yürüdünüz. İkiniz de sabahı gördünüz.",
+   "Stats": {
+    "Health": -1
+   }
+  }
+ },
+ {
+  "Id": "m_child_school",
+  "Target": "lived_child_school",
+  "Type": "quiz",
+  "Prompt": "Çocuğun ödevine takıldı: “Yedi kere sekiz kaç?”",
+  "Items": [
+   "54",
+   "56",
+   "64"
+  ],
+  "AnswerIndex": 1,
+  "Success": {
+   "Text": "“Elli altı,” dedin, hiç düşünmeden. Çocuğun sana bir dahi gibi baktı.",
+   "Stats": {
+    "Social": 1,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Yanlış söyledin; çocuğun düzeltti. İkiniz de buna çok güldünüz.",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
+ },
+ {
+  "Id": "m_annual_checkup",
+  "Target": "health_annual_checkup",
+  "Type": "order",
+  "Prompt": "Kontrol günü. Hangi sırayla ilerlemeli?",
+  "Items": [
+   "Aç karnına kan ver",
+   "Tansiyonunu ölçtür",
+   "Kahvaltını yap",
+   "Doktorla sonuçları konuş"
+  ],
+  "Attempts": 2,
+  "Success": {
+   "Text": "Her şey sırayla, kimseyi bekletmeden. Doktor “Böyle hasta az gelir,” dedi.",
+   "Stats": {
+    "Health": 2
+   }
+  },
+  "Fail": {
+   "Text": "Kahvaltıdan sonra kan verince tahlil tekrarlandı. Bir sabah daha.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_back_pain",
+  "Target": "health_back_pain",
+  "Type": "timing",
+  "Prompt": "Fizyoterapistin hareketi: bel ortaya geldiğinde nefes ver ve uzan.",
+  "Rounds": 3,
+  "Need": 2,
+  "Zone": 0.24,
+  "Speed": 0.9,
+  "Success": {
+   "Text": "Ağrı tamamen geçmedi ama ilk kez bir hareketin seni iyileştirdiğini hissettin.",
+   "Stats": {
+    "Health": 2
+   }
+  },
+  "Fail": {
+   "Text": "Hareketi aceleyle yaptın; bel itiraz etti. Yarın daha yavaş.",
+   "Stats": {
+    "Health": -1
+   }
+  }
+ },
+ {
+  "Id": "m_burnout",
+  "Target": "lived_burnout",
+  "Type": "hold",
+  "Prompt": "Pazar akşamı göğsünde bir ağırlık. Telefonu bırak; üç nefes yalnızca senin.",
+  "HoldMs": 2000,
+  "Rounds": 3,
+  "Attempts": 2,
+  "Success": {
+   "Text": "Üç nefesin sonunda ağırlık gitmedi ama adını koyabildin.",
+   "Stats": {
+    "Health": 1,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "İkinci nefeste bildirim sesi geldi ve baktın. Bunu da fark ettin.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_layoff_rumor",
+  "Target": "career_layoff_rumor",
+  "Type": "search",
+  "Prompt": "Ofiste bir şeyler dönüyor. İki yere kulak verecek vaktin var.",
+  "Picks": 2,
+  "Spots": [
+   {
+    "Label": "Toplantı takvimi",
+    "Text": "Cuma için “yeniden yapılanma” başlıklı, katılımcısı gizli bir toplantı.",
+    "Key": true
+   },
+   {
+    "Label": "Paylaşılan e-posta",
+    "Text": "İnsan kaynaklarından: “Yetkinlik matrisi güncellemesi.” Senin adın yeni projede.",
+    "Key": true
+   },
+   {
+    "Label": "Kahve makinesi",
+    "Text": "Söylenti, söylentinin söylentisi. Kimse bir şey bilmiyor.",
+    "Key": false
+   },
+   {
+    "Label": "Yöneticinin yüzü",
+    "Text": "Gülümsüyor. Bu bir şey anlatmıyor.",
+    "Key": false
+   }
+  ],
+  "Success": {
+   "Text": "Söylentinin altında gerçek bir bilgi vardı ve onu sen buldun.",
+   "Stats": {
+    "Education": 1
+   }
+  },
+  "Fail": {
+   "Text": "Duyduğun her şey kahve kadar sıcak, kahve kadar geçiciydi.",
+   "Stats": {
+    "Happiness": -1
+   }
+  }
+ },
+ {
+  "Id": "m_house_for_sale",
+  "Target": "random_house_for_sale",
+  "Type": "search",
+  "Prompt": "Evi gezerken iki şeye dikkatle bak.",
+  "Picks": 2,
+  "Spots": [
+   {
+    "Label": "Banyo tavanı",
+    "Text": "Boyanın altında rutubet lekesi. Yeni boyanmış.",
+    "Key": true
+   },
+   {
+    "Label": "Duvar çatlağı",
+    "Text": "Salonun köşesinde ince, çapraz bir çatlak.",
+    "Key": true
+   },
+   {
+    "Label": "Manzara",
+    "Text": "Gün batımı çok güzel. Emlakçı tam o saatte getirmiş.",
+    "Key": false
+   },
+   {
+    "Label": "Mutfak dolapları",
+    "Text": "Yeni, parlak. Kapakları biraz eğri.",
+    "Key": false
+   }
+  ],
+  "Success": {
+   "Text": "Emlakçının yüzündeki gülümseme bir an soldu. Pazarlık başladı.",
+   "Stats": {
+    "Education": 1
+   }
+  },
+  "Fail": {
+   "Text": "Gün batımına bakarken her şey güzel göründü. Gün batımları hep güzel görünür.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_hospital_wait",
+  "Target": "lived_hospital_wait",
+  "Type": "quiz",
+  "Prompt": "Acil serviste sıranın neden değiştiğini soruyorsun. Hemşire “Triyaj,” diyor. Ne demek?",
+  "Items": [
+   "Geliş sırasına göre bakmak",
+   "Hastaları aciliyetine göre sıralamak",
+   "Sigortaya göre ayırmak"
+  ],
+  "AnswerIndex": 1,
+  "Success": {
+   "Text": "Bekleme salonundaki öfken biraz azaldı. Önündeki kişinin neden önce girdiğini anladın.",
+   "Stats": {
+    "Happiness": 1,
+    "Education": 1
+   }
+  },
+  "Fail": {
+   "Text": "Hemşire anlattı. Yine de saatler uzundu.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_neighbors",
+  "Target": "lived_neighbors",
+  "Type": "order",
+  "Prompt": "Apartman toplantısının gündemini aciliyete göre sırala.",
+  "Items": [
+   "Çatıdan sızan su",
+   "Bozuk asansör",
+   "Aidat artışı",
+   "Bahçe düzenlemesi"
+  ],
+  "Attempts": 2,
+  "Success": {
+   "Text": "Toplantı ilk kez bir saatte bitti. Yöneticiliğe aday gösterildin; reddettin.",
+   "Stats": {
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "Toplantı bahçe tartışmasıyla başladı. Su hâlâ sızıyordu.",
+   "Stats": {
+    "Happiness": -1
+   }
+  }
+ },
+ {
+  "Id": "m_marathon",
+  "Target": "health_marathon",
+  "Type": "timing",
+  "Prompt": "Kırkıncı kilometre. Adımlarını nefesine uydur: işaret ortadayken bas.",
+  "Rounds": 3,
+  "Need": 2,
+  "Zone": 0.2,
+  "Speed": 1.1,
+  "Success": {
+   "Text": "Bitiş çizgisinde kimseyi tanımıyordun ama herkes seni alkışlıyordu.",
+   "Stats": {
+    "Health": 2,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Son kilometreyi yürüyerek tamamladın. Madalya yine boynuna takıldı.",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
+ },
+ {
+  "Id": "m_new_intern",
+  "Target": "career_new_intern",
+  "Type": "order",
+  "Prompt": "Stajyerin ilk günü için iyi bir sıra kur.",
+  "Items": [
+   "Kendini tanıt",
+   "Masasını ve ekibi göster",
+   "Küçük bir ilk görev ver",
+   "Gün sonunda nasıl geçtiğini sor"
+  ],
+  "Attempts": 2,
+  "Success": {
+   "Text": "Stajyer gün sonunda “Burayı sevdim,” dedi. Sen de ilk gününü hatırladın.",
+   "Stats": {
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "İlk saatte büyük bir dosya verdin. Öğle yemeğinde stajyerin gözleri doluydu.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_chest_pain",
+  "Target": "health_chest_pain",
+  "Type": "hold",
+  "Prompt": "Merdivende otur. Panik yapmadan, yavaş nefes al ve ver.",
+  "HoldMs": 2000,
+  "Rounds": 2,
+  "Attempts": 2,
+  "Success": {
+   "Text": "Nefesin düzene girdi. Ne yapman gerektiğini artık sakin bir kafayla düşünebilirsin.",
+   "Stats": {
+    "Health": 1
+   }
+  },
+  "Fail": {
+   "Text": "Korku nefesinden hızlıydı. Bir komşu kapıyı açıp yanına oturdu.",
+   "Stats": {
+    "Social": 1
+   }
+  }
+ },
+ {
+  "Id": "m_power_outage",
+  "Target": "random_power_outage",
+  "Type": "search",
+  "Prompt": "Elektrikler gitti. Karanlıkta el yordamıyla iki çekmece açabilirsin.",
+  "Picks": 2,
+  "Spots": [
+   {
+    "Label": "Mutfak çekmecesi",
+    "Text": "Mumlar ve bir kibrit kutusu. Üç kibrit kalmış.",
+    "Key": true
+   },
+   {
+    "Label": "Antre dolabı",
+    "Text": "Pilleri yeni bir el feneri. Kimin koyduğunu hatırlamıyorsun.",
+    "Key": true
+   },
+   {
+    "Label": "Kitaplık",
+    "Text": "Kitaplar. Karanlıkta hepsi aynı.",
+    "Key": false
+   },
+   {
+    "Label": "Banyo dolabı",
+    "Text": "Diş fırçaları ve bir şampuan. Işık yok.",
+    "Key": false
+   }
+  ],
+  "Success": {
+   "Text": "Küçük bir ışık bütün odayı başka bir yere çevirdi.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Telefonun feneriyle idare ettin, pil yüzde ona kadar.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_memory_box",
+  "Target": "lived_memory_box",
+  "Type": "memory",
+  "Prompt": "Anı kutusundakileri hatırladığın yıllarla eşleştir.",
+  "Items": [
+   "Tren bileti",
+   "Düğün fotoğrafı",
+   "Mektup",
+   "Anahtarlık"
+  ],
+  "Attempts": 4,
+  "Success": {
+   "Text": "Her eşyanın bir yılı, her yılın bir yüzü vardı. Hepsini hatırladın.",
+   "Stats": {
+    "Happiness": 3
+   }
+  },
+  "Fail": {
+   "Text": "Bazı yıllar birbirine karıştı. Ama anılar karışınca da güzelmiş.",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
+ },
+ {
+  "Id": "m_retirement_hobby",
+  "Target": "random_retirement_hobby",
+  "Type": "tune",
+  "Prompt": "Yeni aldığın sazı akort et: La notasını 440’a getir ve sabit tut.",
+  "Min": 400,
+  "Max": 480,
+  "Goal": 440,
+  "Tolerance": 2,
+  "HoldMs": 1500,
+  "Seconds": 30,
+  "Hint": "Orkestralar 440 hertzde akort eder.",
+  "Success": {
+   "Text": "Tel temiz bir ses verdi. Komşunun penceresi açıldı; dinliyordu.",
+   "Stats": {
+    "Happiness": 2,
+    "Education": 1
+   }
+  },
+  "Fail": {
+   "Text": "Ses biraz kaçık kaldı. Kaçık sesle çalınan ilk türkü de türküdür.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Unit": "Hz"
+ },
+ {
+  "Id": "m_grandchild_time",
+  "Target": "lived_grandchild_time",
+  "Type": "quiz",
+  "Prompt": "Torunun bilmece soruyor: “Bir kilo pamuk mu ağır, bir kilo demir mi?”",
+  "Items": [
+   "Demir",
+   "Pamuk",
+   "İkisi de aynı"
+  ],
+  "AnswerIndex": 2,
+  "Success": {
+   "Text": "Torunun hayal kırıklığına uğradı; seni kandıramadı. Sonra başka bir bilmece aramaya koştu.",
+   "Stats": {
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "Torunun kahkahalarla güldü. Bütün akşam herkese anlattı.",
+   "Stats": {
+    "Happiness": 2
+   }
+  }
+ },
+ {
+  "Id": "m_century",
+  "Target": "lived_century",
+  "Type": "hold",
+  "Prompt": "Pastada mumlar. Hepsini üflemek için derin bir nefes al.",
+  "HoldMs": 2200,
+  "Rounds": 1,
+  "Attempts": 2,
+  "Success": {
+   "Text": "Bütün mumlar tek nefeste söndü. Odadakiler alkışladı; en çok sen şaşırdın.",
+   "Stats": {
+    "Happiness": 3
+   }
+  },
+  "Fail": {
+   "Text": "Birkaç mum inatla yanmaya devam etti. Torunlar yardım etti; böylesi daha güzeldi.",
+   "Stats": {
+    "Social": 2
+   }
+  }
+ },
+ {
+  "Id": "m_farewell_letter",
+  "Target": "lived_farewell_letter",
+  "Type": "order",
+  "Prompt": "Yazmadığın mektubun bölümlerini sırala.",
+  "Items": [
+   "Hitap",
+   "Ortak bir anı",
+   "Teşekkür",
+   "Özür",
+   "Veda değil, selam"
+  ],
+  "Attempts": 2,
+  "Success": {
+   "Text": "Mektup sonunda yazıldı. Göndermek ya da saklamak artık senin seçimin.",
+   "Stats": {
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Cümleler bir türlü yerine oturmadı. Belki de bu mektup konuşarak yazılmalı.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_rest",
+  "Target": "lived_rest",
+  "Type": "hold",
+  "Prompt": "Bir öğleden sonra kendine ait. Üç yavaş nefesle başla.",
+  "HoldMs": 1800,
+  "Rounds": 3,
+  "Attempts": 2,
+  "Success": {
+   "Text": "Dinlenmenin de bir iş olduğunu ilk kez hissettin.",
+   "Stats": {
+    "Health": 2
+   }
+  },
+  "Fail": {
+   "Text": "Aklın listelere kaydı. Yine de kanepeden kalkmadın.",
+   "Stats": {
+    "Health": 1
+   }
+  }
+ },
+ {
+  "Id": "m_retired_day",
+  "Target": "lived_retired_day",
+  "Type": "budget",
+  "Prompt": "Salı günün boş. Sekiz saatini kendin paylaştır.",
+  "Total": 8,
+  "Hint": "Yürüyüşe en az 1, birine en az 1 saat.",
+  "Buckets": [
+   {
+    "Label": "Yürüyüş",
+    "Min": 1
+   },
+   {
+    "Label": "Bir arkadaş",
+    "Min": 1
+   },
+   {
+    "Label": "Bir uğraş",
+    "Min": 0
+   },
+   {
+    "Label": "Dinlenme",
+    "Min": 0
+   }
+  ],
+  "Success": {
+   "Text": "Gün bittiğinde yorgun ama dolu hissettin. Salı artık bir anlam taşıyordu.",
+   "Stats": {
+    "Happiness": 2,
+    "Health": 1
+   }
+  },
+  "Fail": {
+   "Text": "Saatler televizyonun önünde eridi. Ertesi salı başka olacak dedin.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_rainy_afternoon",
+  "Target": "random_rainy_afternoon",
+  "Type": "memory",
+  "Prompt": "Yağmur camda. Çocukluk oyunu: kartları eşleştir.",
+  "Items": [
+   "Şemsiye",
+   "Çizme",
+   "Gökkuşağı"
+  ],
+  "Attempts": 3,
+  "Success": {
+   "Text": "Oyun bittiğinde yağmur da dinmişti.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Gökkuşağı eşini bulamadı. Camın dışında da yoktu zaten.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_holiday_table",
+  "Target": "social_holiday_table",
+  "Type": "timer",
+  "Prompt": "Telefon çalıyor: bayram sofrası kuruluyor, herkes cevabını bekliyor.",
+  "Seconds": 12,
+  "TimeoutChoice": "video_call"
+ }
+]

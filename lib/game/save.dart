@@ -131,6 +131,8 @@ class SaveService {
           root['EventShowCounts'] ??= <String, dynamic>{
             for (final id in ((root['EventLastSeenDay'] as Map?) ?? const {}).keys) id as String: 1,
           };
+        case 7:
+          root['MomentKey'] ??= '';
         default:
           throw FormatException('v$v → v${v + 1} için migration tanımlı değil.');
       }

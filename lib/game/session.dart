@@ -216,6 +216,52 @@ class GameSession {
     return currentEvent;
   }
 
+  // ------------------------------------------------------------------ Anlar
+
+  String _momentKeyFor(GameState s, EventDef ev) => '${ev.id}@${s.day}';
+
+  /// Ekrandaki olayın oynanmamış anı (süreli kararlar dahil).
+  LifeMoment? activeMoment() {
+    final s = state, ev = currentEvent;
+    if (s == null || ev == null) return null;
+    final m = content.moments[ev.id];
+    if (m == null || s.momentKey == _momentKeyFor(s, ev)) return null;
+    return m;
+  }
+
+  /// Oynanan anın sonucu ([outcome] success/fail, arama için done). Etki hemen uygulanır,
+  /// cümlesi ve değişimleri karar sonucuna eklenir.
+  ActionResult resolveMoment(String outcome, {Set<int> found = const {}}) {
+    final s = state, ev = currentEvent, m = activeMoment();
+    if (s == null || ev == null || m == null || m.timed) {
+      return const ActionResult(false, 'Bu an artık geçerli değil.');
+    }
+    var success = outcome == 'success';
+    if (m.interaction.type == 'search') {
+      final spots = m.interaction.spots;
+      if (found.length > m.interaction.picks || found.any((i) => i < 0 || i >= spots.length)) {
+        return const ActionResult(false, 'Bu kadar yere bakacak zamanın yoktu.');
+      }
+      success = found.any((i) => spots[i].key);
+    }
+    final stats = success ? m.successStats : m.failStats;
+    s.momentKey = _momentKeyFor(s, ev);
+    s.momentNote = fillScene(s, success ? m.successText : m.failText);
+    s.momentChanges = [
+      for (final e in stats.entries)
+        if (enumByName(Stat.values, e.key) case final st?) effects.applyStat(s, st, e.value),
+    ];
+    _autoSave();
+    return ActionResult(true, s.momentNote);
+  }
+
+  /// Süreli kararda süre doldu: anın belirttiği seçenek uygulanır.
+  ChoiceResult? momentTimeout() {
+    final m = activeMoment();
+    if (m == null || !m.timed) return null;
+    return submitChoice(m.timeoutChoice);
+  }
+
   ChoiceResult? submitChoice(String choiceId) {
     final s = state, rng = _rng, ev = currentEvent;
     if (s == null || rng == null || ev == null) return null;
@@ -226,6 +272,15 @@ class GameSession {
 
     final result = effects.applyChoice(s, ev, choice);
     director.resolve(s, ev, choice, result);
+    if (s.momentKey == _momentKeyFor(s, ev)) {
+      // Anın etkileri zaten uygulandı; sonuç sayfasında kararınkilerle birlikte görünür.
+      result.changes.insertAll(0, s.momentChanges);
+      if (s.momentNote.isNotEmpty) result.resultText = '${s.momentNote}\n\n${result.resultText}';
+    }
+    s
+      ..momentKey = ''
+      ..momentNote = ''
+      ..momentChanges = [];
     if (ev.id == World.electionId) World.vote(s, choice.id, result);
     if (ev.id == Wedding.eventId) {
       Wedding.resolve(s, choice.id, rng, effects, result);

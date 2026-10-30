@@ -248,6 +248,21 @@ class GameController extends ChangeNotifier {
     if (session.submitChoice(id) != null) notifyListeners();
   }
 
+  /// Ekrandaki olayın oynanmamış anı.
+  LifeMoment? get lifeMoment => session.activeMoment();
+
+  /// Oynanmış anın sahneye eklediği cümle ve değişimler (karar verilene kadar).
+  String get momentNote => state?.momentNote ?? '';
+  List<StatChange> get momentChanges => state?.momentChanges ?? const [];
+
+  ActionResult resolveMoment(String outcome, {Set<int> indices = const {}}) =>
+      _update(session.resolveMoment(outcome, found: indices));
+
+  /// Süreli kararda süre doldu.
+  void momentTimeout() {
+    if (session.momentTimeout() != null) notifyListeners();
+  }
+
   /// Sonuç sayfasından "Hikâyeye devam et".
   void continueStory() {
     session.requestNextEvent();

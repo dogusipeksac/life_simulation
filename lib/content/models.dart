@@ -360,14 +360,26 @@ const storyStyles = {'', 'chat', 'note', 'radio'};
 
 /// Etkileşim türleri. Sonuçlar (Success/Fail/Timeout/Done) sahnedeki seçeneklerin dizinine
 /// bağlanır; etkileşim bitince o seçenek uygulanır. Kayıt ve bölüm kilidi aynen çalışır.
-const storyInteractionTypes = {'code', 'order', 'tune', 'timing', 'search', 'timer'};
+const storyInteractionTypes = {'code', 'order', 'tune', 'timing', 'search', 'timer', 'memory', 'budget', 'hold', 'quiz'};
+
+class StoryBucket {
+  StoryBucket.fromJson(Json j)
+      : label = _str(j['Label']),
+        min = _int(j['Min']);
+  final String label;
+  final int min;
+}
 
 class StorySpot {
   StorySpot.fromJson(Json j)
       : label = _str(j['Label']),
         text = _str(j['Text']),
-        flag = _str(j['Flag']);
+        flag = _str(j['Flag']),
+        key = _bool(j['Key']);
   final String label, text, flag;
+
+  /// Ana hayat anlarında: bu nokta bulunursa an başarılı sayılır.
+  final bool key;
 }
 
 class StoryInteraction {
@@ -394,11 +406,16 @@ class StoryInteraction {
         success = _int(j['Success']),
         fail = _int(j['Fail'], 1),
         timeout = _int(j['Timeout']),
-        done = _int(j['Done']);
+        done = _int(j['Done']),
+        answerIndex = _int(j['AnswerIndex']),
+        unit = _str(j['Unit'], 'MHz'),
+        total = _int(j['Total'], 10),
+        buckets = List.unmodifiable((j['Buckets'] as List? ?? const []).map((b) => StoryBucket.fromJson(b as Json)));
 
   final Json raw;
-  final String type, prompt, hint, answer;
-  final int attempts, picks, holdMs, seconds, rounds, need, success, fail, timeout, done;
+  final String type, prompt, hint, answer, unit;
+  final int attempts, picks, holdMs, seconds, rounds, need, success, fail, timeout, done, answerIndex, total;
+  final List<StoryBucket> buckets;
   final List<String> items;
   final List<StorySpot> spots;
   final double min, max, target, tolerance, zone, speed;
@@ -407,8 +424,9 @@ class StoryInteraction {
   int? outcome(String name) => switch ((type, name)) {
         ('search', 'done') => done,
         ('timer', 'timeout') => timeout,
-        ('code' || 'order' || 'tune' || 'timing', 'success') => success,
-        ('code' || 'order' || 'tune' || 'timing', 'fail') => fail,
+        ('search' || 'timer', _) => null,
+        (_, 'success') => success,
+        (_, 'fail') => fail,
         _ => null,
       };
 }
@@ -461,4 +479,30 @@ class StoryBook {
   final List<String> chapters;
   final Map<String, String> statNames;
   final Map<String, StoryNode> nodes;
+}
+
+// ---------------------------------------------------------------- Ana hayat anları
+
+/// Bir sahnenin ya da olayın başına eklenen etkileşim. Kararlar değişmez; an önce oynanır,
+/// sonucu küçük bir etki ve kendi cümlesiyle sahneye eklenir. "timer" türünde ise
+/// seçenekler geri sayımla gösterilir, süre dolarsa [timeoutChoice] uygulanır.
+class LifeMoment {
+  LifeMoment.fromJson(Json j)
+      : raw = j,
+        id = _str(j['Id']),
+        target = _str(j['Target']),
+        // "Target" anlarda hedef sahnedir; frekans hedefi "Goal" alanındadır.
+        interaction = StoryInteraction.fromJson({...j, 'Target': j['Goal'], 'Success': 0, 'Fail': 1}),
+        successText = _str((j['Success'] as Map?)?['Text']),
+        successStats = _intMap((j['Success'] as Map?)?['Stats']),
+        failText = _str((j['Fail'] as Map?)?['Text']),
+        failStats = _intMap((j['Fail'] as Map?)?['Stats']),
+        timeoutChoice = _str(j['TimeoutChoice']);
+
+  final Json raw;
+  final String id, target, successText, failText, timeoutChoice;
+  final StoryInteraction interaction;
+  final Map<String, int> successStats, failStats;
+
+  bool get timed => interaction.type == 'timer';
 }

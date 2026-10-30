@@ -13,6 +13,7 @@ import 'package:life_simulation/game/save.dart';
 import 'package:life_simulation/game/session.dart';
 import 'package:life_simulation/game/state.dart';
 import 'package:life_simulation/game/text.dart';
+import 'package:life_simulation/game/voice.dart';
 
 import 'content_test.dart' show contentPaths, readFile;
 
@@ -164,6 +165,85 @@ void main() {
       // Boş dönemler en fazla bir yıllık tek sayfada birleşir; arka arkaya ikinci sayfa
       // ancak bütün bir yıl hiçbir olay uygun olmadıysa çıkar.
       expect(maxCalmInRow, lessThanOrEqualTo(2));
+    });
+  });
+
+  group('anlar', () {
+    test('an önce oynanır; etkisi ve cümlesi karar sonucuna eklenir', () {
+      final session = newSession()..startNewGame('Deniz', seed: 3);
+      final s = session.state!..age = 30;
+      final ev = EventDef.fromContent(session.content.events['career_difficult_manager']!);
+      session.currentEvent = ev;
+      s.currentEventId = ev.id;
+      final m = session.activeMoment()!;
+      expect(m.interaction.type, 'hold');
+      final before = s.health;
+      expect(session.resolveMoment('success').success, isTrue);
+      expect(s.health, before + 1);
+      expect(session.activeMoment(), isNull, reason: 'aynı an iki kez oynanmaz');
+      expect(session.resolveMoment('success').success, isFalse);
+      final r = session.submitChoice(ev.choices.first.id)!;
+      expect(r.resultText, startsWith(fillScene(s, m.successText)));
+      expect(r.changes.first.stat, Stat.health);
+      expect(s.momentKey, isEmpty);
+    });
+
+    test('inceleme anı anahtar noktayla başarılı, bakış hakkı aşılmaz', () {
+      final session = newSession()..startNewGame('Deniz', seed: 4);
+      final s = session.state!..age = 8;
+      final ev = EventDef.fromContent(session.content.events['childhood_found_wallet']!);
+      session.currentEvent = ev;
+      s.currentEventId = ev.id;
+      expect(session.resolveMoment('done', found: {0, 1, 2}).success, isFalse);
+      expect(session.resolveMoment('done', found: {2, 3}).success, isTrue);
+      expect(s.momentNote, contains('ipucu bulamadın'));
+    });
+
+    test('süreli anda süre dolunca belirtilen seçenek uygulanır', () {
+      final session = newSession()..startNewGame('Deniz', seed: 5);
+      final s = session.state!..age = 30;
+      final ev = EventDef.fromContent(session.content.events['career_overtime']!);
+      session.currentEvent = ev;
+      s.currentEventId = ev.id;
+      expect(session.activeMoment()!.timed, isTrue);
+      expect(session.resolveMoment('success').success, isFalse);
+      session.momentTimeout();
+      expect(s.journal.last.choice, fillVoice(s, ev.findChoice('accept')!.text));
+    });
+
+    test('oynanmış an kayıttan sonra korunur', () {
+      final session = newSession()..startNewGame('Deniz', seed: 6);
+      final s = session.state!..age = 30;
+      final ev = EventDef.fromContent(session.content.events['career_difficult_manager']!);
+      session.currentEvent = ev;
+      s.currentEventId = ev.id;
+      session.resolveMoment('fail');
+      final loaded = SaveService.deserialize(SaveService.serialize(s));
+      expect(loaded.momentKey, s.momentKey);
+      expect(loaded.momentNote, s.momentNote);
+    });
+
+    test('anlarla bütün bir hayat çökmeden oynanır', () {
+      final session = newSession()..autoSaveEnabled = false;
+      session.startNewGame('Deniz', seed: 77, profile: CharacterProfile()..detailedLife = true);
+      var played = 0;
+      for (var i = 0; i < 6000 && !session.state!.isGameOver; i++) {
+        final ev = session.requestNextEvent();
+        if (ev == null) continue;
+        final m = session.activeMoment();
+        if (m != null) {
+          played++;
+          if (m.timed) {
+            session.momentTimeout();
+            continue;
+          }
+          expect(session.resolveMoment(i.isEven ? 'success' : 'fail', found: {0}).success, isTrue);
+        }
+        final ok = session.choiceViews(ev).where((c) => c.isAvailable).toList();
+        session.submitChoice(ok[i % ok.length].id);
+      }
+      expect(session.state!.isGameOver, isTrue);
+      expect(played, greaterThan(25));
     });
   });
 

@@ -31,6 +31,7 @@ class GameContent {
         endings = List.unmodifiable(raw.endings.map(Ending.fromJson)),
         life = LifeConfig.fromJson(raw.life),
         scenes = Map.unmodifiable({for (final s in raw.scenes) s['Id'] as String: LifeScene.fromJson(s)}),
+        moments = Map.unmodifiable({for (final m in raw.moments) m['Target'] as String: LifeMoment.fromJson(m)}),
         stories = Map.unmodifiable({
           for (final file in raw.stories.keys.toList()..sort())
             raw.stories[file]!['Id'] as String: StoryBook.fromJson(raw.stories[file]!),
@@ -46,6 +47,9 @@ class GameContent {
   final LifeConfig life;
   final Map<String, LifeScene> scenes;
   final Map<String, StoryBook> stories;
+
+  /// Hedef sahne/olay kimliği → an.
+  final Map<String, LifeMoment> moments;
 
   /// Uyarılar (hata yoksa paket yine de kurulur).
   final ContentIssues issues;
@@ -82,6 +86,7 @@ class GameContent {
       life: await json('life.json') as Json,
       scenes: await list('life_scenes.json'),
       stories: stories,
+      moments: all.contains('moments.json') ? await list('moments.json') : const [],
     );
   }
 }
