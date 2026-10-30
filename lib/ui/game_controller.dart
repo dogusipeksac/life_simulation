@@ -248,6 +248,9 @@ class GameController extends ChangeNotifier {
     if (session.submitChoice(id) != null) notifyListeners();
   }
 
+  /// Kütüphane sekmesinde açık kitap (görünüm durumu): geri tuşu önce kitabı kapatır.
+  String? libraryBook;
+
   /// Ekrandaki olayın oynanmamış anı.
   LifeMoment? get lifeMoment => session.activeMoment();
 

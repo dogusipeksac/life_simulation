@@ -20,8 +20,11 @@ void openStoryLibrary(BuildContext context, GameController game) {
 
 /// Ana hayat açık olmadan da okunabilen, ayrı kaydedilen hikâye kitaplığı.
 class StoryLibraryScreen extends StatefulWidget {
-  const StoryLibraryScreen({super.key, required this.game});
+  const StoryLibraryScreen({super.key, required this.game, this.embedded = false});
   final GameController game;
+
+  /// Alt çubuktaki sekme olarak: kendi uygulama çubuğu ve zemini yok.
+  final bool embedded;
   @override
   State<StoryLibraryScreen> createState() => _StoryLibraryScreenState();
 }
@@ -35,6 +38,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
   GameController get game => widget.game;
   @override
   void dispose() {
+    game.libraryBook = null;
     _scroll.dispose();
     super.dispose();
   }
@@ -50,6 +54,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
 
   void _open(String id) {
     game.openBook(id);
+    game.libraryBook = id;
     setState(() {
       _bookId = id;
       _message = '';
@@ -62,6 +67,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
       Navigator.pop(context);
       return;
     }
+    game.libraryBook = null;
     setState(() {
       _bookId = null;
       _message = '';
@@ -156,6 +162,44 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
     listenable: Listenable.merge([game, preferences]),
     builder: (context, _) {
       final p = context.vita, book = game.stories.books[_bookId];
+      final content = ListView(
+        controller: _scroll,
+        padding: EdgeInsets.fromLTRB(18, widget.embedded ? 8 : 16, 18, widget.embedded ? 128 : 32),
+        children: [
+          if (widget.embedded && book != null)
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton.icon(
+                onPressed: _back,
+                icon: const Icon(Icons.chevron_left),
+                label: const Text('Tüm kitaplar'),
+              ),
+            ),
+          if (_shownMessage.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 14),
+              child: Semantics(
+                liveRegion: true,
+                child: LifeSimulationCard(child: _text(_shownMessage)),
+              ),
+            ),
+          if (game.stories.loadNotice.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 14),
+              child: _text(game.stories.loadNotice),
+            ),
+          ...book == null ? _library() : _reader(book),
+        ],
+      );
+      if (widget.embedded) {
+        return PopScope(
+          canPop: book == null,
+          onPopInvokedWithResult: (didPop, _) {
+            if (!didPop) _back();
+          },
+          child: content,
+        );
+      }
       return PopScope(
         canPop: _bookId == null,
         onPopInvokedWithResult: (didPop, _) {
@@ -171,31 +215,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
             ),
             title: Text(book == null ? 'Hikâye kütüphanesi' : book.title),
           ),
-          body: Backdrop(
-            child: SafeArea(
-              top: false,
-              child: ListView(
-                controller: _scroll,
-                padding: const EdgeInsets.fromLTRB(18, 16, 18, 32),
-                children: [
-                  if (_shownMessage.isNotEmpty)
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 14),
-                      child: Semantics(
-                        liveRegion: true,
-                        child: LifeSimulationCard(child: _text(_shownMessage)),
-                      ),
-                    ),
-                  if (game.stories.loadNotice.isNotEmpty)
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 14),
-                      child: _text(game.stories.loadNotice),
-                    ),
-                  ...book == null ? _library() : _reader(book),
-                ],
-              ),
-            ),
-          ),
+          body: Backdrop(child: SafeArea(top: false, child: content)),
         ),
       );
     },

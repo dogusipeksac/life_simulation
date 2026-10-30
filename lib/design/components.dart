@@ -415,7 +415,7 @@ class AppTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final p = context.vita;
     return Semantics(
-      button: true,
+      button: onTap != null,
       label: '$title. $caption${badge == null ? '' : '. $badge'}',
       excludeSemantics: true,
       child: Material(

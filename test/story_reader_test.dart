@@ -60,16 +60,18 @@ void main() {
   }
 
   Future<void> app(WidgetTester tester) async {
+    // Kütüphane oyunun içinde, alt çubukta bir sekme.
+    game.startNewGame('Deniz', seed: 1);
     await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
     await tester.pumpAndSettle();
-    await tap(tester, find.text('Hikâye kütüphanesi'));
+    await tester.tap(find.text('Kütüphane'));
+    await tester.pumpAndSettle();
   }
 
   testWidgets(
-    'library available from title without life; filters and continue reading',
+    'library tab: filters, back to shelf and continue reading',
     (tester) async {
       await app(tester);
-      expect(game.inGame, isFalse);
       await tap(tester, find.text('Ücretsiz'));
       final free = content.stories.values.singleWhere(
         (b) => b.productId.isEmpty,
@@ -87,7 +89,7 @@ void main() {
       await tap(tester, find.text('Okumaya devam et'));
       expect(game.stories.open(free.id).nodeId, current);
       expect(find.text(free.nodes[current]!.title), findsOneWidget);
-      expect(game.inGame, isFalse);
+      expect(game.inGame, isTrue, reason: 'kütüphane hayat kaydını etkilemez');
     },
   );
   testWidgets(

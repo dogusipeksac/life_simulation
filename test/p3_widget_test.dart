@@ -132,7 +132,7 @@ void main() {
       await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
       await tester.pumpAndSettle();
       await tap(tester, 'Kariyer');
-      expect(find.text('Geleceğini şekillendir'), findsOneWidget);
+      expect(find.text('İŞ İLANLARI'), findsOneWidget);
       await tap(tester, 'İlişkiler');
       await tap(tester, game.state!.relationships.first.name);
       final bond = game.state!.relationships.first.bond;
@@ -141,7 +141,7 @@ void main() {
       await tester.binding.handlePopRoute();
       await tester.pumpAndSettle();
       expect(find.text('Hayatındaki insanlar'), findsOneWidget);
-      await tester.tap(find.byTooltip('Menü'));
+      await tester.tap(find.byTooltip('Profil'));
       await tester.pumpAndSettle();
       await tap(tester, 'Finans & banka');
       await tap(tester, 'Banka hesabı');
@@ -153,9 +153,10 @@ void main() {
       expect(tester.widget<LifePage>(find.byType(LifePage)).page, 'finance');
       await tap(tester, 'Hikâye');
       expect(game.event!.id, eventId);
+      // Hikâye sekmesinde geri tuşu çıkış onayı sorar.
       await tester.binding.handlePopRoute();
       await tester.pumpAndSettle();
-      expect(tester.widget<LifePage>(find.byType(LifePage)).page, 'menu');
+      expect(find.text('Çıkmak istiyor musun?'), findsOneWidget);
     },
   );
   testWidgets('mini game plays five rounds and cannot grant a second reward', (

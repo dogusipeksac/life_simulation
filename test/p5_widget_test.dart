@@ -117,7 +117,7 @@ void main() {
     await game.storyStore.initialize();
     await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
     await tester.pumpAndSettle();
-    await tester.tap(find.byTooltip('Menü'));
+    await tester.tap(find.byTooltip('Profil'));
     await tester.pumpAndSettle();
     await tap(tester, find.text('Reklamları kaldır · ₺10'));
     expect(game.storyStore.adsRemoved, isFalse);

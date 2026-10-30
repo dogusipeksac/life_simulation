@@ -11,6 +11,7 @@ import '../design/theme.dart';
 import '../game/state.dart';
 import '../game/text.dart';
 import 'game_controller.dart';
+import 'story_library_screen.dart';
 import 'story_interactions.dart';
 import 'shell.dart';
 import 'life_pages.dart';
@@ -30,7 +31,9 @@ class _StoryScreenState extends State<StoryScreen> {
   int _tab = 0;
   String? _page, _personId;
   String get _currentPage =>
-      _page ?? const ['story', 'career', 'relationships', 'profile'][_tab];
+      _page ?? _tabs[_tab];
+
+  static const _tabs = ['story', 'career', 'relationships', 'library'];
 
   void _navigate(String page) {
     game.save();
@@ -40,8 +43,8 @@ class _StoryScreenState extends State<StoryScreen> {
         _page = 'person';
         return;
       }
-      const tabs = ['story', 'career', 'relationships', 'profile'];
-      final index = tabs.indexOf(page);
+      if (page == 'menu') page = 'profile';
+      final index = _tabs.indexOf(page);
       if (index >= 0) {
         _tab = index;
         _page = null;
@@ -137,22 +140,29 @@ class _StoryScreenState extends State<StoryScreen> {
               _navigate('finance');
               return;
             }
-            if (_page != null && _page != 'menu') {
-              _navigate('menu');
+            // Kütüphanede açık kitabı kütüphanenin kendisi kapatır.
+            if (_currentPage == 'library' && game.libraryBook != null) return;
+            // Geri: alt sayfa → üst sayfa → hikâye → çıkış onayı.
+            if (_page == 'person' || _page == 'activities') {
+              _navigate('relationships');
               return;
             }
-            if (_page == 'menu') {
-              if (await _confirmExit()) {
-                game.save();
-                SystemNavigator.pop();
-              }
+            if (_page == 'bank') {
+              _navigate('finance');
               return;
             }
-            if (_tab != 0) {
+            if (_page != null && _page != 'profile') {
+              _navigate('profile');
+              return;
+            }
+            if (_page == 'profile' || _tab != 0) {
               _navigate('story');
               return;
             }
-            _navigate('menu');
+            if (await _confirmExit()) {
+              game.save();
+              SystemNavigator.pop();
+            }
           },
           child: AnnotatedRegion<SystemUiOverlayStyle>(
             value:
@@ -180,17 +190,35 @@ class _StoryScreenState extends State<StoryScreen> {
                               money: formatMoney(s.money),
                             ),
                           ),
-                          IconButton(
-                            tooltip: 'Menü',
-                            onPressed: () =>
-                                _navigate(_page == 'menu' ? 'story' : 'menu'),
-                            icon: const Icon(Icons.menu),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Tooltip(
+                              message: 'Profil',
+                              child: InkResponse(
+                                radius: 26,
+                                onTap: () => _navigate(_page == 'profile' ? 'story' : 'profile'),
+                                child: SizedBox.square(
+                                  dimension: 48,
+                                  child: Center(
+                                    child: ExcludeSemantics(
+                                      child: PersonMedallion(
+                                        name: s.playerName,
+                                        female: s.profile.gender == 'Kadın',
+                                        size: 36,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
                       Expanded(
                         child: _currentPage == 'story'
                             ? _story(s)
+                            : _currentPage == 'library'
+                            ? StoryLibraryScreen(game: game, embedded: true)
                             : LifePage(
                                 key: ValueKey('$_currentPage:$_personId'),
                                 game: game,
@@ -206,15 +234,13 @@ class _StoryScreenState extends State<StoryScreen> {
               bottomNavigationBar: s.isGameOver
                   ? null
                   : VitaTabBar(
-                      index: _tab,
-                      onSelect: (i) => _navigate(
-                        const [
-                          'story',
-                          'career',
-                          'relationships',
-                          'profile',
-                        ][i],
-                      ),
+                      // Alt sayfalarda (profil, finans…) hiçbir sekme seçili görünmez.
+                      index: _page == null
+                          ? _tab
+                          : const ['person', 'activities'].contains(_page)
+                          ? 2
+                          : -1,
+                      onSelect: (i) => _navigate(_tabs[i]),
                       onNewAge: _newAge,
                     ),
             ),

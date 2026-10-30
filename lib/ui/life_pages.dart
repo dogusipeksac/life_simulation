@@ -16,7 +16,6 @@ import '../game/voice.dart';
 import '../game/wedding.dart';
 import '../game/world.dart';
 import 'game_controller.dart';
-import 'story_library_screen.dart';
 import 'achievements_screen.dart';
 import 'privacy_screen.dart';
 import 'mini_game.dart';
@@ -42,6 +41,7 @@ class _LifePageState extends State<LifePage> {
   final _amount = TextEditingController(text: '100');
   String _message = '', _query = '';
   bool _allJobs = false;
+  int _relTab = 0;
   int _memories = 20;
   GameController get game => widget.game;
   GameState get s => game.state!;
@@ -69,11 +69,16 @@ class _LifePageState extends State<LifePage> {
   );
   Widget info(String label, String value) => Padding(
     padding: const EdgeInsets.symmetric(vertical: 5),
-    child: Wrap(
-      spacing: 8,
-      runSpacing: 3,
-      alignment: WrapAlignment.spaceBetween,
-      children: [text(label, caption: true), text(value)],
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(flex: 2, child: text(label, caption: true)),
+        const SizedBox(width: 12),
+        Expanded(
+          flex: 3,
+          child: Text(value, textAlign: TextAlign.end, style: VitaType.body(context.vita)),
+        ),
+      ],
     ),
   );
   Widget card(String title, List<Widget> children) => Padding(
@@ -124,14 +129,14 @@ class _LifePageState extends State<LifePage> {
       'career' => career(),
       'relationships' => relationships(),
       'person' => person(),
-      'profile' => profile(),
-      'activities' => activities(),
+      'profile' || 'menu' => profile(),
+      'activities' => relationships(showActivities: true),
       'finance' => finance(),
       'bank' => bank(),
       'world' => world(),
       'journal' => journal(),
       'life' => life(),
-      _ => menu(),
+      _ => profile(),
     };
     return ListView(
       padding: const EdgeInsets.fromLTRB(18, 8, 18, 128),
@@ -139,27 +144,24 @@ class _LifePageState extends State<LifePage> {
         if (![
           'career',
           'relationships',
-          'profile',
-          'menu',
+          'activities',
         ].contains(widget.page))
           Align(
             alignment: Alignment.centerLeft,
             child: TextButton.icon(
-              onPressed: () => go(
-                widget.page == 'person'
-                    ? 'relationships'
-                    : widget.page == 'bank'
-                    ? 'finance'
-                    : 'menu',
-              ),
+              onPressed: () => go(switch (widget.page) {
+                'person' => 'relationships',
+                'bank' => 'finance',
+                'profile' || 'menu' => 'story',
+                _ => 'profile',
+              }),
               icon: const Icon(Icons.chevron_left),
-              label: Text(
-                widget.page == 'person'
-                    ? 'İlişkiler'
-                    : widget.page == 'bank'
-                    ? 'Finans'
-                    : 'Menü',
-              ),
+              label: Text(switch (widget.page) {
+                'person' => 'İlişkiler',
+                'bank' => 'Finans',
+                'profile' || 'menu' => 'Hikâye',
+                _ => 'Profil',
+              }),
             ),
           ),
         if (_message.isNotEmpty)
@@ -176,97 +178,225 @@ class _LifePageState extends State<LifePage> {
   }
 
   List<Widget> career() {
+    final p = context.vita;
     final c = game.session.content.careers[s.careerId];
-    final goals = game.session.content.goals.where(
-      (g) => s.activeGoalIds.contains(g.id),
-    );
-    final jobs = (_allJobs ? rules.views(s) : rules.openings(s)).where(
-      (v) =>
-          lowerInvariant('${v.career.name} ${v.career.theme}')
-              .contains(lowerInvariant(_query)),
-    );
+    final goals = game.session.content.goals.where((g) => s.activeGoalIds.contains(g.id)).toList();
+    final done = goals.where((g) => s.completedGoalIds.contains(g.id)).length;
+    final jobs = (_allJobs ? rules.views(s) : rules.openings(s))
+        .where((v) => lowerInvariant('${v.career.name} ${v.career.theme}').contains(lowerInvariant(_query)))
+        .toList();
+    final lines = rules.budget(s);
+    final net = lines.fold(0, (v, l) => v + l.$2);
     return [
-      Text('Geleceğini şekillendir', style: VitaType.title(context.vita)),
-      const SizedBox(height: 14),
-      card('ŞU ANKİ DURUMUN', [
-        text(game.session.describeOccupation()),
-        info('Eğitim', educationDisplay(s.educationLevel)),
-        if (s.studyLevel != null)
-          info(
-            'Öğrenim',
-            '${educationDisplay(s.studyLevel!)} · ${s.age - s.studyStartAge}. yıl',
+      // Kahraman kart: şu anki iş ya da okul, basamak ilerlemesi.
+      Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: p.border),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [p.education.withValues(alpha: p.isDark ? .22 : .14), p.surface],
           ),
-        if (c != null) ...[
-          info('Basamak', '${s.careerLevel} / ${c.levels.length}'),
-          info('Aylık maaş', formatMoney(rules.salary(s))),
-          button('İşinden istifa et', () async {
-            if (await confirm(
-              'İstifa etmek istiyor musun?',
-              'Maaşın kesilecek. Bu işe yeniden başvurmak için 90 gün beklemen gerekecek.',
-            )) {
-              if (!mounted) return;
-              game.quitCareer();
-              setState(() => _message = 'İşinden ayrıldın.');
-            }
-          }),
-        ],
-        if (c == null)
-          text(
-            s.age < 16
-                ? 'Çalışmak için henüz çok küçüksün. Şimdilik okul ve oyun zamanı.'
-                : s.studyLevel != null
-                ? 'Okuyorsun. Mezun olunca daha çok kapı açılır; yine de ilanlara bakabilirsin.'
-                : 'Şu an çalışmıyorsun. Aşağıdaki ilanlara başvurabilir ya da kaderine güvenebilirsin.',
-            caption: true,
-          ),
-      ]),
-      card('HAYAT HEDEFLERİN', [
-        for (final g in goals)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: text(
-              '${s.completedGoalIds.contains(g.id) ? '✓' : '○'} ${g.title}\n${g.description}',
+        ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(children: [
+            Container(
+              width: 46,
+              height: 46,
+              decoration: BoxDecoration(color: p.education.withValues(alpha: .2), borderRadius: BorderRadius.circular(14)),
+              child: Icon(c != null ? Icons.work : s.studyLevel != null ? Icons.school : Icons.explore_outlined, color: p.education),
             ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(upperTr(c != null ? 'Şu anki işin' : s.studyLevel != null ? 'Öğrenimin' : 'Yolun'), style: VitaType.overline(p)),
+                Text(game.session.describeOccupation(), style: VitaType.title(p).copyWith(fontSize: 21)),
+                if (c != null) Text(c.theme, style: VitaType.caption(p)),
+              ]),
+            ),
+          ]),
+          const SizedBox(height: 14),
+          Wrap(spacing: 8, runSpacing: 8, children: [
+            VitaChip(educationDisplay(s.educationLevel), icon: Icons.school_outlined),
+            if (c != null) VitaChip('${formatMoney(rules.salary(s))} / ay', icon: Icons.payments_outlined),
+            if (s.studyLevel != null)
+              VitaChip('${educationDisplay(s.studyLevel!)} · ${s.age - s.studyStartAge + 1}. yıl', icon: Icons.menu_book_outlined),
+          ]),
+          if (c != null) ...[
+            const SizedBox(height: 14),
+            Row(children: [
+              Expanded(child: Text('Kariyer basamağı', style: VitaType.caption(p))),
+              Text('${s.careerLevel} / ${c.levels.length}', style: VitaType.caption(p).copyWith(color: p.ink)),
+            ]),
+            const SizedBox(height: 6),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: LinearProgressIndicator(
+                value: s.careerLevel / c.levels.length,
+                minHeight: 8,
+                color: p.education,
+                backgroundColor: p.surfaceSunken,
+              ),
+            ),
+            if (s.careerLevel < c.levels.length) ...[
+              const SizedBox(height: 6),
+              Text('Sıradaki: ${c.levels[s.careerLevel]}', style: VitaType.caption(p)),
+            ],
+          ] else ...[
+            const SizedBox(height: 12),
+            text(
+              s.age < 16
+                  ? 'Çalışmak için henüz çok küçüksün. Şimdilik okul ve oyun zamanı.'
+                  : s.studyLevel != null
+                  ? 'Okuyorsun. Mezun olunca daha çok kapı açılır; yine de ilanlara bakabilirsin.'
+                  : 'Şu an çalışmıyorsun. Aşağıdaki ilanlara başvurabilir ya da kaderine güvenebilirsin.',
+              caption: true,
+            ),
+          ],
+        ]),
+      ),
+      const SizedBox(height: 12),
+      AppTileGrid(children: [
+        AppTile(
+          icon: Icons.flag_outlined,
+          title: 'Hedefler',
+          caption: '$done / ${goals.length} tamamlandı',
+          color: p.happiness,
+        ),
+        AppTile(
+          icon: Icons.account_balance_wallet_outlined,
+          title: 'Aylık net',
+          caption: '${formatMoney(net)} · ayrıntı için dokun',
+          color: net >= 0 ? p.positive : p.negative,
+          onTap: () => go('finance'),
+        ),
+      ]),
+      const SectionHeader('Hayat hedeflerin'),
+      LifeSimulationCard(
+        child: Column(children: [
+          for (final g in goals)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Icon(
+                  s.completedGoalIds.contains(g.id) ? Icons.check_circle : Icons.radio_button_unchecked,
+                  size: 20,
+                  color: s.completedGoalIds.contains(g.id) ? p.positive : p.muted,
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text(g.title, style: VitaType.serif(15.5, p.ink, weight: FontWeight.w500)),
+                    Text(g.description, style: VitaType.caption(p)),
+                  ]),
+                ),
+              ]),
+            ),
+        ]),
+      ),
+      if (c != null) ...[
+        const SizedBox(height: 8),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: TextButton.icon(
+            onPressed: () async {
+              if (await confirm(
+                'İstifa etmek istiyor musun?',
+                'Maaşın kesilecek. Bu işe yeniden başvurmak için 90 gün beklemen gerekecek.',
+              )) {
+                if (!mounted) return;
+                game.quitCareer();
+                setState(() => _message = 'İşinden ayrıldın.');
+              }
+            },
+            style: TextButton.styleFrom(foregroundColor: p.negative, minimumSize: const Size(48, 48)),
+            icon: const Icon(Icons.logout, size: 18),
+            label: const Text('İşinden istifa et'),
+          ),
+        ),
+      ],
+      const SectionHeader('İş ilanları'),
+      text('İlanlar ${180 - s.day % 180} gün sonra yenilenir. Başvurular zamanı ilerletmez.', caption: true),
+      const SizedBox(height: 10),
+      AppTile(
+        icon: Icons.casino_outlined,
+        title: 'Kaderine güven',
+        caption: 'Uygun bir işe rastgele, kabul garantili gir',
+        color: p.accent,
+        onTap: s.isGameOver ? null : () => result(game.trustFate()),
+      ),
+      const SizedBox(height: 12),
+      Wrap(spacing: 8, children: [
+        for (final (label, all) in [('Sana uygun', false), ('Tüm meslekler', true)])
+          ChoiceChip(
+            label: Text(label),
+            selected: _allJobs == all,
+            onSelected: (_) => setState(() => _allJobs = all),
           ),
       ]),
-      card('AYLIK BÜTÇEN', budget()),
-      const SectionHeader('İş ilanları'),
-      text(
-        'İlanlar ${180 - s.day % 180} gün sonra yenilenir. Başvurular zamanı ilerletmez.',
-        caption: true,
-      ),
-      button(
-        'Kaderine güven',
-        s.isGameOver ? null : () => result(game.trustFate()),
-      ),
-      SwitchListTile(
-        contentPadding: EdgeInsets.zero,
-        title: text('Tüm meslekler'),
-        value: _allJobs,
-        onChanged: (v) => setState(() => _allJobs = v),
-      ),
+      const SizedBox(height: 10),
       TextField(
-        decoration: const InputDecoration(
-          labelText: 'Meslek veya alan ara',
-          prefixIcon: Icon(Icons.search),
+        decoration: InputDecoration(
+          hintText: 'Meslek veya alan ara',
+          prefixIcon: const Icon(Icons.search),
+          filled: true,
+          fillColor: p.surfaceSunken,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none),
         ),
         onChanged: (v) => setState(() => _query = v),
       ),
       const SizedBox(height: 12),
+      if (jobs.isEmpty) text('Bu aramayla eşleşen ilan yok.', caption: true),
       for (final v in jobs)
-        card(v.career.name, [
-          text(v.career.theme, caption: true),
-          text(v.career.description),
-          info('Başlangıç maaşı', formatMoney(salaryAt(v.career, 1))),
-          info('Kabul şansı', '%${v.chance}'),
-          if (v.blockers.isNotEmpty) text(v.blockers.join('\n'), caption: true),
-          button(
-            v.current ? 'Şu anki mesleğin' : 'Başvur',
-            !s.isGameOver && v.canApply
-                ? () => result(game.applyCareer(v.career.id))
-                : null,
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: LifeSimulationCard(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Expanded(
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text(v.career.name, style: VitaType.cardTitle(p)),
+                    Text(v.career.theme, style: VitaType.caption(p)),
+                  ]),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: (v.chance >= 60 ? p.positive : v.chance >= 30 ? p.happiness : p.negative).withValues(alpha: .15),
+                    borderRadius: BorderRadius.circular(99),
+                  ),
+                  child: Text('%${v.chance}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 13,
+                        color: v.chance >= 60 ? p.positive : v.chance >= 30 ? p.ink : p.negative,
+                      )),
+                ),
+              ]),
+              const SizedBox(height: 8),
+              Text(v.career.description, style: VitaType.body(p)),
+              const SizedBox(height: 8),
+              VitaChip('${formatMoney(salaryAt(v.career, 1))} başlangıç', icon: Icons.payments_outlined),
+              if (v.blockers.isNotEmpty) ...[
+                const SizedBox(height: 8),
+                for (final b in v.blockers)
+                  Row(children: [
+                    Icon(Icons.lock_outline, size: 14, color: p.muted),
+                    const SizedBox(width: 6),
+                    Expanded(child: Text(b, style: VitaType.caption(p))),
+                  ]),
+              ],
+              const SizedBox(height: 10),
+              VitaButton(
+                label: v.current ? 'Şu anki mesleğin' : 'Başvur',
+                secondary: !v.canApply,
+                onPressed: !s.isGameOver && v.canApply ? () => result(game.applyCareer(v.career.id)) : null,
+              ),
+            ]),
           ),
-        ]),
+        ),
     ];
   }
 
@@ -283,279 +413,20 @@ class _LifePageState extends State<LifePage> {
     ];
   }
 
-  List<Widget> profile() => [
-    Text(s.playerName, style: VitaType.title(context.vita)),
-    const SizedBox(height: 12),
-    Center(
-      child: PersonMedallion(
-        name: s.playerName,
-        female: s.profile.gender == 'Kadın',
-        size: 96,
-      ),
-    ),
-    const SizedBox(height: 12),
-    card('KİMLİĞİN', [
-      info('Yaş', s.ageText),
-      info('Doğum yeri', s.profile.birthplace),
-      info('Doğum günü', s.profile.birthdayText),
-      info('Cinsiyet', s.profile.gender),
-      info('Mizaç', s.profile.personality),
-      info('Hayalin', s.profile.dream),
-      info('Aile', s.profile.family),
-      info(
-        'Köken',
-        game.session.familyOf(s)?.name ?? wealthDisplay(s.profile.wealth),
-      ),
-      info(
-        'İlişki',
-        s.flags.contains('married')
-            ? 'Evli'
-            : s.simulation.wedding.pending
-            ? 'Nişanlı · Tören hazırlığı'
-            : s.flags.contains('dating')
-            ? 'Biriyle görüşüyor'
-            : 'Yalnız',
-      ),
-      info(
-        'Sahip oldukların',
-        [
-          if (s.flags.contains('owns_house')) 'Ev',
-          if (s.flags.contains('owns_car')) 'Araba',
-          if (s.flags.contains('pet_owner')) 'Evcil dost',
-        ].join(' · '),
-      ),
-    ]),
-    card('DURUMUN', [
-      info('Meslek', game.session.describeOccupation()),
-      info('Para', formatMoney(s.money)),
-      StatBar(label: 'Sağlık', value: s.health, color: context.vita.health),
-      StatBar(
-        label: 'Mutluluk',
-        value: s.happiness,
-        color: context.vita.happiness,
-      ),
-      StatBar(
-        label: 'Eğitim',
-        value: s.education,
-        color: context.vita.education,
-      ),
-      StatBar(label: 'Sosyal', value: s.social, color: context.vita.social),
-      info('Görünüm', '${s.appearance}'),
-      info('Takipçi', '${s.followers}'),
-    ]),
-    card('HAYAT HİKÂYEN', [
-      text(
-        lifeStory(
-          s,
-          game.session.describeOccupation(),
-          origin: game.session.familyOf(s),
-        ),
-      ),
-    ]),
-    card('BU DÖNEMDE ÖNCELİĞİN', [
-      text(
-        'Önceliğin karşılaşacağın olayları etkiler. 90 günde bir değiştirebilirsin.',
-        caption: true,
-      ),
-      if (s.day - s.focusChangedDay < 90)
-        text(
-          '${90 - (s.day - s.focusChangedDay)} gün sonra yeniden değiştirebilirsin.',
-          caption: true,
-        ),
-      for (final focus in lifeFocuses)
-        button(
-          '${s.lifeFocus == focus ? '✓ ' : ''}$focus',
-          !s.isGameOver &&
-                  s.day - s.focusChangedDay >= 90 &&
-                  s.lifeFocus != focus
-              ? () => result(game.setFocus(focus))
-              : null,
-        ),
-    ]),
-    MenuRow(
-      icon: Icons.local_activity_outlined,
-      title: 'Aktiviteler',
-      caption: 'Bu yıl ${Social.remaining(s)} / 12 hak',
-      onTap: () => go('activities'),
-    ),
-    MenuRow(
-      icon: Icons.history,
-      title: 'Yaşam günlüğü',
-      caption: '${s.journal.length} anı birikti',
-      onTap: () => go('journal'),
-    ),
-    MenuRow(
-      icon: Icons.menu,
-      title: 'Menü ve ayarlar',
-      onTap: () => go('menu'),
-    ),
-  ];
-  List<Widget> relationships() => [
-    Text('Hayatındaki insanlar', style: VitaType.title(context.vita)),
-    const SizedBox(height: 8),
-    text(
-      'Bağlarını birlikte geçirdiğin zaman güçlendirir. Bu yıl ${Social.remaining(s)} / 12 etkinlik hakkın var.',
-      caption: true,
-    ),
-    const SizedBox(height: 14),
-    for (final p in s.relationships)
-      Padding(
-        padding: const EdgeInsets.only(bottom: 12),
-        child: LifeSimulationCard(
-          onTap: () => go('person:${p.id}'),
-          child: Row(
-            children: [
-              PersonMedallion(
-                name: p.name,
-                female: p.gender == 'Kadın',
-                alive: p.alive,
-                grandparent: p.role == 'Büyükanne',
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(p.name, style: VitaType.cardTitle(context.vita)),
-                    text(
-                      '${p.role} · ${p.alive ? '${p.ageNow(s)} yaş' : 'Anısı yaşıyor'}',
-                      caption: true,
-                    ),
-                    StatBar(
-                      label: 'Bağınız',
-                      value: p.bond,
-                      color: context.vita.social,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    button(
-      'Yeni biriyle tanış',
-      Social.blocked(s, Social.activities.firstWhere((a) => a.id == 'meet')) ==
-              null
-          ? () => result(game.doAction('meet'))
-          : null,
-    ),
-    if (Social.blocked(s, Social.activities.firstWhere((a) => a.id == 'meet'))
-        case final reason?)
-      text(reason, caption: true),
-  ];
-  List<Widget> person() {
-    final p = s.relationships.where((p) => p.id == widget.personId).firstOrNull;
-    if (p == null) return [text('Kişi bulunamadı.')];
-    return [
-      Center(
-        child: PersonMedallion(
-          name: p.name,
-          female: p.gender == 'Kadın',
-          alive: p.alive,
-          grandparent: p.role == 'Büyükanne',
-          size: 96,
-        ),
-      ),
-      const SizedBox(height: 14),
-      Text(p.name, style: VitaType.title(context.vita)),
-      card(p.role, [
-        info('Yaş', '${p.ageNow(s)}'),
-        info('Şehir', p.city),
-        info('Meslek', p.occupation),
-        info('Eğitim', p.education),
-        info('Kişilik', p.personality),
-        StatBar(label: 'Bağınız', value: p.bond, color: context.vita.social),
-        StatBar(label: 'Sağlık', value: p.health, color: context.vita.health),
-      ]),
-      text('Bu yıl ${Social.remaining(s)} / 12 hak', caption: true),
-      for (final a in Social.interactions) actionCard(a, p),
-    ];
-  }
-
-  Widget actionCard(LifeAction a, [RelationshipPerson? p]) {
-    final reason = Social.blocked(s, a, p);
-    return card('${a.icon} ${a.title}', [
-      text(a.description, caption: true),
-      if (reason != null) text(reason, caption: true),
-      button(
-        a.title,
-        reason != null
-            ? null
-            : () async {
-                if (['car', 'house', 'pet', 'breakup'].contains(a.id)) {
-                  if (!await confirm(a.title, a.description)) return;
-                  if (!mounted) return;
-                }
-                result(game.doAction(a.id, personId: p?.id));
-              },
-      ),
-    ]);
-  }
-
-  List<Widget> activities() => [
-    Text('Bugün ne yapmak istersin?', style: VitaType.title(context.vita)),
-    const SizedBox(height: 8),
-    VitaChip('${s.ageText} · BU YIL ${Social.remaining(s)} / 12 HAK'),
-    const SizedBox(height: 12),
-    text(
-      'Her etkinlik bir hak kullanır. Aynı etkinlik için 30 gün beklenir; doğum gününde 12 hak yenilenir.',
-      caption: true,
-    ),
-    for (final category
-        in Social.activities.map((a) => a.category).toSet()) ...[
-      SectionHeader(category),
-      for (final a in Social.activities.where((a) => a.category == category))
-        actionCard(a),
-    ],
-    const SectionHeader('Mini oyunlar'),
-    for (final (id, title) in [
-      ('memory', 'Yüz–isim eşleştirme'),
-      ('balls', 'Toplar ve kutular'),
-    ])
-      card(title, [
-        text(
-          'Bir oyun bir etkinlik hakkı kullanır. Ödül tamamlanan 5 turun sonunda verilir. Erken çıkarsan ödül alamazsın.',
-          caption: true,
-        ),
-        if (Social.blocked(s, const LifeAction('minigame', '', '', '', '', 3))
-            case final reason?)
-          text(reason, caption: true),
-        button(
-          'Oyna · $title',
-          Social.blocked(s, const LifeAction('minigame', '', '', '', '', 3)) ==
-                  null
-              ? () async {
-                  final r = game.startMiniGame(id);
-                  if (!r.success) {
-                    result(r);
-                    return;
-                  }
-                  await Navigator.of(context).push(
-                    MaterialPageRoute<void>(
-                      builder: (_) => MiniGameScreen(
-                        game: game,
-                        kind: id,
-                        token: r.message,
-                      ),
-                    ),
-                  );
-                  if (mounted) setState(() {});
-                }
-              : null,
-        ),
-      ]),
-  ];
-  List<Widget> menu() {
+  /// Profil: eski Kişisel ve Menü sayfaları bir arada.
+  List<Widget> profile() {
     final p = context.vita;
-    final books = game.stories.books.values;
-    final endingsFound = books.fold<int>(0, (a, b) => a + (game.stories.progress[b.id]?.endings.length ?? 0));
-    final endingsAll = books.fold<int>(0, (a, b) => a + b.nodes.values.where((n) => n.ending.isNotEmpty).length);
-    final lastMemory = s.journal.isEmpty ? 'Henüz bir anı yok' : s.journal.last.title;
     final ach = game.session.achievements;
     final people = s.relationships.where((r) => r.alive).length;
+    final lastMemory = s.journal.isEmpty ? 'Henüz bir anı yok' : s.journal.last.title;
+    final focusDays = 90 - (s.day - s.focusChangedDay);
+    final focusIcon = switch (s.lifeFocus) {
+      'Öğrenme' => Icons.school_outlined,
+      'İlişkiler' => Icons.people_outline,
+      'Sağlık' => Icons.favorite_outline,
+      _ => Icons.balance,
+    };
     return [
-      // Profil kartı: kim olduğun, bir bakışta.
       Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -569,7 +440,7 @@ class _LifePageState extends State<LifePage> {
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Row(children: [
-            PersonMedallion(name: s.playerName, female: s.profile.gender == 'Kadın', size: 62),
+            PersonMedallion(name: s.playerName, female: s.profile.gender == 'Kadın', size: 66),
             const SizedBox(width: 14),
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -594,29 +465,66 @@ class _LifePageState extends State<LifePage> {
           ]),
         ]),
       ),
-      const SizedBox(height: 14),
-      AppTile(
-        icon: Icons.auto_stories,
-        title: 'Hikâyeye dön',
-        caption: game.event != null ? 'Seni bir karar bekliyor: ${game.event!.title}' : 'Hayatın kaldığı yerden devam ediyor',
-        color: p.accent,
-        badge: game.event != null ? 'Karar' : null,
-        onTap: () => go('story'),
+      const SizedBox(height: 12),
+      LifeSimulationCard(
+        child: Row(children: [
+          Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(color: p.accentSoft, borderRadius: BorderRadius.circular(12)),
+            child: Icon(focusIcon, color: p.accent),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(upperTr('Bu dönemin önceliği'), style: VitaType.overline(p)),
+              Text(s.lifeFocus, style: VitaType.cardTitle(p)),
+              Text('Hayat seçti; ${focusDays.clamp(1, 90)} gün sonra yeni bir dönem başlar.', style: VitaType.caption(p)),
+            ]),
+          ),
+        ]),
+      ),
+      const SectionHeader('Kimliğin'),
+      LifeSimulationCard(
+        child: Column(children: [
+          info('Doğum', '${s.profile.birthdayText} · ${s.profile.birthplace}'),
+          info('Cinsiyet', s.profile.gender),
+          info('Mizaç', s.profile.personality),
+          info('Hayalin', s.profile.dream),
+          info('Aile', '${s.profile.family} · ${s.profile.caregiver}'),
+          info('Köken', game.session.familyOf(s)?.name ?? wealthDisplay(s.profile.wealth)),
+          info(
+            'İlişki',
+            s.flags.contains('married')
+                ? 'Evli'
+                : s.simulation.wedding.pending
+                ? 'Nişanlı · Tören hazırlığı'
+                : s.flags.contains('dating')
+                ? 'Biriyle görüşüyor'
+                : 'Yalnız',
+          ),
+          if ([
+            if (s.flags.contains('owns_house')) 'Ev',
+            if (s.flags.contains('owns_car')) 'Araba',
+            if (s.flags.contains('pet_owner')) 'Evcil dost',
+          ] case final things when things.isNotEmpty)
+            info('Sahip oldukların', things.join(' · ')),
+          info('Görünüm · takipçi', '${s.appearance} · ${s.followers}'),
+        ]),
+      ),
+      const SectionHeader('Hayat hikâyen'),
+      LifeSimulationCard(
+        child: Text(
+          lifeStory(s, game.session.describeOccupation(), origin: game.session.familyOf(s)),
+          style: VitaType.prose(p).copyWith(fontSize: 16),
+        ),
       ),
       const SectionHeader('Hayatın'),
       AppTileGrid(children: [
         AppTile(
-          icon: Icons.local_activity_outlined,
-          title: 'Aktiviteler',
-          caption: 'Bu yıl ${Social.remaining(s)} / 12 hak',
-          color: p.happiness,
-          badge: Social.remaining(s) > 0 ? '${Social.remaining(s)}' : null,
-          onTap: () => go('activities'),
-        ),
-        AppTile(
           icon: Icons.history_edu,
           title: 'Hayat günlüğü',
-          caption: 'Son: $lastMemory',
+          caption: '${s.journal.length} anı · son: $lastMemory',
           color: p.education,
           onTap: () => go('journal'),
         ),
@@ -649,15 +557,6 @@ class _LifePageState extends State<LifePage> {
           onTap: () => openAchievements(context, game),
         ),
       ]),
-      const SectionHeader('Başka bir hayat'),
-      AppTile(
-        icon: Icons.library_books_outlined,
-        title: 'Hikâye kütüphanesi',
-        caption: '${books.length} kitap · $endingsFound / $endingsAll son keşfedildi · şifreler, kanıtlar, frekanslar',
-        color: p.education,
-        badge: endingsFound == 0 ? 'Yeni' : null,
-        onTap: () => openStoryLibrary(context, game),
-      ),
       const SectionHeader('Bir mola'),
       LifeSimulationCard(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -710,15 +609,10 @@ class _LifePageState extends State<LifePage> {
                 : game.storyStore.price('remove_ads').isEmpty
                 ? 'Reklamları kaldır · mağaza hazır değil'
                 : "Reklamları kaldır · ${game.storyStore.price('remove_ads')}",
-            game.storyStore.canPurchase('remove_ads')
-                ? () => result(game.purchaseStory('remove_ads'))
-                : null,
+            game.storyStore.canPurchase('remove_ads') ? () => result(game.purchaseStory('remove_ads')) : null,
           ),
           text('Reklamları kaldırmak ara reklamları kapatır. Ödüllü reklamlar isteğe bağlı kalır.', caption: true),
-          button(
-            'Satın alımları geri yükle',
-            game.storyStore.busy ? null : () => result(game.restoreStories()),
-          ),
+          button('Satın alımları geri yükle', game.storyStore.busy ? null : () => result(game.restoreStories())),
         ]),
       ),
       const SectionHeader('Ayarlar'),
@@ -741,24 +635,16 @@ class _LifePageState extends State<LifePage> {
       ]),
       const SizedBox(height: 12),
       SettingGroup(children: [
-        SettingRow(
-          icon: Icons.privacy_tip_outlined,
-          title: 'Gizlilik ve bağlantılar',
-          onTap: () => openPrivacy(context),
-        ),
+        SettingRow(icon: Icons.privacy_tip_outlined, title: 'Gizlilik ve bağlantılar', onTap: () => openPrivacy(context)),
         if (game.ads.privacyOptionsRequired)
-          SettingRow(
-            icon: Icons.ads_click,
-            title: 'Reklam gizlilik seçenekleri',
-            onTap: game.showAdPrivacyOptions,
-          ),
+          SettingRow(icon: Icons.ads_click, title: 'Reklam gizlilik seçenekleri', onTap: game.showAdPrivacyOptions),
         SettingRow(
           icon: Icons.home_outlined,
-          title: 'Ana menüye dön',
+          title: 'Açılış ekranına dön',
           caption: 'Hayatın kaydedilir',
           onTap: () async {
             if (await confirm(
-              'Ana menüye dön?',
+              'Açılış ekranına dön?',
               'Hayatın kaydedilecek. Kaldığın yerden devam edebilir veya yeni bir hayat başlatabilirsin.',
             )) {
               if (mounted) game.leaveToTitle();
@@ -769,13 +655,185 @@ class _LifePageState extends State<LifePage> {
       const SizedBox(height: 14),
       Center(
         child: text(
-          'Seçimlerin, ilişkilerin ve hikâyelerin bu cihazda saklanır · ${s.profile.detailedLife ? 'Uzun hayat' : 'Klasik'} tempo',
+          'Bütün karakterler, kurumlar ve olaylar kurgusaldır · ${s.profile.detailedLife ? 'Uzun hayat' : 'Klasik'} tempo',
           caption: true,
         ),
       ),
     ];
   }
 
+  /// İlişkiler: insanlar ve birlikte/yalnız yapılan aktiviteler aynı yerde.
+  List<Widget> relationships({bool showActivities = false}) {
+    final p = context.vita;
+    final tab = showActivities ? 1 : _relTab;
+    final meet = Social.activities.firstWhere((a) => a.id == 'meet');
+    return [
+      Row(children: [
+        Expanded(child: Text(tab == 0 ? 'Hayatındaki insanlar' : 'Bugün ne yapmak istersin?', style: VitaType.title(p))),
+      ]),
+      const SizedBox(height: 10),
+      SegmentedButton<int>(
+        showSelectedIcon: false,
+        segments: const [
+          ButtonSegment(value: 0, icon: Icon(Icons.people_outline), label: Text('Kişiler')),
+          ButtonSegment(value: 1, icon: Icon(Icons.local_activity_outlined), label: Text('Aktiviteler')),
+        ],
+        selected: {tab},
+        onSelectionChanged: (v) => showActivities ? go('relationships') : setState(() => _relTab = v.first),
+      ),
+      const SizedBox(height: 12),
+      LifeSimulationCard(
+        child: Row(children: [
+          Icon(Icons.event_available_outlined, color: p.accent),
+          const SizedBox(width: 10),
+          Expanded(child: Text('Bu yıl ${Social.remaining(s)} / 12 etkinlik hakkın var', style: VitaType.body(p))),
+          for (var i = 0; i < 12; i++)
+            Container(
+              width: 4,
+              height: 14,
+              margin: const EdgeInsets.only(left: 2),
+              decoration: BoxDecoration(
+                color: i < Social.remaining(s) ? p.accent : p.surfaceSunken,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+        ]),
+      ),
+      const SizedBox(height: 12),
+      if (tab == 0) ...[
+        for (final person in s.relationships)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: LifeSimulationCard(
+              onTap: () => go('person:${person.id}'),
+              child: Row(children: [
+                PersonMedallion(
+                  name: person.name,
+                  female: person.gender == 'Kadın',
+                  alive: person.alive,
+                  grandparent: person.role == 'Büyükanne',
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text(person.name, style: VitaType.cardTitle(p)),
+                    text('${person.role} · ${person.alive ? '${person.ageNow(s)} yaş' : 'Anısı yaşıyor'}', caption: true),
+                    StatBar(label: 'Bağınız', value: person.bond, color: p.social),
+                  ]),
+                ),
+                Icon(Icons.chevron_right, color: p.muted),
+              ]),
+            ),
+          ),
+        AppTile(
+          icon: Icons.person_add_alt,
+          title: 'Yeni biriyle tanış',
+          caption: Social.blocked(s, meet) ?? 'Bir etkinlik hakkı kullanır',
+          color: p.social,
+          onTap: Social.blocked(s, meet) == null ? () => result(game.doAction('meet')) : null,
+        ),
+      ] else
+        ...activities(),
+    ];
+  }
+  List<Widget> person() {
+    final p = s.relationships.where((p) => p.id == widget.personId).firstOrNull;
+    if (p == null) return [text('Kişi bulunamadı.')];
+    return [
+      Center(
+        child: PersonMedallion(
+          name: p.name,
+          female: p.gender == 'Kadın',
+          alive: p.alive,
+          grandparent: p.role == 'Büyükanne',
+          size: 96,
+        ),
+      ),
+      const SizedBox(height: 14),
+      Text(p.name, style: VitaType.title(context.vita)),
+      card(p.role, [
+        info('Yaş', '${p.ageNow(s)}'),
+        info('Şehir', p.city),
+        info('Meslek', p.occupation),
+        info('Eğitim', p.education),
+        info('Kişilik', p.personality),
+        StatBar(label: 'Bağınız', value: p.bond, color: context.vita.social),
+        StatBar(label: 'Sağlık', value: p.health, color: context.vita.health),
+      ]),
+      text('Bu yıl ${Social.remaining(s)} / 12 hak', caption: true),
+      for (final a in Social.interactions) actionCard(a, p),
+    ];
+  }
+
+  Widget actionCard(LifeAction a, [RelationshipPerson? p]) {
+    final reason = Social.blocked(s, a, p);
+    return card('${a.icon} ${a.title}', [
+      text(a.description, caption: true),
+      if (reason != null) text(reason, caption: true),
+      button(
+        a.title,
+        reason != null
+            ? null
+            : () async {
+                if (['car', 'house', 'pet', 'breakup'].contains(a.id)) {
+                  if (!await confirm(a.title, a.description)) return;
+                  if (!mounted) return;
+                }
+                result(game.doAction(a.id, personId: p?.id));
+              },
+      ),
+    ]);
+  }
+
+  List<Widget> activities() => [
+    text(
+      'Her etkinlik bir hak kullanır. Aynı etkinlik için 30 gün beklenir; doğum gününde 12 hak yenilenir.',
+      caption: true,
+    ),
+    for (final category
+        in Social.activities.map((a) => a.category).toSet()) ...[
+      SectionHeader(category),
+      for (final a in Social.activities.where((a) => a.category == category))
+        actionCard(a),
+    ],
+    const SectionHeader('Mini oyunlar'),
+    for (final (id, title) in [
+      ('memory', 'Yüz–isim eşleştirme'),
+      ('balls', 'Toplar ve kutular'),
+    ])
+      card(title, [
+        text(
+          'Bir oyun bir etkinlik hakkı kullanır. Ödül tamamlanan 5 turun sonunda verilir. Erken çıkarsan ödül alamazsın.',
+          caption: true,
+        ),
+        if (Social.blocked(s, const LifeAction('minigame', '', '', '', '', 3))
+            case final reason?)
+          text(reason, caption: true),
+        button(
+          'Oyna · $title',
+          Social.blocked(s, const LifeAction('minigame', '', '', '', '', 3)) ==
+                  null
+              ? () async {
+                  final r = game.startMiniGame(id);
+                  if (!r.success) {
+                    result(r);
+                    return;
+                  }
+                  await Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (_) => MiniGameScreen(
+                        game: game,
+                        kind: id,
+                        token: r.message,
+                      ),
+                    ),
+                  );
+                  if (mounted) setState(() {});
+                }
+              : null,
+        ),
+      ]),
+  ];
   List<Widget> finance() {
     final assets =
         (s.flags.contains('owns_house') ? 2500000 : 0) +

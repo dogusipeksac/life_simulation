@@ -42,7 +42,7 @@ class VitaTabBar extends StatelessWidget {
     (Icons.auto_stories_outlined, 'Hikâye'),
     (Icons.work_outline, 'Kariyer'),
     (Icons.people_outline, 'İlişkiler'),
-    (Icons.person_outline, 'Kişisel'),
+    (Icons.library_books_outlined, 'Kütüphane'),
   ];
 
   @override

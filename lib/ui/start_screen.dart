@@ -9,15 +9,12 @@ import '../game/session.dart';
 import '../game/state.dart';
 import '../game/text.dart';
 import 'game_controller.dart';
-import 'story_library_screen.dart';
-import 'achievements_screen.dart';
-import 'privacy_screen.dart';
+import '../game/fate.dart';
 
-/// Açılış: logo, atmosfer şeridi, kayıtlı hayata devam, yeni hayat.
+/// Açılış: yalnızca devam et ve yeni bir hayata başla. Kütüphane, rozetler ve gizlilik oyunun içinde.
 class TitleScreen extends StatelessWidget {
-  const TitleScreen({super.key, required this.game, this.onGallery});
+  const TitleScreen({super.key, required this.game});
   final GameController game;
-  final VoidCallback? onGallery;
 
   @override
   Widget build(BuildContext context) {
@@ -28,47 +25,59 @@ class TitleScreen extends StatelessWidget {
         child: SafeArea(
           child: ListenableBuilder(
             listenable: game,
-            builder: (context, _) => ListView(
-              padding: const EdgeInsets.fromLTRB(20, 32, 20, 24),
-              children: [
-                EnterAnimation(child: Text('Hayat Simülasyonu', textAlign: TextAlign.center, style: VitaType.display(p).copyWith(color: p.accent))),
-                const SizedBox(height: 6),
-                Text('Bir hayatın kitabı', textAlign: TextAlign.center, style: VitaType.serif(16, p.muted)),
-                const SizedBox(height: 24),
-                const EnterAnimation(index: 1, child: AtmosphereStrip(stage: 0, height: 150)),
-                const SizedBox(height: 24),
-                if (game.notice != null) ...[
-                  LifeSimulationCard(child: Text(game.notice!, style: VitaType.body(p))),
-                  const SizedBox(height: 16),
-                ],
-                if (game.hasSave) ...[
-                  EnterAnimation(
-                    index: 2,
-                    child: VitaButton(label: 'Kayıtlı hayata devam et', onPressed: () => game.continueGame()),
-                  ),
-                  const SizedBox(height: 10),
-                ],
-                EnterAnimation(
-                  index: 3,
-                  child: VitaButton(
-                    label: 'Yeni bir hayat',
-                    secondary: game.hasSave,
-                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CreationWizard(game: game))),
+            builder: (context, _) => LayoutBuilder(
+              builder: (context, c) => SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: c.maxHeight - 48),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                        const SizedBox(height: 24),
+                        EnterAnimation(
+                          child: Text('Hayat Simülasyonu',
+                              textAlign: TextAlign.center, style: VitaType.display(p).copyWith(color: p.accent)),
+                        ),
+                        const SizedBox(height: 6),
+                        Text('Bir hayatın kitabı', textAlign: TextAlign.center, style: VitaType.serif(16, p.muted)),
+                        const SizedBox(height: 28),
+                        const EnterAnimation(index: 1, child: AtmosphereStrip(stage: 0, height: 170)),
+                      ]),
+                      Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                        const SizedBox(height: 28),
+                        if (game.notice != null) ...[
+                          LifeSimulationCard(child: Text(game.notice!, style: VitaType.body(p))),
+                          const SizedBox(height: 16),
+                        ],
+                        if (game.hasSave) ...[
+                          EnterAnimation(
+                            index: 2,
+                            child: VitaButton(label: 'Kaldığın yerden devam et', onPressed: () => game.continueGame()),
+                          ),
+                          const SizedBox(height: 10),
+                        ],
+                        EnterAnimation(
+                          index: 3,
+                          child: VitaButton(
+                            label: 'Yeni bir hayata başla',
+                            secondary: game.hasSave,
+                            onPressed: () => Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (_) => CreationWizard(game: game))),
+                          ),
+                        ),
+                        const SizedBox(height: 18),
+                        Text(
+                          'Bütün karakterler, kurumlar ve olaylar kurgusaldır.',
+                          textAlign: TextAlign.center,
+                          style: VitaType.caption(p),
+                        ),
+                      ]),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 10),
-                VitaButton(label: 'Hikâye kütüphanesi', secondary: true, onPressed: () => openStoryLibrary(context, game)),
-                const SizedBox(height: 10),
-                VitaButton(label: 'Başarımlar', secondary: true, onPressed: () => openAchievements(context, game)),
-                TextButton(onPressed: () => openPrivacy(context), child: const Text('Gizlilik ve bağlantılar')),
-                const SizedBox(height: 28),
-                Text(
-                  'Bütün karakterler, kurumlar ve olaylar kurgusaldır. Ana oyun çevrimdışı çalışır. Reklam ve mağaza özellikleri bağlantı kullanır.',
-                  textAlign: TextAlign.center,
-                  style: VitaType.caption(p),
-                ),
-                if (onGallery != null) TextButton(onPressed: onGallery, child: const Text('Stil galerisi')),
-              ],
+              ),
             ),
           ),
         ),
@@ -77,7 +86,8 @@ class TitleScreen extends StatelessWidget {
   }
 }
 
-/// 4 adım: kimlik → köken → mizaç → kader zarı. (Godot: UI/CharacterCreation.cs)
+/// Yeni hayat: ad, cinsiyet ve doğum günü önerilir (değiştirilebilir); gerisi kaderin.
+/// Kader bir kez atılır; yeniden atılmaz. Her oyuncu başka bir hayatla karşılaşır.
 class CreationWizard extends StatefulWidget {
   const CreationWizard({super.key, required this.game});
   final GameController game;
@@ -87,44 +97,39 @@ class CreationWizard extends StatefulWidget {
 }
 
 class _CreationWizardState extends State<CreationWizard> {
-  static const _titles = ['Bu hikâyenin adı ne?', 'Nerede, kimlerle büyüyecek?', 'Nasıl biri olacak?', 'Kaderin Zarı'];
-  static const _families = ['Çekirdek aile', 'Geniş aile', 'Tek ebeveynli aile', 'Koruyucu aile'];
-  static const _personalities = ['Meraklı', 'Sakin', 'Dışa dönük', 'Hayalperest'];
-  static const _dreams = ['Kendi yolumu bulmak', 'Yeni şeyler keşfetmek', 'İnsanlara yardım etmek', 'Bir eser bırakmak'];
-  static const _paces = ['Uzun hayat · daha küçük zaman adımları', 'Klasik · daha hızlı yıllar'];
+  static const _paces = ['Uzun hayat', 'Klasik'];
 
-  final _name = TextEditingController();
-  final _birthplace = TextEditingController(text: 'İstanbul');
-  final _caregiver = TextEditingController(text: 'Ailem');
-  final profile = CharacterProfile()..detailedLife = true;
-  int _step = 0;
+  final int _seed = GameController.newSeed();
+  late final _identity = suggestIdentity(_seed);
+  late final _name = TextEditingController(text: _identity.name);
+  late final profile = CharacterProfile()
+    ..detailedLife = true
+    ..gender = _identity.gender
+    ..birthDay = _identity.day
+    ..birthMonth = _identity.month;
+  int _nameVariant = 0;
+  bool _revealed = false;
   String? _error;
-  int _seed = GameController.newSeed();
 
   @override
   void dispose() {
     _name.dispose();
-    _birthplace.dispose();
-    _caregiver.dispose();
     super.dispose();
   }
 
-  void _next() {
-    if (_step == 0) {
-      final err = GameSession.validatePlayerName(_name.text);
-      if (err != null) return setState(() => _error = err);
-    }
+  void _reveal() {
+    final err = GameSession.validatePlayerName(_name.text);
+    if (err != null) return setState(() => _error = err);
     FocusScope.of(context).unfocus();
+    applyFate(profile, _seed);
+    preferences.feedback(strong: true);
     setState(() {
       _error = null;
-      _step++;
+      _revealed = true;
     });
   }
 
   void _start() {
-    profile
-      ..birthplace = _birthplace.text
-      ..caregiver = _caregiver.text;
     final family = widget.game.previewFamily(_seed);
     if (family != null) profile.familyId = family.id;
     preferences.feedback(strong: true);
@@ -136,16 +141,15 @@ class _CreationWizardState extends State<CreationWizard> {
   Widget build(BuildContext context) {
     final p = context.vita;
     return PopScope(
-      canPop: _step == 0,
-      onPopInvokedWithResult: (didPop, _) {
-        if (!didPop) setState(() => _step--);
-      },
+      // Kader görüldükten sonra geri dönüp yeniden atmak yok.
+      canPop: !_revealed,
       child: Scaffold(
         backgroundColor: p.background,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           foregroundColor: p.ink,
-          title: Text('${_step + 1} / 4', style: VitaType.caption(p)),
+          automaticallyImplyLeading: !_revealed,
+          title: Text(_revealed ? 'Kaderin' : 'Yeni bir hayat', style: VitaType.caption(p)),
           centerTitle: true,
         ),
         body: Backdrop(
@@ -154,25 +158,10 @@ class _CreationWizardState extends State<CreationWizard> {
             child: ListView(
               padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(2),
-                  child: LinearProgressIndicator(
-                    value: (_step + 1) / 4,
-                    minHeight: 3,
-                    color: p.accent,
-                    backgroundColor: p.surfaceSunken,
-                  ),
+                KeyedSubtree(
+                  key: ValueKey(_revealed),
+                  child: EnterAnimation(child: _revealed ? _fate(p) : _identityStep(p)),
                 ),
-                const SizedBox(height: 20),
-                Semantics(header: true, child: Text(_titles[_step], style: VitaType.title(p))),
-                const SizedBox(height: 16),
-                KeyedSubtree(key: ValueKey(_step), child: EnterAnimation(child: _body(p))),
-                if (_error != null) ...[
-                  const SizedBox(height: 10),
-                  Text(_error!, style: VitaType.body(p).copyWith(color: p.negative)),
-                ],
-                const SizedBox(height: 24),
-                VitaButton(label: _step < 3 ? 'Devam' : 'Hayata başla', onPressed: _step < 3 ? _next : _start),
               ],
             ),
           ),
@@ -181,59 +170,95 @@ class _CreationWizardState extends State<CreationWizard> {
     );
   }
 
-  Widget _body(VitaPalette p) => switch (_step) {
-        0 => Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            _field(p, 'Karakterin adı', _name, 'Örneğin Deniz', GameSession.maxPlayerNameLength),
-            _label(p, 'Cinsiyet'),
-            _chips(p, CharacterProfile.genders, profile.gender, (v) => profile.gender = v),
-            _label(p, 'Doğum günü'),
-            Row(children: [
-              Expanded(
-                flex: 2,
-                child: KeyedSubtree(key: ValueKey(profile.birthMonth), child: _dropdown(p, [for (var d = 1; d <= CharacterProfile.daysInMonth(profile.birthMonth); d++) '$d'],
-                    '${profile.birthDay}', (v) => profile.birthDay = int.parse(v))),
+  Widget _identityStep(VitaPalette p) => Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        Semantics(header: true, child: Text('Bu hikâyenin adı ne?', style: VitaType.title(p))),
+        const SizedBox(height: 6),
+        Text('Senin için bir ad önerdik. İstersen değiştir; gerisini kader seçecek.', style: VitaType.caption(p)),
+        const SizedBox(height: 16),
+        Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Expanded(child: _field(p, 'Karakterin adı', _name, GameSession.maxPlayerNameLength)),
+          const SizedBox(width: 6),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: IconButton.filledTonal(
+              tooltip: 'Başka bir ad öner',
+              onPressed: () => setState(() => _name.text = suggestName(profile.gender, _seed, ++_nameVariant)),
+              icon: const Icon(Icons.casino_outlined),
+            ),
+          ),
+        ]),
+        _label(p, 'Cinsiyet'),
+        _chips(p, CharacterProfile.genders, profile.gender, (v) => profile.gender = v),
+        _label(p, 'Doğum günü'),
+        Row(children: [
+          Expanded(
+            flex: 2,
+            child: KeyedSubtree(
+              key: ValueKey(profile.birthMonth),
+              child: _dropdown(p, [for (var d = 1; d <= CharacterProfile.daysInMonth(profile.birthMonth); d++) '$d'],
+                  '${profile.birthDay}', (v) => profile.birthDay = int.parse(v)),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            flex: 3,
+            child: _dropdown(p, CharacterProfile.monthNames, CharacterProfile.monthNames[profile.birthMonth - 1], (v) {
+              profile.birthMonth = CharacterProfile.monthNames.indexOf(v) + 1;
+              profile.birthDay = profile.birthDay.clamp(1, CharacterProfile.daysInMonth(profile.birthMonth));
+            }),
+          ),
+        ]),
+        _label(p, 'Oyun temposu'),
+        _chips(p, _paces, _paces[profile.detailedLife ? 0 : 1], (v) => profile.detailedLife = v == _paces[0]),
+        const SizedBox(height: 6),
+        Text('Uzun hayatta daha çok karar verirsin; klasikte yıllar daha hızlı geçer.', style: VitaType.caption(p)),
+        if (_error != null) ...[
+          const SizedBox(height: 10),
+          Text(_error!, style: VitaType.body(p).copyWith(color: p.negative)),
+        ],
+        const SizedBox(height: 22),
+        LifeSimulationCard(
+          child: Row(children: [
+            Icon(Icons.casino_outlined, color: p.accent),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                'Nerede doğacağını, hangi ailede, kimin yanında büyüyeceğini ve nasıl biri olacağını sen seçmeyeceksin. Kader bir kez atılır.',
+                style: VitaType.caption(p).copyWith(color: p.ink),
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                flex: 3,
-                child: _dropdown(p, CharacterProfile.monthNames, CharacterProfile.monthNames[profile.birthMonth - 1], (v) {
-                  profile.birthMonth = CharacterProfile.monthNames.indexOf(v) + 1;
-                  profile.birthDay = profile.birthDay.clamp(1, CharacterProfile.daysInMonth(profile.birthMonth));
-                }),
-              ),
-            ]),
-            const SizedBox(height: 12),
-            Text('Kurgusal bir karakter yaratıyorsun. Gerçek adını veya kişisel bilgilerini paylaşman gerekmiyor.',
-                style: VitaType.caption(p)),
-          ]),
-        1 => Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            _field(p, 'Doğduğu şehir veya kasaba', _birthplace, 'İstanbul', 32),
-            _label(p, 'Aile ortamı'),
-            _chips(p, _families, profile.family, (v) => profile.family = v),
-            const SizedBox(height: 8),
-            _field(p, 'Bakım verenine nasıl sesleniyor?', _caregiver, 'Ailem', 24),
-          ]),
-        2 => Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            _label(p, 'Mizacı'),
-            _chips(p, _personalities, profile.personality, (v) => profile.personality = v),
-            _label(p, 'Büyürken hayali'),
-            _chips(p, _dreams, profile.dream, (v) => profile.dream = v),
-            _label(p, 'Oyun temposu'),
-            _chips(p, _paces, _paces[profile.detailedLife ? 0 : 1], (v) => profile.detailedLife = v == _paces[0]),
-            const SizedBox(height: 8),
-            Text(
-              'Uzun hayatta daha çok karar verirsin. Bebeklikte bakım verenlerin senin adına karar alır; büyüdükçe kendi yolunu çizersin.',
-              style: VitaType.caption(p),
             ),
           ]),
-        _ => _fate(p),
-      };
+        ),
+        const SizedBox(height: 16),
+        VitaButton(label: 'Kaderimi göster', onPressed: _reveal),
+      ]);
 
   Widget _fate(VitaPalette p) {
     final family = widget.game.previewFamily(_seed);
+    Widget row(IconData icon, String label, String value) => Padding(
+          padding: const EdgeInsets.symmetric(vertical: 7),
+          child: Row(children: [
+            Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(color: p.accentSoft, borderRadius: BorderRadius.circular(10)),
+              child: Icon(icon, size: 19, color: p.accent),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(label, style: VitaType.caption(p)),
+                Text(value, style: VitaType.serif(16, p.ink, weight: FontWeight.w500)),
+              ]),
+            ),
+          ]),
+        );
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      Text('Doğacağın aileyi sen seçmiyorsun. Zar atıldı:', style: VitaType.body(p).copyWith(color: p.muted)),
-      const SizedBox(height: 12),
+      Center(child: PersonMedallion(name: _name.text, female: profile.gender == 'Kadın', size: 84)),
+      const SizedBox(height: 10),
+      Text(_name.text.trim(), textAlign: TextAlign.center, style: VitaType.title(p)),
+      Text('${profile.birthdayText} · ${profile.gender}', textAlign: TextAlign.center, style: VitaType.caption(p)),
+      const SizedBox(height: 18),
       LifeSimulationCard(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           if (family?.tier != null) VitaChip(wealthDisplay(family!.tier!), icon: Icons.casino_outlined),
@@ -243,13 +268,18 @@ class _CreationWizardState extends State<CreationWizard> {
           Text(family?.description ?? '', style: VitaType.prose(p).copyWith(fontSize: 16)),
         ]),
       ),
-      const SizedBox(height: 10),
-      TextButton.icon(
-        onPressed: () => setState(() => _seed = GameController.newSeed()),
-        icon: const Icon(Icons.refresh, size: 18),
-        label: const Text('Zarı yeniden at'),
-        style: TextButton.styleFrom(foregroundColor: p.accent, minimumSize: const Size.fromHeight(48)),
+      const SizedBox(height: 12),
+      LifeSimulationCard(
+        child: Column(children: [
+          row(Icons.location_city_outlined, 'Doğum yeri', profile.birthplace),
+          row(Icons.family_restroom, 'Aile ortamı', profile.family),
+          row(Icons.volunteer_activism_outlined, 'Yanında büyüyeceğin', profile.caregiver),
+          row(Icons.psychology_outlined, 'Mizacın', profile.personality),
+          row(Icons.auto_awesome_outlined, 'Hayalin', profile.dream),
+        ]),
       ),
+      const SizedBox(height: 18),
+      VitaButton(label: 'Hayata başla', onPressed: _start),
     ]);
   }
 
@@ -258,7 +288,7 @@ class _CreationWizardState extends State<CreationWizard> {
         child: Text(upperTr(text), style: VitaType.overline(p)),
       );
 
-  Widget _field(VitaPalette p, String label, TextEditingController c, String hint, int max) => Padding(
+  Widget _field(VitaPalette p, String label, TextEditingController c, int max) => Padding(
         padding: const EdgeInsets.only(top: 6),
         child: TextField(
           controller: c,
@@ -267,7 +297,6 @@ class _CreationWizardState extends State<CreationWizard> {
           style: VitaType.serif(17, p.ink),
           decoration: InputDecoration(
             labelText: label,
-            hintText: hint,
             filled: true,
             fillColor: p.surfaceSunken,
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),

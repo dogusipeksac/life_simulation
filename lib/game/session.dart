@@ -16,6 +16,7 @@ import 'effects.dart';
 import 'event_manager.dart';
 import 'events.dart';
 import 'family.dart';
+import 'fate.dart';
 import 'rng.dart';
 import 'progression.dart';
 import 'social.dart';
@@ -108,6 +109,9 @@ class GameSession {
     applyBirth(s, family);
     applyBirthTraits(s);
     ensureFamily(s);
+    s
+      ..lifeFocus = rollFocus(seed, 0)
+      ..focusChangedDay = 0;
     s.simulation
       ..initialized = true
       ..lastWorldAge = s.age;
@@ -597,8 +601,26 @@ class GameSession {
     return loss < 0 ? 0 : loss;
   }
 
+  /// Dönem önceliği 90 günde bir kaderle değişir; oyuncu seçmez.
+  void _rollFocus(GameState s, TurnReport? report) {
+    final period = s.day ~/ 90;
+    if (s.focusChangedDay >= 0 && s.focusChangedDay ~/ 90 == period) return;
+    final next = rollFocus(s.rngSeed, period);
+    s.focusChangedDay = period * 90;
+    if (next == s.lifeFocus) return;
+    s.lifeFocus = next;
+    final where = switch (next) {
+      'Öğrenme' => 'öğrenmeye',
+      'İlişkiler' => 'ilişkilerine',
+      'Sağlık' => 'sağlığına',
+      _ => 'dengeye',
+    };
+    report?.notes.add('Yeni bir dönem: hayat seni $where çağırıyor.');
+  }
+
   void _afterTurn(TurnReport? report) {
     final s = state!;
+    _rollFocus(s, report);
     Wedding.reconcile(s);
     progression.checkGoals(s, report);
     _recordAchievements(s, false, report);

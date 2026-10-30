@@ -18,7 +18,6 @@ import 'platform/google_ads.dart';
 import 'ui/game_controller.dart';
 import 'ui/start_screen.dart';
 import 'ui/story_screen.dart';
-import 'ui/style_gallery.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -105,12 +104,7 @@ class _LifeSimulationAppState extends State<LifeSimulationApp> with WidgetsBindi
                 listenable: game,
                 builder: (context, _) => game.inGame
                     ? StoryScreen(game: game)
-                    : TitleScreen(
-                        game: game,
-                        onGallery: kDebugMode
-                            ? () => _openGallery(context)
-                            : null,
-                      ),
+                    : TitleScreen(game: game),
               );
             },
           ),
@@ -119,18 +113,6 @@ class _LifeSimulationAppState extends State<LifeSimulationApp> with WidgetsBindi
     );
   }
 
-  void _openGallery(BuildContext context) => Navigator.of(context).push(
-    MaterialPageRoute(
-      builder: (_) => StatefulBuilder(
-        builder: (context, set) => StyleGallery(
-          dark: preferences.dark,
-          motion: preferences.motion,
-          onDarkChanged: (v) => preferences.set('dark', v),
-          onMotionChanged: (v) => preferences.set('motion', v),
-        ),
-      ),
-    ),
-  );
 }
 
 class _Splash extends StatelessWidget {

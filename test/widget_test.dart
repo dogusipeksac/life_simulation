@@ -6,13 +6,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:life_simulation/content/game_content.dart';
 import 'package:life_simulation/design/components.dart';
-import 'package:life_simulation/design/palette.dart';
-import 'package:life_simulation/design/theme.dart';
 import 'package:life_simulation/game/save.dart';
 import 'package:life_simulation/game/session.dart';
 import 'package:life_simulation/main.dart';
 import 'package:life_simulation/ui/game_controller.dart';
-import 'package:life_simulation/ui/style_gallery.dart';
 
 import 'content_test.dart' show contentPaths, readFile;
 
@@ -50,32 +47,26 @@ void main() {
   for (final size in const [Size(320, 640), Size(360, 780), Size(411, 890)]) {
     final w = size.width.toInt();
 
-    testWidgets('stil galerisi ${w}dp', (tester) async {
-      await sized(tester, size);
-      for (final palette in [VitaPalette.dark, VitaPalette.light]) {
-        await tester.pumpWidget(MaterialApp(
-          theme: buildVitaTheme(palette),
-          home: StyleGallery(dark: palette.isDark, motion: true, onDarkChanged: (_) {}, onMotionChanged: (_) {}),
-        ));
-        await tester.pumpAndSettle();
-        await tester.drag(find.byType(ListView).first, const Offset(0, -3000));
-        await tester.pumpAndSettle();
-      }
-      expect(tester.takeException(), isNull);
-    });
-
     testWidgets('açılış ve sihirbaz ${w}dp', (tester) async {
       await sized(tester, size);
       final game = controller();
       await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
       await tester.pumpAndSettle();
-      await tapText(tester, 'Yeni bir hayat');
+      // Açılışta yalnızca iki eylem: devam et ya da yeni bir hayata başla.
+      expect(find.text('Hikâye kütüphanesi'), findsNothing);
+      await tapText(tester, 'Yeni bir hayata başla');
+      // Ad önerilmiş gelir; oyuncu değiştirebilir.
+      final suggested = tester.widget<TextField>(find.byType(TextField).first).controller!.text;
+      expect(suggested, isNotEmpty);
       await tester.enterText(find.byType(TextField).first, 'Deniz Yılmaz');
-      for (var i = 0; i < 3; i++) {
-        await tapText(tester, 'Devam');
-      }
-      expect(find.text('4 / 4'), findsOneWidget);
+      // Odaktaki alan imleci görünür tutmak için listeyi geri kaydırır; klavyeyi kapat.
+      FocusManager.instance.primaryFocus?.unfocus();
+      await tester.pumpAndSettle();
+      await tapText(tester, 'Kaderimi göster');
+      expect(find.text('Kaderin'), findsOneWidget);
+      expect(find.textContaining('yeniden at'), findsNothing, reason: 'kader yeniden atılamaz');
       await tapText(tester, 'Hayata başla');
+      expect(game.state!.playerName, 'Deniz Yılmaz');
       expect(game.inGame, isTrue);
       expect(find.text('NE YAPARSIN?'), findsOneWidget);
       expect(tester.takeException(), isNull);
@@ -122,7 +113,7 @@ void main() {
     final game = controller();
     await tester.pumpWidget(LifeSimulationApp(loadGame: () => SynchronousFuture(game)));
     await tester.pumpAndSettle();
-    await tapText(tester, 'Kayıtlı hayata devam et');
+    await tapText(tester, 'Kaldığın yerden devam et');
     expect(find.text(corruptedSaveMessage), findsOneWidget);
   });
 }

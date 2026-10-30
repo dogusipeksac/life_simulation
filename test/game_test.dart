@@ -8,6 +8,7 @@ import 'package:life_simulation/game/effects.dart';
 import 'package:life_simulation/game/event_manager.dart';
 import 'package:life_simulation/game/events.dart';
 import 'package:life_simulation/game/family.dart';
+import 'package:life_simulation/game/fate.dart';
 import 'package:life_simulation/game/rng.dart';
 import 'package:life_simulation/game/save.dart';
 import 'package:life_simulation/game/session.dart';
@@ -165,6 +166,37 @@ void main() {
       // Boş dönemler en fazla bir yıllık tek sayfada birleşir; arka arkaya ikinci sayfa
       // ancak bütün bir yıl hiçbir olay uygun olmadıysa çıkar.
       expect(maxCalmInRow, lessThanOrEqualTo(2));
+    });
+  });
+
+  group('kader', () {
+    test('aynı seed aynı kaderi, farklı seed farklı hayatları verir; kimlik önerisi değiştirilebilir', () {
+      final a = CharacterProfile(), b = CharacterProfile();
+      applyFate(a, 123);
+      applyFate(b, 123);
+      expect([a.birthplace, a.family, a.caregiver, a.personality, a.dream], [b.birthplace, b.family, b.caregiver, b.personality, b.dream]);
+      final lives = {
+        for (var seed = 0; seed < 200; seed++) (CharacterProfile()..let((p) => applyFate(p, seed))).family,
+      };
+      expect(lives.length, 4, reason: 'her aile ortamı çıkabilmeli');
+      expect(suggestIdentity(7).name, isNotEmpty);
+      expect(suggestName('Kadın', 7, 1), isNot(suggestName('Kadın', 7, 2)));
+    });
+
+    test('dönem önceliği 90 günde bir kendiliğinden değişir', () {
+      final session = newSession()..autoSaveEnabled = false;
+      session.startNewGame('Deniz', seed: 99);
+      final s = session.state!..pendingEventId = null;
+      final seen = <String>{s.lifeFocus};
+      for (var y = 0; y < 6; y++) {
+        session.currentEvent = null;
+        s.currentEventId = null;
+        s.pendingEventId = null;
+        session.advanceToBirthday();
+        expect(s.day - s.focusChangedDay, lessThan(90));
+        seen.add(s.lifeFocus);
+      }
+      expect(seen.length, greaterThan(1));
     });
   });
 
@@ -346,4 +378,11 @@ void main() {
     expect(formatMoney(-500), '-₺500');
     expect(lowerInvariant('İş fikri'), 'iş fikri');
   });
+}
+
+extension<T> on T {
+  T let(void Function(T) f) {
+    f(this);
+    return this;
+  }
 }
