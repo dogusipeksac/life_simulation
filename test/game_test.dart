@@ -296,7 +296,7 @@ void main() {
       expect(GameSession.yearlyHealthLoss(s, life), 5);
     });
 
-    test('yeni yaş doğum gününe atlar', () {
+    test('doğum gününe ilerleme yaş ve günü sıfırlar', () {
       final session = newSession()..startNewGame('Deniz', seed: 5);
       final s = session.state!..pendingEventId = null;
       final r = session.advanceToBirthday();

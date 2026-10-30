@@ -279,12 +279,6 @@ class GameController extends ChangeNotifier {
     notifyListeners();
   }
 
-  ActionResult newAge() {
-    final r = session.advanceToBirthday();
-    notifyListeners();
-    return r;
-  }
-
   ActionResult _update(ActionResult result) {
     notifyListeners();
     return result;

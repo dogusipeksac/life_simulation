@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../design/preferences.dart';
 
+import '../design/illustrations.dart';
 import '../design/palette.dart';
 import '../design/theme.dart';
 
@@ -31,12 +32,23 @@ class VitaKunye extends StatelessWidget {
   }
 }
 
-/// Altta yüzen 5 duraklı sekme çubuğu; ortada kehribar "Yeni yaş".
+/// Altta yüzen dört sekme; ortada profil madalyonu.
 class VitaTabBar extends StatelessWidget {
-  const VitaTabBar({super.key, required this.index, required this.onSelect, required this.onNewAge});
+  const VitaTabBar({
+    super.key,
+    required this.index,
+    required this.onSelect,
+    required this.playerName,
+    required this.female,
+    required this.onProfile,
+    this.profileSelected = false,
+  });
   final int index;
   final ValueChanged<int> onSelect;
-  final VoidCallback onNewAge;
+  final String playerName;
+  final bool female;
+  final VoidCallback onProfile;
+  final bool profileSelected;
 
   static const _tabs = [
     (Icons.auto_stories_outlined, 'Hikâye'),
@@ -50,7 +62,7 @@ class VitaTabBar extends StatelessWidget {
     final p = context.vita;
     Widget tab(int i) {
       final (icon, label) = _tabs[i];
-      final selected = i == index;
+      final selected = !profileSelected && i == index;
       final c = selected ? p.accent : p.muted;
       return Expanded(
         child: Semantics(
@@ -96,32 +108,31 @@ class VitaTabBar extends StatelessWidget {
             tab(1),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: Semantics(
-                button: true,
-                label: 'Yeni yaş',
-                child: Material(
-                  color: p.accent,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                  child: InkWell(
-                    customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                    onTap: () {
-                      preferences.feedback(strong: true);
-                      onNewAge();
-                    },
-                    // Sabit genişlik: dar ekranda ve büyük yazıda dört sekme 48 dp'nin altına inmesin.
-                    child: SizedBox(
-                      width: 76,
-                      height: 52,
-                      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                        Icon(Icons.cake_outlined, size: 20, color: p.background),
-                        const SizedBox(height: 2),
-                        FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Text('Yeni yaş',
-                              maxLines: 1,
-                              style: TextStyle(color: p.background, fontWeight: FontWeight.w700, fontSize: 11.5)),
+              child: Tooltip(
+                message: 'Profil',
+                child: Semantics(
+                  button: true,
+                  selected: profileSelected,
+                  label: 'Profil',
+                  child: Material(
+                    color: profileSelected ? p.accent.withValues(alpha: .18) : Colors.transparent,
+                    shape: const CircleBorder(),
+                    child: InkWell(
+                      customBorder: const CircleBorder(),
+                      onTap: () {
+                        preferences.feedback();
+                        onProfile();
+                      },
+                      child: SizedBox.square(
+                        dimension: 52,
+                        child: Center(
+                          child: PersonMedallion(
+                            name: playerName,
+                            female: female,
+                            size: 40,
+                          ),
                         ),
-                      ]),
+                      ),
                     ),
                   ),
                 ),

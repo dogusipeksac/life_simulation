@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../design/preferences.dart';
-
 import '../content/models.dart';
 import '../design/components.dart';
 import '../design/illustrations.dart';
@@ -74,24 +72,6 @@ class _StoryScreenState extends State<StoryScreen> {
   Future<void> _continue() async {
     await game.continueAfterAd();
     if (mounted) _toTop();
-  }
-
-  void _newAge() {
-    final r = game.newAge();
-    if (!r.success) {
-      ScaffoldMessenger.of(context)
-        ..hideCurrentSnackBar()
-        ..showSnackBar(
-          SnackBar(
-            content: Text(r.message),
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-    } else {
-      preferences.feedback(strong: true);
-      _navigate('story');
-      _toTop();
-    }
   }
 
   Future<bool> _confirmExit() async {
@@ -181,38 +161,10 @@ class _StoryScreenState extends State<StoryScreen> {
                   bottom: false,
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: VitaKunye(
-                              name: s.playerName,
-                              detail: '${s.ageText} · ${s.profile.birthplace}',
-                              money: formatMoney(s.money),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8),
-                            child: Tooltip(
-                              message: 'Profil',
-                              child: InkResponse(
-                                radius: 26,
-                                onTap: () => _navigate(_page == 'profile' ? 'story' : 'profile'),
-                                child: SizedBox.square(
-                                  dimension: 48,
-                                  child: Center(
-                                    child: ExcludeSemantics(
-                                      child: PersonMedallion(
-                                        name: s.playerName,
-                                        female: s.profile.gender == 'Kadın',
-                                        size: 36,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      VitaKunye(
+                        name: s.playerName,
+                        detail: '${s.ageText} · ${s.profile.birthplace}',
+                        money: formatMoney(s.money),
                       ),
                       Expanded(
                         child: _currentPage == 'story'
@@ -234,14 +186,18 @@ class _StoryScreenState extends State<StoryScreen> {
               bottomNavigationBar: s.isGameOver
                   ? null
                   : VitaTabBar(
-                      // Alt sayfalarda (profil, finans…) hiçbir sekme seçili görünmez.
+                      // Alt sayfalarda (finans…) hiçbir sekme seçili görünmez.
                       index: _page == null
                           ? _tab
                           : const ['person', 'activities'].contains(_page)
                           ? 2
                           : -1,
                       onSelect: (i) => _navigate(_tabs[i]),
-                      onNewAge: _newAge,
+                      playerName: s.playerName,
+                      female: s.profile.gender == 'Kadın',
+                      profileSelected: _page == 'profile',
+                      onProfile: () =>
+                          _navigate(_page == 'profile' ? 'story' : 'profile'),
                     ),
             ),
           ),

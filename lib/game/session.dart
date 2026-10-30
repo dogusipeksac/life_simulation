@@ -322,7 +322,7 @@ class GameSession {
     return result;
   }
 
-  /// "Yeni yaş": doğum gününe atlar; seçimlerle aynı aylık/yaşlanma hattından geçer.
+  /// Test / simülasyon: doğum gününe atlar; seçimlerle aynı aylık/yaşlanma hattından geçer.
   ActionResult advanceToBirthday() {
     final s = state;
     if (s == null || s.isGameOver) {
@@ -333,7 +333,7 @@ class GameSession {
         (s.pendingEventId ?? '').isNotEmpty) {
       return const ActionResult(
         false,
-        'Önce hikâyendeki bekleyen kararı tamamla. Yeni yaşta seni yeni kararlar bekliyor.',
+        'Önce hikâyendeki bekleyen kararı tamamla.',
       );
     }
     final report = _advanceTime(TimeConfig.daysPerYear - s.dayOfYear);
