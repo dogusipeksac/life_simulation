@@ -17,7 +17,7 @@ class PlayBilling implements BillingGateway {
         const String.fromEnvironment('PLAY_BILLING_PUBLIC_KEY'),
         const String.fromEnvironment(
           'BILLING_PACKAGE_NAME',
-          defaultValue: 'com.life.simulation.life_simulation',
+          defaultValue: 'com.life.simulation',
         ),
       );
   final PlayPurchaseVerifier verifier;

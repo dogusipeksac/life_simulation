@@ -42,7 +42,7 @@ Release paketi açılışta çöküyordu: `Failed to create an instance of andro
 ## Açık işler (yayın öncesi)
 
 - Yükleme anahtarını üret ve `android/key.properties`'i doldur; Play App Signing'e kaydet.
-- Paket adı: Godot sürümü `com.dogusipeksac.vita`, Flutter `com.life.simulation.life_simulation`. Mevcut Play kaydını güncellemek için aynı paket adı ve imza gerekir.
+- Paket adı: Godot sürümü `com.dogusipeksac.vita`, Flutter Android ve iOS `com.life.simulation` (30 Ekim'de seçildi). Play'e yeni bir uygulama olarak çıkar; Godot sürümündeki satın alımlar bu pakete taşınmaz.
 - Play'e `flutter build appbundle --release --obfuscate --split-debug-info=build/symbols` ile AAB yüklenir; kullanıcıya inen boyut yukarıdaki ABI APK'larıyla aynı mertebededir.
 - Gerçek cihazda TalkBack ile elle bir tur ve 60 fps kaydırma ölçümü henüz yapılmadı.
 - P5'ten kalanlar: AdMob canlı kimlikleri, Play Console ürünleri ve gerçek satın alma testi.

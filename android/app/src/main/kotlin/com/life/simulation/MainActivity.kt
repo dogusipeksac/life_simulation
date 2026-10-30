@@ -1,4 +1,4 @@
-package com.life.simulation.life_simulation
+package com.life.simulation
 
 import io.flutter.embedding.android.FlutterActivity
 
