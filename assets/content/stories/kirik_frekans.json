@@ -2,7 +2,7 @@
   "Id": "kirik_frekans",
   "Title": "Kırık Frekans",
   "Subtitle": "Yarın seni ararsa telefonu açar mısın?",
-  "Description": "Bir kıyı kasabasının gece radyosunda, ertesi günün haberini kendi sesinden duyuyorsun. Birini kurtarmak geleceği değiştirmekse, kimin hatırladığına güvenebilirsin?",
+  "Description": "Bir kıyı kasabasının gece radyosunda, ertesi sabahın haberini kendi sesinden duyuyorsun. Kapalı bir verici binası, kayıp bir kardeş, üç yıl önce geç okunan bir fırtına uyarısı. Frekansı yakala, zamanı ölç, sabaha kadar kimi kurtarabileceğine karar ver.",
   "Genre": "Bilimkurgu & gizem",
   "Color": "706caa",
   "Symbol": "◎",
@@ -13,6 +13,7 @@
     "Gece yayını",
     "Yankı",
     "Kesinti",
+    "Karşı taraf",
     "Sabah"
   ],
   "StatNames": {
@@ -20,720 +21,1229 @@
     "empathy": "Empati",
     "resolve": "Kararlılık"
   },
-  "ContentNote": "Kurgusal olaylar ve karakterler. Kayıp, aile çatışmaları ve zor kararlar içerir.",
+  "ContentNote": "Kurgusal olaylar ve karakterler. Kayıp, yas, aile çatışması ve kaza tehlikesi içerir.",
   "Nodes": {
     "start": {
       "Title": "02.17 · Açık mikrofon",
-      "Text": "Kasabanın radyosunda geceyi kapatıyorsun. Dışarıda yağmur, içeride bozuk bir floresanın sesi var. Sıradaki şarkı başlamadan önce hoparlörden kendi sesin geliyor:\n\n“Yarın saat 08.10’da kuzey iskelesine gitmeyin. Deniz, beni duyuyorsan kapıyı açma.”\n\nAdın Deniz değil. O, üç yıl önce kasabadan ayrılan kardeşin. Ses sensin. Yayın masasındaki saat bir dakika ileri atlıyor. Dış kapı çalıyor.",
+      "Chapter": 1,
+      "Text": "Çamlıkıyı Radyosu’nun gece kuşağını dört yıldır sen yapıyorsun. Kasabada dinleyen belki on kişi var: fırında hamur yoğuran Halil Usta, liman bekçisi, uykusuz iki öğrenci, bir de her gece istek parçası isteyen ve hep aynı şarkıyı isteyen yaşlı bir kadın. Dışarıda yağmur, içeride bozuk bir floresanın vızıltısı. Masada soğumuş çay, yanında hava durumu bülteni; okumayı hiç unutmadığın, üç yıldır hiç unutmadığın bülten.\n\nSaat ikiyi on yedi geçe, sıradaki şarkıyı başlatmak için elini düğmeye götürürken hoparlörden bir ses geliyor. Mikrofonun kapalı. Kendi sesin:\n\n“Yarın saat 08.10’da kuzey iskelesine gitmeyin. Kimse gitmesin. Deniz, beni duyuyorsan kapıyı açma.”\n\nSes kesiliyor. Ardından cızırtı, sonra şarkının ilk notaları, kendiliğinden.\n\nAdın Deniz değil. Deniz kardeşin; üç yıl önce, annenizin cenazesinden bir hafta sonra kasabadan ayrıldı ve bir daha aramadı. Ses ise sensin. Tonun, nefes alırken araya koyduğun o küçük duraklama, “kimse” derken sesinin incelmesi. Kendi sesini tanımamak mümkün değil.\n\nYayın masasındaki dijital saat bir dakika ileri atlıyor: 02.18’den 02.19’a, arada 02.18 hiç görünmeden.\n\nDış kapı çalıyor. Üç kez, sert.",
       "Choices": [
         {
-          "Text": "Kapıyı açmadan kimin geldiğini sor.",
+          "Text": "Kapıyı açmadan, kimin geldiğini sor.",
           "Next": "door",
-          "Result": "Korkunu bir soruya dönüştürdün.",
+          "Result": "Sesin kendi kulağına yabancı geldi; az önce hoparlörden duyduğun sesle aynı mıydı?",
           "Effects": {
             "resolve": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
-          "Text": "Yayını kaydet ve saatleri karşılaştır.",
-          "Next": "tape",
-          "Result": "İlk iş olarak elindeki bilgiyi korudun.",
+          "Text": "Az önceki yayını bulmak için frekansları tara.",
+          "Next": "tune_echo",
+          "Result": "Kapı bir kez daha çaldı. Sen kulaklığı taktın.",
           "Effects": {
             "logic": 10
-          },
-          "SetFlags": [
-            "recorded"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
           "Text": "Kardeşini ara.",
           "Next": "brother",
-          "Result": "Sesin işaret ettiği kişiyi bulmak istedin.",
+          "Result": "Telefonun rehberinde adı hâlâ “Deniz 🌊” olarak duruyordu.",
           "Effects": {
             "empathy": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         }
-      ],
-      "Chapter": 1,
-      "Ending": ""
+      ]
     },
-    "door": {
-      "Title": "Yağmurdaki kadın",
-      "Text": "Camın ardından belediye elektrikçisi Asya’yı görüyorsun. Elindeki fenerde pil kalmamış. “Eski vericinin olduğu binada elektrik var,” diyor. “Oranın hattı yıllar önce kesildi.”\n\nOna yayını anlatınca şaşırmıyor. “Ben de yarınki arıza raporunu aldım. Altında kendi imzam var.” İkiniz de birbirinizden daha sağlam bir açıklama bekliyorsunuz.",
+    "tune_echo": {
+      "Title": "Yankıyı ara",
+      "Chapter": 1,
+      "Text": "Yayın masasının yanında eski bir alıcı var; istasyonun kendi yayınını denetlemek için kullanılan, yuvarlak düğmeli, cam kadranlı bir cihaz. Senin yayının 96,4’te. Ama az önceki ses senin vericinden çıkmadı; senin mikrofonun kapalıydı.\n\nKadranı yavaşça çeviriyorsun. Cızırtı, bir balıkçı telsizi, uzak bir şehrin müzik kanalı, yine cızırtı. Bir yerde, çok kısa bir an, kendi sesinin tınısını duyar gibi oluyorsun. Bir kelime: “…iskele…”\n\nKapı yeniden çalıyor. Bu kez dört kez.",
+      "Interaction": {
+        "Type": "tune",
+        "Prompt": "Sesin geldiği frekansı bul ve sinyal netleşince bir buçuk saniye sabit tut.",
+        "Min": 87.5,
+        "Max": 108.0,
+        "Target": 87.6,
+        "Tolerance": 0.15,
+        "HoldMs": 1500,
+        "Seconds": 30,
+        "Hint": "Kasabanın kapalı verici binası eskiden bandın en başında yayın yapardı.",
+        "Success": 0,
+        "Fail": 1
+      },
       "Choices": [
         {
-          "Text": "Asya’yı içeri al, kayıtları karşılaştırın.",
-          "Next": "compare",
-          "Result": "Bu gece ikinci bir çift gözün var.",
-          "Effects": {
-            "empathy": 5
-          },
-          "SetFlags": [
-            "asya"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Önce verici binasının anahtarını iste.",
-          "Next": "transmitter",
-          "Result": "Sorunu kaynağında görmek istiyorsun.",
-          "Effects": {
-            "resolve": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 1,
-      "Ending": ""
-    },
-    "tape": {
-      "Title": "İki saat",
-      "Text": "Bilgisayar 02.18 diyor. Duvar saati 02.17’de takılı. Kayıt dosyasının tarihi yarın sabah 08.10. İnternet bağlantısı yok ama dosya bir yerden gelmiş.\n\nKapı bir kez daha çalıyor. Bu kez dışarıdan bir ses geliyor: “Ben Asya. Elektrik arızası için geldim.” Ekranda henüz açmadığın dosyanın adı değişiyor: ASYA_GİRDİ.",
-      "Choices": [
-        {
-          "Text": "Asya’yı içeri al ve ekranı göster.",
-          "Next": "compare",
-          "Result": "Bilgiyi gizlemedin.",
-          "Effects": {
-            "logic": 5,
-            "empathy": 5
-          },
-          "SetFlags": [
-            "asya"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Dosyanın başka bir kopyasını çıkar.",
-          "Next": "transmitter",
-          "Result": "Özgün kaydı sakladın.",
+          "Text": "Sinyali yakaladın.",
+          "Next": "echo_found",
+          "Result": "Kadranın en başında, 87,6’da, cızırtının içinden bir nefes sesi yükseldi.",
           "Effects": {
             "logic": 10
           },
           "SetFlags": [
-            "copy"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "freq"
+          ]
+        },
+        {
+          "Text": "Sinyal kayboldu.",
+          "Next": "door",
+          "Result": "Ses dağıldı. Kapı çalmaya devam ediyordu.",
+          "Effects": {
+            "logic": -5
+          }
         }
-      ],
+      ]
+    },
+    "echo_found": {
+      "Title": "87,6",
       "Chapter": 1,
-      "Ending": ""
+      "Style": "radio",
+      "Text": "[cızırtı]\n— …saat şu an 08.04. Kuzey iskelesinde okul teknesi yanaşıyor.\n— İskelenin altındaki kazıklar çürük. Belediyeye üç kez yazdım. Kimse okumadı.\n— 08.10’da tekne yanaşırken iskelenin ucu çökecek.\n— Bunu dinliyorsan, sen bensin. Ya da benim bir önceki halim.\n— Bunu kaçıncı kez söylediğimi bilmiyorum.\n— Her seferinde bir şeyi değiştiriyorum. Her seferinde biri yine orada oluyor.\n[uzun bir sessizlik]\n— Deniz o teknede olacak. Annemin ölüm yıldönümü. Gizlice geliyor.\n[cızırtı · ses kesiliyor · 02.22]",
+      "Choices": [
+        {
+          "Text": "Kaydı al; kapıya git.",
+          "Next": "door",
+          "Result": "Kayıt tuşuna bastığında kadranın ışığı bir an söndü, sonra yandı. Kapı hâlâ çalıyordu.",
+          "SetFlags": [
+            "recorded"
+          ]
+        }
+      ]
+    },
+    "door": {
+      "Title": "Yağmurdaki kadın",
+      "Chapter": 1,
+      "Text": "Kapıyı aralıyorsun; zincir takılı. Dışarıda yağmurluğunun kapüşonu başına yapışmış bir kadın, elinde fener, feneri yere doğru tutuyor ki gözünü almasın. Asya. Kasabanın elektrikçisi; belediyenin tek teknisyeni, sokak lambalarından okulun kaloriferine kadar her şeyin tek çaresi. Annenin cenazesinde masaları o kurmuştu, sandalyeleri dizmiş, çay ocağını bağlamış, sonra da kimseye bir şey söylemeden gitmişti. O günden beri yolda karşılaştığınızda başını eğerek selam verir, durmaz.\n\n“Kapalı verici binasının ışıkları yanıyor,” diyor, selam vermeden. “Yirmi yıldır kilitli o bina. Elektriği yok, anteni sökülmüş, bağlantısı kesik. Ama tepesindeki kırmızı ikaz lambası yarım saattir yanıp sönüyor ve kıyıdaki acil durum hattı sanki bir şey çekiyormuş gibi vınlıyor. Trafo merkezinde iğneler deli gibi oynuyor. Senin radyon bir şey mi yapıyor?”\n\nZinciri çözüyorsun. Asya içeri girip ıslak fenerini masaya koyuyor, yağmurluğunu çıkarmıyor. Saatine bakıyor, sonra duvardaki stüdyo saatine. “Saatin ileri mi? Benimki 02.23 diyor, seninki 02.25.” Kendi saatine bir daha bakıyor, kulağına götürüp dinliyor; eski, kurmalı bir saat. “Benimki hiç şaşmaz. Dedemden kaldı.”\n\nSonra yüzüne bakıyor, uzun uzun; az önce duyduğun şeyin izini orada görmüş gibi. “Sen iyi misin? Hayalet görmüş gibisin.”\n\nBir an ona ne diyeceğini bilemiyorsun. Üç yıldır kimseye bir şey anlatmadın; ne fırtına gecesini, ne şarkıyı, ne on yedi dakikayı.",
+      "Choices": [
+        {
+          "Text": "Asya’ya duyduğun sesi anlat.",
+          "Next": "asya_listen",
+          "Result": "Asya gülmedi. Bu, korkutucuydu.",
+          "Effects": {
+            "empathy": 10
+          }
+        },
+        {
+          "Text": "Kaydı ona dinlet.",
+          "Next": "asya_listen",
+          "Result": "Asya kulaklığı taktı. Yüzü bembeyaz oldu.",
+          "NeedFlag": "recorded",
+          "Effects": {
+            "logic": 10
+          }
+        },
+        {
+          "Text": "Hiçbir şey söyleme; verici binasını sor.",
+          "Next": "compare",
+          "Result": "Asya omuz silkti ve haritayı masaya yaydı.",
+          "Effects": {
+            "resolve": 5
+          }
+        }
+      ]
     },
     "brother": {
       "Title": "Uzak bir odanın sesi",
-      "Text": "Deniz telefonu açıyor. İlk söylediği cümle “Yine o yayın mı?” oluyor.\n\nSanki senin bilmen gereken bir şeyi unutmuşsun. “Daha önce de mi oldu?” diye soruyorsun. Hattın öbür ucunda bir sandalye gıcırdıyor. “Bunu sana kaç kez anlattığımı bilmiyorum,” diyor. “Benim için üç yıl geçti. Sen her defasında bu gece arıyorsun.”",
+      "Chapter": 1,
+      "Style": "chat",
+      "Text": "Arama düşmüyor. Mesaj yazıyorsun.\nSen: Deniz. Uyanıksan yaz. Lütfen.\nSen: Yarın kasabaya gelme. Kuzey iskelesine hiç yaklaşma.\nİletildi · 02.20\nOkundu · 02.20\nDeniz yazıyor…\nDeniz yazmayı bıraktı.\nDeniz yazıyor…\nDeniz: Üç yıl sonra ilk mesajın bu mu\nDeniz: Gelip gelmediğimi nereden biliyorsun\nSen: Bilmiyorum. Bir şey duydum.\nDeniz: Annem de bir şey duymuştu. Fırtınayı. Senin radyondan. Geç.\nDeniz çevrimdışı.",
       "Choices": [
         {
-          "Text": "Deniz’den bildiği bütün ayrıntıları yazmasını iste.",
-          "Next": "compare",
-          "Result": "Hafızanın yerine ortak bir kayıt koydun.",
-          "Effects": {
-            "logic": 5,
-            "empathy": 5
-          },
-          "SetFlags": [
-            "brother"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Ondan kasabaya dönmesini iste.",
-          "Next": "transmitter",
-          "Result": "Bu kez aranızdaki mesafeyi azaltmak istedin.",
+          "Text": "Bir mesaj daha yaz: “Haklısın. Özür dilerim.”",
+          "Next": "door",
+          "Result": "Mesaj iletildi ama okunmadı. Kapı çaldı.",
           "Effects": {
             "empathy": 10
           },
           "SetFlags": [
-            "return"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 1,
-      "Ending": ""
-    },
-    "compare": {
-      "Title": "Aynı cümlenin farkı",
-      "Text": "Asya’nın raporu ile radyo kaydını masaya yayıyorsunuz. Her ikisinde de kuzey iskelesi ve 08.10 var. Ama raporun bir satırı elle çizilmiş: “Tahliye başarılı.”\n\n“Bir şey her defasında biraz değişiyor,” diyorsun. Asya başını sallıyor. “Belki gelecek haber vermiyor. Belki birileri bizi deniyor.”\n\nKuzey iskelesinde sabah ilk feribot kalkacak. İçinde kardeşinin adı olan bir yolcu listesi telefonuna düşüyor.",
-      "Choices": [
-        {
-          "Text": "Vericiyi incelemeye gidin.",
-          "Next": "transmitter",
-          "Result": "Yayın ile iskelenin bağlantısını aramaya çıktınız.",
-          "Effects": {
-            "logic": 5
-          },
-          "SetFlags": [
-            "asya"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "apologized"
+          ]
         },
         {
-          "Text": "İskeleyi şimdiden kapattırmayı dene.",
-          "Next": "warning",
-          "Result": "Belirsizlikte de önlem almayı seçtin.",
+          "Text": "Telefonu bırak. Kapıya git.",
+          "Next": "door",
+          "Result": "Ekranda son mesaj öylece duruyordu: “Geç.”",
+          "Effects": {
+            "resolve": 5
+          }
+        }
+      ]
+    },
+    "asya_listen": {
+      "Title": "İki saat",
+      "Chapter": 1,
+      "Text": "Asya kulaklığı çıkarıp masaya bırakıyor ve bir süre hiçbir şey söylemiyor. Sonra çantasından katlanmış, yağmurdan ıslanmış bir kâğıt çıkarıyor: belediyenin kuzey iskelesi bakım raporu. Altı ay önce kendisi yazmış. “Kazıklar çürük,” diyor. “Ben yazdım bunu. Üç kez. Kimse okumadı.”\n\nSonra bir şey daha fark ediyor. “Kayıttaki ses ‘belediyeye üç kez yazdım’ diyor. Ama sen yazmadın. Ben yazdım. Yani o ses… ya benim yazdığımı biliyor ya da yarın sen de yazacaksın.”\n\nMasadaki iki saate bakıyorsunuz: istasyonun saati ve Asya’nın kol saati. Aralarındaki fark iki dakikaydı; şimdi üç. Her dakika biraz daha açılıyor. “Bir şey zamanı çekiyor,” diyor Asya. “Ya da bir şey zamanı bize doğru itiyor. Verici binasına gitmeliyiz.”\n\nKapıdan çıkmadan önce bakım raporunu sana uzatıyor. Altında kendi imzası var ve bir not: “Okul teknesi yanaşmasını kuzey iskelesinden alın.” Notun yanına biri kurşunkalemle bir şey eklemiş: “Okunmadı.” El yazısı seninki.",
+      "Choices": [
+        {
+          "Text": "Verici binasına git.",
+          "Next": "compare",
+          "Result": "Asya montunu sana attı. “Bu yağmurda yalnız göndermem.”",
           "Effects": {
             "resolve": 10
           },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "SetFlags": [
+            "asya_ally"
+          ]
         }
-      ],
+      ]
+    },
+    "compare": {
+      "Title": "Aynı cümlenin farkı",
       "Chapter": 1,
-      "Ending": ""
+      "Text": "Verici binası kasabanın arkasındaki tepede, çam ağaçlarının arasında; çocukken korkulu bir yerdi, “orada radyocu bir adam yaşarmış, sonra kaybolmuş” derlerdi. Yolda Asya fenerini önüne tutuyor, yağmur incelmiş, çam iğneleri ayakkabılarına yapışıyor. Sen kulaklıkla kaydı bir kez daha dinliyorsun, sonra bir kez daha.\n\nÜçüncüde bir şey fark ediyorsun: “Deniz, beni duyuyorsan kapıyı açma.” Bu cümle sana söylenmiyor. Deniz’e söyleniyor. Bir kapı. Hangi kapı? Radyonun kapısı değil; Asya çaldığında sen açtın ve hiçbir şey olmadı. Belki başka bir kapı, başka bir sabah.\n\nTepeye vardığınızda binanın kırmızı ikaz lambası yanıp sönüyor; ritmine dikkat edince tüylerin diken diken oluyor: tam olarak senin kalp atışın kadar hızlı. Koştuğunda hızlanmıştı; şimdi yavaşlıyor.\n\nKapıda paslı bir asma kilit; yanında dört haneli bir şifre kilidi, gümüş, yepyeni, yağmurda parlıyor. Kapının altına sıkışmış nemli bir kâğıt var.\n\nKâğıdı çekiyorsun. Üzerinde senin el yazın var; o kendine özgü a harfi, hep kuyruğunu unuttuğun. Mürekkep taze, parmağına bulaşıyor.\n\n“Anahtar taşın altında değil. Buna bir daha zaman harcama. Şifre, beni ilk duyduğun frekans. Noktayı koyma.”\n\nAsya kâğıdı elinden alıp fenerine tutuyor, sonra sana veriyor. Hiçbir şey söylemiyor. Bir elektrikçinin her şeyi bir açıklamaya bağlayan yüzünde ilk kez açıklama yok.",
+      "Choices": [
+        {
+          "Text": "Şifreyi dene.",
+          "Next": "tower_lock",
+          "Result": "Asya feneri kilide tuttu. Rakamlar yağmurda parlıyordu.",
+          "Effects": {
+            "logic": 5
+          }
+        },
+        {
+          "Text": "Yine de taşın altına bak.",
+          "Next": "tower_lock",
+          "Result": "Taşın altında yalnızca bir solucan vardı. Asya güldü; ilk kez bu gece.",
+          "Effects": {
+            "empathy": 5
+          }
+        }
+      ]
+    },
+    "tower_lock": {
+      "Title": "Dört hane",
+      "Chapter": 1,
+      "Text": "Kilit yeni, ama birisi onu defalarca çevirmiş gibi rakamların etrafındaki boya aşınmış. Bazı rakamlar diğerlerinden daha parlak. Asya feneri tutuyor, yağmur sırtından akıyor.\n\n“Beni ilk duyduğun frekans,” diyorsun yüksek sesle. Senin yayının 96,4. Ama ses senin yayınından gelmedi. Kadranın en başında, bandın ilk adımında, eskiden bu binanın yayın yaptığı yerden geldi. Ya da gelmiş olmalı.\n\n“Noktayı koyma,” diyor kâğıt. Dört hane. Üç denemen var; dördüncüde kilit kilitlenir, Asya’nın dediğine göre bu tip kilitler bir saat açılmaz.",
+      "Interaction": {
+        "Type": "code",
+        "Prompt": "Dört haneyi çevir. Frekansı noktasız yaz.",
+        "Answer": "0876",
+        "Attempts": 3,
+        "Hint": "87,6 dört hanede başında bir sıfırla yazılır.",
+        "Success": 0,
+        "Fail": 1
+      },
+      "Choices": [
+        {
+          "Text": "Kilit açıldı.",
+          "Next": "inside",
+          "Result": "Asma kilit avucuna düştü; ılıktı, sanki biri az önce tutmuş.",
+          "Effects": {
+            "logic": 10
+          }
+        },
+        {
+          "Text": "Kilit açılmadı.",
+          "Next": "transmitter",
+          "Result": "Kilit tıkladı ve kilitlendi. Asya binanın arkasına işaret etti: “Başka bir yol var.”",
+          "Effects": {
+            "resolve": 5
+          }
+        }
+      ]
     },
     "transmitter": {
       "Title": "Kesilmiş hat",
-      "Text": "Eski verici binası paslı bir kilitle kapalı. İçeriden düzenli bir tık sesi geliyor. Kapının altına sıkışmış kâğıdı çekiyorsun: üzerinde senin el yazın var. “Anahtar taşın altında değil. Buna bir daha zaman harcama.”\n\nKâğıdın arkasında bir elektrik şeması çizili. Asya’ya göre bina kendi elektriğini üretmiyor; kıyıdaki acil durum hattından güç alıyor. Vericiyi kapatmak iskeleyi de karanlık bırakabilir.",
+      "Chapter": 2,
+      "Text": "Binanın arkasında, toprağa gömülü bir beton kanaldan kolun kalınlığında bir kablo çıkıyor ve duvardaki paslı bir kutuya giriyor. Asya kutunun menteşesini tornavidayla zorluyor; kapak gıcırdayarak açılıyor. İçinde kasabanın acil durum hattının dağıtım panosu var: sigortalar, kesiciler, el yazısıyla etiketlenmiş kablolar. Fenerini panoya tutuyor ve ıslık çalıyor. “Bu bina kendi elektriğini üretmiyor,” diyor. “Kıyıdaki acil durum hattından güç çekiyor. Hattı ben kurdum, altı yıl önce, fırtınadan sonra. Hayır, üç yıl önce. Liman, iskele aydınlatması, sis düdüğü, hastane jeneratörü; hepsi aynı hatta. Bu binayı hatta ben bağlamadım.”\n\nKutunun iç kapağında bir elektrik şeması çizili. Kurşunkalemle, aceleyle, bazı çizgiler silinip yeniden çizilmiş. El yazısı seninki. Şemanın altında bir not: “Hattı kesersen verici susar. Ama iskele de karanlıkta kalır. Sis düdüğü de. Bunu iki kez yaptım. İkisinde de tekne kayalığa çarptı.”\n\nAsya sana bakıyor; fener ışığında yüzü bembeyaz. “İki kez yaptım mı? Ne zaman?”\n\nCevap veremiyorsun. Asya şemaya geri dönüyor, bir mühendis dikkatiyle. “Vericiyi kapatmak iskeleyi de karanlık bırakabilir. Sabah sisi olursa okul teknesi iskeleyi göremez, düdüğü duyamaz.” Durup düşünüyor. “Ya da… belki bu iyi bir şey. İskeleyi göremezse yanaşmaz. Ama kayalık… Annen de kayalıkta…” Sözünü bitirmiyor.\n\nBinanın içinden düzenli bir tık sesi geliyor; bir saat gibi, ama saatten hızlı. Ve tık seslerinin arasında, çok hafif, birinin nefes alıp verdiği.",
       "Choices": [
         {
           "Text": "Şemayı takip et, hattı ayırmanın yolunu bul.",
           "Next": "circuit",
-          "Result": "Tek bir düğmeye basmadan önce bağlantıları araştırdın.",
+          "Result": "Şemayı telefonunla fotoğrafladın; flaş kutunun içini bir an gündüz yaptı.",
           "Effects": {
             "logic": 10
           },
           "SetFlags": [
             "diagram"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          ]
         },
         {
-          "Text": "Binaya gir ve çalışan cihazı bul.",
+          "Text": "Pencereyi kır, içeri gir.",
           "Next": "inside",
-          "Result": "Zaman kaybetmeden kaynağa ulaştın.",
+          "Result": "Cam kolayca kırıldı; çok eskiydi. İçeriden sıcak hava yüzüne vurdu.",
           "Effects": {
             "resolve": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
           "Text": "İnsanları uyarmak için radyoya dön.",
           "Next": "warning",
-          "Result": "Açıklama bulmadan da harekete geçilebilir.",
-          "Effects": {
-            "empathy": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 2,
-      "Ending": ""
-    },
-    "warning": {
-      "Title": "Henüz olmamış bir kaza",
-      "Text": "İskele görevlisi, gelecekteki bir kazayı gerekçe göstererek sefer iptal edemeyeceğini söylüyor. Sesi kaba değil, uykulu. “Somut bir arıza var mı?”\n\nElindeki kayıt, onun için bozuk bir ses dosyası. Senin için kardeşinin adı. Aradaki farkı öfkeyle kapatamıyorsun. Ama insanların hayatı yalnızca bir dosyaya bağlı kalmamalı.",
-      "Choices": [
-        {
-          "Text": "Asya’dan elektrik arızası için resmi kontrol iste.",
-          "Next": "inspection",
-          "Result": "Uyarını incelenebilir bir duruma dönüştürdün.",
-          "Effects": {
-            "logic": 10
-          },
-          "SetFlags": [
-            "inspection"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Gece yayınını açıp herkese anlat.",
-          "Next": "broadcast",
-          "Result": "İnsanların kararını kendilerinin vermesini istedin.",
+          "Result": "Asya başını salladı. “Ben burada kalıyorum. Telsizle konuşuruz.”",
           "Effects": {
             "empathy": 10
           },
           "SetFlags": [
-            "public"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "İskeleye gidip ilk yolcuları karşıla.",
-          "Next": "quay",
-          "Result": "Kendini haberin yanına koydun.",
-          "Effects": {
-            "resolve": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "asya_tower"
+          ]
         }
-      ],
-      "Chapter": 2,
-      "Ending": ""
-    },
-    "circuit": {
-      "Title": "Şemadaki boşluk",
-      "Text": "Şemada verici ile acil durum aydınlatması aynı aküye bağlı. Ama eski depoda bir yedek hat var. Asya bütün gece çalışırsa iskeleyi karartmadan vericiyi ayırabilir.\n\nBir kablonun yanında kurşun kalemle yazılmış notu görüyorsun: “Bu yol işe yaradı. Bedelini unutma.” Notun altındaki tarih üç yıl sonrası.",
-      "Choices": [
-        {
-          "Text": "Yedek hattı kurmaya yardım et.",
-          "Next": "inside",
-          "Result": "Gelecekteki notu bir talimat değil, veri olarak kullandın.",
-          "Effects": {
-            "logic": 10
-          },
-          "SetFlags": [
-            "backup"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Önce Deniz’e notu anlat.",
-          "Next": "brother_again",
-          "Result": "Kardeşinin hangi bedeli bildiğini öğrenmek istedin.",
-          "Effects": {
-            "empathy": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 2,
-      "Ending": ""
+      ]
     },
     "inside": {
       "Title": "Kendi sesinin odası",
-      "Text": "İçeride bir verici, bir mikrofon ve duvara asılı onlarca kâğıt var. Her kâğıt aynı gecenin farklı bir özetini anlatıyor. Bazılarında feribot iptal edilmiş, bazılarında yayın kesilmiş. Birinde yalnızca “Deniz döndü” yazıyor.\n\nMasadaki kulaklıktan kendi sesin geliyor: “Bu kez beni dinleme. Ben de senden önceki birinin notlarını okudum.”",
+      "Chapter": 2,
+      "Text": "İçerisi dışarıdan büyük görünüyor; ya da sen küçülmüşsün. Duvarlar boyunca eski vericinin gri dolapları sıralanmış, kapakları açık. İçlerindeki vakum tüpleri turuncu bir ışıkla yanıyor, sanki yirmi yıldır hiç sönmemişler. Havada ozon ve sıcak toz kokusu, bir de çay. Tavanın köşesinde bir örümcek ağı titriyor; tüplerin ısısıyla.\n\nOrtada bir masa; masada bir mikrofon, bir kulaklık, bir termos. Termosun içindeki çay sıcak. Bardağın kenarında bir dudak izi, senin dudak izin gibi. Masanın kenarına yapıştırılmış bir fotoğraf: annen, genç, bir adamın yanında. Adamın yüzü solmuş, seçilemiyor.\n\nMasanın üzerinde bir defter var. Kapağında senin adın, senin yazınla. İçinde tarihler; hepsi aynı tarih, yarının tarihi. Her sayfada bir deneme:\n\n“1. İskeleyi kapattım. Deniz arka yoldan geldi.\n2. Okulu aradım. Tekne erken geldi.\n3. Asya’yı gönderdim. Asya oradaydı.\n4. Kendim gittim. Ben oradaydım.\n5. Kasabayı uyardım. Herkes bakmaya geldi.”\n\nSayfalar böyle devam ediyor; yazı giderek küçülüyor, giderek titriyor. Bazı sayfalarda yalnızca bir kelime: “Yine.” Kırk yedinci denemede yazı bir çocuğun yazısı gibi: “Değişmeyen bir şey var. Bul.”\n\nMasanın arkasındaki duvarda bir saat; senin istasyonundakinin aynısı, aynı marka, aynı çatlak camı. Saat 08.04’ü gösteriyor ve ilerlemiyor. Asya arkandan defteri okuyor ve elini ağzına götürüyor.",
       "Choices": [
         {
-          "Text": "Notları karşılaştır, değişmeyen ayrıntıyı bul.",
+          "Text": "Defterdeki denemeleri sırala, deseni bul.",
           "Next": "pattern",
-          "Result": "Kesinlik aramak yerine ortak deseni aradın.",
+          "Result": "Defteri masaya yaydın. Asya omzunun üstünden okudu.",
           "Effects": {
             "logic": 10
-          },
-          "SetFlags": [
-            "pattern"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
-          "Text": "Mikrofondan gelecekteki kendine soru sor.",
+          "Text": "Mikrofona konuş: “Orada mısın?”",
           "Next": "future",
-          "Result": "Bir talimat yerine konuşma başlattın.",
+          "Result": "Kırmızı ışık yandı. Kulaklıktan bir nefes sesi geldi.",
           "Effects": {
             "resolve": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
-          "Text": "Deniz’i yeniden ara.",
+          "Text": "Termosun yanındaki fotoğrafa bak.",
           "Next": "brother_again",
-          "Result": "Bu hikâyeyi tek başına çözemeyeceğini kabul ettin.",
+          "Result": "Fotoğrafta iki çocuk, bir tekne, bir kadın. Annen.",
           "Effects": {
             "empathy": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         }
-      ],
+      ]
+    },
+    "circuit": {
+      "Title": "Şemadaki boşluk",
       "Chapter": 2,
-      "Ending": ""
+      "Text": "Şemayı Asya’yla birlikte kutunun kapağında takip ediyorsunuz. Ana hat kıyıdan geliyor, binanın altında üçe ayrılıyor: verici, iskele aydınlatması, sis düdüğü. Ama şemada dördüncü bir çizgi var, kurşunkalemle sonradan eklenmiş, hiçbir yere bağlanmıyor. Ucunda bir soru işareti.\n\n“Bu çizgi yok,” diyor Asya. “Ben bu hattı kurdum. Dördüncü bir kol yok.” Sonra fenerini duvarın dibine, toprağa tutuyor. Topraktan, beton kanalın yanından, ince, yeni bir kablo çıkıyor. Kimse gömmemiş; topraktan büyümüş gibi, kökleri var gibi.\n\nKablo kuzeye, iskeleye doğru uzanıyor.\n\n“Verici gücü hattan çekmiyor,” diyor Asya yavaşça. “Hatta güç veriyor. Bir yerden, bir zamandan, bize doğru. Vericiyi kesersen bu kablo da kesilir. Ama hangisi önce?”",
+      "Choices": [
+        {
+          "Text": "Binaya gir; kablonun nereden geldiğini gör.",
+          "Next": "inside",
+          "Result": "Asya pencerenin kilidini bir tornavidayla açtı.",
+          "Effects": {
+            "logic": 5
+          }
+        },
+        {
+          "Text": "Kabloyu iskeleye kadar takip et.",
+          "Next": "brother_again",
+          "Result": "Kablo çamların arasından, eski balıkçı evlerinin arkasından kıyıya iniyordu. Yolun yarısında annenin eski evinin önünden geçtin.",
+          "Effects": {
+            "resolve": 10
+          }
+        }
+      ]
+    },
+    "warning": {
+      "Title": "Henüz olmamış bir kaza",
+      "Chapter": 2,
+      "Text": "Stüdyoya döndüğünde saat 03.10, istasyonun saatine göre 03.16. Fark büyüyor. Mikrofonun önüne oturup ellerini masaya koyuyorsun; tahtada parmak izlerin, çay halkaları, üç yıl önceki bir kalemin bıraktığı çizik.\n\nÜç yıl önce bu masada, bu mikrofonun önünde, fırtına uyarısını on yedi dakika geç okudun. Annen istek hattından aramıştı; en sevdiği şarkıyı istemişti, “Kızım çalarsa denize açılırken dinlerim,” demişti. Sen de şarkı bitsin diye bekledin. Sonra reklam. Sonra haber bülteni. On yedi dakika. Uyarıyı okuduğunda annen çoktan açılmıştı. Ertesi sabah teknesi kayalıkta bulundu; kendisi bir hafta sonra.\n\nŞimdi önünde başka bir uyarı var; henüz olmamış bir kaza için. Kim inanır? Yarın sabah okul teknesinin kaptanı mı, iskelede balık bekleyen kadınlar mı, belediye başkanı mı? Bir radyo sunucusunun gece yarısı duyduğu bir sese? Annesini kaybettiğinden beri “biraz tuhaflaşan” radyocu kıza?\n\nTelsizden Asya’nın sesi, cızırtılı: “Burada saat 08.05’te durdu. İçeride bir defter var. Senin defterin. Kırk yedi kez denemişsin. Kırk yedi kez.” Bir sessizlik. “Ben de dört kez oradaymışım.”\n\nMikrofonun kırmızı ışığı yanıp sönüyor; yayına hazır.",
+      "Choices": [
+        {
+          "Text": "Belediyenin acil hattını ara, iskele denetimini iste.",
+          "Next": "inspection",
+          "Result": "Telefon yedi kez çaldı. Sonra uykulu bir ses: “Belediye, nöbetçi.”",
+          "Effects": {
+            "logic": 10
+          }
+        },
+        {
+          "Text": "Yayına çık; kasabaya doğrudan söyle.",
+          "Next": "broadcast",
+          "Result": "Kırmızı ışık sabitlendi. Nefesini tuttun.",
+          "Effects": {
+            "resolve": 10
+          }
+        },
+        {
+          "Text": "İskeleye git, kendi gözünle gör.",
+          "Next": "quay_night",
+          "Result": "Yağmurluğunu aldın. Kapıyı kilitlemeyi unuttun.",
+          "Effects": {
+            "empathy": 5
+          }
+        }
+      ]
     },
     "inspection": {
       "Title": "Kırmızı mühür",
-      "Text": "Asya kuzey iskelesinin acil aydınlatmasında gerçek bir arıza buluyor. Bu, kaydın doğru olduğunu kanıtlamıyor; kontrol için somut bir neden yaratıyor. Görevli ilk seferi geçici olarak durduruyor.\n\nO sırada radyo kendiliğinden açılıyor. Bu defa yayında kazadan değil, kayıp bir elektrikçiden söz ediliyor. Asya kendi adını duyunca elindeki tornavidayı masaya bırakıyor.",
-      "Choices": [
-        {
-          "Text": "Asya’yı yalnız bırakma, vericiye birlikte gidin.",
-          "Next": "pattern",
-          "Result": "Birini kurtarmak için başkasını gözden çıkarmadın.",
-          "Effects": {
-            "empathy": 10
-          },
-          "SetFlags": [
-            "asya_safe"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Vericiyi uzaktan kapatmanın yolunu ara.",
-          "Next": "circuit",
-          "Result": "Yeni uyarıyı aynı bağlantılar üzerinden sınadın.",
-          "Effects": {
-            "logic": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Uyarıyı herkese açık yayına taşı.",
-          "Next": "broadcast",
-          "Result": "Bilginin yalnızca ikinizde kalmasını istemedin.",
-          "Effects": {
-            "resolve": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
       "Chapter": 2,
-      "Ending": ""
-    },
-    "brother_again": {
-      "Title": "Üç yılın içindeki sabah",
-      "Text": "Deniz “Ben o sabah kasabaya dönmedim,” diyor. “Ama sen beni geri getirmek için her defasında başka bir şeyi değiştirdin. Belki beni kurtarmaya çalışmıyorsun. Belki gitmiş olmamı kabul edemiyorsun.”\n\nDışarıda yağmur hafifliyor. Vericideki bütün notların, çözüm kadar özlemden de yazılmış olabileceğini düşünüyorsun. Deniz hattı açık tutuyor. Bir şey istemeni beklemiyor; konuşmanı bekliyor.",
+      "Text": "Nöbetçi memur Selin Hanım, uykulu ama nazik. Sen anlatırken bir kez bile sözünü kesmiyor. Sonra bir süre bilgisayarına bakıyor. “Kuzey iskelesi bakım raporu… evet, var. Altı ay önce. Asya Hanım yazmış. ‘Acil’ işaretli. Sonra… başkanlık ‘bütçe yılı sonuna ertelendi’ yazmış.”\n\nBir sessizlik. “Yarın sabah okul teknesi kuzey iskelesine yanaşacak, evet. Güney iskelesi bakımda, o yüzden. Ama bunu nereden biliyorsunuz? Program henüz yayımlanmadı.”\n\nCevap veremiyorsun. Selin Hanım iç geçiriyor. “Bakın, ben iskeleye kırmızı mühür koyamam. Yetkim yok. Ama sabah yedide başkana ilk iş bunu söylerim. Raporu da yanına koyarım. Bir de…” Duraksıyor. “Benim kızım o teknede olacak. Yarın son gün, karne günü.”\n\nTelefonu kapattıktan sonra fark ediyorsun: kayıttaki ses “belediyeye üç kez yazdım” diyordu. Bu, ikincisiydi.",
       "Choices": [
         {
-          "Text": "Onu dönmeye zorlamayacağını söyle.",
-          "Next": "future",
-          "Result": "Birinin güvenliğini onun yerine karar vermekle karıştırmadın.",
-          "Effects": {
-            "empathy": 10
-          },
-          "SetFlags": [
-            "release"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Bu geceki tehlikeyi olduğu gibi anlat.",
+          "Text": "Bir kez daha yaz: resmi dilekçe, e-postayla.",
           "Next": "pattern",
-          "Result": "Onu gerçeğin dışında tutmadın.",
-          "Effects": {
-            "resolve": 5,
-            "empathy": 5
-          },
-          "SetFlags": [
-            "brother"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 3,
-      "Ending": ""
-    },
-    "pattern": {
-      "Title": "Değişmeyen şey",
-      "Text": "Notların her birinde kazanın saati değişiyor. Yolcu sayısı, hava, ilk arayan kişi bile değişiyor. Değişmeyen tek şey, senin son anda tek başına karar vermen.\n\nAsya kâğıtları sıraya diziyor. “Belki sorun hangi kararı verdiğin değil,” diyor. “Onu tek başına vermen.” Vericinin ekranında yeni bir dosya açılıyor: ORTAK_KAYIT.",
-      "Choices": [
-        {
-          "Text": "Bütün kayıtları ve belirsizlikleri halka açıkla.",
-          "Next": "broadcast",
-          "Result": "Bilginin sahibini değiştirdin.",
-          "Effects": {
-            "empathy": 10
-          },
-          "SetFlags": [
-            "shared"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Yedek hattı kullanarak vericiyi güvenle ayır.",
-          "Next": "switch",
-          "Result": "Teknik çözümü insanları koruyarak uygulamak istedin.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "backup",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Gelecekteki sesinle son kez konuş.",
-          "Next": "future",
-          "Result": "Cevabı kolaylaştırmadan dinledin.",
-          "Effects": {
-            "resolve": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 3,
-      "Ending": ""
-    },
-    "future": {
-      "Title": "Karşı taraftaki sen",
-      "Text": "“Sana ne yapacağını söyleyemem,” diyor sesin. “Çünkü ben bütün cevapları bildiğimi sandığım için buradayım.”\n\nHattın arkasında deniz sesi var. Aynı deniz ama daha uzaktan. “Birini kaybetmemek için zamanı durdurursan, onun seçebileceği her şeyi de durdurursun.” Sesin bunu bir bilgelik gibi değil, geç anlaşılan bir hata gibi söylüyor.",
-      "Choices": [
-        {
-          "Text": "Kaydı bir uyarı olarak yayımla; emre dönüştürme.",
-          "Next": "broadcast",
-          "Result": "İnsanlara korku değil bilgi vermeyi seçtin.",
-          "Effects": {
-            "empathy": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Vericiyi ayır, sabahı kendi akışına bırak.",
-          "Next": "switch",
-          "Result": "Kontrol etmekle sorumluluk almayı ayırdın.",
-          "Effects": {
-            "resolve": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Kayıtlar arasındaki zaman farkını ölç.",
-          "Next": "measure",
-          "Result": "Son bir doğrulanabilir veri aradın.",
+          "Result": "Gönder tuşuna bastığında saat 03.33’tü. Ekranda “gönderildi” yazısı bir an titredi.",
           "Effects": {
             "logic": 10
           },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "SetFlags": [
+            "third_letter"
+          ]
+        },
+        {
+          "Text": "Yayına çık.",
+          "Next": "broadcast",
+          "Result": "Selin Hanım’ın kızını düşündün ve mikrofonu açtın.",
+          "Effects": {
+            "resolve": 5
+          }
+        },
+        {
+          "Text": "Verici binasına dön.",
+          "Next": "circuit",
+          "Result": "Asya telsizden “Gel,” dedi. “Burada bir şey değişiyor.”",
+          "Effects": {
+            "empathy": 5
+          }
         }
-      ],
-      "Chapter": 3,
-      "Ending": ""
+      ]
     },
-    "broadcast": {
-      "Title": "Dinleyen kasaba",
-      "Text": "Mikrofonun kırmızı ışığı yanıyor. Bir mucize anlatmıyorsun. Bilinenleri, bilinmeyenleri, elektrik arızasını ve ilk seferin neden kontrol edilmesi gerektiğini söylüyorsun.\n\nTelefonlar çalmaya başlıyor. Biri doktor, biri servis şoförü, biri iskelenin gece bekçisi. Her biri küçük bir şey yapabilecek durumda. İlk kez haberin tek muhatabı sen değilsin.",
+    "quay_night": {
+      "Title": "03.40 · Kuzey iskelesi",
+      "Chapter": 2,
+      "Text": "İskele karanlıkta uzun bir dil gibi denize uzanıyor. Ahşap tahtalar yağmurdan kaygan, aralarından aşağıdaki kara su görünüyor. Feneri kazıklara tutuyorsun: yosun, midye, kabuklu deniz hayvanları ve suyun hemen üstünde, derin, kara bir çürüme. Tahtalardan birine bastığında altında bir şeyin hafifçe esnediğini hissediyorsun; bir nefes gibi.\n\nÇocukken bu iskelede annenin teknesini beklerdiniz, Deniz ve sen. Deniz hep ucuna kadar koşardı, sen hep ortada dururdun. “Ortada dur, ucu sallanır,” derdi annen. Ucu hep sallanırdı.\n\nİskelenin ucunda biri oturuyor; ayakları suya sarkıtılmış, kapüşonu başında, ellerinde bir termos kapağı. Fener ışığında yüzünü görünce nefesin kesiliyor. Deniz. Saçları uzamış, sakal bırakmış, üç yılda on yaş büyümüş.\n\n“Bir gün erken geldim,” diyor, dönmeden. Sesini tanıyorsun ve tanımıyorsun. “Annemin yıldönümüne gelecektim ama kimseyle karşılaşmak istemedim. Bu iskele onun iskelesiydi. Her sabah buradan açılırdı. Ben de buraya oturup sabahı bekleyecektim. Annemin saatinde. 08.10.”\n\nBir süre susuyor. “Mesajını okudum. ‘Gelme’ demişsin. Üç yıl sonra ilk sözün ‘gelme’. Çok sen.”\n\nAltında, kazıklardan biri gıcırdıyor; uzun, derin, bir geminin iç çekişi gibi.",
       "Choices": [
         {
-          "Text": "Bilgiyi açık tut, tahliyeyi görevlilerle koordine et.",
-          "Next": "ending_shared",
-          "Result": "Kasaba tek bir kahramana ihtiyaç duymadı.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "empathy",
-          "MinValue": 65
+          "Text": "“Kalk. Bu iskele çökecek,” de; elini uzat.",
+          "Next": "deniz_pier",
+          "Result": "Deniz elini tutmadı. Ama ayaklarını sudan çekti.",
+          "Effects": {
+            "resolve": 10
+          }
         },
         {
-          "Text": "Yayını sürdürürken Asya hattı ayırsın.",
-          "Next": "ending_ground",
-          "Result": "Birbirinizin yerini doldurmadan birlikte çalıştınız.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "backup",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "İskeledeki insanlara katıl.",
-          "Next": "quay",
-          "Result": "Mikrofondan sonra insanlarla yüz yüze geldin.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "Text": "Yanına otur.",
+          "Next": "deniz_pier",
+          "Result": "Tahtalar ikinizin ağırlığıyla inledi. Deniz sana baktı; şaşkındı.",
+          "Effects": {
+            "empathy": 15
+          },
+          "SetFlags": [
+            "sat_together"
+          ]
         }
-      ],
+      ]
+    },
+    "deniz_pier": {
+      "Title": "Annemin iskelesi",
+      "Chapter": 2,
+      "Text": "“Fırtına uyarısını neden geç okudun?” diye soruyor Deniz. Üç yıldır bu soruyu sormadı; sadece gitti. Şimdi soruyor, sesi sakin, bir cevap gerçekten istiyor.\n\nAnlatıyorsun. Şarkının bitmesini beklediğini. Annenin en sevdiği şarkıydı; o gece istek hattından o istemişti, denize açılmadan önce. “Bitsin, sonra okurum,” dedin. Şarkı dört dakika on yedi saniyeydi. Ardından reklam, ardından haber. On yedi dakika.\n\nDeniz uzun süre denize bakıyor. “Ben o şarkıyı hiç dinlemedim,” diyor. “Cenazeden sonra. Radyoda çıkınca kapatıyorum.” Sonra cebinden telefonunu çıkarıyor, bir şey açıyor, ekranı sana gösteriyor: annenin sana son gönderdiği mesaj, Deniz’in telefonunda, ondan iletilmiş. Hiç görmediğin bir mesaj.\n\n“Şarkıyı çaldığın için sağ ol kızım. Fırtına geliyor, biliyorum. Tekneyi bağlayıp döneceğim.”\n\n“Biliyordu,” diyor Deniz. “Senin uyarını beklemiyordu. Biliyordu ve yine de gitti. Ben bunu üç yıl önce görmüştüm. Sana göstermedim.”",
+      "Choices": [
+        {
+          "Text": "Hiçbir şey söyleme. Deniz’in omzuna yaslan.",
+          "Next": "brother_again",
+          "Result": "Bir süre öyle oturdunuz. Sonra kazık yeniden gıcırdadı ve ikiniz birlikte kalktınız.",
+          "Effects": {
+            "empathy": 15
+          },
+          "SetFlags": [
+            "deniz_knows",
+            "forgiven"
+          ]
+        },
+        {
+          "Text": "“Neden göstermedin?” diye sor.",
+          "Next": "brother_again",
+          "Result": "“Çünkü birinin suçlu olması gerekiyordu,” dedi Deniz. “Sen en yakındın.”",
+          "Effects": {
+            "resolve": 10
+          },
+          "SetFlags": [
+            "deniz_knows"
+          ]
+        }
+      ]
+    },
+    "brother_again": {
+      "Title": "Üç yılın içindeki sabah",
       "Chapter": 3,
-      "Ending": ""
+      "Text": "Annenin eski evi kıyıdaki son ev; boyası soyulmuş mavi kapısı, pencerenin önünde kurumuş sardunyalar. Deniz bu evde kalıyormuş, sen bilmeden, iki gecedir. Anahtarı hep saksının altında dururdu; hâlâ orada.\n\nİçeride her şey üç yıl öncesi gibi. Mutfak masasında annenin gözlüğü, bir kalıp sabun, yarım bir bulmaca. Duvarda tekne fotoğrafları; annen, Deniz ve sen, her yaz aynı pozda, her yaz biraz daha büyük. En sonuncusunda sen yoksun; o yaz radyoda işe başlamıştın.\n\nDeniz kapının eşiğinde duruyor, içeri girmiyor. “Sabah buradan iskeleye yürüyecektim,” diyor. “Annemin saatinde. 08.04’te kapıdan çıkardı, 08.10’da tekneye binerdi. Hep aynı. Altı dakika.”\n\nKapının iç tarafında, kapı kolunun hemen üstünde, bir kâğıt bantlanmış. Senin el yazın: “Deniz, kapıyı açma.”\n\nDeniz kâğıdı görüyor, sonra sana bakıyor. “Bunu sen mi yazdın?”\n\n“Henüz değil,” diyorsun ve bunu söylediğinde ne kadar doğru olduğunu anlıyorsun.",
+      "Choices": [
+        {
+          "Text": "Deniz’e her şeyi anlat: ses, defter, kırk yedi deneme.",
+          "Next": "pattern",
+          "Result": "Deniz dinledi. Sonra annenin bulmacasının yanına oturdu ve “Desen,” dedi. “Annem hep desen arardı.”",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [
+            "deniz_knows"
+          ]
+        },
+        {
+          "Text": "Kâğıdı söküp cebine koy.",
+          "Next": "future",
+          "Result": "Bant kolayca söküldü. Arkasında yeni bir yapışkan izi yoktu; sanki kâğıt hep oradaymış.",
+          "Effects": {
+            "resolve": 10
+          },
+          "SetFlags": [
+            "note_taken"
+          ]
+        },
+        {
+          "Text": "Annenin bulmacasına bak.",
+          "Next": "measure",
+          "Result": "Bulmacanın yarısı dolmuştu. Annenin kurşunkalem izleri. Bir sözcüğün yanında bir saat: 08.10.",
+          "Effects": {
+            "logic": 10
+          }
+        }
+      ]
+    },
+    "pattern": {
+      "Title": "Değişmeyen şey",
+      "Chapter": 3,
+      "Text": "Defteri, kayıtları ve Asya’nın raporunu masaya yayıyorsun. Kırk yedi deneme. Her birinde bir şey değişmiş; birinde iskele kapanmış, birinde tekne erken gelmiş, birinde Asya, birinde sen. Ama sabahın iskeleti hep aynı.\n\nYankının parçaları da aynı sırayı tekrarlıyor, farklı denemelerde farklı ağızlardan: sis, tekne, bir kapı, bir koşu, bir çöküş. Bu sırayı doğru kurarsan neyin değişmediğini göreceksin.\n\nDeniz annenin bulmaca kalemini sana uzatıyor.",
+      "Interaction": {
+        "Type": "order",
+        "Prompt": "Yarın sabahın olaylarını yankılardaki sıraya koy.",
+        "Items": [
+          "07.40 · Sis körfeze çöker",
+          "07.55 · Okul teknesi adadan kalkar",
+          "08.04 · Kıyıdaki mavi kapı çalınır",
+          "08.07 · Biri iskeleye koşar",
+          "08.10 · İskelenin ucu çöker"
+        ],
+        "Attempts": 2,
+        "Success": 0,
+        "Fail": 1
+      },
+      "Choices": [
+        {
+          "Text": "Desen ortaya çıktı.",
+          "Next": "pattern_seen",
+          "Result": "Beş olay yerine oturdu. Dördüncü sırada hep aynı şey vardı: bir kapı.",
+          "Effects": {
+            "logic": 15
+          },
+          "SetFlags": [
+            "timeline"
+          ]
+        },
+        {
+          "Text": "Desen dağıldı.",
+          "Next": "future",
+          "Result": "Olaylar birbirine karıştı. Bir şey hep oradaydı ama ne olduğunu göremedin.",
+          "Effects": {
+            "logic": -5
+          }
+        }
+      ]
+    },
+    "pattern_seen": {
+      "Title": "08.04",
+      "Chapter": 3,
+      "Text": "Kırk yedi denemenin hepsinde 08.04’te mavi kapı çalınıyor. Defterin sayfalarını yan yana dizdiğinde desen açıkça görünüyor; tıpkı annenin bulmacalarında, yatay ve dikey bir kelimenin aynı harfte kesişmesi gibi.\n\nBazen Halil Usta çalıyor kapıyı, “Tekne sisin içinde, iskeleyi göremiyor, Deniz yardım et!” diye. Bazen Selin Hanım, kızı teknede diye. Bir kere Asya. Bir kere başkan. Bir kere de, defterin otuz birinci sayfasında, sen.\n\nVe her seferinde Deniz kapıyı açıyor ve iskeleye koşuyor. Çünkü Deniz, annenizin çırağıydı; on iki yaşından beri teknedeydi, sisin içinde iskeleye yanaşmayı annenin elinden öğrenmişti. Kasabada bunu yapabilecek tek kişi. Tekne iskeleyi göremeyince Deniz kazıkların ucuna çıkıp feneri sallıyor; tıpkı annenin yaptığı gibi. 08.10’da iskelenin ucu çöküyor. Tekne kurtuluyor. Deniz kurtulmuyor.\n\nDeğişmeyen şey bir kişi değil. Bir kapı ve o kapıyı çalan bir iyilik. Herkes yardım etmek için geliyor. Her yardım Deniz’i iskeleye gönderiyor.\n\n“Kapıyı açma,” diyor Deniz, kâğıda bakarak. Sesi yavaş, ağır. “Ama kapıyı açmazsam tekne sisin içinde kalır. Okul teknesi. Yirmi iki çocuk. Selin Hanım’ın kızı. Halil Amca’nın torunu.”\n\nİkiniz de bir süre konuşmuyorsunuz. Kurtarılacak bir kişi ile kurtarılacak yirmi iki kişi arasında bir seçim gibi duruyor. Kırk yedi kez öyle durmuş. Ama belki de değil. Belki tekne hiç iskeleye gelmemeli. Belki kapıyı kimse çalmamalı. Belki kapının önünde biri durmalı.",
+      "Choices": [
+        {
+          "Text": "“Tekne iskeleye hiç gelmemeli,” de. Okulu, kaptanı ara.",
+          "Next": "school_call",
+          "Result": "Okulun numarası panoda, annenin el yazısıyla yazılıydı.",
+          "Effects": {
+            "logic": 10
+          }
+        },
+        {
+          "Text": "Gelecekteki sesine sor: Ne denemedin?",
+          "Next": "future",
+          "Result": "Verici binasına koştunuz. Deniz bu kez seninleydi.",
+          "Effects": {
+            "resolve": 10
+          },
+          "SetFlags": [
+            "deniz_with"
+          ]
+        }
+      ]
     },
     "measure": {
       "Title": "Bir saniyelik yer",
-      "Text": "Dosyaları zaman çizelgesine koyunca farkı görüyorsun. Yayın geleceği göstermiyor; elektromanyetik bir arıza, aynı kaydı farklı saatlere taşıyor. Ama kayıtların içeriği neden değişiyor?\n\nBuna henüz cevabın yok. Yine de bütün gerçeği bilmeden düzeltebileceğin bir arıza var. Asya ölçümleri görünce gülümsüyor. “İşte bununla çalışabilirim.”",
+      "Chapter": 3,
+      "Text": "Annenin bulmacasında, sekiz harfli bir kelimenin karesine kurşunkalemle “08.10” yazılmış ve yanına bir not düşülmüş: “İki saat aynı anda durursa, kapı açılır.” Annen bulmacaları çözerken kenarlara hep böyle notlar yazardı; anlamsız, şiirli, onun dilinde.\n\nAma bu gece anlamsız değil. Telefonunun saati, istasyonun saati, Asya’nın kol saati: üçü de farklı. Fark her dakika büyüyor. Asya telsizden ölçümü okuyor: “Dakikada 1,3 saniye. Tam güneş doğarken, 06.52’de, iki saat bir saniyeliğine çakışacak.”\n\nO bir saniyede vericinin gücü kesilirse yankı kalıcı olarak kapanır. Kesilmezse kapı açık kalır; ses gelmeye devam eder, bir sonraki gece, bir sonraki deneme.\n\nAma önce ölçümü doğrulaman gerekiyor. Saniye sıçramalarını yakalayıp Asya’ya bildirmelisin.",
+      "Interaction": {
+        "Type": "timing",
+        "Prompt": "Saatin sıçradığı anı yakala: işaret aralıktayken dokun. Üç sıçramadan ikisi.",
+        "Rounds": 3,
+        "Need": 2,
+        "Zone": 0.18,
+        "Speed": 1.2,
+        "Success": 0,
+        "Fail": 1
+      },
       "Choices": [
         {
-          "Text": "Ölçümleri Asya’ya ver ve hattı ayırın.",
-          "Next": "ending_ground",
-          "Result": "Bilginin sınırlarını kabul ederek işe yaradın.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "logic",
-          "MinValue": 70
+          "Text": "Ölçüm doğrulandı.",
+          "Next": "future",
+          "Result": "“06.52.07,” dedi Asya. “O saniyeyi unutma.”",
+          "Effects": {
+            "logic": 10
+          },
+          "SetFlags": [
+            "drift"
+          ]
         },
         {
-          "Text": "Verileri yayımla, bağımsız inceleme iste.",
-          "Next": "ending_shared",
-          "Result": "Açıklamayı tek bir sesin elinde bırakmadın.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Vericiyi çalışır tutup incelemeyi sürdür.",
-          "Next": "ending_loop",
-          "Result": "Bir cevap daha almak için bir sabahı daha riske attın.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "Text": "Ölçüm tutmadı.",
+          "Next": "future",
+          "Result": "Rakamlar birbirine girdi. Asya “Yaklaşık yediye doğru,” dedi. “Yaklaşık.”",
+          "Effects": {
+            "resolve": -5
+          }
         }
-      ],
-      "Chapter": 4,
-      "Ending": ""
+      ]
     },
-    "quay": {
-      "Title": "08.09 · Kuzey iskelesi",
-      "Text": "İskelede insanlar bekliyor. Kimi iptale kızgın, kimi denize bakıyor. Deniz burada değil; telefonunda “Ben iyiyim” mesajı var.\n\nSaat 08.10 oluyor. Hiçbir şey olmuyor. Bu, hiçbir tehlike olmadığı anlamına gelebilir. Bir şeyleri değiştirdiğiniz anlamına da. Asya sana bakıyor. İkiniz de bütün ömrünüzü hangi açıklamanın doğru olduğunu bulmaya harcayabilirsiniz.",
+    "future": {
+      "Title": "Karşı taraftaki sen",
+      "Chapter": 3,
+      "Style": "radio",
+      "Text": "[verici binası · mikrofon açık]\n— Orada mısın?\n— …buradayım. Kaç oldu?\n— Bilmiyorum. Defterde kırk yedi yazıyor.\n— Kırk sekiz o zaman. Hep bir fazlası. İlkini unutma.\n— Annemin lafı.\n— Senin lafın artık.\n— Ne denemedin?\n— Hepsini denedim. Bir şeyi hariç.\n— Neyi?\n— Kapıda durmayı. Ben hep radyodaydım. Hep başkasını gönderdim. Çünkü üç yıl önce radyodaydım ve kendimi oradan çıkaramadım.\n[uzun bir parazit]\n— Sana ne yapacağını söyleyemem. Çünkü ben bütün cevapları bildiğimi sandığım için buradayım.\n— Birini kaybetmemek için zamanı durdurursan, onun seçebileceği her şeyi de durdurursun.",
       "Choices": [
         {
-          "Text": "İnsanların güvenliğini doğrula ve bu sabahı yaşamaya başla.",
-          "Next": "ending_morning",
-          "Result": "Kesinlik olmadan da güne devam ettin.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "Text": "“Bu sefer kapıda ben duracağım,” de.",
+          "Next": "harbor_walk",
+          "Result": "Kulaklıkta bir nefes. Sonra, çok uzaktan, bir gülüş. Hat kapandı.",
+          "Effects": {
+            "resolve": 15
+          },
+          "SetFlags": [
+            "will_stand"
+          ]
         },
         {
-          "Text": "Bütün kayıtları paylaş, araştırmayı birlikte sürdürün.",
-          "Next": "ending_shared",
-          "Result": "Bilme isteğini ortak bir işe dönüştürdün.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "empathy",
-          "MinValue": 60
+          "Text": "“Sen kimsin? Gerçekten ben misin?” diye sor.",
+          "Next": "harbor_walk",
+          "Result": "Cızırtı. Sonra: “Sorduğun soruya göre değişiyorum.” Hat kapandı.",
+          "Effects": {
+            "logic": 10
+          }
         },
         {
-          "Text": "Vericiye dön; bu kez daha fazlasını öğrenebilirsin.",
-          "Next": "ending_loop",
-          "Result": "Sonraki soruyu bu sabahın önüne koydun.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "Text": "Deniz’in mikrofona konuşmasına izin ver.",
+          "Next": "harbor_walk",
+          "Result": "Deniz mikrofona eğildi. “Abla?” dedi. Karşıdan uzun bir sessizlik geldi, sonra yalnızca: “Kapıda dur.”",
+          "NeedFlag": "deniz_with",
+          "Effects": {
+            "empathy": 15
+          },
+          "SetFlags": [
+            "deniz_spoke",
+            "will_stand"
+          ]
         }
-      ],
+      ]
+    },
+    "far_side": {
+      "Title": "04.30 · Sessiz hat",
       "Chapter": 4,
-      "Ending": ""
+      "Text": "Hat kapandıktan sonra verici binasının içi sessizleşiyor. Vakum tüpleri hâlâ yanıyor ama tık sesi yavaşlamış; sanki karşı taraf yorulmuş, ya da düşünüyor. Asya kapının eşiğinde oturuyor, termostan çay dolduruyor; çay hâlâ sıcak ve kimin doldurduğunu hiçbiriniz sormuyorsunuz. Deniz belki yanında, belki değil.\n\n“Bir şey söyleyeyim mi?” diyor Asya, sana bakmadan. “Fırtınadan sonra acil durum hattını kurarken hep seni düşündüm. Sis düdüğü, iskele lambaları, hastane jeneratörü. ‘Bir daha kimse uyarıyı geç duymasın’ diye. Belediyeye yazdığım raporların hepsi aslında sana yazılmıştı. Kimse okumadı. Belki de en çok sen.”\n\nMasadaki defterin kırk yedinci sayfası açık. “Değişmeyen bir şey var. Bul.” Altında, bu gece eklenmiş gibi taze bir satır, kendi yazın: “Ya da değiştirmeyi bırak. Dur.”\n\nŞafağa iki saatten az var. Önünde dört yol: kasabanın başkanını uyandırmak, okul teknesinin kaptanını durdurmak, radyoya dönüp kasabaya doğrudan söylemek, ya da vericiyi kesip yankıyı sonsuza dek susturmak. Belki birkaçı birden. Ama sabah tek bir kez gelecek. Bu kez, umarsın, gerçekten bir kez.",
+      "Choices": [
+        {
+          "Text": "Belediye başkanını uyandır.",
+          "Next": "mayor",
+          "Result": "Başkanın evi limana bakan tek beton yapıydı.",
+          "Effects": {
+            "resolve": 10
+          }
+        },
+        {
+          "Text": "Okul teknesinin kaptanını ara.",
+          "Next": "school_call",
+          "Result": "Kaptanın numarasını Halil Usta’dan aldın; Halil Usta zaten fırındaydı.",
+          "Effects": {
+            "logic": 5
+          }
+        },
+        {
+          "Text": "Radyoya dön; kasabaya söyle.",
+          "Next": "broadcast",
+          "Result": "Asya telsizi sana uzattı. “Ben vericinin başındayım.”",
+          "Effects": {
+            "empathy": 5
+          }
+        },
+        {
+          "Text": "Asya’yla vericiyi kesmeye hazırlan.",
+          "Next": "switch",
+          "Result": "Asya alet çantasını açtı. Paslı bir yalıtkan pense çıkardı.",
+          "Effects": {
+            "logic": 5
+          }
+        }
+      ]
+    },
+    "school_call": {
+      "Title": "Kaptan Nevzat",
+      "Chapter": 4,
+      "Text": "Okul teknesinin kaptanı Nevzat Bey telefonu dördüncü çalışta açıyor; sesi uykulu ama hemen toparlanıyor, eski bir denizcinin sesi. Anlatıyorsun: kazıklar, rapor, sis. Yankıdan bahsetmiyorsun.\n\n“Kuzey iskelesi çürük, biliyorum,” diyor. “Asya Hanım’ın raporunu ben de okudum. Ama güney iskelesi kapalı, başka yer yok. Çocukları kayalık sahile indiremem. Programı ben yapmadım, belediye yaptı.” Bir sessizlik. “Sis olacaksa yarın hiç kalkmam. Ama sis tahmini yok. Meteoroloji açık hava diyor.”\n\n“Sis olacak,” diyorsun. “Yedi kırkta.”\n\nNevzat Bey uzun süre bir şey söylemiyor. “Annen de böyle konuşurdu,” diyor sonunda. “Hava raporu açık der, o ‘Sis olacak’ derdi. Hep haklı çıkardı.” Bir nefes. “Yedi otuzda bir daha arayın beni. Sis görürsem kalkmam. Görmezsem… görmezsem kalkarım.”",
+      "Choices": [
+        {
+          "Text": "“Kalkmayın,” de; annenin adını kullan.",
+          "Next": "bakery",
+          "Result": "“Leman Hanım’ın kızı söylüyorsa,” dedi Nevzat Bey, “kalkmam.”",
+          "NeedStat": "empathy",
+          "MinValue": 65,
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [
+            "boat_held"
+          ]
+        },
+        {
+          "Text": "Teşekkür et; 07.30’da ararım de.",
+          "Next": "bakery",
+          "Result": "Telefonu kapattığında Asya “Sis gelecek mi gerçekten?” diye sordu. Bilmiyordun.",
+          "Effects": {
+            "logic": 5
+          }
+        }
+      ]
+    },
+    "mayor": {
+      "Title": "Başkanın kapısı",
+      "Chapter": 4,
+      "Text": "Belediye başkanı Kemal Yazıcı kapıyı sabahlıkla açıyor, yüzünde kızgınlıktan çok yorgunluk. Altmış yaşında, üçüncü döneminde, kasabanın her derdini ezbere bilen ve hiçbirini çözmeye bütçesi olmayan bir adam.\n\n“Kuzey iskelesi,” diyor, sen daha anlatmadan, Asya’nın raporunu elinden alarak. “Biliyorum. Bütçe yok. Merkezden ödenek bekliyorum. Ne yapayım, iskeleyi kendi elimle mi yapayım?”\n\n“Kapatın,” diyorsun. “Yalnızca sabah için. Bir şerit, bir tabela.”\n\nBaşkan raporu bir süre inceliyor. “Kapatırsam okul teknesi nereye yanaşacak? Veliler kayalıkta mı bekleyecek? Kapatırsam bir dahaki seçimde…” Sözünü bitirmiyor. Sonra raporun altındaki notu görüyor: “Okunmadı.” Senin el yazın.\n\n“Bunu kim yazdı?” diye soruyor. Cevap vermiyorsun. Başkan nota uzun uzun bakıyor. “Üç kez yazdı Asya Hanım,” diyor sonunda, kendi kendine. “Üç kez. Ben de üç kez erteledim.”",
+      "Choices": [
+        {
+          "Text": "Kaydı başkana dinlet.",
+          "Next": "mayor_tape",
+          "Result": "Başkan kulaklığı taktı. Yüzündeki yorgunluk başka bir şeye döndü.",
+          "NeedFlag": "recorded",
+          "Effects": {
+            "logic": 10
+          }
+        },
+        {
+          "Text": "“Kızınız o teknede değil diye mi?” de.",
+          "Next": "dawn",
+          "Result": "Başkan kapıyı kapatmadı ama cevap da vermedi. Sabahlığını sıkıca bağladı ve içeri girip telefonu aldı.",
+          "NeedStat": "resolve",
+          "MinValue": 65,
+          "Effects": {
+            "resolve": 10
+          },
+          "SetFlags": [
+            "pier_closed"
+          ]
+        },
+        {
+          "Text": "Teşekkür et, git.",
+          "Next": "bakery",
+          "Result": "Kapı arkandan kapandı. Işık bir süre yandı, sonra söndü.",
+          "Effects": {
+            "empathy": -5
+          }
+        }
+      ]
+    },
+    "mayor_tape": {
+      "Title": "Başkanın kulaklığı",
+      "Chapter": 4,
+      "Text": "Başkan kaydı iki kez dinliyor. İkincisinde gözlerini kapatıyor. Kulaklığı çıkardığında sesi yumuşamış. “Bu senin sesin,” diyor. “Ama bu gece kaydedilmemiş. Arkada okul teknesinin motoru var. Ben o motoru tanırım; yirmi yıldır her sabah penceremin önünden geçiyor.”\n\nTelefonunu alıp birini arıyor: zabıta amiri. “Kuzey iskelesini sabah altıda şeritle kapatın. Evet, şimdi. Evet, bütçe yok, biliyorum. Kendi cebimden öderim şeridi.” Telefonu kapatıp sana dönüyor. “Okul teknesine de söyleyeceğim; kayalık sahile yanaşsın, veliler orada beklesin. Sabah bütün kasaba bana kızacak.”\n\n“Kızsınlar,” diyorsun.\n\nBaşkan kısa, şaşkın bir gülüş bırakıyor. “Annen de böyle derdi.” Sonra ciddileşiyor: “Ama bir şey var. İskele kapanırsa insanlar bakmaya gelir. Kasaba böyledir. Ne olduğunu görmek isterler. Kapalı bir iskeleye bakmak için iskeleye gelirler.”",
+      "Choices": [
+        {
+          "Text": "Radyoya dön; kasabayı uzak tut.",
+          "Next": "broadcast",
+          "Result": "Başkan seni kapıya kadar geçirdi. “Yayında adımı söyle,” dedi. “Suçu ben üstlenirim.”",
+          "Effects": {
+            "resolve": 10
+          },
+          "SetFlags": [
+            "pier_closed",
+            "mayor_ally"
+          ]
+        },
+        {
+          "Text": "Mavi kapıya git; Deniz’in yanında ol.",
+          "Next": "dawn",
+          "Result": "Kıyı yolu henüz karanlıktı. Başkanın evinin ışığı arkanda yandı, söndü, yandı.",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [
+            "pier_closed"
+          ]
+        }
+      ]
+    },
+    "broadcast": {
+      "Title": "Dinleyen kasaba",
+      "Chapter": 4,
+      "Text": "05.30. Kırmızı ışık yanıyor. Dört yıldır bu saatte kimse dinlemezdi; ama bu sabah Halil Usta fırının radyosunu açmış, liman bekçisi kulübesinde, belki Selin Hanım evinde, belki Nevzat Bey teknesinde.\n\nMikrofona eğiliyorsun. Üç yıl önce okumadığın uyarının yerine bugün başka bir uyarı okuyacaksın. Ne diyeceğini, nasıl diyeceğini sen seçeceksin. Bir haber gibi mi, bir rica gibi mi, bir itiraf gibi mi?\n\nNefesin mikrofona çarpıyor; hoparlörden kendi nefes sesini duyuyorsun. Tıpkı gece duyduğun gibi.",
+      "Choices": [
+        {
+          "Text": "Kaydı yayımla; olduğu gibi, yorum katmadan.",
+          "Next": "town_wakes",
+          "Result": "Kendi sesin kasabanın bütün radyolarında aynı anda çaldı: “Yarın saat 08.10’da kuzey iskelesine gitmeyin.”",
+          "NeedFlag": "recorded",
+          "Effects": {
+            "logic": 10
+          },
+          "SetFlags": [
+            "aired"
+          ]
+        },
+        {
+          "Text": "Üç yıl önceki gecenin hikâyesini anlat, sonra uyar.",
+          "Next": "town_wakes",
+          "Result": "Sesin titredi ama durmadı. On yedi dakikayı anlattın, sonra on yedi saniyelik bir uyarı okudun.",
+          "Effects": {
+            "empathy": 15
+          },
+          "SetFlags": [
+            "aired",
+            "confessed"
+          ]
+        },
+        {
+          "Text": "Kısa bir resmi duyuru oku: iskele kapalı.",
+          "Next": "town_wakes",
+          "Result": "Bir belediye duyurusu gibi, kuru ve net. Kimse soru sormadı; kimse ilgilenmedi de.",
+          "Effects": {
+            "resolve": 5
+          },
+          "SetFlags": [
+            "aired"
+          ]
+        }
+      ]
+    },
+    "town_wakes": {
+      "Title": "06.10 · Çalan telefonlar",
+      "Chapter": 4,
+      "Style": "chat",
+      "Text": "Halil Usta: Kızım duydum. Fırını kapatıp iskeleye mi gidelim, uzak mı duralım?\nSelin Hanım: Kızımı tekneye göndermiyorum. Başkalarını da arıyorum.\nNevzat Bey: Yayını duydum. Sis yok henüz. Bekliyorum.\nBilinmeyen: Radyocu kız deli mi oldu?\nBilinmeyen: Annesini kaybettiğinden beri böyle.\nAsya: Verici tık sesini hızlandırdı. Bir şey anladı karşı taraf.\nDeniz: Sesini duydum. Annemi anlattığın kısmı.\nDeniz: Kapıdayım. Hangi tarafında duracağımı bilmiyorum.",
+      "Choices": [
+        {
+          "Text": "Halil Usta’ya yaz: “Kimse gelmesin, bu sefer kimse yardıma koşmasın.”",
+          "Next": "bakery",
+          "Result": "Halil Usta: “Fırındayım. Gel, yüz yüze söyle.”",
+          "Effects": {
+            "logic": 10
+          }
+        },
+        {
+          "Text": "Deniz’e yaz: “İçeride kal. Ben geliyorum.”",
+          "Next": "dawn",
+          "Result": "Deniz: “Bu sefer sen mi geliyorsun?” Bir süre sonra: “Tamam.”",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [
+            "will_stand"
+          ]
+        }
+      ]
     },
     "switch": {
       "Title": "Son düğme",
-      "Text": "Vericiye giden hattın anahtarı elinde. Yedek hat varsa iskele aydınlık kalacak. Yoksa görevlinin bütün alanı boşaltmasını beklemelisin. Kestirme bir çözümün bedeli başka birinin karanlığı olabilir.\n\nKulaklıktan son bir cümle geliyor: “Bu kez kaydı bitiren sen ol.”",
+      "Chapter": 4,
+      "Text": "Asya dağıtım kutusunun önünde diz çökmüş, yalıtkan penseyi ana kablonun üstünde tutuyor. Fenerinin ışığı kutunun içinde sarı bir daire. “Bu kabloyu kesersem verici susar,” diyor. “Ama iskele lambaları ve sis düdüğü de susar. Hastane jeneratöre geçer, sorun yok. Ama sabah sis olursa tekne iskeleyi göremez, düdüğü duyamaz.”\n\nBir süre ikiniz de kabloya bakıyorsunuz. Topraktan gelen o ince, kökü olan kablo şimdi parlıyor; içinde bir şey akıyor, ışık değil, ses de değil.\n\n“Kesmenin tek bir doğru anı var,” diyor Asya. “İki saatin çakıştığı saniye. Erken kesersen hat kendini yeniden kurar; geç kesersen yankı kapanmaz, bir sonraki geceye taşınır. Tam o saniyede kesersen, karşı taraf susar. Sonsuza dek.”\n\n“Sonsuza dek,” diye tekrarlıyorsun. Kendi sesini bir daha hiç duymayacaksın. Gelecekteki senin ne öğrendiğini hiç bilmeyeceksin.",
       "Choices": [
         {
-          "Text": "Yedek hatla güvenli biçimde kapat.",
-          "Next": "ending_ground",
-          "Result": "İnsanların güvenliğini bir deneyin önüne koydun.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "backup",
-          "NeedStat": "",
-          "MinValue": 0
+          "Text": "Şafağı bekle; o saniyede kes.",
+          "Next": "asya_story",
+          "Result": "Asya penseyi kablonun üstünde bıraktı. Saatine kurdu: 06.52.",
+          "Effects": {
+            "resolve": 10
+          },
+          "SetFlags": [
+            "cut_plan"
+          ]
         },
         {
-          "Text": "Tahliye tamamlanana kadar bekle, sonra kapat.",
-          "Next": "ending_morning",
-          "Result": "Yavaş davranmak bu kez bir kayıp değildi.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Son bir kayıt almak için açık bırak.",
-          "Next": "ending_loop",
-          "Result": "Merakın sabahın önüne geçti.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "Text": "Kesme; karşı tarafla bir kez daha konuş.",
+          "Next": "future_last",
+          "Result": "Asya penseyi indirdi. “Son kez,” dedi.",
+          "Effects": {
+            "empathy": 10
+          }
         }
-      ],
+      ]
+    },
+    "future_last": {
+      "Title": "Son yayın",
       "Chapter": 4,
-      "Ending": ""
+      "Style": "radio",
+      "Text": "— Hâlâ orada mısın?\n— Buradayım. Ama azalıyorum. Her sabah biraz daha az ben kalıyor.\n— Kessem ne olur sana?\n— Bilmiyorum. Belki hiç olmamış olurum. Belki sabah olur ve ben sıradan bir sabahta uyanırım.\n— Kesmezsem?\n— O zaman ben senin yerine geçerim, sen benim yerime. Kırk dokuzuncu deneme. Bir başkası bu sesi duyar, bir başkası kapıya koşar.\n— Bir seçenek daha var mı?\n— Her zaman bir seçenek daha vardır. İlkini unutma.\n— Bu ne demek?\n— Annem ilk vapurdan önce hep önce kapıyı açardı. Sonra çıkardı. Kapıyı açmak ile kapıdan çıkmak aynı şey değil.\n[cızırtı · 05.58]",
+      "Choices": [
+        {
+          "Text": "Kabloyu kesme planını sür.",
+          "Next": "asya_story",
+          "Result": "Asya saatine kurdu: 06.52.",
+          "Effects": {
+            "resolve": 5
+          },
+          "SetFlags": [
+            "cut_plan"
+          ]
+        },
+        {
+          "Text": "Karşı tarafa son bir mesaj kaydet: geçmişteki sana.",
+          "Next": "dawn",
+          "Result": "Mikrofona yalnızca bir cümle söyledin. Ne söylediğini kimseye anlatmadın.",
+          "NeedFlag": "drift",
+          "Effects": {
+            "logic": 10
+          },
+          "SetFlags": [
+            "sent_back"
+          ]
+        }
+      ]
+    },
+    "dawn": {
+      "Title": "07.40 · Sis",
+      "Chapter": 5,
+      "Text": "Sis tam yedi kırkta geliyor. Meteoroloji açık hava demişti; gökyüzü bir saat önce yıldızlıydı. Önce körfezin ağzından, beyaz bir duvar gibi; sonra limanın üstünden, direklerin tepelerini yutarak; sonra kıyı yolundan, sokak lambalarını tek tek söndürür gibi. Bir dakika içinde karşı kıyı yok oluyor. İki dakika içinde iskelenin ucu. Üç dakika içinde kendi ayakların.\n\nSes de değişiyor. Martılar susuyor. Dalgaların sesi yakınlaşıyor, sanki deniz kıyıya çıkmış. Uzakta bir köpek havlıyor, sonra o da susuyor.\n\nTelefonun titriyor. Nevzat Bey: “Sis geldi. Sen haklıydın. Annen gibi.” Asya telsizden: “Saatler yakınlaşıyor. On iki dakika sonra çakışma.” Deniz’den mesaj yok. Halil Usta’nın fırınından gelen ekmek kokusu sisin içinde bile duyuluyor.\n\nKıyı yolunda duruyorsun. Bir yanda mavi kapı, otuz adım ötede; içinde Deniz, belki uyuyor, belki değil. Bir yanda iskele, yüz adım ötede, sisin içinde görünmez. Bir yanda tepedeki verici binası, kırmızı lambası sisin arkasından nabız gibi yanıp sönüyor; senin nabzın.\n\nSaat 07.48. Kırk yedi denemenin hepsinde bu dakikada sen radyodaydın. Defterde yazıyordu. Bu kez değilsin. Bu kez ayaklarının altında ıslak taş, saçlarında sis var.\n\nNereye gideceğine şimdi karar vermelisin. Her yol bir kapıya çıkıyor.",
+      "Choices": [
+        {
+          "Text": "Mavi kapının önüne git ve orada dur.",
+          "Next": "deniz_door",
+          "Result": "Kapının önünde durdun. Sisin içinde kendi nefesini duyuyordun.",
+          "Effects": {
+            "resolve": 10
+          }
+        },
+        {
+          "Text": "Tepeye, Asya’nın yanına çık; kabloyu kesin.",
+          "Next": "cable_cut",
+          "Result": "Yokuşu koşarak çıktın. Sis ayaklarının altında kaldı.",
+          "NeedFlag": "cut_plan",
+          "Effects": {
+            "logic": 10
+          }
+        },
+        {
+          "Text": "İskeleye in; kimse oraya gitmesin diye ucunda bekle.",
+          "Next": "quay",
+          "Result": "Tahtalar sisin içinde ıslak ve görünmezdi. Her adımı hissederek yürüdün.",
+          "Effects": {
+            "empathy": 5
+          }
+        },
+        {
+          "Text": "Radyoya dön; sisin içinden yayın yap.",
+          "Next": "radio_dawn",
+          "Result": "Stüdyonun kapısı aralıktı; çıkarken kilitlemeyi unutmuştun.",
+          "Effects": {
+            "empathy": 5
+          }
+        }
+      ]
+    },
+    "radio_dawn": {
+      "Title": "08.00 · Açık mikrofon",
+      "Chapter": 5,
+      "Text": "Stüdyo sisin içinde bir fener gibi. Kırmızı ışığı yakıyorsun. Kırk yedi denemenin hepsinde tam bu saatte, tam bu sandalyede oturdun. Ve kırk yedi kez bir şey oldu.\n\nAma bu sefer bir fark var: Dışarıdan, sisin içinden, bir ses geliyor. Okul teknesinin sis düdüğü. Nevzat Bey kalkmamış; düdüğü limanın içinden, bağlı olduğu yerden çalıyor. Kasabaya “Buradayım, gelmiyorum,” diyor.\n\nMikrofona eğilip kasabaya tek bir şey söyleyebilirsin. Üç yıl önce bu masada söyleyemediğin şey.",
+      "Choices": [
+        {
+          "Text": "“Kimse iskeleye gitmesin. Bu sabah yardım etmenin yolu uzak durmak.”",
+          "Next": "ending_shared",
+          "Result": "Sesin sisin içinde kasabanın her penceresine ulaştı.",
+          "NeedFlag": "aired",
+          "Effects": {
+            "empathy": 10
+          }
+        },
+        {
+          "Text": "Annenin şarkısını çal; uyarıyı şarkıdan önce oku.",
+          "Next": "ending_shared",
+          "Result": "Uyarıyı okudun. Sonra şarkı başladı. Dört dakika on yedi saniye. Hiçbirini atlamadın.",
+          "Effects": {
+            "empathy": 15
+          }
+        },
+        {
+          "Text": "Mikrofonu kapat. Kapıya koş.",
+          "Next": "deniz_door",
+          "Result": "Kırmızı ışık söndü. Sandalyen yere devrildi.",
+          "Effects": {
+            "resolve": 10
+          }
+        }
+      ]
+    },
+    "deniz_door": {
+      "Title": "08.04 · Mavi kapı",
+      "Chapter": 5,
+      "Text": "Kapının önünde duruyorsun. Sisin içinden ayak sesleri yaklaşıyor. Biri koşuyor. Halil Usta; önlüğü unla beyaz, nefes nefese. “Kızım, Deniz içeride mi? Tekne iskeleyi bulamıyor diyorlar! Biri yanaştırmalı!”\n\nArkanda kapının kolu dönüyor. İçeriden Deniz’in sesi: “Halil Amca mı o?” Kapı aralanıyor.\n\nKırk yedi kez bu kapı açıldı ve Deniz iskeleye koştu. Bu kez kapının önünde sen varsın. Ne yapacağına şimdi, hemen karar vermelisin.",
+      "Interaction": {
+        "Type": "timer",
+        "Prompt": "Kapı aralanıyor. Halil Usta bekliyor.",
+        "Seconds": 12,
+        "Timeout": 2
+      },
+      "Choices": [
+        {
+          "Text": "Kapıyı içeriden tut: “Deniz, açma. Ben buradayım.”",
+          "Next": "ending_deniz",
+          "Result": "Kapının arkasında Deniz durdu. Sonra eli, kapının öbür yüzünde, seninkinin hizasına geldi.",
+          "NeedFlag": "will_stand",
+          "Effects": {
+            "empathy": 15
+          }
+        },
+        {
+          "Text": "Halil Usta’ya: “Tekne kalkmadı. Kimse gitmesin.”",
+          "Next": "ending_morning",
+          "Result": "Halil Usta durdu. Sisin içinden sis düdüğü çaldı; limanın içinden, bağlı yerinden.",
+          "NeedFlag": "boat_held",
+          "Effects": {
+            "logic": 10
+          }
+        },
+        {
+          "Text": "Kapıdan çekil.",
+          "Next": "quay",
+          "Result": "Deniz kapıdan çıktı, yanından koşarak geçti. Kırk sekizinci kez.",
+          "Effects": {
+            "resolve": -10
+          }
+        },
+        {
+          "Text": "Deniz’le birlikte iskeleye koş; onu yalnız bırakma.",
+          "Next": "quay",
+          "Result": "İkiniz birlikte koştunuz. Sisin içinde birbirinizin elini bulmak kolay oldu.",
+          "Effects": {
+            "empathy": 10
+          }
+        }
+      ]
+    },
+    "quay": {
+      "Title": "08.09 · Kuzey iskelesi",
+      "Chapter": 5,
+      "Text": "İskelenin ucunda sis o kadar yoğun ki kendi elini zor görüyorsun. Altında, kazıkların arasında, deniz bir şey söylüyor; tahtalar inliyor. Uzaktan bir motor sesi, yaklaşan; ya da uzaklaşan. Bir fener sallanıyor; Deniz’in feneri mi, senin mi, yoksa kırk yedi denemenin birinden kalmış bir hayalet mi?\n\nSaat 08.09. Bir dakika.\n\nTahtalardan biri ayağının altında çatırdıyor. Sesin geldiği yeri biliyorsun: iskelenin ucu, son üç kazık. Defterde kırk yedi kez yazıyordu. Kaçmak için tek bir an var. Ya da kalmak için.",
+      "Interaction": {
+        "Type": "timer",
+        "Prompt": "İskele çatırdıyor. Bir dakikan bile yok.",
+        "Seconds": 10,
+        "Timeout": 2
+      },
+      "Choices": [
+        {
+          "Text": "Deniz’i kolundan tut, kıyıya doğru geri koş.",
+          "Next": "ending_morning",
+          "Result": "Son tahtadan atladığınızda arkanızda bir gürültü koptu. Sonra sessizlik. Sonra Deniz’in nefesi, yanında.",
+          "Effects": {
+            "resolve": 10
+          }
+        },
+        {
+          "Text": "Feneri kayalığa doğru salla; tekneyi oraya yönlendir.",
+          "Next": "ending_shared",
+          "Result": "Tekne fenerini gördü, burnunu kayalığa çevirdi. İskelenin ucu boş çöktü.",
+          "NeedStat": "logic",
+          "MinValue": 65,
+          "Effects": {
+            "logic": 10
+          }
+        },
+        {
+          "Text": "Olduğun yerde kal.",
+          "Next": "ending_loop",
+          "Result": "Tahtalar ayağının altından kaydı. Su soğuktu. Sonra her şey cızırtıya döndü.",
+          "Effects": {
+            "resolve": -10
+          }
+        }
+      ]
+    },
+    "cable_cut": {
+      "Title": "06.52 · Çakışma",
+      "Chapter": 5,
+      "Text": "Tepeye vardığında dışarıdaki dünya yediyi geçmiş, ama verici binasının içindeki saat 06.51’i gösteriyor. Burada zaman başka akıyor. İki saat yaklaşıyor; yan yana, tik tak, aralarındaki fark saniyeler. Asya penseyi kablonun üstünde tutuyor, elleri titremiyor. “Sen kes,” diyor. “Bu senin sesin.”\n\nKablonun içinden bir şey geçiyor; bir ses gibi ama ses değil, bir sıcaklık gibi. Kulaklıkta, çok uzaktan, kendi sesin: “…ilkini unutma…”\n\nİki saat çakıştığı an kesmelisin. Erken ya da geç olursa her şey yeniden başlar.",
+      "Interaction": {
+        "Type": "timing",
+        "Prompt": "İki saat çakıştığında kes. Tek bir şansın var.",
+        "Rounds": 1,
+        "Need": 1,
+        "Zone": 0.2,
+        "Speed": 0.9,
+        "Success": 0,
+        "Fail": 1
+      },
+      "Choices": [
+        {
+          "Text": "Kablo tam o saniyede kesildi.",
+          "Next": "ending_ground",
+          "Result": "Vakum tüplerinin turuncu ışığı yavaşça söndü. Saat 06.52.07’de durdu ve sonra, ilk kez, düzgün ilerlemeye başladı.",
+          "Effects": {
+            "logic": 10
+          }
+        },
+        {
+          "Text": "Bir saniye geç kaldın.",
+          "Next": "ending_static",
+          "Result": "Kablo kesildi ama tüpler sönmedi. Kulaklıkta biri nefes aldı. Senin nefesin.",
+          "Effects": {
+            "resolve": -5
+          }
+        }
+      ]
     },
     "ending_shared": {
       "Title": "Ortak kayıt",
-      "Text": "Kayıtları kasabanın arşivine verdiniz. Bir üniversiteden ekip geldi, saatlerin bazıları açıklanabildi, bazı sesler açıklanamadı. Kimse bütün cevapları bulmuş gibi davranmadı.\n\nDeniz birkaç ay sonra ziyarete geldi. Onu istasyonda karşıladın; dönmesini sağlayan bir yayın yoktu. Kendi kararıyla gelmişti.\n\nGece radyosunun telefonları artık başka şeyler için de çalıyor. Bir iş arayan, bir şarkı isteyen, yalnızca ses duymak isteyen. Geleceği değiştirmek bazen bugünün dinleyicisini çoğaltmakmış.",
-      "Choices": [],
-      "Chapter": 4,
-      "Ending": "Ortak kayıt"
+      "Chapter": 5,
+      "Ending": "Ortak kayıt",
+      "Text": "Sabah 08.10’da kuzey iskelesinin ucu çöktü. Üzerinde kimse yoktu. Okul teknesi kayalık sahilde bekliyordu; çocuklar karnelerini ıslak kumda, velilerin kucağında açtı. Halil Usta fırından herkese simit taşıdı.\n\nKasaba o günden sonra seni “sisi bilen kız” diye çağırdı; bazıları sevgiyle, bazıları korkuyla. Belediye iskeleyi bir yıl içinde yeniden yaptırdı. Açılış töreninde başkan bir kâğıt okudu; altında üç imza vardı: Asya’nın, senin ve başkanın. “Okundu,” yazıyordu en altta.\n\nVerici binasının ışıkları bir hafta daha yandı, sonra söndü. Kendi sesini bir daha hiç duymadın. Ama her sabah 08.10’da, yayının ortasında, on yedi saniyelik bir sessizlik bırakıyorsun. Kasaba biliyor o sessizliğin ne olduğunu.\n\nKaydı arşivde saklıyorsun. Etiketinde yalnızca: “Ortak.”"
     },
     "ending_ground": {
       "Title": "Toprak hattı",
-      "Text": "Verici kapandığında duvar saatiyle bilgisayar ilk kez aynı dakikayı gösterdi. Asya yerde oturup gülmeye başladı. Sen de oturdun. Bir mucizeyi çözmüş gibi değil, bütün gece çalışmış iki insan gibi yorulmuştunuz.\n\nİskele ışıkları sönmedi. İlk feribot kontrolün ardından kalktı. Deniz yolculuk yapmadı; o gün işteydi. Akşam seni arayıp sıradan bir gününü anlattı.\n\nGelecekteki sesini bir daha duymadın. Bazı akşamlar kendi sesinin bugüne yetmesi iyi geliyor.",
-      "Choices": [],
-      "Chapter": 4,
-      "Ending": "Toprak hattı"
+      "Chapter": 5,
+      "Ending": "Toprak hattı",
+      "Text": "Kablo kesildiğinde verici sustu. Sis düdüğü de sustu, iskele lambaları da. Kasabada bir dakika boyunca hiçbir elektrikli şey çalışmadı. Sonra hastanenin jeneratörü homurdandı ve dünya yeniden başladı; sıradan, ilerleyen, tek yönlü.\n\nAsya ile tepeden inerken liman kilisesinin çanını duydunuz. Biri, elle, düzenli aralıklarla çalıyordu; sis düdüğünün yerine. Sonradan öğrendin: Deniz. Annenin her fırtınada yaptığı gibi.\n\nTekne çanı duydu, kayalığa yanaştı. İskelenin ucu 08.10’da çöktü, boş.\n\nKırk yedi denemenin defterini verici binasının masasında bıraktın. Asya bir hafta sonra binayı mühürledi. Kendi sesini bir daha hiç duymadın; gelecekteki senin ne bildiğini hiç öğrenmedin. Bazı geceler bunun eksikliğini hissediyorsun. Çoğu gece hissetmiyorsun. Zaman sadece ileri akıyor ve sen ilk kez buna şükrediyorsun."
     },
     "ending_morning": {
       "Title": "Sıradan bir sabah",
-      "Text": "Saat 08.11’de bir martı simidini çaldı. Bütün gece geleceği düşünmüş biri için bundan daha gülünç bir sürpriz olamazdı.\n\nAsya feribota yetişmek için koştu. Deniz mesajına bir fotoğraf ekledi: penceresindeki küçük bitki çiçek açmıştı. Herkesin hayatı sen bakmıyorken de devam ediyordu.\n\nRadyoya döndün, mikrofonu açtın. “Günaydın,” dedin. Bu kez bir uyarı değil, bir selamdı.",
-      "Choices": [],
-      "Chapter": 4,
-      "Ending": "Sıradan bir sabah"
+      "Chapter": 5,
+      "Ending": "Sıradan bir sabah",
+      "Text": "İskelenin ucu 08.10’da çöktü. Ses, sisin içinde boğuk ve kısa oldu; çoğu insan duymadı bile. Okul teknesi limanın içinde bağlı bekliyordu. Kimse ölmedi. Kimse kahraman olmadı. Gazete bir paragraf yazdı: “Bakımsız iskele çöktü, yaralanan yok.”\n\nDeniz’le birlikte mavi kapının önünde oturdunuz, sis dağılana kadar. Konuşmadınız. Sonra Deniz içeri girdi, annenin bulmacasını aldı, yarım kalan kelimeyi doldurdu. Sekiz harf. “Yeniden.”\n\nÖğleden sonra annenin mezarına gittiniz, ilk kez birlikte. Deniz bir hafta kaldı. Sonra gitti; ama bu kez her pazar aradı.\n\nVerici binasının ışıkları birkaç gün yandı, sonra söndü. Kendi sesini bir daha duymadın. Belki karşı taraf da sıradan bir sabahta uyanmıştı. Belki sen de öyle."
+    },
+    "ending_deniz": {
+      "Title": "Kapının iki yüzü",
+      "Chapter": 5,
+      "Ending": "Kapı",
+      "Text": "Kapı açılmadı. Deniz içeride, sen dışarıda, ikiniz de kapıya yaslanmış, sisin içinde, 08.10’u beklediniz. Halil Usta bir süre kapıya vurdu, sonra anladı ve yanına oturdu. Sisin içinden bir çatırdama geldi, sonra suyun sesi. Sonra okul teknesinin düdüğü, limanın içinden: tekne hiç kalkmamıştı; Nevzat Bey bekliyordu.\n\nKapıyı sonra açtınız. Deniz’in gözleri kırmızıydı. “Kırk sekizinci deneme,” dedi. “Sen kapıda durdun.”\n\n“Annem de hep kapıda dururdu,” dedin. “Çıkmadan önce. Bize bakardı.”\n\nDeniz kasabada kaldı. Annenin teknesini onardınız, birlikte. Radyoyu bıraktın; gece kuşağını Asya devraldı, sabah hava raporlarını iki dakika erken okuyor, hiç bir şarkının bitmesini beklemeden.\n\nBazı sabahlar 08.04’te mavi kapı çalınıyor. Kimse olmuyor. Sis, belki. Ya da kırk yedi denemenin birinden kalmış bir iyilik."
+    },
+    "ending_static": {
+      "Title": "Karşı taraf",
+      "Chapter": 5,
+      "Ending": "Karşı taraf",
+      "Text": "Kablo kesildi ama tüpler sönmedi. Saat 06.52.08’de durdu. Kulaklıkta biri nefes alıyordu; sonra o nefes senin nefesin oldu, sonra sen o nefesin içindeydin.\n\nGözlerini açtığında masada bir defter, bir termos, bir mikrofon var. Termosun çayı sıcak. Defterde kırk yedi deneme. Duvardaki saat 08.04’ü gösteriyor ve ilerlemiyor.\n\nAnlıyorsun. Karşı taraf bir yer değil; bir görev. Birisi her zaman burada oturup geçmişe sesleniyor. Bu kez sen.\n\nMikrofona eğiliyorsun. Bu kez ne söyleyeceğini biliyorsun; kırk yedi kez yanlış söylendiğini biliyorsun. Kırmızı ışık yanıyor.\n\n“Orada mısın? Bu sefer sana ne yapacağını söylemeyeceğim. Sadece şunu: Kapıda dur. Radyoda değil. Kapıda.”\n\nUzaktan, çok uzaktan, bir kıyı kasabasının gece radyosunda, saat ikiyi on yedi geçiyor."
     },
     "ending_loop": {
       "Title": "02.17 · Açık mikrofon",
-      "Text": "Bir sonraki kaydı açıyorsun. Bu kez bütün ayrıntıları bildiğinden eminsin. Kasabanın radyosunda geceyi kapatıyorsun. Dışarıda yağmur, içeride bozuk bir floresanın sesi var.\n\nSıradaki şarkı başlamadan önce hoparlörden kendi sesin geliyor. Ne söyleyeceğini biliyorsun. Yine de kapıya bakıyorsun.\n\nBelki bu kez başka birini dinlersin.",
-      "Choices": [],
+      "Chapter": 5,
+      "Ending": "Aynı frekans",
+      "Text": "Su soğuktu. Sonra cızırtı. Sonra bir floresanın vızıltısı.\n\nGözlerini açtığında yayın masasındasın. Dışarıda yağmur. Masada soğumuş çay, yanında hava durumu bülteni. Dijital saat 02.17’yi gösteriyor.\n\nHoparlörden bir ses geliyor. Mikrofonun kapalı. Kendi sesin, ama biraz daha yorgun, biraz daha yaşlı:\n\n“Yarın saat 08.10’da kuzey iskelesine gitmeyin. Kimse gitmesin. Deniz, beni duyuyorsan kapıyı açma.”\n\nMasanın çekmecesinden bir defter çıkarıyorsun; nereden bildiğini bilmeden. Son sayfada kırk yedi deneme. Kalemi alıp kırk sekizinciyi yazıyorsun:\n\n“48. İskeleye kendim gittim. Kaldım. Kapıda durmalıydım.”\n\nDış kapı çalıyor. Üç kez, sert.\n\nBu kez ne yapacağını biliyorsun. Belki."
+    },
+    "harbor_walk": {
+      "Title": "04.10 · Liman yolu",
       "Chapter": 4,
-      "Ending": "Aynı frekans"
+      "Text": "Verici binasından limana inen patika çamların arasından kıvrılıyor. Yağmur durmuş; ağaçlardan damlayan su, yerdeki iğne yapraklarının üstüne düşüp tıkırdıyor. Asya önden fenerle yürüyor, sen arkadan. Deniz seninle geldiyse en arkada, ellerini cebine sokmuş, konuşmadan.\n\nLimanın girişinde annenin teknesi bağlı duruyor. “Leman” yazıyor kıçında, beyaz boyayla, harflerin biri silinmiş. Üç yıldır kimse binmedi. Belediye satmak istedi, Deniz imza atmadı; sen de atmadın, ama aranızda konuşmadınız bile bunu.\n\nTekne fırtınadan sonra kıyıya vurmuş, Asya ve birkaç balıkçı onu geri çekmişti. Gövdesinde hâlâ kayaların izi var. Kabinin kapısı açık; içeride bir şey rüzgârda sallanıyor, bir kâğıt gibi.\n\n“Seyir defteri hâlâ içeride olmalı,” diyor Asya. “Kimse almadı. Kimse okumaya cesaret edemedi.” Duraksıyor. “Annen her sabah iskeleden çıkarken bir şey yazardı. Hava, rüzgâr, kaç kasa balık. Bir de bazen, en altta, bize hiç göstermediği şeyler.”",
+      "Choices": [
+        {
+          "Text": "Tekneye bin, kabine gir.",
+          "Next": "mothers_boat",
+          "Result": "Güverte ayağının altında hafifçe salındı; annenin adımlarıyla aynı ritim.",
+          "Effects": {
+            "empathy": 10
+          }
+        },
+        {
+          "Text": "Tekneye binme; Asya’ya yaslan, bir süre limanı izle.",
+          "Next": "far_side",
+          "Result": "Liman sessizdi. Uzakta adanın feneri dönüyordu.",
+          "Effects": {
+            "resolve": 5
+          }
+        }
+      ]
+    },
+    "mothers_boat": {
+      "Title": "Leman’ın kabini",
+      "Chapter": 4,
+      "Text": "Kabinin içi tuz ve mazot kokuyor. Her şey yerli yerinde, annen bir dakikalığına çıkmış gibi: duvardaki çengelde yağmurluğu, rafta termosu, pusulanın yanında senin çocukken boyadığın bir taş. Rüzgârda sallanan şey bir kâğıt değil; annenin radyosunun antenine bağlanmış kırmızı bir kurdele.\n\nFenerin ışığında üç dakikan var; sonra sabahın ilk balıkçıları gelmeye başlar ve kimseyle karşılaşmak istemiyorsun.",
+      "Interaction": {
+        "Type": "search",
+        "Prompt": "Kabinde dört şey dikkatini çekiyor. İkisine bakacak kadar zamanın var.",
+        "Picks": 2,
+        "Spots": [
+          {
+            "Label": "Seyir defterinin son sayfası",
+            "Text": "Fırtına gecesinin tarihi. “Rüzgâr kuzeyden, 7 bofor. Radyoda şarkım çalıyor. Kızım beni duyuyor. Ağları toplayıp döneceğim. 02.17.” Saat, bu geceki sesin geldiği saatle aynı.",
+            "Flag": "logbook"
+          },
+          {
+            "Label": "Radyonun antenindeki kurdele",
+            "Text": "Kurdelenin ucuna küçük bir not iğnelenmiş, annenin yazısıyla: “Radyo hep 87,6’ya ayarlı kalsın. Orada eski verici var. Babanız orada çalışırdı.” Babanızı hiç tanımadınız.",
+            "Flag": "father_tower"
+          },
+          {
+            "Label": "Termosun altındaki zarf",
+            "Text": "İçinde iki bilet: otobüs, Ankara’ya, Deniz’in adına. Tarih fırtınadan bir hafta sonrası. Annen Deniz’in gitmesini planlamış; okul için. Deniz bunu hiç bilmedi.",
+            "Flag": "tickets"
+          },
+          {
+            "Label": "Pusulanın yanındaki taş",
+            "Text": "Senin boyadığın taş. Altına yapıştırılmış bir kâğıtta: “En çok sabahları özlüyorum. Kızlarım iskelede el sallarken.”",
+            "Flag": "stone"
+          }
+        ],
+        "Done": 0
+      },
+      "Choices": [
+        {
+          "Text": "Kabinden çık.",
+          "Next": "far_side",
+          "Result": "Tekneden inerken kurdele rüzgârda bir kez daha sallandı. Asya bir şey sormadı."
+        }
+      ]
+    },
+    "bakery": {
+      "Title": "06.30 · Halil Usta’nın fırını",
+      "Chapter": 4,
+      "Text": "Fırının camı buğulu, içerisi sıcak. Halil Usta tezgâhın başında, kollarını dirseklerine kadar una bulamış; seni görünce elini önlüğüne siliyor ve hiç sormadan bir simit uzatıyor. Kırk yıldır bu kasabanın sabahını o yoğuruyor. Radyosu her zaman açık, her zaman senin kanalında.\n\n“Annen her sabah buradan geçerdi,” diyor. “İskeleye inmeden. İki simit alırdı; biri kendine, biri martılara. ‘Halil,’ derdi, ‘bugün sis var mı?’ Ben de ‘Sen bilirsin Leman,’ derdim. Hep o bilirdi.”\n\nHamuru katlıyor, yeniden açıyor, yeniden katlıyor. “Fırtına gecesi senin radyonu dinliyordum. Şarkıyı çaldın. Ben de dedim ki bu kız annesine bir şarkı armağan ediyor. Uyarıyı okuduğunda annen çoktan açılmıştı. Ama o şarkıyı duydu, biliyorum. Herkes duydu.”\n\nBir süre konuşmadan çalışıyor. “Bu sabah kapıları çalacağım,” diyor sonunda. “Biri sisin içinde yardım isterse koşarım. Ben böyleyim, annen böyleydi, kasaba böyle. Sen de bana söyle: bu sabah koşmalı mıyım, yoksa durmalı mıyım?”",
+      "Choices": [
+        {
+          "Text": "“Dur, Halil Usta. Bu sabah kimseyi çağırma; yalnızca bekle.”",
+          "Next": "dawn",
+          "Result": "Halil Usta uzun uzun yüzüne baktı. Sonra hamuru bıraktı, önlüğünü çıkardı ve kapının yanındaki sandalyeye oturdu. “Bekliyorum,” dedi.",
+          "Effects": {
+            "logic": 10
+          },
+          "SetFlags": [
+            "town_away"
+          ]
+        },
+        {
+          "Text": "“Koş. Ama mavi kapıya değil; kayalık sahile, tekneyi karşılamaya.”",
+          "Next": "dawn",
+          "Result": "“Kayalık,” dedi Halil Usta. “Annen de fırtınada oraya yanaşırdı.”",
+          "Effects": {
+            "empathy": 10
+          },
+          "SetFlags": [
+            "town_away"
+          ]
+        },
+        {
+          "Text": "Simidi al, teşekkür et ve çık.",
+          "Next": "dawn",
+          "Result": "Kapı arkanda çan sesiyle kapandı. Simit sıcaktı.",
+          "Effects": {
+            "resolve": 5
+          }
+        }
+      ]
+    },
+    "asya_story": {
+      "Title": "Cenazeden kaçan",
+      "Chapter": 4,
+      "Text": "Şafağı beklerken Asya alet çantasının üstüne oturmuş, penseyi dizlerinin üstünde tutuyor. Gökyüzü hâlâ karanlık; doğuda yalnızca ince, gri bir çizgi.\n\n“Cenazede masaları kurup gittim,” diyor, sen sormadan. “Biliyorum, herkes fark etti. Kimseye söylemedim neden.” Penseyi çeviriyor. “Fırtına gecesi acil durum hattının sigortası attı. Sis düdüğü, iskele lambaları, hepsi. On yedi dakika. Ben o gece nöbetçiydim. Telefonum sessizdeydi. Uyuyordum.”\n\nSana bakıyor. “Sen on yedi dakika geç okudun. Ben on yedi dakika geç uyandım. Aynı on yedi dakika. Annen iskeleye döndüğünde lambalar yanmıyordu, düdük çalmıyordu. Kayalığa çarptı.”\n\n“Üç yıl boyunca bunu herkesten sakladım. Senden en çok. Çünkü sen kendini suçluyordun ve ben… ben senin suçunun arkasına saklandım. Hattı bu yüzden yeniden kurdum. Raporları bu yüzden yazdım. Hiçbiri o on yedi dakikayı geri getirmiyor.”\n\nRüzgâr çamların arasından geçiyor. Doğudaki çizgi biraz daha açılıyor.",
+      "Choices": [
+        {
+          "Text": "“İkimiz de geç kaldık. Annem de biliyordu. Bu sabah geç kalmayalım.”",
+          "Next": "dawn",
+          "Result": "Asya başını salladı, gözlerini sildi. Penseyi kabloya yeniden yerleştirdi; elleri bu kez titremiyordu.",
+          "Effects": {
+            "empathy": 15
+          },
+          "SetFlags": [
+            "asya_forgiven"
+          ]
+        },
+        {
+          "Text": "Hiçbir şey söyleme; elini Asya’nın omzuna koy.",
+          "Next": "dawn",
+          "Result": "Bir süre öyle durdunuz. Sonra Asya saatine baktı: 06.40.",
+          "Effects": {
+            "resolve": 5
+          }
+        }
+      ]
     }
   }
 }

@@ -2,7 +2,7 @@
   "Id": "sifir_noktasi",
   "Title": "Sıfır Noktası",
   "Subtitle": "Başarı kimin hikâyesi?",
-  "Description": "Ailenin atölyesini kurtarmak için kurduğun girişim ilk yatırım teklifini alıyor. Tek sorun, sözleşmede en yakın arkadaşının adının bulunmaması. Para, emek ve sadakat arasında kendi yolunu yaz.",
+  "Description": "Babanın Balat’taki marangoz atölyesini kurtarmak için Mira’yla yazdığınız esnaf uygulaması ilk yatırım teklifini alıyor. Sözleşmede en yakın arkadaşının adı yok. Maddeleri incele, masada pazarlık et, canlı demoda sunucuyu ayakta tut; para, emek ve sadakat arasında kendi şirketini yaz.",
   "Genre": "Hayat & girişim",
   "Color": "b57963",
   "Symbol": "◇",
@@ -13,6 +13,7 @@
     "Teklif",
     "İmza",
     "Kırılma",
+    "Büyüme",
     "Yeni bir isim"
   ],
   "StatNames": {
@@ -20,715 +21,1045 @@
     "loyalty": "Sadakat",
     "balance": "Denge"
   },
-  "ContentNote": "Kurgusal olaylar ve karakterler. Kayıp, aile çatışmaları ve zor kararlar içerir.",
+  "ContentNote": "Kurgusal olaylar ve karakterler. Aile borcu, iş baskısı, tükenmişlik ve dostluk çatışması içerir.",
   "Nodes": {
     "start": {
       "Title": "Masadaki teklif",
-      "Text": "Babanın atölyesinde yağmur, tavandaki aynı deliğin altına düşüyor. Kovayı biraz sola çekiyorsun. Telefonundaki yatırım teklifi, çatıyı onaracak paradan çok daha fazlasını vaat ediyor.\n\nİki yıldır Mira’yla üzerinde çalıştığınız sipariş sistemi ilk müşterilerini bulmuştu. Yatırımcı, “Bir kişiyle anlaşmak daha kolay,” diyor. Sözleşmenin kurucular bölümünde yalnızca senin adın var. Mira yanında, kahveleri masaya bırakıyor. “İyi haber mi?”",
+      "Chapter": 1,
+      "Text": "Babanın Balat’taki atölyesinde yağmur, tavandaki aynı deliğin altına düşüyor; otuz yıldır aynı delik, otuz yıldır aynı kova. Kovayı biraz sola çekiyorsun ki su rendelenmiş ceviz tahtalarına sıçramasın. Atölye talaş, tutkal ve ıslak taş kokuyor. Duvarda dedenin tabelası: “Usta Kâzım · Marangoz · 1974.”\n\nTelefonunda bir e-posta açık. Konu: “Tezgâh · Ön yatırım teklifi.” Gönderen: Kerem Aslan, Ufuk Girişim Sermayesi. Rakam, çatıyı onaracak paradan, babanın iki yıllık kira borcundan ve Mira’yla birlikte hayalini kurduğunuz her şeyden fazla.\n\nİki yıldır Mira’yla bu atölyenin arka odasında, eski bir tezgâhın üstünde “Tezgâh” adını verdiğiniz uygulamayı yazıyorsunuz. Mahalle esnafı için sipariş, stok ve veresiye defteri; tek ekranda, kâğıt defter kadar kolay. Terzi Hatice Hanım, manav Yusuf, kitapçı Nermin Abla; ilk kullanıcılarınız, ilk eleştirmenleriniz. Mira kodu yazdı, sen esnafı ikna ettin, baban arka odanın elektriğini ödedi.\n\nKerem’in e-postasında bir satır gözüne takılıyor: “Tek kurucuyla ilerlemek yatırım sürecini hızlandırır.” Ekteki sözleşmenin kurucular bölümünde yalnızca senin adın var.\n\nMira arka odadan iki kahveyle geliyor, birini önüne koyuyor, saçındaki talaşı silkeliyor. Telefona bakıyor, sonra yüzüne. “İyi haber mi?”",
       "Choices": [
         {
           "Text": "Sözleşmeyi hemen Mira’ya göster.",
           "Next": "mira",
-          "Result": "İlk kopyayı arkadaşına verdin.",
+          "Result": "Telefonu ona uzattın. Mira okurken kahvesini masaya bıraktı.",
           "Effects": {
             "loyalty": 10
           },
           "SetFlags": [
             "open"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          ]
         },
         {
-          "Text": "Önce yatırımcıya bu eksikliği sor.",
+          "Text": "Önce Kerem’i ara; bu eksikliği sor.",
           "Next": "investor",
-          "Result": "Masaya doğrudan bir soru koydun.",
+          "Result": "Mira’ya “Bir dakika,” dedin ve dışarı çıktın. Yağmur yüzüne çarptı.",
           "Effects": {
             "vision": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
-          "Text": "Bir gece düşünmek için süre iste.",
+          "Text": "“Sonra konuşalım,” de; önce babanla konuş.",
           "Next": "home",
-          "Result": "Hızla değil, kendi temponla karar verdin.",
+          "Result": "Mira omuz silkti, arka odaya döndü. Kapıyı aralık bıraktı.",
           "Effects": {
             "balance": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         }
-      ],
-      "Chapter": 1,
-      "Ending": ""
+      ]
     },
     "mira": {
       "Title": "Aynı masanın iki tarafı",
-      "Text": "Mira gülümsemeyi bırakıyor. “Kodda iki kişinin emeği var. Neden sözleşmede bir kişi var?” Kızgınlığının altında başka bir şey duyuyorsun: senden bunu saklamanı beklemiş olmanın korkusu.\n\n“Beni işe almanı istemiyorum,” diyor. “Birlikte kurduğumuz şeyin sahibi olarak kalmak istiyorum.” Atölyenin arkasında baban hesabı kapatmaya çalışıyor. Üç aydır elektrik borcunu erteliyorsunuz.",
+      "Chapter": 1,
+      "Text": "Mira sözleşmeyi iki kez okuyor. İkincisinde parmağını ekranda kurucular bölümünün üstünde tutuyor, sanki adı oraya kendiliğinden yazılacakmış gibi. Sonra telefonu sana geri veriyor; yavaş, dikkatli, bir şey kırılmasın diye.\n\n“Kodda iki kişinin emeği var,” diyor. “Gece üçlerde veritabanını kim düzeltti? Hatice Hanım’ın veresiye ekranını kim yeniden yazdı, dört kez? Neden sözleşmede bir kişi var?”\n\nKızgınlığının altında başka bir şey duyuyorsun: senden bunu saklamanı beklemiş olmanın korkusu. Üniversitede tanıştınız; o bilgisayar mühendisliği, sen işletme. İlk dönem sınavından önce kütüphanede sana yardım etmişti, “karşılığında bana kahve borçlusun” demişti. Hâlâ kahvelerin çoğunu o alıyor.\n\n“Beni işe almanı istemiyorum,” diyor. “Maaş, unvan, ‘baş teknoloji sorumlusu’; hiçbirini istemiyorum. Birlikte kurduğumuz şeyin sahibi olarak kalmak istiyorum. Yarı yarıya. Yoksa…” Cümlesini bitirmiyor.\n\nAtölyenin ön tarafında baban hesap makinesiyle bir şeyler topluyor, dudakları kıpırdıyor. Üç aydır elektrik borcunu erteliyorsunuz; geçen hafta bir mektup geldi, kırmızı damgalı. Baban mektubu sana göstermedi, ama sen gördün.",
       "Choices": [
         {
-          "Text": "İkinizin de kurucu olması şartını yazılı ilet.",
-          "Next": "terms",
-          "Result": "Mira’yı bir çalışan değil, ortak olarak tanımladın.",
+          "Text": "“İkimiz de kurucuyuz,” de; şartı yazılı ilet.",
+          "Next": "review",
+          "Result": "Mira’nın yüzü biraz gevşedi. “Yazılı,” dedi. “Söz değil, yazılı.”",
           "Effects": {
             "loyalty": 10
           },
           "SetFlags": [
             "joint"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          ]
         },
         {
-          "Text": "Paraya ihtiyacımızı açıkça konuş.",
+          "Text": "Paraya ihtiyacınızı açıkça konuş.",
           "Next": "home",
-          "Result": "Dostluğa yalnızca iyi haberleri taşımadın.",
+          "Result": "Mira dinledi. Sonra “Babanın borcu bizim şirketimizin borcu değil,” dedi. Ama sesi yumuşaktı.",
           "Effects": {
             "balance": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         }
-      ],
-      "Chapter": 1,
-      "Ending": ""
+      ]
     },
     "investor": {
       "Title": "Kolay olan",
-      "Text": "Yatırımcı seni çatı katındaki ofisine çağırıyor. Camın arkasından atölyenin bulunduğu sokağı göremiyorsun.\n\n“Birini dışlamıyoruz,” diyor. “Yetkiyi netleştiriyoruz. Mira’ya iyi bir maaş veririz. Sen ailenin borcunu kapatırsın. Herkes kazanır.”\n\nHerkesin ne kazanacağını sayıyor. Kimin ne kaybedeceğini senden duymayı bekliyor.",
+      "Chapter": 1,
+      "Style": "chat",
+      "Text": "Kerem Aslan: Merhaba! Teklifi görmüşsünüzdür 🙂\nSen: Gördüm. Kurucular bölümünde yalnızca benim adım var.\nKerem Aslan: Evet, bilinçli bir tercih.\nKerem Aslan: Erken aşamada tek kurucu = hızlı karar. Yatırım komitemiz bunu seviyor.\nSen: Mira ürünün yarısını yazdı.\nKerem Aslan: Kesinlikle değerli! Ona güzel bir hisse opsiyonu ayırırız. CTO unvanı, iyi maaş.\nKerem Aslan: Bir kişiyle anlaşmak daha kolay. Bunu ileride sen de göreceksin.\nKerem Aslan: Teklif cuma akşamına kadar geçerli. Sonra başka bir ekiple görüşeceğiz, onlar da esnaf yazılımı yapıyor.\nKerem Aslan yazıyor…\nKerem Aslan: Bu arada babanın atölyesinin kira durumunu da biliyorum. Mahalleden duydum. Yardımcı olmak isterim.",
       "Choices": [
         {
-          "Text": "Mira’nın emeğini pazarlık konusu yapma.",
-          "Next": "terms",
-          "Result": "Masanın görünmeyen tarafını görünür kıldın.",
+          "Text": "“Mira olmadan olmaz,” yaz.",
+          "Next": "review",
+          "Result": "Kerem bir süre yazmadı. Sonra: “Anlıyorum. Sözleşmeyi bir daha okuyun, birlikte.”",
           "Effects": {
             "loyalty": 10
           },
           "SetFlags": [
             "joint"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          ]
         },
         {
-          "Text": "Teklifin tamamını bir uzmana inceletmek iste.",
+          "Text": "“Düşüneceğim,” yaz; sözleşmeyi incele.",
           "Next": "review",
-          "Result": "İyimserliğin yanına bir ikinci göz koydun.",
+          "Result": "Kerem bir emoji gönderdi: 👍. Ekteki sözleşmeyi açtın.",
           "Effects": {
-            "vision": 5,
-            "balance": 5
-          },
-          "SetFlags": [
-            "review"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "vision": 5
+          }
         },
         {
-          "Text": "Ailene ayrılacak nakdi öğren.",
+          "Text": "Kira meselesinin nereden bilindiğini sor.",
           "Next": "home",
-          "Result": "Başarının evdeki karşılığını düşündün.",
-          "Effects": {
-            "vision": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 1,
-      "Ending": ""
-    },
-    "home": {
-      "Title": "Kovayı tutan kişi",
-      "Text": "Annen, atölyenin eski sipariş defterini masaya açıyor. “Burada yalnızca borç yok,” diyor. “İnsanların isimleri de var. Baban bazı müşterilerden altı aydır para istemiyor. Onlar da zor durumda diye.”\n\nBaban başını kaldırmıyor. “Benim hatalarımı sizin geleceğinizle ödemeyin.” İlk kez kurtarılması gereken tek şeyin atölye olmadığını düşünüyorsun.",
-      "Choices": [
-        {
-          "Text": "Ailenin gerçek borç tablosunu çıkar.",
-          "Next": "review",
-          "Result": "Bilinmeyen bir rakamla pazarlık yapmamaya karar verdin.",
+          "Result": "Kerem: “Küçük bir mahalle 🙂” Cevap değildi.",
           "Effects": {
             "balance": 10
           },
           "SetFlags": [
-            "ledger"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "suspicious"
+          ]
+        }
+      ]
+    },
+    "home": {
+      "Title": "Kovayı tutan kişi",
+      "Chapter": 1,
+      "Text": "Baban hesap makinesini bırakıp gözlüğünü alnına itiyor. Altmış sekiz yaşında; elleri hâlâ ustanın elleri, kalın, nasırlı, bir parmağının ucu eksik. Gençken bir rende kazası. “Marangozun bir parmağı eksik olmazsa marangoz sayılmaz,” derdi, sen çocukken korktuğunda.\n\n“Yatırımcı mı?” diyor. Sana teklifi soruyor ama aslında başka bir şey soruyor. “Para mı geliyor?”\n\nAnlatıyorsun. Baban dinlerken bir tahta parçasını elinde çeviriyor, damarlarını parmağıyla izliyor. “Deden bu atölyeyi açtığında bir ortağı vardı,” diyor sonunda. “Ziya. Beraber başladılar, iki tezgâh, bir soba. Bir gün büyük bir mobilya fabrikası teklif yaptı: ‘Sen gel, Ziya’yı bırak.’ Deden gitmedi. Atölye hiç büyümedi. Ziya amca da bizimle öldü, bu tezgâhın başında.”\n\nBir süre susuyor. “Sana doğruyu söyleyeyim mi? Deden gitseydi belki bu çatı akmazdı. Belki sen bu kovayı hiç tutmazdın. Bilmiyorum hangisi doğruydu.”\n\nKırmızı damgalı mektup masanın üstünde, hesap makinesinin altında. Kira artışı: yüzde yüz kırk. Ev sahibi atölyeyi otel yapmak istiyor; Balat’ta her şey otel olmak istiyor. Üç ay süre.",
+      "Choices": [
+        {
+          "Text": "Sözleşmeyi babanla birlikte oku.",
+          "Next": "review",
+          "Result": "Baban gözlüğünü indirdi. “Küçük puntoları ben okurum,” dedi. “Ben otuz yıl kontrat okudum.”",
+          "Effects": {
+            "balance": 10
+          },
+          "SetFlags": [
+            "father_read"
+          ]
         },
         {
-          "Text": "Mira’yı akşam yemeğine çağır.",
+          "Text": "“Bu parayı alırsam atölye kurtulur,” de.",
+          "Next": "review",
+          "Result": "Baban başını salladı ama yüzü değişmedi. “Atölye kurtulur,” dedi. “Peki sen?”",
+          "Effects": {
+            "vision": 10
+          }
+        }
+      ]
+    },
+    "review": {
+      "Title": "Küçük puntolar",
+      "Chapter": 1,
+      "Text": "Sözleşme kırk iki sayfa. İlk sayfalar parlak: rakam, takvim, “stratejik ortaklık”. Asıl maddeler sonda, küçük puntoyla, uzun cümlelerle. Bu gece hepsini okuyamazsın; ama birkaç maddeye dikkatle bakmazsan neyi imzaladığını hiç bilemeyeceksin.",
+      "Interaction": {
+        "Type": "search",
+        "Prompt": "Sözleşmede dört madde dikkatini çekiyor. Üçünü dikkatle okuyacak kadar zamanın var.",
+        "Picks": 3,
+        "Spots": [
+          {
+            "Label": "Madde 14 · Fikrî mülkiyet devri",
+            "Text": "Tezgâh’ın bütün kodu, adı ve kullanıcı verisi imza anında yatırımcının kuracağı yeni bir şirkete devrediliyor. Mira’nın yazdığı her satır dahil.",
+            "Flag": "ip_clause"
+          },
+          {
+            "Label": "Madde 22 · Birlikte satış zorunluluğu",
+            "Text": "Yatırımcı şirketi satmaya karar verirse, kurucu da hisselerini aynı şartlarla satmak zorunda. Kime satılacağını yatırımcı seçer.",
+            "Flag": "drag_clause"
+          },
+          {
+            "Label": "Madde 31 · Rekabet yasağı",
+            "Text": "Kurucu ayrılırsa beş yıl boyunca “esnaf ve küçük işletme yazılımı” alanında çalışamaz. Mira hiç kurucu sayılmadığı için bu madde ona da uygulanıyor, çalışan olarak.",
+            "Flag": "noncompete"
+          },
+          {
+            "Label": "Ek protokol · Borç yapılandırması",
+            "Text": "Yatırımcı, kurucunun “aile işletmesinin” kira borcunu ödemeyi taahhüt ediyor. Karşılığında atölyenin adresi şirketin resmi merkezi oluyor. Atölyenin kira sözleşmesi şirkete devrediliyor.",
+            "Flag": "debt_annex"
+          }
+        ],
+        "Done": 0
+      },
+      "Choices": [
+        {
+          "Text": "Sözleşmeyi kapat.",
           "Next": "terms",
-          "Result": "Ailenle arkadaşını aynı konuşmaya davet ettin.",
+          "Result": "Ekranı kapattığında saat gece ikiydi. Kova yarıya kadar dolmuştu."
+        }
+      ]
+    },
+    "terms": {
+      "Title": "Geri gönderilen sözleşme",
+      "Chapter": 2,
+      "Text": "Sabah Kerem’e cevap yazmak için arka odadaki eski tezgâhın başına oturuyorsun. Mira karşında, ekranına bakıyor ama yazmıyor. Gece okuduğun maddeler kafanda dönüyor; hangilerini değiştirmek istediğini biliyorsun, hepsini değiştirebileceğini bilmiyorsun.\n\nKerem’in asistanından kısa bir mesaj: “Kerem Bey bugün 14.00’te atölyeye uğrayabilir. Karşı teklifiniz varsa sözlü konuşmayı tercih eder.”\n\nBaban öğle yemeğine börek getiriyor, ikinizin arasına koyuyor ve hiçbir şey sormadan çıkıyor. Bu, onun “ben buradayım” deme biçimi.\n\nMira sonunda başını kaldırıyor. “Ne istiyoruz?” diyor. “Önce bunu konuşalım. Kerem’den değil; birbirimizden.”",
+      "Choices": [
+        {
+          "Text": "“Eşit kurucu, fikrî mülkiyet bizde kalsın.”",
+          "Next": "pitch_prep",
+          "Result": "Mira başını salladı. “Bunun üstüne pazarlık yapabiliriz,” dedi.",
+          "NeedFlag": "ip_clause",
           "Effects": {
             "loyalty": 10
           },
           "SetFlags": [
-            "family"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "ask_ip"
+          ]
+        },
+        {
+          "Text": "“Parayı alalım, maddeleri sonra düzeltiriz.”",
+          "Next": "pitch_prep",
+          "Result": "Mira bir süre sustu. “Sonra hiç gelmez,” dedi. “Ama peki.”",
+          "Effects": {
+            "vision": 10,
+            "loyalty": -5
+          }
+        },
+        {
+          "Text": "“Önce esnafa soralım; onlar ne istiyor?”",
+          "Next": "customers",
+          "Result": "Mira ilk kez gülümsedi. “Hatice Hanım bize bir şey söyleyecek,” dedi. “Hep söyler.”",
+          "Effects": {
+            "balance": 10
+          }
         }
-      ],
-      "Chapter": 1,
-      "Ending": ""
+      ]
     },
-    "review": {
-      "Title": "Küçük puntolar",
-      "Text": "Sözleşmeyi inceleyen danışman bir maddeyi işaretliyor: yatırımın bir kısmı ailenin eski borçlarını kapatmak için kullanılacak, fakat ürünün bütün hakları yatırımcının yeni şirketine devredilecek.\n\nDanışman metni sana geri itiyor. “Bu teklif kötü olmak zorunda değil. Ama şirket satmakla yatırım almak aynı şey değil.” Sorunun ne olduğunu nihayet kendi kelimelerinle söyleyebiliyorsun.",
+    "customers": {
+      "Title": "İlk gerçek sorular",
+      "Chapter": 2,
+      "Text": "Mahallede bir tur atıyorsunuz. Terzi Hatice Hanım dükkânının önünde, makasıyla bir kumaşı ölçüyor; Tezgâh’ı telefonunda açıp gösteriyor. “Veresiye defterimi buraya taşıdım. Kırk iki müşteri. Kimse borcunu unutmuyor artık, ben de kimsenin borcunu unutmuyorum. İyi mi bu, kötü mü bilmiyorum.” Güleceğini sanıyorsun; gülmüyor. “Bir şey soracağım: Bu bilgiler kimde duruyor? Benim müşterilerimin adları, borçları? Büyük bir şirkete giderse?”\n\nManav Yusuf kasaların arasından sesleniyor: “Stok ekranı güzel ama domates ‘adet’ değil kızım, kilo! Bir de hal fiyatı her sabah değişiyor, elle giriyorum.” Kitapçı Nermin Abla seni içeri çekip çay koyuyor. “Benim istediğim tek şey: sipariş verdiğim kitabın nerede olduğunu bilmek. Bir de, bu uygulamayı benim gibi yetmiş yaşındakiler kullanabilsin. Yazılar büyüsün.”\n\nYürürken Mira not alıyor. Sonra duruyor. “Biliyor musun,” diyor, “bunların hiçbiri yatırımcının istediği şey değil. Kerem ‘büyüme’ diyor. Bunlar ‘domates kilo’ diyor.”",
       "Choices": [
         {
-          "Text": "Hak devrini sınırlandıran karşı teklif hazırla.",
-          "Next": "terms",
-          "Result": "Koşulların yeniden konuşulmasını istedin.",
+          "Text": "Esnafın verisini korumayı pazarlığın şartı yap.",
+          "Next": "pitch_prep",
+          "Result": "Mira notunun başına büyük harflerle yazdı: “VERİ ESNAFIN.”",
+          "Effects": {
+            "loyalty": 10
+          },
+          "SetFlags": [
+            "data_pledge"
+          ]
+        },
+        {
+          "Text": "İstekleri bir yol haritasına dök.",
+          "Next": "pitch_prep",
+          "Result": "Akşam tezgâhın üstüne kâğıtlar yaydınız. Mira ‘domates kilo’yu ilk sıraya yazdı.",
           "Effects": {
             "vision": 10
           },
           "SetFlags": [
-            "rights"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Mira’yla birlikte alternatif gelir planı yap.",
-          "Next": "terms",
-          "Result": "Tek kapı varmış gibi davranmayı bıraktın.",
-          "Effects": {
-            "balance": 5,
-            "loyalty": 5
-          },
-          "SetFlags": [
-            "alternative"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "roadmap_seed"
+          ]
         }
-      ],
-      "Chapter": 1,
-      "Ending": ""
+      ]
     },
-    "terms": {
-      "Title": "Geri gönderilen sözleşme",
-      "Text": "Karşı teklifiniz bir sayfa. İkinizin kurucu olarak tanınması, ürün haklarının şirkette kalması ve atölyenin borcunun ayrı hesaplanması.\n\nYatırımcı cevabını gece yarısı gönderiyor: “Bu kadar koşul, bu aşamadaki bir ürün için fazla. Yarın öğlene kadar ilk teklifi imzalarsan masadayız.”\n\nMira mesajı okuyor. “Pazarlığın bittiği yer burasıysa, bizim başladığımız yer de burası olabilir.”",
+    "meeting": {
+      "Title": "14.00 · Atölyede yatırımcı",
+      "Chapter": 2,
+      "Text": "Kerem Aslan atölyeye takım elbiseyle değil, kot ve spor ayakkabıyla geliyor; ama ayakkabıları bembeyaz ve Balat’ın taşlarına hiç değmemiş gibi. Kırk yaşlarında, gülümsemesi hazır, el sıkışı kuvvetli. Babanla da el sıkışıyor, “Usta,” diyor, “ellerinize sağlık.” Baban teşekkür ediyor ama tezgâhın başından kalkmıyor.\n\nArka odadaki masaya oturuyorsunuz: sen, Mira, Kerem. Kerem dizüstü bilgisayarını açıyor, bir tablo gösteriyor: değerleme, hisse dağılımı, opsiyon havuzu. “Konuşalım,” diyor. “Ne istiyorsunuz, söyleyin. Ben de ne verebileceğimi söyleyeyim.”\n\nMira’nın elinin masanın altında yumruk olduğunu görüyorsun.\n\nKonuşmanın kalbi bir sayı: Mira’nın hissesi. Kerem’in tablosunda yüzde beş. Mira yüzde elli diyor. Kerem’in komitesinin kabul edeceği bir aralık var, Mira’nın kabul edeceği bir aralık var. İkisi bir yerde kesişiyor; bulman gereken o nokta.",
+      "Interaction": {
+        "Type": "tune",
+        "Prompt": "Mira’nın hisse oranını ayarla. İkisinin de yüzü yumuşadığında bir buçuk saniye tut. Kerem’in sabrı otuz saniye.",
+        "Min": 0,
+        "Max": 50,
+        "Target": 30,
+        "Tolerance": 2,
+        "HoldMs": 1500,
+        "Seconds": 30,
+        "Hint": "Mira yarıdan az, Kerem üçte birden fazla vermek istemiyor.",
+        "Success": 0,
+        "Fail": 1
+      },
       "Choices": [
         {
-          "Text": "Yatırımcıyla yüz yüze son bir görüşme ayarla.",
-          "Next": "meeting",
-          "Result": "Kapıyı kendi sözlerinle kapatmak ya da açmak istedin.",
+          "Text": "İkisi de başını salladı.",
+          "Next": "deal_struck",
+          "Result": "Kerem tabloyu güncelledi: yüzde otuz. Mira yumruğunu açtı.",
           "Effects": {
-            "vision": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Müşterilerden ön sipariş toplamayı öner.",
-          "Next": "customers",
-          "Result": "Ürünün değerini onu kullananlara sormayı seçtin.",
-          "Effects": {
+            "loyalty": 10,
             "balance": 10
           },
           "SetFlags": [
-            "alternative"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "fair_split"
+          ]
         },
         {
-          "Text": "Mira’ya teklifi kabul etmek istediğini söyle.",
+          "Text": "Masa dağıldı.",
           "Next": "rift",
-          "Result": "Dürüst olmak kolay bir karar yaratmadı.",
+          "Result": "Kerem bilgisayarını kapattı. “Cumaya kadar düşünün,” dedi ve gitti.",
+          "Effects": {
+            "loyalty": -5
+          }
+        }
+      ]
+    },
+    "deal_struck": {
+      "Title": "Yüzde otuz",
+      "Chapter": 2,
+      "Text": "Kerem gittikten sonra Mira uzun süre arka odanın penceresinden dışarı bakıyor. Haliç’in üstünde martılar, karşı kıyıda kubbeler. “Yüzde otuz,” diyor sonunda. “Yarı değil. Ama ilk kez biri benim adımı yazdı.”\n\nKerem’in yeni taslağı akşam geliyor. Mira artık kurucu; adı, soyadı, imza satırı. Ama diğer maddeler duruyor: fikrî mülkiyet devri, birlikte satış zorunluluğu, rekabet yasağı. Kerem e-postanın sonuna eklemiş: “Bunlar standart. Komite değiştirmez.”\n\nBaban atölyeyi kapatırken yanınıza geliyor. “Anlaştınız mı?” Mira başını sallıyor. Baban bir şey söylemiyor; tezgâhın üstündeki talaşı eliyle süpürüyor, her akşam yaptığı gibi. Sonra, kapıdan çıkmadan: “Ziya amcan da yüzde otuzla başlamıştı,” diyor. “Dedenle. Sonra yarı oldu. Zamanla.”",
+      "Choices": [
+        {
+          "Text": "Diğer maddeleri de pazarlığa aç.",
+          "Next": "ledger",
+          "Result": "Kerem’e uzun bir e-posta yazdın. Mira omzunun üstünden okudu, iki kelimeyi düzeltti.",
+          "Effects": {
+            "vision": 5,
+            "loyalty": 5
+          }
+        },
+        {
+          "Text": "Bu kadarı yeter; imzalayalım.",
+          "Next": "signed",
+          "Result": "Mira bir an duraksadı. Sonra “Peki,” dedi. “Ama yazılı.”",
+          "Effects": {
+            "vision": 10
+          },
+          "SetFlags": [
+            "signed_early"
+          ]
+        }
+      ]
+    },
+    "rift": {
+      "Title": "Söylenmiş olan",
+      "Chapter": 2,
+      "Text": "Kerem gittikten sonra arka oda bir süre sessiz. Sonra Mira patlıyor; ama bağırmıyor, alçak sesle, daha kötüsü.\n\n“Dün gece onunla yazıştın,” diyor. Telefonunu gösteriyor: Kerem’in asistanı yanlışlıkla Mira’yı da eklemiş, sabahki bir e-postaya. Senin Kerem’e gece yazdığın mesajlar alıntılanmış. “‘Mira’yı ikna ederim.’ Böyle yazmışsın. Beni ikna edersin.”\n\nAçıklamaya çalışıyorsun; bağlamı, saati, yorgunluğu. Mira dinliyor ama duymuyor. “İki yıl,” diyor. “İki yıl bu tezgâhın üstünde uyudum. Annem ‘Kızım bir iş bul’ dedi, ben ‘İşim var’ dedim. Sen yatırımcıyla gece yazışırken ben veritabanını yedekliyordum.”\n\nMasanın üstünde Tezgâh’ın ilk çıktısı, çerçevelenmiş: ilk siparişin ekran görüntüsü. Hatice Hanım, bir metre astar, 12 Mart. Altında ikinizin imzası.\n\n“Bir gece düşüneceğim,” diyor Mira. “Sen de düşün. Kimin şirketi bu?”",
+      "Choices": [
+        {
+          "Text": "Peşinden git; atölyenin önünde konuş.",
+          "Next": "ledger",
+          "Result": "Mira kaldırımda durdu. Arkasını dönmedi ama gitmedi de.",
+          "Effects": {
+            "loyalty": 10
+          }
+        },
+        {
+          "Text": "Gitmesine izin ver; Kerem’le kendin ilerle.",
+          "Next": "signed",
+          "Result": "Kapı kapandı. Tezgâhın üstünde iki kahve fincanı kaldı; biri dolu.",
           "Effects": {
             "vision": 10,
             "loyalty": -10
           },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 2,
-      "Ending": ""
-    },
-    "meeting": {
-      "Title": "Bir koltuk daha",
-      "Text": "Toplantı odasında senin için bir sandalye hazırlanmış. Mira’yı görünce asistan başka bir sandalye getiriyor. Yatırımcı gülümsüyor ama dosyasını açmıyor.\n\n“İş yaparken duygusal bağlardan uzak durmalısın.” Mira ona bakıyor. “Ben bir bağ değil, ürünü yazan kişiyim.”\n\nKonuşmayı senin sürdürmen bekleniyor.",
-      "Choices": [
-        {
-          "Text": "Mira’nın teknik katkısını verilerle anlat.",
-          "Next": "pilot",
-          "Result": "Değeri kişilik tartışmasına çevirmedin.",
-          "Effects": {
-            "vision": 10,
-            "loyalty": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Koşullar değişmiyorsa masadan kalk.",
-          "Next": "customers",
-          "Result": "Bir hayır, başka kapılar için yer açtı.",
-          "Effects": {
-            "loyalty": 10
-          },
           "SetFlags": [
-            "walked"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "mira_left"
+          ]
         },
         {
-          "Text": "Yetki bende, ortaklık ikimizde kalsın öner.",
-          "Next": "pilot",
-          "Result": "Yetkiyle mülkiyeti birbirinden ayırdın.",
+          "Text": "Gecenin geri kalanını babanın yanında geçir.",
+          "Next": "ledger",
+          "Result": "Baban sobayı yaktı. “Otur,” dedi. “Sana bir şey göstereceğim.”",
           "Effects": {
             "balance": 10
-          },
-          "SetFlags": [
-            "shared"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         }
-      ],
-      "Chapter": 2,
-      "Ending": ""
+      ]
     },
-    "customers": {
-      "Title": "İlk gerçek sorular",
-      "Text": "Sabah on müşteriye gidiyorsunuz. Üçü peşin ödeme yapmaya hazır, ikisi sistemin basit bir sürümünü istiyor, biri hiçbir zaman internetten sipariş almayacağını söylüyor.\n\nSon dükkânda yaşlı bir terzi size bir tabure uzatıyor. “Ben uygulama istemiyorum. Müşterinin ölçüsünü kaybetmemek istiyorum.” Haftalardır yatırım sunumunda anlattığınız büyük gelecek, küçük bir ihtiyacın üstünü örtmüş.",
+    "ledger": {
+      "Title": "Dedenin kasası",
+      "Chapter": 2,
+      "Text": "Baban atölyenin en arkasındaki eski çelik kasanın önüne çömeliyor. Kasa dedenden kalma; yeşil boyası dökülmüş, üstünde bir İngiliz firmasının pirinç plakası. Çocukken içinde altın olduğunu sanırdın. “Kırk yıldır açılmadı,” diyor baban. “Şifresini deden biliyordu. Ben hiç sormadım; sorsam söylerdi, ama sormadım.”\n\n“Deden öldüğünde bir not bıraktı,” diyor ve cebinden sararmış bir kâğıt çıkarıyor. Dedenin eğri yazısı: “Kasanın şifresi, bu atölyenin doğduğu yıl. Tabelaya bak.”\n\nDuvardaki tabelaya bakıyorsun. Otuz yıldır her gün gördüğün, artık görmediğin tabela.\n\nBaban sana bakıyor. “Ben açamam,” diyor. “İçinde ne olduğunu bilmek istemedim. Belki borç senetleri. Belki Ziya amcanın payı. Sen aç.”",
+      "Interaction": {
+        "Type": "code",
+        "Prompt": "Kasanın dört haneli şifresini çevir.",
+        "Answer": "1974",
+        "Attempts": 3,
+        "Hint": "Tabelada ustanın adının yanındaki sayı.",
+        "Success": 0,
+        "Fail": 1
+      },
       "Choices": [
         {
-          "Text": "Ürünü bu küçük ihtiyaca göre yeniden tasarla.",
-          "Next": "pilot",
-          "Result": "Büyümeyi önce işe yaramak olarak tanımladın.",
-          "Effects": {
-            "vision": 10
-          },
-          "SetFlags": [
-            "useful"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Ön ödemeleri kayda alıp teslim takvimi çıkar.",
-          "Next": "delivery",
-          "Result": "Paranın yanına sorumluluğu da yazdın.",
+          "Text": "Kasa açıldı.",
+          "Next": "ledger_open",
+          "Result": "Kırk yıllık bir mandal ağır ağır kalktı. İçeriden kâğıt ve kâfur kokusu yükseldi.",
           "Effects": {
             "balance": 10
-          },
-          "SetFlags": [
-            "preorder"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 2,
-      "Ending": ""
-    },
-    "rift": {
-      "Title": "Söylenmiş olan",
-      "Text": "Mira uzun süre susuyor. “Beni ikna etmeye çalışma. İhtiyacını anlıyorum. Ama benim neyi kaybettiğimi de anla.”\n\nAtölyeden çıkarken anahtarını masaya koymuyor. Bu, her şeyin bittiği anlamına gelmiyor. Bitmediğini varsayma hakkını da vermiyor. Telefonunda sözleşmenin son sayfası açık.",
-      "Choices": [
+          }
+        },
         {
-          "Text": "İmzalamadan önce Mira’ya adil bir pay teklifi yaz.",
+          "Text": "Kasa açılmadı.",
           "Next": "pilot",
-          "Result": "Son dakikada da olsa emeği görünür kılmaya çalıştın.",
+          "Result": "Mandal yerinden oynamadı. Baban kâğıdı katlayıp cebine koydu. “Belki bir gün,” dedi.",
           "Effects": {
-            "loyalty": 10
-          },
-          "SetFlags": [
-            "shared"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Sözleşmeyi imzala.",
-          "Next": "signed",
-          "Result": "Borcu kapatan paranın bir bedeli oldu.",
-          "Effects": {
-            "vision": 10
-          },
-          "SetFlags": [
-            "signed"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Anlaşmadan vazgeçip Mira’dan özür dile.",
-          "Next": "customers",
-          "Result": "Özrü bir sonuç değil, başlangıç yaptın.",
-          "Effects": {
-            "loyalty": 10,
-            "balance": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 2,
-      "Ending": ""
-    },
-    "pilot": {
-      "Title": "Bir aylık deneme",
-      "Text": "Yatırımcı, tüm ürünü almak yerine bir aylık pilot çalışmayı kabul ediyor. Para az ama geri dönüşü var. Mira, “Şimdi bir şeyi kanıtlamamız gerekiyor,” diyor. “Yalnızca onlara değil. Bize de.”\n\nİlk gün sunucu duruyor. Babanın tanıdığı üç esnafın siparişi kaybolmuş. Sorunu tek başına gece boyunca düzeltmek mümkün. Müşterilere hemen söylemekse güveni zedeleyebilir.",
-      "Choices": [
-        {
-          "Text": "Müşterilere açıkça haber ver ve telafi öner.",
-          "Next": "delivery",
-          "Result": "Bir hatayı gizleyerek büyütmedin.",
-          "Effects": {
-            "loyalty": 5,
-            "balance": 5
-          },
-          "SetFlags": [
-            "honest"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Önce sistemi düzelt, sabah açıklama yap.",
-          "Next": "delivery",
-          "Result": "Zaman kazandın; güven için ayrıca çalışman gerekecek.",
-          "Effects": {
-            "vision": 10,
             "balance": -5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
+          }
+        }
+      ]
+    },
+    "ledger_open": {
+      "Title": "Ziya’nın defteri",
+      "Chapter": 2,
+      "Style": "note",
+      "Text": "Kâzım,\n\nBu atölyenin yarısı senin, yarısı benim. Kâğıtta yazmıyor; yazmasına gerek yok, sen de biliyorsun ben de. Fabrikanın teklifini reddettiğin gün bunu anladım. O gün bana ‘Ziya, sensiz büyümektense seninle küçük kalırım,’ dedin. Ben de sana bir söz veriyorum: Bu atölye bir gün büyürse, benim yarım da büyüsün; ama bir kişinin değil, bu tezgâhta çalışan herkesin olsun. Çıraklarımızın, ustalarımızın, mahallenin.\n\nBu defterde kırk yıllık bütün işlerimiz var. Kimin borcu kaldı, kimi affettik. Kendi el yazınla affettiklerinin yanına bir yıldız koymuşsun. Saydım: iki yüz on yedi yıldız.\n\nBir gün torunun bunu okursa ona söyle: Esnafın defteri, esnafın namusudur. Kimseye satılmaz.\n\nZiya · 1979",
+      "Choices": [
         {
-          "Text": "Mira’dan yardım iste ve sorumluluğu paylaş.",
-          "Next": "delivery",
-          "Result": "Bütün yükü tek başına taşıman gerekmedi.",
+          "Text": "Defteri Mira’ya göster.",
+          "Next": "pilot",
+          "Result": "Mira mektubu iki kez okudu. Sonra “İki yüz on yedi yıldız,” dedi. “Veresiye ekranına yıldız ekleyelim.”",
           "Effects": {
-            "loyalty": 10
+            "loyalty": 15
           },
           "SetFlags": [
-            "team"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "ziya",
+            "joint"
+          ]
+        },
+        {
+          "Text": "Defteri cebine koy; kimseye söyleme.",
+          "Next": "pilot",
+          "Result": "Defter cebinde ağırdı. Ağır olması iyiydi.",
+          "Effects": {
+            "vision": 5
+          },
+          "SetFlags": [
+            "ziya"
+          ]
         }
-      ],
-      "Chapter": 3,
-      "Ending": ""
+      ]
     },
     "signed": {
       "Title": "Yeni logonun altında",
-      "Text": "Borçlar kapandı. Baban çatıyı onarttı. Ürünün sitesine yeni bir logo eklendi. Mira’nın adı “erken dönem katkıları” bölümünde, sayfanın en altında.\n\nİlk maaşın hesabına yatınca kutlama için onu arıyorsun. Telefonu açmıyor. Yeni şirketin toplantısında senden daha hızlı teslimat sözü vermen isteniyor. Aynı masanın bu kez diğer tarafındasın.",
+      "Chapter": 3,
+      "Text": "İmza Kerem’in Maslak’taki ofisinde atılıyor; yirmi dördüncü kat, cam duvar, aşağıda şehir oyuncak gibi. Kerem şampanya açıyor, plastik bardaklarda. Avukat kırk iki sayfanın her birine senden paraf istiyor; elin yirminci sayfadan sonra uyuşuyor.\n\nİki hafta sonra para hesaba geçiyor. Atölyenin kira borcu ödeniyor; ev sahibi otel planını “şimdilik” rafa kaldırıyor. Çatıyı onarmak için bir usta geliyor; otuz yıllık delik bir öğleden sonra kapanıyor. Baban kovayı yıkayıp atölyenin köşesine koyuyor, ters çevirerek. Bir süre ona bakıyor.\n\nTezgâh’ın sitesine yeni bir logo ekleniyor: Ufuk Girişim’in tasarımcısı yapmış, daha keskin, daha mavi. Eski logoyu Mira bir peçeteye çizmişti; şimdi bir klasörde duruyor.\n\nİlk maaşın hesabına yatınca kutlamak için Mira’yı arıyorsun. Mira yanındaysa birlikte döner yemeye gidiyorsunuz; yanında değilse telefonu açmıyor. Yeni şirketin ilk toplantısında senden üç ay içinde on bin kullanıcı isteniyor. Şu an iki yüz otuz yedi var.",
       "Choices": [
+        {
+          "Text": "Yeni ofise taşın.",
+          "Next": "office_first",
+          "Result": "Kutuları Emre taşıdı; sen yalnızca eski tezgâhın üstündeki çerçeveyi aldın.",
+          "Effects": {
+            "vision": 5
+          }
+        },
+        {
+          "Text": "Önce mevcut esnafın isteklerini çöz.",
+          "Next": "pilot",
+          "Result": "Kerem kaşlarını kaldırdı. “Bir ay,” dedi. “Sonra büyüme.”",
+          "Effects": {
+            "balance": 10
+          }
+        },
         {
           "Text": "Mira’nın payını resmi olarak düzeltmek için bastır.",
           "Next": "renegotiate",
-          "Result": "İmzanın her şeyi bitirmesine izin vermedin.",
+          "Result": "Kerem gülümsedi ama gözleri gülmedi. “Bunu konuşmuştuk,” dedi.",
+          "NeedFlag": "mira_left",
           "Effects": {
             "loyalty": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
+          }
+        }
+      ]
+    },
+    "pilot": {
+      "Title": "Bir aylık deneme",
+      "Chapter": 3,
+      "Text": "Bir ay boyunca yalnızca mahalleyle çalışıyorsunuz. Her sabah dokuzda Hatice Hanım’ın dükkânında, on birde Yusuf’un tezgâhında, öğlen Nermin Abla’nın çayında. Kod gece yazılıyor, gündüz test ediliyor, akşam esnafın eline veriliyor. Yusuf’un domatesleri artık kilo; hal fiyatları sabah altıda kendiliğinden geliyor. Nermin Abla’nın ekranında yazılar büyük; gözlüğünü artık telefona bakarken çıkarıyor.\n\nAy sonunda Balat’ın kırk iki dükkânından otuz biri Tezgâh kullanıyor. Hiçbiri reklamla gelmedi; hepsi birbirinden duydu. Hatice Hanım kumaş tedarikçisine anlatmış, tedarikçi Fener’deki terziye, Fener’deki terzi Ayvansaray’daki kuzenine.\n\nKerem bir e-posta atıyor: “Etkileyici. Haftaya Perşembe yatırımcı günümüz var; yirmi fon, canlı demo. On dakikanız var. Bu bir fırsat.”\n\nMira e-postayı okuyor ve yüzü bembeyaz oluyor. “Canlı demo,” diyor. “Sunucumuz Yusuf’un sabah hal fiyatı çekimini zor kaldırıyor. Yirmi fonun önünde çökerse…”",
+      "Choices": [
         {
-          "Text": "Yeni şirkette ürünün başında kal.",
-          "Next": "pressure",
-          "Result": "Başarıyı içeriden değiştirebileceğine inanıyorsun.",
+          "Text": "Gece çalışmaya devam et.",
+          "Next": "pilot_night",
+          "Result": "Atölyenin ışığı o ay her gece üçe kadar yandı."
+        }
+      ]
+    },
+    "demo": {
+      "Title": "Yatırımcı günü",
+      "Chapter": 3,
+      "Text": "Salon karanlık, sahne parlak. Önünde yirmi fonun temsilcileri; bazıları telefonuna bakıyor, bazıları kahvesine. Kerem ön sırada, bacak bacak üstüne atmış, gülümsüyor. Sahne arkasında Mira dizüstü bilgisayarının başında, sunucunun yük grafiğine bakıyor. Grafik kırmızıya yaklaşıyor.\n\nDemo başlıyor. Ekranda Hatice Hanım’ın veresiye defteri, Yusuf’un domatesleri, Nermin Abla’nın kitap siparişi. Salondakiler telefonlarından aynı anda uygulamaya giriyor; Kerem önceden bir bağlantı dağıtmış. İki yüz kişi aynı anda.\n\nKulaklığından Mira’nın sesi: “Yük artıyor. Her dalga geldiğinde ‘yenile’ tuşuna basarsam önbellek sıfırlanır; ama tam dalganın tepesinde basmam lazım, erken ya da geç olursa her şey çöker. Sen ekranı izle, dalga tepeye gelince söyle. Üç dalga var.”",
+      "Interaction": {
+        "Type": "timing",
+        "Prompt": "Yük dalgası tepeye geldiğinde dokun. Üç dalgadan ikisini yakala.",
+        "Rounds": 3,
+        "Need": 2,
+        "Zone": 0.2,
+        "Speed": 1.1,
+        "Success": 0,
+        "Fail": 1
+      },
+      "Choices": [
+        {
+          "Text": "Sunucu ayakta kaldı.",
+          "Next": "demo_ok",
+          "Result": "Son dalga geçtiğinde salondan bir alkış yükseldi; kimse neyi alkışladığını tam bilmiyordu ama alkışladı.",
           "Effects": {
             "vision": 10
           },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "SetFlags": [
+            "demo_ok"
+          ]
         },
         {
-          "Text": "Kendi payının bir kısmını Mira’ya devretmeyi teklif et.",
-          "Next": "renegotiate",
-          "Result": "Bir bedeli yalnızca başkasına ödetmedin.",
+          "Text": "Sunucu çöktü.",
+          "Next": "crash_night",
+          "Result": "Ekranda beyaz bir sayfa: “502 Bad Gateway.” Salon sustu. Birisi güldü.",
           "Effects": {
-            "balance": 10,
-            "loyalty": 10
-          },
-          "SetFlags": [
-            "share"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "vision": -10
+          }
         }
-      ],
+      ]
+    },
+    "demo_ok": {
+      "Title": "Alkıştan sonra",
       "Chapter": 3,
-      "Ending": ""
+      "Text": "Demodan sonra fonların üçü kartvizit bırakıyor; biri seni bir kenara çekip “Sizi doğrudan finanse etmek isteriz, Ufuk’suz,” diyor, alçak sesle. Kerem bunu görüyor ve gülümsemesi bir an donuyor.\n\nSahne arkasında Mira yere oturmuş, sırtını duvara vermiş. Elleri titriyor. “Üç gece,” diyor. “Üç gece uyumadım ve sahnede sen vardın. Kimse beni görmedi. Kimse sahne arkasını alkışlamaz.” Gülmeye çalışıyor; olmuyor.\n\nKerem yanınıza geliyor, ikinizin omzuna birer el koyuyor. “Muhteşemdi. Şimdi: altı ayda on beş şehir. Yeni bir tur yatırım. Büyük düşünün.” Sonra Mira’ya dönüyor: “Sana bir ekip kuracağız. Beş mühendis. Sen sadece yönet.”\n\nMira başını kaldırıp Kerem’e bakıyor. Sonra sana. Sorusu yüzünde yazıyor.",
+      "Choices": [
+        {
+          "Text": "“Mira ne istiyorsa o,” de.",
+          "Next": "burnout",
+          "Result": "Kerem bir şey söylemedi. Mira gözlerini kapattı.",
+          "Effects": {
+            "loyalty": 10
+          }
+        },
+        {
+          "Text": "On beş şehir planını kabul et.",
+          "Next": "pressure",
+          "Result": "Kerem elini sıktı. “İşte bu,” dedi.",
+          "Effects": {
+            "vision": 10
+          }
+        },
+        {
+          "Text": "Ufuk’suz fonla görüşmeyi düşün.",
+          "Next": "investor_call",
+          "Result": "Kartvizit cebinde ağırlaştı.",
+          "Effects": {
+            "balance": 5,
+            "vision": 5
+          }
+        }
+      ]
+    },
+    "crash_night": {
+      "Title": "02.40 · Çöküşten sonra",
+      "Chapter": 3,
+      "Style": "chat",
+      "Text": "Mira: Logları okuyorum. Veritabanı bağlantı havuzu dolmuş.\nMira: Benim hatam. Önbelleği yanlış ayarladım.\nSen: Senin hatan değil. Yirmi fonun önüne hazırlıksız çıktık.\nMira: Kerem aradı mı?\nSen: Üç kez. Açmadım.\nMira: Ben de.\nMira yazıyor…\nMira: Hatice Hanım mesaj attı.\nMira: “Kızım bugün uygulama açılmadı, defterimi kâğıda geri yazdım. Ama yarın yine açarım. Siz yorulmayın.”\nMira: Ağlıyorum şu an. Saçma.\nSen: Saçma değil.\nMira: Yarın sabah dükkânlara gidip tek tek özür dileyelim mi?\nMira: Ya da Kerem’in istediği gibi yapalım. Büyük ekip, büyük sunucu, büyük her şey.\nMira: Sen söyle. Ben bu gece karar veremem.",
+      "Choices": [
+        {
+          "Text": "“Sabah dükkânlara gidelim.”",
+          "Next": "delivery",
+          "Result": "Mira: “Tamam. Simit benden.”",
+          "Effects": {
+            "loyalty": 10,
+            "balance": 5
+          }
+        },
+        {
+          "Text": "“Kerem’in büyük sunucusunu kabul edelim.”",
+          "Next": "pressure",
+          "Result": "Mira: “Tamam.” Sonra çevrimdışı oldu.",
+          "Effects": {
+            "vision": 10
+          }
+        }
+      ]
     },
     "delivery": {
       "Title": "Teslim günü",
-      "Text": "Atölyenin önünde kargo kolileri değil, sırayla gelen insanlar var. Terzi, manav, küçük bir kitapçı. Herkes kendi işini biraz kolaylaştıran sistemi soruyor.\n\nMira eski bir masayı destek masasına çevirmiş. Baban müşterilere çay taşıyor. Bir yatırım haberi kadar gösterişli değil. Ama ilk kez yaptığınız işin yüzlerini görüyorsun. Akşam yatırımcı yeniden arıyor.",
+      "Chapter": 3,
+      "Text": "Atölyenin önünde kargo kolileri değil, sırayla gelen insanlar var. Terzi, manav, kitapçı, bir de hiç tanımadığın bir bakkal, Karagümrük’ten. Herkes kendi işini biraz kolaylaştıran sistemi soruyor; herkes bir şey istiyor, herkes bir şey getiriyor. Yusuf bir kasa domates bırakıyor, Nermin Abla bir kitap, Hatice Hanım ölçü alınmamış bir yelek. “Sana dikiyorum,” diyor, “ölçünü gözüm biliyor.”\n\nMira eski bir masayı destek masasına çevirmiş; önünde sıra var, her birine aynı sabırla anlatıyor. Baban müşterilere çay taşıyor, tezgâhın kenarına tabure diziyor, bekleyenlere eski işlerini gösteriyor: “Bu sandalyeyi 1988’de yaptım, bak hâlâ sağlam.”\n\nKerem bir saat için geliyor ve üç saat kalıyor. Sıranın sonunda, takım elbisesinin ceketini çıkarmış, Yusuf’la domates fiyatı tartışırken görüyorsun onu.\n\nBir yatırım haberi kadar gösterişli değil. Ama ilk kez yaptığınız işin yüzlerini bu kadar yakından görüyorsun. Akşam Kerem yeniden arıyor; sesi değişmiş. “Bir şey konuşalım,” diyor. “Ama bu sefer siz söyleyin, ben dinleyeyim.”",
       "Choices": [
         {
-          "Text": "Yeni teklifi birlikte değerlendirin.",
+          "Text": "Yeni şartları birlikte, açıkça değerlendirin.",
           "Next": "new_terms",
-          "Result": "Bu masada iki imza olacağını baştan söyledin.",
+          "Result": "Mira’yla birlikte telefonu hoparlöre aldınız.",
           "Effects": {
-            "loyalty": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "loyalty": 10
+          }
         },
         {
-          "Text": "Küçük kalıp düzenli müşteriyle büyüyün.",
+          "Text": "Küçük kalıp düzenli müşteriyle büyümeyi öner.",
           "Next": "small",
-          "Result": "Büyümenin hızını seçmek istedin.",
+          "Result": "Kerem bir süre sustu. “Küçük,” dedi. “Bu kelimeyi pek duymam.”",
           "Effects": {
             "balance": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
           "Text": "Hızlı ölçeklenmek için ekibi büyütmeyi öner.",
           "Next": "pressure",
-          "Result": "Daha fazla insana ulaşmak için risk aldın.",
+          "Result": "Kerem’in sesi yeniden parlaklaştı. “İşte konuşmak istediğim bu.”",
           "Effects": {
             "vision": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         }
-      ],
-      "Chapter": 3,
-      "Ending": ""
+      ]
     },
     "renegotiate": {
       "Title": "Geri dönülebilen şeyler",
-      "Text": "Yatırımcı, kişisel payının bir kısmını devretmene karşı çıkmıyor ama ürünün haklarını geri vermiyor. Mira teklifini okuduktan sonra “Payı konuşuruz,” diyor. “Önce birlikte çalışmayı hâlâ isteyip istemediğimizi konuşalım.”\n\nPara, iki yılın değerini tek başına ölçemiyor. Ama sorumluluğun somut bir biçimi olabiliyor.",
+      "Chapter": 4,
+      "Text": "Kerem’in odasında, cam duvarın önünde, iki kişisiniz. Mira yok; sen onu bu kapıda bırakmıştın, şimdi geri getirmeye çalışıyorsun. “Mira kurucu olmalı,” diyorsun. “Kodun yarısı onun. Ziya amcanın payı gibi; kâğıtta yazmıyor ama herkes biliyor.”\n\nKerem bir kalemle masaya vuruyor. “Mira gitti,” diyor. “Rakip bir ekiple konuşuyormuş, duydum. Rekabet yasağı ona da uygulanıyor; çalışan sayılıyordu. Avukatlarımız ona bir mektup gönderdi.”\n\nMideniz düğümleniyor. “Mektubu geri çekin.”\n\n“Neden?” diyor Kerem, gerçekten merak ederek. “Şirketi korumak benim işim. Senin de işin.” Sonra yüzüne bakıyor, uzun uzun. “Ama sen bunu şirket için istemiyorsun, değil mi? Kendin için istiyorsun.”",
       "Choices": [
         {
-          "Text": "Mira’nın ortaklığına gerçek yetki de ekle.",
+          "Text": "Kendi hisselerinin bir kısmını Mira’ya devretmeyi teklif et.",
           "Next": "new_terms",
-          "Result": "Sözü bir mekanizmaya dönüştürdün.",
+          "Result": "Kerem kalemi bıraktı. “Bunu kimse yapmaz,” dedi. “Peki. Yazalım.”",
+          "Effects": {
+            "loyalty": 15,
+            "balance": 10
+          },
+          "SetFlags": [
+            "share_gift"
+          ]
+        },
+        {
+          "Text": "Şirketten ayrıl; Mira’nın yanına git.",
+          "Next": "ending_separate",
+          "Result": "Kerem ayağa kalktı. “Rekabet yasağı senin için de geçerli,” dedi. “Biliyorsun.” Biliyordun.",
+          "Effects": {
+            "loyalty": 10
+          }
+        }
+      ]
+    },
+    "burnout": {
+      "Title": "Sahne arkası",
+      "Chapter": 4,
+      "Text": "Mira iki hafta sonra atölyeye gelmiyor. Sonra üçüncü hafta. Mesajlara kısa cevaplar veriyor: “İyiyim.” “Biraz dinleniyorum.” “Kod çalışıyor, merak etme.”\n\nBir akşam Kadıköy’deki evine gidiyorsun. Kapıyı annesi açıyor; Mira odasında, ışığı kapalı. Yatağının yanında dizüstü bilgisayar açık, ekranda bir kod satırı yarım kalmış. Duvarında Tezgâh’ın ilk çıktısı, Hatice Hanım’ın bir metre astarı.\n\n“Ben bunu sevmeyi bıraktım,” diyor Mira, karanlıkta. “Kodu değil. Kodu hâlâ seviyorum. Bunu: hep daha fazla, hep daha hızlı, hep başka şehirler. Ben bir mahalleyi sevmiştim. Kerem on beş şehir dediğinde bir şey içimde kapandı.”\n\nBir süre konuşmuyorsunuz. Sonra Mira doğruluyor. “Sen ne istiyorsun? Gerçekten. Kerem’in istediğini değil, babanın istediğini değil. Senin.”",
+      "Choices": [
+        {
+          "Text": "“Mahalleyi. Seninle.”",
+          "Next": "small",
+          "Result": "Mira ışığı yaktı. Gözleri kırmızıydı ama gülümsüyordu.",
+          "Effects": {
+            "loyalty": 15
+          }
+        },
+        {
+          "Text": "“Büyümek. Ama seninle, senin hızında.”",
+          "Next": "roadmap",
+          "Result": "Mira bir süre düşündü. “Benim hızımda,” dedi. “Bunu yazılı isterim.”",
+          "Effects": {
+            "vision": 10,
+            "loyalty": 5
+          }
+        },
+        {
+          "Text": "“Bilmiyorum,” de.",
+          "Next": "investor_call",
+          "Result": "Mira başını salladı. “En dürüst cevap bu,” dedi. Telefonun çaldı: Kerem.",
+          "Effects": {
+            "balance": 10
+          }
+        }
+      ]
+    },
+    "roadmap": {
+      "Title": "Tezgâhın üstündeki kâğıtlar",
+      "Chapter": 4,
+      "Text": "Atölyenin arka odasında, eski tezgâhın üstüne kâğıtlar yayılmış: esnafın istekleri, Kerem’in hedefleri, Mira’nın teknik borç listesi, babanın dedenin defterinden çıkardığı bir yıldız. Önümüzdeki altı ayda ne önce yapılacak? Sırayı yanlış kurarsanız ya sunucu çöker, ya esnaf gider, ya para biter.\n\nMira bir kalem uzatıyor. “Sen sırala,” diyor. “Ben itiraz ederim.”",
+      "Interaction": {
+        "Type": "order",
+        "Prompt": "Altı aylık planı en önce yapılması gerekenden başlayarak sırala.",
+        "Items": [
+          "Sunucuyu sağlamlaştır",
+          "Esnaf verisini şifrele ve sahipliğini yaz",
+          "Yusuf’un hal fiyatı ve kilo desteği",
+          "İki komşu semtte pilot",
+          "Yeni yatırım turu"
+        ],
+        "Attempts": 2,
+        "Success": 0,
+        "Fail": 1
+      },
+      "Choices": [
+        {
+          "Text": "Plan oturdu.",
+          "Next": "new_terms",
+          "Result": "Mira kâğıtları bir zarfa koyup üstüne yazdı: “Bizim hızımız.”",
+          "Effects": {
+            "vision": 10,
+            "balance": 10
+          },
+          "SetFlags": [
+            "good_plan"
+          ]
+        },
+        {
+          "Text": "Plan tutmadı.",
+          "Next": "pressure",
+          "Result": "Üç ay sonra sunucu yeniden çöktü, bu kez Bursa’da. Kerem’in sabrı tükeniyordu.",
+          "Effects": {
+            "balance": -5
+          }
+        }
+      ]
+    },
+    "investor_call": {
+      "Title": "Cuma 17.55",
+      "Chapter": 4,
+      "Text": "Telefonun ekranında “Kerem Aslan” yanıp sönüyor. Cuma akşamı, saat altıya beş var. Açtığında sesi her zamankinden hızlı.\n\n“Dinle,” diyor. “Komite bir şey istiyor. Büyük bir perakende zinciri Tezgâh’ı satın almak istiyor. Rakam… inanmazsın. Babanın atölyesini on kez satın alırsın. Mira da zengin olur. Herkes. Ama bu akşam altıya kadar ön onay vermemiz lazım; zincirin yönetim kurulu bu akşam toplanıyor.”\n\nArka planda bir kapı sesi, birinin “Kerem Bey, bekliyorlar,” demesi.\n\n“Evet ya da hayır,” diyor Kerem. “Şimdi.”",
+      "Interaction": {
+        "Type": "timer",
+        "Prompt": "Kerem hatta bekliyor. Saat 17.55.",
+        "Seconds": 15,
+        "Timeout": 2
+      },
+      "Choices": [
+        {
+          "Text": "“Evet.”",
+          "Next": "sale",
+          "Result": "“Harika,” dedi Kerem. “Harika. Pişman olmayacaksın.” Hat kapandı.",
+          "Effects": {
+            "vision": 10,
+            "loyalty": -10
+          }
+        },
+        {
+          "Text": "“Mira’ya sormadan olmaz.”",
+          "Next": "new_terms",
+          "Result": "Kerem bir süre sustu. “Pazartesi,” dedi. “Son şans.”",
+          "Effects": {
+            "loyalty": 10
+          }
+        },
+        {
+          "Text": "Sessiz kal.",
+          "Next": "pressure",
+          "Result": "Saat altıyı geçti. Kerem “Peki,” dedi. “Bu sessizliği komiteye nasıl açıklayacağımı bilmiyorum.”",
+          "Effects": {
+            "balance": -5
+          }
+        }
+      ]
+    },
+    "pressure": {
+      "Title": "Başarının takvimi",
+      "Chapter": 4,
+      "Text": "Yeni hedefler bir önceki hedef tutar tutmaz belirleniyor. Ankara, İzmir, Bursa; bir haftada üç şehir, üç ayda on bin kullanıcı. Satış ekibi esnafa “ilk üç ay ücretsiz” diyor ve dördüncü ay ücretler geliyor. Hatice Hanım bir sabah atölyeye gelip faturayı masaya koyuyor: “Kızım, ben bunu ödeyemem. Defterimi kâğıda geri yazıyorum.”\n\nYeni bir ekip arkadaşınız, genç bir mühendis, fazla çalışmaktan bir gece hastanelik oluyor. Mira, eğer hâlâ yanındaysa, bir akşam sana dönüp “Bize yapılanı başkasına mı yapıyoruz?” diye soruyor.\n\nTakvimde kırmızı işaretlerle dolu bir ay var. O ayın ortasında babanın yetmişinci doğum günü. Onun da üstüne bir toplantı yazılmış: “Bursa · yatırımcı sunumu.” Baban bir şey söylemiyor; ama atölyedeki kova, ters çevrilmiş haliyle, köşede hâlâ duruyor.\n\nBüyümekle büyüyen şeyi yönetmek aynı beceri değil.",
+      "Choices": [
+        {
+          "Text": "Teslim tarihini uzat, ekibi koru.",
+          "Next": "father_birthday",
+          "Result": "Kerem bir e-posta attı: “Bu karar komiteyi rahatsız edecek.” Ekip ise o gece eve erken gitti.",
+          "NeedStat": "loyalty",
+          "MinValue": 60,
           "Effects": {
             "loyalty": 10
           },
           "SetFlags": [
-            "shared"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "team_first"
+          ]
         },
         {
-          "Text": "Payı devret, farklı yollarda ilerlemeyi kabul et.",
+          "Text": "Kendi rolünü sınırla, profesyonel bir yönetici al.",
+          "Next": "father_birthday",
+          "Result": "Yeni genel müdür ilk gün atölyeye geldi, kovayı gördü ve fotoğrafını çekti. “Hikâye,” dedi.",
+          "NeedStat": "balance",
+          "MinValue": 60,
+          "Effects": {
+            "balance": 10
+          },
+          "SetFlags": [
+            "ceo_hired"
+          ]
+        },
+        {
+          "Text": "Hedefleri tutturmak için büyümeyi sürdür.",
+          "Next": "father_birthday",
+          "Result": "Bursa sunumu ile doğum günü aynı akşamdı.",
+          "Effects": {
+            "vision": 10,
+            "balance": -10
+          }
+        },
+        {
+          "Text": "Payını sat ve kendi yoluna dön.",
           "Next": "ending_separate",
-          "Result": "Adil olmakla birlikte kalmayı ayırdın.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "Result": "Kerem şaşırmadı. “Herkes bir gün bu kapıya gelir,” dedi.",
+          "Effects": {
+            "balance": 10
+          }
         }
-      ],
-      "Chapter": 3,
-      "Ending": ""
-    },
-    "new_terms": {
-      "Title": "İkinci sözleşme",
-      "Text": "Bu kez sözleşme odada yüksek sesle okunuyor. Mira iki maddeyi değiştiriyor. Sen iş yükü ve aile borcunun ayrı kalmasını istiyorsun. Yatırımcı ilk kez not alıyor.\n\nİmza atmak hâlâ risk. Ama önceki gibi bir suskunluğu onaylamak değil. Artık nereye evet, nereye hayır dediğinizi biliyorsunuz.",
-      "Choices": [
-        {
-          "Text": "Ortak yetki ve ürün haklarıyla imzala.",
-          "Next": "ending_partners",
-          "Result": "Birlikte büyümek için sağlam bir zemin kurdunuz.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "loyalty",
-          "MinValue": 65
-        },
-        {
-          "Text": "Yatırım miktarını düşür, bağımsızlığı koru.",
-          "Next": "ending_workshop",
-          "Result": "Daha yavaş ama kendi ölçünüzde ilerlediniz.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Müşteri gelirini bekle, imzayı ertele.",
-          "Next": "small",
-          "Result": "Seçenek sahibi olduğunuzu hatırladınız.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 4,
-      "Ending": ""
+      ]
     },
     "small": {
       "Title": "İlk kâr",
-      "Text": "Kârınız büyük değil. Mira hesap makinesine aynı rakamı iki kez yazıyor. Baban o gün ilk kez “yardımınız” yerine “işiniz” diyor.\n\nDaha çok müşteriye ulaşmak için iki yol var: bir kooperatif ağıyla ürününüzü paylaşmak veya bütün tasarrufu yeni bir şehirde ofise yatırmak. Hangisi başarı sayılacak? Bu kez soruyu yatırımcı sormuyor.",
+      "Chapter": 4,
+      "Text": "Kârınız büyük değil. Ay sonunda Mira hesap tablosuna aynı rakamı iki kez yazıyor, emin olmak için. Pozitif. Küçük ama pozitif. Kira ödendi, iki maaş ödendi, sunucu ödendi, bir de Hatice Hanım’ın önerdiği gibi bir çırak alındı: Yusuf’un oğlu Emre, on dokuz yaşında, kod öğrenmek istiyor.\n\nBaban o gün ilk kez “yardımınız” yerine “işiniz” diyor. “İşiniz nasıl gidiyor?” diye soruyor akşam yemeğinde. Kelimeyi duyduğunda Mira’yla birbirinize bakıyorsunuz.\n\nKerem bir mesaj atıyor: “Küçük kalmak bir strateji değil, bir korkudur. Ama size iyi şanslar.” Sonra, bir saat sonra, ikinci bir mesaj: “Aslında… biraz kıskandım.”\n\nDaha çok müşteriye ulaşmak için iki yol var: Balat’ın ve komşu semtlerin esnaf dernekleriyle bir kooperatif ağı kurup ürünü onlarla paylaşmak, ya da bütün kârı yeni bir şehirde bir ofise yatırmak. Hangisi başarı sayılacak? Bu kez soruyu yatırımcı sormuyor.",
       "Choices": [
         {
-          "Text": "Kooperatif ağıyla paylaşarak büyü.",
-          "Next": "ending_workshop",
-          "Result": "Değeri tek bir kapıda tutmadınız.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
+          "Text": "Esnaf derneğiyle kooperatif kur; ürün onların da olsun.",
+          "Next": "coop",
+          "Result": "Dernek başkanı Nermin Abla’nın eski öğrencisi çıktı. İlk toplantı bir kahvehanede, kırk kişiyle oldu.",
           "NeedStat": "balance",
-          "MinValue": 60
+          "MinValue": 60,
+          "Effects": {
+            "loyalty": 10,
+            "balance": 10
+          }
         },
         {
           "Text": "Düzenli müşteriyle küçük bir şirket olarak kal.",
           "Next": "ending_workshop",
           "Result": "Yeterli olanın ne olduğuna kendiniz karar verdiniz.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "Effects": {
+            "balance": 10
+          }
         },
         {
           "Text": "Yeni şehirde ofis aç.",
           "Next": "ending_scale",
           "Result": "Bildiğinizden daha büyük bir işe adım attınız.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
           "NeedStat": "vision",
-          "MinValue": 70
+          "MinValue": 70,
+          "Effects": {
+            "vision": 10
+          }
         }
-      ],
-      "Chapter": 4,
-      "Ending": ""
+      ]
     },
-    "pressure": {
-      "Title": "Başarının takvimi",
-      "Text": "Yeni hedefler bir önceki hedef tutar tutmaz belirleniyor. Bir ekip arkadaşınız fazla çalışmaktan ayrılıyor. Mira “Bize yapılanı başkasına mı yapıyoruz?” diye soruyor.\n\nTakvimde kırmızı işaretlerle dolu bir ay var. O ayın ortasında annenin doğum günü. Onun da üstüne bir toplantı yazılmış. Büyümekle büyüyen şeyi yönetmek aynı beceri değil.",
+    "coop": {
+      "Title": "Kahvehanede kırk kişi",
+      "Chapter": 5,
+      "Text": "Fener’deki kahvehanenin üst katı, kırk sandalye, kırk esnaf. Terziler, bakkallar, manavlar, bir kuyumcu, iki eczacı, bir saat tamircisi. Önlerinde çay, kâğıt bir sunum, Mira’nın çizdiği bir şema.\n\nTeklif basit: Tezgâh bir kooperatife dönüşecek. Her dükkân küçük bir aidatla ortak olacak; her dükkânın bir oyu olacak. Kod ve veri kooperatifin. Sen ve Mira yönetecek, maaş alacak, ama şirket kimsenin değil; herkesin.\n\nSaat tamircisi söz istiyor. “Peki siz zengin olamayacaksınız o zaman? Neden yapıyorsunuz bunu?” Kahvehane susuyor.\n\nBaban arka sırada oturuyor; elinde Ziya amcanın defteri.",
       "Choices": [
         {
-          "Text": "Teslim tarihini uzat, ekibi koru.",
-          "Next": "ending_partners",
-          "Result": "Şirketin ölçeğinden önce çalışma biçimini seçtin.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "loyalty",
-          "MinValue": 60
+          "Text": "Ziya amcanın mektubunu yüksek sesle oku.",
+          "Next": "ending_coop",
+          "Result": "“Esnafın defteri, esnafın namusudur,” diye bitirdin. Kahvehanede kimse çayına dokunmadı.",
+          "NeedFlag": "ziya",
+          "Effects": {
+            "loyalty": 15
+          }
         },
         {
-          "Text": "Kendi rolünü sınırla, profesyonel bir yönetici al.",
-          "Next": "ending_scale",
-          "Result": "Her sorumluluğu kendinde toplamayı bıraktın.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "balance",
-          "MinValue": 60
+          "Text": "“Çünkü bu mahalle bizi büyüttü,” de.",
+          "Next": "ending_coop",
+          "Result": "Saat tamircisi başını salladı. İlk elini o kaldırdı.",
+          "Effects": {
+            "loyalty": 10
+          }
         },
         {
-          "Text": "Hedefleri tutturmak için büyümeyi sürdür.",
-          "Next": "ending_scale",
-          "Result": "Hızın seni değiştireceğini bilerek yola devam ettin.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Payını sat ve kendi yoluna dön.",
-          "Next": "ending_separate",
-          "Result": "Çıkmak da bir kurucu kararıydı.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "Text": "Son anda vazgeç; küçük şirket olarak kal.",
+          "Next": "ending_workshop",
+          "Result": "Kahvehaneden çıkarken kimse kızmadı. Hatice Hanım “Siz bilirsiniz,” dedi.",
+          "Effects": {
+            "balance": 5
+          }
         }
-      ],
-      "Chapter": 4,
-      "Ending": ""
+      ]
+    },
+    "new_terms": {
+      "Title": "İkinci sözleşme",
+      "Chapter": 5,
+      "Text": "Yeni sözleşme yirmi sekiz sayfa. İlkinden on dört sayfa kısa. Fikrî mülkiyet Tezgâh’ta kalıyor; esnafın verisi esnafın, yazılı. Birlikte satış maddesi, iki kurucunun da onayına bağlanmış. Rekabet yasağı bir yıl, yalnızca yöneticiler için. Mira’nın adı kurucular bölümünde, seninkinin yanında, aynı puntoyla.\n\nKerem sözleşmeyi masaya koyarken bir an duraksıyor. “Bunu ilk kez yapıyorum,” diyor. “Komiteye ‘bu ekip pazarlık etti ve haklıydı’ diye yazdım. Bunu da ilk kez yazdım.” Sonra gülüyor. “Ama değerleme düştü. Daha az para, daha çok kontrol. Hangisini istediğinizi bilmeniz lazım.”\n\nBaban atölyede kahve yapıyor; dedenin bakır cezvesiyle, misafir geldiğinde yaptığı gibi. Mira kalemi eline alıyor, sonra sana uzatıyor. “Önce sen,” diyor. “Sonra ben. Bu sefer sıralama önemli değil.”",
+      "Choices": [
+        {
+          "Text": "İkiniz birden imzalayın.",
+          "Next": "ending_partners",
+          "Result": "İki imza aynı sayfada, aynı mürekkeple.",
+          "NeedStat": "loyalty",
+          "MinValue": 65,
+          "Effects": {
+            "loyalty": 10
+          }
+        },
+        {
+          "Text": "İmzalamayın; yatırım olmadan küçük kalın.",
+          "Next": "small",
+          "Result": "Kerem sözleşmeyi geri aldı. “Kapım açık,” dedi. Açıktı da.",
+          "Effects": {
+            "balance": 10
+          }
+        },
+        {
+          "Text": "İmzalayın ve hızlı büyümeye başlayın.",
+          "Next": "pressure",
+          "Result": "İmzalar atıldı. Kerem şampanyayı bu kez cam bardaklarda getirdi.",
+          "Effects": {
+            "vision": 10
+          }
+        }
+      ]
+    },
+    "board": {
+      "Title": "Yönetim kurulu",
+      "Chapter": 5,
+      "Text": "Bir yıl sonra, Maslak’taki ofiste, ilk yönetim kurulu toplantısı. Tezgâh dokuz şehirde, kırk iki bin dükkânda. Masada Kerem, iki yeni yatırımcı, bir avukat, sen. Mira masada mı, değil mi; bu yıl içinde verdiğin her kararın cevabı o sandalyede oturuyor ya da oturmuyor.\n\nGündem tek madde: büyük perakende zinciri yeniden teklif verdi. Rakam ilkinin iki katı. Zincir Tezgâh’ı kendi kasalarına entegre edecek, esnaf verisini “müşteri analitiği” için kullanacak. Kerem bu kez sana bakmıyor; yatırımcılara bakıyor.\n\n“Birlikte satış maddesi,” diyor avukat, sözleşmeyi açarak. “Yatırımcılar satmaya karar verirse kurucular da satmak zorunda.”\n\nPencereden aşağı bakıyorsun. Şehir oyuncak gibi. Bir yerinde, çok uzakta, Balat’ta bir atölye var; çatısı artık akmıyor.",
+      "Choices": [
+        {
+          "Text": "Satışa onay ver.",
+          "Next": "sale",
+          "Result": "Kerem elini sıktı; bu kez gerçekten gülümsüyordu.",
+          "Effects": {
+            "vision": 10
+          }
+        },
+        {
+          "Text": "Satışa karşı çık; esnaf verisini koruyan maddeyi hatırlat.",
+          "Next": "ending_scale",
+          "Result": "Avukat sayfaları karıştırdı. “Veri esnafındır,” dedi. “Burada yazıyor.” Zincir teklifini geri çekti.",
+          "NeedFlag": "data_pledge",
+          "Effects": {
+            "loyalty": 10
+          }
+        },
+        {
+          "Text": "Payını sat ve ayrıl; bu masa artık senin değil.",
+          "Next": "ending_separate",
+          "Result": "Masadan kalktığında kimse durdurmadı. Kerem kapıya kadar geldi. “Gerçekten iyiydin,” dedi.",
+          "Effects": {
+            "balance": 10
+          }
+        }
+      ]
+    },
+    "sale": {
+      "Title": "Satış",
+      "Chapter": 5,
+      "Text": "Satış bir salı günü, öğleden sonra üçte, bir hukuk bürosunun toplantı odasında gerçekleşiyor. Kırk iki imza. Para hesaba geçtiğinde telefonun bir bildirim gösteriyor; sıfırları saymak yine zaman alıyor.\n\nAtölyenin kirası ödendi; artık atölye satın alındı, tapusu babanın adına. Babanın yetmiş birinci doğum gününde ona tapuyu bir kurdeleyle veriyorsun. Baban tapuya bakıyor, sonra sana. “Teşekkür ederim,” diyor. Sesi titriyor ama gözleri bir şey soruyor ve sen o soruyu duymazdan geliyorsun.\n\nÜç ay sonra zincir Tezgâh’ı kendi uygulamasına katıyor. Logo değişiyor; Mira’nın peçeteye çizdiği eski logodan geriye bir dosya adı kalıyor. Veresiye ekranı kaldırılıyor; “kârlı değil.” Hatice Hanım’ın kırk iki müşterisinin adı ve borcu, bir pazarlama tablosunda bir satıra dönüşüyor.",
+      "Choices": [
+        {
+          "Text": "Hatice Hanım’a git.",
+          "Next": "ending_sold",
+          "Result": "Hatice Hanım kapıyı açtığında elinde kâğıt bir defter vardı.",
+          "Effects": {
+            "loyalty": 5
+          }
+        }
+      ]
     },
     "ending_partners": {
       "Title": "İki imza",
-      "Text": "Bir yıl sonra sözleşmenin çerçevelenmiş bir kopyası duvarda asılı değil. Müşterilerin notları, ekibin çizimleri ve kimi zaman bozulan bir kahve makinesi var.\n\nMira’yla her konuda anlaşmıyorsunuz. Artık anlaşmazlıkları gizli birer vedaya dönüştürmüyorsunuz. Atölyenin çatısı yağmurda su almıyor. Baban bazen eski defterin yanına sizin aylık raporu koyuyor.\n\nBaşarı iki isimden biri silinince kolaylaşmamış. İkisinin de okunabildiği bir biçim bulmuş.",
-      "Choices": [],
-      "Chapter": 4,
-      "Ending": "İki imza"
+      "Chapter": 5,
+      "Ending": "İki imza",
+      "Text": "İkinci sözleşmeyle Tezgâh yavaş büyüdü; Kerem’in istediğinden yavaş, sizin korktuğunuzdan hızlı. Üç yılda altı şehir. Her şehre önce bir ay boyunca yalnızca o şehrin bir mahallesiyle çalışarak girdiniz; Balat’ta öğrendiğiniz gibi.\n\nMira’yla aynı masada, aynı kurucu unvanıyla oturuyorsunuz. Tartışıyorsunuz; çok. Bir kez üç gün konuşmadınız, sunucu yer değiştirme planı yüzünden. Sonra Hatice Hanım ikinizi dükkânına çağırıp çay ısmarladı ve barıştırdı. “Ortaklık evlilik gibidir,” dedi. “Ben iki kez boşandım, bilirim.”\n\nAtölyenin duvarında, dedenin tabelasının yanında şimdi ikinci bir tabela var: “Tezgâh · 2026.” Altında iki isim, aynı puntoyla.\n\nBaban her sabah atölyeyi açıyor, çayı demliyor, sizin için iki bardak hazırlıyor. Kova hâlâ köşede, ters. Kimse kaldırmıyor."
     },
     "ending_workshop": {
       "Title": "Açık kapı",
-      "Text": "Atölyenin önündeki tabelaya yeni bir satır eklendi. Tamir, üretim ve dijital sipariş. Büyük bir lansman yapılmadı. Müşterilerinizden biri kek getirdi; bütün kutlamanız bu oldu.\n\nİşiniz size bir servet kazandırmıyor. Zamanınızın tamamını da almıyor. Mira cuma günleri erken çıkıyor, sen annenin doğum gününü takvimden silmiyorsun.\n\nHerkes “Daha büyük olabilirdi” diyor. Siz “Bu hâliyle kimin hayatını iyileştiriyor?” diye sormayı öğrendiniz.",
-      "Choices": [],
-      "Chapter": 4,
-      "Ending": "Açık kapı"
+      "Chapter": 5,
+      "Ending": "Açık kapı",
+      "Text": "Tezgâh küçük kaldı. Balat, Fener, Ayvansaray, Karagümrük; dört semt, yüz on dört dükkân. Ne bir ödül aldınız ne bir manşet. Bir dergi bir kez “büyümeyi reddeden girişim” diye bir haber yaptı; Mira haberi çerçeveletip tuvaletin duvarına astı.\n\nMira’yla atölyenin arka odasında çalışıyorsunuz. Emre artık tam zamanlı; Yusuf’un domates ekranını o yazdı, babasına gösterirken ağladı. Baban emekli olmadı; ön tarafta hâlâ sandalye yapıyor, ama artık müşterilerinin yarısı “Tezgâh’tan gördük” diyerek geliyor.\n\nAkşamları atölyenin kapısı açık kalıyor. Esnaf geçerken uğruyor; biri bir hata gösteriyor, biri bir fikir getiriyor, biri yalnızca çay içiyor. Bir şirketten çok bir kahvehaneye benziyor.\n\nYeterli olanın ne olduğuna kendiniz karar verdiniz. Bazı geceler bunun doğru olup olmadığını düşünüyorsun. Sonra Hatice Hanım’ın diktiği yeleği giyiyor ve uyuyorsun."
     },
     "ending_scale": {
       "Title": "Yeni şehir",
-      "Text": "İkinci ofisin camına ürünün adı yazılırken ilk atölyedeki yağmur sesini hatırlıyorsun. Artık daha çok kişinin geçimi aldığın kararlara bağlı.\n\nBasında çıkan fotoğrafta gülümsüyorsun. Fotoğraftan sonra ekibin mesajlarına dönüyorsun. Başarının bir son olmadığını, çözmen gereken daha büyük bir ölçek olduğunu anlıyorsun.\n\nMira ister yanında ister başka bir masada olsun, ilk sözleşmeyi sakladın. Neyi bir daha yapmaman gerektiğini unutmak istemiyorsun.",
-      "Choices": [],
-      "Chapter": 4,
-      "Ending": "Yeni şehir"
+      "Chapter": 5,
+      "Ending": "Yeni şehir",
+      "Text": "Tezgâh büyüdü. Yirmi şehir, iki ülke, yüz yetmiş çalışan. Bir teknoloji dergisinin kapağında yüzün; Mira kapağa çıkmayı reddetti. “Ben sahne arkasıyım,” dedi. Ama sahne arkası artık kırk mühendislik bir ekip.\n\nEsnaf verisi esnafın kaldı; bunu her yatırım turunda, her yeni sözleşmede, kırk iki sayfanın her birinde yeniden savunman gerekti. Bazen kazandın, bazen az kalsın kaybediyordun. Kerem artık senin en sert ve en güvendiğin yönetim kurulu üyesi.\n\nBalat’taki atölye hâlâ şirketin resmi merkezi. Kimse orada çalışmıyor; büyük ofisler Maslak’ta, Ankara’da, Berlin’de. Ama her yıl kuruluş gününde bütün ekip atölyeye geliyor. Baban hepsine çay dağıtıyor, kovanın hikâyesini anlatıyor. Yeni gelenler gülüyor; eski olanlar gülmüyor.\n\nBazen geceleri, uçaktan inerken, hangi şehirde olduğunu hatırlamak için bir saniye düşünüyorsun. O bir saniyede Balat’ın taşları geliyor aklına."
     },
     "ending_separate": {
       "Title": "Başka bir masa",
-      "Text": "Mira yeni işinin ilk gününden bir fotoğraf gönderiyor. Kutlamak için arıyorsun. Bu kez telefonu açıyor. Aranızdaki her şey düzelmiş değil; her şeyin bozulmuş olması da gerekmiyor.\n\nAilenin borcunu kapattın ama kendi payına düşen hesabı rakamlarla bitiremedin. Bir süre sonra başka bir projeye başladın. İlk dosyanın adı “ortaklık ilkeleri” oldu.\n\nBazı başlangıçlar, bir önceki hikâyenin sonunu dürüstçe yazabildiğinde mümkün oluyor.",
-      "Choices": [],
-      "Chapter": 4,
-      "Ending": "Başka bir masa"
+      "Chapter": 5,
+      "Ending": "Başka bir masa",
+      "Text": "Payını sattın ve ayrıldın. Rekabet yasağı bir yıl boyunca yazılım yazmanı yasakladı; o yıl babanla atölyede çalıştın. Sandalye yapmayı öğrendin. İlk sandalyen sallanıyordu; baban onu atölyenin köşesine koydu, kovanın yanına. “İlk iş hep sallanır,” dedi.\n\nYıl dolunca Mira’yı aradın. Telefonu ilk çalışta açtı. Kendi küçük şirketini kurmuştu; kooperatiflere açık kaynak yazılım yapan, üç kişilik bir ekip. “Bir koltuk boş,” dedi. “Kurucu değil. Ama masada.”\n\nŞimdi Mira’nın masasında, başka bir atölyenin arka odasında çalışıyorsun. Adın kurucular bölümünde değil. İlk kez bunun seni rahatsız etmediğini fark ediyorsun.\n\nÇıkmak da bir kurucu kararıydı. Ve bazen başka bir masaya oturmak, bir masanın sahibi olmaktan daha çok şey öğretir."
+    },
+    "ending_sold": {
+      "Title": "Kâğıt defter",
+      "Chapter": 5,
+      "Ending": "Kâğıt defter",
+      "Text": "Hatice Hanım seni içeri aldı, çay koydu, sitem etmedi. Elindeki kâğıt defteri masaya bıraktı; kırk iki müşterinin adı, borcu, hepsi yeniden onun el yazısıyla. “Bilgisayar gitti, defter kaldı,” dedi. “Defter hep kalır kızım.”\n\nPara hesabında duruyor. Babanın atölyesi babanın. Mira da zengin oldu; bir yıl dünyayı gezdi, sonra bir üniversitede ders vermeye başladı, “etik yazılım” diye bir ders. Ders kitabındaki ilk vaka sizin şirketiniz; adını değiştirmiş ama sen tanıyorsun.\n\nBazı akşamlar Balat’ta yürürken Tezgâh’ın eski kullanıcılarını görüyorsun; kâğıt defterleriyle, hesap makineleriyle. Kimse sana kızgın değil. Kimse bir şey kaybetmemiş gibi davranıyor. Belki de kaybetmediler; belki yalnızca bir şeyi denediler ve geri döndüler.\n\nAma dedenin kasasındaki defterde iki yüz on yedi yıldız vardı. Senin defterinde hiç yıldız yok. Bunu düzeltmek için hâlâ vaktin var."
+    },
+    "ending_coop": {
+      "Title": "Kırk el",
+      "Chapter": 5,
+      "Ending": "Kooperatif",
+      "Text": "Kahvehanede kırk el kalktı. Bir yıl sonra yüz yirmi. Üç yıl sonra İstanbul’un on bir semtinden altı yüz esnaf, Tezgâh Kooperatifi’nin ortağı. Her ortağın bir oyu var; Hatice Hanım’ın da, Yusuf’un da, saat tamircisinin de. Yıllık genel kurul Fener’deki kahvehanede yapılıyor ve her yıl biri ayağa kalkıp “domates neden hâlâ kilo değil” diye bağırıyor; artık kilo, ama bağırmak gelenek oldu.\n\nSen ve Mira maaşlı yöneticisiniz. Zengin olmadınız. Kerem bir kez genel kurula izleyici olarak geldi, arka sırada oturdu, bir oylamada kendini tutamayıp el kaldırdı ve sonra kızardı.\n\nVeresiye ekranına bir yıldız eklendi. Esnaf bir borcu affettiğinde, borcun yanına küçük bir yıldız konuyor. Uygulamanın ana sayfasında, en altta, bir sayaç: bütün kooperatifin bu yıl affettiği borçlar.\n\nGeçen ay sayaç iki yüz on yediyi geçti. Baban o gün atölyeyi erken kapattı ve Ziya amcanın mezarına gitti."
+    },
+    "pitch_prep": {
+      "Title": "Gece yarısı provası",
+      "Chapter": 2,
+      "Text": "Toplantıdan önceki gece atölyenin arka odasında prova yapıyorsunuz. Mira Kerem’i oynuyor; ayaklarını masaya uzatmış, babanın eski gözlüğünü takmış, sesini kalınlaştırmış. “Peki ama bu ölçeklenir mi? Domatesle unicorn olunur mu?” Gülüyorsunuz; sonra gülmeyi bırakıyorsunuz çünkü soru gerçek.\n\nMasanın üstünde kâğıtlar: Kerem’in tablosu, sözleşmenin işaretlenmiş sayfaları, esnafın notları. Mira bir kâğıda iki sütun çiziyor: “Vazgeçebileceklerimiz” ve “Vazgeçemeyeceklerimiz.” İlk sütun uzun: ofis, unvan, maaş, hatta değerleme. İkinci sütunda yalnızca üç satır: “Kurucu olmak. Kod bizde. Veri esnafın.”\n\n“Pazarlık bir rakam üstünde döner,” diyor Mira. “Kerem bana yüzde beş diyecek, ben elli diyeceğim. İkimiz de yalan söylüyor olacağız. Doğru rakam ortada bir yerde ve onu sen bulacaksın. Ben bulamam; ben kızarım.”\n\nSaat ikiye geliyor. Baban arka kapıdan uykulu bir halde giriyor, ikinize birer battaniye bırakıyor, hiçbir şey söylemeden çıkıyor. Mira battaniyeye sarınıp tezgâhın üstüne uzanıyor. “Uyuyamayacağım,” diyor. Beş dakika sonra uyuyor.\n\nSen kâğıttaki üç satıra bakıyorsun. Yarın bu üç satırı korumak için ne kadar şeyden vazgeçebileceğini bilmiyorsun.",
+      "Choices": [
+        {
+          "Text": "Mira’nın üstünü ört, sen de biraz uyu.",
+          "Next": "meeting",
+          "Result": "Sabah babanın çay sesiyle uyandınız. Saat on biri gösteriyordu.",
+          "Effects": {
+            "balance": 10
+          }
+        },
+        {
+          "Text": "Sabaha kadar rakamları yeniden hesapla.",
+          "Next": "meeting",
+          "Result": "Sabaha karşı bir tablo hazırladın: yüzde yirmi ile otuz beş arası her rakamın sonuçları.",
+          "Effects": {
+            "vision": 10
+          }
+        }
+      ]
+    },
+    "pilot_night": {
+      "Title": "03.10 · Pilot ayının ortası",
+      "Chapter": 3,
+      "Style": "chat",
+      "Text": "Mira: Uyanık mısın\nSen: Evet. Yusuf’un hal fiyatı modülünü test ediyorum.\nMira: Ben de Nermin Abla’nın büyük yazılarını. Bir şey fark ettim.\nMira: Büyük yazılar herkes için daha iyi. Hatice Hanım bile büyütmüş.\nSen: 😄\nMira: Bir şey soracağım. Cevap verme hemen.\nMira: Bu şirket bizi mutlu ediyor mu?\nMira yazıyor…\nMira: Çünkü ben bu ay hayatımın en yorgun ve en mutlu ayını geçirdim. İkisi aynı anda olabiliyormuş.\nSen: Olabiliyormuş.\nMira: Kerem’in e-postası geldi bu arada. Yatırımcı günü. Canlı demo.\nMira: Sunucu kaldırmaz. Bunu bilerek söylüyorum.\nMira: Ama gitmezsek de bir fırsat kaçar. Bunu da bilerek söylüyorum.\nMira: Sabah konuşalım. İyi geceler ortak.",
+      "Choices": [
+        {
+          "Text": "Sabah demoya gitmeye karar ver.",
+          "Next": "demo",
+          "Result": "Mira üç gece uyumadı. Sen de.",
+          "Effects": {
+            "vision": 10
+          }
+        },
+        {
+          "Text": "Sabah Kerem’i mahalleye davet et.",
+          "Next": "delivery",
+          "Result": "Kerem şaşırdı. Sonra “Peki,” dedi. “Ama bir saat. Fazlası değil.”",
+          "Effects": {
+            "balance": 10
+          }
+        }
+      ]
+    },
+    "office_first": {
+      "Title": "Yirmi dördüncü kat",
+      "Chapter": 3,
+      "Text": "Yeni ofis Maslak’ta; Kerem’in fonunun bir katı, cam duvarlar, ayakta çalışma masaları, mutfakta altı çeşit süt. İlk gün masanın üstünde bir karşılama kutusu var: logolu kupa, logolu defter, logolu kapüşonlu. Logo artık senin değil; daha keskin, daha mavi.\n\nAsansörde bir başka girişimin kurucusuyla tanışıyorsun; yirmi altı yaşında, üçüncü şirketi. “İlk şirketinde herkes masayı kendi taşır,” diyor. “İkincisinde başkaları taşır. Üçüncüsünde masa yoktur.” Gülüyor. Sen gülmüyorsun.\n\nÖğleden sonra Balat’a gidiyorsun; atölyeden bir şey almak için, aslında hiçbir şey almak için değil. Baban ön tarafta, yeni çatının altında bir sandalye zımparalıyor. Kova köşede ters duruyor. Arka oda boş; eski tezgâhın üstünde Mira’nın unuttuğu bir kalem, senin unuttuğun bir kahve halkası.\n\n“Nasıl yeni yer?” diyor baban. “Güzel,” diyorsun. “Çok güzel.” Baban zımparayı bırakıyor. “Deden de fabrikaya gitmeyi düşündüğü hafta ‘çok güzel’ derdi,” diyor. “Her şeye.”",
+      "Choices": [
+        {
+          "Text": "Ofise dön; hedeflere başla.",
+          "Next": "pressure",
+          "Result": "Asansör yirmi dördüncü kata çıkarken kulakların tıkandı.",
+          "Effects": {
+            "vision": 10
+          }
+        },
+        {
+          "Text": "Bir hafta arka odadan çalışmaya karar ver.",
+          "Next": "pilot",
+          "Result": "Kerem bir e-posta attı: “Neredesin?” Cevabın bir fotoğraftı: tezgâh ve iki kahve.",
+          "Effects": {
+            "balance": 10
+          }
+        },
+        {
+          "Text": "Mira’nın payını düzeltmek için Kerem’e git.",
+          "Next": "renegotiate",
+          "Result": "Asansörde yalnızdın. Aynada kendine baktın.",
+          "NeedFlag": "mira_left",
+          "Effects": {
+            "loyalty": 10
+          }
+        }
+      ]
+    },
+    "father_birthday": {
+      "Title": "Yetmiş mum",
+      "Chapter": 5,
+      "Text": "Babanın yetmişinci doğum günü atölyede kutlanıyor; masalar tezgâhların üstüne kurulmuş, talaş süpürülmüş, duvarlara Hatice Hanım’ın getirdiği kumaşlardan bayraklar asılmış. Yusuf domatesli börek, Nermin Abla bir şiir kitabı, Emre bir kek getirmiş; mumların yarısı yamuk.\n\nGelip gelmediğin, bu yıl içinde verdiğin kararların toplamı. Geldiysen Bursa sunumunu başka birine bıraktın ya da hiç gitmedin. Gelmediysen bu sahneyi sonra Mira’nın attığı bir fotoğraftan göreceksin: babanın yüzü, mumların ışığında, kapıya bakıyor.\n\nBaban mumları üflemeden önce kısa bir konuşma yapıyor. “Bu atölye elli iki yaşında,” diyor. “Ben yetmiş. Deden olsaydı yüz beş olurdu. Hiçbirimiz büyük bir şey yapmadık. Ama bu kapı hiç kapanmadı. Bir gün kapanırsa üzülmem; yeter ki biz kendi ellerimizle kapatalım, başkası değil.”\n\nMumlar sönüyor. Herkes alkışlıyor. Baban sana bakıyor; ya da sana bakacak yerin boşluğuna.",
+      "Choices": [
+        {
+          "Text": "Babana sarıl; ertesi gün yönetim kuruluna git.",
+          "Next": "board",
+          "Result": "Babanın ceketinde talaş kokusu vardı. Hiç değişmeyen koku.",
+          "Effects": {
+            "loyalty": 10,
+            "balance": 10
+          }
+        },
+        {
+          "Text": "Bir kenara çekil; telefondaki e-postalara bak.",
+          "Next": "board",
+          "Result": "Kerem’den yedi e-posta. Hepsi ‘acil’. Hiçbiri doğum gününden daha acil değildi; ama hepsini okudun.",
+          "Effects": {
+            "vision": 10,
+            "balance": -5
+          }
+        }
+      ]
     }
   }
 }

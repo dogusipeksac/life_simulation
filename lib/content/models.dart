@@ -355,6 +355,64 @@ class StoryOption {
   final List<String> setFlags;
 }
 
+/// Sahne metninin görünümü: düz anlatı, mesajlaşma, not kâğıdı ya da telsiz dökümü.
+const storyStyles = {'', 'chat', 'note', 'radio'};
+
+/// Etkileşim türleri. Sonuçlar (Success/Fail/Timeout/Done) sahnedeki seçeneklerin dizinine
+/// bağlanır; etkileşim bitince o seçenek uygulanır. Kayıt ve bölüm kilidi aynen çalışır.
+const storyInteractionTypes = {'code', 'order', 'tune', 'timing', 'search', 'timer'};
+
+class StorySpot {
+  StorySpot.fromJson(Json j)
+      : label = _str(j['Label']),
+        text = _str(j['Text']),
+        flag = _str(j['Flag']);
+  final String label, text, flag;
+}
+
+class StoryInteraction {
+  StoryInteraction.fromJson(Json j)
+      : raw = j,
+        type = _str(j['Type']),
+        prompt = _str(j['Prompt']),
+        hint = _str(j['Hint']),
+        answer = _str(j['Answer']),
+        attempts = _int(j['Attempts'], 3),
+        items = _strings(j['Items']),
+        spots = List.unmodifiable((j['Spots'] as List? ?? const []).map((s) => StorySpot.fromJson(s as Json))),
+        picks = _int(j['Picks'], 3),
+        min = (j['Min'] as num? ?? 0).toDouble(),
+        max = (j['Max'] as num? ?? 100).toDouble(),
+        target = (j['Target'] as num? ?? 50).toDouble(),
+        tolerance = (j['Tolerance'] as num? ?? 1).toDouble(),
+        holdMs = _int(j['HoldMs'], 1500),
+        seconds = _int(j['Seconds'], 20),
+        rounds = _int(j['Rounds'], 3),
+        need = _int(j['Need'], 2),
+        zone = (j['Zone'] as num? ?? .2).toDouble(),
+        speed = (j['Speed'] as num? ?? 1).toDouble(),
+        success = _int(j['Success']),
+        fail = _int(j['Fail'], 1),
+        timeout = _int(j['Timeout']),
+        done = _int(j['Done']);
+
+  final Json raw;
+  final String type, prompt, hint, answer;
+  final int attempts, picks, holdMs, seconds, rounds, need, success, fail, timeout, done;
+  final List<String> items;
+  final List<StorySpot> spots;
+  final double min, max, target, tolerance, zone, speed;
+
+  /// Sonuç adı → seçenek dizini.
+  int? outcome(String name) => switch ((type, name)) {
+        ('search', 'done') => done,
+        ('timer', 'timeout') => timeout,
+        ('code' || 'order' || 'tune' || 'timing', 'success') => success,
+        ('code' || 'order' || 'tune' || 'timing', 'fail') => fail,
+        _ => null,
+      };
+}
+
 class StoryNode {
   StoryNode.fromJson(Json j)
       : raw = j,
@@ -362,12 +420,18 @@ class StoryNode {
         text = _str(j['Text']),
         chapter = _int(j['Chapter'], 1),
         ending = _str(j['Ending']),
+        style = _str(j['Style']),
+        interaction = j['Interaction'] == null ? null : StoryInteraction.fromJson(j['Interaction'] as Json),
         choices = List.unmodifiable((j['Choices'] as List? ?? const []).map((c) => StoryOption.fromJson(c as Json)));
 
   final Json raw;
-  final String title, text, ending;
+  final String title, text, ending, style;
   final int chapter;
+  final StoryInteraction? interaction;
   final List<StoryOption> choices;
+
+  /// Seçenekler kart olarak değil, etkileşimin sonucu olarak uygulanır (süreli karar hariç).
+  bool get choicesHidden => interaction != null && interaction!.type != 'timer';
 }
 
 class StoryBook {

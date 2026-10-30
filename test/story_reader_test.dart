@@ -102,9 +102,21 @@ void main() {
           guard-- > 0) {
         final p = game.stories.open(b.id),
             node = b.nodes[game.stories.open(b.id).nodeId]!;
+        if (node.choicesHidden) {
+          // Etkileşimleri ayrı testler oynar; burada sonucu doğrudan uygula.
+          game.resolveStoryInteraction(b.id, node.interaction!.type == 'search' ? 'done' : 'fail', p.nodeId);
+          await tester.pumpAndSettle();
+          continue;
+        }
         final i = node.choices.indexWhere(
           (c) => game.stories.blocked(b, p, c) == null,
         );
+        if (node.interaction?.type == 'timer') {
+          // Süreli kararda pumpAndSettle süreyi bitirir; seçimi doğrudan uygula.
+          game.chooseStory(b.id, i, p.nodeId);
+          await tester.pumpAndSettle();
+          continue;
+        }
         await tap(tester, find.byKey(ValueKey('story-choice-$i')));
       }
       expect(guard, greaterThan(0));
@@ -156,6 +168,12 @@ void main() {
           guard-- > 0) {
         final p = game.stories.open(paid.id),
             node = paid.nodes[game.stories.open(paid.id).nodeId]!;
+        if (node.choicesHidden) {
+          // Etkileşimleri ayrı testler oynar; burada sonucu doğrudan uygula.
+          game.resolveStoryInteraction(paid.id, node.interaction!.type == 'search' ? 'done' : 'fail', p.nodeId);
+          await tester.pumpAndSettle();
+          continue;
+        }
         final i = node.choices.indexWhere(
           (c) => game.stories.blocked(paid, p, c) == null,
         );
@@ -274,6 +292,10 @@ void main() {
           while (game.stories.canRead(paid, paid.nodes[p.nodeId]!) &&
               guard-- > 0) {
             final node = paid.nodes[p.nodeId]!;
+            if (node.choicesHidden) {
+              game.stories.resolveInteraction(paid.id, node.interaction!.type == 'search' ? 'done' : 'fail', expectedNode: p.nodeId);
+              continue;
+            }
             final i = node.choices.indexWhere(
               (c) => game.stories.blocked(paid, p, c) == null,
             );

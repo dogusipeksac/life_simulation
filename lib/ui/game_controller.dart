@@ -48,6 +48,8 @@ class GameController extends ChangeNotifier {
 
   ActionResult chooseStory(String id, int index, String expectedNode) =>
       _update(stories.choose(id, index, expectedNode: expectedNode));
+  ActionResult resolveStoryInteraction(String id, String outcome, String expectedNode, {Set<String> found = const {}}) =>
+      _update(stories.resolveInteraction(id, outcome, expectedNode: expectedNode, found: found));
   ActionResult restartStory(String id) => _update(stories.restart(id));
   ActionResult restoreStories() => _update(storyStore.restore());
   ActionResult purchaseStory(String product) =>

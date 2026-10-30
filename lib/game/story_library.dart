@@ -131,10 +131,33 @@ class StoryLibrary {
     return null;
   }
 
+  /// Etkileşim bitti: sonucu bağlı seçeneğe çevirir. [found] arama etkileşiminde
+  /// bulunan ipuçlarının bayraklarıdır.
+  ActionResult resolveInteraction(
+    String bookId,
+    String outcome, {
+    required String expectedNode,
+    Set<String> found = const {},
+  }) {
+    final b = books[bookId];
+    final node = b?.nodes[progress[bookId]?.nodeId];
+    final index = node?.interaction?.outcome(outcome);
+    if (b == null || node == null || index == null) {
+      return const ActionResult(false, 'Bu etkileşim artık geçerli değil.');
+    }
+    final allowed = {for (final s in node.interaction!.spots) if (s.flag.isNotEmpty) s.flag};
+    if (found.length > node.interaction!.picks) {
+      return const ActionResult(false, 'Bu kadar yere bakacak zamanın yoktu.');
+    }
+    return choose(bookId, index, expectedNode: expectedNode, extraFlags: found.intersection(allowed), viaInteraction: true);
+  }
+
   ActionResult choose(
     String bookId,
     int index, {
     required String expectedNode,
+    Set<String> extraFlags = const {},
+    bool viaInteraction = false,
   }) {
     final b = books[bookId];
     if (b == null) return const ActionResult(false, 'Hikâye bulunamadı.');
@@ -148,6 +171,9 @@ class StoryLibrary {
         'Bu bölümü okumak için tam hikâyenin kilidini açmalısın.',
       );
     }
+    if (node.choicesHidden && !viaInteraction) {
+      return const ActionResult(false, 'Önce sahnedeki etkileşimi tamamla.');
+    }
     if (index < 0 || index >= node.choices.length) {
       return const ActionResult(false, 'Seçenek bulunamadı.');
     }
@@ -160,7 +186,9 @@ class StoryLibrary {
     for (final e in c.effects.entries) {
       p.stats[e.key] = ((p.stats[e.key] ?? 50) + e.value).clamp(0, 100);
     }
-    p.flags.addAll(c.setFlags);
+    p.flags
+      ..addAll(c.setFlags)
+      ..addAll(extraFlags);
     p.nodeId = c.next;
     p.lastResult = c.result;
     final next = b.nodes[c.next]!;

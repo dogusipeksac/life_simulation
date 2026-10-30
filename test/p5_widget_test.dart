@@ -150,6 +150,13 @@ void main() {
     while (game.stories.canRead(book, book.nodes[progress.nodeId]!) &&
         guard-- > 0) {
       final node = book.nodes[progress.nodeId]!;
+      if (node.choicesHidden) {
+        expect(
+          game.stories.resolveInteraction(book.id, node.interaction!.type == 'search' ? 'done' : 'fail', expectedNode: progress.nodeId).success,
+          isTrue,
+        );
+        continue;
+      }
       final i = node.choices.indexWhere(
         (c) => game.stories.blocked(book, progress, c) == null,
       );

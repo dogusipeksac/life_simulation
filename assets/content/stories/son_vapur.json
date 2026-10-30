@@ -1,8 +1,8 @@
 {
   "Id": "son_vapur",
   "Title": "Son Vapur",
-  "Subtitle": "Bir gece. Bir zarf. Üç ihtimal.",
-  "Description": "Babanın kayboluşundan on yıl sonra, son vapurda onun el yazısıyla bir not buluyorsun. Gerçeği açığa çıkarmakla aileni korumak aynı şey olmayabilir.",
+  "Subtitle": "Bir gece. Bir zarf. Altı ihtimal.",
+  "Description": "Babanın kayboluşundan on yıl sonra, son vapurda onun el yazısıyla bir not buluyorsun. Sabaha kadar bir şifreyi çözecek, silinmiş bir kaydı kurtaracak, ailenin sakladığı defteri okuyacaksın. Gerçeği açığa çıkarmakla aileni korumak aynı şey olmayabilir.",
   "Genre": "Şehir gizemi",
   "Color": "507f91",
   "Symbol": "≈",
@@ -12,658 +12,1452 @@
   "Chapters": [
     "Zarf",
     "Kayıt",
-    "Sabaha karşı"
+    "Defter",
+    "Tehdit",
+    "Sabah"
   ],
   "StatNames": {
     "insight": "Sezgi",
     "trust": "Güven",
     "courage": "Cesaret"
   },
-  "ContentNote": "Kurgusal olaylar ve karakterler. Kayıp, aile çatışmaları ve zor kararlar içerir.",
+  "ContentNote": "Kurgusal olaylar ve karakterler. Kayıp, iş kazası, aile sırları ve tehdit içerir.",
   "Nodes": {
     "start": {
       "Title": "23.40 · Karaköy",
-      "Text": "Yağmur vapurun camında ince yollar açıyor. Büfeci, çayının altına eski bir zarf bırakıyor. Üstünde yalnızca adın var. İçinden çıkan kâğıtta babanın el yazısını hemen tanıyorsun: “Son seferde arka güverteye gel. Beni arama; neyi sakladığımı bul.”\n\nBaban on yıl önce kayboldu. Polis dosyası kapanalı çok oldu. Kâğıdın köşesindeyse bugünün tarihi var. Telefonun titriyor. Ablan İpek: “Eve geliyor musun?”",
+      "Chapter": 1,
+      "Text": "Yağmur vapurun camında ince yollar açıyor. Son seferde yolcu az: başını cama yaslamış uyuklayan bir öğrenci, poşetlerine sarılmış yaşlı bir kadın, kulaklığını hiç çıkarmayan bir garson. Motorun titreşimi bardağın içindeki çayı halka halka büyütüyor. Karaköy’ün ışıkları arkada küçülürken, sen her cuma yaptığın gibi pencere kenarındaki aynı koltuğa oturmuşsun. On yıldır bu vapura binmeyi bırakmadın; bunun bir alışkanlık mı, bir bekleyiş mi olduğunu kendine hiç sormadın.\n\nBüfeci çayını önüne bırakırken altına sarı, eski bir zarf sıkıştırıyor. Göz göze gelmeden tezgâhına dönüyor. Zarfın üstünde yalnızca adın var, mavi mürekkeple, büyük harflerle.\n\nİçindeki kâğıtta babanın el yazısını hemen tanıyorsun; t harflerini hep aynı yerden, biraz fazla bastırarak keserdi. Okul defterlerini o imzalardı, bayram kartlarını o yazardı. “Son seferde arka güverteye gel. Beni arama; neyi sakladığımı bul.”\n\nBaban on yıl önce, tam da bu saatte kalkan vapurdan sonra kayboldu. Dosya birkaç ayda “kendi isteğiyle ayrılma” diye kapandı. Komşular önce acıdı, sonra fısıldaştı, sonra unuttu. Annen o günden beri yağmurlu gecelerde salonun penceresini kapatmaz; perdeyi açık bırakır, ışığı yakar, sabaha karşı uyur.\n\nKâğıdın köşesinde bugünün tarihi var. Mürekkebi taze; parmağını sürünce hafifçe dağılıyor.\n\nTelefonun titriyor. Ablan İpek: “Eve geliyor musun? Annem yine bekliyor.”",
       "Choices": [
         {
-          "Text": "İpek’e zarfın fotoğrafını gönder.",
-          "Next": "ipek",
-          "Result": "Bu sırrı tek başına taşımamayı seçtin.",
+          "Text": "İpek’e yaz; zarftan bahsedip bahsetmemeye orada karar ver.",
+          "Next": "ipek_msg",
+          "Result": "Parmakların ekranın üstünde bir süre bekledi.",
           "Effects": {
             "trust": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
-          "Text": "Zarfı cebine koy, arka güverteye çık.",
+          "Text": "Zarfı cebine koy, doğruca arka güverteye çık.",
           "Next": "deck",
-          "Result": "Önce kendi gözlerinle görmek istiyorsun.",
+          "Result": "Rüzgâr kapıyı elinden çekip aldı.",
           "Effects": {
             "courage": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
           "Text": "Büfeciye zarfı kimin bıraktığını sor.",
           "Next": "buffet",
-          "Result": "Küçük bir ayrıntının peşine düştün.",
+          "Result": "Büfeci tezgâhı silmeyi bıraktı.",
           "Effects": {
             "insight": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         }
-      ],
-      "Chapter": 1,
-      "Ending": ""
+      ]
     },
-    "ipek": {
+    "ipek_msg": {
       "Title": "Telefondaki sessizlik",
-      "Text": "İpek fotoğrafı görünce aramayı kesiyor. Sonra tek cümle yazıyor: “Mavi atkılı birini görürsen onunla gitme.”\n\nOnu arıyorsun. “Bunu nereden biliyorsun?” diye sorunca nefes alışını duyuyorsun. “Çünkü aynı zarfı dün ben aldım.” Aranızdaki on yıllık sessizliğin, yalnızca acıdan ibaret olmadığını ilk kez anlıyorsun.",
+      "Chapter": 1,
+      "Style": "chat",
+      "Text": "İpek: Eve geliyor musun? Annem yine bekliyor.\nSen: Son vapurdayım.\nİpek: Bu saatte? Kadıköy’de bekleyeyim mi?\nSen: Bir şey buldum. Babamın yazısı.\nİpek yazıyor…\nİpek yazmayı bıraktı.\nİpek yazıyor…\nİpek: Ne yazıyor?\nSen: “Beni arama; neyi sakladığımı bul.”\nİpek: Biri seninle oynuyor. On yıl oldu.\nİpek: Lütfen o zarfı anneme gösterme. Bu gece olmaz.\nİpek: Söz ver.",
       "Choices": [
         {
-          "Text": "Benden ne saklıyorsun diye sor.",
+          "Text": "Zarfın fotoğrafını gönder ve söz verme.",
           "Next": "deck",
-          "Result": "İpek, babanın eski iş arkadaşı Leyla’dan söz etti.",
+          "Result": "Fotoğraf gönderildi. İki gri tik maviye döndü ama cevap gelmedi.",
           "Effects": {
-            "insight": 5
+            "trust": 5,
+            "courage": 5
           },
           "SetFlags": [
-            "leyla"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "ipek_knows"
+          ]
         },
         {
-          "Text": "Bu gece birbirimize güvenelim de.",
+          "Text": "“Söz,” yaz. Fotoğrafı gönderme.",
           "Next": "deck",
-          "Result": "İpek konumunu paylaşmanı istedi.",
+          "Result": "İpek bir kalp gönderdi. İlk kez bir kalbin bu kadar ağır geldiğini fark ettin.",
           "Effects": {
             "trust": 10
           },
           "SetFlags": [
-            "sister"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "promise"
+          ]
         }
-      ],
-      "Chapter": 1,
-      "Ending": ""
+      ]
     },
     "buffet": {
       "Title": "Büfecinin hatırladığı",
-      "Text": "Adam tezgâhın altından bir anahtarlık çıkarıyor. “Zarfı bırakan kadın bunu unuttu. Kır saçlıydı, acele etmiyordu. Her şeyi bildiği hâlde birine nasıl anlatacağını bulamayan insanlar gibi duruyordu.”\n\nAnahtarlıkta küçük bir tersane logosu var. Babanın çalıştığı yerin logosu. Arkasında, elinizde kalan son fotoğraftaki dolabın numarası: 17.",
+      "Chapter": 1,
+      "Text": "Büfecinin adı Rıza. Otuz yıldır bu hattın çayını demliyor; yolcuları yüzlerinden değil, çaylarını nasıl içtiklerinden tanıyor. Sen “açık, şekersiz, ikinci bardak”sın. Baban “demli, iki şeker, yarısı soğuyana kadar unutulan”dı.\n\n“Mavi atkılı bir kadın,” diyor, sesini motorun altına saklayarak. “Üç cumadır biniyor, hiç oturmuyor. Arka güvertede, yağmurda bile. Bu akşam zarfı verdi, ‘Gelmezse kendin ver,’ dedi. Bir de bunu.” Tezgâhın altından üzerinde 17 yazan pirinç bir anahtar çıkarıyor; iskeledeki emanet dolaplarının anahtarı.\n\nRıza bir an susuyor, bardak altlıklarını hizalıyor. “Babanı tanırdım ben. Her cuma simit alır, yarısını martılara verirdi. ‘Onlar da yorgun,’ derdi. Kaybolduğu gece de buradaydı. Elleri titriyordu, çayını bitirmedi. Ben de sordum, ‘Abi hayırdır?’ Güldü. ‘Bir şeyi düzeltiyorum Rıza,’ dedi. ‘Geç kaldım ama düzeltiyorum.’”\n\nTezgâhın camında yüzünün yansıması ile Rıza’nın yüzü üst üste biniyor. “O gece arka güvertede biriyle tartıştı. Takım elbiseli, temiz ayakkabılı biri. Vapurda temiz ayakkabı görünce aklımda kalır; bu yağmurda kimin ayakkabısı temiz kalır ki? Arabayla iskeleye kadar gelmiş biri. Polise de söyledim. Not aldılar. Sonra bir daha kimse sormadı.”",
       "Choices": [
         {
-          "Text": "Anahtarlığı al, güverteye çık.",
+          "Text": "Anahtarı al, arka güverteye çık.",
           "Next": "deck",
-          "Result": "Dolap 17 aklında kaldı.",
+          "Result": "Anahtar avucunda ılıktı; biri onu uzun süre elinde tutmuştu.",
           "Effects": {
             "insight": 5
           },
           "SetFlags": [
             "key"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          ]
         },
         {
-          "Text": "Kadının adını bilip bilmediğini sor.",
+          "Text": "Takım elbiseli adamı tarif etmesini iste.",
           "Next": "deck",
-          "Result": "Büfeci kadının adının Leyla olduğunu hatırladı.",
+          "Result": "“Kır saçlı. Sol elinde yüzük yok ama yüzük izi var,” dedi Rıza. Anahtarı da avucuna bıraktı.",
           "Effects": {
-            "trust": 5
+            "insight": 10
           },
           "SetFlags": [
-            "leyla"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "key",
+            "suit"
+          ]
         }
-      ],
-      "Chapter": 1,
-      "Ending": ""
+      ]
     },
     "deck": {
       "Title": "Arka güverte",
-      "Text": "Mavi atkılı kadın seni korkuluğun yanında bekliyor. Başını çevirince yüzündeki yorgunluk dikkatini çekiyor. “Ben Leyla. Babanla çalışıyordum. Onun adına konuşmaya hakkım yok. Ama sustuğum her gün senin adına bir şey seçtim.”\n\nSana su geçirmez bir kayıt cihazı uzatıyor. “Bunu kıyıya varmadan dinle. İstersen sonra beni polise götür.”",
+      "Chapter": 1,
+      "Text": "Rüzgâr yağmuru yatay taşıyor; arka güvertenin kapısı elinden kaçıp duvara çarpıyor. Burada ışık az, motorun gürültüsü çok. Korkuluğun yanında mavi atkılı bir kadın, sırtını denize vermiş, seni bekliyor. Ellerini cebine sokmuş; ellerinin titrediğini gizlemek ister gibi.\n\nYüzü yorgun. Yorgunluğu bir gecenin değil, yılların. Ellili yaşlarında, saçının bir tutamı alnına yapışmış, gözleri seni baştan aşağı tartıyor; tanıyormuş gibi, ama tanımaktan korkuyormuş gibi.\n\n“Ben Leyla,” diyor. “Tersanede babanla aynı ofisteydim. Kalite güvence. Onun adına konuşmaya hakkım yok. Ama sustuğum her gün senin adına bir şey seçtim. Artık seçmeyeceğim.”\n\nVapur Haydarpaşa açıklarında yavaşlıyor; gar binasının ışıkları suyun üstünde titreşiyor. Leyla’nın elinde su geçirmez, avuç içi büyüklüğünde bir kayıt cihazı var ama henüz uzatmıyor. Gözleri bir şeyi ölçüyor: senin ne kadarını kaldırabileceğini, ve belki de kendisinin ne kadarını anlatabileceğini.\n\nGüverte boş sayılır. Yan yana dizilmiş turuncu cankurtaran dolabı, yağmurdan parlayan banklar, korkuluğun boyasına kazınmış bir şeyler, birinin unuttuğu ıslak bir gazete. Babanın “son seferde arka güverte” dediği yer burası. On yıl önce son kez burada durmuş olabilir; tam bu noktada, bu ışıkta.",
       "Choices": [
         {
-          "Text": "Cihazı al ama Leyla’dan uzak dur.",
-          "Next": "recording",
-          "Result": "Kontrolü elinde tutmayı seçtin.",
+          "Text": "Leyla konuşmadan önce güverteye iyice bak.",
+          "Next": "deck_search",
+          "Result": "“Bak,” dedi Leyla. “O da hep önce bakardı.”",
+          "Effects": {
+            "insight": 5
+          }
+        },
+        {
+          "Text": "Doğrudan Leyla’ya ne bildiğini sor.",
+          "Next": "leyla",
+          "Result": "Leyla atkısını sıktı.",
           "Effects": {
             "courage": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
-          "Text": "On yıl boyunca neden sustuğunu sor.",
+          "Text": "Arana mesafe koy: “Önce kim olduğunu kanıtla.”",
           "Next": "leyla",
-          "Result": "Cevabı duymadan hüküm vermedin.",
+          "Result": "Leyla cüzdanından eski bir tersane kartı çıkardı. Fotoğrafta yirmi yaş genç ve gülümsüyordu.",
           "Effects": {
-            "trust": 5
+            "courage": 10
           },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Anahtarlığı göster.",
-          "Next": "locker",
-          "Result": "Leyla, dolap numarasını görünce konuşmaya başladı.",
-          "Effects": {
-            "insight": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "key",
-          "NeedStat": "",
-          "MinValue": 0
+          "SetFlags": [
+            "guarded"
+          ]
         }
-      ],
+      ]
+    },
+    "deck_search": {
+      "Title": "Islak banklar",
       "Chapter": 1,
-      "Ending": ""
+      "Text": "Leyla korkuluğa yaslanıp bekliyor. Vapur iskeleye yanaşmadan önce birkaç dakikan var; her şeye bakamazsın.",
+      "Interaction": {
+        "Type": "search",
+        "Prompt": "İki yere bakacak kadar zamanın var. Neye bakarsın?",
+        "Picks": 2,
+        "Spots": [
+          {
+            "Label": "Cankurtaran dolabı",
+            "Text": "Can yeleklerinin arasına plastiğe sarılmış bir mürettebat listesi sıkıştırılmış. Tarih on yıl öncesi. Babanın adının yanında kurşunkalemle bir saat yazılı: 23.40.",
+            "Flag": "crew_list"
+          },
+          {
+            "Label": "Korkuluktaki çizikler",
+            "Text": "Boyanın altına kazınmış harfler: “C.A. — H.D. unutulmadı.” C.A. babanın baş harfleri. H.D. kimin?",
+            "Flag": "initials"
+          },
+          {
+            "Label": "Banktaki ıslak gazete",
+            "Text": "Bugünün gazetesi. Arka sayfada küçük bir haber: “Eski tersane arazisi otel projesine açılıyor. Yatırımcı: Kaya Holding.”",
+            "Flag": "headline"
+          },
+          {
+            "Label": "Leyla’nın çantası",
+            "Text": "Çantanın fermuarı açık. İçinde ikinci bir telefon ve senin adının yazılı olduğu bir otobüs bileti görüyorsun. Leyla bakışını yakalıyor ama bir şey demiyor.",
+            "Flag": "peeked"
+          }
+        ],
+        "Done": 0
+      },
+      "Choices": [
+        {
+          "Text": "Leyla’nın yanına dön.",
+          "Next": "leyla",
+          "Result": "Gördüklerin cebindeki zarfı daha ağır yaptı."
+        }
+      ]
     },
     "leyla": {
       "Title": "On yılın ağırlığı",
-      "Text": "“Bir iş kazası değildi,” diyor Leyla. “Güvenlik raporlarını değiştirmişlerdi. Baban belgeleri çıkardı. Sonra üç kişi ortadan kayboldu. İkisi bir daha bulunamadı. Babanın yaşadığını söyleyemem; yalnızca son kaydını benden sakladıklarını öğrendim.”\n\nSesi titriyor. “Korktum. Sonra korkunun kendisi hayatım oldu.” Haklı çıkmaya çalışmıyor. Bu, öfkeni daha da zor bir yere koyuyor.",
+      "Chapter": 1,
+      "Text": "“Baban kaybolmadan üç ay önce tersanede bir kaza oldu,” diyor Leyla. Sözcükleri teker teker seçiyor, ezberlemiş gibi. “Gece vardiyası. Bir gemi gövdesine sac indiriliyordu. Vinç halatı koptu. Hakan Demir adında yirmi üç yaşında bir kaynakçı sacın altında kaldı. Ambulans kırk dakikada geldi. Rapor ‘dikkatsizlik’ dedi; Hakan’ın baret takmadığını yazdı. Hakan baret takıyordu. Rapor yalandı.”\n\nRüzgâr bir an diniyor ve Leyla’nın sesi olduğundan yüksek çıkıyor. “Halatların aylık test kayıtları değiştirilmişti. Testler hiç yapılmamıştı. Bütçesi vardı, yapılmadı. Para başka yere gitti. Kaza olunca kâğıtlar geriye dönük dolduruldu.”\n\nKayıt cihazını sonunda eline bırakıyor; plastiği soğuk ve ıslak. “Baban kaydetti. Toplantıları, telefonları, kimin ne dediğini, kimin neyi imzaladığını. Sonra kayboldu. Bu cihazda onun bana bıraktığı kopya var. Kayıtta dört dakika eksik. O dört dakikayı kimin sildiğini bilmiyorum. Belki o. Belki biz.”\n\nİskeleye on dakika var. Leyla kıyıya bakıyor, sanki birini arıyor; ya da birinin onu aramasından korkuyor.\n\n“Bir de dolap var,” diyor. “İskeledeki 17 numaralı emanet dolabı. Baban kaybolmadan önce oraya bir şey bıraktı. On yıldır kirasını ben ödüyorum, her yıl aynı gün. Hiç açmadım; şifresi bende yok. Şifreyi baban seçti. Bana tek söylediği şuydu: kaybolduğu gecenin vapur saati.”",
       "Choices": [
         {
-          "Text": "Kaydı birlikte dinleyin.",
+          "Text": "Kaydı hemen, burada dinle.",
           "Next": "recording",
-          "Result": "Leyla’nın yanında kalmasına izin verdin.",
+          "Result": "Kulaklığı taktın. Motorun sesi kulağının içine girdi.",
+          "Effects": {
+            "courage": 5
+          }
+        },
+        {
+          "Text": "On yıl boyunca neden sustuğunu sor.",
+          "Next": "leyla_why",
+          "Result": "Leyla ilk kez gözlerini kaçırdı.",
+          "Effects": {
+            "trust": 10
+          }
+        },
+        {
+          "Text": "İner inmez dolaba git.",
+          "Next": "locker",
+          "Result": "Vapur yanaşırken kalabalığın en önüne geçtin.",
+          "Effects": {
+            "insight": 5
+          }
+        }
+      ]
+    },
+    "leyla_why": {
+      "Title": "Susmanın fiyatı",
+      "Chapter": 1,
+      "Text": "“Çünkü benim de imzam vardı,” diyor Leyla. Atkısını çenesine kadar çekiyor. “Test kayıtlarını ben bastım. Geriye dönük, aynı gün, aynı kalemle. Kimin istediğini biliyordum ve bastım. Kızım üç yaşındaydı, kocam işsizdi. Kendime ‘sadece kâğıt’ dedim. Kâğıt insan öldürmez dedim. Yanılıyormuşum; kâğıt öldürmüyor ama ölümü saklıyor. Saklanan ölüm de bir daha, bir daha oluyor.”\n\nRüzgâr bir an diniyor; motorun sesi bile azalmış gibi. “Hakan’ın annesi Necla Hanım her yıl kaza gününde tersanenin kapısına karanfil bırakıyor. Kırmızı, tek bir tane. Ben her yıl karşı kaldırımdan izliyorum. Bir kez bile yanına gitmedim. Geçen ay kadın beni gördü. Bana gülümsedi; tanımadı. Bir yabancıya gülümser gibi, iyi niyetle. O gece uyuyamadım.”\n\n“Ertesi gün babanın kaybolmadan önce bana bıraktığı zarfı açtım. On yıldır çekmecemdeydi; ‘Kızlarımdan biri yetişkin olunca aç,’ demişti. İçinde senin adın vardı ve bu tarih. Bu vapur. Bu saat. Sanki on yıl öncesinden bu geceyi planlamış.”\n\nLeyla ilk kez doğrudan gözlerine bakıyor. “Beni affetmeni istemiyorum. Bunu hak etmediğimi biliyorum. Sadece bu gece yalnız gitmeni istemiyorum. Çünkü baban da yalnız gitti ve geri dönmedi.”",
+      "Choices": [
+        {
+          "Text": "“Benimle gel,” de.",
+          "Next": "locker",
+          "Result": "Leyla başını salladı. Atkısını sana uzattı; yağmur artmıştı.",
           "Effects": {
             "trust": 10
           },
           "SetFlags": [
-            "witness"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "leyla_ally"
+          ]
         },
         {
-          "Text": "Kaydı tek başına dinle.",
+          "Text": "“Yolumuz burada ayrılıyor,” de ve kaydı al.",
           "Next": "recording",
-          "Result": "Ona inanmakla onu affetmeyi ayırdın.",
+          "Result": "Leyla hiçbir şey söylemedi. Kalabalığın içinde kayboldu.",
           "Effects": {
-            "courage": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "courage": 10
+          }
         }
-      ],
-      "Chapter": 1,
-      "Ending": ""
+      ]
     },
     "locker": {
       "Title": "Dolap 17",
-      "Text": "Leyla anahtarlığı avucunda çeviriyor. “Cihazın kopyası o dolaptaydı. Ama fotoğrafı saklayan kişi ablandı.”\n\nİpek’e mesaj atıyorsun. Cevabı hemen geliyor: “Babam o fotoğrafın arkasına bir tarih yazmıştı. Sana söylememi istemedi. Seni koruduğumu sandım.” Fotoğrafın arkasındaki tarih kaybolduğu gün değil; raporun değiştirildiği gün.",
+      "Chapter": 1,
+      "Text": "Kadıköy iskelesinin bekleme salonu boşalmış. Floresanlar uğulduyor, yerdeki ıslak ayak izleri birbirine karışmış. Emanet dolapları duvar boyunca sıralanıyor; gri, numaralı, kapakları birbirinin aynı. 17 numaranın kapağı diğerlerinden daha çizik, kilidinin etrafında anahtar izleri var. Biri bu dolabı on yıl boyunca açmadan, sadece kirasını yenileyerek beklemiş.\n\nAnahtar deliğinin yanında dört haneli eski tip bir şifre kilidi var; rakamları tırnakla çevrilen küçük metal çarklar. Babanın sesi kulağında, Leyla’nın ağzından: “Kaybolduğu gecenin vapur saati.”\n\nO gece onu en son gören kişi Rıza’ydı ve o gece de son vapur, bu gece olduğu gibi, aynı saatte kalkıyordu. Baban her şeyi saatlerle hatırlardı; doğum günlerini değil, “sen doğduğunda saat dördü çeyrek geçiyordu” derdi.\n\nGörevli kulübesinde yaşlı bir adam radyo dinliyor; bir futbol maçının tekrarı. Dolaba üç kez yanlış şifre girersen alarm çalar; bu tür dolaplarda hep çalar. Sonra görevli gelir, kimlik ister, tutanak tutar. Belki de seni izleyen biri o tutanağı okur.\n\nParmağın ilk çarkın üstünde duruyor.",
+      "Interaction": {
+        "Type": "code",
+        "Prompt": "Dört haneyi çevir. Saat mi, tarih mi? Bu gece başladığın yere bak.",
+        "Answer": "2340",
+        "Attempts": 3,
+        "Hint": "Bu bölümün ilk sahnesinin başlığındaki saati düşün.",
+        "Success": 0,
+        "Fail": 1
+      },
       "Choices": [
         {
-          "Text": "İpek’ten fotoğrafı göndermesini iste.",
-          "Next": "recording",
-          "Result": "Tarihi doğrulayacak ikinci bir parçan var.",
+          "Text": "Kilit açıldı.",
+          "Next": "locker_open",
+          "Result": "Son çark yerine oturduğunda kilidin içinden küçük bir tık geldi.",
           "Effects": {
             "insight": 10
           },
           "SetFlags": [
-            "date"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "notebook"
+          ]
         },
         {
-          "Text": "Şimdi kaydı dinle.",
-          "Next": "recording",
-          "Result": "Geçmişi bir kez daha ertelemiyorsun.",
+          "Text": "Kilit açılmadı.",
+          "Next": "locker_alarm",
+          "Result": "Tiz bir alarm bütün salonu doldurdu.",
           "Effects": {
-            "courage": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "courage": -5
+          }
         }
-      ],
+      ]
+    },
+    "locker_open": {
+      "Title": "Plastiğe sarılmış defter",
       "Chapter": 1,
-      "Ending": ""
+      "Text": "Mandal tok bir sesle kalkıyor ve dolabın içinden on yıllık bir koku yayılıyor: nem, naylon, eski kâğıt. İçeride plastiğe sarılmış siyah bir defter, lastikle tutturulmuş bir zarf dolusu fotoğraf ve katlanmış bir çocuk çizimi var.\n\nÇizimi tanıyorsun. Yedi yaşında, mutfak masasında, babanın eski mühendis kalemleriyle sen yapmıştın. Bir vapur; dumanı yanlış tarafa doğru tütüyor, üstünde üç çöp adam. En büyüğünün elinde bir simit. Babanın yazısıyla altına not düşülmüş: “En güzel sefer. 14 Mayıs.” O günü hatırlamıyorsun. Baban hatırlamış.\n\nDefterin ilk sayfasında isimler, tarihler, imzalar. Halat test numaraları, vardiya değişiklikleri, hiçbir hizmetin karşılığı olmayan ödemeler. Sayfa kenarlarında babanın küçük notları: “yapılmadı”, “yapılmadı”, “imza sonradan”. Son sayfalara gelmeden defteri kapatıyorsun; burada, floresanın altında, okumaya cesaretin yok.\n\nFotoğraflardan birinde baban, kır saçlı ve takım elbiseli bir adamla tersane kapısında el sıkışıyor. İkisi de gülümsüyor ama yalnızca biri gözleriyle. Arkalarında bir pankart: “Kaya Denizcilik · Güvenlik önceliğimizdir.” Adamın ayakkabıları fotoğrafta bile parlıyor.\n\nDefteri montunun iç cebine yerleştiriyorsun. Ağırlığı göğsüne bastırıyor; bir kalp atışının yanında ikinci bir şey gibi.",
+      "Choices": [
+        {
+          "Text": "Kaydı şimdi dinle.",
+          "Next": "recording",
+          "Result": "Defteri montunun iç cebine koydun ve kulaklığı taktın."
+        }
+      ]
+    },
+    "locker_alarm": {
+      "Title": "Görevli",
+      "Chapter": 1,
+      "Text": "Tiz bir alarm bütün salonu dolduruyor; sesi taş zeminden yankılanıp geri geliyor. Görevli kulübesinden çıkıyor, bir elinde fener, diğerinde radyo. “Senin dolabın mı bu? Kimlik!”\n\nCevap veremeden Leyla yanında beliriyor, nefes nefese, atkısı omzundan kaymış. Görevliye adıyla hitap ediyor: “Sabri Bey, benim. Kira bende, bakın.” Çantasından katlanmış bir makbuz çıkarıp eline tutuşturuyor. Adam makbuza, sonra size bakıyor; omuz silkip alarmı susturuyor. “Bir dahaki sefere doğru şifreyle gelin.”\n\nLeyla’nın cebinden ikinci bir anahtar çıkıyor; dolabı mekanik kilitten o açıyor. İçindekileri senin yerine o alıyor: siyah bir defter, lastikle tutturulmuş bir zarf, katlanmış bir kâğıt. Kâğıdı açmadan sana veriyor; bir çocuk çizimi. Defteri ise atkısının altına sokuyor.\n\n“Bunları bu gece ben taşıyayım,” diyor. “Seni izleyen biri varsa, defteri sende aramasın. Beni kimse aramaz. On yıldır kimse aramadı.”\n\nOna güvenip güvenmemen gerektiğini bilmiyorsun. Bu kadın babanın yanında çalışmış, sahte raporları basmış, on yıl susmuş. Ama alarmın yankısı hâlâ salonda dolaşıyor ve kapının yanındaki iki adam artık bu tarafa açıkça bakıyor.",
+      "Choices": [
+        {
+          "Text": "Defteri Leyla’ya bırak, kaydı dinle.",
+          "Next": "recording",
+          "Result": "Leyla defteri atkısının altına sakladı.",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [
+            "leyla_holds"
+          ]
+        },
+        {
+          "Text": "Defteri elinden al.",
+          "Next": "recording",
+          "Result": "Leyla bir an direndi, sonra bıraktı. “Dikkatli ol,” dedi.",
+          "Effects": {
+            "courage": 10
+          },
+          "SetFlags": [
+            "notebook"
+          ]
+        }
+      ]
     },
     "recording": {
       "Title": "Babanın sesi",
-      "Text": "Cihazdan önce motor uğultusu, sonra babanın sesi geliyor. On yıldır rüyanda bile bu kadar net duymamıştın.\n\n“Bunu dinliyorsan başaramadım. Beni bir kahraman yapmayın. Raporları ilk değiştirenlerden biri bendim. Sonra geri dönmeye çalıştım. Defterde herkesin adı var; benimki de.”\n\nKayıt burada kesiliyor. Babanı ararken, hiç tanımadığın bir adamın sorumluluğunu buldun.",
+      "Chapter": 1,
+      "Style": "radio",
+      "Text": "[motor uğultusu]\n[martı]\n— Bunu dinliyorsan başaramadım.\n— Beni bir kahraman yapmayın. Raporları ilk değiştirenlerden biri bendim. Para için değil; korktuğum için.\n— Hakan öldüğünde vinçteydim. Halat test edilmemişti. Ben de biliyordum.\n— Sonra geri dönmeye çalıştım. Defterde herkesin adı var. Benimki de.\n[uzun bir parazit · 04:00]\n— …kızlarıma söyleyin: o sabah ilk vapura binmeyin. Ben—\n[kayıt kesiliyor]",
       "Choices": [
         {
-          "Text": "Kayıttaki arka plan seslerini dikkatle dinle.",
-          "Next": "sound",
-          "Result": "Bir anons ve bir saat sesi seçtin.",
+          "Text": "Kulaklığı çıkar. Kıyıya in.",
+          "Next": "arrival",
+          "Result": "On yıldır rüyanda bile bu kadar net duymamıştın sesini. Babanı ararken hiç tanımadığın bir adamın sorumluluğunu buldun.",
+          "Effects": {
+            "insight": 5
+          }
+        }
+      ]
+    },
+    "arrival": {
+      "Title": "00.05 · Kadıköy",
+      "Chapter": 2,
+      "Text": "İskeleden çıktığında saat gece yarısını beş geçiyor. Taksiler sıralanmış, şoförler arabaların içinde sigara içiyor. Simitçi tezgâhını topluyor; kalan simitleri bir poşete dolduruyor, poşeti oradaki köpeğin önüne bırakıyor. Yağmur incelmiş ama durmamış; ıslak taşlarda trafik ışıkları kırmızıdan yeşile akıyor.\n\nKaydın kesildiği yer kulağında çınlıyor: “Kızlarıma söyleyin: o sabah ilk vapura binmeyin. Ben—” Hangi sabah? Hangi vapur? Bir uyarı mıydı, bir randevu mu? Babanın sesindeki şey korku değildi; acele etmekti.\n\nSağ tarafta, kepenkleri inmiş bir eczanenin önünde gri paltolu bir adam telefonuna bakıyormuş gibi yapıyor. Vapurda yoktu; buna eminsin, yolcuların hepsini saymıştın. Ama sen iskeleden çıktığından beri seninle aynı hızda yürüyor, durduğunda duruyor. Ayakkabıları ıslak; arabayla gelmemiş.\n\nCebindeki telefonun ekranında kaydın dalga formu duruyor. Arka planda sesler vardı: bir düdük, bir anons, bir vinç, bir ezan. Bir sırayla geldiler; bir şehir uyanıyordu. Sıralarını çözersen babanın kaydı nerede, hangi saatte yaptığını bulabilirsin. Belki de o sabahın hangi sabah olduğunu.",
+      "Choices": [
+        {
+          "Text": "Bir kafeye gir, kaydın arka planını çöz.",
+          "Next": "sounds",
+          "Result": "Köşedeki masaya oturdun; cam kenarı, kapıyı görebileceğin yer.",
+          "Effects": {
+            "insight": 10
+          }
+        },
+        {
+          "Text": "Gri paltolu adama doğru yürü.",
+          "Next": "follower_talk",
+          "Result": "Adam telefonu cebine koydu. Kaçmadı.",
+          "Effects": {
+            "courage": 10
+          }
+        },
+        {
+          "Text": "Adamı atlatmaya çalış.",
+          "Next": "chase",
+          "Result": "Rıhtım caddesine doğru hızlandın.",
+          "Effects": {
+            "courage": 5
+          }
+        }
+      ]
+    },
+    "sounds": {
+      "Title": "Eksik dakikanın etrafı",
+      "Chapter": 2,
+      "Text": "Köşedeki kafede çay söylüyorsun; garson masayı silerken telefona bakmıyor bile. Kaydı başa sarıp sesi sonuna kadar açıyorsun ve bu kez babanın sözlerine değil, arkasındakine kulak veriyorsun. Sözcüklerin altında bir şehir uyanıyor.\n\nÖnce uzaktan, yankılı bir ses; minarelerden birbirine geçen, sabahın ilk çağrısı. Sonra hoparlörden anons: bir trenin kalkış saati, kadın sesi, iki dilde. Sonra kısa, sert bir düdük; fabrika ya da tersane düdükleri böyle çalar, vardiya başlarken. Ardından ağır, sürekli bir motor sesi; vinçlerin kaldırma motoru, metalin metale sürtünmesi. En sonda, uzun ve derin, vapur düdüğü.\n\nŞafak ezanı İstanbul’da bu mevsimde altıya doğru okunur. Haydarpaşa garının ilk tren anonsları ondan sonra başlar. Tersane vardiyası düdükle başlar, vinçler düdükten sonra çalışır. Vapur düdüğü ise iskeleden ayrılırken çalınır.\n\nSesleri doğru sıraya koyarsan babanın hangi sabah, hangi rıhtımda olduğunu bulursun.",
+      "Interaction": {
+        "Type": "order",
+        "Prompt": "Sesleri kayıttaki sıraya koy. Önce gelenden sonra gelene.",
+        "Items": [
+          "Şafak ezanı",
+          "İlk tren anonsu",
+          "Vardiya düdüğü",
+          "Vinç motoru",
+          "Vapur düdüğü"
+        ],
+        "Attempts": 2,
+        "Success": 0,
+        "Fail": 1
+      },
+      "Choices": [
+        {
+          "Text": "Sıra oturdu.",
+          "Next": "sounds_ok",
+          "Result": "Her ses yerine oturduğunda bir yer belirdi.",
           "Effects": {
             "insight": 10
           },
           "SetFlags": [
-            "sound"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "place"
+          ]
         },
         {
-          "Text": "İpek’i ara ve kaydı ona dinlet.",
-          "Next": "sister",
-          "Result": "Gerçeğin ikinizin arasında bölünmesine izin vermedin.",
+          "Text": "Sıra oturmadı.",
+          "Next": "ipek_meet",
+          "Result": "Sesler birbirine karıştı. Bir yer var ama hangisi olduğunu bilmiyorsun.",
           "Effects": {
-            "trust": 10
+            "insight": -5
+          }
+        }
+      ]
+    },
+    "sounds_ok": {
+      "Title": "Haydarpaşa, 06.05",
+      "Chapter": 2,
+      "Text": "Ezan, tren, düdük, vinç, vapur. Bu sıra yalnızca bir yerde mümkün: Haydarpaşa garı ile eski tersane rıhtımının arasında, sabah altıyı beş geçe. Garın hoparlörü rıhtıma kadar duyulur; tersanenin vinçleri de garın peronundan görünür. Baban kaydı orada, ikisinin arasında bir yerde yapmış.\n\nTelefonunda dosyanın oluşturulma tarihine bakıyorsun: kaybolduğu gecenin ertesi sabahı. Yani baban o gece kaybolmamış. En az bir sabah daha buradaymış, tersanenin kapısının önünde, cebinde bir kayıt cihazıyla.\n\nBir şey daha var. Vapur düdüğü tek değil: iki kısa, bir uzun. Bu, adalara giden ilk seferin işareti; Rıza’nın vapurunda da aynı düdük çalardı, çocukken her duyduğunda kulaklarını kapatırdın. “O sabah ilk vapura binmeyin.” Belki bir uyarı değildi. Belki de baban o sabah ilk vapura bindi ve size yalnızca nereye gittiğini söylemek istedi.\n\nCamın dışında gri paltolu adam kafenin önünden geçiyor, içeri bakmadan. Biraz ileride duruyor, bir sigara yakıyor. Bekliyor.",
+      "Choices": [
+        {
+          "Text": "İpek’i ara, buluş.",
+          "Next": "ipek_meet",
+          "Result": "İpek ilk çalışta açtı. “Neredesin?”",
+          "Effects": {
+            "trust": 5
+          }
+        }
+      ]
+    },
+    "follower_talk": {
+      "Title": "Gri palto",
+      "Chapter": 2,
+      "Text": "Adam ellerini ceplerinden yavaşça çıkarıyor; boş. Yakından bakınca sandığından genç: otuzlarının sonunda, sakalı kirli, gözlükleri yağmurdan buğulanmış. “Murat Ece,” diyor. “Gazeteciyim. Bağımsız bir sitede yazıyorum; adını duymamışsındır, kimse duymadı.” Gülümsüyor, ama yorgun.\n\n“Üç haftadır Leyla Hanım’ı izliyorum. Kaya Holding’in otel projesini araştırıyordum; eski tersane arazisi, imar değişikliği, belediyeyle yapılan anlaşma. Tapu kayıtlarına bakarken on yıl önceki kaza karşıma çıktı. Bir ölüm, bir kapanan dosya, bir kaybolan mühendis. Leyla’nın adı her belgede vardı. Bu gece vapura binince peşinden geldim. Sonra seni gördüm, zarfı alırken.”\n\nCebinden bir kartvizit çıkarıyor; köşesi kıvrılmış. “Bende dosyanın yarısı var: arazi, para, Selim Kaya’nın şirketleri. Sende diğer yarısı olabilir: kaza, kayıt, insanlar. Yayınlarsam Kaya’nın avukatları üç gün içinde haberi kaldırtır. Belgeler sağlam olmazsa ben de sen de tazminat davası yeriz. Bu yüzden acele etmiyorum.”\n\nBir süre susuyor. “Ama çok da bekleyemeyiz. Otelin temeli önümüzdeki hafta atılıyor. Temel atılırsa eski rıhtım ve telsiz odası betonun altında kalır. Orada ne varsa onunla birlikte.”",
+      "Choices": [
+        {
+          "Text": "Kartı al, numaranı ver.",
+          "Next": "ipek_meet",
+          "Result": "Murat iki adım geri çekildi. “Ben uzaktan bakarım,” dedi.",
+          "Effects": {
+            "trust": 5
           },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "SetFlags": [
+            "journalist"
+          ]
         },
         {
-          "Text": "Leyla’dan defteri iste.",
-          "Next": "notebook",
-          "Result": "Sorularını doğrudan sordun.",
+          "Text": "Kartı al ama hiçbir şey anlatma.",
+          "Next": "ipek_meet",
+          "Result": "“Akıllıca,” dedi Murat. Kartı ceketinin cebine koydun.",
+          "Effects": {
+            "insight": 5
+          },
+          "SetFlags": [
+            "journalist",
+            "guarded"
+          ]
+        }
+      ]
+    },
+    "chase": {
+      "Title": "Kapanan kapılar",
+      "Chapter": 2,
+      "Text": "Rıhtım caddesinde son tramvay kalkmak üzere; ışıkları ıslak asfaltta uzun, sarı çizgiler bırakıyor. Kapılar her durakta birkaç saniye açık kalıyor, sonra bir zil ve tıslamayla kapanıyor.\n\nGri paltolu adam arkanda; aranızda yirmi adım, belki on beş. Koşmaya başladığında o da hızlanıyor. Durakta bekleyen birkaç gece yolcusu, bir hemşire, iki öğrenci, seni şaşkınlıkla izliyor.\n\nKapı tam kapanırken içeri girersen o binemez. Erken girersen o da arkandan biner. Geç kalırsan kapı yüzüne kapanır.",
+      "Interaction": {
+        "Type": "timing",
+        "Prompt": "Kapılar açılıp kapanıyor. İşaret aralığa girdiğinde dokun. Üç kapıdan ikisini yakala.",
+        "Rounds": 3,
+        "Need": 2,
+        "Zone": 0.22,
+        "Speed": 1.0,
+        "Success": 0,
+        "Fail": 1
+      },
+      "Choices": [
+        {
+          "Text": "Son anda içeri girdin.",
+          "Next": "ipek_meet",
+          "Result": "Kapılar arkanda kapandı. Camın ardında adam durdu, yüzünde kızgınlık değil şaşkınlık vardı.",
           "Effects": {
             "courage": 10
           },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "SetFlags": [
+            "safe"
+          ]
+        },
+        {
+          "Text": "Kapı yüzüne kapandı.",
+          "Next": "caught",
+          "Result": "Tramvay gitti. Ayak sesleri yaklaştı.",
+          "Effects": {
+            "courage": -5
+          }
         }
-      ],
-      "Chapter": 2,
-      "Ending": ""
+      ]
     },
-    "sound": {
+    "caught": {
+      "Title": "Bir el omzunda",
+      "Chapter": 2,
+      "Text": "Adam nefes nefese yetişiyor, bir elini dizine dayıyor. “Dur, dur. Kaçmana gerek yok.” Öbür elini havaya kaldırıyor, avucunu açıyor. “Murat Ece. Gazeteciyim. Sana zarar vermek isteseydim vapurda yapardım.”\n\nBir süre ikiniz de durakta soluklanıyorsunuz; yağmur gözlüklerinin üstünden akıyor, o silmiyor. “Üç haftadır Leyla Hanım’ı izliyorum. Kaya Holding’in otel projesi. Eski tersane arazisi. On yıl önceki kaza. Babanın adı. Hepsi aynı dosyada.”\n\nKulaklığına bakıyor. “O cihaz. Ondan başka kopya var mı? Çünkü bu gece peşinde olan tek kişi ben değilim. Holdingin güvenlik müdürü de vapurdaydı, alt salonda. Siyah bir araba, iskelenin arkasında, motoru çalışır halde bekliyor. Seni değil, belki Leyla’yı izliyorlar; ama bir kayıt cihazının kime ait olduğunu sormazlar.”\n\nKaydı yanında taşımanın ne kadar tehlikeli olduğunu ilk kez düşünüyorsun. Elindeki şey on yıl boyunca birilerinin bulmaması için uğraştığı bir şey. Ve şu an, tek kopyası, senin cebinde.",
+      "Choices": [
+        {
+          "Text": "Kaydın bir kopyasını Murat’a gönder.",
+          "Next": "ipek_meet",
+          "Result": "Dosya yüklenirken ikiniz de ekrana baktınız. Yüzde yüz.",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [
+            "journalist",
+            "backup_sent"
+          ]
+        },
+        {
+          "Text": "Teşekkür et ve ayrıl.",
+          "Next": "ipek_meet",
+          "Result": "Murat kartını cebine sıkıştırdı. “Gerekirse,” dedi.",
+          "Effects": {
+            "insight": 5
+          },
+          "SetFlags": [
+            "journalist"
+          ]
+        }
+      ]
+    },
+    "ipek_meet": {
+      "Title": "Gece çay ocağı",
+      "Chapter": 2,
+      "Text": "İpek, Yeldeğirmeni’nde bütün gece açık kalan çay ocağının en arka masasında, montunu çıkarmadan oturuyor. Masada yarım kalmış bir tost, iki bardak çay; birini sana itiyor, sen oturmadan. Kardeş olmanın en eski hareketi. Küçükken de böyle yapardı; sen ağlarken önce önüne bir şey koyar, sonra ne olduğunu sorardı.\n\nKırk yaşına iki yıl var. Bir bankada çalışıyor, iki çocuğu var, sesi her zaman senden daha sakin. Ama bu gece elleri bardağı fazla sıkı tutuyor.\n\n“Sana bir şey söylemem lazım,” diyor, sen daha bir şey anlatmadan. “Babam kaybolduktan iki hafta sonra annem bana bir kutu verdi. Bir ayakkabı kutusu, bantlanmış. ‘Bunu yak,’ dedi. ‘Kardeşin hiç bilmesin. Ben yakamıyorum.’ On yedi yaşındaydım. Kibriti çaktım, kutunun köşesini tutuşturdum, sonra söndürdüm. Yapamadım. Arabanın bagajında, yedek lastiğin altında duruyor. On yıl oldu, araba değiştirdim, kutuyu taşıdım. Açmadım bile.”\n\nGözlerinin altı mor. Çayını hiç içmemiş. “Sence annem bir şey mi biliyordu? Yoksa sadece acıdan mı? İnsan acıdan da bir şey yakmak ister, değil mi?”",
+      "Choices": [
+        {
+          "Text": "Her şeyi anlat: zarf, Leyla, kayıt.",
+          "Next": "box",
+          "Result": "İpek dinlerken bardağı hiç bırakmadı. Sonunda “Kutuyu açalım,” dedi.",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [
+            "told_ipek"
+          ]
+        },
+        {
+          "Text": "Az anlat; önce kutuyu görmek iste.",
+          "Next": "box",
+          "Result": "İpek anladı ki bir şey saklıyorsun. Yine de anahtarları masaya koydu.",
+          "Effects": {
+            "insight": 5
+          }
+        },
+        {
+          "Text": "“Annem bir şey biliyordu,” de, kesin konuş.",
+          "Next": "box",
+          "Result": "İpek’in yüzü kapandı. “Onu yargılamadan önce kutuya bak.”",
+          "Effects": {
+            "courage": 5,
+            "trust": -5
+          }
+        }
+      ]
+    },
+    "box": {
+      "Title": "Yedek lastiğin altındaki kutu",
+      "Chapter": 2,
+      "Text": "Arabanın bagaj ışığı titriyor; ampul gevşek. İpek yedek lastiği kaldırıyor, altından kutuyu çıkarıp sana uzatıyor ve hemen geri çekiliyor. Ayakkabı kutusu; köşeleri nemden yumuşamış, bir köşesi kararmış. On yedi yaşındaki İpek’in kibritinin izi.\n\nKapağı açınca içeriden kâğıt ve duman kokusu yükseliyor. Yanık kenarlı fotoğraflar, banka kâğıtları, katlanmış mektuplar, plastik bir kimlik kartı. Annen yakmaya başlamış, sonra vazgeçmiş gibi; ya da İpek. Kimin vazgeçtiğinin bir önemi yok artık.\n\nİpek arabanın kapısına yaslanmış, kollarını kavuşturmuş, içine bakamıyor. “Sen bak,” diyor. “Ben sadece söyle. Ama hepsini söyleme. Henüz değil.”\n\nSaat birin yarısı. Sokak lambasının altında bir kedi bagajın yanına geliyor, kutuyu kokluyor, gidiyor. Annen her an arayabilir.",
+      "Interaction": {
+        "Type": "search",
+        "Prompt": "Kutuda dört şey var ama ikisine bakmaya gücün yeter. Hangilerine?",
+        "Picks": 2,
+        "Spots": [
+          {
+            "Label": "Yanık kenarlı fotoğraf",
+            "Text": "Babanla kır saçlı bir adam bir masada. Masada şampanya. Fotoğrafın arkasında annenin yazısı: “Selim Kaya, tersanenin yeni sahibi. Bu gülümsemeye güvenme.”",
+            "Flag": "selim"
+          },
+          {
+            "Label": "Banka dekontları",
+            "Text": "Kaybolmadan sonraki sekiz yıl boyunca her ay aynı hesaba para gönderilmiş. Alıcı: Necla Demir. Gönderen: annen.",
+            "Flag": "transfer"
+          },
+          {
+            "Label": "Katlanmış mektup",
+            "Text": "Babanın yazısı, annene: “Bana bir şey olursa defter dolapta. Kızlara söyleme; onları ancak bilmeyerek koruyabiliriz.”",
+            "Flag": "letter"
+          },
+          {
+            "Label": "Tersane kimlik kartı",
+            "Text": "Babanın kartı. Son giriş damgası, kaybolduğu geceden sonraki sabah: 05.52.",
+            "Flag": "id_card"
+          }
+        ],
+        "Done": 0
+      },
+      "Choices": [
+        {
+          "Text": "Kutuyu kapat ve İpek’in yanına otur.",
+          "Next": "ipek_car",
+          "Result": "Kapağı kapattın. İpek arabanın kapısını açıp içeri geçti, sen de yanına."
+        }
+      ]
+    },
+    "mother_call": {
+      "Title": "01.10 · Annem",
+      "Chapter": 2,
+      "Style": "chat",
+      "Text": "Annem: Neredesiniz? İkiniz de açmıyorsunuz.\nSen: İpek’leyim. İyiyiz.\nAnnem: Bir kadın aradı. Leyla. On yıl sonra. Senin vapurda olduğunu söyledi.\nAnnem: Ondan uzak dur. O kadın…\nAnnem yazıyor…\nAnnem: O kadın da benim gibi biri. Kendini affettirmek isteyen biri. Öyle insanlar tehlikelidir.\nSen: Babamın sesini dinledim anne.\nAnnem yazıyor…\nAnnem yazmayı bıraktı.\nAnnem yazıyor…\nAnnem: Hangi kaydı?\nSen: Hakan Demir’i anlatıyor.\nAnnem: Eve gel. Sana anlatacağım. Hepsini. Mutfakta bekliyorum.\nAnnem: Ama bazı şeyler gömülü kaldığı için bu evde hâlâ ışık yanıyor. Bunu bil. Ne yaparsan yap, bunu bilerek yap.",
+      "Choices": [
+        {
+          "Text": "Eve git, annenle yüzleş.",
+          "Next": "home",
+          "Result": "İpek arabayı çalıştırdı. Yol boyunca konuşmadınız.",
+          "Effects": {
+            "trust": 10
+          }
+        },
+        {
+          "Text": "Eski tersaneye git; cevap orada.",
+          "Next": "shipyard",
+          "Result": "“Ben de geliyorum,” dedi İpek. “Ama annemi ararım.”",
+          "Effects": {
+            "courage": 10
+          }
+        },
+        {
+          "Text": "Leyla’nın arşivine git.",
+          "Next": "archive",
+          "Result": "Leyla’nın gönderdiği konum Moda’da, bir apartmanın bodrumuydu.",
+          "Effects": {
+            "insight": 10
+          }
+        }
+      ]
+    },
+    "home": {
+      "Title": "Mutfaktaki ışık",
+      "Chapter": 3,
+      "Text": "Eve girdiğinde salonun penceresi her yağmurlu gecedeki gibi açık, perde rüzgârda şişiyor. Annen mutfakta, çaydanlığın başında, sırtı kapıya dönük. Seni görünce ocağı kapatıyor ama çaydanlığı yerinden kaldırmıyor; elleri bir şeyle meşgul kalsın istiyor. Altmış iki yaşında. Bu gece seksen gibi.\n\n“Defterdeki son imza benim,” diyor, sen daha sormadan. Sesi düz, prova edilmiş. On yıl prova edilmiş. “Ben tersanenin muhasebesindeydim. Paranın nereye gittiğini ilk ben gördüm. Halat testleri için ayrılan bütçe Deniztest diye bir şirkete akıyordu. Deniztest’in tek ortağı Selim Kaya’nın kardeşiydi. Test yapan bir şirket değildi; bir posta kutusuydu. Babana söyledim. İki hafta sonra kaza oldu.”\n\nOcağın yanındaki sandalyeye çöküyor. “Baban kaydı yaptı. Selim bunu öğrendi; tersanede her duvarın kulağı vardı. Bir gece eve iki adam geldi. Size dokunmadılar. Sadece kapının önünde durdular, sabaha kadar. Sen uyuyordun. İpek pencereden baktı, bana ‘Kim onlar anne?’ diye sordu. ‘Babanın arkadaşları,’ dedim.”\n\n“Ertesi hafta baban kayboldu. Ben imzayı attım. Selim’in istediği yeni denetim raporunu, ‘usulsüzlük tespit edilmemiştir’ yazanı, imzaladım. Siz büyüyesiniz diye. Bu evin kirası ödensin diye. Okul servisleriniz gelsin diye.”\n\nİpek kapının eşiğinde donmuş. Annen ikinize de bakamıyor; çaydanlığa bakıyor, sanki bütün suç oradaymış gibi.",
+      "Choices": [
+        {
+          "Text": "“Hakan’ın ailesine para gönderdin, değil mi?”",
+          "Next": "mother_letter",
+          "Result": "Annen başını kaldırdı. “Nereden biliyorsun?”",
+          "NeedFlag": "transfer",
+          "Effects": {
+            "trust": 10
+          }
+        },
+        {
+          "Text": "“Babam yaşıyor mu?” diye sor.",
+          "Next": "mother_letter",
+          "Result": "Annen uzun süre sustu. Sonra çekmeceyi açtı.",
+          "Effects": {
+            "courage": 10
+          }
+        },
+        {
+          "Text": "Hiçbir şey sorma, sarıl.",
+          "Next": "mother_letter",
+          "Result": "Annen ilk kez ağladı. Sonra çekmeceyi açtı.",
+          "Effects": {
+            "trust": 15
+          },
+          "SetFlags": [
+            "embrace"
+          ]
+        }
+      ]
+    },
+    "mother_letter": {
+      "Title": "Çekmecedeki mektup",
+      "Chapter": 3,
+      "Style": "note",
+      "Text": "Nur,\n\nBunu okuyorsan gitmişimdir. Ölmedim; bunu bil, kızlara da bir gün söyle. Selim bana iki yol bıraktı: ya susup hepinizle birlikte bu evde kalacaktım, ya da konuşup hiçbirinizi bir daha görmeyecektim. Kapımızın önündeki adamları sen de gördün. Ben üçüncüsünü seçtim: gidip susmamak. Kaydın aslı bende kalacak. Bir kopyası dolapta, bir kopyası telsiz odasındaki makarada. Leyla birini bulur; Leyla iyi bir insan, sadece korkak. Hepimiz gibi.\n\nHer yıl bu gece adada olacağım. İlk vapurun indiği iskelede, simitçinin yanında, sabah yedide. Kızlar büyüyüp de bir gün sorarlarsa, sorduklarında sen hazırsan, onlara söyle. Hazır değilsen söyleme. Seni anlarım. Hep anladım.\n\nHakan’ın annesine her ay bir şey gönder. Benim adımı koyma. Bizim adımızı da. Bir gün yüzüne bakabilecek kadar cesaretimiz olursa, o zaman koyarız.\n\nPencereyi açık bırakma. Üşürsün.\n\nC.",
+      "Choices": [
+        {
+          "Text": "Mektubu katla. Tersaneye git.",
+          "Next": "shipyard",
+          "Result": "Annen kapıya kadar geldi. “İlk vapur altı onda,” dedi. “On yıldır hiç binmedim.”",
+          "Effects": {
+            "insight": 10
+          },
+          "SetFlags": [
+            "father_alive"
+          ]
+        },
+        {
+          "Text": "Annene sor: “Neden hiç gitmedin?”",
+          "Next": "shipyard",
+          "Result": "“Çünkü gitseydim, dönmezdim,” dedi annen. “Sizi kime bırakırdım?”",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [
+            "father_alive"
+          ]
+        }
+      ]
+    },
+    "archive": {
+      "Title": "Bodrumdaki arşiv",
+      "Chapter": 3,
+      "Text": "Leyla’nın gönderdiği konum Moda’nın arka sokaklarında, eski bir apartmanın bodrum katı. Kapıyı açtığında içeriden kâğıt ve tuz kokusu geliyor. Bodrum bir sığınak gibi: tavana kadar rafa dizilmiş klasörler, nemi çeksin diye köşelere konmuş tuz kâseleri, duvarda iğnelerle tutturulmuş tersanenin eski bir planı. Planın üzerinde kırmızı kalemle işaretler: vinç 3, telsiz odası, rıhtım B.\n\nKöşede küçük bir masa, üzerinde bir kızın fotoğrafı: on üç yaşında, gözlüklü, yüzme madalyası boynunda. “Kızım Elif,” diyor Leyla, bakışını yakalayınca. “Kaza olduğunda üç yaşındaydı. Şimdi lisede. Bunları neden topladığımı bilmiyor. Bir gün bilecek.”\n\nLeyla çayı hazırlarken sana arkasını dönüyor; bunu kasten yapıyor, sana bakma zamanı tanıyor. “On yıl boyunca topladım,” diyor, ocağın başından. “Her belgeyi, her e-postanın çıktısını, her vardiya listesini. Tersane kapanırken arşivi çöpe atacaklardı; gece gelip iki araba dolusu taşıdım. Ama bir şeyi kanıtlayacak kadar değil. Her belgenin bir eksiği var. Belki sen benim göremediğimi görürsün. Babanın gözleri sende.”",
+      "Interaction": {
+        "Type": "search",
+        "Prompt": "Raflarda dört klasör öne çıkıyor. Üçüne bakmaya vaktin var.",
+        "Picks": 3,
+        "Spots": [
+          {
+            "Label": "Vardiya çizelgeleri",
+            "Text": "Kaza gecesi vinç operatörü olarak babanın adı yazılmış, sonra üstü çizilip Hakan’ın adı eklenmiş. Düzeltme imzası: S.K.",
+            "Flag": "shift"
+          },
+          {
+            "Label": "Halat test raporları",
+            "Text": "Raporların hepsi aynı gün, aynı kalemle doldurulmuş. Kazadan iki gün sonra.",
+            "Flag": "test"
+          },
+          {
+            "Label": "Kaya Holding iç yazışması",
+            "Text": "Selim Kaya’dan hukuk müdürüne: “Cemal Arslan’la anlaşma sağlanamazsa kayıt bertaraf edilsin. Aile rahatsız edilmesin.”",
+            "Flag": "selim"
+          },
+          {
+            "Label": "Leyla’nın kendi ifadesi",
+            "Text": "Hiç verilmemiş bir ifade. Tarih bugün. Altında Leyla’nın imzası. “Raporları ben bastım. Kimin istediğini biliyordum.”",
+            "Flag": "leyla_statement"
+          }
+        ],
+        "Done": 0
+      },
+      "Choices": [
+        {
+          "Text": "Klasörleri kapat.",
+          "Next": "leyla_confront",
+          "Result": "Leyla çay bardağını önüne koydu. “Ne buldun?”"
+        }
+      ]
+    },
+    "leyla_confront": {
+      "Title": "Leyla’nın ifadesi",
+      "Chapter": 3,
+      "Text": "Leyla çay bardağını önüne bırakıp karşına oturuyor. Elindeki klasörlere bakıyor, sonra sana. “Ne buldun?” diye sormuyor; yüzünden okuyor.\n\n“Bu dosyaların hiçbiri tek başına yetmez,” diyor. “Vardiya listesi bir tükenmezle düzeltilmiş; avukat ‘yazım hatası’ der. Test raporları aynı gün doldurulmuş; ‘idari gecikme’ der. İç yazışma bir çıktı; ‘sahte’ der. Ama hepsi birlikte, bir de eksik dört dakika… Baban o dakikalarda Selim’in sesini kaydetti. Selim’in kendi ağzıyla ‘halatı değiştirmeyin, kâğıdı değiştirin’ dediğini. Ben o toplantıdaydım. Duydum. On yıldır o cümleyi her gece duyuyorum.”\n\nMasaya yumruk büyüklüğünde bir ses bandı makarası koyuyor; eski usul, açık makara, kahverengi bant. “Asıl kayıt bu değil; baban asıl kaydı yanında götürdü. Ama kaybolmadan önce tersanenin telsiz odasındaki makaraya da bir kopya aldı. Ben bu makarayı onun masasında buldum, kazadan bir hafta sonra. Hiç çalamadım. Cihaz yok, cesaret yok. Telsiz odasında hâlâ eski bir makara oynatıcı var. Bina yıkılmadı, sadece kapatıldı. Bekçi Yaşar Bey bırakır seni; babanı severdi. Herkes severdi babanı.”\n\nLeyla bir kâğıt katlayıp çantasına koyuyor: verilmemiş ifadesi. “Sabah bunu bir yere teslim edeceğim. Nereye, sana bağlı. On yıl önce kararı başkası verdi. Bu kez sen ver.”",
+      "Choices": [
+        {
+          "Text": "“Benimle gel, makarayı birlikte dinleyelim.”",
+          "Next": "shipyard",
+          "Result": "Leyla montunu aldı.",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [
+            "leyla_ally",
+            "reel"
+          ]
+        },
+        {
+          "Text": "Makarayı al, yalnız git.",
+          "Next": "shipyard",
+          "Result": "“Kapının şifresi değişmedi,” dedi Leyla. “Hakan’ın doğum yılı.”",
+          "Effects": {
+            "courage": 10
+          },
+          "SetFlags": [
+            "reel"
+          ]
+        }
+      ]
+    },
+    "shipyard": {
+      "Title": "02.40 · Eski tersane",
+      "Chapter": 3,
+      "Text": "Tersanenin kapısı paslı ama zinciri yeni; kilidi parlıyor, son bir ay içinde takılmış. Duvarın üstünde otel projesinin dev bir görseli: cam kuleler, sonsuzluk havuzu, beyaz şemsiyeler, gülümseyen insanlar. “Haydarpaşa’nın yeni yüzü · Kaya Holding.” Görselin bir köşesinde yırtık var; altında eski boya görünüyor, kızıl harflerle: “İş güvenliği hayattır.”\n\nKapının sağında, duvara bitişik küçük bir karanfil demeti. Kurumuş; yaprakları kahverengi. Birisi buraya her yıl bir şey bırakıyor.\n\nKapının yanındaki kulübede ışık var. Bir fener yavaş yavaş duvar boyunca geziyor; bekçi tur atıyor, adımları çakılda yankılanıyor. Duvarın arka tarafında, görselin yırtığının hizasında, bir insanın sığabileceği kadar bir yarık görüyorsun. Demirleri dışa doğru eğilmiş; biri daha önce buradan geçmiş.\n\nFener sana doğru dönmek üzere.",
+      "Interaction": {
+        "Type": "timer",
+        "Prompt": "Fener yaklaşıyor. Hemen karar ver.",
+        "Seconds": 12,
+        "Timeout": 2
+      },
+      "Choices": [
+        {
+          "Text": "Duvardaki yarıktan içeri kay.",
+          "Next": "dock",
+          "Result": "Paslı demir montunu yırttı. İçerideydin.",
+          "Effects": {
+            "courage": 10
+          }
+        },
+        {
+          "Text": "Kulübeye yürü ve bekçiyle konuş.",
+          "Next": "guard_talk",
+          "Result": "Fener yüzüne döndü. “Kim o?”",
+          "Effects": {
+            "trust": 10
+          }
+        },
+        {
+          "Text": "Olduğun yerde kal.",
+          "Next": "guard_talk",
+          "Result": "Fener seni buldu. Kaçmak için çok geçti.",
+          "Effects": {
+            "courage": -5
+          }
+        }
+      ]
+    },
+    "guard_talk": {
+      "Title": "Yaşar Bey",
+      "Chapter": 3,
+      "Text": "Bekçi altmışlarının sonunda; sırtı kambur, montu kendisine büyük, sesi sakin. Feneri indiriyor ve yüzüne uzun uzun bakıyor, sanki bir fotoğrafla karşılaştırıyor. “Cemal’in kızısın,” diyor. “Gözlerin aynı. Kaşını da onun gibi kaldırıyorsun, soru sormadan önce.”\n\nKulübenin içinde küçük bir soba yanıyor, üstünde demlik. Duvarda eski bir takvim, bir televizyon, bir tespih. Yaşar Bey sana bir tabure gösteriyor, bir bardak çay dolduruyor. “Otuz bir yıl bu kapıyı bekledim. Tersane kapandı, ben kalmadım ama kapıyı bırakamadım. Holding beni bekçi diye tuttu; ucuz, sadık, yaşlı.”\n\n“O gece ben de buradaydım. Kazadan değil, kaybolduğu geceden söz ediyorum. Sabaha karşı geldi, beşe doğru. Islanmıştı, ayakkabısı çamurluydu. Telsiz odasına girdi. Yarım saat kaldı. Çıktığında bana bir zarf verdi; ‘Kızım bir gün gelirse ver,’ dedi. ‘Gelmezse yak.’ Sonra adalara giden ilk vapura doğru yürüdü. Arkasından baktım. Bir kere döndü, el salladı.”\n\nYaşar Bey çekmeceden sararmış bir zarf çıkarıyor. İçinde tek bir kâğıt var; üzerinde bir sayı: 9,5. Altında babanın yazısı: “Hız.”\n\n“Yakmadım,” diyor Yaşar Bey. “On yıl bekledim. Bir gün gelirsin dedim.”",
+      "Choices": [
+        {
+          "Text": "Kaza gecesini sor.",
+          "Next": "yasar_memory",
+          "Result": "Yaşar Bey derin bir nefes aldı.",
+          "Effects": {
+            "trust": 5
+          }
+        },
+        {
+          "Text": "Telsiz odasına git.",
+          "Next": "dock",
+          "Result": "Yaşar Bey anahtarı verdi. “Elektrik bağlı. Ben bağlı tuttum,” dedi.",
+          "Effects": {
+            "insight": 10
+          },
+          "SetFlags": [
+            "yasar",
+            "speed_hint"
+          ]
+        }
+      ]
+    },
+    "dock": {
+      "Title": "Telsiz odası",
+      "Chapter": 3,
+      "Text": "Telsiz odası zamanın durduğu bir yer. Pencereler toz ve tuzdan buzlu, içeri gelen ışık süt rengi. Duvarda 2016 takvimi, kaybolduğu ayda açık. Masada kurumuş bir kahve fincanı, kenarında dudak izi. Raflarda kulaklıklar, kırık bir telsiz, plastik bir saksıda kurumuş bir kaktüs. Köşede bir dolabın üstünde açık makaralı eski bir oynatıcı duruyor; tozunu üfleyince markası okunuyor: Revox.\n\nMakarayı takıyorsun, bandın ucunu boş makaraya sarıyorsun; babanın sana çocukken öğrettiği gibi, iki tur, sonra kıvırarak. Düğmeye basınca hoparlörden tiz, hızlı, anlaşılmaz bir cıvıltı yükseliyor; hız yanlış. Biri cihazı en yüksek hızda bırakmış.\n\nEski makaralı cihazların hız düğmesi santimetre ölçer: saniyede kaç santim bant geçtiği. Doğru hızda insan sesi insan sesine benzer. Yanlış hızda ya bir kuş ya bir dev konuşur. Ve eski bant uzun süre yanlış hızda dönerse kopar.\n\nYaşar Bey kapıda bekliyor, kulağı dışarıda. Kapının dışında bir araba motoru duruyor. Farlar kapanıyor. Kapılar açılmıyor; içindekiler bekliyor.",
+      "Interaction": {
+        "Type": "tune",
+        "Prompt": "Bant hızını ayarla. Ses netleşince bir buçuk saniye sabit tut. Yirmi beş saniyen var; dışarıda biri var.",
+        "Min": 2.0,
+        "Max": 20.0,
+        "Target": 9.5,
+        "Tolerance": 0.3,
+        "HoldMs": 1500,
+        "Seconds": 25,
+        "Hint": "Standart makara hızları: 4,75 · 9,5 · 19. Yaşar Bey’in zarfı da bir şey söylüyordu.",
+        "Success": 0,
+        "Fail": 1
+      },
+      "Choices": [
+        {
+          "Text": "Ses netleşti.",
+          "Next": "four_minutes",
+          "Result": "Cıvıltı yavaşladı, kalınlaştı ve bir insan sesine dönüştü.",
+          "Effects": {
+            "insight": 15
+          },
+          "SetFlags": [
+            "four_minutes"
+          ]
+        },
+        {
+          "Text": "Bant koptu.",
+          "Next": "reel_broken",
+          "Result": "Makara boşa döndü. Bandın ucu yere kıvrıldı.",
+          "Effects": {
+            "insight": -5
+          }
+        }
+      ]
+    },
+    "four_minutes": {
       "Title": "Eksik dört dakika",
-      "Text": "Kulaklığın sesini biraz açınca bir anons duyuyorsun: “Bakım havuzu boşaltılacak.” Dosyanın süresiyle cihazın ekranındaki süre arasında dört dakika var. Kayıt kesilmemiş; bir bölümü silinmiş.\n\nLeyla ekrana bakıyor. “Bunu ben yapmadım.” İnanmak için bir nedenin var, kuşkulanmak için de. Güven, bu gece kesinlik anlamına gelmiyor.",
+      "Chapter": 3,
+      "Style": "radio",
+      "Text": "— Selim Bey, halatlar test edilmedi.\n— Biliyorum Cemal. Halatı değiştirmeyin. Kâğıdı değiştirin.\n— Çocuk öldü.\n— Çocuk öldü, evet. Tersane ölmesin. Bin iki yüz kişi çalışıyor burada.\n— Ben bu imzayı atmam.\n— Atmazsan karın atar. Onun da kızları var.\n[sessizlik · 00:40]\n— Bu kaydı yapıyorsun, değil mi Cemal?\n— Yapıyorum.\n— O zaman artık burada yaşayamazsın.\n[kapı · ayak sesleri]\n— Kızlarım, eğer bunu bulduysanız: ben adadayım. Her yıl bu gece ilk vapuru bekliyorum. Gelmezseniz de anlarım.",
       "Choices": [
         {
-          "Text": "Orijinal dosyanın peşine düş.",
-          "Next": "notebook",
-          "Result": "Eksik kayıt daha sonra işe yarayabilir.",
-          "Effects": {
-            "insight": 5
-          },
+          "Text": "Kaydı telefonuna al. Dışarıdaki arabaya bak.",
+          "Next": "threat",
+          "Result": "Yaşar Bey pencereden baktı. “Siyah araba,” dedi. “Kaya’nın adamları. Arka kapıdan çık.”",
           "SetFlags": [
-            "missing"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
+            "confession_tape",
+            "father_alive"
+          ]
+        }
+      ]
+    },
+    "reel_broken": {
+      "Title": "Kopan bant",
+      "Chapter": 3,
+      "Text": "Bandı eline alıyorsun; kopmuş ucu ince, kırılgan, kahverengi bir saç teli gibi. Makara boşa dönmeye devam ediyor, şak şak şak. Düğmeye basıp durduruyorsun. Son anda, cıvıltının bir insan sesine dönüşmeye başladığı yarım saniyede duyduğun tek şey bir isimdi: “Selim Bey.” Ve bir cümlenin yarısı: “…kâğıdı değiştirin.” Kanıt değil. Ama bir ipucu. Ve bir öfke.\n\nYaşar Bey bandın parçalarını ağır ağır, bir yarayı sarar gibi bir zarfın içine koyuyor. “Bunu tamir edebilen biri vardır. Eski usul ses ustaları var, Tahtakale’de. Ama bu gece değil.” Pencereden dışarı bakıyor. “Siyah araba. Kapıları hâlâ açılmadı. Arka kapıdan çık; rıhtımın yanından gara çıkan bir yol var.”\n\nOdadan çıkarken duvardaki 2016 takvimine son bir kez bakıyorsun. Bugünün tarihinde, kurşunkalemle çizilmiş küçük bir vapur var; senin çocukken çizdiğin gibi, dumanı yanlış tarafa tütüyor. Altında babanın yazısı: “Ada, 06.10.”\n\nAynı takvimin bir sonraki yılında, bir sonrakinde, her yıl aynı gün aynı vapur. Biri bu takvimi her yıl değiştirmiş ve her yıl aynı yere aynı vapuru çizmiş. Yaşar Bey arkandan bakıyor; bir şey söylemiyor ama yüzü her şeyi söylüyor.",
+      "Choices": [
         {
-          "Text": "Elindeki kanıtı yedekle.",
-          "Next": "backup",
-          "Result": "Kusurlu da olsa kaydı korumayı seçtin.",
+          "Text": "Arka kapıdan çık.",
+          "Next": "threat",
+          "Result": "Ayakkabıların çakıl taşlarında gürültü yaptı.",
           "Effects": {
             "courage": 5
           },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "SetFlags": [
+            "father_alive"
+          ]
         }
-      ],
-      "Chapter": 2,
-      "Ending": ""
+      ]
     },
-    "sister": {
-      "Title": "İpek’in cevabı",
-      "Text": "İpek ağlamıyor. “Onun iyi biri olduğuna inanmak, onsuz yaşamama yardım etti. Yaşamak için kurduğum hikâyeyi şimdi yıkmam mı gerekiyor?”\n\nSöyleyecek kolay bir cümlen yok. Camdaki yansımanda babanın kaşlarını görüyorsun. Bir insanın yüzünü taşımak, yaptıklarını taşımak zorunda olmak mı?",
+    "threat": {
+      "Title": "03.30 · Bilinmeyen numara",
+      "Chapter": 4,
+      "Style": "chat",
+      "Text": "+90 5•• ••• 41 07: Gece uzun, değil mi?\n+90 5•• ••• 41 07: Annenin mutfağında ışık hâlâ yanıyor. Penceresi açık. Üşüyecek.\n+90 5•• ••• 41 07: Elindekinin bir fiyatı var. Sana da ailene de yetecek kadar.\n+90 5•• ••• 41 07: 05.00, Moda iskelesi. Yalnız gel.\nSen: Kimsin?\n+90 5•• ••• 41 07: Babanın son anlaştığı adam.\n+90 5•• ••• 41 07: O da yalnız gelmişti.\nİpek: Neredesin? Annemin evinin önünde bir araba duruyor. Siyah.\nİpek: Motoru çalışıyor. İçinde iki kişi var.\nİpek: Ne yapıyoruz?\nLeyla: Kızım beni aradı. Evin önünde biri varmış. Ne yapacağımı bilmiyorum.",
       "Choices": [
         {
-          "Text": "İyi anılarımız da gerçek, yaptıkları da de.",
-          "Next": "notebook",
-          "Result": "İpek sabaha kadar yanında olacağını söyledi.",
+          "Text": "İpek’i ve anneni bir araya topla; kararı birlikte verin.",
+          "Next": "family_council",
+          "Result": "İpek’e konum attın: “Leyla’nın bodrumu. Annemi de getir. Arabayı arka sokağa park et.”",
           "Effects": {
             "trust": 10
-          },
-          "SetFlags": [
-            "sister"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
-          "Text": "Önce defteri bulmalıyız de.",
-          "Next": "notebook",
-          "Result": "Cevabı daha sonraya bıraktın.",
-          "Effects": {
-            "courage": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 2,
-      "Ending": ""
-    },
-    "notebook": {
-      "Title": "İsimlerin defteri",
-      "Text": "Leyla küçük, siyah bir defter çıkarıyor. Sayfalarda yalnızca isimler değil, ödemeler, vardiyalar, güvenlik testleri var. Son sayfada babanın imzasının yanında başka bir imza görüyorsun: annenin.\n\n“Annen muhasebeciydi,” diyor Leyla. “Paranın nereye gittiğini ilk o gördü. Sonra size başka bir hayat kurdu. Bunun için onu yargılayamam. Ama senden saklamayı sürdüremem.”",
-      "Choices": [
-        {
-          "Text": "Anneni ara.",
-          "Next": "mother",
-          "Result": "Onun hikâyesini de duymayı seçtin.",
+          "Text": "Leyla’ya yaz: “Elif iyi mi?”",
+          "Next": "leyla_daughter",
+          "Result": "Leyla hemen aradı. Sesi hiç bu kadar küçük çıkmamıştı.",
           "Effects": {
             "trust": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
-          "Text": "Belgeleri güvenli bir yere kopyala.",
-          "Next": "backup",
-          "Result": "Kanıtı kişisel hesaplaşmanın önüne koydun.",
-          "Effects": {
-            "insight": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Leyla’ya defteri neden şimdi verdiğini sor.",
-          "Next": "why_now",
-          "Result": "Zamanlamayı sorguladın.",
-          "Effects": {
-            "courage": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 2,
-      "Ending": ""
-    },
-    "mother": {
-      "Title": "Açık kalan hat",
-      "Text": "Annen telefonu ikinci çalışta açıyor. Nerede olduğunu sormuyor. “Artık biliyorsun,” diyor.\n\n“Sizi korumak için her şeyi yapardım diye düşündüm. Sonra ‘her şey’in içine yalan da girdi. Defterdeki imza benim. Bir banka transferini durdurdum; sonra durdurduğumu inkâr ettim. Bunun başkalarına neye mal olduğunu bilmiyordum.”\n\nHattı açık tutuyor. Bu kez konuşmayı senin bitirmeni bekliyor.",
-      "Choices": [
-        {
-          "Text": "Sabah birlikte ifade verelim de.",
-          "Next": "backup",
-          "Result": "Annen gelmeyi kabul etti.",
-          "Effects": {
-            "trust": 10
-          },
-          "SetFlags": [
-            "mother"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Bu gece tek başıma karar vermeliyim de.",
-          "Next": "backup",
-          "Result": "Bir sınır çizdin.",
-          "Effects": {
-            "courage": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 2,
-      "Ending": ""
-    },
-    "why_now": {
-      "Title": "Son seferin nedeni",
-      "Text": "“Tersane arşivi yarın yıkıma gidiyor,” diyor Leyla. “Ben de orada çalışmayı bırakıyorum. Babanın cihazı üç hafta önce bir kutudan çıktı. Yıllarca cesaret edemedim; üç haftadır bir zarf hazırlıyorum.”\n\nBüyük sırların arkasında bazen tek bir büyük plan değil, birbirini büyüten küçük kaçışlar oluyor. Leyla’nınki onu masum yapmıyor; anlaşılır yapıyor.",
-      "Choices": [
-        {
-          "Text": "İfadesini kayda al.",
-          "Next": "backup",
-          "Result": "Leyla adını ve bildiklerini kameraya söyledi.",
+          "Text": "Belgeleri güvenli yerlere dağıt, sonra buluşmaya git.",
+          "Next": "plan",
+          "Result": "Bir binanın saçağının altına sığınıp telefonunun ekranını kıstın.",
           "Effects": {
             "insight": 10
-          },
-          "SetFlags": [
-            "witness"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          }
         },
         {
-          "Text": "Birlikte kıyıya çıkacağınızı söyle.",
-          "Next": "backup",
-          "Result": "Onun da kaçmasını istemedin.",
-          "Effects": {
-            "trust": 5
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 2,
-      "Ending": ""
-    },
-    "backup": {
-      "Title": "Bağlantı kuruluyor",
-      "Text": "Belgeleri telefonuna aktarırken ekranda bir mesaj beliriyor. Bilinmeyen numara: “Aileni düşün. Defterin bir fiyatı var.”\n\nVapur iskeleye yaklaşıyor. İpek konumunu soruyor, Leyla kıyıya bakıyor. Belgeleri bir gazeteciye, savcılığa ya da yalnızca ailene gönderebilirsin. Her yol birini incitecek. Hiçbir şey yapmamak da bir yol; yalnızca bedelini başkaları ödeyebilir.",
-      "Choices": [
-        {
-          "Text": "Bir gazeteciye şifreli kopya gönder.",
-          "Next": "journalist",
-          "Result": "Bir başka tanık daha yarattın.",
+          "Text": "Doğrudan Moda’ya git.",
+          "Next": "selim_meet",
+          "Result": "Moda’ya yürüyerek yarım saat. Yürümek düşünmekten iyiydi.",
           "Effects": {
             "courage": 10
+          }
+        }
+      ]
+    },
+    "plan": {
+      "Title": "Kopyalar",
+      "Chapter": 4,
+      "Text": "Bir binanın saçağının altına sığınıp elinde ne varsa sayıyorsun. Babanın kaydı. Belki eksik dört dakika. Belki defter, belki fotoğraflar, belki bir banka dekontu. Hepsi tek bir telefonda ve tek bir cepte. Bu gece o cebe bir şey olursa, bir hırsız, bir kaza, bir kopan bant gibi, on yıl yeniden kapanır. Belki bu kez sonsuza dek.\n\nBir kopya Murat’a gidebilir; gazeteci, cesur ama küçük. Haberi yarın sabah değil, belgeler doğrulanınca yayımlar; Kaya’nın avukatları haberi kaldırtsa bile dosya onda kalır. Bir kopya savcılığın nöbetçi e-postasına; resmi, yavaş, ama bir kez kayda girince kimse silemez. Bir kopya da hiç kimseye: telefonu kapatırsın, bu gece kimse seni bulamaz. Kimse kaydı da.\n\nPil yüzde on dört. Ekran kendi kendine kararıyor, parmağını dokundurup yeniden açıyorsun. Yağmur saçaktan damlıyor, damlalar telefonun kenarına düşüyor.\n\nKarşı kaldırımdan bir taksi geçiyor; yavaşlıyor, sonra hızlanıyor.",
+      "Choices": [
+        {
+          "Text": "Murat’a şifreli kopya gönder.",
+          "Next": "selim_meet",
+          "Result": "Murat’tan tek kelime: “Aldım. Sabaha kadar uyumam.”",
+          "NeedFlag": "journalist",
+          "Effects": {
+            "courage": 5
           },
           "SetFlags": [
             "press"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          ]
         },
         {
-          "Text": "Belgeleri yalnızca savcılığa teslim et.",
-          "Next": "courthouse",
-          "Result": "Önce resmi kaydı oluşturmayı seçtin.",
+          "Text": "Savcılığın nöbetçi adresine gönder.",
+          "Next": "selim_meet",
+          "Result": "Otomatik cevap: “Başvurunuz kayda alınmıştır. Kayıt no: 2026/8841.”",
           "Effects": {
             "insight": 10
           },
           "SetFlags": [
             "legal"
-          ],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          ]
         },
         {
-          "Text": "İpek’le buluş, kararı birlikte verin.",
-          "Next": "meeting",
-          "Result": "Ailenin sesini dinlemek istedin.",
+          "Text": "Hiçbir yere gönderme; telefonu kapat.",
+          "Next": "selim_meet",
+          "Result": "Ekran karardı. Kimse seni bulamazdı; kimse kaydı da.",
           "Effects": {
-            "trust": 10
-          },
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+            "courage": 5
+          }
         }
-      ],
-      "Chapter": 3,
-      "Ending": ""
+      ]
     },
-    "journalist": {
-      "Title": "Haberi bekleyen kişi",
-      "Text": "Gazeteci, defterin tamamını yayımlamak istemiyor. “İsimler kadar bağlam da lazım. Bu insanların bazıları tanık olabilir.” Sana babanın dosyasından bir tarama gönderiyor. Kayıp tutanağındaki tarih, fotoğraftakiyle uyuşmuyor.\n\nGerçeği duyurmak, en yüksek sesle konuşmak demek değil. Elindeki hikâyenin eksik olduğunu kabul etmek de cesaret istiyor.",
+    "family_council": {
+      "Title": "Üç kadın, bir bodrum",
+      "Chapter": 4,
+      "Text": "Leyla’nın bodrumu dört kadına dar geliyor. Annen montunu çıkarmadan bir sandalyenin ucuna oturmuş; Leyla’ya bakmıyor. İpek ayakta, kolları kavuşturulmuş. Leyla bir köşede, söz istemeden, elinde ifadesi. Sen ortada, klasörlerin arasında, elinde bir kayıtla.\n\nİlk kez dördünüz aynı masada babanın adını yüksek sesle söylüyorsunuz. Cemal. On yıldır evde bu ad “baban” olarak geçti; sanki adıyla çağırırsanız geri gelecekmiş, ya da hiç gelmeyecekmiş gibi.\n\nİpek öfkeli: “On yıl boyunca bize ‘kaçtı’ dedin. Ben kocama babamın bizi terk ettiğini anlattım. Çocuklarıma dedelerinin olmadığını.” Annen yorgun: “Kaçtı. Ama bizden değil. Bizim için.” Leyla sessiz; bir ara bir şey söyleyecek gibi oluyor, annen ona bir bakış atıyor ve vazgeçiyor.\n\nSen kimsenin cümlesini tamamlamadan bekliyorsun. Bodrumun küçük penceresinden sokak lambasının ışığı giriyor; ışıkta tuz kâselerindeki kristaller parlıyor.\n\nSonunda annen konuşuyor, sana bakarak: “Ne yapacaksan yap. Ama bu kez tek başına değil. Bu evin sırrı bu evin kararı olsun. Ben on yıl önce yalnız karar verdim. Bir daha kimse yalnız karar vermesin.”",
       "Choices": [
         {
-          "Text": "Kaydı ve tarih uyuşmazlığını doğrulat.",
-          "Next": "ending_truth",
-          "Result": "Haberi bir yarışa çevirmedin.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "insight",
-          "MinValue": 65
+          "Text": "Oylayın: gerçeği mi, aileyi mi koruyacaksınız?",
+          "Next": "selim_meet",
+          "Result": "Üç el kalktı. Annenin eli en son kalktı ama kalktı.",
+          "Effects": {
+            "trust": 15
+          },
+          "SetFlags": [
+            "together"
+          ]
         },
         {
-          "Text": "Leyla’nın da tanıklık etmesini sağla.",
-          "Next": "ending_witness",
-          "Result": "Tek bir kayıttan çok, birden fazla ses yarattın.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "witness",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Elindeki belgelerle soruşturmanın açılmasını iste.",
-          "Next": "ending_open",
-          "Result": "Bütün cevapları bilmeden soruyu görünür kıldın.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "Text": "Kararı sen ver: “Gerçek.”",
+          "Next": "selim_meet",
+          "Result": "İpek başını salladı. Annen pencereye döndü.",
+          "Effects": {
+            "courage": 10
+          },
+          "SetFlags": [
+            "together"
+          ]
         }
-      ],
-      "Chapter": 3,
-      "Ending": ""
+      ]
+    },
+    "selim_meet": {
+      "Title": "05.00 · Moda iskelesi",
+      "Chapter": 4,
+      "Text": "Moda iskelesinin kafesi kapalı, sandalyeler masaların üstüne kaldırılmış; biri hariç. Denize bakan masada iki bardak çay, bir şekerlik, bir küllük. Martılar korkuluğun üstünde, sabahı bekliyor. Gökyüzü hâlâ karanlık ama denizin üstünde bir çizgi açılmaya başladı.\n\nKır saçlı adam yetmişlerinde. Pahalı ama eskimiş bir palto, temiz ayakkabılar; ıslak taşta parlıyorlar. Sol elinde yüzük izi var, yüzük yok. Selim Kaya. Fotoğraftakinden daha küçük; gücü olan insanlar yakından hep daha küçük görünür.\n\n“Babana da tam burada çay ısmarlamıştım,” diyor, sana bir sandalye göstererek. “Bu masada. O içmedi. Soğuttu, kalktı, gitti. Sen iç. Soğutma.” Gülümsemesi bir fotoğraftaki gibi, değişmemiş; ağız gülümsüyor, gözler hesap yapıyor.\n\nUzakta, iskelenin girişinde siyah bir araba duruyor; şoför direksiyonda, motor çalışıyor.\n\n“Telefonunu masaya koy,” diyor Selim. “Ekranı aşağı. Konuşacaklarımız kayda geçmesin; biz eski usul insanlarız, söz kâğıttan sağlamdır. Sonra sana bir rakam söyleyeceğim. Bir de babanın nerede olduğunu.”",
+      "Interaction": {
+        "Type": "timer",
+        "Prompt": "Selim telefonuna bakıyor. Bekliyor.",
+        "Seconds": 15,
+        "Timeout": 0
+      },
+      "Choices": [
+        {
+          "Text": "Telefonu masaya bırak.",
+          "Next": "selim_offer",
+          "Result": "Selim telefonu ters çevirdi.",
+          "Effects": {
+            "trust": -5
+          }
+        },
+        {
+          "Text": "Kaydı açık bırak, telefonu cebine koy.",
+          "Next": "selim_recorded",
+          "Result": "Kalbinin sesini telefon da duyuyor gibiydi.",
+          "NeedStat": "courage",
+          "MinValue": 65,
+          "Effects": {
+            "courage": 10
+          },
+          "SetFlags": [
+            "confession"
+          ]
+        },
+        {
+          "Text": "“Leyla’nın ifadesi şu an savcılıkta,” diye blöf yap.",
+          "Next": "selim_bluff",
+          "Result": "Selim’in gülümsemesi ilk kez kaydı.",
+          "NeedStat": "insight",
+          "MinValue": 60,
+          "Effects": {
+            "insight": 10
+          }
+        }
+      ]
+    },
+    "selim_offer": {
+      "Title": "Rakam",
+      "Chapter": 4,
+      "Text": "Selim cebinden dolma kalem çıkarıp bir peçeteye bir rakam yazıyor ve peçeteyi çay bardağının altından sana doğru kaydırıyor. Sıfırları saymak zaman alıyor. Annenin ev kredisi, İpek’in çocuklarının okulu, senin hiç başvurmadığın yüksek lisans, Leyla’nın kızının üniversitesi; hepsi bu peçetede kapanıyor ve hâlâ artıyor.\n\n“Baban adada,” diyor. “Büyükada, Nizam tarafında bir pansiyon. Adı Lale. Sahibi yaşlı bir kadın, babana oğlu gibi bakıyor. Kimse aramadı; ben de aratmadım. Bu benim nezaketimdi. On yıl boyunca bir telefonla onu bulabilirdim. Bulmadım.”\n\nÇayını yudumluyor. “Kayıt bende kalırsa baban o adada kalır, sen bu peçeteyle yaşarsın. Kayıt dışarı çıkarsa, baban da çıkar. Sahte rapora ilk imzayı atan oydu; Leyla sana söylemedi mi? Mahkeme ‘korktum’ demeyi dinlemez. Onu da yargılarlar. Yetmiş yaşında bir adam, cezaevinde.”\n\n“Ben yaşlıyım,” diyor. “Bir hapis yatarsam yatarım; avukatlarım beni iki yılda çıkarır. Ama baban senin babanın. Seç.”",
+      "Choices": [
+        {
+          "Text": "Kâğıdı al.",
+          "Next": "dawn",
+          "Result": "Kâğıt cebinde, defterin yanında durdu. İkisi aynı ağırlıkta değildi.",
+          "Effects": {
+            "trust": -10
+          },
+          "SetFlags": [
+            "deal"
+          ]
+        },
+        {
+          "Text": "Kâğıdı yırt, telefonunu al ve kalk.",
+          "Next": "dawn",
+          "Result": "Selim yırtık parçalara bakmadı. “Babana benziyorsun,” dedi. Bir iltifat değildi.",
+          "Effects": {
+            "courage": 15
+          }
+        }
+      ]
+    },
+    "selim_recorded": {
+      "Title": "Cepteki kayıt",
+      "Chapter": 4,
+      "Text": "Selim konuşuyor; telefonun masada olmadığını fark etmiyor ya da umursamıyor. Babanın adada olduğunu, sahte raporu kendisinin istediğini, “o çocuğun” adını bile hatırlamadığını anlatıyor. Sonra bir rakam söylüyor.\n\n“Kayıt dışarı çıkarsa baban da yargılanır,” diyor. “İlk imza onun. Bunu düşündün mü?”\n\nDüşündün. Bütün gece düşündün. Cebindeki telefon hâlâ kayıtta. Selim’in sesi de babanın sesinin yanına, aynı klasöre yazılıyor.",
+      "Choices": [
+        {
+          "Text": "Kalk. Hiçbir şey söyleme.",
+          "Next": "dawn",
+          "Result": "Masadan kalktığında Selim ilk kez yaşlı göründü.",
+          "Effects": {
+            "courage": 10
+          }
+        }
+      ]
+    },
+    "selim_bluff": {
+      "Title": "Kayan gülümseme",
+      "Chapter": 4,
+      "Text": "Selim bir süre denize bakıyor. Sonra telefonunu çıkarıp birine kısa bir mesaj yazıyor. “Leyla,” diyor. “Hep kaygılı bir kadındı. Kaygılı insanlar dürüst olur. Dürüst insanlar da tehlikeli.”\n\nSana dönüyor. “Babanın yerini biliyorum. Ama sana söylemeyeceğim; sen zaten bulacaksın. Cemal’in kızı, Cemal kadar inatçı.” Kalkıyor, çay parasını masaya bırakıyor. “Ben bu sabah bir uçağa biniyorum. İnsanlar kaçmanın sadece kötülere ait olduğunu sanır.”\n\nYürüyüp gidiyor. Arkasından baktığında elinin titrediğini görüyorsun.",
+      "Choices": [
+        {
+          "Text": "Murat’a Selim’in uçağa bineceğini haber ver.",
+          "Next": "dawn",
+          "Result": "Murat: “Havalimanında bir arkadaşım var.”",
+          "NeedFlag": "journalist",
+          "Effects": {
+            "insight": 10
+          },
+          "SetFlags": [
+            "press"
+          ]
+        },
+        {
+          "Text": "Gitmesine izin ver.",
+          "Next": "dawn",
+          "Result": "Bazı kaçışları kimse durduramaz. Ama hepsini kayda geçirebilirsin.",
+          "Effects": {
+            "trust": 5
+          }
+        }
+      ]
+    },
+    "dawn": {
+      "Title": "05.40 · Şafak",
+      "Chapter": 5,
+      "Text": "Gökyüzü kurşun renginden griye, griden soluk bir pembeye dönüyor. Moda burnunda martılar uyanıyor; biri korkuluğa konup sana bakıyor, simit bekliyor. Deniz durgunlaşmış; gece yağmurunun bıraktığı tek iz, ıslak taşlar ve havadaki temiz koku.\n\nİskelenin tabelasında: “Adalar · 06.10 · İlk sefer.” Kaydın sonundaki cümle, babanın mektubu, takvimdeki vapur çizimi, düdüğün iki kısa bir uzun sesi; hepsi aynı saati gösteriyor. Saat beşi kırk geçiyor.\n\nTelefonunda bildirimler birikmiş. İpek: “Neredeysen oraya geliriz. Annem ayakkabılarını giydi.” Belki Murat: “Ofisteyim. Kahve hazır.” Belki savcılığın kayıt numarası. Cebinde defter belki, belki bir peçete. Kulağında babanın sesi, kesin.\n\nBu gece kimsenin seçemeyeceği bir şeyi seçmen gerekiyor: babanı mı, gerçeği mi, aileni mi? Hangisini seçersen seç, ikisinden biri bedel ödeyecek.\n\nYa da belki, ilk kez, üçünü birden taşımayı deneyebilirsin. Ne kadar ağır olacağını bilmeden.",
+      "Choices": [
+        {
+          "Text": "İlk vapura bin. Adaya, babana git.",
+          "Next": "island",
+          "Result": "Bileti alırken elin titredi. Gişedeki kadın “İyi yolculuklar,” dedi; bu sözü ilk kez bu kadar ağır duydun.",
+          "NeedFlag": "father_alive",
+          "Effects": {
+            "courage": 10
+          }
+        },
+        {
+          "Text": "Önce tersanenin kapısına uğra.",
+          "Next": "necla_gate",
+          "Result": "Rıhtım boyunca geri yürüdün. Gar binası şafakta kırmızıydı.",
+          "Effects": {
+            "trust": 5
+          }
+        },
+        {
+          "Text": "Murat’ın ofisine git; haberi birlikte hazırlayın.",
+          "Next": "press_office",
+          "Result": "Murat kapıyı açtığında masada iki kahve vardı.",
+          "NeedFlag": "journalist",
+          "Effects": {
+            "courage": 5
+          }
+        },
+        {
+          "Text": "Adliyeye, nöbetçi savcıya git.",
+          "Next": "courthouse",
+          "Result": "Çağlayan’a giden ilk otobüs boştu.",
+          "Effects": {
+            "insight": 5
+          }
+        },
+        {
+          "Text": "Eve dön; kahvaltıyı ailenle yap, sonra karar ver.",
+          "Next": "family_table",
+          "Result": "Annen kapıyı açmadan önce mutfaktaki ışığı söndürdü.",
+          "Effects": {
+            "trust": 10
+          }
+        }
+      ]
+    },
+    "island": {
+      "Title": "06.55 · Büyükada",
+      "Chapter": 5,
+      "Text": "İskeleden inen ilk yolcu sen oluyorsun. Simitçinin tezgâhı kurulmuş. Yanında, bankta, yaşlı bir adam oturuyor; elinde bir simit, yarısını martılara atıyor. Saçları beyazlamış, omuzları küçülmüş ama ellerini tanıyorsun. T harfini hep fazla bastıran eller.\n\nSeni görünce ayağa kalkamıyor. Sadece “Geldin,” diyor. “On yıl… Her yıl geldim. Gelmeyeceğini düşündüm, iyi ki gelmezsin diye düşündüm. Sonra gelmeni bekledim.”\n\nBir süre konuşmuyorsunuz. Martılar simidi kapışıyor. Sonra baban soruyor: “Kaydı buldun mu?”",
+      "Choices": [
+        {
+          "Text": "“Buldum. Benimle gel, ifade ver.”",
+          "Next": "island_return",
+          "Result": "Baban uzun uzun denize baktı. Sonra simit kâğıdını katlayıp cebine koydu.",
+          "Effects": {
+            "courage": 10
+          }
+        },
+        {
+          "Text": "“Buldum. Ama sen burada kal; ben taşırım.”",
+          "Next": "island_stay",
+          "Result": "Babanın gözleri doldu. “Bunu sana yüklemek için gitmedim ben,” dedi.",
+          "Effects": {
+            "trust": 10
+          }
+        }
+      ]
+    },
+    "island_return": {
+      "Title": "Dönüş seferi",
+      "Chapter": 5,
+      "Text": "Dönüş vapurunda baban pencere kenarına oturuyor. Kıyı yaklaştıkça elleri dizlerinin üstünde sıkılaşıyor. “Yargılanacağım,” diyor. “İlk imza benimdi. Bunu bilerek geliyorum. Hakan’ın annesi beni görmeli. Benden duymalı.”\n\nİpek’e mesaj atıyorsun: “Babamla geliyoruz.” Cevap gelmiyor; üç dakika sonra telefon çalıyor ve ablan sadece ağlıyor.\n\nKadıköy iskelesinde annen bekliyor. Babanı görünce bir adım atıyor, sonra duruyor. İkisi on yıl sonra birbirine bakarken sen aradaki mesafeyi ölçüyorsun: tam bir vapur boyu.",
+      "Choices": [
+        {
+          "Text": "Birlikte adliyeye yürüyün.",
+          "Next": "ending_father",
+          "Result": "Dört kişi, aynı kaldırımda, aynı hızda yürüdünüz.",
+          "Effects": {
+            "trust": 10
+          }
+        }
+      ]
+    },
+    "island_stay": {
+      "Title": "Simitçinin yanı",
+      "Chapter": 5,
+      "Text": "“Kal,” diyorsun. “Kaydı ben götürürüm. Senin adını ben söylerim; ama seni ben getirmem.” Baban başını sallıyor; utanç ve rahatlama aynı yüzde.\n\nSana bir anahtar veriyor; pansiyonun anahtarı değil, eski bir posta kutusunun. “Orada on yıllık mektuplar var. Size yazdıklarım. Hiç göndermedim. Okumak istersen.”\n\nDönüş vapurunda ilk mektubu açıyorsun. Tarih, kaybolduğu günün ertesi: “Kızlarım, bugün ilk vapurla geldim ve sizi her sabah aynı saatte özleyeceğimi anladım.”",
+      "Choices": [
+        {
+          "Text": "Mektupları kucağına al, kıyıya bak.",
+          "Next": "courthouse",
+          "Result": "Kıyı yaklaşırken mektupların kenarı rüzgârda titredi.",
+          "Effects": {
+            "insight": 5
+          }
+        }
+      ]
+    },
+    "press_office": {
+      "Title": "Haber masası",
+      "Chapter": 5,
+      "Text": "Murat’ın ofisi bir eski matbaanın üst katı. Masa kâğıt dolu, pencere buğulu. “Elimizde ne var, sayalım,” diyor. Kayıt, defter, iç yazışma, kaza raporları. Her biri tek başına itiraz edilebilir. Hepsi birlikte bir hikâye anlatıyor.\n\n“Bir şey daha lazım,” diyor Murat. “Selim’in kendi sesi. Bugün değilse bile yaşıyorken söylediği bir şey. Yoksa ‘ölmüş bir adamın kaydı’ derler; baban için.”\n\nBaban ölmüş değil. Bunu Murat’a söylemek bir karar.",
+      "Choices": [
+        {
+          "Text": "Selim’in bu sabahki sesini ver.",
+          "Next": "ending_truth",
+          "Result": "Murat kaydı dinledi, sonra kulaklığı çıkarıp bir süre konuşmadı.",
+          "NeedFlag": "confession",
+          "Effects": {
+            "courage": 10
+          }
+        },
+        {
+          "Text": "Eksik dört dakikayı ver.",
+          "Next": "ending_truth",
+          "Result": "“Bu,” dedi Murat. “Bu yeter.”",
+          "NeedFlag": "confession_tape",
+          "Effects": {
+            "insight": 10
+          }
+        },
+        {
+          "Text": "Elindekiyle savcılığa git; habere hazır değilsin.",
+          "Next": "courthouse",
+          "Result": "Murat anladı. “Ben dosyayı açık tutarım,” dedi.",
+          "Effects": {
+            "trust": 5
+          }
+        }
+      ]
     },
     "courthouse": {
       "Title": "Sabah nöbeti",
-      "Text": "Adliyenin önündeki simitçi kepengini yeni açıyor. Elinde sabaha kadar koruduğun defter var. Sıradan bir dosya kâğıdı gibi görünüyor. İçindeyse bütün çocukluğun yer değiştirdi.\n\nİpek yanında beliriyor. “Ben de geldim.” Biraz ileride anneni görüyorsun. Geldiyse, bu onun kararı. Senin kararın kapıdan girip girmemek.",
+      "Chapter": 5,
+      "Text": "Nöbetçi savcı genç bir kadın; masasında soğumuş bir simit, ekranda gece boyunca gelen başvurular. Kayıt numaranı söylediğinde başını kaldırıyor. “Tersane kazası. On yıllık. Zamanaşımı tartışılır ama ölümlü iş kazası ve sahte belge… Bu dosya yeniden açılabilir.”\n\nElindekileri tek tek masaya koyuyorsun. Savcı her birinin fotoğrafını çekip numaralıyor. Saat yedi buçuk. Koridorda ilk duruşmaların avukatları, cübbeler, simitçiler.\n\n“Bir de,” diyor savcı, “bu belgelerde adı geçen insanlar var. Annen. Baban. Onları da çağıracağım. Bunu biliyorsun, değil mi?”",
       "Choices": [
         {
-          "Text": "Ailenle ve Leyla’yla birlikte içeri gir.",
-          "Next": "ending_witness",
-          "Result": "Gerçeği birlikte taşımaya başladınız.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "trust",
-          "MinValue": 65
-        },
-        {
-          "Text": "Defteri ve kayıt kopyasını teslim et.",
+          "Text": "“Biliyorum,” de ve ifadeni ver.",
           "Next": "ending_open",
-          "Result": "Soruşturmayı kendi adınla başlattın.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "Result": "İfaden dört sayfa sürdü. İmzayı atarken babanın t harflerini düşündün.",
+          "Effects": {
+            "courage": 10
+          }
         },
         {
-          "Text": "Eksik dört dakikanın incelenmesini özellikle iste.",
-          "Next": "ending_truth",
-          "Result": "Bir ayrıntı dosyanın yönünü değiştirdi.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "missing",
-          "NeedStat": "",
-          "MinValue": 0
-        }
-      ],
-      "Chapter": 3,
-      "Ending": ""
-    },
-    "meeting": {
-      "Title": "İskelede üç bardak çay",
-      "Text": "İpek seni ilk gördüğünde sarılmıyor; önce gerçekten orada olup olmadığına bakıyor. Sonra sıkıca tutunuyor.\n\n“Bunu yayımlarsan ailemiz değişecek,” diyor. “Yayımlamazsan da değişti zaten.” Üçüncü çayı, baban için söylemediğinizi ikiniz de biliyorsunuz. Sabah gelecek kişi annen. Bu kez masada onun için de yer var.",
-      "Choices": [
-        {
-          "Text": "Ailenle yüzleş, belgeleri sonra birlikte teslim edin.",
-          "Next": "ending_witness",
-          "Result": "İyileşmeyi gizlemekle karıştırmadınız.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "trust",
-          "MinValue": 65
-        },
-        {
-          "Text": "Belgeleri teslim et; yakınlaşmayı zamana bırak.",
-          "Next": "ending_open",
-          "Result": "Sınırlarınla birlikte gerçeği de korudun.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
-        },
-        {
-          "Text": "Defteri sakla ve bu sabah aileni seç.",
+          "Text": "Belgeleri geri al. Hazır değilsin.",
           "Next": "ending_silence",
-          "Result": "Bazı soruların peşinden gitmemeyi seçtin.",
-          "Effects": {},
-          "SetFlags": [],
-          "NeedFlag": "",
-          "NeedStat": "",
-          "MinValue": 0
+          "Result": "Savcı itiraz etmedi. Sadece kayıt numarasını bir kâğıda yazıp sana verdi.",
+          "Effects": {
+            "trust": -5
+          }
         }
-      ],
-      "Chapter": 3,
-      "Ending": ""
+      ]
+    },
+    "family_table": {
+      "Title": "Kahvaltı",
+      "Chapter": 5,
+      "Text": "Masada beyaz peynir, zeytin, annenin her pazar yaptığı ama bu sabah perşembe olmasına rağmen yaptığı börek. İpek ekmek dilimliyor. Leyla kapının yanında, davet edilmeyi bekliyor; annen ona bir sandalye çekiyor.\n\nKimse kaydı açmıyor ama herkes onun masada olduğunu biliyor. Annen sonunda çatalını bırakıyor: “Hakan’ın annesini kahvaltıya çağırmak istiyorum. Bugün değil. Ama bir gün. Ona yüzüme bakarak söylemek istiyorum.”\n\nİpek senin elini tutuyor. “Ne seçersen seç,” diyor, “bu kez kimse kimseyi bilmeyerek korumayacak.”",
+      "Choices": [
+        {
+          "Text": "Bu masadan hep birlikte kalkın, adliyeye gidin.",
+          "Next": "ending_witness",
+          "Result": "Annen ceketini giydi. Leyla atkısını. İpek araba anahtarlarını.",
+          "Effects": {
+            "trust": 15
+          }
+        },
+        {
+          "Text": "Defteri annene ver; kararı ona bırak.",
+          "Next": "ending_silence",
+          "Result": "Annen defteri çekmeceye koydu. Çekmeceyi kilitlemedi.",
+          "Effects": {
+            "trust": 5
+          }
+        }
+      ]
     },
     "ending_truth": {
       "Title": "Eksik dört dakika",
-      "Text": "Kayıt uzmanı silinen bölümün bir kısmını kurtardı. Babanın sesi geri geldiğinde bir itiraf daha duyuldu: kayıp tutanağı, başka bir işçinin ölümüyle aynı dosyada değiştirilmişti.\n\nBabanın nerede olduğunu hâlâ bilmiyorsun. Ama başkalarının başına ne geldiği artık yalnızca bir söylenti değil. Tersanenin kapısına ilk kez bir anma levhası kondu. Üstündeki isimlerden biri senin bildiğin bir soyadı.\n\nKapanış sandığın şey, bir sorunun doğru biçimde sorulmasıymış.",
-      "Choices": [],
-      "Chapter": 3,
-      "Ending": "Gerçeğin izi"
-    },
-    "ending_witness": {
-      "Title": "Birlikte taşınan şeyler",
-      "Text": "İfade vermek hiçbirinizi bir anda rahatlatmadı. Annen bazı geceler konuşmadı; İpek bazen sana kızdı. Leyla dosyaya kendi adıyla girdi.\n\nAylar sonra ilk kez aynı masada yemek yediniz. Babanın boş sandalyesi hakkında kimse bir şey söylemedi. O boşluğun ne anlama geldiğine artık tek bir yalan karar vermiyordu.\n\nAile bazen aynı hikâyeye inanmak değil; birbirinin gerçeğini dinlemeyi sürdürmekti.",
-      "Choices": [],
-      "Chapter": 3,
-      "Ending": "Açık kalan hat"
+      "Chapter": 5,
+      "Ending": "Gerçeğin izi",
+      "Text": "Haber ertesi sabah yayımlandı. İlk iki saat kimse okumadı; sonra Hakan’ın annesinin bir fotoğrafı paylaşıldı, tersanenin kapısında elinde karanfil, ve haber bir şehir dolaştı. Kaya Holding önce yalanladı, sonra sustu, sonra otel projesini “gözden geçirmeye” aldı.\n\nSelim Kaya’nın sesi, babanın sesiyle aynı dosyada bir mahkemede çalındı. Sen tanık sandalyesinde otururken salonun en arkasında yaşlı bir kadın sana başını salladı. Tanımadı; tanımasına gerek yoktu.\n\nTersanenin kapısına bir levha asıldı. Üzerinde tek bir isim: Hakan Demir. Altında küçük harflerle bir cümle: “Kâğıdı değil, halatı değiştirin.”\n\nKapanış sandığın şey, bir sorunun doğru biçimde sorulmasıymış."
     },
     "ending_open": {
       "Title": "Dosya yeniden açıldı",
-      "Text": "Defteri teslim ettiğin gün hayatında bir müzik çalmadı. Haberler hemen çıkmadı. İnsanlar işlerine, vapurlar seferlerine devam etti.\n\nBir ay sonra telefonuna bir dosya numarası geldi. Küçücük bir sayı dizisi. On yıldır kapalı duran bir kapının artık bir numarası vardı.\n\nO akşam aynı vapura bindin. Bu kez arka güvertede birini beklemedin. Kıyıların ışıklarına baktın. Cevapsız sorularla da yaşamaya devam edilebileceğini ilk kez düşündün.",
-      "Choices": [],
-      "Chapter": 3,
-      "Ending": "Yeni bir dosya"
+      "Chapter": 5,
+      "Ending": "Yeni bir dosya",
+      "Text": "Dosya yeniden açıldı ama hızlı yürümedi. Aylar boyunca dilekçeler, bilirkişiler, ertelenen duruşmalar. Annen ifade verdi. Leyla ifade verdi. Selim Kaya’nın avukatları her belgeye itiraz etti.\n\nHaber olmadı; kimse tersanenin kapısına levha asmadı. Ama bir dosya numarası var artık ve o numara silinemiyor. Her duruşmada salonda üç sandalye dolu: sen, İpek, annen. Bazen dördüncü sandalyede yaşlı bir kadın oturuyor, elinde bir karanfil.\n\nBir gün savcı koridorda yanına geliyor. “Bu dosyalar yavaş yürür,” diyor. “Ama yürür.” Babanın sesi gibi; on yıl sonra bile."
+    },
+    "ending_witness": {
+      "Title": "Birlikte taşınan şeyler",
+      "Chapter": 5,
+      "Ending": "Açık kalan hat",
+      "Text": "Adliyenin önüne dört kadın geldiniz: sen, İpek, annen, Leyla. Herkes kendi payını, kendi ağzından anlattı. Annen imzasını, Leyla raporlarını, İpek yakmadığı kutuyu, sen bir gecede bulduklarını.\n\nSavcı “Ailecek ilk kez görüyorum,” dedi. Bunun iyi bir şey mi kötü bir şey mi olduğunu söylemedi.\n\nAkşam eve döndüğünüzde annen pencereyi kapattı. On yıldır ilk kez. “Artık beklemiyorum,” dedi. “Biliyorum.”\n\nBir hafta sonra kapı çalındı. Hakan’ın annesi elinde bir tabak kurabiyeyle. Kimse ne diyeceğini bilmedi. Annen kapıyı açık tuttu."
     },
     "ending_silence": {
       "Title": "Çekmecedeki zarf",
-      "Text": "Defter evdeki çekmecede kaldı. Annenle yeniden konuştun, İpek’le bir tatil planladın. Dışarıdan bakınca hayatın düzeldi.\n\nYalnızca vapur anonslarını duyunca elin cebine gidiyor. Artık orada bir zarf yok. Yine de bazen kâğıdın köşesini hissediyorsun.\n\nBu sabah aileni seçtin. Başka insanların sabahlarına ne olduğunu bilmemeyi de seçtin. Hikâyenin son cümlesi, kararının huzurlu olduğu anlamına gelmiyor.",
-      "Choices": [],
+      "Chapter": 5,
+      "Ending": "Saklanan sayfa",
+      "Text": "Defter bir çekmeceye girdi. Kayıt bir buluta, şifreli, adı “vapur” olan bir klasöre. Hayat devam etti; otel projesinin temeli atıldı, eski rıhtım betonun altında kaldı.\n\nBazı geceler son vapura biniyorsun. Rıza çayını önüne koyuyor, artık hiçbir şey sormuyor. Arka güvertede korkuluktaki harfleri parmağınla buluyorsun: C.A. — H.D. unutulmadı.\n\nUnutulmadı. Ama söylenmedi de. Bir gün söyleyeceğin bir şey olarak çekmecede duruyor; bekleyen her şey gibi, her geçen yıl biraz daha ağır.\n\nBelki başka bir gece. Belki başka bir yol."
+    },
+    "ending_father": {
+      "Title": "İlk vapur",
+      "Chapter": 5,
+      "Ending": "Dönüş",
+      "Text": "Baban ifadesini verdi; dört saat, hiç oturmadan. Sonra tutuklandı. Selim Kaya iki gün sonra havalimanında. Gazeteler ikisini aynı sayfaya koydu: “On yıl sonra itiraf.”\n\nCezaevinin görüş günlerinde baban sana her seferinde bir vapur çiziyor; üstünde üç çöp adam, bazen dört. “En güzel sefer,” yazıyor altına, yedi yaşındaki gibi.\n\nHakan’ın annesi bir görüş gününe geldi. Baban onu görünce ayağa kalktı; kalkabildiği kadar. Ne konuştuklarını bilmiyorsun. Çıkarken kadının elinde babanın çizdiği vapur vardı.\n\nHer yıl bu gece adaya gidiyorsun. Simitçinin yanındaki bank artık boş. Yarısını martılara atıyorsun."
+    },
+    "ipek_car": {
+      "Title": "Arabada",
+      "Chapter": 2,
+      "Text": "İpek arabayı çalıştırıyor ama vitese takmıyor. Sileceklerin ritmi bir saat gibi. Bir süre ikiniz de konuşmuyorsunuz; radyoda gece yarısı programı, eski bir şarkı.\n\n“Bu şarkıyı hatırlıyor musun?” diyor İpek. “Babam Bozcaada’ya giderken çalardı. Sen arkada uyurdun, ben ön koltukta haritayı tutardım. Harita okumayı bilmezdim ama o bana ‘kaptan’ derdi.” Sesi titriyor. “Kaybolduktan sonra her yaz o yola çıkmak istedim. Bir kere bile çıkmadım.”\n\nSen babanı başka bir şeyle hatırlıyorsun: mutfak masasında, gözlüğü alnında, elinde kurşunkalem, hesap yaparken. Sana çarpım tablosunu vapur seferleriyle öğretirdi: “Saat başı bir vapur, beş saatte kaç vapur?” Sen hep yanlış bilirdin; o hep güler, “Bir fazlası,” derdi. “İlkini unutma.”\n\nİpek sana dönüyor. “Biz babamızı tanıyor muyduk sence? Yoksa hepimiz kendi tanıdığımız birini mi özledik?”\n\nCam buğulanıyor. Dışarıda yağmur, içeride iki kardeşin nefesi.",
+      "Choices": [
+        {
+          "Text": "“İkisini birden,” de ve İpek’in elini tut.",
+          "Next": "mother_call",
+          "Result": "İpek elini çekmedi. Bir süre öyle oturdunuz; sonra telefon çaldı.",
+          "Effects": {
+            "trust": 10
+          }
+        },
+        {
+          "Text": "“Bu gece onu tanıyacağız,” de.",
+          "Next": "mother_call",
+          "Result": "İpek gözlerini sildi. “Peki kaptan,” dedi. Sonra telefon çaldı.",
+          "Effects": {
+            "courage": 5,
+            "trust": 5
+          }
+        }
+      ]
+    },
+    "yasar_memory": {
+      "Title": "Kaza gecesi",
       "Chapter": 3,
-      "Ending": "Saklanan sayfa"
+      "Text": "Yaşar Bey sobaya bir odun atıyor, alevin aydınlattığı yüzü bir an genç görünüyor. “Kaza gecesini de sorarsan anlatayım,” diyor. “Kimse sormadı. Ne polis ne savcı ne gazeteci. Bekçiye kim sorar?”\n\n“Hakan yirmi üç yaşındaydı. Kaynakçı. Gece vardiyalarına hep kendisi yazılırdı çünkü gündüz üniversiteye gidiyordu, açıktan, mühendislik. Bir gün baban gibi mühendis olacağım derdi. Babana çay götürürdü. Baban da ona hesap öğretirdi, vardiya molalarında, burada, bu sobanın başında.”\n\n“O gece vinç üçte sac indiriliyordu. Halatın sesi değişti; ben kulübeden duydum. Gıcırtı değil, bir tel kopar gibi, tek tek. Bağırdım. Hakan döndü, bana el salladı, sesimi duymadı sandı. Sonra halat koptu.”\n\nYaşar Bey bir süre sobaya bakıyor. “Ertesi gün iki takım elbiseli geldi. Benim ifademi ‘bekçi bir şey görmemiştir’ diye yazdılar. Okumadan imzalattılar. Ben de imzaladım. Bu kapıyı otuz bir yıl bekledim ama o gece kapıyı değil kendimi korudum.”",
+      "Choices": [
+        {
+          "Text": "“Şimdi ifade verir misiniz?”",
+          "Next": "dock",
+          "Result": "Yaşar Bey başını salladı. “Bir kere daha imza atacağım,” dedi. “Bu sefer okuyarak.”",
+          "Effects": {
+            "trust": 10
+          },
+          "SetFlags": [
+            "yasar_witness",
+            "yasar",
+            "speed_hint"
+          ]
+        },
+        {
+          "Text": "Sessizce dinle, sonra telsiz odasını sor.",
+          "Next": "dock",
+          "Result": "Yaşar Bey anahtarı uzattı. “Elektrik bağlı. Ben bağlı tuttum. Her ay faturayı kendi cebimden ödedim.”",
+          "Effects": {
+            "insight": 5
+          },
+          "SetFlags": [
+            "yasar",
+            "speed_hint"
+          ]
+        }
+      ]
+    },
+    "leyla_daughter": {
+      "Title": "Elif’in telefonu",
+      "Chapter": 4,
+      "Style": "chat",
+      "Text": "Leyla telefonunu sana uzatıyor; mesajları okumanı istiyor, sesli söyleyemiyor.\nElif: Anne evin önünde bir araba var\nElif: Bir saattir duruyor\nElif: Polisi arayayım mı\nLeyla: Arama. Kapıyı kilitle. Işıkları kapat. Sabah gelirim.\nElif: Anne ne oluyor\nElif: Yine o tersane mi\nElif: Bana bir kere bile anlatmadın\nLeyla yazıyor…\nLeyla yazmayı bıraktı.\nElif: Anne?\nElif: Ben 16 yaşındayım. Çocuk değilim.",
+      "Choices": [
+        {
+          "Text": "“Ona anlat,” de. “Şimdi, buradan.”",
+          "Next": "plan",
+          "Result": "Leyla uzun bir mesaj yazdı. Gönder tuşuna basmadan önce sana baktı; sen başını salladın. Bir dakika sonra cevap geldi: “Seninle gurur duyuyorum. Ama kapıyı yine de kilitledim.”",
+          "Effects": {
+            "trust": 15
+          },
+          "SetFlags": [
+            "leyla_ally"
+          ]
+        },
+        {
+          "Text": "“Önce Elif’i güvene al,” de; Murat’tan yardım iste.",
+          "Next": "plan",
+          "Result": "Murat’ın bir arkadaşı Elif’i almaya gitti. Yarım saat sonra Elif’ten bir fotoğraf: bir mutfak, bir çay, bir gazeteci kedi.",
+          "NeedFlag": "journalist",
+          "Effects": {
+            "insight": 10
+          },
+          "SetFlags": [
+            "leyla_ally"
+          ]
+        }
+      ]
+    },
+    "necla_gate": {
+      "Title": "06.00 · Tersane kapısı",
+      "Chapter": 5,
+      "Text": "Bir şey seni karar vermeden önce tersanenin kapısına götürüyor. Belki Leyla’nın sözleri, belki duvarın dibindeki kurumuş karanfiller. Şafak gar binasının arkasından yükselirken kapının önünde küçük, kamburlaşmış bir kadın görüyorsun. Elinde tek bir kırmızı karanfil.\n\nNecla Demir. Bugün kazanın yıldönümü değil; ama kadın her ay geliyormuş, sonradan öğreneceksin, her ayın ilk sabahı.\n\nKaranfili duvarın dibine koyup doğrulurken seni görüyor. Gülümsüyor; bir yabancıya gülümser gibi, iyi niyetle. “Sen de mi birini kaybettin burada kızım?” diye soruyor. “Herkes bir şey kaybetmiş bu kapıda. Bir ben değilim.”\n\nCebindeki her şey bir an çok ağırlaşıyor. Bu kadın on yıl boyunca her ay adı olmayan bir havale aldı. Oğlunun neden öldüğünü bilmeden, “dikkatsizlik” diyen bir raporla yaşadı.\n\nKadın sana bakıyor, cevabını bekliyor.",
+      "Choices": [
+        {
+          "Text": "Ona her şeyi anlat; kararı ona bırak.",
+          "Next": "ending_gate",
+          "Result": "Necla Hanım kapının önündeki taşa oturdu. Sen anlattıkça karanfile baktı. Bir kez bile ağlamadı; sen ağladın.",
+          "Effects": {
+            "trust": 15,
+            "courage": 10
+          }
+        },
+        {
+          "Text": "“Babamı,” de yalnızca. Sonra yoluna dön.",
+          "Next": "dawn_return",
+          "Result": "“Allah sabır versin,” dedi kadın. Elini omzuna koydu. O elin ağırlığını bütün sabah hissettin.",
+          "Effects": {
+            "insight": 5
+          }
+        }
+      ]
+    },
+    "dawn_return": {
+      "Title": "05.55 · Rıhtımdan iskeleye",
+      "Chapter": 5,
+      "Text": "Rıhtım boyunca yürüyorsun. Gar binasının saat kulesi altıyı beş geçiyor. Ezan okunuyor; ardından bir tren anonsu; ardından tersanenin artık çalmayan düdüğünün sessizliği. Babanın kaydındaki sabah tam bu sabah gibiymiş. Yalnızca vinçler susmuş, yalnızca bir kişi eksik.\n\nNecla Hanım’ın eli hâlâ omzunda gibi. “Herkes bir şey kaybetmiş bu kapıda.” Haklıydı. Ama herkes aynı şeyi kaybetmedi, ve bazıları kaybettiklerinin bedelini başkalarına ödetti.\n\nİskelenin ışıkları sönmek üzere. Vapur düdüğünü uzaktan duyuyorsun: iki kısa, bir uzun.",
+      "Choices": [
+        {
+          "Text": "İskeleye dön ve karar ver.",
+          "Next": "dawn",
+          "Result": "Adımların hızlandı. Martılar havalandı."
+        }
+      ]
+    },
+    "ending_gate": {
+      "Title": "Karanfil",
+      "Chapter": 5,
+      "Ending": "Karanfil",
+      "Text": "Necla Hanım her şeyi dinledi. Sonra defteri, kayıtları, mektupları kucağına aldı ve uzun süre öyle oturdu, tersanenin kapısının önünde, sabahın ilk ışığında.\n\n“Ben bunları yaymak istemiyorum,” dedi sonunda. “Gazete, mahkeme, televizyon… Oğlum bir haber olsun istemiyorum. Ama o raporun düzeltilmesini istiyorum. ‘Dikkatsizlik’ yazan yer. Oğlum dikkatliydi. Annesi gibi.”\n\nİki ay sonra kaza raporu resmi olarak düzeltildi. Kimse hapse girmedi; kimse büyük bir manşet atmadı. Tersanenin kapısına levha asılmadı. Ama yeni rapor Necla Hanım’ın evinde, oğlunun fotoğrafının yanında, bir çerçevede duruyor.\n\nHer ayın ilk sabahı onunla birlikte kapıya gidiyorsun. O karanfili bırakıyor, sen yanında duruyorsun. Bazen annen de geliyor. Bir keresinde, çok uzaktan, bir adanın vapurundan inmiş yaşlı bir adam karşı kaldırımda durup el salladı.\n\nNecla Hanım el salladı. Sen el salladın. Kimin kime el salladığını kimse sormadı."
     }
   }
 }

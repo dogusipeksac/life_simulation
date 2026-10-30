@@ -9,6 +9,7 @@ import '../design/theme.dart';
 import '../game/session.dart';
 import '../design/illustrations.dart';
 import 'game_controller.dart';
+import 'story_interactions.dart';
 
 void openStoryLibrary(BuildContext context, GameController game) {
   game.save();
@@ -112,6 +113,19 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
     });
   }
 
+  void _resolve(StoryBook b, String outcome, String expectedNode, Set<String> found) {
+    if (_choosing) return;
+    _choosing = true;
+    // Etkileşim kendi geri bildirim karesini bitirsin; sonuç bir sonraki karede uygulanır.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final r = game.resolveStoryInteraction(b.id, outcome, expectedNode, found: found);
+      setState(() => _message = r.success ? '' : r.message);
+      _top();
+      _choosing = false;
+    });
+  }
+
   Future<void> _restart(StoryBook b) async {
     final confirmed = await showDialog<bool>(
       context: context,
@@ -209,7 +223,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
       Text('Başka bir ihtimal', style: VitaType.title(context.vita)),
       const SizedBox(height: 8),
       _text(
-        'Sırları çöz. Bağlarını koru. Son sözü sen yaz. Kısa, dallanan hikâyeleri kendi hızında oku.',
+        'Sırları çöz. Bağlarını koru. Son sözü sen yaz. Şifreler, kanıtlar, frekanslar ve süreli kararlarla dallanan uzun hikâyeler.',
         caption: true,
       ),
       const SizedBox(height: 14),
@@ -328,12 +342,17 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
             child: _text(p.lastResult),
           ),
         const SizedBox(height: 12),
-        SelectableText(
-          node.text,
-          key: const ValueKey('story-prose'),
-          style: VitaType.prose(context.vita)
-              .copyWith(fontSize: 17.5 * preferences.readingSize / 38),
-        ),
+        switch (node.style) {
+          'chat' => ChatThread(key: const ValueKey('story-prose'), text: node.text, fontScale: preferences.readingSize / 38),
+          'note' => PaperNote(key: const ValueKey('story-prose'), text: node.text, fontScale: preferences.readingSize / 38),
+          'radio' => RadioTranscript(key: const ValueKey('story-prose'), text: node.text, fontScale: preferences.readingSize / 38),
+          _ => SelectableText(
+              node.text,
+              key: const ValueKey('story-prose'),
+              style: VitaType.prose(context.vita)
+                  .copyWith(fontSize: 17.5 * preferences.readingSize / 38),
+            ),
+        },
       ]),
       Row(
         children: [
@@ -394,8 +413,27 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
                   : '◇ Henüz keşfedilmedi',
             ),
           ),
+      ] else if (node.choicesHidden) ...[
+        const SectionHeader('Sıra sende'),
+        storyInteraction(
+          node.interaction!,
+          key: ValueKey('interaction-$expectedNode-${p.decisions}'),
+          onOutcome: (outcome, {found = const {}}) => _resolve(b, outcome, expectedNode, found),
+        ),
+        const SizedBox(height: 12),
+        _button(
+          'Bu hikâyeyi baştan başlat',
+          () => _restart(b),
+          secondary: true,
+        ),
       ] else ...[
         const SectionHeader('Nasıl devam edeceksin?'),
+        if (node.interaction?.type == 'timer')
+          TimedChoiceBar(
+            key: ValueKey('timer-$expectedNode-${p.decisions}'),
+            interaction: node.interaction!,
+            onTimeout: () => _resolve(b, 'timeout', expectedNode, const {}),
+          ),
         for (var i = 0; i < node.choices.length; i++)
           Padding(
             padding: const EdgeInsets.only(bottom: 10),

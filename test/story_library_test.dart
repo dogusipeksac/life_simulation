@@ -36,10 +36,10 @@ void main() {
   StoryProgress clone(StoryProgress p) => StoryProgress.fromJson(
     jsonDecode(jsonEncode(p.toJson())) as Map<String, dynamic>,
   );
-  test('three books and four endings each; choices save independently', () {
+  test('three books, at least five endings each; choices save independently', () {
     expect(library.books.length, 3);
     for (final b in library.books.values) {
-      expect(b.nodes.values.where((n) => n.ending.isNotEmpty).length, 4);
+      expect(b.nodes.values.where((n) => n.ending.isNotEmpty).length, greaterThanOrEqualTo(5));
       final p = library.open(b.id), node = library.open(b.id).nodeId;
       expect(library.choose(b.id, -1, expectedNode: node).success, isFalse);
       expect(p.decisions, 0);
@@ -57,6 +57,11 @@ void main() {
       final p = library.open(b.id);
       while (library.canRead(b, b.nodes[p.nodeId]!) && guard-- > 0) {
         final node = b.nodes[p.nodeId]!;
+        if (node.choicesHidden) {
+          final outcome = node.interaction!.type == 'search' ? 'done' : 'fail';
+          expect(library.resolveInteraction(b.id, outcome, expectedNode: p.nodeId).success, isTrue);
+          continue;
+        }
         final index = node.choices.indexWhere(
           (c) => library.blocked(b, p, c) == null,
         );
@@ -78,7 +83,7 @@ void main() {
       expect(owned.canRead(b, b.nodes[owned.open(b.id).nodeId]!), isTrue);
     }
   });
-  test('all twelve endings reachable through actual stats and flag rules', () {
+  test('every ending reachable through actual stats, flags and interaction outcomes', () {
     library = StoryLibrary(
       content.stories,
       library.file,
@@ -88,40 +93,95 @@ void main() {
       final queue = <StoryProgress>[clone(library.open(b.id))],
           seen = <String>{},
           reached = <String>{};
+      // Durum patlamasını önlemek için yalnızca kapıları etkileyen bilgi anahtara girer:
+      // her statın hangi eşiklerin üstünde olduğu ve okunan bayraklar.
+      final gates = <String, Set<int>>{}, readFlags = <String>{};
+      for (final n in b.nodes.values) {
+        for (final c in n.choices) {
+          if (c.needStat.isNotEmpty) (gates[c.needStat] ??= {}).add(c.minValue);
+          if (c.needFlag.isNotEmpty) readFlags.add(c.needFlag);
+        }
+      }
       var count = 0;
-      while (queue.isNotEmpty && count++ < 5000) {
+      while (queue.isNotEmpty && count++ < 200000) {
         final p = queue.removeLast();
-        final stats = p.stats.entries.toList()
-          ..sort((a, b) => a.key.compareTo(b.key));
-        final flags = p.flags.toList()..sort();
-        final key =
-            '${p.nodeId}:${stats.map((e) => '${e.key}=${e.value}').join(',')}:${flags.join(',')}';
+        final stats = [
+          for (final g in gates.entries) '${g.key}${g.value.where((v) => (p.stats[g.key] ?? 0) >= v).length}',
+        ];
+        final flags = p.flags.where(readFlags.contains).toList()..sort();
+        final key = '${p.nodeId}:${stats.join(',')}:${flags.join(',')}';
         if (!seen.add(key)) continue;
         final node = b.nodes[p.nodeId]!;
         if (node.ending.isNotEmpty) {
           reached.add(p.nodeId);
           continue;
         }
-        for (var i = 0; i < node.choices.length; i++) {
-          if (library.blocked(b, p, node.choices[i]) != null) continue;
+        void step(bool Function() act) {
           library.progress[b.id] = clone(p);
-          expect(
-            library.choose(b.id, i, expectedNode: p.nodeId).success,
-            isTrue,
-          );
+          expect(act(), isTrue, reason: '${b.id}/${p.nodeId}');
           queue.add(clone(library.open(b.id)));
         }
+
+        final i = node.interaction;
+        if (node.choicesHidden) {
+          if (i!.type == 'search') {
+            // Her tek ipucu ve hiç ipucu: bayrak kapılarının hepsini dener.
+            final flags = {for (final s in i.spots) if (s.flag.isNotEmpty) s.flag};
+            for (final f in [<String>{}, for (final x in flags) {x}]) {
+              step(() => library.resolveInteraction(b.id, 'done', expectedNode: p.nodeId, found: f).success);
+            }
+          } else {
+            for (final o in ['success', 'fail']) {
+              step(() => library.resolveInteraction(b.id, o, expectedNode: p.nodeId).success);
+            }
+          }
+          continue;
+        }
+        if (i?.type == 'timer') {
+          step(() => library.resolveInteraction(b.id, 'timeout', expectedNode: p.nodeId).success);
+        }
+        for (var c = 0; c < node.choices.length; c++) {
+          if (library.blocked(b, p, node.choices[c]) != null) continue;
+          step(() => library.choose(b.id, c, expectedNode: p.nodeId).success);
+        }
       }
-      expect(count, lessThan(5000));
+      expect(count, lessThan(200000));
       expect(
         reached,
         b.nodes.entries
             .where((e) => e.value.ending.isNotEmpty)
             .map((e) => e.key)
             .toSet(),
+        reason: b.id,
       );
     }
   });
+
+  test('interaction outcomes: hidden choices, timer, search flag limits', () {
+    final b = library.books['son_vapur']!;
+    final p = library.open(b.id)..nodeId = 'locker';
+    expect(library.choose(b.id, 0, expectedNode: 'locker').success, isFalse);
+    expect(library.resolveInteraction(b.id, 'timeout', expectedNode: 'locker').success, isFalse);
+    expect(library.resolveInteraction(b.id, 'success', expectedNode: 'locker').success, isTrue);
+    expect(p.nodeId, 'locker_open');
+    expect(p.flags, contains('notebook'));
+    p.nodeId = 'deck_search';
+    expect(
+      library.resolveInteraction(b.id, 'done', expectedNode: 'deck_search', found: {'crew_list', 'initials', 'headline'}).success,
+      isFalse,
+      reason: 'iki bakış hakkı var',
+    );
+    expect(
+      library.resolveInteraction(b.id, 'done', expectedNode: 'deck_search', found: {'crew_list', 'uydurma'}).success,
+      isTrue,
+    );
+    expect(p.flags, contains('crew_list'));
+    expect(p.flags, isNot(contains('uydurma')));
+    p.nodeId = 'shipyard';
+    expect(library.resolveInteraction(b.id, 'timeout', expectedNode: 'shipyard').success, isTrue);
+    expect(p.nodeId, 'guard_talk');
+  });
+
   test('restart retains discovered endings and other books, life save stays intact', () {
     final life = GameSession(content, SaveService('${dir.path}/savegame.json'))
       ..startNewGame('Deniz', seed: 42);

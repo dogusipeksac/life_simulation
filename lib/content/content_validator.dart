@@ -366,6 +366,9 @@ void _validateStory(String file, Json book, ContentIssues e) {
     }
     final chapter = (n['Chapter'] as num? ?? 1).toInt();
     if (chapter < 1 || chapter > chapters) e.error(nw, 'bölüm $chapter geçersiz (1–$chapters)');
+    final style = n['Style'] as String? ?? '';
+    if (!storyStyles.contains(style)) e.error(nw, "görünüm '$style' geçersiz");
+    if (n['Interaction'] != null) _validateInteraction(nw, n['Interaction'] as Json, choices, ending, e);
     for (final c in choices) {
       if ((c['Text'] as String? ?? '').isEmpty) e.error(nw, 'boş seçim');
       final next = c['Next'] as String? ?? '';
@@ -387,4 +390,65 @@ void _validateStory(String file, Json book, ContentIssues e) {
   }
   if (reached.length != nodes.length) e.error(where, 'erişilemeyen sahneler var');
   if (!nodes.values.any((n) => (n['Ending'] as String? ?? '').isNotEmpty)) e.error(where, 'en az bir son gerekli');
+}
+
+void _validateInteraction(String nw, Json i, List<Json> choices, bool ending, ContentIssues e) {
+  final type = i['Type'] as String? ?? '';
+  if (!storyInteractionTypes.contains(type)) return e.error(nw, "etkileşim türü '$type' geçersiz");
+  if (ending) e.error(nw, 'son sahnesinde etkileşim olamaz');
+  if ((i['Prompt'] as String? ?? '').isEmpty) e.error(nw, 'etkileşim yönergesi boş');
+  final outcomes = switch (type) {
+    'search' => ['Done'],
+    'timer' => ['Timeout'],
+    _ => ['Success', 'Fail'],
+  };
+  for (final o in outcomes) {
+    final idx = i[o];
+    if (idx is! int || idx < 0 || idx >= choices.length) e.error(nw, "etkileşim sonucu '$o' geçerli bir seçenek değil");
+  }
+  if (type != 'timer') {
+    // Sonuç seçenekleri kart olarak gösterilmez; kilit koşulu taşıyamaz.
+    for (final c in choices) {
+      if ((c['NeedFlag'] as String? ?? '').isNotEmpty || (c['NeedStat'] as String? ?? '').isNotEmpty) {
+        e.error(nw, 'etkileşim sonucu olan seçenekte koşul olamaz');
+      }
+    }
+    final used = {for (final o in outcomes) i[o]};
+    if (used.length != choices.length) e.error(nw, 'etkileşimde kullanılmayan seçenek var');
+  } else {
+    final t = i['Timeout'];
+    if (t is int && t >= 0 && t < choices.length) {
+      final c = choices[t];
+      if ((c['NeedFlag'] as String? ?? '').isNotEmpty || (c['NeedStat'] as String? ?? '').isNotEmpty) {
+        e.error(nw, 'süre dolunca uygulanan seçenek koşulsuz olmalı');
+      }
+    }
+    if ((i['Seconds'] as num? ?? 20) < 8) e.error(nw, 'süreli karar en az 8 saniye olmalı');
+  }
+  switch (type) {
+    case 'code':
+      final answer = i['Answer'] as String? ?? '';
+      if (!RegExp(r'^[0-9]{3,6}$').hasMatch(answer)) e.error(nw, 'şifre 3–6 haneli rakam olmalı');
+      if ((i['Hint'] as String? ?? '').isEmpty) e.error(nw, 'şifre için ipucu gerekli');
+    case 'order':
+      final items = (i['Items'] as List? ?? const []);
+      if (items.length < 3 || items.length > 6 || items.toSet().length != items.length) {
+        e.error(nw, 'sıralama 3–6 farklı öğe içermeli');
+      }
+    case 'tune':
+      final min = (i['Min'] as num? ?? 0), max = (i['Max'] as num? ?? 100), target = (i['Target'] as num? ?? 50);
+      if (!(min < target && target < max)) e.error(nw, 'hedef frekans aralığın içinde olmalı');
+      if ((i['Tolerance'] as num? ?? 1) <= 0) e.error(nw, 'tolerans pozitif olmalı');
+    case 'timing':
+      final rounds = (i['Rounds'] as num? ?? 3), need = (i['Need'] as num? ?? 2), zone = (i['Zone'] as num? ?? .2);
+      if (need < 1 || need > rounds) e.error(nw, 'zamanlamada gereken isabet tur sayısını aşamaz');
+      if (zone < .08 || zone > .5) e.error(nw, 'zamanlama bölgesi 0,08–0,5 olmalı');
+    case 'search':
+      final spots = (i['Spots'] as List? ?? const []).cast<Json>();
+      final picks = (i['Picks'] as num? ?? 3).toInt();
+      if (spots.length < 3 || picks < 1 || picks > spots.length) e.error(nw, 'incelemede en az 3 nokta ve geçerli seçim sayısı olmalı');
+      for (final sp in spots) {
+        if ((sp['Label'] as String? ?? '').isEmpty || (sp['Text'] as String? ?? '').isEmpty) e.error(nw, 'inceleme noktası boş');
+      }
+  }
 }
