@@ -42,10 +42,14 @@ OUT_DIR="$ROOT/dist/android"
 SYMBOLS_DIR="$ROOT/build/symbols/${APP_SLUG}-${BUILD_NAME}+${BUILD_NUMBER}"
 mkdir -p "$OUT_DIR" "$SYMBOLS_DIR"
 
-echo "==> AAB: $APP_SLUG $BUILD_NAME ($BUILD_NUMBER) [AdMob canlı]"
+# İlk sürüm: monetizasyon kapalı (Features.fullAccess). Açmak için:
+#   MONETIZATION_LIVE=true ./tools/build_android_release.sh
+MONETIZATION_LIVE="${MONETIZATION_LIVE:-false}"
+echo "==> AAB: $APP_SLUG $BUILD_NAME ($BUILD_NUMBER) [MONETIZATION_LIVE=$MONETIZATION_LIVE]"
 flutter build appbundle --release \
   --build-name="$BUILD_NAME" \
   --build-number="$BUILD_NUMBER" \
+  --dart-define=MONETIZATION_LIVE="$MONETIZATION_LIVE" \
   --dart-define=AD_TEST_MODE=false \
   --obfuscate \
   --split-debug-info="$SYMBOLS_DIR"
@@ -60,6 +64,7 @@ if [[ "$ALSO_APK" -eq 1 ]]; then
   flutter build apk --release \
     --build-name="$BUILD_NAME" \
     --build-number="$BUILD_NUMBER" \
+    --dart-define=MONETIZATION_LIVE="$MONETIZATION_LIVE" \
     --dart-define=AD_TEST_MODE=false \
     --obfuscate \
     --split-debug-info="$SYMBOLS_DIR"

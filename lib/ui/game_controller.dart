@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import '../content/models.dart';
 import '../game/events.dart';
 import '../game/billing.dart';
+import '../game/features.dart';
 import '../game/monetization.dart';
 import '../game/atomic_file.dart';
 import '../game/story_library.dart';
@@ -67,6 +68,8 @@ class GameController extends ChangeNotifier {
   bool get retrySecondChanceAvailable =>
       identical(state, _pendingRewardState) &&
       _pendingRewardIsSecondChance == true;
+  /// Ödüllü nefes / ikinci şans hazır mı (reklam veya tam erişim).
+  bool get rewardAdReady => Features.fullAccess || ads.rewardedAvailable;
   void _clearPendingReward() {
     _pendingRewardState = null;
     _pendingRewardIsSecondChance = null;
@@ -120,14 +123,15 @@ class GameController extends ChangeNotifier {
     final retry = secondChance
         ? retrySecondChanceAvailable
         : retryBreathAvailable;
-    if (!retry && !ads.rewardedAvailable) {
+    if (!retry && !Features.fullAccess && !ads.rewardedAvailable) {
       return ActionResult(false, ads.status);
     }
     rewardBusy = true;
     _platformChanged();
     ActionResult result;
     try {
-      final earned = retry || await ads.showRewarded();
+      final earned =
+          retry || Features.fullAccess || await ads.showRewarded();
       if (_disposed) return const ActionResult(false, 'Oturum sona erdi.');
       if (earned && identical(state, expected)) {
         _pendingRewardState = expected;
@@ -141,9 +145,11 @@ class GameController extends ChangeNotifier {
       if (result.success || !identical(state, expected)) _clearPendingReward();
       if (result.success && secondChance) session.requestNextEvent();
     } catch (_) {
-      result = const ActionResult(
+      result = ActionResult(
         false,
-        'Reklam gösterilemedi. Ödül verilmedi.',
+        Features.fullAccess
+            ? 'Ödül verilemedi.'
+            : 'Reklam gösterilemedi. Ödül verilmedi.',
       );
     } finally {
       rewardBusy = false;

@@ -42,7 +42,7 @@ Başka bir hayat dene: şifre çözdüğün, kanıtları sıraladığın, frekan
 **Açıklama:** Play tam açıklamasıyla aynı.
 
 ## Sürüm notu (ilk sürüm)
-İlk sürüm: kaderle başlayan hayatlar, 66 etkileşimli an, yeniden tasarlanan kariyer ve ilişkiler, uzun hikâye kitapları.
+İlk sürüm: kaderle başlayan hayatlar, 66 etkileşimli an, yeniden tasarlanan kariyer ve ilişkiler, uzun hikâye kitapları. Bu sürümde reklam ve satın alma yok; tüm içerik açık.
 
 ## Veri güvenliği (Play) · gizlilik etiketi (App Store)
 - Oyun verisi yalnızca cihazda; hesap yok, analitik SDK'sı yok.

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../design/components.dart';
 import '../design/palette.dart';
 import '../design/theme.dart';
+import '../game/features.dart';
 import '../game/text.dart';
 import 'game_controller.dart';
 import 'achievements_screen.dart';
@@ -93,34 +94,39 @@ class _LifeSummaryPanelState extends State<LifeSummaryPanel> {
         const SizedBox(height: 20),
         if (game.session.canSecondChance) ...[
           Text(
-            'İsteğe bağlı bir reklamı tamamlayarak sağlığını 20’ye çıkarabilir, bu hayatta bir kez devam edebilirsin.',
+            Features.fullAccess
+                ? 'Sağlığını 20’ye çıkarıp bu hayatta bir kez devam edebilirsin.'
+                : 'İsteğe bağlı bir reklamı tamamlayarak sağlığını 20’ye çıkarabilir, bu hayatta bir kez devam edebilirsin.',
             style: VitaType.caption(p),
           ),
           const SizedBox(height: 10),
           VitaButton(
             label: game.rewardBusy
-                ? 'Reklam bekleniyor…'
+                ? (Features.fullAccess ? 'Bekleniyor…' : 'Reklam bekleniyor…')
                 : game.retrySecondChanceAvailable
                 ? 'İkinci şans ödülünü kaydet'
+                : Features.fullAccess
+                ? 'İkinci şans'
                 : 'İkinci şans · bir reklam',
             secondary: true,
             onPressed:
                 !game.rewardBusy &&
-                    (game.ads.rewardedAvailable ||
-                        game.retrySecondChanceAvailable)
+                    (game.rewardAdReady || game.retrySecondChanceAvailable)
                 ? () async {
                     final r = await game.secondChance();
                     if (mounted) setState(() => _notice = r.message);
                   }
                 : null,
           ),
-          const SizedBox(height: 8),
-          Text(game.ads.status, style: VitaType.caption(p)),
-          if (!game.ads.rewardedAvailable && !game.retrySecondChanceAvailable)
-            TextButton(
-              onPressed: game.rewardBusy ? null : game.refreshAds,
-              child: const Text('Reklamı yeniden dene'),
-            ),
+          if (!Features.fullAccess) ...[
+            const SizedBox(height: 8),
+            Text(game.ads.status, style: VitaType.caption(p)),
+            if (!game.ads.rewardedAvailable && !game.retrySecondChanceAvailable)
+              TextButton(
+                onPressed: game.rewardBusy ? null : game.refreshAds,
+                child: const Text('Reklamı yeniden dene'),
+              ),
+          ],
         ],
         if (_notice.isNotEmpty)
           Padding(

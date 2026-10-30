@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'atomic_file.dart';
 import 'billing.dart';
+import 'features.dart';
 import 'session.dart' show ActionResult;
 
 class StoryStore {
@@ -22,19 +23,22 @@ class StoryStore {
   String notice = '';
   void Function()? onChanged;
   bool owns(String product) =>
-      _known.contains(product) && _owned.contains(product);
-  bool get adsRemoved => owns('remove_ads');
+      Features.fullAccess ||
+      (_known.contains(product) && _owned.contains(product));
+  bool get adsRemoved => Features.fullAccess || owns('remove_ads');
   bool get busy => _buying != null || _restoring;
   bool canPurchase(String product) =>
+      !Features.fullAccess &&
       _known.contains(product) &&
       !owns(product) &&
       !busy &&
       (gateway?.available ?? false) &&
       price(product).isNotEmpty;
   String price(String product) => gateway?.prices[product] ?? '';
-  String get status =>
-      gateway?.status ??
-      'Bu cihazda mağaza kullanılamıyor. Ücretsiz başlangıç bölümlerini okuyabilirsin.';
+  String get status => Features.fullAccess
+      ? 'Bu sürümde mağaza kapalı; tüm hikâyeler açık. Sonraki sürümde satın alımlar eklenecek.'
+      : gateway?.status ??
+          'Bu cihazda mağaza kullanılamıyor. Ücretsiz başlangıç bölümlerini okuyabilirsin.';
   void _changed() {
     if (!_disposed) onChanged?.call();
   }

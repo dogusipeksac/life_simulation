@@ -11,6 +11,8 @@ import 'design/components.dart';
 import 'design/palette.dart';
 import 'design/preferences.dart';
 import 'design/theme.dart';
+import 'game/features.dart';
+import 'game/monetization.dart';
 import 'game/save.dart';
 import 'game/session.dart';
 import 'platform/play_billing.dart';
@@ -44,8 +46,9 @@ class LifeSimulationApp extends StatefulWidget {
     final dir = await getApplicationSupportDirectory();
     final game = GameController(
       GameSession(content, SaveService('${dir.path}/savegame.json')),
-      billing: PlayBilling(),
-      ads: GoogleAds(),
+      // İlk sürüm: Features.fullAccess → mağaza/reklam yok; açmak için MONETIZATION_LIVE=true.
+      billing: Features.monetizationLive ? PlayBilling() : null,
+      ads: Features.monetizationLive ? GoogleAds() : NoAds(),
     );
     unawaited(game.initializePlatformServices());
     return game;

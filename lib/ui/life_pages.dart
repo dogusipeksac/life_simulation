@@ -7,6 +7,7 @@ import '../design/palette.dart';
 import '../design/preferences.dart';
 import '../design/theme.dart';
 import '../game/director.dart';
+import '../game/features.dart';
 import '../game/progression.dart';
 import '../game/session.dart';
 import '../game/social.dart';
@@ -576,45 +577,58 @@ class _LifePageState extends State<LifePage> {
               ),
           ]),
           const SizedBox(height: 6),
-          text('Bu hayatta ${game.session.breathsRemaining} / 3 nefes hakkın var. İsteğe bağlı reklamı tamamla: +6 mutluluk.', caption: true),
+          text(
+            Features.fullAccess
+                ? 'Bu hayatta ${game.session.breathsRemaining} / 3 nefes hakkın var. +6 mutluluk.'
+                : 'Bu hayatta ${game.session.breathsRemaining} / 3 nefes hakkın var. İsteğe bağlı reklamı tamamla: +6 mutluluk.',
+            caption: true,
+          ),
           button(
             game.rewardBusy
-                ? 'Reklam bekleniyor…'
+                ? (Features.fullAccess ? 'Bekleniyor…' : 'Reklam bekleniyor…')
                 : game.retryBreathAvailable
                 ? 'Nefes ödülünü kaydet'
+                : Features.fullAccess
+                ? 'Derin bir nefes'
                 : 'Derin bir nefes · bir reklam',
             !game.rewardBusy &&
                     !s.isGameOver &&
                     game.session.breathsRemaining > 0 &&
-                    (game.ads.rewardedAvailable || game.retryBreathAvailable)
+                    (game.rewardAdReady || game.retryBreathAvailable)
                 ? () async {
                     final r = await game.rewardedBreath();
                     if (mounted) result(r);
                   }
                 : null,
           ),
-          text(game.ads.status, caption: true),
-          if (!game.ads.rewardedAvailable && !game.retryBreathAvailable)
-            button('Reklamı yeniden dene', game.rewardBusy ? null : game.refreshAds),
+          if (!Features.fullAccess) ...[
+            text(game.ads.status, caption: true),
+            if (!game.ads.rewardedAvailable && !game.retryBreathAvailable)
+              button('Reklamı yeniden dene', game.rewardBusy ? null : game.refreshAds),
+          ],
         ]),
       ),
-      const SectionHeader('Mağaza'),
-      LifeSimulationCard(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          text(game.storyStore.status, caption: true),
-          if (game.storyStore.notice.isNotEmpty) text(game.storyStore.notice),
-          button(
-            game.storyStore.adsRemoved
-                ? 'Reklamlar kapalı'
-                : game.storyStore.price('remove_ads').isEmpty
-                ? 'Reklamları kaldır · mağaza hazır değil'
-                : "Reklamları kaldır · ${game.storyStore.price('remove_ads')}",
-            game.storyStore.canPurchase('remove_ads') ? () => result(game.purchaseStory('remove_ads')) : null,
-          ),
-          text('Reklamları kaldırmak ara reklamları kapatır. Ödüllü reklamlar isteğe bağlı kalır.', caption: true),
-          button('Satın alımları geri yükle', game.storyStore.busy ? null : () => result(game.restoreStories())),
-        ]),
-      ),
+      if (!Features.fullAccess) ...[
+        const SectionHeader('Mağaza'),
+        LifeSimulationCard(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            text(game.storyStore.status, caption: true),
+            if (game.storyStore.notice.isNotEmpty) text(game.storyStore.notice),
+            button(
+              game.storyStore.adsRemoved
+                  ? 'Reklamlar kapalı'
+                  : game.storyStore.price('remove_ads').isEmpty
+                  ? 'Reklamları kaldır · mağaza hazır değil'
+                  : "Reklamları kaldır · ${game.storyStore.price('remove_ads')}",
+              game.storyStore.canPurchase('remove_ads')
+                  ? () => result(game.purchaseStory('remove_ads'))
+                  : null,
+            ),
+            text('Reklamları kaldırmak ara reklamları kapatır. Ödüllü reklamlar isteğe bağlı kalır.', caption: true),
+            button('Satın alımları geri yükle', game.storyStore.busy ? null : () => result(game.restoreStories())),
+          ]),
+        ),
+      ],
       const SectionHeader('Ayarlar'),
       SettingGroup(children: [
         for (final (key, icon, title, value) in [
@@ -636,7 +650,7 @@ class _LifePageState extends State<LifePage> {
       const SizedBox(height: 12),
       SettingGroup(children: [
         SettingRow(icon: Icons.privacy_tip_outlined, title: 'Gizlilik ve bağlantılar', onTap: () => openPrivacy(context)),
-        if (game.ads.privacyOptionsRequired)
+        if (!Features.fullAccess && game.ads.privacyOptionsRequired)
           SettingRow(icon: Icons.ads_click, title: 'Reklam gizlilik seçenekleri', onTap: game.showAdPrivacyOptions),
         SettingRow(
           icon: Icons.home_outlined,
