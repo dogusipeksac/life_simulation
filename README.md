@@ -37,7 +37,7 @@ Sıradaki aşama P6: erişilebilirlik, performans, boyut iyileştirmesi ve relea
 
 Canlı kullanıma geçmeden önce Play Console'da ürünler tanımlanmalı, gerçek imzalama anahtarı kullanılmalı ve satın alma akışı test edilmelidir. Derlemeye `--dart-define=PLAY_BILLING_PUBLIC_KEY=<base64-DER-açık-anahtar>` verilir; doğrulayıcının varsayılan paket adı `com.life.simulation.life_simulation` değeridir. Paket adı değiştirilirse `BILLING_PACKAGE_NAME` da eşleştirilmelidir. Kaynak Godot projesinin paket adı `com.dogusipeksac.vita` olduğundan mevcut Play uygulamasına güncelleme ve eski satın almaların geri yüklenmesi için paket adı ve imzalama anahtarı sürekliliği ayrıca doğrulanmalıdır.
 
-Canlı AdMob için Android uygulama kimliği Gradle `vitaAdmobAppId` özelliğiyle (ör. `ORG_GRADLE_PROJECT_vitaAdmobAppId` ortam değişkeni), reklam birimleri ise `--dart-define=AD_REWARDED_UNIT=...` ve `--dart-define=AD_INTERSTITIAL_UNIT=...` ile tanımlanır; `--dart-define=AD_TEST_MODE=false` kullanılır. iOS uygulama kimliği de canlıya geçmeden yapılandırılmalıdır. Bkz. [AdMob Flutter kurulumu](https://developers.google.com/admob/flutter/quick-start) ve [UMP gizlilik rehberi](https://developers.google.com/admob/flutter/privacy).
+Android ve iOS AdMob App ID ile ödüllü/geçiş birimleri projede tanımlı. Geliştirmede varsayılan `AD_TEST_MODE=true` (resmi test kimlikleri). Canlı derleme: `--dart-define=AD_TEST_MODE=false`. Birimleri geçici değiştirmek için `AD_REWARDED_UNIT` / `AD_INTERSTITIAL_UNIT`; Android App ID için `-PvitaAdmobAppId=...`. Bkz. [AdMob Flutter kurulumu](https://developers.google.com/admob/flutter/quick-start) ve [UMP gizlilik rehberi](https://developers.google.com/admob/flutter/privacy).
 
 ## Çalıştırma ve doğrulama
 

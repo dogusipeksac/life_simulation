@@ -10,16 +10,40 @@ class GoogleAds implements AdGateway {
     'AD_TEST_MODE',
     defaultValue: true,
   );
-  String get _rewardedId => testMode
-      ? (Platform.isAndroid
-            ? 'ca-app-pub-3940256099942544/5224354917'
-            : 'ca-app-pub-3940256099942544/1712485313')
-      : const String.fromEnvironment('AD_REWARDED_UNIT');
-  String get _interstitialId => testMode
-      ? (Platform.isAndroid
-            ? 'ca-app-pub-3940256099942544/1033173712'
-            : 'ca-app-pub-3940256099942544/4411468910')
-      : const String.fromEnvironment('AD_INTERSTITIAL_UNIT');
+
+  /// Canlı birimler; isteğe bağlı `--dart-define` ile override.
+  static const _prodRewardedAndroid =
+      'ca-app-pub-1381327816086955/4928741009';
+  static const _prodInterstitialAndroid =
+      'ca-app-pub-1381327816086955/9219339803';
+  static const _prodRewardedIos =
+      'ca-app-pub-1381327816086955/2446047897';
+  static const _prodInterstitialIos =
+      'ca-app-pub-1381327816086955/2299155343';
+
+  String get _rewardedId {
+    if (testMode) {
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/5224354917'
+          : 'ca-app-pub-3940256099942544/1712485313';
+    }
+    const override = String.fromEnvironment('AD_REWARDED_UNIT');
+    if (override.isNotEmpty) return override;
+    return Platform.isAndroid ? _prodRewardedAndroid : _prodRewardedIos;
+  }
+
+  String get _interstitialId {
+    if (testMode) {
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/1033173712'
+          : 'ca-app-pub-3940256099942544/4411468910';
+    }
+    const override = String.fromEnvironment('AD_INTERSTITIAL_UNIT');
+    if (override.isNotEmpty) return override;
+    return Platform.isAndroid
+        ? _prodInterstitialAndroid
+        : _prodInterstitialIos;
+  }
   int _generation = 0;
   RewardedAd? _rewarded;
   InterstitialAd? _interstitial;

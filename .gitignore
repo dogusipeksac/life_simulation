@@ -52,3 +52,6 @@ app.*.map.json
 /apk_inceleme/
 /apk_inceleme_2/
 /.codebase-memory/
+
+# Yerel sürüm paketleri
+/dist/

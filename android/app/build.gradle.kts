@@ -6,8 +6,8 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-// Yayın imzası: android/key.properties (repoya girmez). Yoksa yerel denemeler için
-// debug anahtarıyla imzalanır; Play'e yüklenecek paket mutlaka key.properties ile derlenmeli.
+// Yayın imzası: android/key.properties + life-simulation.jks (repoya girmez).
+// Yoksa release debug anahtarıyla imzalanır; Play AAB için key.properties şart.
 val keystoreProperties = Properties().apply {
     val file = rootProject.file("key.properties")
     if (file.exists()) file.inputStream().use { load(it) }
@@ -25,26 +25,39 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.life.simulation"
-        manifestPlaceholders["admobAppId"] = project.findProperty("vitaAdmobAppId") ?: "ca-app-pub-3940256099942544~3347511713"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        // Canlı Android App ID; test için -PvitaAdmobAppId=ca-app-pub-3940256099942544~3347511713
+        manifestPlaceholders["admobAppId"] = project.findProperty("vitaAdmobAppId")
+            ?: "ca-app-pub-1381327816086955~5862548720"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
-        // Uses the version code from pubspec.yaml. When using split APKs, 1000 * ABI_VERSION
-        // is added automatically by Flutter. (https://developer.android.com/studio/build/configure-apk-splits#configure-APK-versions)
-        // You can force using the value of versionCode by specifying the `-P force-version-code-ignoring-abi=true`
-        // flag during build.
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        if (hasReleaseKey) {
+            create("release") {
+                // storeFile yolu android/app'e göre (ör. ../keystore/life_simulation.jks)
+                val store = file(keystoreProperties.getProperty("storeFile")!!)
+                require(store.isFile) {
+                    "key.properties storeFile bulunamadı: ${store.absolutePath}"
+                }
+                storeFile = store
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = if (hasReleaseKey) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
         }
     }
 }

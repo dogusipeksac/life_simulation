@@ -1,7 +1,11 @@
-# android/key.properties olarak kopyala ve doldur. Bu dosya ile anahtar dosyası repoya GİRMEZ.
-# Anahtarı üretmek için (bir kez, şifreyi kendin seç ve güvenli sakla):
-#   keytool -genkey -v -keystore ~/vita-upload.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
-storeFile=/Users/<kullanıcı>/vita-upload.jks
+# android/key.properties olarak kopyala veya:
+#   ./android/create_keystore.sh
+#
+# Play AAB:
+#   flutter build appbundle --release --dart-define=AD_TEST_MODE=false \
+#     --obfuscate --split-debug-info=build/symbols
+
 storePassword=
-keyAlias=upload
 keyPassword=
+keyAlias=life_simulation_key
+storeFile=../keystore/life_simulation.jks
