@@ -101,23 +101,27 @@ class VitaTabBar extends StatelessWidget {
                 label: 'Yeni yaş',
                 child: Material(
                   color: p.accent,
-                  shape: const StadiumBorder(),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                   child: InkWell(
-                    customBorder: const StadiumBorder(),
+                    customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                     onTap: () {
                       preferences.feedback(strong: true);
                       onNewAge();
                     },
+                    // Sabit genişlik: dar ekranda ve büyük yazıda dört sekme 48 dp'nin altına inmesin.
                     child: SizedBox(
-                      height: 48,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 14),
-                        child: Row(mainAxisSize: MainAxisSize.min, children: [
-                          Icon(Icons.cake_outlined, size: 18, color: p.background),
-                          const SizedBox(width: 6),
-                          Text('Yeni yaş', style: TextStyle(color: p.background, fontWeight: FontWeight.w700, fontSize: 13.5)),
-                        ]),
-                      ),
+                      width: 76,
+                      height: 52,
+                      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                        Icon(Icons.cake_outlined, size: 20, color: p.background),
+                        const SizedBox(height: 2),
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text('Yeni yaş',
+                              maxLines: 1,
+                              style: TextStyle(color: p.background, fontWeight: FontWeight.w700, fontSize: 11.5)),
+                        ),
+                      ]),
                     ),
                   ),
                 ),

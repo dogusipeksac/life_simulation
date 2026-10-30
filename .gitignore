@@ -46,3 +46,9 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# Yerel APK inceleme çıktıları ve araç önbellekleri
+/apk_cozucu/
+/apk_inceleme/
+/apk_inceleme_2/
+/.codebase-memory/

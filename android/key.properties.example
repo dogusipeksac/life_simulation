@@ -1,0 +1,7 @@
+# android/key.properties olarak kopyala ve doldur. Bu dosya ile anahtar dosyası repoya GİRMEZ.
+# Anahtarı üretmek için (bir kez, şifreyi kendin seç ve güvenli sakla):
+#   keytool -genkey -v -keystore ~/vita-upload.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+storeFile=/Users/<kullanıcı>/vita-upload.jks
+storePassword=
+keyAlias=upload
+keyPassword=
