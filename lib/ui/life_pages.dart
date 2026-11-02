@@ -608,7 +608,7 @@ class _LifePageState extends State<LifePage> {
           ],
         ]),
       ),
-      if (!Features.fullAccess) ...[
+      if (Features.purchasesLive) ...[
         const SectionHeader('Mağaza'),
         LifeSimulationCard(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -713,6 +713,26 @@ class _LifePageState extends State<LifePage> {
             ),
         ]),
       ),
+      if (game.session.canGrantActivityRights) ...[
+        const SizedBox(height: 10),
+        AppTile(
+          icon: Icons.play_circle_outline,
+          title: '+3 etkinlik hakkı',
+          caption: game.rewardBusy
+              ? 'Reklam bekleniyor…'
+              : game.rewardAdReady
+              ? 'Kısa bir reklam izle · bu yaşta bir kez'
+              : 'Reklam hazırlanıyor, birazdan yeniden dene',
+          color: p.happiness,
+          badge: 'Ödül',
+          onTap: game.rewardBusy || !game.rewardAdReady
+              ? null
+              : () async {
+                  final r = await game.rewardedActivityRights();
+                  if (mounted) result(r);
+                },
+        ),
+      ],
       const SizedBox(height: 12),
       if (tab == 0) ...[
         for (final person in s.relationships)

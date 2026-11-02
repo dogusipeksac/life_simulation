@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:life_simulation/content/game_content.dart';
+import 'package:life_simulation/game/features.dart';
 import 'package:life_simulation/game/atomic_file.dart';
 import 'package:life_simulation/game/story_library.dart';
 import 'package:life_simulation/game/story_store.dart';
@@ -36,10 +37,12 @@ void main() {
   StoryProgress clone(StoryProgress p) => StoryProgress.fromJson(
     jsonDecode(jsonEncode(p.toJson())) as Map<String, dynamic>,
   );
-  test('three books, at least five endings each; choices save independently', () {
-    expect(library.books.length, 3);
+  test('released and literary books have at least five endings; choices save independently', () {
+    expect(library.books.length, content.stories.length);
     for (final b in library.books.values) {
-      expect(b.nodes.values.where((n) => n.ending.isNotEmpty).length, greaterThanOrEqualTo(5));
+      // Biyografi kitapları kısa taslaklar; yayına alınmadan önce genişletilecek.
+      final endings = b.nodes.values.where((n) => n.ending.isNotEmpty).length;
+      expect(endings, greaterThanOrEqualTo(Features.released(b.id) || b.productId.isNotEmpty ? 5 : 2));
       final p = library.open(b.id), node = library.open(b.id).nodeId;
       expect(library.choose(b.id, -1, expectedNode: node).success, isFalse);
       expect(p.decisions, 0);
@@ -199,7 +202,7 @@ void main() {
     expect(library.restart(b.id).success, isTrue);
     expect(library.open(b.id).endings, before);
     expect(library.open(b.id).nodeId, b.start);
-    expect(library.progress.length, 3);
+    expect(library.progress.length, library.books.length);
     expect(File(life.saves.savePath).readAsBytesSync(), lifeBytes);
     life.startNewGame('Yeni', seed: 5);
     final restored = StoryLibrary(content.stories, library.file)..load();

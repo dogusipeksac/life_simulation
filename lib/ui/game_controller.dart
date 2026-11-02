@@ -108,6 +108,47 @@ class GameController extends ChangeNotifier {
     _platformChanged();
   }
 
+  /// Ödüllü reklam: +3 etkinlik hakkı (yaş başına bir kez).
+  Future<ActionResult> rewardedActivityRights() async {
+    final expected = state;
+    if (rewardBusy || transitionBusy || expected == null || !session.canGrantActivityRights) {
+      return const ActionResult(false, 'Bu yaşta ek hak zaten alındı.');
+    }
+    if (!Features.fullAccess && !ads.rewardedAvailable) return ActionResult(false, ads.status);
+    rewardBusy = true;
+    _platformChanged();
+    try {
+      final earned = Features.fullAccess || await ads.showRewarded();
+      if (_disposed) return const ActionResult(false, 'Oturum sona erdi.');
+      final r = earned
+          ? session.grantActivityRights(expected)
+          : const ActionResult(false, 'Reklam tamamlanmadı. Ödül verilmedi.');
+      monetizationNotice = r.message;
+      return r;
+    } catch (_) {
+      return const ActionResult(false, 'Reklam gösterilemedi. Ödül verilmedi.');
+    } finally {
+      rewardBusy = false;
+      _platformChanged();
+    }
+  }
+
+  /// Doğal mola anlarında (yeni hayat, kitapta bölüm sonu) sıklık sınırına uyan geçiş reklamı.
+  Future<void> breakInterstitial() async {
+    if (rewardBusy || transitionBusy) return;
+    if (!interstitialPolicy.dueBreak(adsRemoved: storyStore.adsRemoved, ready: ads.interstitialAvailable)) return;
+    transitionBusy = true;
+    _platformChanged();
+    try {
+      if (await ads.showInterstitial()) interstitialPolicy.recordBreak();
+    } catch (_) {
+      /* Reklam hatası akışı durdurmaz. */
+    } finally {
+      transitionBusy = false;
+      _platformChanged();
+    }
+  }
+
   Future<ActionResult> rewardedBreath() => _reward(false);
   Future<ActionResult> secondChance() => _reward(true);
   Future<ActionResult> _reward(bool secondChance) async {

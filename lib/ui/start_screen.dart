@@ -129,10 +129,13 @@ class _CreationWizardState extends State<CreationWizard> {
     });
   }
 
-  void _start() {
+  Future<void> _start() async {
     final family = widget.game.previewFamily(_seed);
     if (family != null) profile.familyId = family.id;
     preferences.feedback(strong: true);
+    // Yeni hayat doğal bir mola: sıklık sınırına uyan geçiş reklamı (ilk oturumda gösterilmez).
+    await widget.game.breakInterstitial();
+    if (!mounted) return;
     widget.game.startNewGame(_name.text, seed: _seed, profile: profile);
     Navigator.of(context).popUntil((r) => r.isFirst);
   }

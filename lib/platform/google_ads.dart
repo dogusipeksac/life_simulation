@@ -1,14 +1,17 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../game/monetization.dart';
 
 class GoogleAds implements AdGateway {
+  /// Geliştirme ve profil derlemelerinde Google test reklamları; release'te gerçek birimler.
+  /// Release'te test için: `--dart-define=AD_TEST_MODE=true`.
   static const testMode = bool.fromEnvironment(
     'AD_TEST_MODE',
-    defaultValue: true,
+    defaultValue: !kReleaseMode,
   );
 
   /// Canlı birimler; isteğe bağlı `--dart-define` ile override.

@@ -655,6 +655,28 @@ class GameSession {
       state!.isGameOver &&
       !state!.secondChanceUsed &&
       state!.gameOverReason == GameOverReason.healthDepleted;
+  /// Ödüllü reklam: bu yaşta bir kez +3 etkinlik hakkı.
+  bool get canGrantActivityRights {
+    final s = state;
+    return s != null && !s.isGameOver && s.actionLastDay['ad:rights'] != s.age && Social.remaining(s) < 12;
+  }
+
+  ActionResult grantActivityRights(GameState expectedState) {
+    final s = state;
+    if (s == null || !identical(s, expectedState) || !canGrantActivityRights) {
+      return const ActionResult(false, 'Bu yaşta ek hak zaten alındı.');
+    }
+    if (s.actionBudgetAge != s.age) {
+      s
+        ..actionBudgetAge = s.age
+        ..actionsUsed = 0;
+    }
+    s.actionsUsed = (s.actionsUsed - 3).clamp(0, 12);
+    s.actionLastDay['ad:rights'] = s.age;
+    _autoSave();
+    return ActionResult(true, '+3 etkinlik hakkı. Bu yıl ${Social.remaining(s)} / 12 hakkın var.');
+  }
+
   ActionResult grantBreath(GameState expectedState) {
     final s = state;
     if (s == null ||

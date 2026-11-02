@@ -46,21 +46,23 @@ class InterstitialPolicy {
   Duration? _lastShown;
   int _lastChoice = -20;
   GameState? _lastLife;
+  /// Hikâye kararlarının arasında: oturumun ilk 4 dakikası ve ilk 8 kararı reklamsız,
+  /// sonra en az 10 karar ve 3 dakika arayla.
   bool due(GameState? s, {required bool adsRemoved, required bool ready}) {
-    if (s == null ||
-        s.isGameOver ||
-        adsRemoved ||
-        !ready ||
-        _elapsed() < const Duration(minutes: 10)) {
-      return false;
-    }
-    if (_lastShown != null &&
-        _elapsed() - _lastShown! < const Duration(minutes: 3)) {
-      return false;
-    }
-    final previous = identical(s, _lastLife) ? _lastChoice : -20;
-    return s.totalChoices >= 20 && s.totalChoices - previous >= 20;
+    if (s == null || s.isGameOver || !_breakAllowed(adsRemoved, ready)) return false;
+    final previous = identical(s, _lastLife) ? _lastChoice : -2;
+    return s.totalChoices >= 8 && s.totalChoices - previous >= 10;
   }
+
+  /// Doğal bir mola anında (yeni hayat, kitapta bölüm sonu): yalnızca süre sınırı.
+  bool dueBreak({required bool adsRemoved, required bool ready}) => _breakAllowed(adsRemoved, ready);
+
+  bool _breakAllowed(bool adsRemoved, bool ready) {
+    if (adsRemoved || !ready || _elapsed() < const Duration(minutes: 4)) return false;
+    return _lastShown == null || _elapsed() - _lastShown! >= const Duration(minutes: 3);
+  }
+
+  void recordBreak() => _lastShown = _elapsed();
 
   void record(GameState s) {
     _lastShown = _elapsed();

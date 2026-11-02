@@ -211,8 +211,8 @@ SCREENS = [
     ("04_story.png", "Her kararın bir izi var", "Seçimlerin ailene, işine ve geleceğine dokunur."),
     ("05_career.png", "Kariyerini kur", "103 meslek, terfiler, maaşlar ve hayat hedefleri."),
     ("06_relations.png", "Bağlarını güçlendir", "Ailen, dostların ve birlikte geçirdiğin zaman."),
-    ("07_library.png", "Başka bir hayat dene", "Şifreler, kanıtlar ve frekanslarla dallanan uzun hikâyeler."),
-    ("08_lock.png", "Sırrı çöz", "Dolabın şifresi hikâyenin içinde saklı."),
+    ("07_library.png", "Hikâye kütüphanesi", "Son Vapur şimdi açık; yeni kitaplar yakında geliyor."),
+    ("08_lock.png", "Sırrı çöz", "Emanet dolabının şifresi hikâyenin içinde saklı."),
 ]
 
 

@@ -10,6 +10,7 @@ import 'package:life_simulation/design/components.dart';
 import 'package:life_simulation/design/palette.dart';
 import 'package:life_simulation/design/preferences.dart';
 import 'package:life_simulation/design/theme.dart';
+import 'package:life_simulation/game/features.dart';
 import 'package:life_simulation/game/save.dart';
 import 'package:life_simulation/game/session.dart';
 import 'package:life_simulation/main.dart';
@@ -73,9 +74,7 @@ void main() {
     (tester) async {
       await app(tester);
       await tap(tester, find.text('Ücretsiz'));
-      final free = content.stories.values.singleWhere(
-        (b) => b.productId.isEmpty,
-      );
+      final free = content.stories['son_vapur']!;
       expect(find.text(free.title), findsOneWidget);
       expect(find.text('Kırık Frekans'), findsNothing);
       await tap(tester, find.text('Hikâyeyi aç'));
@@ -98,7 +97,7 @@ void main() {
       await app(tester);
       await tap(tester, find.text('Ücretsiz'));
       await tap(tester, find.text('Hikâyeyi aç'));
-      final b = content.stories.values.singleWhere((b) => b.productId.isEmpty);
+      final b = content.stories['son_vapur']!;
       var guard = 80;
       while (b.nodes[game.stories.open(b.id).nodeId]!.ending.isEmpty &&
           guard-- > 0) {
@@ -137,6 +136,7 @@ void main() {
   );
   testWidgets(
     'premium preview reaches paywall with disabled purchase and restore notice',
+    skip: !Features.purchasesLive,
     (tester) async {
       await app(tester);
       final paid = content.stories.values.firstWhere(
@@ -234,7 +234,7 @@ void main() {
   );
   for (final width in [320.0, 360.0, 411.0]) {
     testWidgets(
-      'library reader and paywall ${width.toInt()}dp both themes large text',
+      'library reader and coming-soon ${width.toInt()}dp both themes large text',
       (tester) async {
         tester.view.physicalSize = Size(width * 3, 780 * 3);
         tester.view.devicePixelRatio = 3;
@@ -263,9 +263,7 @@ void main() {
             tester,
             find.text(
               game.stories.progress.containsKey(
-                    content.stories.values
-                        .singleWhere((b) => b.productId.isEmpty)
-                        .id,
+                    'son_vapur',
                   )
                   ? 'Okumaya devam et'
                   : 'Hikâyeyi aç',
@@ -286,27 +284,13 @@ void main() {
             await tester.pumpAndSettle();
             expect(tester.takeException(), isNull);
           }
-          final paid = content.stories.values.firstWhere(
-            (b) => b.productId.isNotEmpty,
+          final soon = content.stories.values.firstWhere(
+            (b) => !Features.released(b.id),
           );
-          final p = game.stories.open(paid.id);
-          var guard = 100;
-          while (game.stories.canRead(paid, paid.nodes[p.nodeId]!) &&
-              guard-- > 0) {
-            final node = paid.nodes[p.nodeId]!;
-            if (node.choicesHidden) {
-              game.stories.resolveInteraction(paid.id, node.interaction!.type == 'search' ? 'done' : 'fail', expectedNode: p.nodeId);
-              continue;
-            }
-            final i = node.choices.indexWhere(
-              (c) => game.stories.blocked(paid, p, c) == null,
-            );
-            game.stories.choose(paid.id, i, expectedNode: p.nodeId);
-          }
           await tester.drag(find.byType(ListView), const Offset(0, 10000));
           await tester.pumpAndSettle();
           await tester.dragUntilVisible(
-            find.text(paid.title),
+            find.text(soon.title),
             find
                 .descendant(
                   of: find.byType(ListView).last,
@@ -315,22 +299,17 @@ void main() {
                 .first,
             const Offset(0, -300),
           );
-          final paidCard = find
+          final soonCard = find
               .ancestor(
-                of: find.text(paid.title),
+                of: find.text(soon.title),
                 matching: find.byType(LifeSimulationCard),
               )
               .first;
-          final open = find.descendant(
-            of: paidCard,
-            matching: find.byWidgetPredicate(
-              (w) =>
-                  w is VitaButton &&
-                  ['Hikâyeyi aç', 'Okumaya devam et'].contains(w.label),
-            ),
+          expect(
+            find.descendant(of: soonCard, matching: find.text('YAKINDA GELİYOR')),
+            findsOneWidget,
           );
-          await tap(tester, open);
-          expect(find.text('Hikâyen burada bitmiyor.'), findsOneWidget);
+          expect(game.stories.progress.containsKey(soon.id), isFalse);
           for (var i = 0; i < 4; i++) {
             await tester.drag(find.byType(ListView), const Offset(0, -500));
             await tester.pumpAndSettle();

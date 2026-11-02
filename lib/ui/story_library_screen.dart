@@ -8,6 +8,7 @@ import '../design/preferences.dart';
 import '../design/theme.dart';
 import '../game/session.dart';
 import '../design/illustrations.dart';
+import '../game/features.dart';
 import 'game_controller.dart';
 import 'story_interactions.dart';
 
@@ -53,6 +54,8 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
   }
 
   void _open(String id) {
+    // Yayımlanmamış kitaplar kütüphanede görünür ama açılmaz.
+    if (!Features.released(id)) return;
     game.openBook(id);
     game.libraryBook = id;
     setState(() {
@@ -111,9 +114,11 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
   void _choose(StoryBook b, int index, String expectedNode) {
     if (_choosing) return;
     _choosing = true;
+    final before = b.nodes[expectedNode]?.chapter ?? 1;
     final r = game.chooseStory(b.id, index, expectedNode);
     setState(() => _message = r.success ? '' : r.message);
     _top();
+    _chapterBreak(b, before);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _choosing = false;
     });
@@ -125,11 +130,19 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
     // Etkileşim kendi geri bildirim karesini bitirsin; sonuç bir sonraki karede uygulanır.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
+      final before = b.nodes[expectedNode]?.chapter ?? 1;
       final r = game.resolveStoryInteraction(b.id, outcome, expectedNode, found: found);
       setState(() => _message = r.success ? '' : r.message);
       _top();
       _choosing = false;
+      _chapterBreak(b, before);
     });
+  }
+
+  /// Bölüm sonu doğal bir mola: sıklık sınırına uyan geçiş reklamı.
+  void _chapterBreak(StoryBook b, int before) {
+    final now = b.nodes[game.stories.progress[b.id]?.nodeId]?.chapter ?? before;
+    if (now > before) game.breakInterstitial();
   }
 
   Future<void> _restart(StoryBook b) async {
@@ -232,7 +245,12 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
             )
             .toList()
           ..sort((a, b) {
-            final paid = (a.productId.isEmpty ? 0 : 1).compareTo(
+            // Önce okunabilenler, sonra "Yakında" olanlar.
+            final soon = (Features.released(a.id) ? 0 : 1).compareTo(Features.released(b.id) ? 0 : 1);
+            if (soon != 0) return soon;
+            // "Yakında" rafında önce kurgusal uzun kitaplar gelir.
+            final flip = Features.released(a.id) ? 1 : -1;
+            final paid = flip * (a.productId.isEmpty ? 0 : 1).compareTo(
               b.productId.isEmpty ? 0 : 1,
             );
             return paid != 0 ? paid : a.title.compareTo(b.title);
@@ -283,6 +301,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
   }
 
   Widget _bookCard(StoryBook b) {
+    if (!Features.released(b.id)) return _comingSoonCard(b);
     final p = game.stories.progress[b.id];
     final endings = b.nodes.values.where((n) => n.ending.isNotEmpty).length;
     final owned = b.productId.isEmpty || game.storyStore.owns(b.productId);
@@ -339,6 +358,44 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
         () => _open(b.id),
       ),
     ]);
+  }
+
+  /// Kilitli kitap: kapak soluk, açıklama kısa, düğme pasif.
+  Widget _comingSoonCard(StoryBook b) {
+    final p = context.vita;
+    return Semantics(
+      label: '${b.title}, yakında',
+      child: _card([
+        Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          SizedBox(
+            width: 88,
+            child: Stack(alignment: Alignment.center, children: [
+              Opacity(opacity: .35, child: _cover(b, height: 118)),
+              Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(color: p.surface.withValues(alpha: .9), shape: BoxShape.circle),
+                child: Icon(Icons.lock_outline, color: p.accent),
+              ),
+            ]),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              _text(b.genre, caption: true),
+              const SizedBox(height: 5),
+              Text(b.title, style: VitaType.title(p).copyWith(color: p.muted)),
+              const SizedBox(height: 6),
+              _text(b.subtitle, caption: true),
+              const SizedBox(height: 10),
+              const VitaChip('YAKINDA GELİYOR', icon: Icons.schedule),
+            ]),
+          ),
+        ]),
+        const SizedBox(height: 12),
+        _button('Yakında geliyor', null, secondary: true),
+      ]),
+    );
   }
 
   List<Widget> _reader(StoryBook b) {

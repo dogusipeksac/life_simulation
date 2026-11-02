@@ -9,6 +9,7 @@ import 'package:life_simulation/design/components.dart';
 import 'package:life_simulation/design/palette.dart';
 import 'package:life_simulation/design/theme.dart';
 import 'package:life_simulation/game/billing.dart';
+import 'package:life_simulation/game/features.dart';
 import 'package:life_simulation/game/save.dart';
 import 'package:life_simulation/game/session.dart';
 import 'package:life_simulation/game/state.dart';
@@ -107,7 +108,7 @@ void main() {
     expect(game.state!.health, 20);
     expect(ads.rewards, 1);
   });
-  testWidgets('menu purchase unlocks only after verified store update', (
+  testWidgets('menu purchase unlocks only after verified store update', skip: !Features.purchasesLive, (
     tester,
   ) async {
     final billing = FakeBilling();
@@ -134,7 +135,7 @@ void main() {
     await tap(tester, find.text('Reklamlar kapalı'));
     expect(tester.takeException(), isNull);
   });
-  testWidgets('verified purchase opens the locked story at its saved chapter', (
+  testWidgets('verified purchase opens the locked story at its saved chapter', skip: !Features.purchasesLive, (
     tester,
   ) async {
     final billing = FakeBilling();

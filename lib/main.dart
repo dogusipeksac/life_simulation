@@ -48,9 +48,9 @@ class LifeSimulationApp extends StatefulWidget {
     final dir = await getApplicationSupportDirectory();
     final game = GameController(
       GameSession(content, SaveService('${dir.path}/savegame.json')),
-      // İlk sürüm: Features.fullAccess → mağaza/reklam yok; açmak için MONETIZATION_LIVE=true.
-      billing: Features.monetizationLive ? PlayBilling() : null,
-      ads: Features.monetizationLive ? GoogleAds() : NoAds(),
+      // İlk sürüm: reklamlar açık, satın alma kapalı (bkz. Features).
+      billing: Features.purchasesLive ? PlayBilling() : null,
+      ads: Features.adsLive ? GoogleAds() : NoAds(),
     );
     unawaited(game.initializePlatformServices());
     return game;

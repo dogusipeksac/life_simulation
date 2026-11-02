@@ -51,14 +51,16 @@ class PrivacyScreen extends StatelessWidget {
               ] else ...[
                 const SectionHeader('Reklamlar'),
                 Text(
-                  'Ödüllü reklamlar isteğe bağlıdır. Reklamı tamamlamadan ödül verilmez. Google Mobile Ads cihaz ve reklam kimliği işleyebilir. Gizlilik seçeneklerine oyun menüsünden ulaşabilirsin.',
+                  'Oyun ücretsizdir ve reklam içerir. Ödüllü reklamlar isteğe bağlıdır; reklamı tamamlamadan ödül verilmez. Geçiş reklamları yalnızca molalarda ve aralıklı gösterilir. Google Mobile Ads cihaz ve reklam kimliği işleyebilir. Seçeneklerini Profil › Reklam gizlilik seçenekleri’nden değiştirebilirsin.',
                   style: VitaType.body(p),
                 ),
-                const SectionHeader('Satın almalar'),
-                Text(
-                  'Hikâyeler ve reklamları kaldırma tek seferliktir; abonelik yoktur. Ödeme bilgisi mağazadadır, oyuna gelmez.',
-                  style: VitaType.body(p),
-                ),
+                if (Features.purchasesLive) ...[
+                  const SectionHeader('Satın almalar'),
+                  Text(
+                    'Hikâyeler ve reklamları kaldırma tek seferliktir; abonelik yoktur. Ödeme bilgisi mağazadadır, oyuna gelmez.',
+                    style: VitaType.body(p),
+                  ),
+                ],
               ],
               if (privacyPolicyUrl.isNotEmpty) ...[
                 const SectionHeader('Tam metin'),

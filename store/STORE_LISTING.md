@@ -27,28 +27,41 @@ KARİYER, AİLE, İLİŞKİLER
 103 meslek, terfiler ve maaşlar; okul, sınavlar, evlilik, çocuklar, kayıplar. Hayat hedefleri ve sekiz farklı final.
 
 HİKÂYE KÜTÜPHANESİ
-Başka bir hayat dene: şifre çözdüğün, kanıtları sıraladığın, frekans yakaladığın, süreli kararlar verdiğin uzun ve dallanan hikâyeler. "Son Vapur" tamamen ücretsiz.
+Başka bir hayat dene: şifre çözdüğün, kanıtları sıraladığın, frekans yakaladığın, süreli kararlar verdiğin dallanan hikâyeler. İlk kitap "Son Vapur" açık ve ücretsiz; yeni kitaplar yakında geliyor.
 
-ÇEVRİMDIŞI VE HESAPSIZ
-İnternet ve hesap gerekmez. Kaydın yalnızca cihazında durur. Bütün karakterler, kurumlar ve olaylar kurgusaldır.
+HESAPSIZ
+Hesap gerekmez; kaydın yalnızca cihazında durur. Oyun ücretsizdir ve reklam içerir; ödüllü reklamları izlemek her zaman isteğe bağlıdır. Bütün karakterler, kurumlar ve olaylar kurgusaldır.
 
 **Kategori:** Oyunlar › Simülasyon · **Etiketler:** hayat simülasyonu, metin oyunu, interaktif hikâye
 
 ## App Store
 **Ad (≤30):** Hayat Simülasyonu
 **Alt başlık (≤30):** Kararlarınla yazılan bir hayat
-**Tanıtım metni (≤170):** Doğumdan yüz yaşına bir hayat: kaderle gelen bir aile, 66 etkileşimli an, 103 meslek ve şifrelerle dolu dallanan hikâyeler. Çevrimdışı, hesapsız.
+**Tanıtım metni (≤170):** Doğumdan yüz yaşına bir hayat: kaderle gelen bir aile, 66 etkileşimli an, 103 meslek ve şifrelerle dolu dallanan hikâyeler. Ücretsiz, hesapsız.
 **Anahtar kelimeler (≤100):** hayat,simülasyon,hikaye,metin,oyun,karar,interaktif,roman,türkçe,kariyer,aile
 **Açıklama:** Play tam açıklamasıyla aynı.
 
 ## Sürüm notu (ilk sürüm)
-İlk sürüm: kaderle başlayan hayatlar, 66 etkileşimli an, yeniden tasarlanan kariyer ve ilişkiler, uzun hikâye kitapları. Bu sürümde reklam ve satın alma yok; tüm içerik açık.
+İlk sürüm: kaderle başlayan hayatlar, 66 etkileşimli an, kariyer ve ilişkiler, ilk hikâye kitabı "Son Vapur". Yeni kitaplar yakında.
+
+## Reklam yerleşimi (v1)
+- **Ödüllü (isteğe bağlı):** hayat bitince "İkinci şans", Profil'de "Derin bir nefes", İlişkiler'de "+3 etkinlik hakkı" (yaşta bir kez).
+- **Geçiş:** hayatta en erken 8. karardan sonra, en az 10 karar ve 3 dakika arayla; yeni hayata başlarken ve kütüphanede bölüm geçişinde (uygulama açıldıktan 4 dk sonra, 3 dk aralık). Satın alma kapalı (`PURCHASES_LIVE=false`).
+- Debug/profil yapılarında Google test reklamları; release'te gerçek kimlikler (`AD_TEST_MODE` ile zorlanabilir).
 
 ## Veri güvenliği (Play) · gizlilik etiketi (App Store)
 - Oyun verisi yalnızca cihazda, AES-256-GCM ile kilitli; hesap yok, analitik SDK'sı yok, yedekleme kapalı.
-- **İlk sürüm (reklam/IAP kapalı):** "veri toplanmıyor".
-- AdMob (reklam) sonraki sürümde açılırsa: reklam kimliği ve cihaz bilgisi reklam sağlayıcısınca toplanabilir → "Reklam veya pazarlama", üçüncü tarafla paylaşılan veri.
+- **Reklam içeriyor: Evet** (Play › Uygulama içeriği › Reklamlar).
+- Google Mobile Ads SDK nedeniyle beyan et: **Cihaz veya diğer kimlikler** (reklam kimliği), **Uygulama etkinliği** (uygulama etkileşimleri), **Uygulama bilgileri ve performansı** (çökme/teşhis) → toplanır, üçüncü tarafla paylaşılır, amaç "Reklam veya pazarlama", "Analiz", "Dolandırıcılığı önleme"; aktarımda şifreli; kullanıcı silme talebi: Google'a yönlendir.
+- App Store gizlilik etiketi: "Sizi izlemek için kullanılan veriler: Tanımlayıcılar (Reklam verisi)" ve "Size bağlı olmayan veriler: Kullanım verisi, Teşhis". Info.plist'te SKAdNetwork listesi ve ATT metni hazır.
+- AdMob konsolunda **GDPR ve ABD eyalet** mesajlarını (UMP) yayımla; uygulama Profil › "Reklam gizlilik seçenekleri" ile açıyor.
+- `app-ads.txt`: geliştirici web sitesinin köküne `google.com, pub-1381327816086955, DIRECT, f08c47fec0942fa0` satırını koy; Play/App Store'daki web sitesi alanı bu alan adı olmalı.
 - Gizlilik politikası: `store/privacy.html` (web sitesine yükle; Play/App Store formuna URL yaz).
+
+## Yayın kontrol listesi (v1)
+- AAB: `build/app/outputs/bundle/release/app-release.aab` (upload anahtarıyla imzalı); `build/symbols` klasörünü sakla (obfuscation çözümü).
+- Play: içerik derecelendirme anketi, hedef kitle 13+ (reklam olduğu için çocuklara yönelik seçme), veri güvenliği formu, gizlilik politikası URL'si.
+- iOS: `pod install` + Xcode'da Archive (bu makinede CocoaPods yok); App Store Connect'te ATT ve gizlilik etiketi.
 
 ## 14 günlük kapalı test (yeni kişisel geliştirici hesapları)
 Kural: üretime çıkmadan önce kapalı testte **en az 12 test kullanıcısı**, **14 gün kesintisiz** katılmış olmalı.

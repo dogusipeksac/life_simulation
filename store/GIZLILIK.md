@@ -19,8 +19,8 @@ Hayat kaydı, hikâye ilerlemesi, başarımlar ve satın alım önbelleği **AES
 ## 3. Toplamadığımız şeyler
 Hesap, e-posta, konum takibi, analitik SDK, kendi sunucumuza giden kayıt yok.
 
-## 4. Reklam ve satın alma
-**İlk sürümde kapalı.** Sonra açılırsa AdMob (reklam kimliği / cihaz bilgisi, Google gizlilik politikası) ve Play/App Store tek seferlik satın alımlar devreye girer; ödeme bilgisi mağazadadır.
+## 4. Reklamlar
+Ücretsiz oyun, Google AdMob reklamları içerir: isteğe bağlı ödüllü reklamlar ve doğal molalarda geçiş reklamları. Google reklam kimliği, yaklaşık konum ve cihaz bilgisi işleyebilir. Onay seçenekleri (UMP) Profil › Reklam gizlilik seçenekleri'nde. Bu sürümde uygulama içi satın alma yok.
 
 ## 5. Çocuklar
 Genel kitle. 13 yaş altından bile bile veri toplanmaz.
