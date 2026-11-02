@@ -1,0 +1,58 @@
+default_platform(:android)
+
+def apple_key
+  app_store_connect_api_key(
+    key_id: ENV.fetch("ASC_KEY_ID"),
+    issuer_id: ENV.fetch("ASC_ISSUER_ID"),
+    key_filepath: ENV.fetch("ASC_KEY_FILE")
+  )
+end
+
+platform :android do
+  desc "Upload the selected AAB and Turkish release notes only"
+  lane :release do |options|
+    upload_to_play_store(
+      package_name: ENV.fetch("ANDROID_PACKAGE"),
+      json_key: ENV.fetch("PLAY_JSON_KEY"),
+      aab: options.fetch(:aab),
+      track: options.fetch(:track),
+      release_status: options.fetch(:status),
+      metadata_path: options.fetch(:metadata),
+      skip_upload_metadata: true,
+      skip_upload_changelogs: false,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      validate_only: false
+    )
+  end
+end
+
+platform :ios do
+  desc "Upload to TestFlight and set What to Test; do not distribute to testers"
+  lane :beta_upload do |options|
+    pilot(
+      api_key: apple_key,
+      app_identifier: ENV.fetch("IOS_BUNDLE_ID"),
+      ipa: options.fetch(:ipa),
+      changelog: File.read(options.fetch(:notes), encoding: "UTF-8"),
+      skip_waiting_for_build_processing: false,
+      distribute_external: false
+    )
+  end
+
+  desc "Upload IPA and Turkish What's New; leave review and release manual"
+  lane :app_store do |options|
+    deliver(
+      api_key: apple_key,
+      app_identifier: ENV.fetch("IOS_BUNDLE_ID"),
+      ipa: options.fetch(:ipa),
+      app_version: options.fetch(:version),
+      release_notes: { "tr" => File.read(options.fetch(:notes), encoding: "UTF-8") },
+      metadata_path: options.fetch(:metadata),
+      skip_screenshots: true,
+      submit_for_review: false,
+      automatic_release: false,
+      force: true
+    )
+  end
+end

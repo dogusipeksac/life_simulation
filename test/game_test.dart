@@ -62,6 +62,29 @@ void main() {
   });
 
   group('olay seçimi', () {
+    test('bebeklikte olaylar tekrarlanmaz ve farklı deneyimler sunulur', () {
+      for (final detailed in [false, true]) {
+        for (final seed in [1, 42, 777]) {
+          final session = newSession()..autoSaveEnabled = false;
+          session.startNewGame('Deniz', seed: seed);
+          session.state!.profile.detailedLife = detailed;
+          final seen = <String>{};
+          var infantEvents = 0;
+          for (var i = 0; i < 200 && session.state!.age < 6; i++) {
+            final ev = session.requestNextEvent();
+            if (ev == null) continue;
+            if (session.state!.age < 2) infantEvents++;
+            expect(seen.add(ev.id), isTrue,
+                reason: '${ev.id} tekrar gösterildi (seed: $seed, ayrıntılı: $detailed)');
+            final choice = session.choiceViews(ev).firstWhere((c) => c.isAvailable);
+            session.submitChoice(choice.id);
+          }
+          expect(infantEvents, greaterThanOrEqualTo(10));
+          expect(session.state!.age, greaterThanOrEqualTo(6));
+        }
+      }
+    });
+
     test('katalog 6000 olay üretir, ID\'ler benzersiz', () {
       final ids = buildLifeCatalog().map((e) => e.id).toSet();
       expect(ids.length, lifeCatalogEventCount);

@@ -39,7 +39,7 @@
     "maxAge": 1,
     "description": "Akşam oluyor. Gün boyunca yeni sesler duydun. {caregiver} uyku öncesi sakin bir rutin kurmak istiyor.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -70,7 +70,7 @@
     "maxAge": 1,
     "description": "Bir yüz sana gülümsüyor. Gülümsemenin nasıl karşılık bulacağını keşfediyorsun.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -100,7 +100,7 @@
     "maxAge": 1,
     "description": "Bir heceye benzeyen sesler çıkarıyorsun. Bakım verenin bu yeni sesleri heyecanla dinliyor.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -130,7 +130,7 @@
     "maxAge": 1,
     "description": "Güvenli oyun alanında yumuşak oyuncaklar seni bekliyor. Yakınındaki bir yetişkin hareketlerini izliyor.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -161,7 +161,7 @@
     "maxAge": 1,
     "description": "Eve gelen yakınlar seni görmek istiyor. Kalabalık ve sesler bazen yorucu olabiliyor.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -192,7 +192,7 @@
     "maxAge": 2,
     "description": "Bir koltuğa tutunup ayağa kalkıyorsun. Yakınındaki yetişkin acele etmeden seni destekliyor.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -222,7 +222,7 @@
     "maxAge": 2,
     "description": "Günlük nesneleri gösterip sesler çıkarıyorsun. Anlatmak istediğin çok şey var.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -251,7 +251,7 @@
     "maxAge": 3,
     "description": "Küpleri üst üste koyuyorsun. Kule devrilince yüzün düşüyor.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -281,7 +281,7 @@
     "maxAge": 3,
     "description": "Bakım vereninle parkı izliyorsun. Yapraklar, kuşlar ve başka çocuklar dikkatini çekiyor.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -311,7 +311,7 @@
     "maxAge": 5,
     "description": "Önünde yaşına uygun boyalar ve geniş bir kağıt var. Ortaya ne çıkacağını sen de bilmiyorsun.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -341,7 +341,7 @@
     "maxAge": 5,
     "description": "Bir oyuncağı başka bir çocuk da istiyor. İkiniz de bırakmak istemiyorsunuz.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -371,7 +371,7 @@
     "maxAge": 5,
     "description": "Gökyüzü neden mavi? Yağmur nereye gidiyor? Soruların birbirini izliyor.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -401,7 +401,7 @@
     "maxAge": 5,
     "description": "Oyun grubunda yeni oyuncaklar ve yeni yüzler var. Kapıda biraz duraksıyorsun.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -432,7 +432,7 @@
     "maxAge": 5,
     "description": "Bir saksıya tohum ekiyorsunuz. Her gün bir şey değişmesini bekliyorsun.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -461,7 +461,7 @@
     "maxAge": 5,
     "description": "Bir oyunun bitmesine üzüldün. Ne hissettiğini anlatacak kelimeyi arıyorsun.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -490,7 +490,7 @@
     "maxAge": 5,
     "description": "Her akşam dinlediğin masalın sonunu artık biliyorsun. Bu kez başka türlü bitebilir mi?",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -521,7 +521,7 @@
     "maxAge": 5,
     "description": "Yakında okul başlayacak. {birthplace} sokakları artık biraz daha tanıdık. Çantandaki eşyaları merakla inceliyorsun.",
     "weight": 12,
-    "repeatable": true,
+    "repeatable": false,
     "cooldownDays": 120,
     "choices": [
       {
@@ -539,6 +539,606 @@
           "Social": 2
         },
         "result": "Soru sormanın ve yardım istemenin iyi olduğunu öğrendin."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_window_rain",
+    "title": "Camdaki Yağmur",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Yağmur cama vururken damlaların bıraktığı izleri takip ediyorsun. {caregiver} seni pencerenin yanına götürüyor.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Damlaları birlikte izle.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Parmağınla her yeni izi takip ettin."
+      },
+      {
+        "id": "observe",
+        "text": "Yağmurun sesini dinleyerek dinlen.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Damlaların ritmi eşliğinde uykuya daldın."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_soft_fabric",
+    "title": "Dokular Kutusu",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Önünde yumuşak bir bez ve hafif pütürlü bir oyuncak var. Ellerini uzatıp ikisini de yokluyorsun.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Dokuları sırayla hissettir.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Parmakların iki farklı yüzeyi keşfetti."
+      },
+      {
+        "id": "observe",
+        "text": "Sevdiğin oyuncağı yanında bırak.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Tanıdık oyuncağa uzanıp sakinleştin."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_mirror_discovery",
+    "title": "Aynadaki Yüz",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Aynada sana bakan küçük bir yüz fark ettin. Sen hareket edince o da hareket ediyor.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Aynanın karşısında yüz ifadeleri yap.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Gördüğün gülümsemeye şaşırıp kahkaha attın."
+      },
+      {
+        "id": "observe",
+        "text": "Kendi hızında incelemene izin ver.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Yüzüne uzun uzun bakıp ellerini aynaya yaklaştırdın."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_rattle_search",
+    "title": "Ses Nereden Geliyor?",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Bir çıngırak odanın diğer tarafından ses çıkarıyor. Başını çevirip kaynağını arıyorsun.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Çıngırağı farklı yönlerden çal.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Her sesle bakışlarını yeni bir yöne çevirdin."
+      },
+      {
+        "id": "observe",
+        "text": "Çıngırağı eline ver.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Sallayınca sesin yeniden çıktığını fark ettin."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_bath_splash",
+    "title": "Banyoda Dalgalar",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Ilık banyo suyuna dokununca yüzeyde küçük halkalar oluşuyor.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Suda küçük dalgalar yap.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Hareket eden suya bakarken ellerini yeniden daldırdın."
+      },
+      {
+        "id": "observe",
+        "text": "Bir banyo oyuncağını yüzdür.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Oyuncağın suyun üzerinde kaymasını ilgiyle izledin."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_book_pages",
+    "title": "İlk Resimli Kitap",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Kalın sayfalı bir kitap açılıyor. Renkli resimlerden birine uzun süre bakıyorsun.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Resimlerin adlarını söyle.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Tanıdık sesleri resimlerle birlikte duydun."
+      },
+      {
+        "id": "observe",
+        "text": "Sayfaları çevirmene yardım et.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Bir sayfayı kavrayıp diğer resme ulaştın."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_morning_birds",
+    "title": "Sabah Kuşları",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Açık pencereden kuş sesleri geliyor. Her ötüşte dikkatini dışarıya çeviriyorsun.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Kuşların seslerini taklit et.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Sesleri dinleyip kendi sesinle karşılık verdin."
+      },
+      {
+        "id": "observe",
+        "text": "Pencere kenarında biraz otur.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Dışarıdaki hareketleri sakince izledin."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_grasp_toy",
+    "title": "Ulaşabildiğin Oyuncak",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Sevdiğin oyuncak hemen yakınında duruyor. Ona uzanmak için vücudunu dikkatle çeviriyorsun.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Uzanman için biraz alan aç.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Biraz uğraştıktan sonra oyuncağa dokundun."
+      },
+      {
+        "id": "observe",
+        "text": "Oyuncağı eline yaklaştır.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Oyuncağı kavrayıp iki elinle inceledin."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_family_photo",
+    "title": "Fotoğraftaki İnsanlar",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Bir aile fotoğrafına bakıyorsun. {caregiver} fotoğraftaki yüzleri tek tek gösteriyor.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "İsimleri söyleyerek fotoğrafa bak.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Tanıdık bir yüz gösterilince dikkat kesildin."
+      },
+      {
+        "id": "observe",
+        "text": "Fotoğrafı yakından incelemene izin ver.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Renklerin ve yüzlerin üzerinde parmaklarını gezdirdin."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_music_rhythm",
+    "title": "Mutfaktan Gelen Ritim",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Mutfaktan kaşıkların sesi geliyor. Sesler düzenli bir ritme dönüşünce ayakların kıpırdıyor.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Ritmi yavaşça tekrar et.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Duyduğun ritme ellerinle eşlik ettin."
+      },
+      {
+        "id": "observe",
+        "text": "Farklı sesler dinlet.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "İnce ve kalın sesleri şaşkınlıkla dinledin."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_blanket_hide",
+    "title": "Battaniyenin Altında",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Oyuncağın ince bir battaniyenin altına saklandı. Az önce burada olduğunu biliyorsun.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Bir köşesini açık bırak.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Köşeden görünen oyuncağı bulup çıkardın."
+      },
+      {
+        "id": "observe",
+        "text": "Birlikte battaniyeyi kaldırın.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Oyuncak yeniden görünce heyecanlandın."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_new_flavor",
+    "title": "Yeni Bir Tat",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Bakım verenin yaşına uygun yeni bir yiyecek hazırladı. Kaşığa merakla bakıyorsun.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Küçük bir lokma denet.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Yeni tadı önce şaşkınlıkla, sonra merakla karşıladın."
+      },
+      {
+        "id": "observe",
+        "text": "İstemiyorsan daha sonra yeniden dene.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Kendi işaretlerine kulak verilmesi seni rahatlattı."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_shadow_play",
+    "title": "Duvardaki Gölgeler",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Akşam ışığı duvara değişen gölgeler düşürüyor. Hareket ettikçe şekiller de değişiyor.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Elinle gölge yap.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Elini kaldırdığında gölgenin de kıpırdadığını gördün."
+      },
+      {
+        "id": "observe",
+        "text": "Gölgeleri birlikte izle.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Duvardaki şekiller değişirken dikkatini onlardan ayırmadın."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_first_ball",
+    "title": "Yuvarlanan Top",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Yumuşak bir top önünden yavaşça yuvarlanıyor. Onu gözlerinle takip ediyorsun.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Topu yavaşça sana doğru yuvarla.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Top yaklaşınca iki elini uzattın."
+      },
+      {
+        "id": "observe",
+        "text": "Topu yanında tutup incele.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Yuvarlak yüzeyini ellerinle yokladın."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_outside_breeze",
+    "title": "Dışarıda Hafif Rüzgâr",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Kısa bir gezintide yüzüne hafif bir rüzgâr değiyor. Yapraklar başının üzerinde sallanıyor.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Yaprakları birlikte izle.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Hareket eden dallara bakıp yeni sesleri dinledin."
+      },
+      {
+        "id": "observe",
+        "text": "Yorulunca sessiz bir köşede dinlen.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Gezinin ardından tanıdık kucakta rahatladın."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_stack_cups",
+    "title": "İç İçe Kaplar",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Farklı boylarda plastik kaplar önüne kondu. Birini diğerine vurunca farklı bir ses çıkıyor.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Kapları iç içe koymayı göster.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Bir kabı diğerinin içine bırakmayı denedin."
+      },
+      {
+        "id": "observe",
+        "text": "Kapların çıkardığı sesleri keşfet.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Kapları birbirine vurarak yeni bir ritim buldun."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_gentle_hello",
+    "title": "Kapıda Bir Selam",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Tanıdık biri kapıdan girip sana el sallıyor. Hareketi dikkatle izliyorsun.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Yavaşça el sallayarak karşılık ver.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Küçük bir el hareketiyle selamı taklit ettin."
+      },
+      {
+        "id": "observe",
+        "text": "Önce uzaktan alışman için bekle.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Tanıdık sesi duyunca rahatlayıp gülümsedin."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_cardboard_box",
+    "title": "Büyük Kutu",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Boş bir karton kutunun içine oyuncaklar konmuş. Kutunun kapağı açılıp kapanıyor.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Oyuncakları tek tek çıkar.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Kutunun içindeki her yeni oyuncağa şaşırdın."
+      },
+      {
+        "id": "observe",
+        "text": "Kapağın hareketini birlikte incele.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Açılıp kapanan kapağı tekrar tekrar gözlerinle izledin."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_water_drops",
+    "title": "Bahçedeki Yaprak",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Bir yaprağın üzerinde su damlaları parlıyor. {caregiver} onu yakından görmene yardım ediyor.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Yaprağa dikkatle dokun.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Damlanın hareketini takip ederken yeni bir doku hissettin."
+      },
+      {
+        "id": "observe",
+        "text": "Yaprağı uzaktan izle.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Işığın damlalarda değişmesini merakla izledin."
+      }
+    ]
+  },
+  {
+    "id": "baby_discovery_peekaboo",
+    "title": "Neredesin?",
+    "category": "Childhood",
+    "minAge": 0,
+    "maxAge": 1,
+    "description": "Tanıdık yüz bir an ellerinin arkasına saklanıyor, sonra yeniden ortaya çıkıyor.",
+    "weight": 12,
+    "repeatable": false,
+    "choices": [
+      {
+        "id": "explore",
+        "text": "Saklanıp yeniden görün.",
+        "effects": {
+          "Happiness": 1,
+          "Education": 1
+        },
+        "result": "Yüzü tekrar gördüğünde sesli bir kahkaha attın."
+      },
+      {
+        "id": "observe",
+        "text": "Oyuna ara verip sakinleş.",
+        "effects": {
+          "Happiness": 1,
+          "Health": 1
+        },
+        "result": "Kısa oyun sonrası güvenle dinlendin."
       }
     ]
   }

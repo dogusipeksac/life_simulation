@@ -1,0 +1,503 @@
+{
+  "Id": "enes_batur",
+  "Title": "Enes Batur: Ekrandan Hikâyeye",
+  "Subtitle": "Bir dijital kariyerin altı bölümlük hikâyesi",
+  "Description": "Oyun videolarından geniş kitlelere uzanan içerik üreticiliği yolculuğu. Gerçek dönüm noktalarına eşlik eden seçimler kurmacadır.",
+  "Genre": "Gerçek yaşamdan esinlenen biyografi",
+  "Color": "7d5cc6",
+  "Symbol": "▶",
+  "ProductId": "",
+  "Start": "start",
+  "FreeChapters": 3,
+  "Chapters": [
+    "İlk videolar",
+    "Kameranın Arkası",
+    "Kitleyle Büyümek",
+    "Yeni Sahne",
+    "Işığın Bedeli",
+    "Kendi Rotan"
+  ],
+  "StatNames": {
+    "focus": "Üretim",
+    "craft": "Yaratıcılık",
+    "reach": "Erişim"
+  },
+  "ContentNote": "Gerçek yaşam dönüm noktaları kamuya açık biyografik haber ve röportajlara dayanır. Bölüm içi sahneler, diyaloglar, duygular ve oyuncu kararları dramatizasyon amaçlı kurmacadır; gerçek kişinin özel hayatı veya düşünceleri hakkında iddia değildir.",
+  "Nodes": {
+    "start": {
+      "Title": "İlk videolar",
+      "Chapter": 1,
+      "Text": "Bu hikâye, yayımlanmış biyografilerde anlatılan dönüm noktalarına dayanır. Enes Batur 1998’de Ankara’da doğdu ve Antalya’da büyüdü. 2012 civarında oyun videoları çekmeye ve YouTube’da paylaşmaya başladı. İlk izleyici kitlesi küçük; üretmek için gereken zaman ve ekipman ise sınırlı.\n\nBu seçimler oyunlaştırılmış kurmacadır; gerçek hayattaki kararlarını veya özel düşüncelerini temsil etmez.\n\nBu hikâye altı bölümden oluşur. Bazı seçimlerin etkisi ileride karşına çıkacak; istatistikler bu kurmaca rotayı şekillendirir.",
+      "Choices": [
+        {
+          "Text": "Oyun videolarına düzenli devam et.",
+          "Next": "grow",
+          "Result": "Kamerayı yeniden açtın.",
+          "Effects": {
+            "focus": 8
+          }
+        },
+        {
+          "Text": "Video düzenlemeyi öğrenip biçimi geliştir.",
+          "Next": "craft",
+          "Result": "Kurgu masasında yeni bir şey denedin.",
+          "Effects": {
+            "craft": 8
+          }
+        }
+      ]
+    },
+    "grow": {
+      "Title": "Kitle büyüyor",
+      "Chapter": 1,
+      "Text": "Videolar daha çok kişiye ulaşmaya başlıyor. Yorumlar ve izlenmeler artarken yeni içerik beklentisi de yükseliyor.",
+      "Choices": [
+        {
+          "Text": "İzleyicilerin sevdiği oyun içeriklerini sürdür.",
+          "Next": "format",
+          "Result": "Tanıdık formatın güçlendi.",
+          "Effects": {
+            "focus": 6
+          }
+        },
+        {
+          "Text": "Yeni video türleri dene.",
+          "Next": "format",
+          "Result": "Kanalın sınırlarını genişlettin.",
+          "Effects": {
+            "craft": 6
+          }
+        }
+      ]
+    },
+    "craft": {
+      "Title": "Üretimin mutfağı",
+      "Chapter": 1,
+      "Text": "Çekim ve kurgu zaman alıyor. Daha iyi videolar için öğrenmeye devam etmek ile daha sık paylaşmak arasında denge kurman gerekiyor.",
+      "Choices": [
+        {
+          "Text": "Daha planlı üret, yayın takvimi oluştur.",
+          "Next": "format",
+          "Result": "İşini düzene koydun.",
+          "Effects": {
+            "focus": 6
+          }
+        },
+        {
+          "Text": "Her videoda yeni bir teknik dene.",
+          "Next": "format",
+          "Result": "Yeni beceriler kazandın.",
+          "Effects": {
+            "craft": 6
+          }
+        }
+      ]
+    },
+    "format": {
+      "Title": "Ekrandan beyazperdeye",
+      "Chapter": 2,
+      "Text": "İnternet videolarındaki görünürlüğün artıyor. 2018’de Enes Batur Hayal mi? Gerçek mi? filmi vizyona giriyor; dijitalde tanınan birinin sinemada nasıl karşılanacağı merak konusu.",
+      "Choices": [
+        {
+          "Text": "Film tanıtımına ve izleyicilerle buluşmaya odaklan.",
+          "Next": "first_milestone",
+          "Result": "Yeni bir izleyiciyle tanıştın.",
+          "Effects": {
+            "reach": 8
+          }
+        },
+        {
+          "Text": "Video üretimini aksatmadan film çalışmalarını sürdür.",
+          "Next": "first_milestone",
+          "Result": "İki üretim alanını birlikte yürüttün.",
+          "Effects": {
+            "focus": 6
+          }
+        }
+      ]
+    },
+    "award": {
+      "Title": "Ödül gecesi",
+      "Chapter": 2,
+      "Text": "2017’de Altın Kelebek’te En İyi YouTuber/Instagrammer ödülünü aldı. Ödül daha sonra geri çekildi. Bu tartışma, çevrim içi şöhretin ve ödül kurumlarının ilişkisini gündeme taşıdı.",
+      "Choices": [
+        {
+          "Text": "İçerik üretmeye ve kitlenle iletişim kurmaya devam et.",
+          "Next": "award_response",
+          "Result": "Dikkatini üretime çevirdin.",
+          "Effects": {
+            "focus": 6
+          }
+        },
+        {
+          "Text": "Yeni alanlarda çalışarak kariyerini genişlet.",
+          "Next": "award_response",
+          "Result": "Farklı projelere yöneldin.",
+          "Effects": {
+            "craft": 6
+          }
+        }
+      ]
+    },
+    "ending_creator": {
+      "Title": "Üretmeye devam",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, çevrim içi üretim yolculuğunu sürdürmeyi seçtin. Gerçek biyografideki olaylar ile oyundaki seçimler ayrı tutulur.",
+      "Ending": "Üretim rotası"
+    },
+    "ending_explore": {
+      "Title": "Yeni alanlar",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, farklı anlatım biçimlerine yöneldin. Gerçek biyografideki olaylar ile oyundaki seçimler ayrı tutulur.",
+      "Ending": "Keşif rotası"
+    },
+    "first_milestone": {
+      "Title": "Küçük kanal, büyük emek",
+      "Chapter": 1,
+      "Text": "İlk videoların arkasında görünmeyen uzun saatler var: oyunu kaydetmek, sesin anlaşılır olup olmadığını kontrol etmek, görüntüyü kesmek ve sonunda yükle düğmesine basmak. Bir video beklediğin kadar izlenmeyince ertesi gün yeniden deniyorsun. Başarı bir gecede gelmiyor; düzenli üretim, deneme ve zamanla izleyiciyi tanıma işi. Bu sahne kamuya açık kariyer özetlerinden esinlenir; ayrıntılar dramatizasyon amacıyla kurgulanmıştır.",
+      "Choices": [
+        {
+          "Text": "Küçük ama düzenli bir yayın takvimi kur.",
+          "Next": "first_audience",
+          "Result": "Kendine sürdürülebilir bir tempo belirledin.",
+          "Effects": {
+            "focus": 8
+          }
+        },
+        {
+          "Text": "Her videoda farklı bir fikir dene.",
+          "Next": "first_audience",
+          "Result": "Denemelerin içerik dilini değiştirdi.",
+          "Effects": {
+            "craft": 8
+          }
+        }
+      ]
+    },
+    "first_audience": {
+      "Title": "İlk yorumlar",
+      "Chapter": 1,
+      "Text": "Bir gün videonun altında tanımadığın bir izleyicinin yorumu beliriyor: “Devamı gelecek mi?” Tek bir yorum, büyük bir kalabalık değil. Yine de birinin gününün bir parçasına dönüşmüş olabileceğini fark ediyorsun. Ekranın öbür tarafında insanlar var; aynı zamanda yorumların her biri yönünü belirlememeli. Bir içerik üreticisi hem dinlemeyi hem kendi sesini korumayı öğreniyor.",
+      "Choices": [
+        {
+          "Text": "İzleyicinin sorusuna yeni bir bölümle yanıt ver.",
+          "Next": "camera",
+          "Result": "İzleyicinin merakını yeni videoya taşıdın.",
+          "Effects": {
+            "reach": 5
+          }
+        },
+        {
+          "Text": "Yorumları not et ama kendi fikrini koru.",
+          "Next": "camera",
+          "Result": "Geri bildirimi süzerek kullanmayı seçtin.",
+          "Effects": {
+            "focus": 5
+          }
+        }
+      ]
+    },
+    "camera": {
+      "Title": "Kameranın arkasında",
+      "Chapter": 2,
+      "Text": "Kanal büyüdükçe video tek başına oynanan bir oyun olmaktan çıkıyor. Başlık, kapak görseli, ses, kurgu ve yayın zamanı izleyicinin videoya ulaşıp ulaşmamasını etkiliyor. Yaratıcılığın yanında planlama da gerekiyor. Bir akşam yeni bir video fikri buluyorsun; aynı anda önceki videonun kurgusu da bitmemiş. Zamanını nasıl kullanacağın, içerik kadar önemli hale geliyor.",
+      "Choices": [
+        {
+          "Text": "Önce kurguyu bitir, sonra yeni fikre geç.",
+          "Next": "editing",
+          "Result": "Yarım kalan işi tamamladın.",
+          "Effects": {
+            "focus": 6
+          }
+        },
+        {
+          "Text": "Yeni fikrin kısa bir taslağını kaydet.",
+          "Next": "editing",
+          "Result": "Fikir uçup gitmeden notlarına girdi.",
+          "Effects": {
+            "craft": 6
+          }
+        }
+      ]
+    },
+    "editing": {
+      "Title": "Kurgu masası",
+      "Chapter": 2,
+      "Text": "Kurgu sırasında küçük kararlar birikiyor: hangi bölüm kalsın, nerede kesilsin, tempo ne zaman hızlansın? Videoyu tekrar izlerken kendi sesine alışmanın da ayrı bir süreç olduğunu fark ediyorsun. Her şeyi kusursuzlaştırmaya çalışmak yayın tarihini erteleyebilir; acele etmekse anlatmak istediğini bulanıklaştırabilir. Bu seçim, gerçek bir olay aktarımı değil, içerik üreticilerinin karşılaştığı genel bir yaratım ikilemidir.",
+      "Choices": [
+        {
+          "Text": "Videoyu bitmiş sayıp yayımla.",
+          "Next": "audience_growth",
+          "Result": "Yeni videon izleyiciyle buluştu.",
+          "Effects": {
+            "reach": 6
+          }
+        },
+        {
+          "Text": "Bir tur daha gözden geçirip düzelt.",
+          "Next": "audience_growth",
+          "Result": "Son rötuşlar için zaman ayırdın.",
+          "Effects": {
+            "craft": 5,
+            "focus": 2
+          }
+        }
+      ]
+    },
+    "audience_growth": {
+      "Title": "Daha çok kişi",
+      "Chapter": 2,
+      "Text": "Videolar daha geniş çevrelere ulaşmaya başlıyor. İzlenme sayısı yükselirken beklenti de artıyor: insanlar yeni bir video bekliyor, bazıları eski videoları keşfediyor, bazıları ise seni tek bir içerik türüyle tanıyor. Sayılar görünür ve kolayca karşılaştırılır; ama her rakamın arkasında farklı bir izleme nedeni var. Büyüme sevindirici olduğu kadar yeni sorumluluklar da getiriyor.",
+      "Choices": [
+        {
+          "Text": "Tanındığın oyun içeriklerine ağırlık ver.",
+          "Next": "community",
+          "Result": "Kanalın tanıdık yönünü güçlendirdin.",
+          "Effects": {
+            "reach": 8
+          }
+        },
+        {
+          "Text": "İzleyiciye yeni formatlar göster.",
+          "Next": "community",
+          "Result": "Kanalın sınırlarını genişletmeye başladın.",
+          "Effects": {
+            "craft": 8
+          }
+        }
+      ]
+    },
+    "community": {
+      "Title": "Ekranın öteki tarafı",
+      "Chapter": 3,
+      "Text": "İzleyiciler videoları yalnız izlemiyor; konuşuyor, paylaşıyor, kendi aralarında şakalar ve beklentiler kuruyor. İçerik üreticisi bu topluluğun merkezinde görünse de, topluluk kendine ait bir hayat kazanıyor. Bir içerik beklenmedik biçimde çok konuşulunca yeni izleyiciler de kanala geliyor. Herkese aynı anda yanıt vermek mümkün değil. Nasıl bir yakınlık kurmak istediğini düşünüyorsun.",
+      "Choices": [
+        {
+          "Text": "Yorumlarda daha çok vakit geçir.",
+          "Next": "pressure",
+          "Result": "İzleyicilerle sohbet için alan açtın.",
+          "Effects": {
+            "reach": 5
+          }
+        },
+        {
+          "Text": "Yanıtlarını seçerek ver, üretime de zaman bırak.",
+          "Next": "pressure",
+          "Result": "İletişim ve üretim arasında sınır çizdin.",
+          "Effects": {
+            "focus": 5
+          }
+        }
+      ]
+    },
+    "pressure": {
+      "Title": "Beklenti yükselince",
+      "Chapter": 3,
+      "Text": "Bir süre sonra “bir sonraki video ne zaman?” sorusu sıklaşır. Üretim ritmi, başkalarının beklentisiyle senin yaratıcı enerjin arasında kalır. Bu bölümdeki baskı anlatısı, kamuya açık bir kişisel itiraf değildir; çevrim içi üreticiliğin genel zorluklarından esinlenen kurmacadır. Bir sonraki adım için iki yol beliriyor: tempoyu korumak ya da formatı değiştirerek taze bir başlangıç yapmak.",
+      "Choices": [
+        {
+          "Text": "Takvimi koru, kapsamı daha küçük videolar seç.",
+          "Next": "format_shift",
+          "Result": "Devam edebileceğin bir tempo aradın.",
+          "Effects": {
+            "focus": 6
+          }
+        },
+        {
+          "Text": "Yeni ve daha büyük bir format hazırla.",
+          "Next": "format_shift",
+          "Result": "Daha iddialı bir proje için hazırlığa başladın.",
+          "Effects": {
+            "craft": 6
+          }
+        }
+      ]
+    },
+    "format_shift": {
+      "Title": "Yeni format arayışı",
+      "Chapter": 3,
+      "Text": "İzleyici seni oyun videolarıyla tanıyor; ama bir kanalın tek bir biçime bağlı kalması gerekmiyor. Yeni format, bazı izleyicileri heyecanlandırırken bazılarını şaşırtabilir. Bir fikrin işe yarayıp yaramadığını anlamanın yolu onu denemek, geri dönüşleri izlemek ve sonuçtan öğrenmek. Değişim garanti başarı getirmez; yalnızca yeni olasılıklar açar.",
+      "Choices": [
+        {
+          "Text": "Kısa bir deneme videosuyla ölç.",
+          "Next": "film_path",
+          "Result": "Büyük değişimden önce küçük bir deneme yaptın.",
+          "Effects": {
+            "focus": 4,
+            "craft": 3
+          }
+        },
+        {
+          "Text": "Fikri tam bir projeye dönüştür.",
+          "Next": "film_path",
+          "Result": "Yeni formatı geniş bir projeyle duyurmaya hazırlandın.",
+          "Effects": {
+            "craft": 8
+          }
+        }
+      ]
+    },
+    "film_path": {
+      "Title": "Başka bir perde",
+      "Chapter": 4,
+      "Text": "Kariyerin ilerleyen döneminde sinema da gündeme geliyor. 2018’de Enes Batur Hayal mi? Gerçek mi? filmi vizyona girdi. İnternet videosuyla sinema filmi aynı anlatım biçimi değil: süre, ekip çalışması ve seyir deneyimi değişiyor. Bu sahnedeki kararlar filmin gerçek yapım sürecini anlatmıyor; farklı mecralara geçişin nasıl hissedilebileceğini canlandırıyor.",
+      "Choices": [
+        {
+          "Text": "Kamera önündeki rolüne odaklan.",
+          "Next": "film_set",
+          "Result": "Sahneye ve performansa hazırlandın.",
+          "Effects": {
+            "craft": 5
+          }
+        },
+        {
+          "Text": "Dijital kitlenin filme nasıl ulaşacağını düşün.",
+          "Next": "film_set",
+          "Result": "İki mecra arasında köprü kurmaya çalıştın.",
+          "Effects": {
+            "reach": 5
+          }
+        }
+      ]
+    },
+    "film_set": {
+      "Title": "Sette bir gün",
+      "Chapter": 4,
+      "Text": "Bir film seti çok sayıda insanın ortak emeğiyle ilerler. Sahne tekrarlanır, ışık yeniden ayarlanır, çekim planı değişebilir. YouTube’da üreticinin kendi kanalında daha doğrudan kurduğu iletişim, filmde kolektif bir anlatının parçasına dönüşür. Bu, bir format değişikliğinden fazlası: başka bir ekiple çalışma ve başka bir izleyici deneyimi demek.",
+      "Choices": [
+        {
+          "Text": "Ekibin ritmine uyum sağla.",
+          "Next": "premiere",
+          "Result": "Ortak çalışmanın temposunu yakaladın.",
+          "Effects": {
+            "focus": 5
+          }
+        },
+        {
+          "Text": "Kendi doğal anlatımını sahneye taşı.",
+          "Next": "premiere",
+          "Result": "Kendine özgü enerjini korudun.",
+          "Effects": {
+            "craft": 5
+          }
+        }
+      ]
+    },
+    "premiere": {
+      "Title": "İlk gösterim",
+      "Chapter": 4,
+      "Text": "Film izleyiciyle buluştuğunda ortaya çıkan tepki, bilgisayar ekranındaki yorumlardan farklıdır. Salon karanlıktır; insanlar aynı anda izler ve tepki verir. Bir proje yayımlandıktan sonra artık yalnızca onu yapanların değildir. İzleyiciler kendi yorumlarını ekler. Sen de gelen tepkilerden hangisinin gelecekteki çalışmalarına yarayacağını düşünürsün.",
+      "Choices": [
+        {
+          "Text": "Tepkileri dinle ve yeni projelere not al.",
+          "Next": "award",
+          "Result": "Geri bildirimleri sonraki adımlar için sakladın.",
+          "Effects": {
+            "focus": 4,
+            "craft": 3
+          }
+        },
+        {
+          "Text": "Başarıyı ekiple paylaş, sonra dinlen.",
+          "Next": "award",
+          "Result": "Emeğin tek kişilik olmadığını hatırladın.",
+          "Effects": {
+            "reach": 3
+          }
+        }
+      ]
+    },
+    "award_response": {
+      "Title": "Tartışmalı bir ödül",
+      "Chapter": 5,
+      "Text": "Kariyerindeki görünür dönüm noktalarından biri 2017’de Altın Kelebek’te En İyi YouTuber/Instagrammer ödülünü almasıydı; ödül daha sonra geri çekildi. Bu gelişme kamuya açık haberlerde yer aldı. Böyle bir durum, ödülün kendisinden çok temsil, kurumların kararları ve çevrim içi toplulukların tepkileri üzerine bir tartışma başlatabilir. Buradaki yanıt seçenekleri kurmacadır.",
+      "Choices": [
+        {
+          "Text": "Tartışmanın içeriğini sakin biçimde değerlendir.",
+          "Next": "public_image",
+          "Result": "Duygudan önce ne yaşandığını anlamaya çalıştın.",
+          "Effects": {
+            "focus": 5
+          }
+        },
+        {
+          "Text": "Üretime dönüp yeni işini paylaş.",
+          "Next": "public_image",
+          "Result": "Dikkatini kontrol edebildiğin işe verdin.",
+          "Effects": {
+            "craft": 5
+          }
+        }
+      ]
+    },
+    "public_image": {
+      "Title": "Kamuya açık bir isim",
+      "Chapter": 5,
+      "Text": "Çok tanınan bir içerik üreticisinin her paylaşımı farklı kişilerce farklı okunabilir. Görünürlük fırsat getirir; aynı zamanda hata payını küçültür. Bu bölüm belirli bir tartışma veya kişisel olay hakkında yeni iddia sunmuyor. Sadece kamuya açık olmanın genel gerilimini işliyor. Bir sonraki adımda kendi sınırlarını nasıl koruyacağını seçiyorsun.",
+      "Choices": [
+        {
+          "Text": "Paylaşmadan önce düşünmek için zaman ayır.",
+          "Next": "platform_change",
+          "Result": "Daha bilinçli bir paylaşım ritmi kurdun.",
+          "Effects": {
+            "focus": 5
+          }
+        },
+        {
+          "Text": "İzleyiciyle doğrudan ve açık konuş.",
+          "Next": "platform_change",
+          "Result": "İletişimde açıklığı öne çıkardın.",
+          "Effects": {
+            "reach": 5
+          }
+        }
+      ]
+    },
+    "platform_change": {
+      "Title": "Platformlar değişirken",
+      "Chapter": 6,
+      "Text": "Dijital platformlar, izleyici alışkanlıkları ve içerik biçimleri zamanla değişir. Üretici için bu değişim hem yeni araçlar hem belirsizlik demektir. Eski formatlar işe yaramaya devam edebilir; yeni formatlar yeni kitlelere ulaşabilir. Bu noktada geçmişte kurduğun becerileri yanında taşıyıp taşımayacağına karar veriyorsun. Gerçek kişinin güncel planları hakkında bir şey varsaymıyoruz.",
+      "Choices": [
+        {
+          "Text": "Video üretimindeki deneyimini yeni biçimlere taşı.",
+          "Next": "future_plan",
+          "Result": "Öğrendiklerini yeni bir mecraya uyarladın.",
+          "Effects": {
+            "craft": 6
+          }
+        },
+        {
+          "Text": "İzleyici topluluğuyla bağını temel al.",
+          "Next": "future_plan",
+          "Result": "Toplulukla kurduğun iletişimi merkeze aldın.",
+          "Effects": {
+            "reach": 6
+          }
+        }
+      ]
+    },
+    "future_plan": {
+      "Title": "Yeni bir sayfa",
+      "Chapter": 6,
+      "Text": "Kariyer tek bir büyük karardan ibaret değil; küçük denemeler, ortak çalışmalar, beklenmedik sonuçlar ve yeniden başlama anlarından oluşur. Geçmişteki başarı, geleceği otomatik olarak belirlemez. Bu kurmaca final öncesinde kendine şu soruyu soruyorsun: bundan sonra hangi üretim biçimi seni meraklandırıyor? Yanıt, gerçek Enes Batur’un düşüncesini değil, oyuncunun seçtiği rotayı anlatır.",
+      "Choices": [
+        {
+          "Text": "Yeni bir video serisi tasarla.",
+          "Next": "ending_creator",
+          "Result": "Yeni sezon için not defterini açtın.",
+          "Effects": {
+            "focus": 4
+          }
+        },
+        {
+          "Text": "Daha önce denemediğin bir mecra seç.",
+          "Next": "ending_explore",
+          "Result": "Yeni bir başlangıca yer açtın.",
+          "Effects": {
+            "craft": 4
+          }
+        }
+      ]
+    }
+  }
+}

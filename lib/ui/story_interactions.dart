@@ -35,6 +35,8 @@ Widget storyInteraction(
   'budget' => BudgetSplit(key: key, interaction: i, onOutcome: onOutcome),
   'hold' => HoldBreath(key: key, interaction: i, onOutcome: onOutcome),
   'quiz' => QuizCard(key: key, interaction: i, onOutcome: onOutcome),
+  'sequence' => SequenceTap(key: key, interaction: i, onOutcome: onOutcome),
+  'select' => SelectClues(key: key, interaction: i, onOutcome: onOutcome),
   _ => const SizedBox.shrink(),
 };
 
@@ -1079,6 +1081,138 @@ class _HoldBreathState extends State<HoldBreath>
               : 'Halka dolana kadar parmağını kaldırma.',
           textAlign: TextAlign.center,
           style: VitaType.caption(p),
+        ),
+      ],
+    );
+  }
+}
+
+// ---------------------------------------------------------------- Ritmi takip et / ipuçlarını seç
+
+class SequenceTap extends StatefulWidget {
+  const SequenceTap({
+    super.key,
+    required this.interaction,
+    required this.onOutcome,
+  });
+  final StoryInteraction interaction;
+  final OutcomeCallback onOutcome;
+
+  @override
+  State<SequenceTap> createState() => _SequenceTapState();
+}
+
+class _SequenceTapState extends State<SequenceTap> {
+  late final List<int> _answer = widget.interaction.answer
+      .split(',')
+      .map((s) => int.parse(s.trim()))
+      .toList();
+  int _position = 0;
+  bool _done = false;
+
+  void _tap(int index) {
+    if (_done) return;
+    preferences.feedback();
+    if (index != _answer[_position]) {
+      _done = true;
+      widget.onOutcome('fail');
+      return;
+    }
+    setState(() => _position++);
+    if (_position == _answer.length) {
+      _done = true;
+      widget.onOutcome('success');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.vita;
+    return _Frame(
+      label: 'Diziyi takip et',
+      prompt: widget.interaction.prompt,
+      status: '$_position / ${_answer.length}',
+      children: [
+        Text(
+          _answer.map((n) => widget.interaction.items[n]).join(' → '),
+          style: VitaType.body(p),
+        ),
+        const SizedBox(height: 12),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final (index, item) in widget.interaction.items.indexed)
+              OutlinedButton(
+                onPressed: _done ? null : () => _tap(index),
+                child: Text(item),
+              ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class SelectClues extends StatefulWidget {
+  const SelectClues({
+    super.key,
+    required this.interaction,
+    required this.onOutcome,
+  });
+  final StoryInteraction interaction;
+  final OutcomeCallback onOutcome;
+
+  @override
+  State<SelectClues> createState() => _SelectCluesState();
+}
+
+class _SelectCluesState extends State<SelectClues> {
+  final Set<int> _selected = {};
+  bool _done = false;
+
+  void _check() {
+    if (_done) return;
+    _done = true;
+    final answer = widget.interaction.answer
+        .split(',')
+        .map((s) => int.parse(s.trim()))
+        .toSet();
+    preferences.feedback(strong: true);
+    widget.onOutcome(
+      _selected.length == answer.length && _selected.containsAll(answer)
+          ? 'success'
+          : 'fail',
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.vita;
+    return _Frame(
+      label: 'Birlikte seç',
+      prompt: widget.interaction.prompt,
+      status: '${_selected.length} seçildi',
+      children: [
+        for (final (index, item) in widget.interaction.items.indexed)
+          CheckboxListTile(
+            value: _selected.contains(index),
+            title: Text(item, style: VitaType.body(p)),
+            controlAffinity: ListTileControlAffinity.leading,
+            onChanged: _done
+                ? null
+                : (value) => setState(() {
+                    if (value == true) {
+                      _selected.add(index);
+                    } else {
+                      _selected.remove(index);
+                    }
+                  }),
+          ),
+        const SizedBox(height: 8),
+        VitaButton(
+          label: 'Seçimi tamamla',
+          onPressed: _selected.isEmpty || _done ? null : _check,
         ),
       ],
     );

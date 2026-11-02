@@ -145,6 +145,12 @@ class NarrativeDirector {
             _ => false,
           };
     if (!context) return false;
+    // Okul öncesi sahneleri bir hayatta yalnızca bir kez sun; takip sahneleri
+    // ve açık bir olayın kayıttan geri yüklenmesi ignoreHistory ile korunur.
+    if (!ignoreHistory && s.age < 6 &&
+        (s.completedEventIds.contains(scene.id) || s.eventLastSeenDay.containsKey(scene.id))) {
+      return false;
+    }
     if (!ignoreHistory &&
         scene.milestone &&
         s.completedEventIds.contains(scene.id)) {

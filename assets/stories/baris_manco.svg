@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+ <defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="#17152e"/><stop offset="1" stop-color="#6845a2"/></linearGradient></defs>
+ <rect width="600" height="800" rx="36" fill="url(#g)"/>
+ <circle cx="470" cy="125" r="112" fill="#a68add" opacity=".22"/><circle cx="470" cy="125" r="72" fill="#c8b4f0" opacity=".18"/>
+ <path d="M0 570Q150 480 300 570T600 550V800H0" fill="#242142" opacity=".75"/>
+ <rect x="90" y="270" width="420" height="270" rx="24" fill="#17152e" stroke="#c8b4f0" stroke-width="5"/>
+ <rect x="112" y="292" width="376" height="222" rx="12" fill="#392b62"/>
+ <path d="M270 350v106l92-53z" fill="#f3c878"/>
+ <text x="300" y="630" text-anchor="middle" fill="#fff8ec" font-family="sans-serif" font-size="37" font-weight="700">EKRANDAN HİKÂYEYE</text>
+ <text x="300" y="684" text-anchor="middle" fill="#d6c9ef" font-family="sans-serif" font-size="25">Bir içerik üreticisinin yolculuğu</text>
+</svg>

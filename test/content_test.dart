@@ -25,7 +25,7 @@ void main() {
     expect(content.issues.errors, isEmpty);
   });
 
-  test('içerik sayıları Godot projesiyle aynı', () {
+  test('içerik sayıları beklenen katalogla eşleşiyor', () {
     expect(content.scenes.length, 87);
     expect(content.careers.length, 103);
     expect(content.families.length, 100);
@@ -33,8 +33,8 @@ void main() {
     expect(content.achievements.length, 15);
     expect(content.endings.length, 8);
     expect(content.flags.length, 200);
-    expect(content.stories.length, 3);
-    expect(content.events.length, 523);
+    expect(content.stories.length, 6);
+    expect(content.events.length, 543);
   });
 
   test('varsayılanlar ve koşullar doğru çözülüyor', () {

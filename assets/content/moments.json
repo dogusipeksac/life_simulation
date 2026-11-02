@@ -1588,5 +1588,225 @@
   "Prompt": "Telefon çalıyor: bayram sofrası kuruluyor, herkes cevabını bekliyor.",
   "Seconds": 12,
   "TimeoutChoice": "video_call"
+ },
+ {
+  "Id": "m_baby_discovery_music_rhythm",
+  "Target": "baby_discovery_music_rhythm",
+  "Type": "sequence",
+  "Prompt": "Kaşığın ritmini birlikte tekrar et.",
+  "Items": [
+   "Tak",
+   "Tık"
+  ],
+  "Answer": "0,1,0,1",
+  "Success": {
+   "Text": "Ritmi duyup aynı sırayla karşılık verdin.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Ritim değişse de yeni sesler duymak hoşuna gitti.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_baby_discovery_rattle_search",
+  "Target": "baby_discovery_rattle_search",
+  "Type": "sequence",
+  "Prompt": "Seslerin geldiği yönleri sırayla takip et.",
+  "Items": [
+   "Sol",
+   "Sağ"
+  ],
+  "Answer": "0,1,1,0",
+  "Success": {
+   "Text": "Sesleri izleyerek başını her yöne çevirdin.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Seslerden biri seni şaşırttı, sonra tekrar dinledin.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_baby_discovery_first_ball",
+  "Target": "baby_discovery_first_ball",
+  "Type": "sequence",
+  "Prompt": "Topun yuvarlandığı yönleri sırayla takip et.",
+  "Items": [
+   "Sana",
+   "Uzağa"
+  ],
+  "Answer": "0,1,0",
+  "Success": {
+   "Text": "Topun yolunu dikkatle takip ettin.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Top yuvarlanırken gözden kayboldu, sonra yeniden buldun.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_baby_discovery_shadow_play",
+  "Target": "baby_discovery_shadow_play",
+  "Type": "sequence",
+  "Prompt": "Duvardaki gölge hareketlerini sırayla taklit et.",
+  "Items": [
+   "Aç",
+   "Kapat"
+  ],
+  "Answer": "0,1,0,1",
+  "Success": {
+   "Text": "Ellerin hareket ettikçe gölgeler de değişti.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Gölgeler bir an karıştı ama izlemeye devam ettin.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_baby_discovery_peekaboo",
+  "Target": "baby_discovery_peekaboo",
+  "Type": "sequence",
+  "Prompt": "Saklanma oyununda hareketleri sırayla izle.",
+  "Items": [
+   "Saklan",
+   "Görün"
+  ],
+  "Answer": "0,1,0,1",
+  "Success": {
+   "Text": "Tanıdık yüz her göründüğünde gülümsedin.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Oyun beklenmedik bir kahkahayla sona erdi.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_baby_discovery_soft_fabric",
+  "Target": "baby_discovery_soft_fabric",
+  "Type": "select",
+  "Prompt": "Yumuşak dokulu nesneleri birlikte seç.",
+  "Items": [
+   "Pamuklu bez",
+   "Tahta küp",
+   "Yumuşak battaniye",
+   "Metal kaşık"
+  ],
+  "Answer": "0,2",
+  "Success": {
+   "Text": "İki yumuşak dokuyu ellerinle keşfettin.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Farklı dokuları karşılaştırmak da ilgini çekti.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_baby_discovery_window_rain",
+  "Target": "baby_discovery_window_rain",
+  "Type": "select",
+  "Prompt": "Yağmurlu pencerede gördüklerini seç.",
+  "Items": [
+   "Damlalar",
+   "Camdaki izler",
+   "Denizde balık",
+   "Kumdan kale"
+  ],
+  "Answer": "0,1",
+  "Success": {
+   "Text": "Camdaki damlaları ve bıraktıkları izleri takip ettin.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Pencereye bakarken başka ayrıntılar da hayal ettin.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_baby_discovery_morning_birds",
+  "Target": "baby_discovery_morning_birds",
+  "Type": "select",
+  "Prompt": "Dışarıdan gelebilecek kuş seslerini seç.",
+  "Items": [
+   "Cıvıltı",
+   "Kanat çırpışı",
+   "Telefon zili",
+   "Tencere kapağı"
+  ],
+  "Answer": "0,1",
+  "Success": {
+   "Text": "Dışarıdaki iki sesi dikkatle dinledin.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Seslerin birbirine karışması seni şaşırttı.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_baby_discovery_book_pages",
+  "Target": "baby_discovery_book_pages",
+  "Type": "select",
+  "Prompt": "Kitaptaki doğayla ilgili resimleri seç.",
+  "Items": [
+   "Ağaç",
+   "Kuş",
+   "Araba",
+   "Ayakkabı"
+  ],
+  "Answer": "0,1",
+  "Success": {
+   "Text": "Ağacı ve kuşu sayfada gösterdin.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Resimlere bakmak yeni kelimeler duymanı sağladı.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_baby_discovery_family_photo",
+  "Target": "baby_discovery_family_photo",
+  "Type": "select",
+  "Prompt": "Fotoğraf albümünde kişilere ait ayrıntıları seç.",
+  "Items": [
+   "Gülümseme",
+   "Yüz",
+   "Masa örtüsü",
+   "Perde"
+  ],
+  "Answer": "0,1",
+  "Success": {
+   "Text": "Fotoğraftaki yüzlere ve gülümsemelere dikkat ettin.",
+   "Stats": {
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Albümdeki pek çok ayrıntıyı merakla inceledin.",
+   "Stats": {}
+  }
  }
 ]

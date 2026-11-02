@@ -1,0 +1,386 @@
+{
+  "Id": "baris_manco",
+  "Title": "Barış Manço: Yollara Düşen Şarkı",
+  "Subtitle": "Müzik, sahne ve 7’den 77’ye",
+  "Description": "Bir şarkıdan televizyon yolculuğuna uzanan sanat hayatı.",
+  "Genre": "Müzik ve televizyon biyografisi",
+  "Color": "4c8b7a",
+  "Symbol": "♪",
+  "ProductId": "",
+  "Start": "start",
+  "FreeChapters": 6,
+  "Chapters": [
+    "Şarkı",
+    "Sahne kimliği",
+    "Yolculuk",
+    "Ekranda buluşma",
+    "Kuşaklar",
+    "Miras"
+  ],
+  "StatNames": {
+    "craft": "Üretim",
+    "presence": "Sahne dili",
+    "connection": "İnsanlarla bağ",
+    "reach": "Erişim"
+  },
+  "ContentNote": "Kamuya açık kariyer dönüm noktaları kullanılmıştır. Karakterlerin konuşmaları ve oyuncu seçimleri dramatizasyon amaçlı kurmacadır. Sahneler uzun format için genişletilmiş kurmacadır; özel konuşmalar ve kişisel kararlar gerçek yaşam olayı olarak sunulmaz. Sahneler uzun format için genişletilmiş kurmacadır; özel konuşmalar ve kişisel kararlar gerçek yaşam olayı olarak sunulmaz.",
+  "Nodes": {
+    "start": {
+      "Title": "Dağlar Dağlar",
+      "Chapter": 1,
+      "Text": "Barış Manço’nun müzik yolculuğu 1960’larda başladı. 1970’te yayımlanan Dağlar Dağlar, kariyerinin dönüm noktalarından biri oldu ve platin plak kazandı. Bir şarkı bazen sanatçının adını geniş kitlelere taşır; ardından gelen asıl soru, bu başarıdan sonra hangi yöne yürüneceğidir. Bu oyun, kamuya açık kariyer dönüm noktalarını kurmaca seçimlerle bir araya getiriyor.",
+      "Choices": [
+        {
+          "Text": "Anadolu ezgilerini çağdaş düzenlemelerle buluştur.",
+          "Next": "early_career",
+          "Result": "Yeni bir müzikal birleşim aradın.",
+          "Effects": {
+            "craft": 8
+          }
+        },
+        {
+          "Text": "Sahnedeki anlatımını ve görünüşünü geliştir.",
+          "Next": "early_career",
+          "Result": "Sahne kimliğine emek verdin.",
+          "Effects": {
+            "presence": 8
+          }
+        }
+      ]
+    },
+    "stage": {
+      "Title": "Sahne kişiliği",
+      "Chapter": 1,
+      "Text": "Barış Manço’nun uzun saçları, yüzükleri, kemerleri ve teatral sahne duruşu onu kolay tanınır kıldı. Sahne kişiliği kıyafetten ibaret değildir; müziği ve dinleyiciyle kurulan ilişkiyle bütünleşir. Tanınan bir imaj, sanatçıya güçlü bir işaret sunar ama zamanla onu tek bir kalıba da hapsetme riski taşır.",
+      "Choices": [
+        {
+          "Text": "İkonik sahne çizgisini koru.",
+          "Next": "visual_signature",
+          "Result": "Dinleyicinin tanıdığı simgeleri sürdürdün.",
+          "Effects": {
+            "presence": 6
+          }
+        },
+        {
+          "Text": "Her projede yeni bir görsel dünya kur.",
+          "Next": "visual_signature",
+          "Result": "Değişimi sahne diline taşıdın.",
+          "Effects": {
+            "craft": 6
+          }
+        }
+      ]
+    },
+    "travel": {
+      "Title": "Yollara çıkmak",
+      "Chapter": 2,
+      "Text": "1988’de TRT’de başlayan 7’den 77’ye, Barış Manço’yu yalnız müzik sahnesinde değil, farklı ülkeleri ve insanları ekranlara taşıyan bir sunucu olarak da geniş kitlelerle buluşturdu. Program fikrinin TRT’ye kabul ettirilmesi uzun bir hazırlık ve ikna sürecinin parçasıydı. Yolculuk, yalnızca gidilen yerleri değil, anlatma biçimini de değiştirir.",
+      "Choices": [
+        {
+          "Text": "İnsanların gündelik yaşamlarını dinle.",
+          "Next": "proposal",
+          "Result": "Programın merkezine karşılaşmaları koydun.",
+          "Effects": {
+            "connection": 8
+          }
+        },
+        {
+          "Text": "Müzik ve kültür bağlantılarını araştır.",
+          "Next": "proposal",
+          "Result": "Gezdiğin yerleri müzik üzerinden anlattın.",
+          "Effects": {
+            "craft": 8
+          }
+        }
+      ]
+    },
+    "tv": {
+      "Title": "Ekranda bir buluşma",
+      "Chapter": 2,
+      "Text": "Bir televizyon programında kamera, sunucu kadar karşılaşılan insanları da görünür kılar. 7’den 77’ye farklı yaşlardan izleyicilere seslendi. Programın adı da geniş bir kuşağı kapsama fikrini taşıyordu. Bu sahnedeki konuklar ve diyaloglar kurgusaldır; belirli bir gerçek bölümün yeniden anlatımı değildir.",
+      "Choices": [
+        {
+          "Text": "Çocuklara merak uyandıran sorular sor.",
+          "Next": "children_view",
+          "Result": "Merakı programın motoru yaptın.",
+          "Effects": {
+            "connection": 6
+          }
+        },
+        {
+          "Text": "Her yaştan izleyici için ortak bir hikâye bul.",
+          "Next": "children_view",
+          "Result": "Kuşaklar arasında ortaklık aradın.",
+          "Effects": {
+            "reach": 6
+          }
+        }
+      ]
+    },
+    "legacy": {
+      "Title": "Birden fazla miras",
+      "Chapter": 3,
+      "Text": "Barış Manço’nun tanınırlığı müzikle başlayıp televizyon anlatıcılığıyla genişledi. İzleyici onu şarkılarıyla, sahne tarzıyla ve dünyayı dolaşan programıyla hatırladı. Bir sanatçının mirası tek bir başarı anına sığmaz; farklı dönemlerde kurduğu bağlar zamanla birbirine eklenir.",
+      "Choices": [
+        {
+          "Text": "Yeni kuşaklara müziği anlat.",
+          "Next": "ending_generation",
+          "Result": "Şarkıların yeni dinleyicilere ulaşmasına çalıştın.",
+          "Effects": {
+            "craft": 5
+          }
+        },
+        {
+          "Text": "Yolculuk ve insan hikâyelerini öne çıkar.",
+          "Next": "ending_traveler",
+          "Result": "Anlatıcılık mirasını sürdürdün.",
+          "Effects": {
+            "connection": 5
+          }
+        }
+      ]
+    },
+    "early_career": {
+      "Title": "Müziğe ilk adımlar",
+      "Chapter": 1,
+      "Text": "Barış Manço’nun müzik kariyeri 1960’lı yıllarda şekillenirken Türkiye’de ve Avrupa’da farklı müzik akımları dolaşıyordu. Genç bir müzisyen için kendi sesini bulmak, yalnızca bir tür seçmek değildir; dinlediklerini, yaşadığı kültürü ve sahnede anlatmak istediklerini bir araya getirmektir. İlk denemeler bazen daha sonra tanınacak tarzın küçük işaretlerini taşır.",
+      "Choices": [
+        {
+          "Text": "Farklı müzik çevrelerini tanı.",
+          "Next": "stage",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Kendi grubunla düzenli prova yap.",
+          "Next": "stage",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "visual_signature": {
+      "Title": "Tanıdık bir sahne dili",
+      "Chapter": 1,
+      "Text": "Zaman içinde Barış Manço’nun sahne görünüşü de müziği kadar tanınır hale geldi. Uzun saçlar, yüzükler, kemerler ve dikkat çeken kıyafetler bir imza oluşturdu. Bir sanatçının görünüşü, izleyiciyle ilk karşılaşmadır; ama bu imza yıllar içinde değişebilir. Sahne dili, müzik ve kişilik algısıyla birlikte kurulur.",
+      "Choices": [
+        {
+          "Text": "Görsel imzanı istikrarlı tut.",
+          "Next": "song_breakthrough",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Her dönemde yeni bir yorum dene.",
+          "Next": "song_breakthrough",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "song_breakthrough": {
+      "Title": "Dağlar Dağlar sonrası",
+      "Chapter": 2,
+      "Text": "1970’te yayımlanan Dağlar Dağlar, Barış Manço’nun kariyerinde büyük bir dönüm noktası oldu ve platin plak kazandırdı. Bir başarı, bir sonraki iş için hem olanak hem beklenti yaratabilir. Dinleyici yeni şarkıda aynı duyguyu arar; sanatçı ise kendini tekrar etmeden o bağın nasıl sürdürüleceğini düşünür.",
+      "Choices": [
+        {
+          "Text": "Yeni şarkıda tanıdık duyguyu sürdür.",
+          "Next": "travel",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Başka temalara ve seslere yönel.",
+          "Next": "travel",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "proposal": {
+      "Title": "Bir televizyon fikri",
+      "Chapter": 2,
+      "Text": "Barış Manço, uzun süre üzerinde düşündüğü 7’den 77’ye projesini 1988’de TRT’ye kabul ettirdi. Bir müzik sanatçısının televizyona geçmesi, yeni bir üretim düzeni demektir: araştırma, çekim, yol planı ve ekiple ortak anlatı. Bu hikâyedeki yapım toplantısı kurgusaldır; kamuya açık bilgiler yalnızca programın başlangıç ve kapsamını belirler.",
+      "Choices": [
+        {
+          "Text": "Programı müzikle kültür arasında kur.",
+          "Next": "field_trip",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "İnsanların kendi hikâyelerini anlatmasına alan aç.",
+          "Next": "field_trip",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "field_trip": {
+      "Title": "Yola çıkmadan önce",
+      "Chapter": 3,
+      "Text": "Bir gezi programında kamera açılmadan önce gidilecek yerleri araştırmak gerekir. Haritadaki bir çizgi, orada yaşayan insanların gündelik hayatını kendiliğinden anlatmaz. Hazırlık, doğru soruları bulmaya ve karşılaşmaları aceleye getirmemeye yardım eder. Ekibin zamanı sınırlı olabilir; merakın ise sınırı yoktur.",
+      "Choices": [
+        {
+          "Text": "Az sayıda yere daha uzun zaman ayır.",
+          "Next": "first_encounter",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Daha çok yeri kısa ziyaretlerle tanıt.",
+          "Next": "first_encounter",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "first_encounter": {
+      "Title": "İlk karşılaşma",
+      "Chapter": 3,
+      "Text": "Yolculuk sırasında karşına çıkan kişi, önceden hazırlanmış bir metnin parçası değildir. Sohbetin yönü, karşı tarafın anlattıklarına göre değişir. İyi bir anlatı bazen soru sormaktan çok, cevabı gerçekten dinlemeyi gerektirir. Bu bölümdeki kişiler ve konuşmalar tamamen kurmacadır; programın gerçek konukları gibi sunulmaz.",
+      "Choices": [
+        {
+          "Text": "Konuşmayı kişinin merakından başlat.",
+          "Next": "tv",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Bölgenin müzik geleneğini sor.",
+          "Next": "tv",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "editing_room": {
+      "Title": "Bir yolculuğu ekrana sığdırmak",
+      "Chapter": 4,
+      "Text": "Çekilen görüntüler program süresinden çok daha uzundur. Kurgu odasında hangi karşılaşmanın kalacağına, nasıl bağlanacağına ve nerede sessizlik bırakılacağına karar verilir. Bir yeri anlatırken yalnızca güzel görüntüleri seçmek, oradaki hayatın karmaşıklığını göstermek için yeterli değildir. Televizyon anlatısı seçerek kurulur; bu nedenle seçimlerin sorumluluğu vardır.",
+      "Choices": [
+        {
+          "Text": "İnsanların sesini ve sözünü koru.",
+          "Next": "audience_letters",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Yolculuğun görsel akışını öne çıkar.",
+          "Next": "audience_letters",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "children_view": {
+      "Title": "Çocukların soruları",
+      "Chapter": 4,
+      "Text": "7’den 77’ye adının işaret ettiği geniş yaş aralığı, programın çocuklarla da bağ kurmasını sağladı. Çocuk izleyiciye hitap etmek, konuyu basitleştirmek anlamına gelmez; merakı ciddiye almak demektir. Bir soru, yetişkinlerin gözden kaçırdığı ayrıntıyı görünür kılabilir. Bu sahne belirli bir gerçek bölümde yaşandığını iddia etmez.",
+      "Choices": [
+        {
+          "Text": "Çocukların sorularına doğrudan yanıt ver.",
+          "Next": "editing_room",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Soruyu yeni bir keşif yolculuğuna çevir.",
+          "Next": "editing_room",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "audience_letters": {
+      "Title": "Ekrandan gelen mektuplar",
+      "Chapter": 5,
+      "Text": "Bir televizyon programı izleyici evinde sona erse de, izleyicinin zihninde devam edebilir. Mektuplar ve geri dönüşler, programın hangi anlarının akılda kaldığını gösterir. Her izleyici farklı bir şey hatırlar: bir şarkı, bir ülke, bir insanla kurulan sohbet. Geniş kitlelere seslenmenin gücü, farklı yaşların aynı anlatıda kendine yer bulabilmesidir.",
+      "Choices": [
+        {
+          "Text": "Gelen sorulardan yeni program fikirleri çıkar.",
+          "Next": "music_and_tv",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "İzleyicinin kendi çevresini keşfetmesini teşvik et.",
+          "Next": "music_and_tv",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "music_and_tv": {
+      "Title": "İki anlatım biçimi",
+      "Chapter": 5,
+      "Text": "Müzik ve televizyon farklı ritimlerle çalışır. Şarkı birkaç dakikada duygu kurabilir; gezi programı ise yerin ve karşılaşmanın ayrıntısına zaman ayırır. Barış Manço’nun tanınan kamusal imajı bu iki alanı bir araya getirdi. Bir alanda edinilen sahne deneyimi, diğerinde izleyiciyle kurulan iletişime katkı sağlayabilir.",
+      "Choices": [
+        {
+          "Text": "Şarkıları televizyon anlatısına kat.",
+          "Next": "legacy",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Programın kendi ritmini müzikten bağımsız kur.",
+          "Next": "legacy",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "ending_generation": {
+      "Title": "Kuşaklar arasında",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, müzik ve televizyon anlatısını yeni kuşaklarla buluşturan bir mirası seçtin. Barış Manço’nun gerçek çalışmaları şarkılar ve 7’den 77’ye gibi kamuya açık eserlerden oluşur. Bu final, oyuncunun alternatif anlatısıdır; gerçek kişinin düşüncelerini temsil etmez.",
+      "Ending": "Kuşaklar arasında"
+    },
+    "ending_traveler": {
+      "Title": "Yol anlatıcısı",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, insanlarla ve kültürlerle karşılaşmayı merkezde tuttun. Barış Manço’nun gerçek programı 1988’de TRT’de başladı; burada anlatılan özel sahneler ve seçimler kurgusaldır.",
+      "Ending": "Yol anlatıcısı"
+    }
+  }
+}

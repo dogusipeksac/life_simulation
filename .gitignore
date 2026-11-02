@@ -55,3 +55,9 @@ app.*.map.json
 
 # Yerel sürüm paketleri
 /dist/
+/vendor/bundle/
+/.bundle/
+/release.env
+**/AuthKey_*.p8
+**/play-service-account.json
+**/ExportOptions.plist

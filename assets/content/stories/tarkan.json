@@ -1,0 +1,408 @@
+{
+  "Id": "tarkan",
+  "Title": "Tarkan: Sahneden Dünyaya",
+  "Subtitle": "Bir pop kariyerinin yeni sesleri",
+  "Description": "Albüm kayıtlarından uluslararası dinleyiciye uzanan müzik yolculuğu.",
+  "Genre": "Müzik biyografisi",
+  "Color": "b34d6d",
+  "Symbol": "♫",
+  "ProductId": "",
+  "Start": "start",
+  "FreeChapters": 6,
+  "Chapters": [
+    "İlk albümler",
+    "Sahne dili",
+    "Dünyaya açılmak",
+    "Yeni sesler",
+    "Kendi üretim alanı",
+    "Yolun devamı"
+  ],
+  "StatNames": {
+    "craft": "Müzikal arayış",
+    "connection": "Dinleyici bağı",
+    "reach": "Erişim"
+  },
+  "ContentNote": "Kamuya açık kariyer dönüm noktaları kullanılmıştır. Sahne arkası sahneleri, diyaloglar ve seçimler kurmacadır; kişinin özel hayatı hakkında iddia değildir. Sahneler uzun format için genişletilmiş kurmacadır; özel konuşmalar ve kişisel kararlar gerçek yaşam olayı olarak sunulmaz. Sahneler uzun format için genişletilmiş kurmacadır; özel konuşmalar ve kişisel kararlar gerçek yaşam olayı olarak sunulmaz.",
+  "Nodes": {
+    "start": {
+      "Title": "İlk kayıtlar",
+      "Chapter": 1,
+      "Text": "Tarkan’ın resmi biyografisine göre müzik kariyeri 1992’de Yine Sensiz albümüyle başladı. İlk albümün ardından Aacayipsin geldi; yerel dinleyici kitlesi büyüyordu. Bir şarkının stüdyodan çıkıp insanların gündelik hayatına karışması, müzisyen için yeni bir eşik. Bu hikâyedeki sahneler kamuya açık kariyer bilgileriyle çevrili kurmacadır. Oyuncunun seçimleri gerçek kişinin kararlarını temsil etmez.",
+      "Choices": [
+        {
+          "Text": "Albüm için yeni bir ses dünyası ara.",
+          "Next": "studio_day",
+          "Result": "Düzenlemelerde yeni fikirler aradın.",
+          "Effects": {
+            "craft": 8
+          }
+        },
+        {
+          "Text": "Dinleyiciyle yakın bir dil kur.",
+          "Next": "studio_day",
+          "Result": "Şarkıların duygusuna odaklandın.",
+          "Effects": {
+            "connection": 8
+          }
+        }
+      ]
+    },
+    "second_album": {
+      "Title": "İkinci adım",
+      "Chapter": 1,
+      "Text": "1994’te yayımlanan Aacayipsin, ilk albümün ardından gelen önemli bir adımdı. Bir çıkış yakalamak başka, bu ilgiyi yeni bir albümde sürdürmek başka. Müzik piyasası hızlı karar verir; dinleyici ise sevdiği şarkıyı tekrar tekrar dinler. Önünde, tanıdık çizgiyi korumak veya yeni bir yönü daha görünür kılmak var.",
+      "Choices": [
+        {
+          "Text": "Tanıdık pop çizgisini güçlendir.",
+          "Next": "songcraft",
+          "Result": "Dinleyicinin bildiği sese yaslandın.",
+          "Effects": {
+            "connection": 5
+          }
+        },
+        {
+          "Text": "Daha iddialı bir yorum dene.",
+          "Next": "songcraft",
+          "Result": "Yeni bir müzikal renk aradın.",
+          "Effects": {
+            "craft": 5
+          }
+        }
+      ]
+    },
+    "smari": {
+      "Title": "Şarkının yolculuğu",
+      "Chapter": 2,
+      "Text": "Şımarık, Türkiye’deki başarısının ardından farklı ülkelerde de duyuldu. Bir şarkı başka dillere ve dinleme alışkanlıklarına taşınırken anlamı da yeni bağlamlar kazanır. Uluslararası ilgi, yalnızca daha fazla kişiye ulaşmak değil; kendi müzikal kimliğinin yeni dinleyicilerce nasıl duyulacağını da görmektir.",
+      "Choices": [
+        {
+          "Text": "Uluslararası iş birliklerine açık ol.",
+          "Next": "translation",
+          "Result": "Farklı müzisyenlerle çalışma ihtimalini araştırdın.",
+          "Effects": {
+            "reach": 8
+          }
+        },
+        {
+          "Text": "Türkçe şarkıların anlatımını öne çıkar.",
+          "Next": "translation",
+          "Result": "Kendi dilindeki anlatımı merkeze aldın.",
+          "Effects": {
+            "craft": 7
+          }
+        }
+      ]
+    },
+    "world": {
+      "Title": "Dünya sahnesi",
+      "Chapter": 2,
+      "Text": "Tarkan’ın biyografisi, kariyerinin Avrupa’dan Orta Doğu’ya ve başka bölgelere uzandığını anlatıyor. 1999’da Dünya Müzik Ödülü aldı. Bu tür bir görünürlük, sanatçının ülkesinde başlayan kariyerinin daha geniş bir müzik haritasına bağlandığını gösterir. Büyük sahne aynı zamanda repertuvar, prova ve beklenti yönetimi demektir.",
+      "Choices": [
+        {
+          "Text": "Büyük sahneye hazırlanmak için ekiple çalış.",
+          "Next": "award_night",
+          "Result": "Hazırlığı ortak emeğe dönüştürdün.",
+          "Effects": {
+            "craft": 5
+          }
+        },
+        {
+          "Text": "Sahnede kendiliğindenliği koru.",
+          "Next": "award_night",
+          "Result": "Canlı performansın enerjisini korumayı seçtin.",
+          "Effects": {
+            "connection": 5
+          }
+        }
+      ]
+    },
+    "english": {
+      "Title": "Yeni dil, yeni dinleyici",
+      "Chapter": 3,
+      "Text": "2006’da yayımlanan Come Closer, Tarkan’ın İngilizce albüm dönemini başlattı. Yeni bir dilde şarkı söylemek, sesin yanında telaffuz ve anlatım alışkanlıklarını da yeniden düşünmeyi gerektirir. Yeni dinleyici kazanma ihtimali vardır; aynı zamanda tanıdık dinleyiciler kendi dillerindeki müziği özleyebilir.",
+      "Choices": [
+        {
+          "Text": "Yeni pazarlara açılmayı sürdür.",
+          "Next": "new_audience",
+          "Result": "Farklı ülkelerde dinleyici aradın.",
+          "Effects": {
+            "reach": 7
+          }
+        },
+        {
+          "Text": "Türkçe üretimle bağını sıkı tut.",
+          "Next": "new_audience",
+          "Result": "Kendi müzikal köklerine döndün.",
+          "Effects": {
+            "connection": 7
+          }
+        }
+      ]
+    },
+    "independent": {
+      "Title": "Kendi üretim alanı",
+      "Chapter": 3,
+      "Text": "Müzik kariyerinde üretim kararlarını daha yakından sahiplenmek, sanatçıya kendi yönünü belirleme alanı açabilir. Tarkan’ın resmi biyografisi HITT Müzik’i ve Dudu albümünü kariyerinin sonraki adımları arasında sayıyor. Kendi alanını kurmak özgürlükle birlikte bütçe, ekip ve planlama sorumluluğu getirir.",
+      "Choices": [
+        {
+          "Text": "Yeni üretimi uzun vadeli planla.",
+          "Next": "next_record",
+          "Result": "Bir sonraki dönemi planlamaya başladın.",
+          "Effects": {
+            "craft": 6
+          }
+        },
+        {
+          "Text": "Deneysel iş birliklerine öncelik ver.",
+          "Next": "next_record",
+          "Result": "Yeni ortaklıklarla sesini genişlettin.",
+          "Effects": {
+            "craft": 6
+          }
+        }
+      ]
+    },
+    "studio_day": {
+      "Title": "Stüdyoda ilk gün",
+      "Chapter": 1,
+      "Text": "İlk albümün kayıt dönemi, sahneye çıkmadan önceki emeği hatırlatıyor: doğru parçaları seçmek, yorumun nasıl duyulacağını aramak ve bir bütün halinde albüm kurmak. Bir şarkının ilk dinleyicisi çoğu zaman onu yapan ekiptir. Son karar verildiğinde ise kayıt artık üreticilerin elinden çıkıp dinleyiciye doğru yola koyulur. Bu sahne belirli bir gerçek stüdyo gününü anlatmaz; albüm üretim sürecini canlandırır.",
+      "Choices": [
+        {
+          "Text": "Bir parçaya daha fazla zaman ayır.",
+          "Next": "second_album",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Düzenlemeyi sadeleştirip albümü tamamla.",
+          "Next": "second_album",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "songcraft": {
+      "Title": "Şarkı nasıl hatırlanır?",
+      "Chapter": 1,
+      "Text": "Bir şarkının akılda kalması yalnızca nakaratına bağlı değildir. Söz, melodi, ritim, ses rengi ve dinleyicinin o şarkıyı hangi anda duyduğu birlikte bir hafıza oluşturur. Albümün farklı parçaları aynı sanatçıya ait olsa da her biri başka bir kapı açabilir. Dinleyicinin sevdiği sesi korumak ile onu şaşırtmak arasında ince bir denge kurmaya çalışıyorsun.",
+      "Choices": [
+        {
+          "Text": "Dinleyicinin kolayca eşlik edeceği bir düzen kur.",
+          "Next": "smari",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Beklenmedik bir sesle parçaya yeni renk kat.",
+          "Next": "smari",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "translation": {
+      "Title": "Başka ülkelerde duyulmak",
+      "Chapter": 2,
+      "Text": "Şımarık’ın farklı ülkelerde duyulması şarkının yeni dillere ve pazarlara taşınması ihtimalini büyüttü. Bir parçayı başka bir ülkede tanıtmak yalnızca çeviri meselesi değildir; ritmin, mizahın ve duygunun nasıl karşılanacağını da düşünmek gerekir. Her dinleyici aynı göndermeleri bilmez, ama güçlü bir melodi dil sınırlarının ötesine geçebilir.",
+      "Choices": [
+        {
+          "Text": "Tanıtımda parçanın ritmini öne çıkar.",
+          "Next": "world",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Şarkının Türkçe kökenini ve hikâyesini anlat.",
+          "Next": "world",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "award_night": {
+      "Title": "Ödül gecesi",
+      "Chapter": 2,
+      "Text": "1999’da Tarkan Dünya Müzik Ödülü aldı. Böyle bir ödül, sahnede birkaç dakika sürse de arkasında uzun bir üretim dönemi ve farklı ülkelerde kurulan dinleyici bağı vardır. Ödül gecesi kariyerin tamamı değildir; ama insanların bir sanatçıyı hangi dönemde keşfettiğini gösteren bir işaret olarak kalabilir. Bu sahne gerçek törenin ayrıntılarını yeniden kurmaz.",
+      "Choices": [
+        {
+          "Text": "Ekibin emeğini görünür kıl.",
+          "Next": "english",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Ödül sonrası yeni üretime odaklan.",
+          "Next": "english",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "new_audience": {
+      "Title": "Yeni albüm, yeni dil",
+      "Chapter": 3,
+      "Text": "Come Closer ile İngilizce şarkılar yeni bir dinleyiciye ulaşma ihtimali taşıdı. Yeni dilde kayıt yapmak, sanatçının sesini farklı bir bağlama yerleştirir. Tanıdık dinleyici için bu bir değişim; yeni dinleyici içinse ilk karşılaşma olabilir. Albümün hazırlanması uluslararası müzisyenlerle çalışmayı ve farklı üretim süreçlerini bir araya getirmeyi de içeriyordu.",
+      "Choices": [
+        {
+          "Text": "Yeni ortaklıklarla ses alanını genişlet.",
+          "Next": "independent",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Türkçe repertuvarı da aynı dönemde canlı tut.",
+          "Next": "independent",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "next_record": {
+      "Title": "Üretim kararları",
+      "Chapter": 3,
+      "Text": "HITT Müzik çatısı altında üretim kararlarını sahiplenmek, sanatçıya kendi yönünü çizme olanağı verdi. Kendi üretim alanını kurmak dışarıdan yalnızca özgürlük gibi görünür; gerçekte ekip, zamanlama, bütçe ve yaratıcı sorumluluk da sanatçının gündemine girer. 2003’te yayımlanan Dudu bu dönemin öne çıkan albümlerinden biri oldu.",
+      "Choices": [
+        {
+          "Text": "Albümün bütünlüğünü koruyan bir plan yap.",
+          "Next": "dudu_period",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Tek bir parçanın güçlü çıkışına yatırım yap.",
+          "Next": "dudu_period",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "dudu_period": {
+      "Title": "Dudu dönemi",
+      "Chapter": 4,
+      "Text": "Aynı adlı albüm ve şarkı Türkiye dışındaki dinleyicilere de ulaştı. Bir parçanın farklı ülkelerde karşılık bulması, önceki dönemde atılan adımların devamı olabilir; yine de her yeni albüm kendi sınavını verir. Dinleyici eski favorilerini isterken sanatçı yeni bir şey söylemek ister. Bu ikisi birbirine rakip olmak zorunda değil, ancak denge kendiliğinden kurulmaz.",
+      "Choices": [
+        {
+          "Text": "Albümde farklı müzikal renkleri bir arada tut.",
+          "Next": "live_stage",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Tek bir güçlü anlatı etrafında toplan.",
+          "Next": "live_stage",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "live_stage": {
+      "Title": "Canlı sahne",
+      "Chapter": 4,
+      "Text": "Albümün stüdyodaki hali ile sahnedeki hali aynı değildir. Canlı performansta dinleyici ritme katılır; şarkı her gece başka bir enerji kazanır. Büyük salonlarda teknik hazırlık ve ekip uyumu önemlidir. Sahne, kayıtlı eseri tekrar etmekten fazlasına dönüşür: sanatçı ile dinleyici aynı anda aynı yerde bulunur.",
+      "Choices": [
+        {
+          "Text": "Seyirciyle doğrudan iletişim kur.",
+          "Next": "changing_market",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Müziğin akışını ve sahne düzenini öne çıkar.",
+          "Next": "changing_market",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "changing_market": {
+      "Title": "Değişen müzik piyasası",
+      "Chapter": 5,
+      "Text": "Fiziksel albüm satışlarının gerilediği yıllarda müzik dinleme alışkanlıkları da değişti. Sanatçılar albümün yanında tekli yayınları, dijital platformları ve konserleri yeniden değerlendirmek zorunda kaldı. Değişim, eski yöntemlerin tümden bırakılması anlamına gelmez; dinleyicinin müziğe nasıl ulaştığını anlamayı gerektirir. Bu sahne belirli bir kararın gerçek kişiye ait olduğunu iddia etmez.",
+      "Choices": [
+        {
+          "Text": "Dijital yayınlara ağırlık ver.",
+          "Next": "lasting_song",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Albüm fikrini ve uzun anlatıyı koru.",
+          "Next": "lasting_song",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "lasting_song": {
+      "Title": "Şarkının ömrü",
+      "Chapter": 5,
+      "Text": "Bir şarkı yayımlandığı dönemin ötesinde yaşamaya devam edebilir. Düğünlerde, yolculuklarda, arkadaş sohbetlerinde ya da yıllar sonra açılan bir çalma listesinde yeniden duyulur. Sanatçı için bu, eserin kendi hayatını kurduğunu görmek demektir. Popülerlik ölçülebilir; bir şarkının kişisel hafızalardaki yerini ölçmek daha zordur.",
+      "Choices": [
+        {
+          "Text": "Yeni kuşaklara ulaşmak için yeni düzenlemeler dene.",
+          "Next": "ending_legacy",
+          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Effects": {
+            "craft": 2
+          }
+        },
+        {
+          "Text": "Orijinal kayıtların kendi zamanını taşımasına izin ver.",
+          "Next": "ending_roots",
+          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Effects": {
+            "connection": 2
+          }
+        }
+      ]
+    },
+    "ending_legacy": {
+      "Title": "Şarkılar yol alıyor",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, müziğini yeni dinleyici kuşaklarıyla buluşturmaya devam ettin. Tarkan’ın kamuya açık kariyerinde albümler, sahne çalışmaları ve farklı coğrafyalara ulaşan şarkılar önemli yer tutuyor. Oyuncunun verdiği kararlar alternatif hikâye rotasıdır; gerçek kişinin özel düşüncelerini veya yaşanmamış kararlarını anlatmaz.",
+      "Ending": "Şarkılar yol alıyor"
+    },
+    "ending_roots": {
+      "Title": "Köklerden yeni seslere",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, uluslararası deneyimle Türkçe üretim arasında kendi dengenı kurdun. Gerçek kariyerin dönüm noktaları kamuya açık biyografik bilgilerden alınmıştır; bu final ve seçimler oyuncu için yazılmış alternatif anlatıdır.",
+      "Ending": "Köklerden yeni seslere"
+    }
+  }
+}
