@@ -19,6 +19,7 @@ import 'game/session.dart';
 import 'platform/play_billing.dart';
 import 'platform/google_ads.dart';
 import 'ui/game_controller.dart';
+import 'ui/intro_screen.dart';
 import 'ui/start_screen.dart';
 import 'ui/story_screen.dart';
 
@@ -45,6 +46,7 @@ class LifeSimulationApp extends StatefulWidget {
     await preferences.load();
     await LocalCrypto.unlock();
     final content = await loadBundledContent();
+    IntroDeck.current = await IntroDeck.load();
     final dir = await getApplicationSupportDirectory();
     final game = GameController(
       GameSession(content, SaveService('${dir.path}/savegame.json')),
@@ -105,6 +107,16 @@ class _LifeSimulationAppState extends State<LifeSimulationApp> with WidgetsBindi
               if (snap.hasError) return _Failure(error: snap.error!);
               final game = _controller = snap.data;
               if (game == null) return const _Splash();
+              // İlk açılışta tanıtım, güncellemeden sonra yalnızca yenilikler.
+              final intro = IntroDeck.current;
+              final pending = intro.pendingFor(preferences.introSeen);
+              if (pending.isNotEmpty) {
+                return IntroScreen(
+                  pages: pending,
+                  whatsNew: preferences.introSeen > 0,
+                  onDone: () => preferences.setIntroSeen(intro.latest),
+                );
+              }
               return ListenableBuilder(
                 listenable: game,
                 builder: (context, _) => game.inGame

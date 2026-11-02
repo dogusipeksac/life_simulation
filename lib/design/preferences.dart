@@ -5,6 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 class VitaPreferences extends ChangeNotifier {
   SharedPreferences? _store;
   int readingSize = 38;
+
+  /// Görülen son tanıtım sürümü (0: hiç görülmedi).
+  int introSeen = 0;
   bool dark = true, motion = true, sound = true, haptics = true;
   Future<void> load() async {
     _store = await SharedPreferences.getInstance();
@@ -13,6 +16,7 @@ class VitaPreferences extends ChangeNotifier {
     motion = _store!.getBool('motion') ?? true;
     sound = _store!.getBool('sound') ?? true;
     haptics = _store!.getBool('haptics') ?? true;
+    introSeen = _store!.getInt('introSeen') ?? 0;
     notifyListeners();
   }
 
@@ -37,6 +41,12 @@ class VitaPreferences extends ChangeNotifier {
     readingSize = value.clamp(32, 50);
     notifyListeners();
     await _store?.setInt('readingSize', readingSize);
+  }
+
+  Future<void> setIntroSeen(int version) async {
+    introSeen = version;
+    notifyListeners();
+    await _store?.setInt('introSeen', version);
   }
 
   void feedback({bool strong = false}) {

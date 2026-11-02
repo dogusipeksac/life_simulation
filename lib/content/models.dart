@@ -601,3 +601,34 @@ class LifeMoment {
 
   bool get timed => interaction.type == 'timer';
 }
+
+/// İş mülakatı sorusu (interviews.json). [theme] boşsa her meslekte sorulabilir.
+class InterviewQuestion {
+  InterviewQuestion.fromJson(Json j)
+    : id = _str(j['Id']),
+      theme = _str(j['Theme']),
+      question = _str(j['Question']),
+      answers = [
+        for (final a in (j['Answers'] as List? ?? const []))
+          InterviewAnswer.fromJson(a as Json),
+      ];
+
+  final String id, theme, question;
+  final List<InterviewAnswer> answers;
+}
+
+/// Cevap puanı -3..3. [stat] verilmişse, oyuncunun o statı [min] altındaysa
+/// cevap blöf sayılır: puan -1 olur ve [failReply] gösterilir.
+class InterviewAnswer {
+  InterviewAnswer.fromJson(Json j)
+    : text = _str(j['Text']),
+      score = _int(j['Score']),
+      reply = _str(j['Reply']),
+      statName = _str(j['Stat']),
+      min = _int(j['Min']),
+      failReply = _str(j['FailReply']);
+
+  final String text, reply, statName, failReply;
+  final int score, min;
+  Stat? get stat => enumByName(Stat.values, statName);
+}

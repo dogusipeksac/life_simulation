@@ -1,0 +1,53 @@
+{
+ "_note": "Since: sayfanın eklendiği tanıtım sürümü. Yeni güncellemede yeni sayfalar daha büyük Since ile eklenir; eski oyuncular yalnızca onları 'Yenilikler' olarak görür.",
+ "Pages": [
+  {
+   "Id": "welcome", "Since": 1, "Icon": "auto_stories", "Kicker": "HOŞ GELDİN",
+   "Title": "Bir hayatın kitabı",
+   "Body": "Hayat Simülasyonu, doğumdan yaşlılığa bir hayatı kararlarınla yazdığın Türkçe bir metin oyunu. Her sahne bir sayfa, her seçim bir iz.",
+   "Points": ["Tamamen Türkçe, hesap gerektirmez", "Kaydın yalnızca cihazında, şifreli durur", "Her hayat bambaşka başlar"]
+  },
+  {
+   "Id": "fate", "Since": 1, "Icon": "casino", "Kicker": "KADER",
+   "Title": "Nerede doğacağını kader seçer",
+   "Body": "Adını sen koyarsın. Hangi şehirde, hangi ailede, kimin yanında büyüyeceğin ve nasıl biri olacağın ise rastgele belirlenir. Her dönemin önceliği de kendiliğinden değişir.",
+   "Points": ["100 farklı aile ortamı", "Mizacın ve hayalin her hayatta başka", "Beğenmezsen yeni bir hayata başlayabilirsin"]
+  },
+  {
+   "Id": "play", "Since": 1, "Icon": "touch_app", "Kicker": "NASIL OYNANIR",
+   "Title": "Oku, seç, yaşa",
+   "Body": "Hikâye sekmesinde sahneyi okur, bir seçenek seçersin. Seçimlerin sağlığını, mutluluğunu, eğitimini, ilişkilerini ve paranı değiştirir. Zaman ilerledikçe yaşın, okulun ve işin değişir.",
+   "Points": ["Kilitli seçenekler, neyin eksik olduğunu söyler", "Bazı kararlar yıllar sonra karşına çıkar", "Sağlığın biterse hayatın da biter"]
+  },
+  {
+   "Id": "moments", "Since": 1, "Icon": "gesture", "Kicker": "ETKİLEŞİMLİ ANLAR",
+   "Title": "Sadece okuma, yap",
+   "Body": "Hayatın içine serpiştirilmiş anlarda bebeğini ninniyle uyutur, bisiklette dengeni bulur, ilk maaşını faturalar arasında paylaştırırsın.",
+   "Points": ["Zamanlama, eşleştirme, bütçe, sıralama", "Süreli kararlar ve hafıza oyunları", "İyi oynarsan küçük bir bonus kazanırsın"]
+  },
+  {
+   "Id": "career", "Since": 1, "Icon": "work_outline", "Kicker": "KARİYER",
+   "Title": "İşe başvur, mülakata gir",
+   "Body": "Kariyer sekmesinde açık ilanları görürsün. Başvurduğunda görüşmeci sana sorular sorar; cevapların kabul şansını yükseltir ya da düşürür. Bilmediğin bir konuda blöf yaparsan fark edilebilir.",
+   "Points": ["103 meslek, terfiler ve maaşlar", "Eğitimin ve becerilerin cevaplarını güçlendirir", "Olumsuz sonuçta bir süre beklemen gerekir"]
+  },
+  {
+   "Id": "people", "Since": 1, "Icon": "people_outline", "Kicker": "İLİŞKİLER",
+   "Title": "Bağlarını güçlendir",
+   "Body": "İlişkiler sekmesinde ailen, arkadaşların ve sevdiklerin var. Onlarla zaman geçir, etkinliklere katıl; ihmal edilen bağlar zamanla zayıflar.",
+   "Points": ["Her yaşta sınırlı etkinlik hakkı", "Evlilik, çocuklar, kayıplar", "Profil'de hedefler ve başarımlar"]
+  },
+  {
+   "Id": "library", "Since": 1, "Icon": "library_books_outlined", "Kicker": "HİKÂYE KÜTÜPHANESİ",
+   "Title": "Başka bir hayat dene",
+   "Body": "Kütüphane sekmesindeki kitaplar ana hayatından bağımsız, dallanan uzun hikâyeler. Şifre çözer, kanıt arar, süreli kararlar verirsin. Her kitabın birden çok sonu var.",
+   "Points": ["İlk kitap: Son Vapur", "Yeni kitaplar güncellemelerle gelecek", "Kaldığın yerden devam edebilirsin"]
+  },
+  {
+   "Id": "free", "Since": 1, "Icon": "card_giftcard", "Kicker": "ÜCRETSİZ",
+   "Title": "Ücretsiz oyna",
+   "Body": "Oyun ücretsizdir ve reklam içerir. Ödüllü reklamlar her zaman isteğe bağlıdır: ikinci şans, ek etkinlik hakkı ya da derin bir nefes için izleyebilirsin.",
+   "Points": ["Geçiş reklamları yalnızca molalarda", "Reklam gizlilik seçenekleri Profil'de", "Bu tanıtımı Profil › Nasıl oynanır'dan tekrar açabilirsin"]
+  }
+ ]
+}

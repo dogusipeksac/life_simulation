@@ -14,6 +14,7 @@ import '../game/story_library.dart';
 import '../game/story_store.dart';
 import '../game/family.dart';
 import '../game/save.dart';
+import '../game/interview.dart';
 import '../game/session.dart';
 import '../game/state.dart';
 
@@ -331,7 +332,15 @@ class GameController extends ChangeNotifier {
     return result;
   }
 
-  ActionResult applyCareer(String id) => _update(session.applyCareer(id));
+  ActionResult applyCareer(String id, {Interview? interview}) =>
+      _update(session.applyCareer(id, interview: interview));
+
+  /// Başvuru mülakatı; hayat bitmişse ya da meslek yoksa null.
+  Interview? interviewFor(String careerId) {
+    final s = state, c = session.content.careers[careerId];
+    if (s == null || c == null || session.content.interviews.isEmpty) return null;
+    return Interview.create(session.content, s, c);
+  }
   ActionResult trustFate() => _update(session.trustFate());
   void quitCareer() {
     session.quitCareer();

@@ -18,6 +18,7 @@ import 'events.dart';
 import 'family.dart';
 import 'fate.dart';
 import 'rng.dart';
+import 'interview.dart';
 import 'progression.dart';
 import 'social.dart';
 import 'wedding.dart';
@@ -354,9 +355,10 @@ class GameSession {
     return ActionResult(result.$1, result.$2);
   }
 
-  ActionResult applyCareer(String id) => state == null || state!.isGameOver
+  ActionResult applyCareer(String id, {Interview? interview}) => state == null || state!.isGameOver
       ? const ActionResult(false, 'Oyun devam etmiyor.')
-      : _commit(progression.apply(state!, id, _rng!));
+      : _commit(progression.apply(state!, id, _rng!,
+          bonus: interview?.bonus ?? 0, rejected: interview?.rejected ?? false));
   ActionResult trustFate() => state == null || state!.isGameOver
       ? const ActionResult(false, 'Oyun devam etmiyor.')
       : _commit(progression.fate(state!, _rng!));

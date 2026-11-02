@@ -1,0 +1,842 @@
+[
+ {
+  "Id": "g_kendin",
+  "Theme": "",
+  "Question": "Bize biraz kendinden bahseder misin?",
+  "Answers": [
+   {
+    "Text": "Kısaca: neyi iyi yaptığımı ve burada neyi öğrenmek istediğimi anlatayım.",
+    "Score": 2,
+    "Reply": "Görüşmeci not alıyor. \"Net, güzel.\""
+   },
+   {
+    "Text": "Doğduğum günden başlayayım mı?",
+    "Score": -1,
+    "Reply": "Görüşmeci saatine bakıyor."
+   },
+   {
+    "Text": "İnsanlarla iyi anlaşırım; ekip içinde ortamı toparlayan kişi genelde ben olurum.",
+    "Score": 3,
+    "Reply": "Görüşmeci gülümsüyor; sohbet kendiliğinden akıyor.",
+    "Stat": "Social",
+    "Min": 55,
+    "FailReply": "Söylediğin ile oturuşun birbirini tutmuyor; görüşmeci kısa bir \"hı hı\" ile geçiyor."
+   }
+  ]
+ },
+ {
+  "Id": "g_zayif",
+  "Theme": "",
+  "Question": "En büyük zayıf yönün ne?",
+  "Answers": [
+   {
+    "Text": "Bazen fazla titizim ama bunun üzerinde çalışıyorum; örnek vereyim.",
+    "Score": 2,
+    "Reply": "Somut örnek işe yarıyor."
+   },
+   {
+    "Text": "Hiç zayıf yönüm yok.",
+    "Score": -2,
+    "Reply": "Görüşmeci kaşını kaldırıyor."
+   },
+   {
+    "Text": "Sabahları pek çalışamam.",
+    "Score": -1,
+    "Reply": "Görüşmeci bir şey not alıyor; iyi bir şey olmadığı belli."
+   }
+  ]
+ },
+ {
+  "Id": "g_neden",
+  "Theme": "",
+  "Question": "Neden bu işi istiyorsun?",
+  "Answers": [
+   {
+    "Text": "İlanı okuyunca yapabileceğimi düşündüm; şirketi de araştırdım.",
+    "Score": 2,
+    "Reply": "Araştırman dikkat çekiyor."
+   },
+   {
+    "Text": "Para lazım, açıkçası.",
+    "Score": 0,
+    "Reply": "Dürüstlüğün takdir ediliyor ama yeterli değil."
+   },
+   {
+    "Text": "Bu alanda uzun süredir kendimi geliştiriyorum; okuduklarımı uygulamak istiyorum.",
+    "Score": 3,
+    "Reply": "Görüşmeci hangi kaynakları okuduğunu soruyor; rahatça anlatıyorsun.",
+    "Stat": "Education",
+    "Min": 55,
+    "FailReply": "Hangi kaynak diye sorulunca aklına tek bir isim gelmiyor."
+   }
+  ]
+ },
+ {
+  "Id": "g_bes_yil",
+  "Theme": "",
+  "Question": "Beş yıl sonra kendini nerede görüyorsun?",
+  "Answers": [
+   {
+    "Text": "Bu ekipte sorumluluk almış, işi öğretebilen biri olarak.",
+    "Score": 2,
+    "Reply": "Uzun vadeli düşünmen hoş karşılanıyor."
+   },
+   {
+    "Text": "Sizin yerinizde.",
+    "Score": 0,
+    "Reply": "Görüşmeci gülüyor; şakayı mı ciddiyeti mi aldığı belli değil."
+   },
+   {
+    "Text": "Bilmiyorum, belki başka bir şehirde.",
+    "Score": -1,
+    "Reply": "Görüşmeci kalemi bırakıyor."
+   }
+  ]
+ },
+ {
+  "Id": "g_catisma",
+  "Theme": "",
+  "Question": "Bir iş arkadaşınla anlaşamazsan ne yaparsın?",
+  "Answers": [
+   {
+    "Text": "Önce baş başa konuşur, ortak bir yol ararım.",
+    "Score": 2,
+    "Reply": "Olgun bir cevap."
+   },
+   {
+    "Text": "Hemen yöneticiye giderim.",
+    "Score": 0,
+    "Reply": "Görüşmeci başını sallıyor ama ikna olmuş görünmüyor."
+   },
+   {
+    "Text": "Kimseyle anlaşamamazlık yaşamam, herkes beni sever.",
+    "Score": -1,
+    "Reply": "Görüşmeci gülümsüyor; inanmadığı belli."
+   }
+  ]
+ },
+ {
+  "Id": "g_soru",
+  "Theme": "",
+  "Question": "Son olarak, bize sormak istediğin bir şey var mı?",
+  "Answers": [
+   {
+    "Text": "Ekipte ilk üç ayda benden ne bekliyorsunuz?",
+    "Score": 2,
+    "Reply": "\"Güzel soru\" diyor; anlatırken gözleri parlıyor."
+   },
+   {
+    "Text": "Yok, teşekkürler.",
+    "Score": 0,
+    "Reply": "Görüşme sessizce bitiyor."
+   },
+   {
+    "Text": "Ne kadar izin var?",
+    "Score": -1,
+    "Reply": "Görüşmeci bir an duraksıyor."
+   }
+  ]
+ },
+ {
+  "Id": "gas_kalabalik",
+  "Theme": "Gastronomi ve Ağırlama",
+  "Question": "Öğle yoğunluğunda on masa birden sipariş bekliyor. Ne yaparsın?",
+  "Answers": [
+   {
+    "Text": "Sırayı not alır, mutfağa tek seferde iletir, her masaya bir dakikalık bilgi veririm.",
+    "Score": 3,
+    "Reply": "Görüşmeci, kendi ilk günlerini hatırlıyor gibi gülümsüyor."
+   },
+   {
+    "Text": "En yakın masadan başlarım.",
+    "Score": 1,
+    "Reply": "Fena değil, ama düzensiz."
+   },
+   {
+    "Text": "Panik yapmam ama yavaşlarım.",
+    "Score": -1,
+    "Reply": "Görüşmeci \"burada yavaşlık pahalı\" diyor."
+   }
+  ]
+ },
+ {
+  "Id": "gas_sikayet",
+  "Theme": "Gastronomi ve Ağırlama",
+  "Question": "Müşteri yemeğin soğuk geldiğini söyleyip sesini yükseltiyor.",
+  "Answers": [
+   {
+    "Text": "Özür diler, tabağı hemen yeniletir, beklerken bir ikram öneririm.",
+    "Score": 3,
+    "Reply": "\"İşte bu\" diyor görüşmeci."
+   },
+   {
+    "Text": "Mutfağın hatası olduğunu açıklarım.",
+    "Score": -1,
+    "Reply": "Suçu başkasına atmak hoş karşılanmıyor."
+   },
+   {
+    "Text": "Sakince dinler, şefe iletirim.",
+    "Score": 1,
+    "Reply": "Doğru ama eksik."
+   }
+  ]
+ },
+ {
+  "Id": "gas_hijyen",
+  "Theme": "Gastronomi ve Ağırlama",
+  "Question": "Çiğ tavuk ile salatayı aynı tezgâhta hazırlamak gerekirse?",
+  "Answers": [
+   {
+    "Text": "Ayrı tahta ve bıçak kullanırım; arada tezgâhı dezenfekte ederim.",
+    "Score": 3,
+    "Reply": "Görüşmeci hijyen listesini bile çıkarmadan onaylıyor.",
+    "Stat": "Education",
+    "Min": 35,
+    "FailReply": "Ayrı tahta deyince hangi rengin neye ait olduğunu soruyor; bilmiyorsun."
+   },
+   {
+    "Text": "Önce salatayı, sonra tavuğu hazırlarım.",
+    "Score": 1,
+    "Reply": "Mantıklı bir sıra, yine de eksik."
+   },
+   {
+    "Text": "Hızlıca yıkarım, sorun olmaz.",
+    "Score": -2,
+    "Reply": "Görüşmeci yüzünü buruşturuyor."
+   }
+  ]
+ },
+ {
+  "Id": "bil_hata",
+  "Theme": "Bilim ve Mühendislik",
+  "Question": "Projede senin hesap hatan fark edildi, teslim yarın.",
+  "Answers": [
+   {
+    "Text": "Hatayı hemen bildirir, düzeltme planını ve yeni süreyi sunarım.",
+    "Score": 3,
+    "Reply": "Sorumluluk almak puan kazandırıyor."
+   },
+   {
+    "Text": "Kimse fark etmeden gece düzeltirim.",
+    "Score": 0,
+    "Reply": "Görüşmeci \"ya yetişmezse?\" diye soruyor."
+   },
+   {
+    "Text": "Verinin hatalı geldiğini söylerim.",
+    "Score": -2,
+    "Reply": "Görüşmeci not alıyor; iyi bir not değil."
+   }
+  ]
+ },
+ {
+  "Id": "bil_teknik",
+  "Theme": "Bilim ve Mühendislik",
+  "Question": "Bir ölçüm sürekli beklenenden yüzde beş sapıyor. İlk neye bakarsın?",
+  "Answers": [
+   {
+    "Text": "Cihaz kalibrasyonuna ve ölçüm koşullarına; sonra yöntemin kendisine.",
+    "Score": 3,
+    "Reply": "Görüşmeci tahtaya bir diyagram çiziyor, birlikte konuşuyorsunuz.",
+    "Stat": "Education",
+    "Min": 60,
+    "FailReply": "Kalibrasyonun nasıl yapıldığını sorunca cümlen yarıda kalıyor."
+   },
+   {
+    "Text": "Ölçümü birkaç kez tekrarlarım.",
+    "Score": 1,
+    "Reply": "Başlangıç için makul."
+   },
+   {
+    "Text": "Beş yüzde çok değil, geçerim.",
+    "Score": -2,
+    "Reply": "Görüşmeci sessizleşiyor."
+   }
+  ]
+ },
+ {
+  "Id": "bil_ekip",
+  "Theme": "Bilim ve Mühendislik",
+  "Question": "Ekipte senden daha deneyimli biri yanlış bir yaklaşımda ısrar ediyor.",
+  "Answers": [
+   {
+    "Text": "Verilerle küçük bir deneme önerir, sonucu birlikte değerlendiririz.",
+    "Score": 3,
+    "Reply": "\"Kanıtla konuşmak\" görüşmecinin hoşuna gidiyor."
+   },
+   {
+    "Text": "Deneyimli olduğu için uyarım.",
+    "Score": 0,
+    "Reply": "Görüşmeci biraz hayal kırıklığına uğruyor."
+   },
+   {
+    "Text": "Toplantıda herkesin önünde yanıldığını söylerim.",
+    "Score": -1,
+    "Reply": "Görüşmeci \"ekip içinde mi?\" diye soruyor."
+   }
+  ]
+ },
+ {
+  "Id": "sag_hasta",
+  "Theme": "Sağlık ve Bakım",
+  "Question": "Hasta ilacını almak istemiyor ve sana bağırıyor.",
+  "Answers": [
+   {
+    "Text": "Sakin kalır, neden korktuğunu sorar, gerekirse ekibe haber veririm.",
+    "Score": 3,
+    "Reply": "Görüşmeci başhemşireye bakıp başıyla onaylıyor.",
+    "Stat": "Social",
+    "Min": 45,
+    "FailReply": "Sakin kalırım diyorsun ama sesin titriyor; görüşmeci bunu fark ediyor."
+   },
+   {
+    "Text": "İlacı vermeden çıkar, sonra tekrar gelirim.",
+    "Score": 1,
+    "Reply": "Zamanlama bazen işe yarar."
+   },
+   {
+    "Text": "Zorla veririm, kuralı bu.",
+    "Score": -3,
+    "Reply": "Görüşme orada soğuyor."
+   }
+  ]
+ },
+ {
+  "Id": "sag_vardiya",
+  "Theme": "Sağlık ve Bakım",
+  "Question": "On iki saatlik gece vardiyalarına nasıl dayanırsın?",
+  "Answers": [
+   {
+    "Text": "Uyku düzenimi korur, beslenmeme dikkat eder, molaları atlamam.",
+    "Score": 2,
+    "Reply": "Gerçekçi bir cevap.",
+    "Stat": "Health",
+    "Min": 50,
+    "FailReply": "Görüşmeci yorgun görünüp görünmediğini soruyor; dürüstçe cevap veremiyorsun."
+   },
+   {
+    "Text": "Kahveyle.",
+    "Score": 0,
+    "Reply": "Görüşmeci gülüyor ama not almıyor."
+   },
+   {
+    "Text": "Bilmiyorum, hiç denemedim ama alışırım.",
+    "Score": 1,
+    "Reply": "Dürüst; deneme süresinde göreceklerini söylüyor."
+   }
+  ]
+ },
+ {
+  "Id": "sag_gizlilik",
+  "Theme": "Sağlık ve Bakım",
+  "Question": "Bir komşun, sizin serviste yatan akrabasının durumunu soruyor.",
+  "Answers": [
+   {
+    "Text": "Bilgi veremeyeceğimi nazikçe söyler, doktora yönlendiririm.",
+    "Score": 3,
+    "Reply": "Gizliliğe saygın puan kazandırıyor."
+   },
+   {
+    "Text": "Genel bir şey söylerim, ayrıntı vermem.",
+    "Score": -1,
+    "Reply": "Görüşmeci \"genel bir şey de bilgidir\" diyor."
+   },
+   {
+    "Text": "Tanıdık olduğu için anlatırım.",
+    "Score": -3,
+    "Reply": "Görüşmeci dosyayı kapatıyor."
+   }
+  ]
+ },
+ {
+  "Id": "tek_bug",
+  "Theme": "Teknoloji ve Dijital",
+  "Question": "Canlı sistemde hata var, kullanıcılar giriş yapamıyor.",
+  "Answers": [
+   {
+    "Text": "Önce son değişikliği geri alırım, sonra kayıtlardan nedeni bulurum.",
+    "Score": 3,
+    "Reply": "Görüşmeci \"önce kanamayı durdur\" diyerek onaylıyor.",
+    "Stat": "Education",
+    "Min": 50,
+    "FailReply": "Geri almayı nasıl yapacağını sorunca terimler karışıyor."
+   },
+   {
+    "Text": "Hatayı bulana kadar kodu incelerim.",
+    "Score": 1,
+    "Reply": "Doğru ama kullanıcılar bekliyor."
+   },
+   {
+    "Text": "Mesai bitince bakarım.",
+    "Score": -3,
+    "Reply": "Görüşmeci gülmüyor."
+   }
+  ]
+ },
+ {
+  "Id": "tek_ogrenme",
+  "Theme": "Teknoloji ve Dijital",
+  "Question": "Hiç bilmediğin bir aracı bir haftada öğrenmen gerekiyor.",
+  "Answers": [
+   {
+    "Text": "Belgelerine bakar, küçük bir örnek proje yapar, takıldığımda sorarım.",
+    "Score": 3,
+    "Reply": "Görüşmeci bunu her gün yaptıklarını söylüyor."
+   },
+   {
+    "Text": "Bir kursa yazılırım.",
+    "Score": 1,
+    "Reply": "Olur, ama bir hafta kısa."
+   },
+   {
+    "Text": "Bilmediğim aracı kullanmam.",
+    "Score": -2,
+    "Reply": "Görüşmeci \"burada her şey değişiyor\" diyor."
+   }
+  ]
+ },
+ {
+  "Id": "tek_veri",
+  "Theme": "Teknoloji ve Dijital",
+  "Question": "Müşterinin kişisel verilerini test için kullanmak gerekirse?",
+  "Answers": [
+   {
+    "Text": "Anonimleştirilmiş ya da sahte veri kullanırım.",
+    "Score": 3,
+    "Reply": "Görüşmeci rahatlıyor."
+   },
+   {
+    "Text": "Sadece ben görürsem sorun yok.",
+    "Score": -2,
+    "Reply": "Görüşmeci hukuk ekibini hatırlatıyor."
+   },
+   {
+    "Text": "Yöneticime sorarım.",
+    "Score": 1,
+    "Reply": "Güvenli bir cevap."
+   }
+  ]
+ },
+ {
+  "Id": "san_elestiri",
+  "Theme": "Sanat ve Zanaat",
+  "Question": "Emek verdiğin işin sert biçimde eleştirildi.",
+  "Answers": [
+   {
+    "Text": "Dinler, haklı olanları ayıklar, bir sonraki taslakta uygularım.",
+    "Score": 3,
+    "Reply": "Görüşmeci portfolyonda bir sayfayı açıp \"şunu nasıl yapardın?\" diyor."
+   },
+   {
+    "Text": "Sanat zevk meselesi derim.",
+    "Score": 0,
+    "Reply": "Kısmen doğru, ama iş birliği istiyorlar."
+   },
+   {
+    "Text": "Bir daha o kişiye iş göstermem.",
+    "Score": -2,
+    "Reply": "Görüşmeci gülümsemiyor."
+   }
+  ]
+ },
+ {
+  "Id": "san_teslim",
+  "Theme": "Sanat ve Zanaat",
+  "Question": "Müşteri teslimden bir gün önce her şeyi değiştirmek istiyor.",
+  "Answers": [
+   {
+    "Text": "Neyin değişebileceğini, neyin süre gerektirdiğini net bir listeyle sunarım.",
+    "Score": 3,
+    "Reply": "Görüşmeci \"profesyonel\" diye not alıyor."
+   },
+   {
+    "Text": "Geceyi yapar, hepsini yetiştiririm.",
+    "Score": 1,
+    "Reply": "Fedakâr ama sürdürülebilir değil."
+   },
+   {
+    "Text": "Reddederim.",
+    "Score": -1,
+    "Reply": "Görüşmeci başka bir yol olup olmadığını soruyor."
+   }
+  ]
+ },
+ {
+  "Id": "san_teknik",
+  "Theme": "Sanat ve Zanaat",
+  "Question": "Bize bir çalışmanın nasıl yapıldığını adım adım anlatır mısın?",
+  "Answers": [
+   {
+    "Text": "Malzemeyi, ölçüyü ve her aşamadaki hatayı nasıl düzelttiğimi anlatırım.",
+    "Score": 3,
+    "Reply": "Ellerinle anlatıyorsun; görüşmeci öne eğiliyor.",
+    "Stat": "Education",
+    "Min": 40,
+    "FailReply": "Adımları anlatırken sıra karışıyor; görüşmeci sabırla bekliyor."
+   },
+   {
+    "Text": "İçimden geldiği gibi yaparım.",
+    "Score": 0,
+    "Reply": "Görüşmeci daha somut bir şey bekliyor."
+   },
+   {
+    "Text": "Bunu sır olarak saklarım.",
+    "Score": -1,
+    "Reply": "Görüşmeci gülüyor ama ikna olmuyor."
+   }
+  ]
+ },
+ {
+  "Id": "doga_hava",
+  "Theme": "Deniz, Doğa ve Tarım",
+  "Question": "Hava raporu kötüleşiyor; iş zamanında bitmeli.",
+  "Answers": [
+   {
+    "Text": "Güvenliği öne alır, işi erteler ve nedenini açıkça yazarım.",
+    "Score": 3,
+    "Reply": "Görüşmeci denizin şakaya gelmediğini biliyor; onaylıyor."
+   },
+   {
+    "Text": "Hızlanır, havadan önce bitiririm.",
+    "Score": 0,
+    "Reply": "Görüşmeci \"bitmezse?\" diye soruyor."
+   },
+   {
+    "Text": "Rapor abartıyordur.",
+    "Score": -2,
+    "Reply": "Görüşmeci başını iki yana sallıyor."
+   }
+  ]
+ },
+ {
+  "Id": "doga_beden",
+  "Theme": "Deniz, Doğa ve Tarım",
+  "Question": "İş günde saatlerce açık havada ve ağır yük demek.",
+  "Answers": [
+   {
+    "Text": "Bedenen hazırım; ağır işte de düzenli çalışırım.",
+    "Score": 2,
+    "Reply": "Görüşmeci elini sıkıyor; sağlam bir tokalaşma.",
+    "Stat": "Health",
+    "Min": 55,
+    "FailReply": "Merdivenden çıkarken soluğun kesildiğini görüşmeci görmüş."
+   },
+   {
+    "Text": "Alışırım.",
+    "Score": 1,
+    "Reply": "Belki."
+   },
+   {
+    "Text": "Ağır işleri başkası yapsa?",
+    "Score": -2,
+    "Reply": "Görüşmeci kahkahayı zor tutuyor."
+   }
+  ]
+ },
+ {
+  "Id": "doga_hasat",
+  "Theme": "Deniz, Doğa ve Tarım",
+  "Question": "Ürünün bir kısmında hastalık gördün.",
+  "Answers": [
+   {
+    "Text": "Hasta bitkileri ayırır, uzmana danışır, yayılmayı izlerim.",
+    "Score": 3,
+    "Reply": "Görüşmeci kendi tarlasında yaşadığını anlatıyor.",
+    "Stat": "Education",
+    "Min": 35,
+    "FailReply": "Hastalığın adını sorunca tahmin yürütüyorsun."
+   },
+   {
+    "Text": "Bütün tarlayı ilaçlarım.",
+    "Score": 0,
+    "Reply": "Pahalı ve gereksiz olabilir."
+   },
+   {
+    "Text": "Görmezden gelirim, belki geçer.",
+    "Score": -2,
+    "Reply": "Görüşmeci yüzünü buruşturuyor."
+   }
+  ]
+ },
+ {
+  "Id": "tic_musteri",
+  "Theme": "Ticaret ve Finans",
+  "Question": "Müşteri büyük bir indirim istiyor, yoksa rakibe gidecek.",
+  "Answers": [
+   {
+    "Text": "İndirim yerine değer katan bir paket önerir, sınırımı bilirim.",
+    "Score": 3,
+    "Reply": "Görüşmeci \"pazarlık bilen biri\" diyor.",
+    "Stat": "Social",
+    "Min": 50,
+    "FailReply": "Pazarlığı canlandırınca ilk teklifte geri adım atıyorsun."
+   },
+   {
+    "Text": "İstediği indirimi veririm.",
+    "Score": -1,
+    "Reply": "Kâr nereye gidiyor?"
+   },
+   {
+    "Text": "Gidebilir derim.",
+    "Score": 0,
+    "Reply": "Sert, ama bazen gerekli."
+   }
+  ]
+ },
+ {
+  "Id": "tic_hesap",
+  "Theme": "Ticaret ve Finans",
+  "Question": "Ay sonu kasa 1.250 lira eksik.",
+  "Answers": [
+   {
+    "Text": "Günlük kayıtları tek tek karşılaştırır, farkı bulana kadar raporlarım.",
+    "Score": 3,
+    "Reply": "Görüşmeci bir tablo açıp seni sınıyor; hızlısın.",
+    "Stat": "Education",
+    "Min": 50,
+    "FailReply": "Tabloyu açınca formüller karışıyor."
+   },
+   {
+    "Text": "Cebimden tamamlarım.",
+    "Score": -1,
+    "Reply": "Sorunu gizlemek kabul görmüyor."
+   },
+   {
+    "Text": "Yöneticiye hemen bildiririm.",
+    "Score": 2,
+    "Reply": "Şeffaflık takdir ediliyor."
+   }
+  ]
+ },
+ {
+  "Id": "tic_risk",
+  "Theme": "Ticaret ve Finans",
+  "Question": "Arkadaşın sana kesin kazandıracak bir yatırım fırsatı fısıldıyor; müşteriye de önerir misin?",
+  "Answers": [
+   {
+    "Text": "Hayır; müşterinin risk profiline uymayan hiçbir şeyi önermem.",
+    "Score": 3,
+    "Reply": "Görüşmeci derin bir nefes alıyor; doğru cevap."
+   },
+   {
+    "Text": "Riskini anlatarak öneririm.",
+    "Score": 0,
+    "Reply": "Görüşmeci kaynağın kim olduğunu soruyor."
+   },
+   {
+    "Text": "Öneririm, kazanırsak herkes mutlu.",
+    "Score": -3,
+    "Reply": "Görüşmeci uyum biriminden bahsediyor."
+   }
+  ]
+ },
+ {
+  "Id": "huk_kural",
+  "Theme": "Hukuk ve Kamu",
+  "Question": "Bir yakının, sırası gelmeden işini hızlandırmanı istiyor.",
+  "Answers": [
+   {
+    "Text": "Kibarca reddeder, doğru süreci anlatırım.",
+    "Score": 3,
+    "Reply": "Görüşmeci dürüstlüğünü not ediyor."
+   },
+   {
+    "Text": "Bir kereliğine yardım ederim.",
+    "Score": -3,
+    "Reply": "Görüşmeci kalemini bırakıyor."
+   },
+   {
+    "Text": "Kimseye zarar vermeyecekse bakarım.",
+    "Score": -1,
+    "Reply": "\"Zarar herkese\" diyor görüşmeci."
+   }
+  ]
+ },
+ {
+  "Id": "huk_metin",
+  "Theme": "Hukuk ve Kamu",
+  "Question": "Önüne yirmi sayfalık bir yönetmelik konuyor: \"Bunu bir sayfada özetle.\"",
+  "Answers": [
+   {
+    "Text": "Amaç, kapsam, yükümlülükler ve yaptırımlar başlıklarıyla özetlerim.",
+    "Score": 3,
+    "Reply": "Özetin görüşmeciyi şaşırtıyor.",
+    "Stat": "Education",
+    "Min": 60,
+    "FailReply": "Başlıkları sayıyorsun ama yaptırım maddesini atlıyorsun."
+   },
+   {
+    "Text": "İlk ve son sayfayı okurum.",
+    "Score": -1,
+    "Reply": "Görüşmeci \"en önemli madde ortada\" diyor."
+   },
+   {
+    "Text": "Zaman verirseniz dikkatlice okurum.",
+    "Score": 1,
+    "Reply": "Dikkatli ama yavaş."
+   }
+  ]
+ },
+ {
+  "Id": "huk_vatandas",
+  "Theme": "Hukuk ve Kamu",
+  "Question": "Öfkeli bir vatandaş gişede sırayı bozuyor.",
+  "Answers": [
+   {
+    "Text": "Sakince dinler, sorununu not alır, sırasının ne zaman geleceğini söylerim.",
+    "Score": 3,
+    "Reply": "Görüşmeci gişede çalıştığı yılları anlatıyor.",
+    "Stat": "Social",
+    "Min": 45,
+    "FailReply": "Canlandırmada sesin yükseliyor."
+   },
+   {
+    "Text": "Güvenliği çağırırım.",
+    "Score": 0,
+    "Reply": "Bazen gerekli, ama ilk adım değil."
+   },
+   {
+    "Text": "Bağırana iş yapmam.",
+    "Score": -2,
+    "Reply": "Görüşmeci kamu hizmetini hatırlatıyor."
+   }
+  ]
+ },
+ {
+  "Id": "med_kaynak",
+  "Theme": "Medya ve Edebiyat",
+  "Question": "Elinde çarpıcı bir haber var ama tek kaynak.",
+  "Answers": [
+   {
+    "Text": "İkinci bir kaynakla doğrulamadan yayımlamam.",
+    "Score": 3,
+    "Reply": "Editör başını sallıyor."
+   },
+   {
+    "Text": "\"İddia\" diye yayımlarım.",
+    "Score": 0,
+    "Reply": "Editör yüzünü buruşturuyor."
+   },
+   {
+    "Text": "Hemen yayımlarım; ilk biz olalım.",
+    "Score": -2,
+    "Reply": "Editör eski bir düzeltme metnini hatırlıyor."
+   }
+  ]
+ },
+ {
+  "Id": "med_yazi",
+  "Theme": "Medya ve Edebiyat",
+  "Question": "Şu cümleyi düzelt: \"Toplantıya katılmayanlar ve geç gelenlerin isimleri yazıldı.\"",
+  "Answers": [
+   {
+    "Text": "\"Toplantıya katılmayanların ve geç gelenlerin isimleri yazıldı.\"",
+    "Score": 3,
+    "Reply": "Editör kırmızı kalemini bırakıyor; aradığı buydu.",
+    "Stat": "Education",
+    "Min": 55,
+    "FailReply": "Cümleyi düzeltirken başka bir yeri bozuyorsun."
+   },
+   {
+    "Text": "Bence doğru zaten.",
+    "Score": -1,
+    "Reply": "Editör hafifçe gülümsüyor."
+   },
+   {
+    "Text": "İki cümleye bölerim.",
+    "Score": 1,
+    "Reply": "İşe yarar, ama sorun hâlâ orada."
+   }
+  ]
+ },
+ {
+  "Id": "med_teslim",
+  "Theme": "Medya ve Edebiyat",
+  "Question": "Yazının teslimine bir saat var, aklında hiç fikir yok.",
+  "Answers": [
+   {
+    "Text": "Son üç günün notlarına bakar, en güçlü küçük ayrıntıdan başlarım.",
+    "Score": 3,
+    "Reply": "Editör \"yazar refleksi\" diyor."
+   },
+   {
+    "Text": "Ek süre isterim.",
+    "Score": 0,
+    "Reply": "Bazen olur, sık olmaz."
+   },
+   {
+    "Text": "İnternetten bir şey bulup uyarlarım.",
+    "Score": -3,
+    "Reply": "Editör intihal yazılımını hatırlatıyor."
+   }
+  ]
+ },
+ {
+  "Id": "spor_baski",
+  "Theme": "Spor, Havacılık ve Özel Beceriler",
+  "Question": "Kritik anda hata yaptın; herkes sana bakıyor.",
+  "Answers": [
+   {
+    "Text": "Nefes alır, bir sonraki harekete odaklanırım; hatayı sonra incelerim.",
+    "Score": 3,
+    "Reply": "Görüşmeci \"soğukkanlılık\" diye not alıyor."
+   },
+   {
+    "Text": "Hatayı telafi etmek için risk alırım.",
+    "Score": 0,
+    "Reply": "Bazen işe yarar, çoğu zaman yaramaz."
+   },
+   {
+    "Text": "Moralim bozulur, bir süre toparlanamam.",
+    "Score": -1,
+    "Reply": "Dürüst ama endişe verici."
+   }
+  ]
+ },
+ {
+  "Id": "spor_kondisyon",
+  "Theme": "Spor, Havacılık ve Özel Beceriler",
+  "Question": "Fiziksel testten geçmen gerekiyor: hazır mısın?",
+  "Answers": [
+   {
+    "Text": "Hazırım; düzenli antrenman yapıyorum.",
+    "Score": 3,
+    "Reply": "Testi rahat geçiyorsun.",
+    "Stat": "Health",
+    "Min": 65,
+    "FailReply": "Testin yarısında soluk soluğa kalıyorsun."
+   },
+   {
+    "Text": "Biraz zaman verirseniz hazırlanırım.",
+    "Score": 1,
+    "Reply": "Görüşmeci bir sonraki dönemi hatırlatıyor."
+   },
+   {
+    "Text": "Test şart mı?",
+    "Score": -2,
+    "Reply": "Görüşmeci cevap vermiyor."
+   }
+  ]
+ },
+ {
+  "Id": "spor_kontrol",
+  "Theme": "Spor, Havacılık ve Özel Beceriler",
+  "Question": "Kontrol listesinde bir madde atlanmış ama zaman çok dar.",
+  "Answers": [
+   {
+    "Text": "Listeyi baştan tamamlarım; gecikmeyi bildiririm.",
+    "Score": 3,
+    "Reply": "Görüşmeci \"listeler kan ile yazılır\" diyor."
+   },
+   {
+    "Text": "O madde önemsizdi, devam ederim.",
+    "Score": -3,
+    "Reply": "Görüşmeci dosyanı kapatıyor."
+   },
+   {
+    "Text": "Bir arkadaşıma kontrol ettiririm.",
+    "Score": 1,
+    "Reply": "Yardım istemek iyi, ama sorumluluk senin."
+   }
+  ]
+ }
+]

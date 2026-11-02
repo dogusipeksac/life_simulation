@@ -32,7 +32,7 @@ class VitaKunye extends StatelessWidget {
   }
 }
 
-/// Altta yüzen dört sekme; ortada profil madalyonu.
+/// Altta yüzen sekmeler: Kütüphane · Kariyer · Hikâye (ortada) · İlişkiler · Profil madalyonu.
 class VitaTabBar extends StatelessWidget {
   const VitaTabBar({
     super.key,
@@ -60,10 +60,22 @@ class VitaTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = context.vita;
-    Widget tab(int i) {
+    Widget tab(int i, {bool featured = false}) {
       final (icon, label) = _tabs[i];
       final selected = !profileSelected && i == index;
       final c = selected ? p.accent : p.muted;
+      // Ortadaki Hikâye sekmesi yuvarlak bir rozetle öne çıkar.
+      final glyph = featured
+          ? Container(
+              width: 34,
+              height: 26,
+              decoration: BoxDecoration(
+                color: selected ? p.accent : p.accent.withValues(alpha: .14),
+                borderRadius: BorderRadius.circular(13),
+              ),
+              child: Icon(icon, size: 19, color: selected ? p.background : p.accent),
+            )
+          : Icon(icon, size: 22, color: c);
       return Expanded(
         child: Semantics(
           selected: selected,
@@ -77,7 +89,7 @@ class VitaTabBar extends StatelessWidget {
             child: SizedBox(
               height: 60,
               child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Icon(icon, size: 22, color: c),
+                glyph,
                 const SizedBox(height: 3),
                 Text(label,
                     maxLines: 1,
@@ -104,10 +116,12 @@ class VitaTabBar extends StatelessWidget {
             boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: p.isDark ? .4 : .08), blurRadius: 20, offset: const Offset(0, 6))],
           ),
           child: Row(children: [
-            tab(0),
+            tab(3),
             tab(1),
+            tab(0, featured: true),
+            tab(2),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
+              padding: const EdgeInsets.only(left: 2, right: 6),
               child: Tooltip(
                 message: 'Profil',
                 child: Semantics(
@@ -138,8 +152,6 @@ class VitaTabBar extends StatelessWidget {
                 ),
               ),
             ),
-            tab(2),
-            tab(3),
           ]),
         ),
       ),

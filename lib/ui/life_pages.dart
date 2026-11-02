@@ -18,6 +18,8 @@ import '../game/wedding.dart';
 import '../game/world.dart';
 import 'game_controller.dart';
 import 'achievements_screen.dart';
+import 'interview_screen.dart';
+import 'intro_screen.dart';
 import 'privacy_screen.dart';
 import 'mini_game.dart';
 
@@ -55,6 +57,15 @@ class _LifePageState extends State<LifePage> {
 
   void result(ActionResult r) {
     setState(() => _message = r.message);
+  }
+
+  /// Başvuru önce mülakattan geçer; vazgeçilirse başvuru yapılmaz.
+  Future<void> _apply(String careerId) async {
+    final interview = game.interviewFor(careerId);
+    if (interview == null) return result(game.applyCareer(careerId));
+    final done = await runInterview(context, interview, s);
+    if (done == null || !mounted) return;
+    result(game.applyCareer(careerId, interview: done));
   }
 
   void go(String page) {
@@ -393,7 +404,7 @@ class _LifePageState extends State<LifePage> {
               VitaButton(
                 label: v.current ? 'Şu anki mesleğin' : 'Başvur',
                 secondary: !v.canApply,
-                onPressed: !s.isGameOver && v.canApply ? () => result(game.applyCareer(v.career.id)) : null,
+                onPressed: !s.isGameOver && v.canApply ? () => _apply(v.career.id) : null,
               ),
             ]),
           ),
@@ -649,6 +660,8 @@ class _LifePageState extends State<LifePage> {
       ]),
       const SizedBox(height: 12),
       SettingGroup(children: [
+        if (IntroDeck.current.pages.isNotEmpty)
+          SettingRow(icon: Icons.help_outline, title: 'Nasıl oynanır?', onTap: () => openIntro(context)),
         SettingRow(icon: Icons.privacy_tip_outlined, title: 'Gizlilik ve bağlantılar', onTap: () => openPrivacy(context)),
         if (!Features.fullAccess && game.ads.privacyOptionsRequired)
           SettingRow(icon: Icons.ads_click, title: 'Reklam gizlilik seçenekleri', onTap: game.showAdPrivacyOptions),

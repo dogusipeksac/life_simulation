@@ -141,6 +141,7 @@ class RawContent {
     required this.scenes,
     required this.stories,
     this.moments = const [],
+    this.interviews = const [],
   });
 
   final List<Json> flags,
@@ -160,6 +161,9 @@ class RawContent {
 
   /// moments.json: ana hayat anları.
   final List<Json> moments;
+
+  /// interviews.json: iş mülakatı soruları.
+  final List<Json> interviews;
 }
 
 ContentIssues validateContent(RawContent c) {
@@ -403,6 +407,7 @@ ContentIssues validateContent(RawContent c) {
   _validateScenes(c.scenes, e);
   c.stories.forEach((file, book) => _validateStory(file, book, e));
   _validateMoments(c, e);
+  _validateInterviews(c, e);
   return e;
 }
 
@@ -810,5 +815,52 @@ void _validateMoments(RawContent c, ContentIssues e) {
         });
       }
     }
+  }
+}
+
+const _interviewKeys = {'Id', 'Theme', 'Question', 'Answers'};
+const _answerKeys = {'Text', 'Score', 'Reply', 'Stat', 'Min', 'FailReply'};
+
+/// Mülakat: her meslek temasına en az iki soru, her soruda iyi bir cevap ve dürüst bir çıkış.
+void _validateInterviews(RawContent c, ContentIssues e) {
+  if (c.interviews.isEmpty) return;
+  final themes = {for (final x in c.careers) x['theme'] as String? ?? ''};
+  final ids = <String>{}, perTheme = <String, int>{};
+  for (final q in c.interviews) {
+    final id = q['Id'] as String? ?? '';
+    final where = 'interviews.json/$id';
+    if (id.isEmpty || !ids.add(id)) e.error(where, 'id boş ya da tekrar ediyor');
+    for (final k in q.keys) {
+      if (!_interviewKeys.contains(k)) e.error(where, "bilinmeyen alan '$k'");
+    }
+    final theme = q['Theme'] as String? ?? '';
+    if (theme.isNotEmpty && !themes.contains(theme)) e.error(where, "tema '$theme' hiçbir meslekte yok");
+    perTheme[theme] = (perTheme[theme] ?? 0) + 1;
+    if ((q['Question'] as String? ?? '').trim().isEmpty) e.error(where, 'soru metni boş');
+    final answers = (q['Answers'] as List? ?? const []).cast<Json>();
+    if (answers.length < 2 || answers.length > 4) e.error(where, '2-4 cevap olmalı');
+    for (final a in answers) {
+      for (final k in a.keys) {
+        if (!_answerKeys.contains(k)) e.error(where, "cevapta bilinmeyen alan '$k'");
+      }
+      if ((a['Text'] as String? ?? '').trim().isEmpty || (a['Reply'] as String? ?? '').trim().isEmpty) {
+        e.error(where, 'cevap metni ve tepki dolu olmalı');
+      }
+      final score = a['Score'] as int? ?? 0;
+      if (score < -3 || score > 3) e.error(where, 'puan -3..3 arasında olmalı');
+      final stat = a['Stat'] as String?;
+      if (stat != null) {
+        if (!const {'Health', 'Happiness', 'Education', 'Social'}.contains(stat)) e.error(where, "geçersiz stat '$stat'");
+        if ((a['FailReply'] as String? ?? '').isEmpty) e.error(where, 'stat koşullu cevapta FailReply gerekli');
+      }
+    }
+    if (!answers.any((a) => (a['Score'] as int? ?? 0) > 0)) e.error(where, 'en az bir olumlu cevap olmalı');
+    if (!answers.any((a) => a['Stat'] == null && (a['Score'] as int? ?? 0) >= 0)) {
+      e.error(where, 'koşulsuz, zarar vermeyen bir cevap olmalı');
+    }
+  }
+  if ((perTheme[''] ?? 0) < 3) e.error('interviews.json', 'en az 3 genel soru olmalı');
+  for (final t in themes) {
+    if ((perTheme[t] ?? 0) < 2) e.error('interviews.json', "'$t' teması için en az 2 soru olmalı");
   }
 }

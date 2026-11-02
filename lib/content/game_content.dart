@@ -32,6 +32,7 @@ class GameContent {
         life = LifeConfig.fromJson(raw.life),
         scenes = Map.unmodifiable({for (final s in raw.scenes) s['Id'] as String: LifeScene.fromJson(s)}),
         moments = Map.unmodifiable({for (final m in raw.moments) m['Target'] as String: LifeMoment.fromJson(m)}),
+        interviews = List.unmodifiable(raw.interviews.map(InterviewQuestion.fromJson)),
         stories = Map.unmodifiable({
           for (final file in raw.stories.keys.toList()..sort())
             raw.stories[file]!['Id'] as String: StoryBook.fromJson(raw.stories[file]!),
@@ -50,6 +51,9 @@ class GameContent {
 
   /// Hedef sahne/olay kimliği → an.
   final Map<String, LifeMoment> moments;
+
+  /// İş başvurusunda sorulan mülakat soruları.
+  final List<InterviewQuestion> interviews;
 
   /// Uyarılar (hata yoksa paket yine de kurulur).
   final ContentIssues issues;
@@ -87,6 +91,7 @@ class GameContent {
       scenes: await list('life_scenes.json'),
       stories: stories,
       moments: all.contains('moments.json') ? await list('moments.json') : const [],
+      interviews: all.contains('interviews.json') ? await list('interviews.json') : const [],
     );
   }
 }

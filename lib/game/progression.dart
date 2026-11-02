@@ -97,7 +97,7 @@ class Progression {
     s.careerStartDay = s.careerLevelStartDay = s.day;
   }
 
-  (bool, String) apply(GameState s, String id, GameRandom rng) {
+  (bool, String) apply(GameState s, String id, GameRandom rng, {int bonus = 0, bool rejected = false}) {
     final c = content.careers[id];
     if (c == null) return (false, 'Böyle bir meslek yok.');
     final blocked = blockers(s, c);
@@ -113,7 +113,7 @@ class Progression {
         'Bu işe yakın zamanda başvurdun. ${cooldown(s, id)} gün sonra tekrar dene.',
       );
     }
-    if (rng.rangeInt(1, 100) > chance(s, c)) {
+    if (rejected || rng.rangeInt(1, 100) > (chance(s, c) + bonus).clamp(5, 95)) {
       s.careerApplicationDay[id] = s.day;
       return (false, '${c.name} başvurun olumsuz sonuçlandı.');
     }
