@@ -1,0 +1,1 @@
+İlk sürüm test yapısı. Kader ile başlayan hayat simülasyonu, 103 kariyer basamağı, ilişkiler ve interaktif sahneler test edilebilir. Lütfen yazım hataları veya takıldığınız yerleri bildirin.
