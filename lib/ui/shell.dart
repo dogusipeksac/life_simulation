@@ -5,9 +5,9 @@ import '../design/illustrations.dart';
 import '../design/palette.dart';
 import '../design/theme.dart';
 
-// Ortak iskelet: üstte künye şeridi, altta yüzen sekme çubuğu.
+// Ortak iskelet: üstte canlı sosyal akış HUD başlığı, altta yüzen kapsül sekme çubuğu.
 
-/// Üstteki ince künye şeridi.
+/// Üstteki ince Canlı Akış künye şeridi (48px sabit yükseklik).
 class VitaKunye extends StatelessWidget {
   const VitaKunye({super.key, required this.name, required this.detail, required this.money});
   final String name, detail, money;
@@ -17,17 +17,128 @@ class VitaKunye extends StatelessWidget {
     final p = context.vita;
     return Container(
       height: 48,
-      padding: const EdgeInsets.symmetric(horizontal: 18),
-      decoration: BoxDecoration(border: Border(bottom: BorderSide(color: p.border.withValues(alpha: .6)))),
-      child: Row(children: [
-        Text('Hayat Simülasyonu', style: VitaType.serif(15, p.accent, weight: FontWeight.w600)),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Text('$name · $detail',
-              overflow: TextOverflow.ellipsis, style: VitaType.caption(p).copyWith(color: p.ink)),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        color: p.surface.withValues(alpha: p.isDark ? .88 : .94),
+        border: Border(bottom: BorderSide(color: p.border.withValues(alpha: .7))),
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 8,
+            height: 8,
+            decoration: BoxDecoration(
+              color: p.accent,
+              shape: BoxShape.circle,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Text('Hayat Simülasyonu', style: VitaType.serif(14.5, p.accent, weight: FontWeight.w600)),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              '$name · $detail',
+              overflow: TextOverflow.ellipsis,
+              style: VitaType.caption(p).copyWith(color: p.ink, fontWeight: FontWeight.w600),
+            ),
+          ),
+          const SizedBox(width: 8),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            decoration: BoxDecoration(
+              color: p.accentSoft,
+              borderRadius: BorderRadius.circular(99),
+              border: Border.all(color: p.accent.withValues(alpha: .4)),
+            ),
+            child: Text(
+              money,
+              style: VitaType.caption(p).copyWith(color: p.accent, fontWeight: FontWeight.w700),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Hikâye akışının üstünde yer alan 4'lü canlı stat kapsül şeridi.
+class FeedStatStrip extends StatelessWidget {
+  const FeedStatStrip({
+    super.key,
+    required this.health,
+    required this.happiness,
+    required this.education,
+    required this.social,
+  });
+
+  final int health, happiness, education, social;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.vita;
+    return ExcludeSemantics(
+      child: Row(
+        children: [
+          _MiniStatPill(icon: Icons.favorite_rounded, value: health, color: p.health, p: p),
+          const SizedBox(width: 6),
+          _MiniStatPill(icon: Icons.sentiment_satisfied_alt_rounded, value: happiness, color: p.happiness, p: p),
+          const SizedBox(width: 6),
+          _MiniStatPill(icon: Icons.school_rounded, value: education, color: p.education, p: p),
+          const SizedBox(width: 6),
+          _MiniStatPill(icon: Icons.people_alt_rounded, value: social, color: p.social, p: p),
+        ],
+      ),
+    );
+  }
+}
+
+class _MiniStatPill extends StatelessWidget {
+  const _MiniStatPill({
+    required this.icon,
+    required this.value,
+    required this.color,
+    required this.p,
+  });
+
+  final IconData icon;
+  final int value;
+  final Color color;
+  final VitaPalette p;
+
+  @override
+  Widget build(BuildContext context) {
+    final v = value.clamp(0, 100);
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+        decoration: BoxDecoration(
+          color: p.surface,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: p.border),
         ),
-        Text(money, style: VitaType.caption(p).copyWith(color: p.accent, fontWeight: FontWeight.w600)),
-      ]),
+        child: Row(
+          children: [
+            Icon(icon, size: 13, color: color),
+            const SizedBox(width: 5),
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(99),
+                child: LinearProgressIndicator(
+                  value: v / 100,
+                  minHeight: 4,
+                  color: color,
+                  backgroundColor: p.surfaceSunken,
+                ),
+              ),
+            ),
+            const SizedBox(width: 5),
+            Text(
+              '$v',
+              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: p.ink),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -51,9 +162,9 @@ class VitaTabBar extends StatelessWidget {
   final bool profileSelected;
 
   static const _tabs = [
-    (Icons.auto_stories_outlined, 'Hikâye'),
-    (Icons.work_outline, 'Kariyer'),
-    (Icons.people_outline, 'İlişkiler'),
+    (Icons.dynamic_feed_rounded, 'Hikâye'),
+    (Icons.work_outline_rounded, 'Kariyer'),
+    (Icons.people_outline_rounded, 'İlişkiler'),
     (Icons.library_books_outlined, 'Kütüphane'),
   ];
 
@@ -64,14 +175,14 @@ class VitaTabBar extends StatelessWidget {
       final (icon, label) = _tabs[i];
       final selected = !profileSelected && i == index;
       final c = selected ? p.accent : p.muted;
-      // Ortadaki Hikâye sekmesi yuvarlak bir rozetle öne çıkar.
+      // Ortadaki Hikâye/Akış sekmesi kapsül rozetle öne çıkar.
       final glyph = featured
           ? Container(
-              width: 34,
-              height: 26,
+              width: 38,
+              height: 28,
               decoration: BoxDecoration(
-                color: selected ? p.accent : p.accent.withValues(alpha: .14),
-                borderRadius: BorderRadius.circular(13),
+                color: selected ? p.accent : p.accentSoft,
+                borderRadius: BorderRadius.circular(14),
               ),
               child: Icon(icon, size: 19, color: selected ? p.background : p.accent),
             )
@@ -94,7 +205,7 @@ class VitaTabBar extends StatelessWidget {
                 Text(label,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 11, color: c, fontWeight: selected ? FontWeight.w600 : FontWeight.w400)),
+                    style: TextStyle(fontSize: 11, color: c, fontWeight: selected ? FontWeight.w700 : FontWeight.w500)),
               ]),
             ),
           ),
@@ -110,10 +221,16 @@ class VitaTabBar extends StatelessWidget {
         child: Container(
           height: 64,
           decoration: BoxDecoration(
-            color: p.surface.withValues(alpha: .96),
-            borderRadius: BorderRadius.circular(22),
+            color: p.surface.withValues(alpha: .97),
+            borderRadius: BorderRadius.circular(24),
             border: Border.all(color: p.border),
-            boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: p.isDark ? .4 : .08), blurRadius: 20, offset: const Offset(0, 6))],
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: p.isDark ? .45 : .08),
+                blurRadius: 22,
+                offset: const Offset(0, 6),
+              ),
+            ],
           ),
           child: Row(children: [
             tab(3),
@@ -158,4 +275,3 @@ class VitaTabBar extends StatelessWidget {
     );
   }
 }
-

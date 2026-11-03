@@ -1238,8 +1238,8 @@
         },
         {
           "Text": "Eksik dört dakikayı ver.",
-          "Next": "ending_truth",
-          "Result": "“Bu,” dedi Murat. “Bu yeter.”",
+          "Next": "harbor_manifest",
+          "Result": "Eksik dört dakikanın izini liman kule kayıtlarında sürmeye karar verdin.",
           "NeedFlag": "confession_tape",
           "Effects": {
             "insight": 10
@@ -1459,6 +1459,37 @@
       "Chapter": 5,
       "Ending": "Karanfil",
       "Text": "Necla Hanım her şeyi dinledi. Sonra defteri, kayıtları, mektupları kucağına aldı ve uzun süre öyle oturdu, tersanenin kapısının önünde, sabahın ilk ışığında.\n\n“Ben bunları yaymak istemiyorum,” dedi sonunda. “Gazete, mahkeme, televizyon… Oğlum bir haber olsun istemiyorum. Ama o raporun düzeltilmesini istiyorum. ‘Dikkatsizlik’ yazan yer. Oğlum dikkatliydi. Annesi gibi.”\n\nİki ay sonra kaza raporu resmi olarak düzeltildi. Kimse hapse girmedi; kimse büyük bir manşet atmadı. Tersanenin kapısına levha asılmadı. Ama yeni rapor Necla Hanım’ın evinde, oğlunun fotoğrafının yanında, bir çerçevede duruyor.\n\nHer ayın ilk sabahı onunla birlikte kapıya gidiyorsun. O karanfili bırakıyor, sen yanında duruyorsun. Bazen annen de geliyor. Bir keresinde, çok uzaktan, bir adanın vapurundan inmiş yaşlı bir adam karşı kaldırımda durup el salladı.\n\nNecla Hanım el salladı. Sen el salladın. Kimin kime el salladığını kimse sormadı."
+    },
+    "harbor_manifest": {
+      "Title": "Kuledeki kırmızı defter",
+      "Chapter": 5,
+      "Style": "note",
+      "Text": "Liman Kontrol Kulesi Nöbet Defteri · 00:08:\n\n«Burgazada vapuru iskeleden ayrılmadan hemen önce kuleye şifreli bir telsiz uyarısı bıraktı: 'Yolcu listesindeki yedinci isim güvertede değil, yedek filikada.'»",
+      "Choices": [
+        {
+          "Text": "Kule kaydını ve babanın seyir pusulasını birleştirip dosyayı tamamla.",
+          "Next": "ending_captain_log",
+          "Result": "Yıllardır kayıp sanılan son halka yerine oturdu.",
+          "Effects": {
+            "insight": 6,
+            "courage": 4
+          }
+        },
+        {
+          "Text": "Kaydı doğrudan gazete baskısına yetiştir.",
+          "Next": "ending_truth",
+          "Result": "Manşet sabah baskısına girdi.",
+          "Effects": {
+            "courage": 5
+          }
+        }
+      ]
+    },
+    "ending_captain_log": {
+      "Title": "Kaptanın pusulası",
+      "Chapter": 5,
+      "Text": "Kuledeki nöbet defteriyle babanın seyir kayıtları birleştiğinde o gecenin yalnızca bir kaza ya da kaçış değil, yolcuları korumak için kurulmuş sessiz bir plan olduğu ortaya çıktı. Sabah vapuru yanaşırken elindeki pusula ilk kez doğru yönü gösteriyordu.",
+      "Ending": "Kaptanın pusulası"
     }
   }
 }

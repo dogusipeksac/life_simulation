@@ -637,6 +637,7 @@ class GameSession {
     }
     if (s.isGameOver) {
       s.endingId = _pickEnding(s)?.id;
+      if (s.endingId != null) achievements.recordEnding(s.endingId!);
       _recordAchievements(s, true, report);
     }
   }
@@ -657,6 +658,80 @@ class GameSession {
       state!.isGameOver &&
       !state!.secondChanceUsed &&
       state!.gameOverReason == GameOverReason.healthDepleted;
+
+  /// Hayatta olan ilk çocuk: oyuncu öldüğünde mirası devralıp yeni kuşak olarak devam edebilir.
+  RelationshipPerson? get heir => state?.relationships
+      .where((p) => p.alive && p.role == 'Çocuk')
+      .firstOrNull;
+
+  bool get canContinueAsChild =>
+      state != null && state!.isGameOver && heir != null;
+
+  /// Çocuğun olarak yeni kuşağa başla: birikimlerin %70'i, takı altınları ve mülkler miras kalır.
+  ActionResult continueAsChild({required int seed}) {
+    final prev = state, child = heir;
+    if (prev == null || !prev.isGameOver || child == null) {
+      return const ActionResult(false, 'Miras bırakılacak bir çocuk bulunamadı.');
+    }
+    final nextGen = prev.simulation.generation + 1;
+    final parentOcc =
+        content.careers[prev.careerId ?? prev.lastCareerId]?.name ??
+        describeOccupation();
+    final history = [
+      ...prev.simulation.dynastyLog,
+      '${prev.simulation.generation}. kuşak · ${prev.playerName} (${prev.age} yıl, $parentOcc)',
+    ];
+    final netCash = prev.money + prev.bankBalance;
+    final inheritedMoney = netCash >= 0 ? (netCash * 70 ~/ 100) : (netCash ~/ 2);
+    final inheritedGold = prev.simulation.goldWallet;
+    final legacyFlags = prev.flags.intersection(const {
+      'owns_house',
+      'owns_car',
+      'family_heirloom',
+      'owns_business',
+      'rental_property',
+    });
+    final childProfile = CharacterProfile()
+      ..birthplace = child.city.isEmpty ? prev.profile.birthplace : child.city
+      ..family = 'Kökleri uzanan bir aile'
+      ..caregiver = prev.playerName
+      ..dream = 'Ailenin mirasını kendi yolumla büyütmek'
+      ..personality = child.personality.isEmpty ? 'Kararlı' : child.personality
+      ..gender = CharacterProfile.genders.contains(child.gender)
+          ? child.gender
+          : prev.profile.gender
+      ..detailedLife = prev.profile.detailedLife
+      ..wealth = inheritedMoney >= 2500000 || legacyFlags.contains('owns_house')
+          ? Wealth.wealthy
+          : inheritedMoney >= 500000
+          ? Wealth.middle
+          : prev.profile.wealth;
+    startNewGame(child.name, seed: seed, profile: childProfile);
+    final s = state!;
+    s.money = (s.money + inheritedMoney).clamp(-debtLimit, 0x7FFFFFFFFFFFFFFF);
+    s.simulation
+      ..generation = nextGen
+      ..dynastyLog = history
+      ..birthYear = prev.simulation.year(prev)
+      ..goldWallet = inheritedGold;
+    s.flags.addAll(legacyFlags);
+    if (nextGen >= 2) s.flags.add('dynasty_heir');
+    s.journal.add(
+      JournalEntry(
+        age: 0,
+        day: 0,
+        title: '$nextGen. kuşak mirası',
+        memory:
+            '${prev.playerName} ardından ailenin $nextGen. kuşağı olarak yola çıktın. Miras: ${formatMoney(inheritedMoney)}'
+            '${legacyFlags.isEmpty ? '.' : ' ve aile varlıkları korunuyor.'}',
+      ),
+    );
+    _autoSave();
+    return ActionResult(
+      true,
+      '${child.name} olarak $nextGen. kuşak yolculuğun başladı.',
+    );
+  }
   /// Ödüllü reklam: bu yaşta bir kez +3 etkinlik hakkı.
   bool get canGrantActivityRights {
     final s = state;
@@ -824,14 +899,37 @@ class GameSession {
 
   static String _describeChoice(ChoiceDef c) {
     var up = 0, down = 0;
+    Stat? bestStat;
+    var bestVal = 0;
     for (final e in c.effects) {
       if (e.amount == 0 || e.stat == Stat.money) continue;
-      e.amount > 0 ? up++ : down++;
+      if (e.amount > 0) {
+        up++;
+        if (e.amount > bestVal) {
+          bestVal = e.amount;
+          bestStat = e.stat;
+        }
+      } else {
+        down++;
+      }
     }
+    if (c.nextEventId.isNotEmpty) return 'Hikâyeyi yeni bir sahneye taşır';
+    if (c.cost > 0 && c.setFlags.isNotEmpty) return 'Bir bedeli var · Yeni bir kapı açar';
     if (c.cost > 0) return 'Bir bedeli var';
-    if (up > 0 && down > 0) return 'Bir şey artar, bir şey eksilir';
-    if (up > 0) return 'Sana iyi gelir';
+    if (up > 0 && down > 0) {
+      return switch (bestStat) {
+        Stat.education => 'Zihnini geliştirir · Bir şey eksilir',
+        Stat.social => 'Bağları güçlendirir · Bir şey eksilir',
+        Stat.health => 'Bedenini korur · Bir şey eksilir',
+        _ => 'Bir şey artar, bir şey eksilir',
+      };
+    }
+    if (up > 0) {
+      if (c.setFlags.isNotEmpty) return 'Sana iyi gelir · İz bırakır';
+      return 'Sana iyi gelir';
+    }
     if (down > 0) return 'Zor bir karar';
+    if (c.setFlags.isNotEmpty) return 'Gelecekteki yolunu etkiler';
     return '';
   }
 

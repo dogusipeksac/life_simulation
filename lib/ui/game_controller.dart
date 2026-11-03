@@ -265,6 +265,18 @@ class GameController extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Mirasçı çocuk olarak bir sonraki kuşağa devam et.
+  ActionResult continueAsChild({int? seed}) {
+    _clearPendingReward();
+    final r = session.continueAsChild(seed: seed ?? newSeed());
+    if (r.success) {
+      notice = null;
+      if (state!.pendingMoment == null) session.requestNextEvent();
+    }
+    notifyListeners();
+    return r;
+  }
+
   /// Kayıtlı hayata devam. Başarısızsa [notice] dolar ve false döner.
   bool continueGame() {
     final r = session.continueGame();

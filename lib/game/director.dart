@@ -174,18 +174,29 @@ class NarrativeDirector {
 
   EventDef _build(GameState s, LifeScene scene, {bool track = true}) {
     var description = fillScene(s, scene.text);
+    var echoText = '';
     final echo = s.simulation.domainEcho[scene.domain];
     if (!scene.followUpOnly && echo != null && echo.isNotEmpty) {
-      description += '\n\nBu alanda aklında kalan: $echo';
+      if (scene.style.isEmpty) {
+        description += '\n\nBu alanda aklında kalan: $echo';
+      } else {
+        echoText = 'Bu alanda aklında kalan: $echo';
+      }
     }
     if (s.simulation.lastDecisionEcho.isNotEmpty && scene.followUpOnly) {
-      description =
-          'Daha önce: ${s.simulation.lastDecisionEcho}\n\n$description';
+      if (scene.style.isEmpty) {
+        description =
+            'Daha önce: ${s.simulation.lastDecisionEcho}\n\n$description';
+      } else {
+        echoText = 'Daha önce: ${s.simulation.lastDecisionEcho}';
+      }
     }
     final ev = EventDef(
       id: scene.id,
       title: scene.title,
       description: description,
+      style: scene.style,
+      echo: echoText,
       category: switch (scene.domain) {
         'work' => EventCategory.career,
         'school' => EventCategory.school,

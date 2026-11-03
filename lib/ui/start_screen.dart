@@ -41,7 +41,11 @@ class TitleScreen extends StatelessWidget {
                               textAlign: TextAlign.center, style: VitaType.display(p).copyWith(color: p.accent)),
                         ),
                         const SizedBox(height: 6),
-                        Text('Bir hayatın kitabı', textAlign: TextAlign.center, style: VitaType.serif(16, p.muted)),
+                        Text(
+                          'Kararlarınla şekillenen canlı yaşam akışı',
+                          textAlign: TextAlign.center,
+                          style: VitaType.serif(15.5, p.muted, weight: FontWeight.w500),
+                        ),
                         const SizedBox(height: 28),
                         const EnterAnimation(index: 1, child: AtmosphereStrip(stage: 0, height: 170)),
                       ]),

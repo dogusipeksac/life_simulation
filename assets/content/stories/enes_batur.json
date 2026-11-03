@@ -35,7 +35,10 @@
           "Result": "Kamerayı yeniden açtın.",
           "Effects": {
             "focus": 8
-          }
+          },
+          "SetFlags": [
+            "daily_grind"
+          ]
         },
         {
           "Text": "Video düzenlemeyi öğrenip biçimi geliştir.",
@@ -43,7 +46,10 @@
           "Result": "Kurgu masasında yeni bir şey denedin.",
           "Effects": {
             "craft": 8
-          }
+          },
+          "SetFlags": [
+            "editing_craft"
+          ]
         }
       ]
     },
@@ -177,7 +183,7 @@
     "first_audience": {
       "Title": "İlk yorumlar",
       "Chapter": 1,
-      "Text": "Bir gün videonun altında tanımadığın bir izleyicinin yorumu beliriyor: “Devamı gelecek mi?” Tek bir yorum, büyük bir kalabalık değil. Yine de birinin gününün bir parçasına dönüşmüş olabileceğini fark ediyorsun. Ekranın öbür tarafında insanlar var; aynı zamanda yorumların her biri yönünü belirlememeli. Bir içerik üreticisi hem dinlemeyi hem kendi sesini korumayı öğreniyor.",
+      "Text": "İzleyici_42: Abi sesin çok samimi, ikinci bölüm ne zaman gelir?\nSen: Bu akşam kurguyu bitiriyorum, yarın sabah yayında!\nİzleyici_42: Bildirimleri açtım bekliyorum, sakın bırakma.",
       "Choices": [
         {
           "Text": "İzleyicinin sorusuna yeni bir bölümle yanıt ver.",
@@ -195,7 +201,8 @@
             "focus": 5
           }
         }
-      ]
+      ],
+      "Style": "chat"
     },
     "camera": {
       "Title": "Kameranın arkasında",
@@ -242,7 +249,22 @@
             "focus": 2
           }
         }
-      ]
+      ],
+      "Interaction": {
+        "Type": "select",
+        "Prompt": "Kurgu masasında videonun izlenme süresini artıracak üç doğru adımı seç.",
+        "Items": [
+          "Girişteki boş beklemeleri kes",
+          "Ses patlamalarını dengele",
+          "En heyecanlı anı doğru müzikle vurgula",
+          "Yirmi dakika siyah ekran bırak",
+          "Sesi tamamen kapat"
+        ],
+        "Answer": "0,1,2",
+        "Attempts": 2,
+        "Success": 0,
+        "Fail": 1
+      }
     },
     "audience_growth": {
       "Title": "Daha çok kişi",
@@ -259,7 +281,7 @@
         },
         {
           "Text": "İzleyiciye yeni formatlar göster.",
-          "Next": "community",
+          "Next": "indie_game_jam",
           "Result": "Kanalın sınırlarını genişletmeye başladın.",
           "Effects": {
             "craft": 8
@@ -311,7 +333,16 @@
             "craft": 6
           }
         }
-      ]
+      ],
+      "Interaction": {
+        "Type": "hold",
+        "Prompt": "Her gün video yetiştirme baskısı yükselirken tükenmemek için derin bir nefes al ve odağını topla.",
+        "HoldMs": 1500,
+        "Rounds": 2,
+        "Attempts": 2,
+        "Success": 0,
+        "Fail": 1
+      }
     },
     "format_shift": {
       "Title": "Yeni format arayışı",
@@ -395,7 +426,10 @@
           "Effects": {
             "focus": 4,
             "craft": 3
-          }
+          },
+          "SetFlags": [
+            "cinema_ambition"
+          ]
         },
         {
           "Text": "Başarıyı ekiple paylaş, sonra dinlen.",
@@ -410,7 +444,7 @@
     "award_response": {
       "Title": "Tartışmalı bir ödül",
       "Chapter": 5,
-      "Text": "Kariyerindeki görünür dönüm noktalarından biri 2017’de Altın Kelebek’te En İyi YouTuber/Instagrammer ödülünü almasıydı; ödül daha sonra geri çekildi. Bu gelişme kamuya açık haberlerde yer aldı. Böyle bir durum, ödülün kendisinden çok temsil, kurumların kararları ve çevrim içi toplulukların tepkileri üzerine bir tartışma başlatabilir. Buradaki yanıt seçenekleri kurmacadır.",
+      "Text": "Kişisel Çalışma Defteri Notu:\n\n«Ödüller verilir, geri alınır, tartışmalar gelir geçer. Ama ekranın karşısında seni gerçekten izleyen insanların bağı yalnızca ürettiğin işle yaşar.»",
       "Choices": [
         {
           "Text": "Tartışmanın içeriğini sakin biçimde değerlendir.",
@@ -428,7 +462,8 @@
             "craft": 5
           }
         }
-      ]
+      ],
+      "Style": "note"
     },
     "public_image": {
       "Title": "Kamuya açık bir isim",
@@ -459,15 +494,17 @@
       "Text": "Dijital platformlar, izleyici alışkanlıkları ve içerik biçimleri zamanla değişir. Üretici için bu değişim hem yeni araçlar hem belirsizlik demektir. Eski formatlar işe yaramaya devam edebilir; yeni formatlar yeni kitlelere ulaşabilir. Bu noktada geçmişte kurduğun becerileri yanında taşıyıp taşımayacağına karar veriyorsun. Gerçek kişinin güncel planları hakkında bir şey varsaymıyoruz.",
       "Choices": [
         {
-          "Text": "Video üretimindeki deneyimini yeni biçimlere taşı.",
-          "Next": "future_plan",
-          "Result": "Öğrendiklerini yeni bir mecraya uyarladın.",
+          "Text": "Genç içerik üreticileri için büyük bir prodüksiyon stüdyosu kur.",
+          "Next": "studio_hub",
+          "Result": "Kendi kanalının ötesine geçip yaratıcı bir üretim merkezi kurdun.",
+          "NeedStat": "craft",
+          "MinValue": 58,
           "Effects": {
             "craft": 6
           }
         },
         {
-          "Text": "İzleyici topluluğuyla bağını temel al.",
+          "Text": "İzleyici topluluğuyla doğrudan bağ kurduğun yeni yayınlara yönel.",
           "Next": "future_plan",
           "Result": "Toplulukla kurduğun iletişimi merkeze aldın.",
           "Effects": {
@@ -496,8 +533,102 @@
           "Effects": {
             "craft": 4
           }
+        },
+        {
+          "Text": "Milyonluk topluluğunla canlı ve samimi bir dijital meydan kur.",
+          "Next": "ending_community_leader",
+          "Result": "İlk günden beri koruduğun samimiyet en büyük gücün oldu.",
+          "NeedFlag": "daily_grind",
+          "Effects": {
+            "reach": 6
+          }
+        },
+        {
+          "Text": "Kendi bağımsız oyun ve etkileşimli hikâye stüdyonu kur.",
+          "Next": "ending_game_pioneer",
+          "Result": "Oyun videolarıyla başlayan yolculuğu kendi oyunlarını üreten bir teknoloji girişimine dönüştürdün.",
+          "NeedStat": "focus",
+          "MinValue": 58,
+          "Effects": {
+            "focus": 6,
+            "craft": 4
+          }
         }
       ]
+    },
+    "studio_hub": {
+      "Title": "Yaratıcı prodüksiyon merkezi",
+      "Chapter": 6,
+      "Text": "Yıllar önce tek bir mikrofonla başladığın yolculuk, şimdi genç yönetmenlerin ve kurgucuların birlikte çalıştığı bir stüdyoya dönüştü.",
+      "Choices": [
+        {
+          "Text": "Dijital sinema ve uzun metraj anlatılara odaklan.",
+          "Next": "ending_cinema_bridge",
+          "Result": "İnternet kuşağıyla sinema arasında kalıcı bir köprü kurdun.",
+          "NeedFlag": "cinema_ambition",
+          "Effects": {
+            "craft": 5
+          }
+        },
+        {
+          "Text": "Yeni kuşak üreticilere mentorluk yapan bir medya okulu kur.",
+          "Next": "ending_studio_founder",
+          "Result": "Deneyimini yeni üreticilerle paylaşan bir kurucu oldun.",
+          "Effects": {
+            "focus": 5
+          }
+        }
+      ]
+    },
+    "ending_cinema_bridge": {
+      "Title": "Ekrandan beyazperdeye köprü",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, dijital içerik üreticiliğinden edindiğin kurgu ve anlatı enerjisini uzun metraj projelere taşıyan bir yönetmen-yapımcı rotası çizdin.",
+      "Ending": "Beyazperde rotası"
+    },
+    "ending_studio_founder": {
+      "Title": "Üretim mutfağının kurucusu",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, tek kişilik odadan çıkıp genç yeteneklere alan açan bağımsız bir dijital yapım stüdyosu kurdun.",
+      "Ending": "Stüdyo kurucusu rotası"
+    },
+    "ending_community_leader": {
+      "Title": "Dijital meydanın sesi",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, yıllar süren düzenli üretim disipliniyle milyonlarca izleyicinin kendinden bir parça bulduğu kalıcı bir topluluk kurdun.",
+      "Ending": "Topluluk rotası"
+    },
+    "indie_game_jam": {
+      "Title": "48 saatlik canlı yayın ve oyun maratonu",
+      "Chapter": 3,
+      "Style": "radio",
+      "Text": "[CANLI YAYIN KAYDI · SAAT 36]\n«Arkadaşlar uykusuzluktan gözlerim kapanıyor ama hedefimize çok az kaldı! Bu yayında topladığımız bütün destek bağımsız genç geliştiricilere ve öğrenci burslarına gidiyor!»",
+      "Choices": [
+        {
+          "Text": "Maratonu rekor izlenmeyle tamamlayıp topluluk gücünü kanıtla.",
+          "Next": "pressure",
+          "Result": "Dijital topluluğun yalnızca eğlence değil, büyük bir dayanışma gücü olduğunu gösterdin.",
+          "Effects": {
+            "reach": 7,
+            "focus": 4
+          }
+        },
+        {
+          "Text": "Yayında genç geliştiricilerin yaptığı yerli oyunları tanıt.",
+          "Next": "pressure",
+          "Result": "Yaratıcı ekosisteme verdiğin destek sana yeni kapılar açtı.",
+          "Effects": {
+            "craft": 7,
+            "focus": 4
+          }
+        }
+      ]
+    },
+    "ending_game_pioneer": {
+      "Title": "Oyuncudan oyun kurucuya",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, yıllarca ekran başında oynayıp anlattığın oyun dünyasının mutfağına geçtin ve kendi bağımsız oyun geliştirme stüdyonu kurarak yeni dünyalar tasarladın.",
+      "Ending": "Oyun kurucu rotası"
     }
   }
 }

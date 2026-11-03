@@ -13,5 +13,15 @@
   {"id": "ach_iron_health", "title": "Demir Gibi", "description": "70 yaşında sağlığın 80'in üstünde olsun.", "conditions": ["MinAge:70", "MinStat:Health:80"], "secret": true},
   {"id": "ach_homeowner", "title": "Anahtar Teslim", "description": "Kendi evini al.", "conditions": ["HasFlag:owns_house"]},
   {"id": "ach_rags_to_riches", "title": "Sınıf Atlayan", "description": "Yoksul bir ailede doğ, hesabında 5.000.000 ₺ biriktir.", "conditions": ["HasFlag:family_poor", "MinStat:Money:5000000"], "secret": true},
-  {"id": "ach_self_made", "title": "Kendi Yolunu Çizen", "description": "Zengin bir ailede doğ ve kendi mesleğinde en üst basamağa çık.", "conditions": ["HasFlag:family_rich", "MinCareerLevel:4"], "secret": true}
+  {"id": "ach_self_made", "title": "Kendi Yolunu Çizen", "description": "Zengin bir ailede doğ ve kendi mesleğinde en üst basamağa çık.", "conditions": ["HasFlag:family_rich", "MinCareerLevel:4"], "secret": true},
+  {"id": "ach_dynasty_heir", "title": "Kuşaklar Boyu", "description": "Soy ağacından bir çocuğunla yeni kuşağa devam et.", "conditions": ["HasFlag:dynasty_heir"]},
+  {"id": "ach_business_founder", "title": "Kepenk Açan", "description": "Mahallede kendi dükkânını veya atölyeni kur.", "conditions": ["HasFlag:owns_business"]},
+  {"id": "ach_landlord", "title": "Mülk Sahibi", "description": "Kiraya verilen bir yatırım mülkü satın al.", "conditions": ["HasFlag:rental_property"]},
+  {"id": "ach_heirloom_keeper", "title": "Yadigâr Muhafızı", "description": "Kuşaktan kuşağa geçecek bir aile yadigârı edin.", "conditions": ["HasFlag:family_heirloom"]},
+  {"id": "ach_polyglot_traveler", "title": "Dünya Vatandaşı", "description": "Hem yabancı dil öğren hem de yurt dışına çık.", "conditions": ["HasFlag:learned_language", "HasFlag:traveled_abroad"]},
+  {"id": "ach_virtuoso", "title": "Gönül Telleri", "description": "Enstrüman çalmayı öğrenip mutluluğunu 85'in üzerine çıkar.", "conditions": ["HasFlag:musician", "MinStat:Happiness:85"]},
+  {"id": "ach_mystery_solver", "title": "Mühürlü Zarfın İzinde", "description": "Saat tamircisindeki şifreli aile sırrını çöz.", "conditions": ["HasFlag:mystery_solved"], "secret": true},
+  {"id": "ach_night_owl_society", "title": "02:14 Cemiyeti", "description": "Gece yarısı gelen yanlış numaranın ardındaki gizemi keşfet.", "conditions": ["HasFlag:secret_society"], "secret": true},
+  {"id": "ach_whistleblower", "title": "Cesur Yürek", "description": "Gizli dosyadaki skandalı örtbas etmek yerine ortaya çıkar.", "conditions": ["HasFlag:whistleblower_hero"], "secret": true},
+  {"id": "ach_lighthouse_hero", "title": "Fırtına Feneri", "description": "Fırtınalı gecede sönen deniz fenerini yeniden yak.", "conditions": ["HasFlag:lighthouse_savior"], "secret": true}
 ]

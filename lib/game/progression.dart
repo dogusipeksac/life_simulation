@@ -265,6 +265,12 @@ class Progression {
       lines.add(('Maaş (${titleAt(c, s.careerLevel)})', salary(s)));
     }
     if (s.pensionMonthly > 0) lines.add(('Emekli maaşı', s.pensionMonthly));
+    if (s.flags.contains('owns_business')) {
+      lines.add(('Girişim kâr payı', 14000));
+    }
+    if (s.flags.contains('rental_property')) {
+      lines.add(('Kira geliri (yatırım mülkü)', 18000));
+    }
     if (s.age < 18) {
       if (s.age >= 10) lines.add(('Harçlık', share(300)));
       return lines;
@@ -347,7 +353,7 @@ class Progression {
 
   void assignGoals(GameState s, GameRandom rng) {
     if (s.activeGoalIds.isNotEmpty || content.goals.isEmpty) return;
-    final pool = [...content.goals]..sort((a, b) => a.id.compareTo(b.id));
+    final pool = [...content.goals.take(10)]..sort((a, b) => a.id.compareTo(b.id));
     final preferred = pool
         .where((g) => preferredGoalIds(s.profile.dream).contains(g.id))
         .toList();
@@ -362,14 +368,28 @@ class Progression {
   }
 
   void checkGoals(GameState s, TurnReport? r) {
+    var newlyCompleted = false;
     for (final g in content.goals.where(
       (g) =>
           s.activeGoalIds.contains(g.id) && !s.completedGoalIds.contains(g.id),
     )) {
       if (!allMet(s, g.conditions)) continue;
       s.completedGoalIds.add(g.id);
+      newlyCompleted = true;
       effects.applyStat(s, Stat.happiness, g.rewardHappiness);
       r?.notes.add('Hedef tamamlandı: ${g.title}!');
+    }
+    if (newlyCompleted &&
+        s.activeGoalIds.isNotEmpty &&
+        s.activeGoalIds.every(s.completedGoalIds.contains)) {
+      final nextGoals = content.goals
+          .where((g) => !s.activeGoalIds.contains(g.id) && !allMet(s, g.conditions))
+          .take(2)
+          .toList();
+      for (final g in nextGoals) {
+        s.activeGoalIds.add(g.id);
+        r?.notes.add('Yeni hayat hedefi açıldı: ${g.title}');
+      }
     }
   }
 }

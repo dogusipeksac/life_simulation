@@ -304,6 +304,8 @@ class LifeSimulationState {
   int goldWallet = 0;
   Set<String> weddingGivers = {};
   int yearsInCare = 0;
+  int generation = 1;
+  List<String> dynastyLog = [];
 
   int year(GameState s) => birthYear + s.age;
 
@@ -340,6 +342,8 @@ class LifeSimulationState {
     goldWallet = _i(j, 'GoldWallet');
     weddingGivers = _ls(j, 'WeddingGivers').toSet();
     yearsInCare = _i(j, 'YearsInCare');
+    generation = _i(j, 'Generation', 1);
+    dynastyLog = _ls(j, 'DynastyLog');
   }
 
   J toJson() => {
@@ -355,6 +359,8 @@ class LifeSimulationState {
         'CurrentSceneReason': currentSceneReason, 'LastDecisionEcho': lastDecisionEcho, 'Occupation': occupation,
         'CareerTheme': careerTheme, 'LastCareerId': lastCareerId, 'GoldWallet': goldWallet,
         'WeddingGivers': weddingGivers.toList(), 'YearsInCare': yearsInCare,
+        if (generation > 1) 'Generation': generation,
+        if (dynastyLog.isNotEmpty) 'DynastyLog': dynastyLog,
       };
 
   void ensureValid() {
@@ -364,6 +370,8 @@ class LifeSimulationState {
     publicServices = _clamp(publicServices, 10, 90);
     socialTension = _clamp(socialTension, 0, 100);
     goldWallet = _clamp(goldWallet, 0, 10000);
+    generation = _clamp(generation, 1, 100);
+    if (dynastyLog.length > 50) dynastyLog.removeRange(0, dynastyLog.length - 50);
     wedding.ensureValid();
     if (elections.length > 30) elections.removeRange(0, elections.length - 30);
     for (final k in qualityKeys) {

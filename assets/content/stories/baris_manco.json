@@ -36,7 +36,10 @@
           "Result": "Yeni bir müzikal birleşim aradın.",
           "Effects": {
             "craft": 8
-          }
+          },
+          "SetFlags": [
+            "anadolu_fusion"
+          ]
         },
         {
           "Text": "Sahnedeki anlatımını ve görünüşünü geliştir.",
@@ -44,7 +47,10 @@
           "Result": "Sahne kimliğine emek verdin.",
           "Effects": {
             "presence": 8
-          }
+          },
+          "SetFlags": [
+            "stage_persona"
+          ]
         }
       ]
     },
@@ -123,7 +129,7 @@
       "Text": "Barış Manço’nun tanınırlığı müzikle başlayıp televizyon anlatıcılığıyla genişledi. İzleyici onu şarkılarıyla, sahne tarzıyla ve dünyayı dolaşan programıyla hatırladı. Bir sanatçının mirası tek bir başarı anına sığmaz; farklı dönemlerde kurduğu bağlar zamanla birbirine eklenir.",
       "Choices": [
         {
-          "Text": "Yeni kuşaklara müziği anlat.",
+          "Text": "Yeni kuşaklara müziği ve merakı anlat.",
           "Next": "ending_generation",
           "Result": "Şarkıların yeni dinleyicilere ulaşmasına çalıştın.",
           "Effects": {
@@ -137,6 +143,26 @@
           "Effects": {
             "connection": 5
           }
+        },
+        {
+          "Text": "Kıtaları buluşturan kültür elçisi mirasını tamamla.",
+          "Next": "ending_cultural_ambassador",
+          "Result": "Dünyanın dört bir yanında kurduğun dostluklar kalıcı bir köprü oldu.",
+          "NeedFlag": "global_bridge",
+          "Effects": {
+            "reach": 6,
+            "connection": 4
+          }
+        },
+        {
+          "Text": "Moda'daki evini kuşakların ziyaret edeceği yaşayan bir kültür ve müzik müzesine dönüştür.",
+          "Next": "ending_moda_house",
+          "Result": "Şarkıların, piyanon ve hatıraların Moda'daki o sıcak çatı altında yaşamaya devam etti.",
+          "NeedStat": "connection",
+          "MinValue": 58,
+          "Effects": {
+            "connection": 6
+          }
         }
       ]
     },
@@ -147,8 +173,8 @@
       "Choices": [
         {
           "Text": "Farklı müzik çevrelerini tanı.",
-          "Next": "stage",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Next": "studio_experiment",
+          "Result": "Avrupa ve İstanbul sahnelerindeki farklı müzisyenlerle tanışıp ufkunu genişlettin.",
           "Effects": {
             "craft": 2
           }
@@ -156,7 +182,7 @@
         {
           "Text": "Kendi grubunla düzenli prova yap.",
           "Next": "stage",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Grup disipliniyle saatler süren provalar yaparak sahne enerjini sağlamlaştırdın.",
           "Effects": {
             "connection": 2
           }
@@ -171,15 +197,15 @@
         {
           "Text": "Görsel imzanı istikrarlı tut.",
           "Next": "song_breakthrough",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Uzun saçların, yüzüklerin ve pelerinlerinle hafızalara kazınan zamansız bir simge oldun.",
           "Effects": {
             "craft": 2
           }
         },
         {
           "Text": "Her dönemde yeni bir yorum dene.",
-          "Next": "song_breakthrough",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Next": "kurtalan_rehearsal",
+          "Result": "Kurtalan Ekspres ile her albümde yeni bir ses ve görsel anlatı kurmak üzere prova odasına girdin.",
           "Effects": {
             "connection": 2
           }
@@ -194,7 +220,7 @@
         {
           "Text": "Yeni şarkıda tanıdık duyguyu sürdür.",
           "Next": "travel",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Dağlar Dağlar’ın samimi ve içli telini yeni türkülerle besledin.",
           "Effects": {
             "craft": 2
           }
@@ -202,7 +228,7 @@
         {
           "Text": "Başka temalara ve seslere yönel.",
           "Next": "travel",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Sözlü anlatı ve progresif düzenlemelerle bambaşka bir ses evreni kurdun.",
           "Effects": {
             "connection": 2
           }
@@ -212,12 +238,12 @@
     "proposal": {
       "Title": "Bir televizyon fikri",
       "Chapter": 2,
-      "Text": "Barış Manço, uzun süre üzerinde düşündüğü 7’den 77’ye projesini 1988’de TRT’ye kabul ettirdi. Bir müzik sanatçısının televizyona geçmesi, yeni bir üretim düzeni demektir: araştırma, çekim, yol planı ve ekiple ortak anlatı. Bu hikâyedeki yapım toplantısı kurgusaldır; kamuya açık bilgiler yalnızca programın başlangıç ve kapsamını belirler.",
+      "Text": "TRT Yapım Dosyası Notu (1988):\n\n«Programın adı: 7'den 77'ye. Çocuklarla Adam Olacak Çocuk köşesi, büyüklerle Dere Tepe Türkiye ve dünyadan Dönence... Her pazar aynı sofrada buluşan bir Türkiye.»",
       "Choices": [
         {
           "Text": "Programı müzikle kültür arasında kur.",
           "Next": "field_trip",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Müziği kültürlerarası bir köprü olarak konumlandıran yayın formatını sundun.",
           "Effects": {
             "craft": 2
           }
@@ -225,12 +251,13 @@
         {
           "Text": "İnsanların kendi hikâyelerini anlatmasına alan aç.",
           "Next": "field_trip",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Kamerayı sokaktaki insanın göz hizasına indiren samimi bir belgesel dili kurdun.",
           "Effects": {
             "connection": 2
           }
         }
-      ]
+      ],
+      "Style": "note"
     },
     "field_trip": {
       "Title": "Yola çıkmadan önce",
@@ -240,15 +267,15 @@
         {
           "Text": "Az sayıda yere daha uzun zaman ayır.",
           "Next": "first_encounter",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Bir şehirde günlerce kalarak insanların gerçek hikâyelerine derinlemesine dokundun.",
           "Effects": {
             "craft": 2
           }
         },
         {
           "Text": "Daha çok yeri kısa ziyaretlerle tanıt.",
-          "Next": "first_encounter",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Next": "japan_tour_bridge",
+          "Result": "Kıtalararası hızlı bir rota çizerek uzak coğrafyaları aynı sezon içinde ekrana taşıdın.",
           "Effects": {
             "connection": 2
           }
@@ -262,8 +289,8 @@
       "Choices": [
         {
           "Text": "Konuşmayı kişinin merakından başlat.",
-          "Next": "tv",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Next": "world_radio",
+          "Result": "Karşındaki insanın gündelik merakından yola çıkarak sıcak bir sohbet kurdun.",
           "Effects": {
             "craft": 2
           }
@@ -271,7 +298,7 @@
         {
           "Text": "Bölgenin müzik geleneğini sor.",
           "Next": "tv",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Yörenin en eski çalgısını bulup kendi ellerinle denedin.",
           "Effects": {
             "connection": 2
           }
@@ -286,7 +313,7 @@
         {
           "Text": "İnsanların sesini ve sözünü koru.",
           "Next": "audience_letters",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Kurgu masasında yerel insanların kendi sesini ve doğal ritmini korudun.",
           "Effects": {
             "craft": 2
           }
@@ -294,7 +321,7 @@
         {
           "Text": "Yolculuğun görsel akışını öne çıkar.",
           "Next": "audience_letters",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Uzak coğrafyaların büyüleyici görüntülerini akıcı bir kurguyla birleştirdin.",
           "Effects": {
             "connection": 2
           }
@@ -309,7 +336,7 @@
         {
           "Text": "Çocukların sorularına doğrudan yanıt ver.",
           "Next": "editing_room",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Çocukların gözlerinin içine bakarak verdiğin içten yanıtlar stüdyoyu ısıttı.",
           "Effects": {
             "craft": 2
           }
@@ -317,22 +344,34 @@
         {
           "Text": "Soruyu yeni bir keşif yolculuğuna çevir.",
           "Next": "editing_room",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Her soruyu yeni bir ülke ve kültür merakına bağladın.",
           "Effects": {
             "connection": 2
           }
         }
-      ]
+      ],
+      "Interaction": {
+        "Type": "quiz",
+        "Prompt": "Adam Olacak Çocuk sahnesinde küçük konuk soruyor: «Ispanak ve diş fırçası şarkılarının sırrı ne?»",
+        "Items": [
+          "Çocuklarla yukarıdan konuşmadan, arkadaş gibi sohbet etmek",
+          "Sadece ezberlenmiş metinleri okutmak",
+          "Soruları hızlıca geçiştirmek"
+        ],
+        "AnswerIndex": 0,
+        "Success": 0,
+        "Fail": 1
+      }
     },
     "audience_letters": {
       "Title": "Ekrandan gelen mektuplar",
       "Chapter": 5,
-      "Text": "Bir televizyon programı izleyici evinde sona erse de, izleyicinin zihninde devam edebilir. Mektuplar ve geri dönüşler, programın hangi anlarının akılda kaldığını gösterir. Her izleyici farklı bir şey hatırlar: bir şarkı, bir ülke, bir insanla kurulan sohbet. Geniş kitlelere seslenmenin gücü, farklı yaşların aynı anlatıda kendine yer bulabilmesidir.",
+      "Text": "İzleyici Mektubu · Moda, İstanbul:\n\n«Barış Abi, pazar sabahları bütün aile televizyonun karşısında seni bekliyoruz. Dedem seninle uzak ülkeleri görüyor, kardeşim sahneye çıkacağı günü sayıyor.»",
       "Choices": [
         {
           "Text": "Gelen sorulardan yeni program fikirleri çıkar.",
           "Next": "music_and_tv",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "İzleyicilerden gelen mektupları yeni rotaların pusulası yaptın.",
           "Effects": {
             "craft": 2
           }
@@ -340,12 +379,13 @@
         {
           "Text": "İzleyicinin kendi çevresini keşfetmesini teşvik et.",
           "Next": "music_and_tv",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Genç izleyicileri kendi şehirlerinin tarihini araştırmaya teşvik ettin.",
           "Effects": {
             "connection": 2
           }
         }
-      ]
+      ],
+      "Style": "note"
     },
     "music_and_tv": {
       "Title": "İki anlatım biçimi",
@@ -353,19 +393,22 @@
       "Text": "Müzik ve televizyon farklı ritimlerle çalışır. Şarkı birkaç dakikada duygu kurabilir; gezi programı ise yerin ve karşılaşmanın ayrıntısına zaman ayırır. Barış Manço’nun tanınan kamusal imajı bu iki alanı bir araya getirdi. Bir alanda edinilen sahne deneyimi, diğerinde izleyiciyle kurulan iletişime katkı sağlayabilir.",
       "Choices": [
         {
-          "Text": "Şarkıları televizyon anlatısına kat.",
-          "Next": "legacy",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Text": "Senfonik bir Manço külliyatı ve arşiv projesi hazırla.",
+          "Next": "symphonic_bridge",
+          "Result": "Yılların şarkılarını büyük bir orkestra düzenlemesiyle buluşturmak üzere stüdyoya girdin.",
+          "NeedStat": "craft",
+          "MinValue": 58,
           "Effects": {
-            "craft": 2
+            "craft": 6
           }
         },
         {
-          "Text": "Programın kendi ritmini müzikten bağımsız kur.",
+          "Text": "Kültür elçisi olarak dünya belgeselleri serisini büyüt.",
           "Next": "legacy",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Televizyon ve müzik mirasını tek çatı altında topladın.",
           "Effects": {
-            "connection": 2
+            "connection": 5,
+            "reach": 4
           }
         }
       ]
@@ -381,6 +424,175 @@
       "Chapter": 6,
       "Text": "Bu kurmaca rotada, insanlarla ve kültürlerle karşılaşmayı merkezde tuttun. Barış Manço’nun gerçek programı 1988’de TRT’de başladı; burada anlatılan özel sahneler ve seçimler kurgusaldır.",
       "Ending": "Yol anlatıcısı"
+    },
+    "studio_experiment": {
+      "Title": "Stüdyoda doğu-batı sentezi",
+      "Chapter": 1,
+      "Text": "Orkestra yaylılarıyla bağlama ve elektro gitar aynı kayıtta buluşuyor. Tonmayster kayıt masasından soruyor: Hangi katmanı öne çıkaralım?",
+      "Interaction": {
+        "Type": "sequence",
+        "Prompt": "Anadolu rock düzenlemesinin giriş sırasını kur.",
+        "Items": [
+          "Bağlama motifi",
+          "Bas yürüyüşü",
+          "Yaylı grup",
+          "Vokal girişi"
+        ],
+        "Answer": "0,1,2,3",
+        "Attempts": 2,
+        "Success": 0,
+        "Fail": 1
+      },
+      "Choices": [
+        {
+          "Text": "Kayıt tek seferde oturdu; sahne hazırlığına geç.",
+          "Next": "stage",
+          "Result": "Akustik ve elektrik tınılar kusursuz bir denge yakaladı.",
+          "Effects": {
+            "craft": 6,
+            "presence": 4
+          }
+        },
+        {
+          "Text": "Sade bir miksajla sahne hazırlığına geç.",
+          "Next": "stage",
+          "Result": "Temiz ve anlaşılır bir düzenleme ortaya çıktı.",
+          "Effects": {
+            "craft": 3
+          }
+        }
+      ]
+    },
+    "world_radio": {
+      "Title": "Ekvator'dan kutuplara yayın kaydı",
+      "Chapter": 3,
+      "Style": "radio",
+      "Text": "[DIŞ ÇEKİM SES KAYDI · BANT 14]\n«Şu anda haritanın bambaşka bir ucundayız. Dilimiz ayrı ama gülümsememiz aynı. Şimdi bu meydandaki çocuklarla Türkçe bir tekerleme söyleyeceğiz!»",
+      "Choices": [
+        {
+          "Text": "Kültürlerarası müzik köprüsünü kayda al.",
+          "Next": "tv",
+          "Result": "Kayıt unutulmaz bir televizyon anına dönüştü.",
+          "Effects": {
+            "reach": 6,
+            "connection": 4
+          },
+          "SetFlags": [
+            "global_bridge"
+          ]
+        },
+        {
+          "Text": "Sokaktaki gündelik zanaatları belgelemeye odaklan.",
+          "Next": "tv",
+          "Result": "İnsan emeğinin evrensel dili ekrana taşındı.",
+          "Effects": {
+            "craft": 5,
+            "connection": 3
+          }
+        }
+      ]
+    },
+    "symphonic_bridge": {
+      "Title": "Mançoloji ve zamanın ötesi",
+      "Chapter": 5,
+      "Text": "Kırk yıla yaklaşan müzik birikimini yeniden düzenlerken her şarkının farklı bir kuşağın hatırası olduğunu görüyorsun.",
+      "Choices": [
+        {
+          "Text": "Anadolu rock köklerini geleceğe taşıyan büyük finali kur.",
+          "Next": "ending_ozan",
+          "Result": "Çağdaş bir ozan olarak hafızalara kazındın.",
+          "NeedFlag": "anadolu_fusion",
+          "Effects": {
+            "craft": 5
+          }
+        },
+        {
+          "Text": "Sahne ve ekran efsanesi olarak bütün kuşakları selamla.",
+          "Next": "ending_stage_legend",
+          "Result": "Unutulmaz sahne kimliğinle simgeleştin.",
+          "Effects": {
+            "presence": 5
+          }
+        }
+      ]
+    },
+    "ending_ozan": {
+      "Title": "Çağdaş Anadolu ozanı",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, geleneksel deyişleri ve atasözlerini modern müziğin diliyle harmanlayan ozan kimliğini zirveye taşıdın. Gerçek eserler kamuya açık müzik tarihinin parçasıdır; buradaki seçimler oyuncunun alternatif anlatısıdır.",
+      "Ending": "Çağdaş Anadolu ozanı"
+    },
+    "ending_stage_legend": {
+      "Title": "Sahnenin zamansız imzası",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, kendine özgü sahne duruşu, anlatımı ve orkestra düzenlemeleriyle kuşakların hafızasında silinmez bir iz bıraktın.",
+      "Ending": "Sahnenin zamansız imzası"
+    },
+    "ending_cultural_ambassador": {
+      "Title": "Dünyayı buluşturan tebessüm",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, Ekvator'dan kutuplara uzanan yolculuklarınla farklı kültürleri aynı ekranda ve aynı şarkıda buluşturan bir kültür elçisi mirası kurdun.",
+      "Ending": "Dünyayı buluşturan tebessüm"
+    },
+    "kurtalan_rehearsal": {
+      "Title": "Kurtalan Ekspres prova odası",
+      "Chapter": 2,
+      "Style": "chat",
+      "Text": "Grup Arkadaşın: Bu yeni parçada synthesizer ile ney sesini aynı anda mı sokuyoruz?\nSen: Evet! Dinleyen önce şaşıracak, sonra o atasözünün hikâyesine kapılacak.\nGrup Arkadaşın: O zaman sabaha kadar buradayız, baştan alıyoruz!",
+      "Choices": [
+        {
+          "Text": "Destansı ve senfonik rock düzenlemesini tamamla.",
+          "Next": "song_breakthrough",
+          "Result": "2023 ve Dönence gibi ufuk açıcı eserlerin temeli bu gece atıldı.",
+          "Effects": {
+            "craft": 6,
+            "presence": 4
+          }
+        },
+        {
+          "Text": "Halk hikâyelerini mizahi ve sıcak bir dille anlatan parçaları öne çıkar.",
+          "Next": "song_breakthrough",
+          "Result": "Sokağın diliyle konuşan unutulmaz karakterler şarkılarına yerleşti.",
+          "Effects": {
+            "connection": 6,
+            "reach": 4
+          }
+        }
+      ]
+    },
+    "japan_tour_bridge": {
+      "Title": "Tokyo'da yankılanan Türkçe nakarat",
+      "Chapter": 3,
+      "Text": "Uzak Doğu turnesinde binlerce Japon dinleyici ellerinde bayraklarla Türkçe şarkılarına eşlik ediyor. Sahnede salonun coşkusuna nasıl karşılık vereceksin?",
+      "Choices": [
+        {
+          "Text": "Konseri iki kültürün ortak şarkısına ve dansına dönüştür.",
+          "Next": "tv",
+          "Result": "Tokyo'dan İstanbul'a uzanan efsanevi konser görüntüleri hafızalara kazındı.",
+          "Effects": {
+            "reach": 7,
+            "presence": 5
+          },
+          "SetFlags": [
+            "global_bridge"
+          ]
+        },
+        {
+          "Text": "Kuliste yerel müzisyenlerle buluşup belgesel çekimi yap.",
+          "Next": "first_encounter",
+          "Result": "Sahne başarısını derin bir kültür söyleşisiyle birleştirdin.",
+          "Effects": {
+            "connection": 6,
+            "craft": 4
+          }
+        }
+      ]
+    },
+    "ending_moda_house": {
+      "Title": "Moda'da açık kalan kapı",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, dünyayı dolaştıktan sonra bütün birikimini, enstrümanlarını ve hatıralarını gelecek kuşakların ilham alacağı sıcak bir kültür evinde topladın. Kapın, tıpkı ekranlarda olduğu gibi 7'den 77'ye herkese açık kaldı.",
+      "Ending": "Moda'da açık kalan kapı"
     }
   }
 }

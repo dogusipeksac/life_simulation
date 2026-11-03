@@ -1808,5 +1808,648 @@
    "Text": "Albümdeki pek çok ayrıntıyı merakla inceledin.",
    "Stats": {}
   }
+ },
+ {
+  "Id": "m_origin_fisher_1",
+  "Target": "origin_fisher_1",
+  "Type": "timing",
+  "Prompt": "Dalga tekneyi kaldırırken ağı tam dengede çek.",
+  "Rounds": 3,
+  "Need": 2,
+  "Zone": 0.25,
+  "Speed": 0.95,
+  "Success": {
+   "Text": "Ağ su yüzüne gümüş parıltılarla çıktı. Babandan ilk denizci baş selamını aldın.",
+   "Stats": {
+    "Health": 2,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "İp elini biraz yaktı ama bırakmadın. Deniz sabrı ilk günden öğretir.",
+   "Stats": {
+    "Health": 1
+   }
+  }
+ },
+ {
+  "Id": "m_origin_musician_1",
+  "Target": "origin_musician_1",
+  "Type": "sequence",
+  "Prompt": "Salondaki akşam faslında duyduğun dört notalık motifi sırayla tekrar et.",
+  "Items": [
+   "La",
+   "Do",
+   "Re",
+   "Mi"
+  ],
+  "Answer": "0,2,1,3",
+  "Attempts": 2,
+  "Success": {
+   "Text": "Evin içindeki herkes sustu; kulağının ne kadar keskin olduğunu o akşam anladılar.",
+   "Stats": {
+    "Education": 2,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Son nota biraz kaydı ama ritmi hiç kaçırmadın.",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
+ },
+ {
+  "Id": "m_job_carpenter_1",
+  "Target": "job_carpenter_1",
+  "Type": "timing",
+  "Prompt": "Rendeyi ceviz ağacının damar yönünde sabit ritimle sür.",
+  "Rounds": 3,
+  "Need": 2,
+  "Zone": 0.24,
+  "Speed": 1.0,
+  "Success": {
+   "Text": "İncecik talaş kıvrılarak tezgâha düştü; yüzey cam gibi pürüzsüz oldu.",
+   "Stats": {
+    "Education": 2,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Bıçak damara takıldı; zımparayla sabırla düzelttin.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_job_software_dev_1",
+  "Target": "job_software_dev_1",
+  "Type": "select",
+  "Prompt": "Canlıya çıkmadan önce dağıtım listesindeki üç kritik kontrolü seç.",
+  "Items": [
+   "Birim testleri geçti mi?",
+   "Yedekleme alındı mı?",
+   "Geri dönüş planı hazır mı?",
+   "Logo rengi parlatıldı mı?",
+   "Toplantı odası kokusu seçildi mi?"
+  ],
+  "Answer": "0,1,2",
+  "Attempts": 2,
+  "Success": {
+   "Text": "Kontrol listesi eksiksiz tamamlandı; gece yarısı sürümü tek hatasız geçti.",
+   "Stats": {
+    "Education": 3,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Gözden kaçan küçük bir adım sabah sıcak yama yapmanı gerektirdi.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_job_ship_captain_1",
+  "Target": "job_ship_captain_1",
+  "Type": "tune",
+  "Prompt": "Fırtına hattında deniz telsizini sahil güvenlik frekansına sabitle.",
+  "Min": 150,
+  "Max": 170,
+  "Goal": 156,
+  "Tolerance": 1.5,
+  "HoldMs": 1200,
+  "Seconds": 22,
+  "Unit": "MHz",
+  "Hint": "Kanal 16: 156 MHz civarı.",
+  "Success": {
+   "Text": "Parazit kesildi, kılavuz kaptanın sesi köprüüstünde net yankılandı.",
+   "Stats": {
+    "Education": 2,
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "Telsiz cızırtılı kaldı; yedek kanaldan güçlükle bağlantı kurdun.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_job_nurse_1",
+  "Target": "job_nurse_1",
+  "Type": "hold",
+  "Prompt": "Gece nöbetinde panikleyen hastayla birlikte sakin nefes al: halka dolana kadar tut.",
+  "HoldMs": 1600,
+  "Rounds": 3,
+  "Attempts": 2,
+  "Success": {
+   "Text": "Hastanın nabzı normale döndü; elini sıkarak teşekkür etti.",
+   "Stats": {
+    "Happiness": 2,
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "Sakinleşmesi biraz uzun sürdü ama başucundan ayrılmadın.",
+   "Stats": {
+    "Social": 1
+   }
+  }
+ },
+ {
+  "Id": "m_job_barista_1",
+  "Target": "job_barista_1",
+  "Type": "order",
+  "Prompt": "Sabah yoğunluğunda kusursuz bir espresso hazırlamanın adımlarını sırala.",
+  "Items": [
+   "Çekirdeği taze öğüt",
+   "Portafiltreyi düzleştirip sıkıştır",
+   "Demleme suyunu başlat",
+   "Kremayı kontrol edip servis et"
+  ],
+  "Attempts": 2,
+  "Success": {
+   "Text": "Fincanın üzerindeki fındık rengi krema müdavim müşteriden tam not aldı.",
+   "Stats": {
+    "Social": 2,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "İlk fincan biraz acı oldu; hemen yenisini hazırladın.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_job_technician_1",
+  "Target": "job_technician_1",
+  "Type": "select",
+  "Prompt": "Panoyu açmadan önce iş güvenliği için zorunlu üç adımı seç.",
+  "Items": [
+   "Ana şalteri kapat ve kilitle",
+   "Gerilim yokluğunu ölçü aletiyle doğrula",
+   "Yalıtkan eldivenleri giy",
+   "Sigortayı tel ile köprüle",
+   "Islak zeminde çıplak elle kontrol et"
+  ],
+  "Answer": "0,1,2",
+  "Attempts": 2,
+  "Success": {
+   "Text": "Güvenlik protokolünü eksiksiz uyguladın; ustabaşı seni örnek gösterdi.",
+   "Stats": {
+    "Health": 2,
+    "Education": 2
+   }
+  },
+  "Fail": {
+   "Text": "Ustabaşı seni durdurup kuralları tek tek yeniden hatırlattı.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_job_portfolio_manager_1",
+  "Target": "job_portfolio_manager_1",
+  "Type": "budget",
+  "Prompt": "Emekli müşterinin 10 birimlik birikimini düşük riskle paylaştır.",
+  "Total": 10,
+  "Hint": "Sabit getirili tahvile en az 4, altına en az 3 birim ayır.",
+  "Buckets": [
+   {
+    "Label": "Devlet Tahvili",
+    "Min": 4
+   },
+   {
+    "Label": "Altın Fonu",
+    "Min": 3
+   },
+   {
+    "Label": "Hisse Senedi",
+    "Min": 0
+   }
+  ],
+  "Success": {
+   "Text": "Dalgalı haftada portföy değerini korudu; müşterin huzurla uyudu.",
+   "Stats": {
+    "Education": 2,
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "Dağılım dengesiz kalınca ilk dalgada müşterini tekrar aramak zorunda kaldın.",
+   "Stats": {}
+  }
+ },
+ {
+  "Id": "m_job_defense_lawyer_1",
+  "Target": "job_defense_lawyer_1",
+  "Type": "search",
+  "Prompt": "Duruşma dosyasındaki iki çelişkili tutanak ayrıntısını bul.",
+  "Picks": 2,
+  "Spots": [
+   {
+    "Label": "Kamera saati",
+    "Text": "Kayıt saati kış saati ayarında kalmış; olay saatinden bir saat geri.",
+    "Key": true
+   },
+   {
+    "Label": "Tanık mesafesi",
+    "Text": "Tanık kırk metreden karanlıkta yüz seçtiğini iddia ediyor.",
+    "Key": true
+   },
+   {
+    "Label": "Dosya kapağı",
+    "Text": "Standart mahkeme klasörü.",
+    "Key": false
+   },
+   {
+    "Label": "Harç makbuzu",
+    "Text": "Zamanında yatırılmış kalem makbuzu.",
+    "Key": false
+   }
+  ],
+  "Success": {
+   "Text": "İki kritik çelişkiyi mahkeme heyetinin önüne net kanıtlarla koydun.",
+   "Stats": {
+    "Education": 3,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Ayrıntılardan biri gözünden kaçtı; savunmayı genel ilkeler üzerinden kurdun.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_job_war_correspondent_1",
+  "Target": "job_war_correspondent_1",
+  "Type": "quiz",
+  "Prompt": "Sahadan geçtiğin haberde gazetecilik etiği gereği ilk kural nedir?",
+  "Items": [
+   "En çarpıcı söylentiyi ilk geçen olmak",
+   "Bilgiyi en az iki bağımsız kaynaktan doğrulamak",
+   "Yalnızca resmî bülteni kopyalamak"
+  ],
+  "AnswerIndex": 1,
+  "Success": {
+   "Text": "Doğrulanmış haberin ulusal basında güvenilir kaynak olarak alıntılandı.",
+   "Stats": {
+    "Education": 3,
+    "Social": 1
+   }
+  },
+  "Fail": {
+   "Text": "Editörün haberi yayınlamadan önce ek doğrulama istedi.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_job_airline_pilot_1",
+  "Target": "job_airline_pilot_1",
+  "Type": "order",
+  "Prompt": "Islak pistte pas geçme (go-around) prosedürünü doğru sıraya diz.",
+  "Items": [
+   "Tam gaz (TO/GA) ver",
+   "Burun açısını tırmanışa kaldır",
+   "Kanatçıkları kademeli topla",
+   "İniş takımlarını yukarı al",
+   "Kuleye pas geçişi bildir"
+  ],
+  "Attempts": 2,
+  "Success": {
+   "Text": "Soğukkanlı manevranla uçak güvenle yükseldi; kabinden alkış sesleri geldi.",
+   "Stats": {
+    "Education": 2,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Yardımcı pilot sıralamayı hatırlattı; birlikte güvenli irtifaya çıktınız.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_chapter_musician_stage",
+  "Target": "chapter_musician_stage",
+  "Type": "sequence",
+  "Prompt": "Canlı yayında kırmızı ışık yandı! Giriş akorlarını doğru sırayla vur.",
+  "Items": [
+   "Mi minör",
+   "La minör",
+   "Re majör",
+   "Sol majör"
+  ],
+  "Answer": "0,1,2,3",
+  "Attempts": 2,
+  "Success": {
+   "Text": "Giriş akorları stüdyoda kusursuz yankılandı; ses teknisyeni başparmağını kaldırdı.",
+   "Stats": {
+    "Happiness": 3,
+    "Social": 1
+   }
+  },
+  "Fail": {
+   "Text": "İlk akorda parmağın sürçtü ama doğaçlama bir geçişle parçayı kurtardın.",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
+ },
+ {
+  "Id": "m_chapter_language_bridge",
+  "Target": "chapter_language_bridge",
+  "Type": "quiz",
+  "Prompt": "Diplomatik çeviride konuk heyet «We are looking for common ground» dediğinde en doğru karşılık nedir?",
+  "Items": [
+   "Ortak bir zemin arıyoruz",
+   "Toprak satın almak istiyoruz",
+   "Görüşmeyi ertelemek istiyoruz"
+  ],
+  "AnswerIndex": 0,
+  "Success": {
+   "Text": "İnce nüansı yakalayan çevirin masadaki gerginliği bir anda yumuşattı.",
+   "Stats": {
+    "Education": 2,
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "İlk cümlen biraz düz kaldı ama hemen toparlayıp anlamı açıkladın.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_chapter_business_milestone",
+  "Target": "chapter_business_milestone",
+  "Type": "budget",
+  "Prompt": "Dükkânın yıl dönümü bütçesini (10 birim) stok, bakım ve mahalle ikramı arasında paylaştır.",
+  "Total": 10,
+  "Hint": "Stoka en az 4, bakıma en az 2, ikrama en az 1 birim ayır.",
+  "Buckets": [
+   {
+    "Label": "Yeni Stok",
+    "Min": 4
+   },
+   {
+    "Label": "Tezgâh Bakımı",
+    "Min": 2
+   },
+   {
+    "Label": "Mahalle İkramı",
+    "Min": 1
+   }
+  ],
+  "Success": {
+   "Text": "Hem raflar doldu hem de sokağın yüzü güldü.",
+   "Stats": {
+    "Social": 2,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Hesap biraz şaştı ama kutlamanın neşesi eksiği kapattı.",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
+ },
+ {
+  "Id": "m_lived_contract_shield",
+  "Target": "lived_contract_shield",
+  "Type": "search",
+  "Prompt": "Sözleşmedeki iki gizli risk maddesini bulup işaretle.",
+  "Picks": 2,
+  "Spots": [
+   {
+    "Label": "Cayma bedeli",
+    "Text": "Tek taraflı fesihte on iki aylık bedelin peşin ödeneceği yazıyor.",
+    "Key": true
+   },
+   {
+    "Label": "Otomatik uzama",
+    "Text": "Otuz gün önceden yazılı bildirim yapılmazsa zamlı tarifeden uzar.",
+    "Key": true
+   },
+   {
+    "Label": "Tebligat adresi",
+    "Text": "Standart iletişim bilgileri maddesi.",
+    "Key": false
+   },
+   {
+    "Label": "Tarih satırı",
+    "Text": "Bugünün tarihi doğru yazılmış.",
+    "Key": false
+   }
+  ],
+  "Success": {
+   "Text": "İki maddeyi de kalemle çizip karşı tarafın önüne koydun.",
+   "Stats": {
+    "Education": 2,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Maddelerden birini son anda fark ettin; imzadan önce düzeltilmesini istedin.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_mystery_antique_clockmaker",
+  "Target": "mystery_antique_clockmaker",
+  "Type": "code",
+  "Prompt": "Büyükbabanın cep saatinin kapağında «Saat 4'ü 18 geçe durdu» yazıyor. Üç haneli kasa şifresini gir.",
+  "Answer": "418",
+  "Attempts": 3,
+  "Hint": "Saat ve dakikayı yan yana yaz: 4 ve 18.",
+  "Success": {
+   "Text": "Üçüncü çark yerine oturduğunda ağır kasa kapağı tok bir sesle açıldı!",
+   "Stats": {
+    "Education": 3,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "İlk denemede çark sıkıştı ama saat ustası yağdanlıkla mekanizmayı rahatlattı.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_mystery_station_locker",
+  "Target": "mystery_station_locker",
+  "Type": "code",
+  "Prompt": "02:14 telefonundaki saati ve 7. sırayı birleştirerek emanet dolabının dört haneli kodunu aç (0214).",
+  "Answer": "0214",
+  "Attempts": 3,
+  "Hint": "Telefonun çaldığı saat: 02:14 -> 0214.",
+  "Success": {
+   "Text": "Kilit tek seferde açıldı; perondaki yabancı şaşkınlıkla başını salladı.",
+   "Stats": {
+    "Education": 2,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Dolap kilidi zorlandı ama son hakkınla doğru numarayı çevirdin.",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
+ },
+ {
+  "Id": "m_career_secret_ledger",
+  "Target": "career_secret_ledger",
+  "Type": "search",
+  "Prompt": "Gece bekçisi koridora girmeden önce yazıcıdaki dosyadan en kritik iki kanıt sayfasını seç.",
+  "Picks": 2,
+  "Spots": [
+   {
+    "Label": "İmzalı onay tutanağı",
+    "Text": "Kusurlu serinin örtbas edildiğini kanıtlayan ıslak imzalı sayfa.",
+    "Key": true
+   },
+   {
+    "Label": "Laboratuvar test raporu",
+    "Text": "Güvenlik sınırının üç kat aşıldığını gösteren orijinal ölçüm tablosu.",
+    "Key": true
+   },
+   {
+    "Label": "Yemekhane menüsü",
+    "Text": "Haftalık yemek listesi çıktısı.",
+    "Key": false
+   },
+   {
+    "Label": "Boş kapak sayfası",
+    "Text": "Yalnızca şirket logosu var.",
+    "Key": false
+   }
+  ],
+  "Success": {
+   "Text": "En kritik iki kanıt sayfasını eksiksiz fotoğraflayıp dosyaya koydun.",
+   "Stats": {
+    "Education": 3,
+    "Happiness": 1
+   }
+  },
+  "Fail": {
+   "Text": "Aceleden bir sayfayı bulanık çektin ama ana tutanak elinde.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_adventure_storm_lighthouse",
+  "Target": "adventure_storm_lighthouse",
+  "Type": "timing",
+  "Prompt": "Fenerin dev merceğini döndüren krank kolunu rüzgârın boşluğunda tam zamanında çek!",
+  "Rounds": 3,
+  "Need": 2,
+  "Zone": 0.25,
+  "Speed": 1.0,
+  "Success": {
+   "Text": "Dev mercek dönmeye başladı ve fenerin ışığı fırtınalı denizi boydan boya aydınlattı!",
+   "Stats": {
+    "Health": 2,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Kol elinden bir kez kurtuldu ama tüm gücünle asılıp çarkı döndürdün.",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
+ },
+ {
+  "Id": "m_mystery_underground_mosaic",
+  "Target": "mystery_underground_mosaic",
+  "Type": "order",
+  "Prompt": "Antik mozaiğe zarar vermeden gün yüzüne çıkarmanın doğru sırasını uygula.",
+  "Items": [
+   "Sert kazmayı bırakıp yumuşak fırça al",
+   "Üstteki gevşek toprağı kenara süpür",
+   "Taşların sınırını suyla nazikçe temizle",
+   "Fotoğraflayıp koruma örtüsü ser"
+  ],
+  "Attempts": 2,
+  "Success": {
+   "Text": "Tek bir mozaik taşı bile yerinden oynamadan bin yıllık desen bütün ihtişamıyla belirdi!",
+   "Stats": {
+    "Education": 3,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Kenardaki birkaç taş gevşedi ama hemen durup arkeologları bekledin.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_venture_investor_pitch",
+  "Target": "venture_investor_pitch",
+  "Type": "quiz",
+  "Prompt": "Yatırımcı soruyor: «Bir girişimin uzun vadede batmamasını sağlayan en kritik gösterge hangisidir?»",
+  "Items": [
+   "Sadece ilk gün yapılan gösterişli lansman partisi",
+   "Müşteri tutundurma oranı ve pozitif birim ekonomisi (nakit akışı)",
+   "Ofis mobilyalarının pahalı olması"
+  ],
+  "AnswerIndex": 1,
+  "Success": {
+   "Text": "Rakamlarla verdiğin net cevap yatırımcıların sana olan saygısını ikiye katladı.",
+   "Stats": {
+    "Education": 3,
+    "Social": 2
+   }
+  },
+  "Fail": {
+   "Text": "Heyecandan ilk cümlen dağıldı ama çalışan prototipi göstererek durumu kurtardın.",
+   "Stats": {
+    "Education": 1
+   }
+  }
+ },
+ {
+  "Id": "m_lived_radio_quiz_jackpot",
+  "Target": "lived_radio_quiz_jackpot",
+  "Type": "quiz",
+  "Prompt": "Canlı yayın sorusu: «Dünyanın merkezine ve denizler altına yolculuk romanlarıyla tanınan öncü yazar kimdir?»",
+  "Items": [
+   "Jules Verne",
+   "Honoré de Balzac",
+   "Stendhal"
+  ],
+  "AnswerIndex": 0,
+  "Success": {
+   "Text": "Saniyesinde verdiğin doğru yanıtla stüdyoda alkış tufanı koptu!",
+   "Stats": {
+    "Education": 2,
+    "Happiness": 2
+   }
+  },
+  "Fail": {
+   "Text": "Son anda tereddüt ettin ama sunucunun ipucuyla doğru cevabı yakaladın.",
+   "Stats": {
+    "Happiness": 1
+   }
+  }
  }
 ]

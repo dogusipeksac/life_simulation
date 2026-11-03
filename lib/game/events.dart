@@ -62,6 +62,8 @@ class EventDef {
     this.turnDays = 0,
     this.varietyFamily = '',
     this.managedByDirector = false,
+    this.style = '',
+    this.echo = '',
   });
 
   factory EventDef.fromContent(GameEvent e) => EventDef(
@@ -79,9 +81,10 @@ class EventDef {
         weight: e.weight,
         chainOnly: e.chainOnly,
         turnDays: e.turnDays,
+        style: e.style,
       );
 
-  final String id, title, varietyFamily;
+  final String id, title, varietyFamily, style, echo;
   String description;
   final EventCategory category;
   final int minAge, maxAge, cooldownDays, weight, turnDays;

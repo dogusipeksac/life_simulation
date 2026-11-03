@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:life_simulation/content/game_content.dart';
-import 'package:life_simulation/game/features.dart';
 import 'package:life_simulation/game/atomic_file.dart';
 import 'package:life_simulation/game/story_library.dart';
 import 'package:life_simulation/game/story_store.dart';
@@ -40,9 +39,8 @@ void main() {
   test('released and literary books have at least five endings; choices save independently', () {
     expect(library.books.length, content.stories.length);
     for (final b in library.books.values) {
-      // Biyografi kitapları kısa taslaklar; yayına alınmadan önce genişletilecek.
       final endings = b.nodes.values.where((n) => n.ending.isNotEmpty).length;
-      expect(endings, greaterThanOrEqualTo(Features.released(b.id) || b.productId.isNotEmpty ? 5 : 2));
+      expect(endings, greaterThanOrEqualTo(6));
       final p = library.open(b.id), node = library.open(b.id).nodeId;
       expect(library.choose(b.id, -1, expectedNode: node).success, isFalse);
       expect(p.decisions, 0);

@@ -197,6 +197,45 @@ abstract final class Social {
       0,
       0,
     ),
+    LifeAction(
+      "heirloom",
+      "♛",
+      "Aile yadigârı al",
+      "Kuşaktan kuşağa geçen koleksiyon · +6 mutluluk, +3 sosyal · 350.000 ₺",
+      "Alışveriş",
+      22,
+      350000,
+      0,
+      6,
+      0,
+      3,
+    ),
+    LifeAction(
+      "business",
+      "❖",
+      "Kendi girişimini kur",
+      "Aylık kâr payı ve kendi işinin patronu olma yolu · +5 mutluluk, +3 zihin · 1.800.000 ₺",
+      "Alışveriş",
+      22,
+      1800000,
+      0,
+      5,
+      3,
+      2,
+    ),
+    LifeAction(
+      "rental",
+      "⊞",
+      "Kiralık mülk al",
+      "Düzenli kira geliri sağlayan yatırım dairesi · +4 mutluluk · 4.500.000 ₺",
+      "Alışveriş",
+      24,
+      4500000,
+      0,
+      4,
+      0,
+      0,
+    ),
   ];
   static const interactions = <LifeAction>[
     LifeAction(
@@ -368,6 +407,9 @@ abstract final class Social {
       'pet': 'pet_owner',
       'car': 'owns_car',
       'house': 'owns_house',
+      'heirloom': 'family_heirloom',
+      'business': 'owns_business',
+      'rental': 'rental_property',
     }[a.id];
     if (flag != null && s.flags.contains(flag)) return 'Zaten hayatında var.';
     if (a.id == 'meet' &&
@@ -537,8 +579,18 @@ abstract final class Social {
         'pet': 'pet_owner',
         'car': 'owns_car',
         'house': 'owns_house',
+        'heirloom': 'family_heirloom',
+        'business': 'owns_business',
+        'rental': 'rental_property',
       }[id];
       if (flag != null) s.flags.add(flag);
+      if (id == 'business') {
+        s.simulation.qualities['autonomy'] = ((s.simulation.qualities['autonomy'] ?? 50) + 8).clamp(0, 100);
+        s.simulation.qualities['purpose'] = ((s.simulation.qualities['purpose'] ?? 50) + 8).clamp(0, 100);
+      }
+      if (id == 'heirloom') {
+        s.simulation.qualities['family'] = ((s.simulation.qualities['family'] ?? 50) + 8).clamp(0, 100);
+      }
     }
     remember(s, p == null ? a.title : '${p.role} · ${a.title}', message);
     return (true, message);

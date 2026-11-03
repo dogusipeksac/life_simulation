@@ -4,7 +4,7 @@ import 'preferences.dart';
 import 'palette.dart';
 import 'theme.dart';
 
-/// Temel kart: surface, radius 12, 1px kenar. Açık temada çok hafif gölge.
+/// Temel akış kartı (Social Feed Card): surface, radius 18, 1px kenar ve modern yumuşak gölge.
 class LifeSimulationCard extends StatelessWidget {
   const LifeSimulationCard({super.key, required this.child, this.onTap, this.padding});
 
@@ -15,15 +15,19 @@ class LifeSimulationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = context.vita;
-    final radius = BorderRadius.circular(12);
+    final radius = BorderRadius.circular(18);
     return DecoratedBox(
       decoration: BoxDecoration(
         color: p.surface,
         borderRadius: radius,
         border: Border.all(color: p.border),
-        boxShadow: p.isDark
-            ? null
-            : [BoxShadow(color: const Color(0xFF6B5A3E).withValues(alpha: .06), blurRadius: 10, offset: const Offset(0, 3))],
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: p.isDark ? .28 : .05),
+            blurRadius: 16,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: Material(
         type: MaterialType.transparency,
@@ -37,7 +41,7 @@ class LifeSimulationCard extends StatelessWidget {
   }
 }
 
-/// Bölüm başlığı: büyük harf, accent, altında saç teli çizgi.
+/// Akış bölüm başlığı: solunda canlı vurgu noktası, yanında modern büyük harf başlık.
 class SectionHeader extends StatelessWidget {
   const SectionHeader(this.text, {super.key});
   final String text;
@@ -48,13 +52,16 @@ class SectionHeader extends StatelessWidget {
     return Semantics(
       header: true,
       child: Padding(
-        padding: const EdgeInsets.only(top: 22, bottom: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        padding: const EdgeInsets.only(top: 20, bottom: 10),
+        child: Row(
           children: [
-            Text(upperTr(text), style: VitaType.overline(p)),
-            const SizedBox(height: 6),
-            Container(height: .6, color: p.border),
+            Container(
+              width: 7,
+              height: 7,
+              decoration: BoxDecoration(color: p.accent, shape: BoxShape.circle),
+            ),
+            const SizedBox(width: 8),
+            Expanded(child: Text(upperTr(text), style: VitaType.overline(p))),
           ],
         ),
       ),
@@ -76,19 +83,19 @@ class VitaChip extends StatelessWidget {
       decoration: BoxDecoration(
         color: p.accentSoft,
         borderRadius: BorderRadius.circular(99),
-        border: Border.all(color: p.accent.withValues(alpha: .55)),
+        border: Border.all(color: p.accent.withValues(alpha: .45)),
       ),
       child: Row(mainAxisSize: MainAxisSize.min, children: [
         if (icon != null) ...[Icon(icon, size: 13, color: p.accent), const SizedBox(width: 5)],
-        Flexible(child: Text(label, style: TextStyle(fontSize: 12.5, color: p.accent, fontWeight: FontWeight.w500))),
+        Flexible(child: Text(label, style: TextStyle(fontSize: 12.5, color: p.accent, fontWeight: FontWeight.w600))),
       ]),
     );
   }
 }
 
-const _roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
+const _choiceLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
-/// Numaralı karar kartı: solda 3px kehribar şerit ve serif Romen rakamı.
+/// Sosyal Akış Seçim Kapsülü: tek başparmakla rahatça basılan dolgun modern aksiyon kartı.
 class DecisionCard extends StatelessWidget {
   const DecisionCard({
     super.key,
@@ -112,61 +119,101 @@ class DecisionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = context.vita;
-    final radius = BorderRadius.circular(10);
-    final numeral = index < _roman.length ? _roman[index] : '${index + 1}';
+    final radius = BorderRadius.circular(16);
+    final badge = index < _choiceLetters.length ? _choiceLetters[index] : '${index + 1}';
     return Semantics(
       button: true,
       enabled: !locked,
       label: 'Seçenek ${index + 1}',
       child: Opacity(
-        opacity: locked ? .5 : 1,
-        child: Material(
-          color: p.surfaceSunken,
-          borderRadius: radius,
-          clipBehavior: Clip.antiAlias,
-          child: InkWell(
-            onTap: locked
+        opacity: locked ? .55 : 1,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: p.surface,
+            borderRadius: radius,
+            border: Border.all(color: locked ? p.border : p.accent.withValues(alpha: .38), width: 1.2),
+            boxShadow: locked
                 ? null
-                : () {
-                    preferences.feedback();
-                    onTap?.call();
-                  },
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(minHeight: 56),
-              child: IntrinsicHeight(
-                child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                  Container(width: 3, color: locked ? p.muted : p.accent),
-                  SizedBox(
-                    width: 44,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 14),
-                      child: Text(numeral,
-                          textAlign: TextAlign.center,
-                          style: VitaType.serif(15, p.accent, weight: FontWeight.w600)),
+                : [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: p.isDark ? .22 : .04),
+                      blurRadius: 10,
+                      offset: const Offset(0, 3),
                     ),
+                  ],
+          ),
+          child: Material(
+            color: Colors.transparent,
+            borderRadius: radius,
+            clipBehavior: Clip.antiAlias,
+            child: InkWell(
+              onTap: locked
+                  ? null
+                  : () {
+                      preferences.feedback();
+                      onTap?.call();
+                    },
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(minHeight: 58),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 34,
+                        height: 34,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: locked ? p.surfaceSunken : p.accentSoft,
+                          borderRadius: BorderRadius.circular(11),
+                          border: Border.all(
+                            color: locked ? p.border : p.accent.withValues(alpha: .4),
+                          ),
+                        ),
+                        child: Text(
+                          badge,
+                          style: VitaType.serif(14, locked ? p.muted : p.accent, weight: FontWeight.w800),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(text, style: VitaType.decision(p)),
+                            if (hint != null) ...[
+                              const SizedBox(height: 4),
+                              Text(hint!, style: VitaType.caption(p)),
+                            ],
+                            if (cost != null) ...[
+                              const SizedBox(height: 4),
+                              Text(
+                                cost!,
+                                style: VitaType.caption(p).copyWith(color: p.accent, fontWeight: FontWeight.w700),
+                              ),
+                            ],
+                            if (locked) ...[
+                              const SizedBox(height: 4),
+                              Row(children: [
+                                Icon(Icons.lock_outline, size: 13, color: p.muted),
+                                const SizedBox(width: 4),
+                                Expanded(child: Text(lockedReason!, style: VitaType.caption(p))),
+                              ]),
+                            ],
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Icon(
+                        locked ? Icons.lock_outline : Icons.arrow_forward_ios_rounded,
+                        size: 14,
+                        color: locked ? p.muted : p.accent,
+                      ),
+                    ],
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 13, 14, 13),
-                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        Text(text, style: VitaType.decision(p)),
-                        if (hint != null) ...[const SizedBox(height: 4), Text(hint!, style: VitaType.caption(p))],
-                        if (cost != null) ...[
-                          const SizedBox(height: 4),
-                          Text(cost!, style: VitaType.caption(p).copyWith(color: p.accent, fontWeight: FontWeight.w600)),
-                        ],
-                        if (locked) ...[
-                          const SizedBox(height: 4),
-                          Row(children: [
-                            Icon(Icons.lock_outline, size: 13, color: p.muted),
-                            const SizedBox(width: 4),
-                            Expanded(child: Text(lockedReason!, style: VitaType.caption(p))),
-                          ]),
-                        ],
-                      ]),
-                    ),
-                  ),
-                ]),
+                ),
               ),
             ),
           ),
@@ -279,7 +326,7 @@ class StatDelta extends StatelessWidget {
   }
 }
 
-/// Ana eylem düğmesi (kehribar).
+/// Ana eylem düğmesi (Sosyal Akış kapsül buton).
 class VitaButton extends StatelessWidget {
   const VitaButton({super.key, required this.label, this.onPressed, this.secondary = false});
   final String label;
@@ -289,14 +336,14 @@ class VitaButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = context.vita;
-    final shape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(12));
-    final text = Text(label, style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w600));
+    final shape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(16));
+    final text = Text(label, style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w700));
     const size = Size.fromHeight(52);
     return secondary
         ? OutlinedButton(
             onPressed: onPressed,
             style: OutlinedButton.styleFrom(
-                minimumSize: size, foregroundColor: p.accent, side: BorderSide(color: p.border), shape: shape),
+                minimumSize: size, foregroundColor: p.accent, side: BorderSide(color: p.border, width: 1.2), shape: shape),
             child: text)
         : FilledButton(
             onPressed: onPressed,

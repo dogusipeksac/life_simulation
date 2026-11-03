@@ -160,11 +160,12 @@ class GameEvent {
       cooldownDays = _int(j['cooldownDays']),
       weight = _int(j['weight'], 10),
       chainOnly = _bool(j['chainOnly']),
-      turnDays = _int(j['turnDays']);
+      turnDays = _int(j['turnDays']),
+      style = _str(j['style']);
 
   final Json raw;
   final String file;
-  final String id, title, categoryName, description;
+  final String id, title, categoryName, description, style;
   final String? educationName;
   final int minAge, maxAge, cooldownDays, weight, turnDays;
   final List<Condition> conditions;
@@ -217,6 +218,7 @@ class LifeScene {
       milestone = _bool(j['Milestone']),
       followUpOnly = _bool(j['FollowUpOnly']),
       context = _str(j['Context']),
+      style = _str(j['Style']),
       needs = _strings(j['Needs']),
       forbids = _strings(j['Forbids']),
       minQualities = _intMap(j['MinQualities']),
@@ -228,7 +230,7 @@ class LifeScene {
       );
 
   final Json raw;
-  final String id, title, text, domain, context;
+  final String id, title, text, domain, context, style;
   final int minAge, maxAge, priority, cooldownDays;
   final bool milestone, followUpOnly;
   final List<String> needs, forbids;

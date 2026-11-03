@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// "Gece kitabı" paleti. Koyu tema varsayılan, açık tema "kâğıt".
+/// "Sosyal Akış & Dinamik Kart" (Modern Feed UI) paleti.
+/// Koyu tema: Derin Karbon/Slate + Elektrik Mavi/Camgöbeği.
+/// Açık tema: Ferah Buz Grisi Zemin + Saf Beyaz Akış Kartları + Okyanus Mavisi.
 @immutable
 class VitaPalette extends ThemeExtension<VitaPalette> {
   const VitaPalette({
@@ -33,43 +35,43 @@ class VitaPalette extends ThemeExtension<VitaPalette> {
   final Color groundTop;
   final Color groundBottom;
 
-  // Stat çubukları: sağlık / mutluluk / eğitim / sosyal.
-  Color get health => isDark ? const Color(0xFFD98C86) : const Color(0xFFB65049);
-  Color get happiness => isDark ? const Color(0xFFE6C27A) : const Color(0xFFB27C25);
-  Color get education => isDark ? const Color(0xFF8FA8DE) : const Color(0xFF41609E);
-  Color get social => isDark ? const Color(0xFF8CC7A6) : const Color(0xFF3F7F5E);
+  // Stat çubukları: sağlık / mutluluk / eğitim / sosyal (canlı modern mobil oyun renkleri).
+  Color get health => isDark ? const Color(0xFFFB7185) : const Color(0xFFE11D48);
+  Color get happiness => isDark ? const Color(0xFFFBBF24) : const Color(0xFFD97706);
+  Color get education => isDark ? const Color(0xFF60A5FA) : const Color(0xFF2563EB);
+  Color get social => isDark ? const Color(0xFF34D399) : const Color(0xFF059669);
 
   static const dark = VitaPalette(
     isDark: true,
-    background: Color(0xFF100E18),
-    surface: Color(0xFF1A1726),
-    surfaceSunken: Color(0xFF241F33),
-    ink: Color(0xFFEFEAE0),
-    muted: Color(0xFF9C93A8),
-    border: Color(0xFF302A42),
-    accent: Color(0xFFE0B472),
-    accentSoft: Color(0xFF2B2338),
-    positive: Color(0xFF7FBE93),
-    negative: Color(0xFFD97E79),
-    groundTop: Color(0xFF191325),
-    groundBottom: Color(0xFF0B0A12),
+    background: Color(0xFF0B0F19),
+    surface: Color(0xFF131B2E),
+    surfaceSunken: Color(0xFF1A243B),
+    ink: Color(0xFFF8FAFC),
+    muted: Color(0xFFA0AEC0),
+    border: Color(0xFF263554),
+    accent: Color(0xFF38BDF8),
+    accentSoft: Color(0xFF152C44),
+    positive: Color(0xFF4ADE80),
+    negative: Color(0xFFFB7185),
+    groundTop: Color(0xFF0F172A),
+    groundBottom: Color(0xFF090D16),
   );
 
   static const light = VitaPalette(
     isDark: false,
-    background: Color(0xFFF3EDE2),
-    surface: Color(0xFFFFFCF7),
-    surfaceSunken: Color(0xFFEDE5D7),
-    ink: Color(0xFF241F2B),
-    // P6: WCAG AA (4,5:1) için tasarım değerleri 7C7488 / A9682B / 3F7F55'ten aynı tonda koyulaştırıldı.
-    muted: Color(0xFF696374),
-    border: Color(0xFFE3D9C9),
-    accent: Color(0xFF905825),
-    accentSoft: Color(0xFFF3E7D4),
-    positive: Color(0xFF38714C),
-    negative: Color(0xFFB4453C),
-    groundTop: Color(0xFFFBF6EC),
-    groundBottom: Color(0xFFECE3D4),
+    background: Color(0xFFF1F5F9),
+    surface: Color(0xFFFFFFFF),
+    surfaceSunken: Color(0xFFE2E8F0),
+    ink: Color(0xFF0F172A),
+    // P6: WCAG AA (>= 4.5:1) kontrast garantisi için yüksek kontrastlı modern tonlar.
+    muted: Color(0xFF475569),
+    border: Color(0xFFCBD5E1),
+    accent: Color(0xFF0369A1),
+    accentSoft: Color(0xFFE0F2FE),
+    positive: Color(0xFF15803D),
+    negative: Color(0xFFB91C1C),
+    groundTop: Color(0xFFF8FAFC),
+    groundBottom: Color(0xFFE2E8F0),
   );
 
   @override

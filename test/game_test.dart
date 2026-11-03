@@ -401,6 +401,65 @@ void main() {
     expect(formatMoney(-500), '-₺500');
     expect(lowerInvariant('İş fikri'), 'iş fikri');
   });
+
+  group('kuşaklar boyu miras, yatırımlar ve kader koleksiyonu', () {
+    test('dükkân, mülk ve aile yadigârı yatırımları bütçeye ve mirasa yansır', () {
+      final session = newSession()..startNewGame('Deniz Yılmaz', seed: 101);
+      final s = session.state!
+        ..age = 30
+        ..money = 10000000;
+      s.simulation.goldWallet = 4;
+      expect(session.doAction('heirloom').success, isTrue);
+      expect(session.doAction('business').success, isTrue);
+      expect(session.doAction('rental').success, isTrue);
+      expect(s.flags, containsAll(['family_heirloom', 'owns_business', 'rental_property']));
+
+      final budgetLines = session.progression.budget(s);
+      expect(budgetLines.any((l) => l.$1 == 'Girişim kâr payı' && l.$2 == 14000), isTrue);
+      expect(budgetLines.any((l) => l.$1 == 'Kira geliri (yatırım mülkü)' && l.$2 == 18000), isTrue);
+
+      s.relationships.add(
+        RelationshipPerson(
+          id: 'child_1',
+          name: 'Ekin Yılmaz',
+          role: 'Çocuk',
+          personality: 'Meraklı',
+          bond: 85,
+        ),
+      );
+      s.isGameOver = true;
+      s.gameOverReason = GameOverReason.oldAge;
+      expect(session.canContinueAsChild, isTrue);
+
+      final beforeNet = s.money + s.bankBalance;
+      final res = session.continueAsChild(seed: 202);
+      expect(res.success, isTrue);
+      final next = session.state!;
+      expect(next.playerName, 'Ekin Yılmaz');
+      expect(next.simulation.generation, 2);
+      expect(next.simulation.dynastyLog.length, 1);
+      expect(next.money, greaterThanOrEqualTo(beforeNet * 70 ~/ 100));
+      expect(next.simulation.goldWallet, 4);
+      expect(next.flags, containsAll(['dynasty_heir', 'family_heirloom', 'owns_business', 'rental_property']));
+    });
+
+    test('keşfedilen sonlar kalıcı olarak kaydedilir ve ilk 3 hedef bitince yeni hedefler açılır', () {
+      final session = newSession()..startNewGame('Deniz', seed: 12);
+      session.achievements.recordEnding('ending_maestro');
+      expect(session.achievements.isEndingDiscovered('ending_maestro'), isTrue);
+      expect(session.achievements.discoveredEndings, contains('ending_maestro'));
+
+      final s = session.state!;
+      s.activeGoalIds
+        ..clear()
+        ..addAll(['goal_university', 'goal_homeowner', 'goal_family']);
+      s.educationLevel = Education.university;
+      s.flags.addAll(['owns_house', 'married']);
+      session.progression.checkGoals(s, null);
+      expect(s.completedGoalIds, containsAll(['goal_university', 'goal_homeowner', 'goal_family']));
+      expect(s.activeGoalIds.length, 5);
+    });
+  });
 }
 
 extension<T> on T {

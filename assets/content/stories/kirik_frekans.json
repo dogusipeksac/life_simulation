@@ -948,8 +948,8 @@
         },
         {
           "Text": "Annenin şarkısını çal; uyarıyı şarkıdan önce oku.",
-          "Next": "ending_shared",
-          "Result": "Uyarıyı okudun. Sonra şarkı başladı. Dört dakika on yedi saniye. Hiçbirini atlamadın.",
+          "Next": "mother_song_echo",
+          "Result": "Annenin kasetini mikrofona yaklaştırdığında karşı frekanstan beklenmedik bir yanıt geldi.",
           "Effects": {
             "empathy": 15
           }
@@ -1244,6 +1244,37 @@
           }
         }
       ]
+    },
+    "mother_song_echo": {
+      "Title": "Kasetin arkasındaki ses",
+      "Chapter": 5,
+      "Style": "radio",
+      "Text": "[05:42 · ÇİFT YÖNLÜ FREKANS YANKISI]\n«Şarkıyı tanıdım... Yirmi yıl önce bu kulede nöbet tutarken aynı bandı ben doldurmuştum. Fırtına diniyor, deniz çekilmiyor; herkes güvende.»",
+      "Choices": [
+        {
+          "Text": "Kaydı açık bırak ve fenerin balkonundan kasabanın uyanışını izle.",
+          "Next": "ending_lullaby_signal",
+          "Result": "İki zaman arasındaki kırık frekans şarkının son notasıyla kapandı.",
+          "Effects": {
+            "empathy": 6,
+            "resolve": 4
+          }
+        },
+        {
+          "Text": "Ortak yayını bütün kıyı istasyonlarına aktar.",
+          "Next": "ending_shared",
+          "Result": "Bütün kıyı aynı sabah anonsuyla uyandı.",
+          "Effects": {
+            "logic": 4
+          }
+        }
+      ]
+    },
+    "ending_lullaby_signal": {
+      "Title": "Annenin frekansı",
+      "Chapter": 5,
+      "Text": "Telsizdeki parazit yerini annenin yıllar önce kaydettiği o dingin ezgiye bıraktı. Kasaba halkı sahile indiğinde ne fırtına kalmıştı ne de korku; kulenin tepesindeki anten ilk kez geçmişi değil, huzurlu bir sabahı yayınlıyordu.",
+      "Ending": "Annenin frekansı"
     }
   }
 }

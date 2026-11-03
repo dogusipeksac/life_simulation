@@ -826,8 +826,8 @@
         },
         {
           "Text": "“Çünkü bu mahalle bizi büyüttü,” de.",
-          "Next": "ending_coop",
-          "Result": "Saat tamircisi başını salladı. İlk elini o kaldırdı.",
+          "Next": "open_ledger_network",
+          "Result": "Mahallenin dayanışma ağını açık kaynaklı bir esnaf federasyonuna dönüştürmek için adım attın.",
           "Effects": {
             "loyalty": 10
           }
@@ -1061,6 +1061,37 @@
           }
         }
       ]
+    },
+    "open_ledger_network": {
+      "Title": "Açık defter federasyonu",
+      "Chapter": 5,
+      "Style": "chat",
+      "Text": "Mira: Yazılımın kaynak kodlarını bütün mahalle kooperatiflerine ücretsiz açtık, gördün mü?\nSen: Sadece bizim sokak değil, on iki şehirdeki küçük esnaf aynı ağa bağlandı.\nZiya Amca: İşte şimdi gerçek bir imece oldu çocuklar.",
+      "Choices": [
+        {
+          "Text": "Sistemi kamusal bir vakfa dönüştürüp kurucu meclisi topla.",
+          "Next": "ending_commons",
+          "Result": "Küçük bir dükkânda başlayan fikir ülke çapında bir dayanışma modeline dönüştü.",
+          "Effects": {
+            "loyalty": 6,
+            "vision": 5
+          }
+        },
+        {
+          "Text": "Mahalle kooperatifinin başında kalıp yerel üretimi koru.",
+          "Next": "ending_coop",
+          "Result": "Köklerini doğduğun sokakta büyütmeyi seçtin.",
+          "Effects": {
+            "balance": 5
+          }
+        }
+      ]
+    },
+    "ending_commons": {
+      "Title": "Ortak akıl ağı",
+      "Chapter": 5,
+      "Text": "Büyük yatırımcıların satın almak istediği algoritmayı kapalı kapılar ardına kilitlemek yerine Anadolu'nun dört bir yanındaki esnaf kooperatiflerine açtınız. Sıfır Noktası bir şirket olmaktan çıkıp binlerce dükkânın nefes aldığı ortak bir imece ağına dönüştü.",
+      "Ending": "Ortak akıl ağı"
     }
   }
 }

@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'palette.dart';
 
-/// Her ekranın arkasındaki zemin: dikey degrade, sağ üstte soluk ışık, birkaç duran toz zerresi.
+/// Her ekranın arkasındaki modern zemin: temiz dikey degrade ve üstte hafif dinamik ambiyans ışığı.
 /// Yalnızca boyut ya da tema değişince yeniden çizilir.
 class Backdrop extends StatelessWidget {
   const Backdrop({super.key, required this.child});
@@ -36,35 +36,37 @@ class _BackdropPainter extends CustomPainter {
           colors: [p.groundTop, p.groundBottom],
         ).createShader(rect),
     );
-    final glowCenter = Offset(size.width * .9, size.height * .04);
+    final glowTop = Offset(size.width * .85, size.height * .02);
     canvas.drawCircle(
-      glowCenter,
-      size.width * .8,
+      glowTop,
+      size.width * .75,
       Paint()
         ..shader = RadialGradient(colors: [
-          p.accent.withValues(alpha: p.isDark ? .10 : .12),
+          p.accent.withValues(alpha: p.isDark ? .12 : .08),
           p.accent.withValues(alpha: 0),
-        ]).createShader(Rect.fromCircle(center: glowCenter, radius: size.width * .8)),
+        ]).createShader(Rect.fromCircle(center: glowTop, radius: size.width * .75)),
     );
-    final rnd = math.Random(7);
-    final dust = Paint()..color = p.ink.withValues(alpha: p.isDark ? .07 : .05);
-    for (var i = 0; i < 14; i++) {
-      canvas.drawCircle(
-        Offset(rnd.nextDouble() * size.width, rnd.nextDouble() * size.height),
-        .8 + rnd.nextDouble() * 1.6,
-        dust,
-      );
-    }
+    final glowLeft = Offset(size.width * .12, size.height * .28);
+    canvas.drawCircle(
+      glowLeft,
+      size.width * .55,
+      Paint()
+        ..shader = RadialGradient(colors: [
+          p.social.withValues(alpha: p.isDark ? .06 : .05),
+          p.social.withValues(alpha: 0),
+        ]).createShader(Rect.fromCircle(center: glowLeft, radius: size.width * .55)),
+    );
   }
 
   @override
   bool shouldRepaint(_BackdropPainter old) => old.p != p;
 }
 
-/// Hikâyenin üstündeki atmosfer şeridi: yaşa göre gökyüzü, ay ya da güneş,
-/// üç katman tepe ve sağda soluk büyük yaş rakamı. (Godot: UI/LifeIllustration.cs)
+/// Sosyal Akış & Dinamik Kart üst başlığı:
+/// Üstte 4 segmentli Instagram/Reigns tarzı yaşam evresi ilerleme çubuğu,
+/// ortada canlı nabız dalgası (pulse wave), sol altta dönem etiketi ve sağda modern yaş rozeti.
 class AtmosphereStrip extends StatelessWidget {
-  const AtmosphereStrip({super.key, this.stage = 2, this.numeral = '', this.height = 132});
+  const AtmosphereStrip({super.key, this.stage = 2, this.numeral = '', this.height = 104});
 
   /// 0 bebeklik, 1 gençlik, 2 yetişkinlik, 3 olgunluk.
   final int stage;
@@ -75,7 +77,7 @@ class AtmosphereStrip extends StatelessWidget {
   Widget build(BuildContext context) {
     return ExcludeSemantics(
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(18),
         child: SizedBox(
           height: height,
           width: double.infinity,
@@ -94,92 +96,202 @@ class AtmosphereStrip extends StatelessWidget {
 }
 
 class _AtmospherePainter extends CustomPainter {
-  _AtmospherePainter(this.p, this.stage, this.numeral, this.serif);
+  _AtmospherePainter(this.p, this.stage, this.numeral, this.fontFamily);
   final VitaPalette p;
   final int stage;
   final String numeral;
-  final String? serif;
+  final String? fontFamily;
 
-  (Color, Color) get sky => switch ((p.isDark, stage)) {
-        (true, 0) => (const Color(0xFF2B2342), const Color(0xFF191427)),
-        (true, 1) => (const Color(0xFF242A46), const Color(0xFF161628)),
-        (true, 3) => (const Color(0xFF342438), const Color(0xFF1A1522)),
-        (true, _) => (const Color(0xFF25213C), const Color(0xFF151325)),
-        (false, 0) => (const Color(0xFFFFE9D2), const Color(0xFFFDF6EA)),
-        (false, 1) => (const Color(0xFFE7EEFB), const Color(0xFFFBF6EC)),
-        (false, 3) => (const Color(0xFFF3E2E4), const Color(0xFFFBF4EA)),
-        _ => (const Color(0xFFFFECCD), const Color(0xFFFDF6E9)),
+  static const _stageNames = ['BAŞLANGIÇ & ÇOCUKLUK', 'GENÇLİK AKIŞI', 'YETİŞKİNLİK DÖNEMİ', 'OLGUNLUK & MİRAS'];
+
+  (Color, Color, Color) get _feedColors => switch ((p.isDark, stage)) {
+        (true, 0) => (const Color(0xFF172554), const Color(0xFF0F172A), const Color(0xFF38BDF8)),
+        (true, 1) => (const Color(0xFF1E1B4B), const Color(0xFF0F172A), const Color(0xFF818CF8)),
+        (true, 3) => (const Color(0xFF064E3B), const Color(0xFF0F172A), const Color(0xFF34D399)),
+        (true, _) => (const Color(0xFF0C4A6E), const Color(0xFF0F172A), const Color(0xFF38BDF8)),
+        (false, 0) => (const Color(0xFFE0F2FE), const Color(0xFFF8FAFC), const Color(0xFF0284C7)),
+        (false, 1) => (const Color(0xFFEEF2FF), const Color(0xFFF8FAFC), const Color(0xFF4F46E5)),
+        (false, 3) => (const Color(0xFFECFDF5), const Color(0xFFF8FAFC), const Color(0xFF059669)),
+        _ => (const Color(0xFFE0F2FE), const Color(0xFFF8FAFC), const Color(0xFF0369A1)),
       };
 
   @override
   void paint(Canvas canvas, Size size) {
     final w = size.width, h = size.height;
-    final (top, bottom) = sky;
+    final (startBg, endBg, glow) = _feedColors;
     final rect = Offset.zero & size;
-    canvas.drawRect(rect, Paint()..color = bottom);
+
+    // 1. Modern kart zemini
     canvas.drawRect(
-      Rect.fromLTWH(0, 0, w, h * .74),
+      rect,
       Paint()
-        ..shader = LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [top, bottom])
-            .createShader(Rect.fromLTWH(0, 0, w, h * .74)),
+        ..shader = LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [startBg, endBg],
+        ).createShader(rect),
     );
 
-    final disc = Offset(w * .74, h * .30);
-    final r = h * .13;
-    if (p.isDark) {
-      for (var i = 4; i >= 1; i--) {
-        canvas.drawCircle(disc, r + i * r * .5, Paint()..color = const Color(0xFFFFF0CF).withValues(alpha: .035));
-      }
-      canvas.drawCircle(disc, r, Paint()..color = const Color(0xFFFDF2D6));
-      // Hilal: gök renginde bir daire ayın bir yanını kapatır.
-      canvas.drawCircle(disc + Offset(r * .44, -r * .25), r * .85, Paint()..color = Color.lerp(top, bottom, .35)!);
-      for (var i = 0; i < 16; i++) {
-        final x = w * (.05 + i * .062);
-        final y = h * (.10 + (i % 4) * .085);
-        canvas.drawCircle(Offset(x, y), .9 + (i % 3) * .5, Paint()..color = Colors.white.withValues(alpha: .28 + (i % 3) * .08));
-      }
-    } else {
-      for (var i = 4; i >= 1; i--) {
-        canvas.drawCircle(disc, r + i * r * .55, Paint()..color = const Color(0xFFF2B35E).withValues(alpha: .05));
-      }
-      canvas.drawCircle(disc, r * 1.05, Paint()..color = const Color(0xFFF6C272));
+    // 2. Sağ üstten yayılan modern neon/akış parıltısı
+    final orb = Offset(w * .82, h * .45);
+    canvas.drawCircle(
+      orb,
+      h * 1.1,
+      Paint()
+        ..shader = RadialGradient(
+          colors: [glow.withValues(alpha: p.isDark ? .26 : .18), glow.withValues(alpha: 0)],
+        ).createShader(Rect.fromCircle(center: orb, radius: h * 1.1)),
+    );
+
+    // 3. Dinamik yaşam nabzı (pulse wave) çizgileri
+    _drawPulseWave(canvas, size, h * .65, h * .14, 1.8, glow.withValues(alpha: p.isDark ? .28 : .22), 2.2);
+    _drawPulseWave(canvas, size, h * .74, h * .10, 2.7, p.accent.withValues(alpha: p.isDark ? .18 : .14), 1.4);
+
+    // 4. Üstte 4 segmentli Sosyal Hikâye (Story) ilerleme çubuğu
+    const segCount = 4;
+    const gap = 6.0;
+    const padX = 16.0;
+    final totalBarW = w - padX * 2 - gap * (segCount - 1);
+    final segW = math.max(12.0, totalBarW / segCount);
+    final activeStage = stage.clamp(0, segCount - 1);
+
+    for (var i = 0; i < segCount; i++) {
+      final left = padX + i * (segW + gap);
+      final rrect = RRect.fromRectAndRadius(Rect.fromLTWH(left, 12, segW, 4), const Radius.circular(99));
+      final filled = i <= activeStage;
+      canvas.drawRRect(
+        rrect,
+        Paint()
+          ..color = filled
+              ? (i == activeStage ? glow : glow.withValues(alpha: .65))
+              : p.ink.withValues(alpha: p.isDark ? .14 : .12),
+      );
     }
 
-    _ridge(canvas, size, h * .62, h * .20, 1.0, p.accent.withValues(alpha: p.isDark ? .10 : .14));
-    _ridge(canvas, size, h * .72, h * .16, 1.7, p.isDark ? const Color(0xFF221D33) : const Color(0xFFD9CDB8));
-    _ridge(canvas, size, h * .84, h * .12, 2.6, p.isDark ? const Color(0xFF15121F) : const Color(0xFFC6B79E));
+    // 5. Sol tarafta canlı akış rozeti + evre başlığı
+    final dotCenter = const Offset(22, 34);
+    canvas.drawCircle(dotCenter, 4, Paint()..color = p.positive);
+    canvas.drawCircle(dotCenter, 7, Paint()..color = p.positive.withValues(alpha: .24));
 
+    final stageLabel = _stageNames[activeStage];
+    final badgeTp = TextPainter(
+      text: TextSpan(
+        text: 'CANLI AKIŞ · $stageLabel',
+        style: TextStyle(
+          fontFamily: fontFamily,
+          fontSize: 10.5,
+          fontWeight: FontWeight.w800,
+          letterSpacing: 0.9,
+          color: p.ink.withValues(alpha: .88),
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+      maxLines: 1,
+    )..layout(maxWidth: w * .68);
+    badgeTp.paint(canvas, const Offset(34, 27));
+
+    final subTp = TextPainter(
+      text: TextSpan(
+        text: numeral.isEmpty ? 'Her seçim yeni bir akış başlatır' : 'Hayat akışı devam ediyor',
+        style: TextStyle(
+          fontFamily: fontFamily,
+          fontSize: 13.5,
+          fontWeight: FontWeight.w600,
+          color: p.ink.withValues(alpha: .72),
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+      maxLines: 1,
+    )..layout(maxWidth: w * .65);
+    subTp.paint(canvas, const Offset(16, 48));
+
+    // 6. Sağ tarafta modern yaş kapsülü (numeral varsa)
     if (numeral.isNotEmpty) {
-      final tp = TextPainter(
+      final ageTp = TextPainter(
         text: TextSpan(
-          text: numeral,
-          style: TextStyle(fontFamily: serif, fontSize: h * .62, height: 1, color: p.ink.withValues(alpha: .10)),
+          children: [
+            TextSpan(
+              text: 'YAŞ ',
+              style: TextStyle(
+                fontFamily: fontFamily,
+                fontSize: 10.5,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 0.8,
+                color: glow,
+              ),
+            ),
+            TextSpan(
+              text: numeral,
+              style: TextStyle(
+                fontFamily: fontFamily,
+                fontSize: 24,
+                fontWeight: FontWeight.w900,
+                height: 1.0,
+                color: p.ink,
+              ),
+            ),
+          ],
         ),
         textDirection: TextDirection.ltr,
       )..layout();
-      tp.paint(canvas, Offset(w - tp.width - 18, h - tp.height + h * .04));
+
+      final pillW = ageTp.width + 24;
+      final pillH = ageTp.height + 14;
+      final pillRect = RRect.fromRectAndRadius(
+        Rect.fromLTWH(w - pillW - 14, (h - pillH) * .56, pillW, pillH),
+        const Radius.circular(14),
+      );
+      canvas.drawRRect(
+        pillRect,
+        Paint()..color = p.surface.withValues(alpha: p.isDark ? .75 : .88),
+      );
+      canvas.drawRRect(
+        pillRect,
+        Paint()
+          ..color = glow.withValues(alpha: .45)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.2,
+      );
+      ageTp.paint(canvas, Offset(pillRect.left + 12, pillRect.top + 7));
     }
+
+    // 7. İnce dış çerçeve
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(rect.deflate(0.5), const Radius.circular(18)),
+      Paint()
+        ..color = p.border
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1,
+    );
   }
 
-  void _ridge(Canvas canvas, Size size, double baseY, double amp, double freq, Color color) {
-    const steps = 26;
-    final path = Path()..moveTo(0, size.height);
+  void _drawPulseWave(Canvas canvas, Size size, double baseY, double amp, double freq, Color color, double stroke) {
+    const steps = 36;
+    final path = Path();
     for (var i = 0; i <= steps; i++) {
       final t = i / steps;
       final y = baseY -
-          math.sin(t * math.pi * freq + freq) * amp * .5 -
-          math.cos(t * math.pi * freq * 1.7) * amp * .2;
-      path.lineTo(t * size.width, y);
+          math.sin(t * math.pi * freq * 2 + 0.8) * amp * .45 -
+          math.cos(t * math.pi * freq * 3.2) * amp * .25;
+      if (i == 0) {
+        path.moveTo(0, y);
+      } else {
+        path.lineTo(t * size.width, y);
+      }
     }
-    path
-      ..lineTo(size.width, size.height)
-      ..close();
-    canvas.drawPath(path, Paint()..color = color);
+    canvas.drawPath(
+      path,
+      Paint()
+        ..color = color
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = stroke
+        ..strokeCap = StrokeCap.round,
+    );
   }
 
   @override
   bool shouldRepaint(_AtmospherePainter old) =>
-      old.p != p || old.stage != stage || old.numeral != numeral || old.serif != serif;
+      old.p != p || old.stage != stage || old.numeral != numeral || old.fontFamily != fontFamily;
 }
 
 /// Kişi madalyonu: halka içinde sade bir yüz. Hafıza oyunu kişiyi isimsiz ayırt
@@ -216,16 +328,16 @@ class _MedallionPainter extends CustomPainter {
   final bool female, alive, grandparent;
 
   static const _hairs = [Color(0xFF8C6F6B), Color(0xFF4B4560), Color(0xFFA98755), Color(0xFF5D4438)];
-  static const _clothes = [Color(0xFFB9766F), Color(0xFF5D907F), Color(0xFF7E68AB), Color(0xFFB08A4E)];
+  static const _clothes = [Color(0xFF0284C7), Color(0xFF059669), Color(0xFF6366F1), Color(0xFFE11D48)];
   static const _skin = Color(0xFFE8C3A6);
-  static const _feature = Color(0xFF3B3348);
+  static const _feature = Color(0xFF1E293B);
 
   @override
   void paint(Canvas canvas, Size size) {
     final c = size.center(Offset.zero);
     final r = size.shortestSide * .46;
     final style = name.codeUnits.fold(0, (a, b) => a + b);
-    final hair = grandparent ? const Color(0xFFA9A2B8) : _hairs[style % _hairs.length];
+    final hair = grandparent ? const Color(0xFF94A3B8) : _hairs[style % _hairs.length];
     final shirt = alive ? _clothes[style % _clothes.length] : p.muted;
 
     canvas.drawCircle(c, r, Paint()..color = p.surfaceSunken);
@@ -271,9 +383,9 @@ class _MedallionPainter extends CustomPainter {
       c,
       r - 1,
       Paint()
-        ..color = p.accent.withValues(alpha: alive ? .45 : .2)
+        ..color = p.accent.withValues(alpha: alive ? .65 : .25)
         ..style = PaintingStyle.stroke
-        ..strokeWidth = math.max(1.5, r * .06),
+        ..strokeWidth = math.max(1.8, r * .07),
     );
   }
 

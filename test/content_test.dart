@@ -26,15 +26,15 @@ void main() {
   });
 
   test('içerik sayıları beklenen katalogla eşleşiyor', () {
-    expect(content.scenes.length, 87);
+    expect(content.scenes.length, 120);
     expect(content.careers.length, 103);
     expect(content.families.length, 100);
-    expect(content.goals.length, 10);
-    expect(content.achievements.length, 15);
-    expect(content.endings.length, 8);
-    expect(content.flags.length, 200);
+    expect(content.goals.length, 16);
+    expect(content.achievements.length, 25);
+    expect(content.endings.length, 23);
+    expect(content.flags.length, 209);
     expect(content.stories.length, 6);
-    expect(content.events.length, 543);
+    expect(content.events.length, 577);
   });
 
   test('varsayılanlar ve koşullar doğru çözülüyor', () {

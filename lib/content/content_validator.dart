@@ -26,7 +26,7 @@ const _eventKeys = {
   'maxAge',
   'education',
   'conditions', //
-  'choices', 'repeatable', 'cooldownDays', 'weight', 'chainOnly', 'turnDays',
+  'choices', 'repeatable', 'cooldownDays', 'weight', 'chainOnly', 'turnDays', 'style',
 };
 const _choiceKeys = {
   'id',
@@ -89,6 +89,7 @@ const _sceneKeys = {
   'Milestone', //
   'FollowUpOnly',
   'Context',
+  'Style',
   'Needs',
   'Forbids',
   'Choices',
@@ -316,6 +317,10 @@ ContentIssues validateContent(RawContent c) {
           enumByName(Education.values, ev['education'] as String) == null) {
         e.error(where, "eğitim '${ev['education']}' geçersiz");
       }
+      final evStyle = ev['style'] as String? ?? '';
+      if (!storyStyles.contains(evStyle)) {
+        e.error(where, "görünüm '$evStyle' geçersiz");
+      }
       conditions(ev['conditions'], where);
       final seen = <Object?>{};
       for (final (i, ch) in choices.indexed) {
@@ -433,6 +438,9 @@ void _validateScenes(List<Json> scenes, ContentIssues e) {
     final ctx = s['Context'] as String? ?? '';
     if (!_contexts.contains(ctx) && !ctx.startsWith('sector:'))
       e.error(where, "bağlam '$ctx' geçersiz");
+    final scStyle = s['Style'] as String? ?? '';
+    if (!storyStyles.contains(scStyle))
+      e.error(where, "görünüm '$scStyle' geçersiz");
     final choices = (s['Choices'] as List? ?? const []).cast<Json>();
     if (choices.length < 2 || choices.length > 4)
       e.error(where, '${choices.length} seçenek var; 2–4 olmalı');

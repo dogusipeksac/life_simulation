@@ -240,8 +240,15 @@ class _StoryScreenState extends State<StoryScreen> {
       controller: _scroll,
       padding: const EdgeInsets.fromLTRB(18, 8, 18, 120),
       children: [
-        AtmosphereStrip(stage: stage, numeral: '${s.age}'),
-        const SizedBox(height: 16),
+        AtmosphereStrip(stage: stage, numeral: '${s.age}', height: 96),
+        const SizedBox(height: 8),
+        FeedStatStrip(
+          health: s.health,
+          happiness: s.happiness,
+          education: s.education,
+          social: s.social,
+        ),
+        const SizedBox(height: 12),
         AnimatedSwitcher(
           duration: Motion.of(context, const Duration(milliseconds: 300)),
           child: KeyedSubtree(
@@ -271,21 +278,64 @@ class _EventPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          upperTr('${s.lifeStage} · ${_categoryLabel(ev.category)}'),
-          style: VitaType.overline(p),
+        LifeSimulationCard(
+          padding: const EdgeInsets.all(18),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: p.accentSoft,
+                      borderRadius: BorderRadius.circular(99),
+                    ),
+                    child: Text(
+                      upperTr('${s.lifeStage} · ${_categoryLabel(ev.category)}'),
+                      style: VitaType.overline(p),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Semantics(
+                header: true,
+                child: Text(ev.title, style: VitaType.title(p)),
+              ),
+              const SizedBox(height: 12),
+              switch (ev.style) {
+                'chat' => ChatThread(text: game.eventText),
+                'note' => PaperNote(text: game.eventText),
+                'radio' => RadioTranscript(text: game.eventText),
+                _ => Typewriter(text: game.eventText, style: VitaType.prose(p)),
+              },
+              if (ev.echo.isNotEmpty) ...[
+                const SizedBox(height: 12),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+                  decoration: BoxDecoration(
+                    color: p.surfaceSunken,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border(left: BorderSide(color: p.accent, width: 3)),
+                  ),
+                  child: Text(ev.echo, style: VitaType.caption(p)),
+                ),
+              ],
+              if (scene.isNotEmpty) ...[
+                const SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+                  decoration: BoxDecoration(
+                    color: p.surfaceSunken,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(scene, style: VitaType.caption(p)),
+                ),
+              ],
+            ],
+          ),
         ),
-        const SizedBox(height: 6),
-        Semantics(
-          header: true,
-          child: Text(ev.title, style: VitaType.title(p)),
-        ),
-        const SizedBox(height: 12),
-        Typewriter(text: game.eventText, style: VitaType.prose(p)),
-        if (scene.isNotEmpty) ...[
-          const SizedBox(height: 10),
-          Text(scene, style: VitaType.caption(p)),
-        ],
         if (moment != null && !moment.timed) ...[
           const SectionHeader('Önce bir an'),
           storyInteraction(
@@ -375,49 +425,76 @@ class _ResultPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text('SONUÇ', style: VitaType.overline(p)),
-        const SizedBox(height: 6),
-        Semantics(
-          header: true,
-          child: Text(moment.title, style: VitaType.title(p)),
-        ),
-        const SizedBox(height: 12),
-        Text(moment.text, style: VitaType.prose(p)),
-        if (changes.isNotEmpty) ...[
-          const SizedBox(height: 16),
-          Wrap(
-            spacing: 14,
-            runSpacing: 6,
+        LifeSimulationCard(
+          padding: const EdgeInsets.all(18),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              for (final c in changes)
-                c.stat == Stat.money
-                    ? Text(
-                        formatChange(c),
-                        style: VitaType.body(p).copyWith(
-                          color: c.applied >= 0 ? p.positive : p.negative,
-                          fontSize: 13.5,
-                        ),
-                      )
-                    : StatDelta(label: statDisplay(c.stat), delta: c.applied),
-            ],
-          ),
-        ],
-        if (t.notes.isNotEmpty) ...[
-          const SectionHeader('Bu dönemde'),
-          for (final n in t.notes)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 6),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
                 children: [
-                  Text('✦  ', style: TextStyle(color: p.accent, fontSize: 12)),
-                  Expanded(child: Text(n, style: VitaType.body(p))),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: p.accentSoft,
+                      borderRadius: BorderRadius.circular(99),
+                    ),
+                    child: Text('SONUÇ', style: VitaType.overline(p)),
+                  ),
                 ],
               ),
+              const SizedBox(height: 12),
+              Semantics(
+                header: true,
+                child: Text(moment.title, style: VitaType.title(p)),
+              ),
+              const SizedBox(height: 12),
+              Text(moment.text, style: VitaType.prose(p)),
+              if (changes.isNotEmpty) ...[
+                const SizedBox(height: 16),
+                Wrap(
+                  spacing: 14,
+                  runSpacing: 6,
+                  children: [
+                    for (final c in changes)
+                      c.stat == Stat.money
+                          ? Text(
+                              formatChange(c),
+                              style: VitaType.body(p).copyWith(
+                                color: c.applied >= 0 ? p.positive : p.negative,
+                                fontSize: 13.5,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            )
+                          : StatDelta(label: statDisplay(c.stat), delta: c.applied),
+                  ],
+                ),
+              ],
+              const SizedBox(height: 14),
+              Text(_elapsed(t), style: VitaType.caption(p)),
+            ],
+          ),
+        ),
+        if (t.notes.isNotEmpty) ...[
+          const SectionHeader('Bu dönemde'),
+          LifeSimulationCard(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                for (final n in t.notes)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 6),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('•  ', style: TextStyle(color: p.accent, fontSize: 14, fontWeight: FontWeight.w800)),
+                        Expanded(child: Text(n, style: VitaType.body(p))),
+                      ],
+                    ),
+                  ),
+              ],
             ),
+          ),
         ],
-        const SizedBox(height: 14),
-        Text(_elapsed(t), style: VitaType.caption(p)),
         const SizedBox(height: 18),
         VitaButton(
           label: gameOver ? 'Hayatın sonu' : 'Hikâyeye devam et',

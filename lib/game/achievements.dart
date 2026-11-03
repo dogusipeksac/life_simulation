@@ -23,11 +23,15 @@ class AchievementService {
   final AtomicTextFile file;
   final int Function() _now;
   Map<String, int> _unlocked = {};
+  Set<String> _endings = {};
   String notice = '';
   int get unlockedCount => _unlocked.length;
+  Set<String> get discoveredEndings => _endings;
   bool isUnlocked(String id) => _unlocked.containsKey(id);
+  bool isEndingDiscovered(String id) => _endings.contains(id);
   void load() {
     _unlocked = {};
+    _endings = {};
     notice = '';
     var found = false;
     for (final path in file.readOrder) {
@@ -42,6 +46,9 @@ class AchievementService {
         _unlocked = (root['Unlocked'] as Map).map(
           (k, v) => MapEntry(k as String, (v as num).toInt()),
         );
+        if (root['Endings'] is List) {
+          _endings = {...(root['Endings'] as List).whereType<String>()};
+        }
         if (path != file.path) notice = 'Başarımların yedekten kurtarıldı.';
         return;
       } on FormatException {
@@ -51,6 +58,18 @@ class AchievementService {
       }
     }
     if (found) notice = 'Başarım kaydı okunamadı. Hayat kaydın korunuyor.';
+  }
+
+  void recordEnding(String endingId) {
+    if (endingId.isEmpty || _endings.contains(endingId)) return;
+    final nextEndings = {..._endings, endingId};
+    if (file.write(jsonEncode({
+      'Version': 1,
+      'Unlocked': _unlocked,
+      'Endings': nextEndings.toList(),
+    }))) {
+      _endings = nextEndings;
+    }
   }
 
   List<Achievement> check(GameState s, {required bool atGameOver}) {
@@ -64,7 +83,11 @@ class AchievementService {
         .toList();
     if (newly.isEmpty) return [];
     final next = {..._unlocked, for (final a in newly) a.id: _now()};
-    if (!file.write(jsonEncode({'Version': 1, 'Unlocked': next}))) {
+    if (!file.write(jsonEncode({
+      'Version': 1,
+      'Unlocked': next,
+      if (_endings.isNotEmpty) 'Endings': _endings.toList(),
+    }))) {
       notice = 'Başarımların kaydedilemedi. Depolama alanını kontrol et.';
       return [];
     }

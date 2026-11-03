@@ -35,7 +35,10 @@
           "Result": "Düzenlemelerde yeni fikirler aradın.",
           "Effects": {
             "craft": 8
-          }
+          },
+          "SetFlags": [
+            "eastern_rhythm"
+          ]
         },
         {
           "Text": "Dinleyiciyle yakın bir dil kur.",
@@ -43,7 +46,10 @@
           "Result": "Şarkıların duygusuna odaklandın.",
           "Effects": {
             "connection": 8
-          }
+          },
+          "SetFlags": [
+            "warm_ballad"
+          ]
         }
       ]
     },
@@ -170,7 +176,7 @@
         {
           "Text": "Bir parçaya daha fazla zaman ayır.",
           "Next": "second_album",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Vokal nüanslarını ve doğu-batı ritimlerini kusursuzlaşana kadar yeniden kaydettin.",
           "Effects": {
             "craft": 2
           }
@@ -178,12 +184,26 @@
         {
           "Text": "Düzenlemeyi sadeleştirip albümü tamamla.",
           "Next": "second_album",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Parçanın doğal ve samimi enerjisini bozmadan kaydı tamamladın.",
           "Effects": {
             "connection": 2
           }
         }
-      ]
+      ],
+      "Interaction": {
+        "Type": "sequence",
+        "Prompt": "Stüdyoda doğu perküsyonu ile batı pop altyapısını doğru sırayla katmanla.",
+        "Items": [
+          "Darbuka ritmi",
+          "Akustik gitar",
+          "Yaylı tambur",
+          "Nakarat vokali"
+        ],
+        "Answer": "0,1,2,3",
+        "Attempts": 2,
+        "Success": 0,
+        "Fail": 1
+      }
     },
     "songcraft": {
       "Title": "Şarkı nasıl hatırlanır?",
@@ -193,15 +213,15 @@
         {
           "Text": "Dinleyicinin kolayca eşlik edeceği bir düzen kur.",
           "Next": "smari",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "İlk dinleyişte dillere pelesenk olacak güçlü bir nakarat yapısı kurdun.",
           "Effects": {
             "craft": 2
           }
         },
         {
           "Text": "Beklenmedik bir sesle parçaya yeni renk kat.",
-          "Next": "smari",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Next": "acoustics_retreat",
+          "Result": "Klişe kalıpların dışına çıkıp akustik ve duygusal derinliği yüksek bir arayışa girdin.",
           "Effects": {
             "connection": 2
           }
@@ -211,12 +231,12 @@
     "translation": {
       "Title": "Başka ülkelerde duyulmak",
       "Chapter": 2,
-      "Text": "Şımarık’ın farklı ülkelerde duyulması şarkının yeni dillere ve pazarlara taşınması ihtimalini büyüttü. Bir parçayı başka bir ülkede tanıtmak yalnızca çeviri meselesi değildir; ritmin, mizahın ve duygunun nasıl karşılanacağını da düşünmek gerekir. Her dinleyici aynı göndermeleri bilmez, ama güçlü bir melodi dil sınırlarının ötesine geçebilir.",
+      "Text": "[AVRUPA RADYO LİSTELERİ ANONSU · 1998]\n«Dilini bilmeseniz bile ritmine karşı koyamadığınız o parça bu hafta da zirvede! İstanbul'dan yükselen bu ses bütün kıtayı dansa kaldırıyor.»",
       "Choices": [
         {
           "Text": "Tanıtımda parçanın ritmini öne çıkar.",
           "Next": "world",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Melodinin evrensel enerjisini öne çıkararak Avrupa listelerinde fırtına estirdin.",
           "Effects": {
             "craft": 2
           }
@@ -224,12 +244,13 @@
         {
           "Text": "Şarkının Türkçe kökenini ve hikâyesini anlat.",
           "Next": "world",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Türkçe sözlerin sıcaklığını ve ritmini hiç değiştirmeden dünya sahnelerine taşıdın.",
           "Effects": {
             "connection": 2
           }
         }
-      ]
+      ],
+      "Style": "radio"
     },
     "award_night": {
       "Title": "Ödül gecesi",
@@ -238,8 +259,8 @@
       "Choices": [
         {
           "Text": "Ekibin emeğini görünür kıl.",
-          "Next": "english",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Next": "world_tour_diary",
+          "Result": "Sahnedeki başarının arkasındaki müzisyen ve prodüksiyon ekibini onurlandırdın.",
           "Effects": {
             "craft": 2
           }
@@ -247,7 +268,7 @@
         {
           "Text": "Ödül sonrası yeni üretime odaklan.",
           "Next": "english",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Ödülün heyecanına kapılmadan yeni albümün hazırlıklarına odaklandın.",
           "Effects": {
             "connection": 2
           }
@@ -262,7 +283,7 @@
         {
           "Text": "Yeni ortaklıklarla ses alanını genişlet.",
           "Next": "independent",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Farklı ülkelerdeki prodüktörlerle çalışarak ses evrenini genişlettin.",
           "Effects": {
             "craft": 2
           }
@@ -270,7 +291,7 @@
         {
           "Text": "Türkçe repertuvarı da aynı dönemde canlı tut.",
           "Next": "independent",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Kendi dilindeki güçlü şarkılarla dinleyici bağını dipdiri tuttun.",
           "Effects": {
             "connection": 2
           }
@@ -285,7 +306,7 @@
         {
           "Text": "Albümün bütünlüğünü koruyan bir plan yap.",
           "Next": "dudu_period",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Stüdyo kalitesiyle sahne şovunu dengeli biçimde planladın.",
           "Effects": {
             "craft": 2
           }
@@ -293,12 +314,34 @@
         {
           "Text": "Tek bir parçanın güçlü çıkışına yatırım yap.",
           "Next": "dudu_period",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Kaynakları çıkış parçasının etkisini büyütmeye yönlendirdin.",
           "Effects": {
             "connection": 2
           }
         }
-      ]
+      ],
+      "Interaction": {
+        "Type": "budget",
+        "Prompt": "Bağımsız yapım şirketin HITT Müzik'te yeni albümün 10 birimlik prodüksiyon bütçesini paylaştır.",
+        "Total": 10,
+        "Hint": "Stüdyo kaydına en az 4, sahne prodüksiyonuna en az 3 birim ayır.",
+        "Buckets": [
+          {
+            "Label": "Stüdyo ve Aranje",
+            "Min": 4
+          },
+          {
+            "Label": "Sahne ve Konser",
+            "Min": 3
+          },
+          {
+            "Label": "Tanıtım",
+            "Min": 0
+          }
+        ],
+        "Success": 0,
+        "Fail": 1
+      }
     },
     "dudu_period": {
       "Title": "Dudu dönemi",
@@ -308,15 +351,15 @@
         {
           "Text": "Albümde farklı müzikal renkleri bir arada tut.",
           "Next": "live_stage",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Hem hareketli hitleri hem de derinlikli parçaları aynı albümde buluşturdun.",
           "Effects": {
             "craft": 2
           }
         },
         {
           "Text": "Tek bir güçlü anlatı etrafında toplan.",
-          "Next": "live_stage",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Next": "harbiye_openair",
+          "Result": "Albümün bütün enerjisini dev bir açıkhava konser maratonuna taşıdın.",
           "Effects": {
             "connection": 2
           }
@@ -331,7 +374,7 @@
         {
           "Text": "Seyirciyle doğrudan iletişim kur.",
           "Next": "changing_market",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Seyirciyle kurduğun göz teması ve samimiyet salonu ayağa kaldırdı.",
           "Effects": {
             "craft": 2
           }
@@ -339,7 +382,7 @@
         {
           "Text": "Müziğin akışını ve sahne düzenini öne çıkar.",
           "Next": "changing_market",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Kusursuz orkestra uyumu ve sahne akışıyla unutulmaz bir konser verdin.",
           "Effects": {
             "connection": 2
           }
@@ -352,19 +395,22 @@
       "Text": "Fiziksel albüm satışlarının gerilediği yıllarda müzik dinleme alışkanlıkları da değişti. Sanatçılar albümün yanında tekli yayınları, dijital platformları ve konserleri yeniden değerlendirmek zorunda kaldı. Değişim, eski yöntemlerin tümden bırakılması anlamına gelmez; dinleyicinin müziğe nasıl ulaştığını anlamayı gerektirir. Bu sahne belirli bir kararın gerçek kişiye ait olduğunu iddia etmez.",
       "Choices": [
         {
-          "Text": "Dijital yayınlara ağırlık ver.",
-          "Next": "lasting_song",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Text": "Klasik Türk müziği ve alaturka köklerine saygı albümü hazırla.",
+          "Next": "classical_bridge",
+          "Result": "Zamansız eserleri kendi sesinle yeniden yorumlamak üzere stüdyoya girdin.",
+          "NeedStat": "craft",
+          "MinValue": 58,
           "Effects": {
-            "craft": 2
+            "craft": 6
           }
         },
         {
-          "Text": "Albüm fikrini ve uzun anlatıyı koru.",
+          "Text": "Açıkhava konser serileri ve dijital yayınlarla dinleyiciyle buluş.",
           "Next": "lasting_song",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Sahne geleneğini yeni çağın dinleyicisiyle birleştirdin.",
           "Effects": {
-            "connection": 2
+            "connection": 6,
+            "reach": 4
           }
         }
       ]
@@ -377,17 +423,36 @@
         {
           "Text": "Yeni kuşaklara ulaşmak için yeni düzenlemeler dene.",
           "Next": "ending_legacy",
-          "Result": "Bu rotada bu yaklaşımı seçtin.",
+          "Result": "Müziğini yeni kuşaklarla buluşturdun.",
           "Effects": {
-            "craft": 2
+            "craft": 4
           }
         },
         {
           "Text": "Orijinal kayıtların kendi zamanını taşımasına izin ver.",
           "Next": "ending_roots",
-          "Result": "Bu rotada diğer yaklaşımı seçtin.",
+          "Result": "Köklerinle bağını korudun.",
           "Effects": {
-            "connection": 2
+            "connection": 4
+          }
+        },
+        {
+          "Text": "Dünya sahnelerinde Türkçe popun sınır tanımayan elçisi ol.",
+          "Next": "ending_world_echo",
+          "Result": "Kıtaları aşan sahne enerjin müzik tarihine geçti.",
+          "NeedFlag": "world_stage_star",
+          "Effects": {
+            "reach": 6
+          }
+        },
+        {
+          "Text": "Doğa ve kültür projelerine ses veren bağımsız bir sanat vakfı kur.",
+          "Next": "ending_nature_voice",
+          "Result": "Sanatçı duyarlılığını gelecek kuşakların doğasını ve müziğini koruyan bir harekete dönüştürdün.",
+          "NeedStat": "connection",
+          "MinValue": 58,
+          "Effects": {
+            "connection": 6
           }
         }
       ]
@@ -403,6 +468,135 @@
       "Chapter": 6,
       "Text": "Bu kurmaca rotada, uluslararası deneyimle Türkçe üretim arasında kendi dengenı kurdun. Gerçek kariyerin dönüm noktaları kamuya açık biyografik bilgilerden alınmıştır; bu final ve seçimler oyuncu için yazılmış alternatif anlatıdır.",
       "Ending": "Köklerden yeni seslere"
+    },
+    "world_tour_diary": {
+      "Title": "Kıtalararası turne notu",
+      "Chapter": 2,
+      "Style": "note",
+      "Text": "Turne Günlüğü · Kulisten Sahneye:\n\n«Paris'ten Meksika'ya binlerce insan Türkçe nakaratları ezbere söylüyor. Müziğin pasaporta ihtiyacı olmadığını her konser gecesi yeniden görüyorum.»",
+      "Choices": [
+        {
+          "Text": "Uluslararası konser enerjisini yeni albüme taşı.",
+          "Next": "english",
+          "Result": "Küresel sahne deneyimin stüdyo vizyonunu büyüttü.",
+          "Effects": {
+            "reach": 7,
+            "craft": 3
+          },
+          "SetFlags": [
+            "world_stage_star"
+          ]
+        },
+        {
+          "Text": "Turne sonrası dinginleşip yeni bestelere odaklan.",
+          "Next": "english",
+          "Result": "Yoğun temponun ardından içsel müziğine döndün.",
+          "Effects": {
+            "craft": 6,
+            "connection": 4
+          }
+        }
+      ]
+    },
+    "classical_bridge": {
+      "Title": "Ahde Vefa ve ustaların izi",
+      "Chapter": 5,
+      "Text": "Çocukluğundan beri kulağında yer eden makamları ve güfteleri büyük bir orkestrayla kaydederken geçmişle bugün arasında zarif bir köprü kuruyorsun.",
+      "Choices": [
+        {
+          "Text": "Doğu-batı sentezini ustalık eseri bir külliyata dönüştür.",
+          "Next": "ending_synthesis_master",
+          "Result": "Müzikal arayışın kalıcı bir sanat mirasına dönüştü.",
+          "NeedFlag": "eastern_rhythm",
+          "Effects": {
+            "craft": 5
+          }
+        },
+        {
+          "Text": "Kuşakları aynı şarkıda buluşturan duygusal bağı taçlandır.",
+          "Next": "ending_timeless_voice",
+          "Result": "Sesin her kuşağın kalbinde ayrı bir yer edindi.",
+          "Effects": {
+            "connection": 5
+          }
+        }
+      ]
+    },
+    "ending_synthesis_master": {
+      "Title": "Doğu ile batının ortak sesi",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, geleneksel makam ve ritimleri modern pop prodüksiyonuyla birleştiren ustalık çizgisini zirveye taşıdın.",
+      "Ending": "Doğu ile batının ortak sesi"
+    },
+    "ending_timeless_voice": {
+      "Title": "Gönüllerde yaşayan ezgi",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, hem pop şarkılarıyla hem de klasik eserlerle her yaştan dinleyicinin hafızasına dokunan zamansız bir yorumcu oldun.",
+      "Ending": "Gönüllerde yaşayan ezgi"
+    },
+    "ending_world_echo": {
+      "Title": "Sınırları aşan sahne",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, Türkçe şarkıları dünyanın dört bir yanındaki dev salonlarda yankılandıran uluslararası bir sahne mirası kurdun.",
+      "Ending": "Sınırları aşan sahne"
+    },
+    "acoustics_retreat": {
+      "Title": "Gece yarısı akustik prova",
+      "Chapter": 1,
+      "Style": "note",
+      "Text": "Stüdyo Defteri · 03:20:\n\n«Bütün ışıklar kapandığında geriye sadece gitarın teli ve çıplak ses kalıyor. İnsanların kalbine dokunacak olan şey gösteriş değil, bu içtenlik.»",
+      "Choices": [
+        {
+          "Text": "İçli baladları albümün kalbine yerleştir.",
+          "Next": "smari",
+          "Result": "Yıllarca unutulmayacak duygusal şarkıların temeli atıldı.",
+          "Effects": {
+            "connection": 7,
+            "craft": 4
+          }
+        },
+        {
+          "Text": "Bu duygusal derinliği kıvrak ritimlerle harmanla.",
+          "Next": "smari",
+          "Result": "Hem hüzünlendiren hem coşturan özgün bir denge yakaladın.",
+          "Effects": {
+            "craft": 6,
+            "reach": 4
+          }
+        }
+      ]
+    },
+    "harbiye_openair": {
+      "Title": "Açıkhava'da yıldızlı gece",
+      "Chapter": 4,
+      "Style": "chat",
+      "Text": "Sahne Amiri: Tribünler merdiven boşluklarına kadar doldu, dışarıda binlerce kişi sesi dinliyor!\nSen: Mikrofonu açın, bu gece kimse yerine oturmayacak, ilk şarkıdan son şarkıya kadar birlikte söyleyeceğiz!",
+      "Choices": [
+        {
+          "Text": "Akustik bölümle bütün açıkhavayı tek bir koroya dönüştür.",
+          "Next": "changing_market",
+          "Result": "Binlerce insanın bir ağızdan söylediği nakaratlar geceye damga vurdu.",
+          "Effects": {
+            "connection": 7,
+            "reach": 4
+          }
+        },
+        {
+          "Text": "Görkemli koreografi ve ışık şovuyla tempoyu zirveye çıkar.",
+          "Next": "changing_market",
+          "Result": "Sahne performansın yıllarca konuşulacak bir standart belirledi.",
+          "Effects": {
+            "craft": 6,
+            "reach": 5
+          }
+        }
+      ]
+    },
+    "ending_nature_voice": {
+      "Title": "Doğanın ve kalbin sesi",
+      "Chapter": 6,
+      "Text": "Bu kurmaca rotada, sahnelerde kazandığın sevgiyi ve erişim gücünü doğayı, su kaynaklarını ve genç müzisyenleri koruyan kalıcı bir kültür-ekoloji hareketine dönüştürdün.",
+      "Ending": "Doğanın ve kalbin sesi"
     }
   }
 }

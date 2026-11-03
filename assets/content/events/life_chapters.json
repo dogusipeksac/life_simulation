@@ -369,5 +369,1214 @@
     "conditions": [
       "HasFlag:retired"
     ]
+  },
+  {
+    "id": "chapter_kept_wallet_echo",
+    "title": "Çocukluktan Kalan Cüzdan",
+    "category": "Social",
+    "style": "note",
+    "minAge": 22,
+    "maxAge": 55,
+    "weight": 16,
+    "conditions": [
+      "HasFlag:kept_wallet"
+    ],
+    "description": "Eski bir çekmeceyi toplarken çocukken yerde bulup sakladığın o deri cüzdanın içindeki terzi kartviziti eline geçiyor:\n\n«Terzi Kemal · Çınar Sokak No: 14»\n\nYıllar geçmiş ama kartvizitin arkasındaki el yazısı hâlâ okunuyor.",
+    "choices": [
+      {
+        "id": "find_owner_shop",
+        "text": "Çınar Sokak'a gidip Terzi Kemal'i veya ailesini ara.",
+        "effects": {
+          "Happiness": 4,
+          "Social": 3
+        },
+        "next": "chapter_kept_wallet_amends",
+        "result": "Yıllar sonra o sokağa adım attığında kalbin hızla çarpmaya başladı."
+      },
+      {
+        "id": "anonymous_charity",
+        "text": "Bugünün parasıyla fazlasını bir öğrenci bursuna bağışla.",
+        "cost": 15000,
+        "effects": {
+          "Happiness": 6,
+          "Social": 2
+        },
+        "remove": [
+          "kept_wallet"
+        ],
+        "result": "Geçmişi değiştiremezdin ama bugünü onardın; içindeki yük hafifledi."
+      }
+    ]
+  },
+  {
+    "id": "chapter_kept_wallet_amends",
+    "title": "Çınar Sokak'taki Terzi Dükkânı",
+    "category": "Social",
+    "minAge": 22,
+    "maxAge": 55,
+    "chainOnly": true,
+    "description": "Dükkânın tabelası duruyor; tezgâhın başında Kemal Usta'nın kızı var. Hikâyeyi ve zarfı uzattığında gözleri doluyor: «Babam o gün üzülmüştü ama 'Belki çok ihtiyacı olan bir çocuğun eline geçmiştir' demişti.»",
+    "choices": [
+      {
+        "id": "leave_envelope",
+        "text": "Zarfı bırakıp cüzdanı hatıra olarak teslim et.",
+        "cost": 10000,
+        "effects": {
+          "Happiness": 8,
+          "Social": 5
+        },
+        "set": [
+          "returned_wallet"
+        ],
+        "remove": [
+          "kept_wallet"
+        ],
+        "result": "Dükkândan çıkarken omuzlarından yılların ağırlığı kalkmıştı."
+      },
+      {
+        "id": "order_suit",
+        "text": "Özür dileyip dükkândan özel bir dikim sipariş ver.",
+        "cost": 18000,
+        "effects": {
+          "Happiness": 7,
+          "Social": 6
+        },
+        "set": [
+          "returned_wallet"
+        ],
+        "remove": [
+          "kept_wallet"
+        ],
+        "result": "Geçmişteki bir hata, yıllar sonra sıcak bir dostluğa dönüştü."
+      }
+    ]
+  },
+  {
+    "id": "chapter_neighbor_solidarity",
+    "title": "Apartman WhatsApp Grubu",
+    "category": "Social",
+    "style": "chat",
+    "minAge": 20,
+    "maxAge": 85,
+    "weight": 15,
+    "conditions": [
+      "HasFlag:neighbor_friend"
+    ],
+    "description": "Yan Daire: Kusura bakma bu saatte yazıyorum, annemin tansiyonu çıktı da eczaneye kadar eşlik edebilir misin?\nSen: Hemen ceketimi alıp iniyorum, kapının önünde buluşalım.\nYan Daire: İyi ki varsın komşum.",
+    "choices": [
+      {
+        "id": "go_together",
+        "text": "Gece nöbetçi eczaneye ve acile birlikte gidin.",
+        "effects": {
+          "Social": 6,
+          "Happiness": 4,
+          "Health": -1
+        },
+        "next": "chapter_neighbor_feast",
+        "result": "Zor gecede iyi komşunun akrabadan yakın olduğunu bir kez daha kanıtladın."
+      },
+      {
+        "id": "stay_on_call",
+        "text": "İlaçları alıp kapılarına bırak ve sabaha kadar haberleşin.",
+        "effects": {
+          "Social": 4,
+          "Happiness": 3
+        },
+        "result": "Sabah her şeyin yolunda olduğunu öğrenince rahat bir nefes aldın."
+      }
+    ]
+  },
+  {
+    "id": "chapter_neighbor_feast",
+    "title": "Balkondan Gelen Börek Kokusu",
+    "category": "Social",
+    "minAge": 20,
+    "maxAge": 85,
+    "chainOnly": true,
+    "description": "Bir hafta sonra kapın çalınıyor. Komşun ve annesi ellerinde fırından yeni çıkmış tepsi böreği ve demli çayla kapıda duruyor: «O geceki iyiliğin unutulmaz.»",
+    "choices": [
+      {
+        "id": "balcony_tea",
+        "text": "Sofrayı kurup uzun bir komşu sohbeti başlat.",
+        "effects": {
+          "Happiness": 6,
+          "Social": 5,
+          "Health": 2
+        },
+        "result": "Apartman sadece beton bir bina olmaktan çıkıp gerçek bir mahalleye dönüştü."
+      },
+      {
+        "id": "share_courtyard",
+        "text": "Diğer komşuları da çağırıp bahçede çay saati yapın.",
+        "effects": {
+          "Social": 7,
+          "Happiness": 5
+        },
+        "result": "Yıllardır birbirine sadece selam veren komşular aynı masada buluştu."
+      }
+    ]
+  },
+  {
+    "id": "chapter_musician_stage",
+    "title": "Gece Radyosunda Canlı Kayıt",
+    "category": "Social",
+    "style": "radio",
+    "minAge": 18,
+    "maxAge": 85,
+    "weight": 15,
+    "conditions": [
+      "HasFlag:musician"
+    ],
+    "description": "[22:15 · STÜDYO KAYDI · AÇIK MİKROFON]\n«Bu akşam stüdyomuzda müziği hayatının bir köşesinde hep diri tutan bir konuğumuz var. Enstrümanınız akort edildi, kırmızı ışık yandı... Söz ve ezgi sizde.»",
+    "choices": [
+      {
+        "id": "play_original",
+        "text": "Yıllardır kendi kendine mırıldandığın besteyi çal.",
+        "effects": {
+          "Happiness": 7,
+          "Social": 5
+        },
+        "next": "chapter_musician_encore",
+        "result": "Son nota bittiğinde stüdyodaki ses teknisyeni bile alkışa katıldı."
+      },
+      {
+        "id": "play_folk",
+        "text": "Herkesin bildiği sıcak bir ezgiyi kendi yorumunla çal.",
+        "effects": {
+          "Happiness": 5,
+          "Social": 4
+        },
+        "result": "Dinleyicilerden gelen mesajlar gece boyunca ekranı doldurdu."
+      }
+    ]
+  },
+  {
+    "id": "chapter_musician_encore",
+    "title": "Küçük Sahne Teklifi",
+    "category": "Social",
+    "minAge": 18,
+    "maxAge": 85,
+    "chainOnly": true,
+    "description": "Radyo kaydını dinleyen yerel bir kültür evi, cuma akşamları küçük bir dinleti vermen için seni davet ediyor.",
+    "choices": [
+      {
+        "id": "accept_gig",
+        "text": "Teklifi kabul et; hem ruhun doysun hem telif gelsin.",
+        "effects": {
+          "Money": 35000,
+          "Happiness": 6,
+          "Social": 4
+        },
+        "result": "Cuma akşamları senin sahnen mahallenin buluşma noktası oldu."
+      },
+      {
+        "id": "teach_youth",
+        "text": "Sahne yerine kültür evinde gençlere ücretsiz atölye kur.",
+        "effects": {
+          "Happiness": 7,
+          "Social": 6,
+          "Education": 3
+        },
+        "set": [
+          "volunteer"
+        ],
+        "result": "Notaları yeni bir kuşağa aktarmanın sevinci her şeyden büyüktü."
+      }
+    ]
+  },
+  {
+    "id": "chapter_language_bridge",
+    "title": "Uluslararası Konuk Heyet",
+    "category": "Career",
+    "minAge": 20,
+    "maxAge": 75,
+    "weight": 15,
+    "conditions": [
+      "HasFlag:learned_language"
+    ],
+    "description": "Şehre gelen yabancı bir heyetle iletişimde çeviri krizi yaşanıyor. Bildiğin yabancı dil sayesinde bir anda masanın en kilit ismi haline geliyorsun.",
+    "choices": [
+      {
+        "id": "lead_translation",
+        "text": "Görüşmeyi devralıp iki taraf arasındaki buzları erit.",
+        "effects": {
+          "Education": 4,
+          "Social": 5,
+          "Money": 45000
+        },
+        "next": "chapter_language_invitation",
+        "result": "Akıcı çevirin ve kültürel inceliğin her iki tarafı da hayran bıraktı."
+      },
+      {
+        "id": "prepare_notes",
+        "text": "Belgeleri titizlikle çevirip yazılı mutabakatı hazırla.",
+        "effects": {
+          "Education": 5,
+          "Money": 35000,
+          "Happiness": 3
+        },
+        "result": "Zamanında öğrendiğin dil, en kritik günde elini güçlendirdi."
+      }
+    ]
+  },
+  {
+    "id": "chapter_language_invitation",
+    "title": "Yurt Dışından Gelen Davet Mektubu",
+    "category": "Career",
+    "style": "note",
+    "minAge": 20,
+    "maxAge": 75,
+    "chainOnly": true,
+    "description": "Görüşmeden bir ay sonra antetli bir zarf ulaşıyor:\n\n«Misafirperverliğiniz ve dil hâkimiyetiniz için teşekkür ederiz. Sizi masrafları tarafımızca karşılanacak uluslararası kültür ve meslek buluşmamıza davet etmekten onur duyarız.»",
+    "choices": [
+      {
+        "id": "attend_abroad",
+        "text": "Bavulunu hazırla ve bu uluslararası buluşmaya katıl.",
+        "effects": {
+          "Happiness": 7,
+          "Education": 4,
+          "Social": 5
+        },
+        "set": [
+          "traveled_abroad"
+        ],
+        "result": "Yeni bir dilin yeni bir dünya demek olduğunu bizzat yaşayarak gördün."
+      },
+      {
+        "id": "remote_collab",
+        "text": "Uzaktan danışmanlık anlaşması imzala.",
+        "effects": {
+          "Money": 65000,
+          "Education": 3,
+          "Happiness": 4
+        },
+        "result": "Evinden ayrılmadan uluslararası bir gelir kapısı açtın."
+      }
+    ]
+  },
+  {
+    "id": "chapter_divorce_renewal",
+    "title": "Boşanan Evin İlk Sabahı",
+    "category": "Social",
+    "minAge": 25,
+    "maxAge": 80,
+    "weight": 18,
+    "conditions": [
+      "HasFlag:divorced",
+      "NotHasFlag:married"
+    ],
+    "description": "Duvarlardaki çerçevelerin izi hâlâ duruyor ama sabah güneşi odaya farklı vuruyor. Bitmiş bir evliliğin ardından hayatını yeniden kendi ritmine göre kurma zamanı.",
+    "choices": [
+      {
+        "id": "redecorate_life",
+        "text": "Evi ve alışkanlıklarını baştan aşağı yenile.",
+        "cost": 8000,
+        "effects": {
+          "Happiness": 7,
+          "Health": 3
+        },
+        "next": "chapter_second_spring_coffee",
+        "result": "Geçmişin gölgesini havalandırıp kendi nefes alanını kurdun."
+      },
+      {
+        "id": "focus_friends",
+        "text": "İhmal ettiğin dostlarınla yeniden sıkı bir bağ kur.",
+        "effects": {
+          "Social": 6,
+          "Happiness": 5
+        },
+        "result": "Yalnız olmadığını hatırlamak yaralarını hızla sardı."
+      }
+    ]
+  },
+  {
+    "id": "chapter_second_spring_coffee",
+    "title": "Beklenmedik Bir Merhaba",
+    "category": "Social",
+    "style": "chat",
+    "minAge": 25,
+    "maxAge": 80,
+    "chainOnly": true,
+    "description": "Kitapçıdan Tanıdık: Geçen gün önerdiğin kitabı bitirdim, son sayfası hâlâ aklımda.\nSen: Beğenmene çok sevindim, konuşacak birini arıyordum ben de.\nKitapçıdan Tanıdık: O zaman bu akşamüstü sahilde bir çay içelim mi? Acelemiz yok.",
+    "choices": [
+      {
+        "id": "open_heart",
+        "text": "Kalbini korkmadan yeni bir başlangıca aç.",
+        "effects": {
+          "Happiness": 8,
+          "Social": 4
+        },
+        "set": [
+          "dating"
+        ],
+        "result": "Daha olgun, daha dingin bir ikinci baharın ilk adımını attın."
+      },
+      {
+        "id": "keep_friendship",
+        "text": "Acele etmeden, sağlam bir dostluk olarak ilerle.",
+        "effects": {
+          "Happiness": 6,
+          "Social": 5
+        },
+        "set": [
+          "best_friend"
+        ],
+        "result": "Kendi ayaklarının üzerinde dururken kurulan dostluğun tadı bambaşkaydı."
+      }
+    ]
+  },
+  {
+    "id": "chapter_business_milestone",
+    "title": "Dükkânın Yıl Dönümü",
+    "category": "Career",
+    "minAge": 24,
+    "maxAge": 85,
+    "weight": 16,
+    "conditions": [
+      "HasFlag:owns_business"
+    ],
+    "description": "Kendi açtığın dükkân mahallenin vazgeçilmez bir parçası oldu. Sabah kepengi kaldırırken esnaf komşuların ve müdavimlerin kutlama için kapıda toplanıyor.",
+    "choices": [
+      {
+        "id": "hire_apprentice",
+        "text": "Yanına hevesli bir çırak alıp işi büyüt.",
+        "effects": {
+          "Money": 55000,
+          "Social": 5,
+          "Happiness": 5
+        },
+        "result": "Hem istihdam sağladın hem de işin yükünü paylaşacak bir yol arkadaşı kazandın."
+      },
+      {
+        "id": "neighborhood_treat",
+        "text": "Bütün sokağa ikram dağıtıp kazancının bereketini paylaş.",
+        "cost": 12000,
+        "effects": {
+          "Social": 8,
+          "Happiness": 7
+        },
+        "result": "Mahallede adın cömertliği ve dürüstlüğüyle anılır oldu."
+      }
+    ]
+  },
+  {
+    "id": "chapter_rental_tenant",
+    "title": "Kiracıdan Gelen Mesaj",
+    "category": "Random",
+    "style": "chat",
+    "minAge": 26,
+    "maxAge": 90,
+    "weight": 15,
+    "conditions": [
+      "HasFlag:rental_property"
+    ],
+    "description": "Kiracın: Ev sahibi merhaba, bu yıl sözleşme yenileme zamanı geldi. Evi kendi evimiz gibi koruduk, makul bir artışla devam edebilir miyiz?\nSen: Memnuniyetiniz benim için önemli, konuşup orta yolu bulalım.",
+    "choices": [
+      {
+        "id": "fair_rent",
+        "text": "İyi kiracıyı koruyup makul bir artış yap.",
+        "effects": {
+          "Money": 35000,
+          "Happiness": 5,
+          "Social": 4
+        },
+        "result": "Huzurlu ve düzenli kira geliri, açgözlü bir tartışmadan çok daha değerliydi."
+      },
+      {
+        "id": "renovate_unit",
+        "text": "Mülke bakım yaptırıp değerini ve kirasını artır.",
+        "cost": 25000,
+        "effects": {
+          "Money": 65000,
+          "Happiness": 4
+        },
+        "result": "Mülkün değeri arttı; kiracın da yenilenen evden memnun kaldı."
+      }
+    ]
+  },
+  {
+    "id": "chapter_heirloom_story",
+    "title": "Aile Yadigârının Hikâyesi",
+    "category": "Social",
+    "style": "note",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 15,
+    "conditions": [
+      "HasFlag:family_heirloom"
+    ],
+    "description": "Özenle sakladığın aile yadigârının kutusuna gelecek kuşaklar için el yazısıyla bir pusula bırakıyorsun:\n\n«Bu emanet yalnızca bir eşya değil; bu ailenin alın terinin, sabrının ve birbirine tutunuşunun nişanesidir.»",
+    "choices": [
+      {
+        "id": "restore_heirloom",
+        "text": "Usta bir restoratöre bakımını yaptırıp kutusunu yenile.",
+        "cost": 10000,
+        "effects": {
+          "Happiness": 7,
+          "Social": 3
+        },
+        "result": "Yadigâr ilk günkü ışıltısına kavuştu; yıllara meydan okumaya hazır."
+      },
+      {
+        "id": "tell_children",
+        "text": "Sofrada bütün aileye bu yadigârın öyküsünü anlat.",
+        "effects": {
+          "Happiness": 6,
+          "Social": 5,
+          "Education": 2
+        },
+        "result": "Köklerini bilmek evdeki herkesin birbirine bakışını derinleştirdi."
+      }
+    ]
+  },
+  {
+    "id": "chapter_dynasty_footsteps",
+    "title": "Anne Babanın İzinde",
+    "category": "Social",
+    "style": "note",
+    "minAge": 19,
+    "maxAge": 65,
+    "weight": 18,
+    "conditions": [
+      "HasFlag:dynasty_heir"
+    ],
+    "description": "Senden önceki kuşağın bıraktığı defterin arasına sıkıştırılmış bir not buluyorsun:\n\n«Biz elimizden geleni yaptık, yolu buraya kadar getirdik. Bundan sonrası senin aklına ve vicdanına emanet.»",
+    "choices": [
+      {
+        "id": "honor_legacy",
+        "text": "Mirası büyütüp aile adını daha da yukarı taşı.",
+        "effects": {
+          "Happiness": 6,
+          "Education": 3,
+          "Money": 40000
+        },
+        "result": "Devraldığın bayrağı kendi emeğinle daha yükseğe diktin."
+      },
+      {
+        "id": "carve_own_way",
+        "text": "Köklerine saygı duy ama kendi özgün yolunu çiz.",
+        "effects": {
+          "Happiness": 7,
+          "Social": 4
+        },
+        "result": "Geçmişin gölgesinde kalmadan kendi hikâyenin kahramanı oldun."
+      }
+    ]
+  },
+  {
+    "id": "mystery_sealed_letter",
+    "title": "Kapının Altındaki Mühürlü Zarf",
+    "category": "Random",
+    "style": "note",
+    "minAge": 20,
+    "maxAge": 75,
+    "weight": 18,
+    "conditions": [
+      "NotHasFlag:mystery_solved"
+    ],
+    "description": "Gece eve döndüğünde paspasın üzerinde kırmızı balmumu mühürlü, kalın sarı bir zarf buluyorsun. İçinden tek bir el yazısı pusula çıkıyor:\n\n«Ailenin yıllar önce unuttuğu emanet hâlâ Saatçi İlyas'ın pasajdaki dükkânında duruyor. Cuma gün batımından önce gelmezsen kasa sonsuza dek kapanacak.»",
+    "choices": [
+      {
+        "id": "go_clockmaker",
+        "text": "Merakına kulak ver ve pasajdaki saatçiye git.",
+        "effects": {
+          "Happiness": 3,
+          "Education": 2
+        },
+        "next": "mystery_antique_clockmaker",
+        "result": "Dar pasajın merdivenlerinden inerken vitrindeki yüzlerce saatin tik-takları seni karşıladı."
+      },
+      {
+        "id": "research_seal",
+        "text": "Önce mührün üzerindeki simgeyi şehir arşivinde araştır.",
+        "effects": {
+          "Education": 4
+        },
+        "next": "mystery_archive_trail",
+        "result": "Arşivdeki tozlu defterler bu mührün yüzyıllık bir loncaya ait olduğunu ortaya çıkardı."
+      },
+      {
+        "id": "burn_letter",
+        "text": "Tezgâh veya dolandırıcılık olabilir; zarfı yırtıp at.",
+        "effects": {
+          "Health": 1
+        },
+        "result": "Zarfı çöpe attın ama pasajın önünden her geçişinde içeride ne olduğunu merak ettin."
+      }
+    ]
+  },
+  {
+    "id": "mystery_antique_clockmaker",
+    "title": "Durmuş Saatlerin Arasındaki Kasa",
+    "category": "Random",
+    "minAge": 20,
+    "maxAge": 75,
+    "chainOnly": true,
+    "description": "Yaşlı saat ustası büyütecini gözünden indirip sana dikkatle bakıyor: «Bakışların tıpkı büyükbabanın gençliği... Emaneti alman için onun bıraktığı üç haneli şifreyi bilmen şart.»",
+    "choices": [
+      {
+        "id": "open_safe_family",
+        "text": "Kasayı aç ve içindeki emanetle yüzleş.",
+        "effects": {
+          "Happiness": 5,
+          "Education": 3
+        },
+        "next": "mystery_legacy_revelation",
+        "result": "Ağır demir kapak gıcırdayarak açıldığında kadife bir kese ve sararmış bir tapu senedi belirdi."
+      },
+      {
+        "id": "ask_clockmaker_story",
+        "text": "Önce saatçiden o yılların gerçek hikâyesini dinle.",
+        "effects": {
+          "Social": 4,
+          "Education": 3
+        },
+        "next": "mystery_legacy_revelation",
+        "result": "Ustanın anlattıkları ailenin geçmişindeki bütün eksik parçaları birleştirdi."
+      }
+    ]
+  },
+  {
+    "id": "mystery_archive_trail",
+    "title": "Belediye Arşivindeki Tozlu Dosya",
+    "category": "Random",
+    "style": "note",
+    "minAge": 20,
+    "maxAge": 75,
+    "chainOnly": true,
+    "description": "Arşiv memurunun getirdiği 1954 tarihli sicil defterinde şu satırı buluyorsun:\n\n«Emanet No: 418 — Saatçi İlyas Pasajı. Sadece üçüncü kuşak mirasçıya teslim edilecektir.»",
+    "choices": [
+      {
+        "id": "rush_to_passage",
+        "text": "Belgeyi yanına alıp hemen pasaja koş.",
+        "effects": {
+          "Education": 3,
+          "Happiness": 4
+        },
+        "next": "mystery_legacy_revelation",
+        "result": "Kepenk kapanmak üzereyken içeri girdin ve arşiv belgesini tezgâha koydun."
+      },
+      {
+        "id": "copy_records",
+        "text": "Bütün soyağacı kayıtlarının kopyasını çıkarıp öyle git.",
+        "cost": 2000,
+        "effects": {
+          "Education": 5,
+          "Happiness": 3
+        },
+        "next": "mystery_legacy_revelation",
+        "result": "Elinde su götürmez resmi belgelerle saatçinin kapısını çaldın."
+      }
+    ]
+  },
+  {
+    "id": "mystery_legacy_revelation",
+    "title": "Kadife Kesedeki Aile Sırrı",
+    "category": "Random",
+    "minAge": 20,
+    "maxAge": 75,
+    "chainOnly": true,
+    "description": "Kasadan altın işlemeli nadir bir cep saati, eski dönem tahvilleri ve ailenin fırtınalı bir yılda birbirini korumak için sakladığı mektuplar çıkıyor. Koleksiyonerler bu parçalar için servet ödemeye hazır.",
+    "choices": [
+      {
+        "id": "keep_as_heirloom",
+        "text": "Saati aile yadigârı olarak sakla, sadece tahvilleri nakde çevir.",
+        "effects": {
+          "Money": 180000,
+          "Happiness": 8,
+          "Social": 4
+        },
+        "set": [
+          "mystery_solved",
+          "family_heirloom"
+        ],
+        "result": "Hem ailenin onurlu hatırasını korudun hem de ciddi bir birikim elde ettin."
+      },
+      {
+        "id": "auction_collection",
+        "text": "Koleksiyonun tamamını müzayedede satıp geleceğine yatır.",
+        "effects": {
+          "Money": 420000,
+          "Happiness": 4
+        },
+        "set": [
+          "mystery_solved"
+        ],
+        "result": "Müzayede çekici indiğinde hesabına hayat 흐름ını değiştirecek bir meblağ geçti."
+      }
+    ]
+  },
+  {
+    "id": "mystery_midnight_call",
+    "title": "02:14'te Çalan Yanlış Numara",
+    "category": "Random",
+    "style": "chat",
+    "minAge": 19,
+    "maxAge": 65,
+    "weight": 17,
+    "conditions": [
+      "NotHasFlag:secret_society"
+    ],
+    "description": "Bilinmeyen Numara: Dinle, vaktim çok az. Son vapura yetişemedim. Mavi defteri garın 14 numaralı emanet dolabına bıraktım. Sakın kimseye verme!\nSen: Yanlış numara aradınız galiba, ben...\nBilinmeyen Numara: Hayır, listedeki yedinci isim sensin. Sabah 08:00'de orada ol.",
+    "choices": [
+      {
+        "id": "go_station_morning",
+        "text": "Merakın ağır basıyor; sabah erkenden gara git.",
+        "effects": {
+          "Happiness": 3,
+          "Education": 2
+        },
+        "next": "mystery_station_locker",
+        "result": "Sabah sisinde gar peronuna adım attığında kalbin küt küt atıyordu."
+      },
+      {
+        "id": "wait_watch_from_afar",
+        "text": "Gara git ama dolabı açmadan önce uzaktan kimlerin geldiğini izle.",
+        "effects": {
+          "Education": 4,
+          "Social": 2
+        },
+        "next": "mystery_station_locker",
+        "result": "Gazete okuyan tren yolculuğu kılığındaki kadının da 14 numaralı dolabı gözlediğini fark ettin."
+      },
+      {
+        "id": "block_number",
+        "text": "Gece yarısı şakasıdır deyip numarayı engelle ve uyu.",
+        "effects": {
+          "Health": 2
+        },
+        "result": "Deliksiz bir uyku çektin ama mavi defterde ne yazdığı hep bir soru işareti olarak kaldı."
+      }
+    ]
+  },
+  {
+    "id": "mystery_station_locker",
+    "title": "Gar Peronundaki 14 Numaralı Dolap",
+    "category": "Random",
+    "minAge": 19,
+    "maxAge": 65,
+    "chainOnly": true,
+    "description": "Dolabın kapağını açtığında içinden el çizimi haritalarla dolu mavi bir defter ve iki adet davet jetonu çıkıyor. Tam o sırada tren düdüğü çalıyor ve yanına uzun paltolu biri yaklaşıyor: «Cesaret testiydi. Hoş geldin.»",
+    "choices": [
+      {
+        "id": "join_night_society",
+        "text": "Jetonu al ve bu bağımsız düşünce/keşif cemiyetine katıl.",
+        "effects": {
+          "Education": 6,
+          "Social": 6,
+          "Happiness": 5
+        },
+        "next": "mystery_stranger_alliance",
+        "result": "Şehrin en parlak zihinlerinin gizlice buluştuğu o çatı katı toplantılarına adım attın."
+      },
+      {
+        "id": "hand_notebook_leave",
+        "text": "Defteri teslim edip karşılığında danışmanlık ödülünü al.",
+        "effects": {
+          "Money": 95000,
+          "Happiness": 4
+        },
+        "set": [
+          "secret_society"
+        ],
+        "result": "Sırlarını sakladığın için sana cömert bir teşekkür zarfı bıraktılar."
+      }
+    ]
+  },
+  {
+    "id": "mystery_stranger_alliance",
+    "title": "Gece Cemiyetinin İlk Görevi",
+    "category": "Social",
+    "style": "note",
+    "minAge": 19,
+    "maxAge": 65,
+    "chainOnly": true,
+    "description": "Cemiyetin masasında önüne iki zarf konuyor:\n\n«Biri şehrin kayıp kütüphane arşivini kurtarma projesi, diğeri ise yüksek getirili ortak teknoloji fonu. Hangi masada yer alacaksın?»",
+    "choices": [
+      {
+        "id": "cultural_rescue",
+        "text": "Kayıp kütüphane arşivini kurtarma ekibine liderlik et.",
+        "effects": {
+          "Education": 7,
+          "Social": 6,
+          "Happiness": 6
+        },
+        "set": [
+          "secret_society",
+          "best_friend"
+        ],
+        "result": "Kurtardığınız nadir eserler sayesinde ömür boyu sürecek dostlar ve derin bir bilgelik kazandın."
+      },
+      {
+        "id": "venture_syndicate",
+        "text": "Ortak yatırım fonuna katılıp payını büyüt.",
+        "cost": 15000,
+        "effects": {
+          "Money": 240000,
+          "Education": 4,
+          "Happiness": 4
+        },
+        "set": [
+          "secret_society"
+        ],
+        "result": "Cemiyetin erken aşama yatırımı bir yıl içinde katlanarak geri döndü."
+      }
+    ]
+  },
+  {
+    "id": "mystery_attic_trunk",
+    "title": "Tavan Arasındaki Kilitli Sandık",
+    "category": "Random",
+    "minAge": 16,
+    "maxAge": 80,
+    "weight": 15,
+    "description": "Fırtınalı bir akşam çatıdan gelen sesleri kontrol etmeye çıktığında, gevşeyen döşeme tahtasının altında paslı bir teneke sandık ve yarısı yırtılmış siyah-beyaz bir fotoğraf buluyorsun.",
+    "choices": [
+      {
+        "id": "trace_photo",
+        "text": "Fotoğrafın arkasındaki damgayı mahallenin eskilerine sor.",
+        "effects": {
+          "Social": 3,
+          "Education": 2
+        },
+        "next": "mystery_photo_trail",
+        "result": "Eski sahaflar çarşısındaki usta fotoğrafa bakar bakmaz gözlerini kıstı."
+      },
+      {
+        "id": "pry_trunk_open",
+        "text": "Sandığın kilidini kendi aletlerinle dikkatlice çöz.",
+        "effects": {
+          "Education": 3,
+          "Happiness": 2
+        },
+        "next": "mystery_hidden_treasure",
+        "result": "Paslı yay nihayet attı ve sandığın içindeki gizli bölme görünür oldu."
+      }
+    ]
+  },
+  {
+    "id": "mystery_photo_trail",
+    "title": "Sahafın Fısıldadığı Geçmiş",
+    "category": "Social",
+    "style": "chat",
+    "minAge": 16,
+    "maxAge": 80,
+    "chainOnly": true,
+    "description": "Sahaf Nuri: Bu fotoğraf 1960'larda bu sokakta yaşayan ünlü bir hattat ve koleksiyonere ait.\nSen: Peki sandığın içindeki bu kroki nereyi gösteriyor?\nSahaf Nuri: Bahçedeki yaşlı incir ağacının üç adım doğusunu! Orada bir şey sakladığı hep konuşulurdu.",
+    "choices": [
+      {
+        "id": "dig_under_fig",
+        "text": "Krokiyi takip edip incir ağacının dibini kaz.",
+        "effects": {
+          "Happiness": 4,
+          "Health": -1
+        },
+        "next": "mystery_hidden_treasure",
+        "result": "Toprağın yarım metre altında bakır bir muhafaza kutusuna ulaştın."
+      },
+      {
+        "id": "partner_with_bookseller",
+        "text": "Sahafla ortak olup buluntuları birlikte belgeleyin.",
+        "effects": {
+          "Social": 5,
+          "Education": 4
+        },
+        "next": "mystery_hidden_treasure",
+        "result": "Uzman gözüyle yapılan inceleme eserlerin değerini ikiye katladı."
+      }
+    ]
+  },
+  {
+    "id": "mystery_hidden_treasure",
+    "title": "Bakır Muhafazadan Çıkanlar",
+    "category": "Random",
+    "minAge": 16,
+    "maxAge": 80,
+    "chainOnly": true,
+    "description": "Kutunun içinden el yazması tezhipli bir divan ve bir kese eski altın sikke çıkıyor. Elin titreyerek sayfaları çeviriyorsun.",
+    "choices": [
+      {
+        "id": "museum_and_reward",
+        "text": "El yazmasını müzeye bağışla, yasal ikramiyeyi ve onur plaketini al.",
+        "effects": {
+          "Money": 160000,
+          "Social": 6,
+          "Happiness": 7
+        },
+        "result": "Gazetelerde adın kültür mirasını kurtaran örnek vatandaş olarak yer aldı."
+      },
+      {
+        "id": "private_collector_sale",
+        "text": "Ekspertiz yaptırıp kayıtlı koleksiyonerlere sat.",
+        "effects": {
+          "Money": 260000,
+          "Happiness": 4
+        },
+        "result": "Beklenmedik bu keşif bütçene devasa bir nefes aldırdı."
+      }
+    ]
+  },
+  {
+    "id": "career_secret_ledger",
+    "title": "Gece Yazıcıda Unutulan Gizli Dosya",
+    "category": "Career",
+    "style": "note",
+    "minAge": 22,
+    "maxAge": 62,
+    "weight": 17,
+    "conditions": [
+      "MinCareerLevel:1",
+      "NotHasFlag:whistleblower_hero"
+    ],
+    "description": "Mesai bitiminde ofiste yalnızken yazıcıda unutulmuş «ÇOK GİZLİ · İMHA EDİLECEK» başlıklı bir rapor görüyorsun:\n\n«Kusurlu parti ürünlerin ve güvenlik açıklarının maliyet nedeniyle kamuoyundan gizlenmesine, denetim raporunun değiştirilmesine karar verilmiştir.»",
+    "choices": [
+      {
+        "id": "copy_for_press",
+        "text": "Belgelerin kopyasını alıp bağımsız basına ve denetçilere ulaştır.",
+        "effects": {
+          "Happiness": 4,
+          "Health": -2
+        },
+        "next": "career_whistleblower_press",
+        "result": "Dosyayı çantana koyup binadan çıkarken güvenlik kameralarının altında soğukkanlılığını korudun."
+      },
+      {
+        "id": "confront_board",
+        "text": "Sabah doğrudan yönetim kurulunun karşısına çıkıp yanlışı durdur.",
+        "effects": {
+          "Education": 4,
+          "Social": 3
+        },
+        "next": "career_internal_confrontation",
+        "result": "Toplantı odasının kapısını açıp dosyayı masanın tam ortasına bıraktın."
+      },
+      {
+        "id": "leave_on_printer",
+        "text": "Görmemiş gibi yapıp ofisten çık; başını derde sokma.",
+        "effects": {
+          "Happiness": -3
+        },
+        "result": "İşini korudun ama aylar sonra haberlerde o kusurun sonuçlarını izlerken vicdanın sızladı."
+      }
+    ]
+  },
+  {
+    "id": "career_whistleblower_press",
+    "title": "Ana Haber Bülteninde Son Dakika",
+    "category": "Career",
+    "style": "radio",
+    "minAge": 22,
+    "maxAge": 62,
+    "chainOnly": true,
+    "description": "[20:00 · ULUSAL HABER BÜLTENİ CANLI YAYIN]\n«Sayın seyirciler, içeriden sızdırılan belgeler sayesinde binlerce insanı etkileyecek ihmal son anda önlendi! Müfettişler şirkete el koyarken, gerçeği ortaya çıkaran cesur çalışana üstün kamu hizmeti ödülü veriliyor.»",
+    "choices": [
+      {
+        "id": "accept_public_honor",
+        "text": "Kamuoyu önüne çıkıp dürüstlük ödülünü ve yasal tazminatı al.",
+        "effects": {
+          "Money": 220000,
+          "Social": 8,
+          "Happiness": 9
+        },
+        "set": [
+          "whistleblower_hero"
+        ],
+        "result": "Cesaretin sektörde efsane oldu; en dürüst kurumlar seninle çalışmak için sıraya girdi."
+      },
+      {
+        "id": "stay_anonymous_hero",
+        "text": "Kimliğini gizli tut; ödülü alıp sakin hayatına devam et.",
+        "effects": {
+          "Money": 180000,
+          "Happiness": 8,
+          "Health": 3
+        },
+        "set": [
+          "whistleblower_hero"
+        ],
+        "result": "Kimse senin yaptığını bilmese de aynaya her baktığında duyduğun gurur yetti."
+      }
+    ]
+  },
+  {
+    "id": "career_internal_confrontation",
+    "title": "Kapalı Kapılar Ardında Pazarlık",
+    "category": "Career",
+    "minAge": 22,
+    "maxAge": 62,
+    "chainOnly": true,
+    "description": "Yönetim kurulu başkanı ter içinde kalarak geri adım atıyor: «Haklısın, kusurlu seriyi derhal geri çekiyoruz. Bu krizi içeride çözdüğün için seni denetim ve kalite başına getirmek istiyoruz.»",
+    "choices": [
+      {
+        "id": "take_ethics_lead",
+        "text": "Hatanın tamamen düzeltilmesi şartıyla yeni yetkiyi ve primi kabul et.",
+        "effects": {
+          "Money": 190000,
+          "Education": 5,
+          "Happiness": 7
+        },
+        "set": [
+          "whistleblower_hero"
+        ],
+        "result": "Hem binlerce insanı korudun hem de kurumun vicdanı olarak en üst masaya oturdun."
+      },
+      {
+        "id": "resign_with_severance",
+        "text": "Düzeltmeyi denetlettikten sonra yüksek tazminatını alıp kendi yoluna git.",
+        "effects": {
+          "Money": 250000,
+          "Happiness": 6
+        },
+        "set": [
+          "whistleblower_hero"
+        ],
+        "result": "İlkelerinden taviz vermeden, cebinde güçlü bir sermayeyle yeni bir sayfa açtın."
+      }
+    ]
+  },
+  {
+    "id": "adventure_storm_lighthouse",
+    "title": "Fırtına Gecesi Sönen Deniz Feneri",
+    "category": "Random",
+    "style": "radio",
+    "minAge": 18,
+    "maxAge": 70,
+    "weight": 15,
+    "conditions": [
+      "NotHasFlag:lighthouse_savior"
+    ],
+    "description": "[23:45 · ACİL DENİZ TELSİZİ · KANAL 16]\n«Mayday, Mayday! Kayalıklara sürükleniyoruz, kıyıdaki fener tamamen karanlık! Bizi duyan var mı? Rota pusulamız devre dışı, sadece kıyı ışığını arıyoruz!»",
+    "choices": [
+      {
+        "id": "climb_lighthouse",
+        "text": "Yağmurluğunu giyip fırtınada eski deniz feneri kulesine tırman.",
+        "requires": [
+          "MinStat:Health:40"
+        ],
+        "effects": {
+          "Health": -3,
+          "Happiness": 4
+        },
+        "next": "adventure_lighthouse_rescue",
+        "result": "Rüzgâr kapıyı yüzüne çarparken döner merdivenleri üçer beşer çıktın."
+      },
+      {
+        "id": "headlight_chain",
+        "text": "Mahalleliyi örgütleyip sahil şeridine araç farlarıyla ışık hattı kur.",
+        "effects": {
+          "Social": 5,
+          "Happiness": 4
+        },
+        "next": "adventure_lighthouse_rescue",
+        "result": "Onlarca araba aynı anda kayalıkların kenarında uzunlarını yaktı."
+      }
+    ]
+  },
+  {
+    "id": "adventure_lighthouse_rescue",
+    "title": "Kayalıkların Kıyısında Şafak",
+    "category": "Random",
+    "minAge": 18,
+    "maxAge": 70,
+    "chainOnly": true,
+    "description": "Yanan ışık hüzmesi zifiri karanlığı yarıyor! Tekne kayalıklara birkaç metre kala dümen kırıp güvenli limana giriyor. Sabah kaptan ve mürettebat seni bulmak için limana iniyor.",
+    "choices": [
+      {
+        "id": "accept_salvage_share",
+        "text": "Kaptanın sunduğu deniz kurtarma ödülünü ve teşekkür plaketini kabul et.",
+        "effects": {
+          "Money": 150000,
+          "Happiness": 8,
+          "Social": 6
+        },
+        "set": [
+          "lighthouse_savior"
+        ],
+        "result": "Kasaba meydanında alkışlarla karşılandın; o geceki cesaretin unutulmadı."
+      },
+      {
+        "id": "donate_to_boathouse",
+        "text": "Ödülü kıyı kurtarma istasyonunun yenilenmesine bağışla.",
+        "effects": {
+          "Social": 10,
+          "Happiness": 9
+        },
+        "set": [
+          "lighthouse_savior",
+          "volunteer"
+        ],
+        "result": "Adın yenilenen deniz fenerinin giriş tabelasına kazındı."
+      }
+    ]
+  },
+  {
+    "id": "mystery_underground_mosaic",
+    "title": "Toprağın Altındaki Bin Yıllık Sır",
+    "category": "Random",
+    "minAge": 20,
+    "maxAge": 80,
+    "weight": 15,
+    "conditions": [
+      "NotHasFlag:mosaic_discoverer"
+    ],
+    "description": "Bahçe duvarının dibinde su borusunu onarmak için toprağı kazarken küreğin sert ve pürüzsüz bir yüzeye çarpıyor. Toprağı fırçaladığında bin yıllık, kusursuz korunmuş bir antik mozaik ve gizli bir kemer girişi ortaya çıkıyor!",
+    "choices": [
+      {
+        "id": "call_archaeologists",
+        "text": "Kazıyı dikkatle durdurup arkeoloji müzesine ve uzmanlara haber ver.",
+        "effects": {
+          "Education": 5,
+          "Social": 4
+        },
+        "next": "mystery_mosaic_decision",
+        "result": "Başarkeolog mozaiği gördüğünde heyecanından dizlerinin üzerine çöktü."
+      },
+      {
+        "id": "explore_archway_first",
+        "text": "Haber vermeden önce el fenerini alıp kemerin altındaki odaya bak.",
+        "effects": {
+          "Happiness": 4,
+          "Education": 4
+        },
+        "next": "mystery_mosaic_decision",
+        "result": "Kemerin ardındaki taş odada antik dönemden kalma amforalar ve yazıtlar duruyordu."
+      }
+    ]
+  },
+  {
+    "id": "mystery_mosaic_decision",
+    "title": "Antik Mozaik ve Kültür Mirası",
+    "category": "Random",
+    "minAge": 20,
+    "maxAge": 80,
+    "chainOnly": true,
+    "description": "Bakanlık ve müze yetkilileri alanı koruma altına alıyor: «Bu keşif bölgenin tarihini yeniden yazacak nitelikte. Yasal kültür varlığı buluntu ikramiyeniz hazır.»",
+    "choices": [
+      {
+        "id": "take_bounty_and_title",
+        "text": "Yasal ikramiyeyi al ve sergiye adının verilmesini kabul et.",
+        "effects": {
+          "Money": 210000,
+          "Happiness": 8,
+          "Social": 6
+        },
+        "set": [
+          "mosaic_discoverer"
+        ],
+        "result": "Müzenin en görkemli salonunda senin bulduğun mozaik sergilenmeye başladı."
+      },
+      {
+        "id": "open_cultural_cafe",
+        "text": "İkramiyeyle kazı alanının yanında kültür ve tarih durağı kur.",
+        "effects": {
+          "Money": 140000,
+          "Happiness": 7,
+          "Education": 5
+        },
+        "set": [
+          "mosaic_discoverer",
+          "side_business"
+        ],
+        "result": "Ziyaretçilerin uğrak yeri olan sıcak bir kültür noktası yarattın."
+      }
+    ]
+  },
+  {
+    "id": "venture_wild_idea",
+    "title": "Gece 03:00'te Aklına Gelen İcat",
+    "category": "Career",
+    "minAge": 20,
+    "maxAge": 60,
+    "weight": 16,
+    "description": "Gündelik hayatta herkesin şikâyet ettiği bir sorunu kökünden çözecek pratik bir sistem fikri gece uykunu kaçırıyor. Masanın başına geçip sabaha kadar çizim yapıyorsun.",
+    "choices": [
+      {
+        "id": "build_prototype",
+        "text": "Birikiminden küçük bir pay ayırıp çalışan ilk prototipi üret.",
+        "cost": 12000,
+        "effects": {
+          "Education": 5,
+          "Happiness": 4
+        },
+        "next": "venture_investor_pitch",
+        "result": "Üç haftalık uykusuz çalışmanın sonunda masanın üzerinde çalışan ilk örnek duruyordu."
+      },
+      {
+        "id": "open_source_share",
+        "text": "Tasarımı açık kaynak olarak paylaşıp toplulukla birlikte geliştir.",
+        "effects": {
+          "Social": 6,
+          "Education": 4
+        },
+        "next": "venture_investor_pitch",
+        "result": "Binlerce insan projeyi paylaştı; yatırımcılar senin kapını çalmaya başladı."
+      }
+    ]
+  },
+  {
+    "id": "venture_investor_pitch",
+    "title": "Yatırımcı Masasında On Dakika",
+    "category": "Career",
+    "style": "chat",
+    "minAge": 20,
+    "maxAge": 60,
+    "chainOnly": true,
+    "description": "Yatırımcı: Prototip gerçekten etkileyici. Hemen bugün 500.000 ₺ yatırım yapabiliriz ama şirketin %60'ını isteriz.\nSen: Fikrin potansiyeli çok daha büyük...\nYatırımcı: Karar senin: Hızlı ortaklık mı, yoksa bağımsız büyüme mi?",
+    "choices": [
+      {
+        "id": "keep_majority",
+        "text": "Çoğunluk hissesini vermeyi reddet; küçük yatırıma razı olup kontrolü koru.",
+        "effects": {
+          "Happiness": 5,
+          "Education": 3
+        },
+        "next": "venture_exit_or_empire",
+        "result": "Kararlı duruşun yatırımcıları şaşırttı; senin şartlarınla masada kaldılar."
+      },
+      {
+        "id": "take_big_funding",
+        "text": "Büyük yatırımı alıp ürünü hızla bütün ülkeye yay.",
+        "effects": {
+          "Money": 150000,
+          "Social": 4
+        },
+        "next": "venture_exit_or_empire",
+        "result": "Üretim bantları tam kapasite çalışmaya başladı."
+      }
+    ]
+  },
+  {
+    "id": "venture_exit_or_empire",
+    "title": "Büyük Satın Alma Teklifi",
+    "category": "Career",
+    "minAge": 20,
+    "maxAge": 60,
+    "chainOnly": true,
+    "description": "Geliştirdiğin ürün pazarda fırtına gibi esiyor! Uluslararası bir grup projeyi tamamen satın almak için masaya dudak uçuklatan bir teklif koyuyor.",
+    "choices": [
+      {
+        "id": "sell_startup_exit",
+        "text": "Teklifi kabul et; hisselerini satıp finansal özgürlüğünü ilan et.",
+        "effects": {
+          "Money": 950000,
+          "Happiness": 9
+        },
+        "result": "İmzalar atıldığında yılların emeği hesabına dev bir servet olarak yansıdı."
+      },
+      {
+        "id": "keep_growing_business",
+        "text": "Satmayı reddet; işi kalıcı bir atölye ve şirkete dönüştür.",
+        "effects": {
+          "Money": 280000,
+          "Happiness": 8,
+          "Social": 5
+        },
+        "set": [
+          "owns_business",
+          "side_business"
+        ],
+        "result": "Kendi kurduğun işi satmadın; her ay düzenli kâr getiren kalıcı bir müesseseye dönüştürdün."
+      }
+    ]
   }
 ]

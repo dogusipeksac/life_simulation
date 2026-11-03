@@ -518,9 +518,14 @@ class _LifePageState extends State<LifePage> {
           if ([
             if (s.flags.contains('owns_house')) 'Ev',
             if (s.flags.contains('owns_car')) 'Araba',
+            if (s.flags.contains('rental_property')) 'Kiralık mülk',
+            if (s.flags.contains('owns_business')) 'Kendi girişimi',
+            if (s.flags.contains('family_heirloom')) 'Aile yadigârı',
             if (s.flags.contains('pet_owner')) 'Evcil dost',
           ] case final things when things.isNotEmpty)
             info('Sahip oldukların', things.join(' · ')),
+          if (s.simulation.generation > 1)
+            info('Soy kuşağı', '${s.simulation.generation}. kuşak'),
           info('Görünüm · takipçi', '${s.appearance} · ${s.followers}'),
         ]),
       ),
@@ -822,7 +827,7 @@ class _LifePageState extends State<LifePage> {
         reason != null
             ? null
             : () async {
-                if (['car', 'house', 'pet', 'breakup'].contains(a.id)) {
+                if (['car', 'house', 'pet', 'heirloom', 'business', 'rental', 'breakup'].contains(a.id)) {
                   if (!await confirm(a.title, a.description)) return;
                   if (!mounted) return;
                 }
@@ -884,7 +889,10 @@ class _LifePageState extends State<LifePage> {
   List<Widget> finance() {
     final assets =
         (s.flags.contains('owns_house') ? 2500000 : 0) +
-        (s.flags.contains('owns_car') ? 600000 : 0);
+        (s.flags.contains('owns_car') ? 600000 : 0) +
+        (s.flags.contains('rental_property') ? 4500000 : 0) +
+        (s.flags.contains('owns_business') ? 1800000 : 0) +
+        (s.flags.contains('family_heirloom') ? 350000 : 0);
     return [
       Text('Finans', style: VitaType.title(context.vita)),
       const SizedBox(height: 14),
@@ -1027,6 +1035,8 @@ class _LifePageState extends State<LifePage> {
   ];
   List<Widget> life() {
     final w = s.simulation.wedding;
+    final endings = game.session.content.endings;
+    final discovered = game.session.achievements.discoveredEndings;
     return [
       Text('Hayatının izleri', style: VitaType.title(context.vita)),
       const SizedBox(height: 14),
@@ -1040,6 +1050,31 @@ class _LifePageState extends State<LifePage> {
         if (s.simulation.lastDecisionEcho.isNotEmpty)
           text(s.simulation.lastDecisionEcho, caption: true),
       ]),
+      if (s.simulation.dynastyLog.isNotEmpty || s.simulation.generation > 1)
+        card('SOY AĞACI · ${s.simulation.generation}. KUŞAK', [
+          for (final entry in s.simulation.dynastyLog)
+            text('• $entry', caption: true),
+          text('Şu anki halka: ${s.playerName} (${s.ageText})'),
+        ]),
+      card(
+        'KADER KOLEKSİYONU (${discovered.length}/${endings.length})',
+        [
+          text(
+            'Farklı hayat seçimlerinin açtığı kalıcı sonlar:',
+            caption: true,
+          ),
+          for (final end in endings)
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: text(
+                discovered.contains(end.id)
+                    ? '★ ${end.title}'
+                    : '◇ Keşfedilmemiş kader · ${end.title}',
+                caption: !discovered.contains(end.id),
+              ),
+            ),
+        ],
+      ),
       if (w.pending)
         card('EVLİLİK HAZIRLIĞIN', [
           text(

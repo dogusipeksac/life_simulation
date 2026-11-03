@@ -21,12 +21,19 @@ class _LifeSummaryPanelState extends State<LifeSummaryPanel> {
   Widget build(BuildContext context) {
     final p = context.vita,
         game = widget.game,
-        summary = game.session.buildLifeSummary()!;
+        summary = game.session.buildLifeSummary()!,
+        s = game.state!,
+        heir = game.session.heir;
     Widget text(String value) => Text(value, style: VitaType.body(p));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text('HAYATIN SONU', style: VitaType.overline(p)),
+        Text(
+          s.simulation.generation > 1
+              ? 'HAYATIN SONU · ${s.simulation.generation}. KUŞAK'
+              : 'HAYATIN SONU',
+          style: VitaType.overline(p),
+        ),
         const SizedBox(height: 8),
         Text(
           summary.endingTitle,
@@ -133,6 +140,29 @@ class _LifeSummaryPanelState extends State<LifeSummaryPanel> {
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Semantics(liveRegion: true, child: text(_notice)),
           ),
+        if (heir != null) ...[
+          const SizedBox(height: 12),
+          LifeSimulationCard(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text('SOY AĞACI · YENİ KUŞAK', style: VitaType.overline(p)),
+                const SizedBox(height: 6),
+                text(
+                  '${heir.name} hayatta. Birikimlerinin %70’ini, takı altınlarını ve aile mülklerini devralarak ${s.simulation.generation + 1}. kuşak olarak yola devam edebilirsin.',
+                ),
+                const SizedBox(height: 10),
+                VitaButton(
+                  label:
+                      '${heir.name} olarak devam et (${s.simulation.generation + 1}. kuşak)',
+                  onPressed: game.rewardBusy
+                      ? null
+                      : () => game.continueAsChild(),
+                ),
+              ],
+            ),
+          ),
+        ],
         const SizedBox(height: 12),
         VitaButton(
           label: 'Başarımlar',

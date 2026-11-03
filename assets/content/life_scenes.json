@@ -6022,5 +6022,1977 @@
         }
       }
     ]
+  },
+  {
+    "Id": "lived_care_network_echo",
+    "Title": "Mahallenin ortak çocuğu",
+    "Text": "Komşu Teyze: Okuldan çıktın mı kuzum? Anahtar paspasın altında değil, bize gel çorba sıcak.\nSen: Geliyorum teyze, annem akşam altıda dönecekmiş.\nKomşu Teyze: Biliyorum, konuştu benimle. Çantanı bırak da elini yüzünü yıka.",
+    "Domain": "community",
+    "Style": "chat",
+    "MinAge": 7,
+    "MaxAge": 12,
+    "Priority": 24,
+    "CooldownDays": 1825,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "care_network"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "help_table",
+        "Text": "Sofrayı kurmaya yardım et.",
+        "Result": "Küçüklüğünden beri kurulan o dayanışma ağı sana paylaşmanın doğallığını öğretti.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 4,
+          "Happiness": 3
+        },
+        "Qualities": {
+          "community": 5,
+          "family": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "homework_first",
+        "Text": "Köşede sessizce ödevini bitir.",
+        "Result": "Güvende olduğunu bilmek derslerine odaklanmanı kolaylaştırdı.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 4,
+          "Happiness": 2
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_moved_city_roots",
+    "Title": "İki şehir arasında bir kartpostal",
+    "Text": "Posta kutusundan eski şehrinden gelen pulu hafif yıpranmış bir kartpostal çıkıyor:\n\n«Burası bıraktığın gibi ama sokağın köşesindeki fırın değişti. Yeni şehrine alıştın mı? İki yerli olmak zordur ama insanın ufkunu açar.»",
+    "Domain": "personal",
+    "Style": "note",
+    "MinAge": 14,
+    "MaxAge": 22,
+    "Priority": 24,
+    "CooldownDays": 1825,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "moved_city"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "write_back",
+        "Text": "Uzun bir mektupla karşılık ver.",
+        "Result": "Geçmişinle bağını koparmadan yeni şehrinde kök salmayı başardın.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 4,
+          "Happiness": 3
+        },
+        "Qualities": {
+          "resilience": 4,
+          "community": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "keep_in_book",
+        "Text": "Kartpostalı en sevdiğin kitabın arasına koy.",
+        "Result": "Taşınmanın kazandırdığı uyum yeteneği içinde sessiz bir güce dönüştü.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 4
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_resourceful_youth",
+    "Title": "Kendi imkânlarınla kurduğun tezgâh",
+    "Text": "Okulda herkes hazır setlerle proje teslim ederken sen evdeki parçalardan ve kütüphane kaynaklarından çalışan bir model çıkarıyorsun. Öğretmen masanın başında durup nasıl yaptığını soruyor.",
+    "Domain": "school",
+    "Style": "",
+    "MinAge": 13,
+    "MaxAge": 18,
+    "Priority": 25,
+    "CooldownDays": 1825,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "resourceful"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "explain_method",
+        "Text": "Nasıl ürettiğini sınıfa adım adım anlat.",
+        "Result": "Az imkânla çok iş çıkarmanın utanılacak değil, gurur duyulacak bir beceri olduğunu gördün.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 5,
+          "Social": 3
+        },
+        "Qualities": {
+          "purpose": 5,
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "help_peers",
+        "Text": "Malzeme alamayan arkadaşlarına da yöntem göster.",
+        "Result": "Paylaştığın pratik çözümler seni sınıfta güvenilen biri yaptı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 5,
+          "Happiness": 3
+        },
+        "Qualities": {
+          "community": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_family_boundaries_adult",
+    "Title": "Kapıyı tıklatma alışkanlığı",
+    "Text": "{caregiver}: Hafta sonu senin adına kuzenlere söz verdim bile.\nSen: Bana sormadan plan yapmayalım demiştik, bu hafta sonu başka sözüm var.\n{caregiver}: Doğru ya... Alışkanlık işte. Peki, pazar akşamı müsait olursan haber verirsin.",
+    "Domain": "family",
+    "Style": "chat",
+    "MinAge": 18,
+    "MaxAge": 30,
+    "Priority": 24,
+    "CooldownDays": 1825,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "family_boundaries"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "warm_firm",
+        "Text": "Kırmadan ama kararlı duruşunu koru.",
+        "Result": "Ergenlikte çizdiğin sağlıklı sınırlar yetişkinlikte iki tarafı da yormayan bir saygıya dönüştü.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 4,
+          "Health": 2
+        },
+        "Qualities": {
+          "autonomy": 5,
+          "family": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "offer_alternative",
+        "Text": "Pazartesi akşamı çaya uğrayacağını söyle.",
+        "Result": "Sınır koymanın sevgisizlik olmadığını bir kez daha gösterdin.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 3,
+          "Happiness": 3
+        },
+        "Qualities": {
+          "family": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 3,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_university_goal_focus",
+    "Title": "Sınav sabahı çalışma masası",
+    "Text": "Masanın köşesinde aylardır yapıştırdığın hedef kâğıdı duruyor:\n\n«Hedef: Üniversite. Her gün bir adım, her yanlış bir ders. Bugün emeğin konuşacak.»",
+    "Domain": "school",
+    "Style": "note",
+    "MinAge": 18,
+    "MaxAge": 22,
+    "Priority": 26,
+    "CooldownDays": 1825,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "university_goal"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "calm_pace",
+        "Text": "Derin bir nefes alıp planladığın sırayla ilerle.",
+        "Result": "Uzun süredir kurduğun akademik disiplin en kritik anda elini güçlendirdi.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 6,
+          "Happiness": 3
+        },
+        "Qualities": {
+          "purpose": 5,
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "rest_mind",
+        "Text": "Son gece kitabı kapatıp zihnini dinlendir.",
+        "Result": "Kendine güvenmeyi seçtin; berrak bir zihinle masaya oturdun.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 4,
+          "Education": 4
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_vocational_mastery",
+    "Title": "Ustalık belgesi ve ilk takım çantası",
+    "Text": "Mesleki yolda döktüğün alın teri meyvesini veriyor. Yaşıtların henüz ne yapacağını tartışırken senin elinde somut bir zanaat ve aranan bir beceri var.",
+    "Domain": "work",
+    "Style": "",
+    "MinAge": 19,
+    "MaxAge": 26,
+    "Priority": 26,
+    "CooldownDays": 1825,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "vocational_path"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "invest_tools",
+        "Text": "İlk birikiminle kaliteli ekipman al.",
+        "Result": "İyi alet işini hızlandırdı; mahallede ve sektörde adın duyulmaya başladı.",
+        "Cost": 15000,
+        "Stats": {
+          "Education": 4,
+          "Money": 35000,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "purpose": 6,
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "steady_craft",
+        "Text": "Deneyimli bir ustanın yanında incelikleri öğren.",
+        "Result": "Sabırla edindiğin pratik bilgi seni aranan bir uzman haline getirdi.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 5,
+          "Social": 3
+        },
+        "Qualities": {
+          "resilience": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_gap_year_clarity",
+    "Title": "Mola yılının sonunda defter",
+    "Text": "Sınav yarışına ara verdiğin yılın sonunda defterine şunları yazıyorsun:\n\n«Acele etseydim başkalarının istediği bölüme gidecektim. Şimdi neyi neden istediğimi biliyorum.»",
+    "Domain": "personal",
+    "Style": "note",
+    "MinAge": 18,
+    "MaxAge": 23,
+    "Priority": 25,
+    "CooldownDays": 1825,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "gap_year"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "fresh_start",
+        "Text": "Yenilenmiş bir enerjiyle hedefine yönel.",
+        "Result": "Kendine tanıdığın o bir yıllık nefes alanı yıllar sürecek bir kararsızlığı önledi.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 5,
+          "Education": 4
+        },
+        "Qualities": {
+          "autonomy": 6,
+          "purpose": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share_experience",
+        "Text": "Kararsız gençlere kendi deneyimini anlat.",
+        "Result": "Farklı bir ritimde yürümenin mümkün olduğunu başkalarına da gösterdin.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 4,
+          "Happiness": 3
+        },
+        "Qualities": {
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_contract_shield",
+    "Title": "Küçük puntodaki madde",
+    "Text": "Yeni bir sözleşme imzalarken herkes «formalite» deyip geçiyor. Oysa sen satır aralarını okuma alışkanlığın sayesinde otomatik cezai şart maddesini fark ediyorsun.",
+    "Domain": "economy",
+    "Style": "",
+    "MinAge": 21,
+    "MaxAge": 55,
+    "Priority": 26,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "reads_contracts"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "amend_clause",
+        "Text": "Maddeyi düzelttirmeden imza atma.",
+        "Result": "Dikkatli okuma alışkanlığın seni ileride doğacak ağır bir maddi yükten kurtardı.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 45000,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "autonomy": 5,
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "warn_others",
+        "Text": "Aynı belgeyi imzalayacak olanları da uyar.",
+        "Result": "Hem kendi hakkını hem çevrendekileri korudun.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 5,
+          "Happiness": 3
+        },
+        "Qualities": {
+          "community": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_budget_cushion",
+    "Title": "Beklenmedik masraf karşısında",
+    "Text": "Kombi ve tesisat aynı haftada arıza yapıyor. Çoğu insan için panik sebebi olan bu tablo, senin aylardır tuttuğun bütçe planı sayesinde sakin bir hesaplamaya dönüşüyor.",
+    "Domain": "economy",
+    "Style": "",
+    "MinAge": 22,
+    "MaxAge": 75,
+    "Priority": 25,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "budget_plan"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "use_reserve",
+        "Text": "Ayırdığın yedek akçeyle borçlanmadan çöz.",
+        "Result": "Planlı yaşamanın verdiği iç huzuru bir kez daha hissettin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 5,
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 6,
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "upgrade_efficient",
+        "Text": "Biraz ekleyip enerji tasarruflu modele geç.",
+        "Result": "Uzun vadeli düşünerek gelecekteki faturalarını da düşürdün.",
+        "Cost": 12000,
+        "Stats": {
+          "Money": 28000,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "purpose": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_fact_check_calm",
+    "Title": "Grup sohbetindeki panik haberi",
+    "Text": "Komşu Grubu: Arkadaşlar sular üç gün kesilecekmiş, herkes küveti doldursun!! Acil yayın!!\nSen: Belediyenin resmî duyurusuna baktım şimdi, sadece yan mahallede iki saatlik bakım var.\nYönetici: Sağ olasın, boşuna telaş yapıyorduk.",
+    "Domain": "civic",
+    "Style": "chat",
+    "MinAge": 20,
+    "MaxAge": 80,
+    "Priority": 24,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "checks_sources"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "share_link",
+        "Text": "Resmî kaynağı paylaşıp söylentiyi bitir.",
+        "Result": "Kaynağı doğrulama alışkanlığın çevrende sağduyunun sesi olmanı sağladı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 4,
+          "Education": 2
+        },
+        "Qualities": {
+          "community": 5,
+          "autonomy": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "stay_calm",
+        "Text": "Sessizce kendi işine devam et.",
+        "Result": "Bilgi kirliliğine kapılmamak zihnini korudu.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 4,
+          "Health": 2
+        },
+        "Qualities": {
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_shared_home_reunion",
+    "Title": "Eski ev arkadaşından gece telefonu",
+    "Text": "Ev Arkadaşın: Geçerken bizim eski sokağa uğradım. Az mı makarna haşladık o dar mutfakta?\nSen: Bulaşık sırası kavgasını bile özlemişim desen inanırım.\nEv Arkadaşın: Hafta sonu buluşalım, bu kez hesabı bölüşmeden ben ısmarlıyorum.",
+    "Domain": "relationship",
+    "Style": "chat",
+    "MinAge": 24,
+    "MaxAge": 45,
+    "Priority": 24,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "shared_home"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "meet_up",
+        "Text": "Buluşup eski günleri yâd et.",
+        "Result": "Aynı çatıyı paylaşmanın kurduğu dostluk yıllar geçse de sıcaklığını korudu.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 5,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "community": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "invite_dinner",
+        "Text": "Kendi sofranda ağırlayıp güzel bir yemek yap.",
+        "Result": "Birlikte büyüdüğün insanlarla bağını tazeledin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 5,
+          "Social": 3
+        },
+        "Qualities": {
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_saving_home_nest_egg",
+    "Title": "Aile evinde biriken peşinat",
+    "Text": "Kira ödemeden aile evinde geçirdiğin sürede kenara koyduğun birikim anlamlı bir toplama ulaştı. Şimdi bu birikimi nasıl değerlendireceğine karar verme vakti.",
+    "Domain": "economy",
+    "Style": "",
+    "MinAge": 22,
+    "MaxAge": 36,
+    "Priority": 26,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "saving_home"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "grow_fund",
+        "Text": "Birikimi uzun vadeli yatırıma yönlendir.",
+        "Result": "Sabrın karşılığını nakit güvencesi olarak aldın.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 55000,
+          "Happiness": 3
+        },
+        "Qualities": {
+          "autonomy": 5,
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "thank_family",
+        "Text": "Evin büyük bir eksiğini karşılayıp ailene teşekkür et.",
+        "Result": "Vefan aile içindeki bağları daha da güçlendirdi.",
+        "Cost": 10000,
+        "Stats": {
+          "Happiness": 5,
+          "Social": 3
+        },
+        "Qualities": {
+          "family": 6
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 5,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_independent_home_peace",
+    "Title": "Küçük evin sabah sessizliği",
+    "Text": "Pazar sabahı güneş perde aralığından vuruyor. Küçük de olsa kendi kapını kilitleyip kendi demlediğin çayı içmenin verdiği özgürlük paha biçilmez.",
+    "Domain": "personal",
+    "Style": "",
+    "MinAge": 21,
+    "MaxAge": 38,
+    "Priority": 24,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "independent_home"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "craft_corner",
+        "Text": "Odanın bir köşesini okuma ve üretim alanına çevir.",
+        "Result": "Kendi alanına sahip olmak üretkenliğini ve özgüvenini artırdı.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 4,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "autonomy": 6,
+          "purpose": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "host_friends",
+        "Text": "Dostlarını mütevazı sofrana davet et.",
+        "Result": "Metrekarenin değil, samimiyetin evi yuva yaptığını gördün.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 5,
+          "Happiness": 3
+        },
+        "Qualities": {
+          "community": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_mentor_callback",
+    "Title": "Ustanın referans mektubu",
+    "Text": "Kariyerinin başında öğrenmeyi seçtiğin kıdemli ustadan yıllar sonra bir not alıyorsun:\n\n«Sektörde yeni bir proje kuruluyor. İşin mutfağını bilen, güvenilir birini sordular; tereddütsüz senin adını verdim.»",
+    "Domain": "work",
+    "Style": "note",
+    "MinAge": 25,
+    "MaxAge": 55,
+    "Priority": 27,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "has_mentor"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "take_lead",
+        "Text": "Önerilen projede sorumluluk al.",
+        "Result": "Zamanında doğru insandan öğrendiğin meslek etiği kapıları ardına kadar açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 60000,
+          "Education": 4,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "purpose": 6,
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "visit_mentor",
+        "Text": "Önce ustana uğrayıp fikrini ve duasını al.",
+        "Result": "Vefalı duruşun mesleki itibarını daha da sağlamlaştırdı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 5,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "community": 5,
+          "purpose": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_moved_for_work_horizon",
+    "Title": "Şehirlerarası otobüste gece radyosu",
+    "Text": "[01:40 · GECE YOLCULUĞU FM]\n«İşi için bavulunu toplayıp başka bir şehre giden tüm dinleyicilerimize gelsin bu parça... Gurbet başlangıçta soğuktur ama insan kendi ekmeğinin peşinde büyür.»",
+    "Domain": "work",
+    "Style": "radio",
+    "MinAge": 24,
+    "MaxAge": 58,
+    "Priority": 25,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "moved_for_work"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "build_network",
+        "Text": "Yeni şehirde meslektaşlarınla güçlü bir çevre kur.",
+        "Result": "Cesaretle çıktığın bu yolculuk kariyerinde yeni bir ufuk açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 4,
+          "Money": 40000,
+          "Happiness": 3
+        },
+        "Qualities": {
+          "autonomy": 5,
+          "purpose": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "call_home",
+        "Text": "Mola yerinde aileni arayıp seslerini duy.",
+        "Result": "Mesafeler uzasa da gönül bağını sıcak tuttun.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 4,
+          "Health": 2
+        },
+        "Qualities": {
+          "family": 5,
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 3,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_business_pilot_growth",
+    "Title": "İlk sadık müşterilerin referansı",
+    "Text": "Küçük ölçekli başlattığın girişim denemesi kulaktan kulağa yayılıyor. İlk müşterilerin memnun kalınca yeni siparişler kendiliğinden gelmeye başladı.",
+    "Domain": "work",
+    "Style": "",
+    "MinAge": 27,
+    "MaxAge": 62,
+    "Priority": 26,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "business_pilot"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "scale_carefully",
+        "Text": "Kaliteyi bozmadan kapasiteyi büyüt.",
+        "Result": "Adım adım büyüyen girişimin sana hem ek gelir hem de özgüven kazandırdı.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 75000,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "purpose": 6,
+          "autonomy": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "keep_boutique",
+        "Text": "Butik kalıp seçkin işler yapmaya devam et.",
+        "Result": "Yorulmadan, keyif alarak ürettiğin sürdürülebilir bir düzen kurdun.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 40000,
+          "Health": 3,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "autonomy": 5,
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_business_buffer_opportunity",
+    "Title": "Nakit tamponunun getirdiği fırsat",
+    "Text": "Piyasada nakit sıkışıklığı yaşanırken senin zamanında kenara ayırdığın güvenlik birikimi, kelepir bir fırsatı değerlendirmeni sağlıyor.",
+    "Domain": "economy",
+    "Style": "",
+    "MinAge": 27,
+    "MaxAge": 65,
+    "Priority": 25,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "business_buffer"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "seize_deal",
+        "Text": "Peşin alım avantajıyla yatırımı yap.",
+        "Result": "Temkinli bekleyişin en doğru anda kazanca dönüştü.",
+        "Cost": 25000,
+        "Stats": {
+          "Money": 90000,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "resilience": 5,
+          "autonomy": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "preserve_shield",
+        "Text": "Tamponu bozmadan güvenli limanda kal.",
+        "Result": "Risksiz uyumanın huzuru her şeye değdi.",
+        "Cost": 0,
+        "Stats": {
+          "Health": 4,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "resilience": 6
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_household_plan_harmony",
+    "Title": "Borçsuz kurulan evin huzuru",
+    "Text": "Evi kurarken gösteriş yerine ihtiyaca göre plan yapmanın meyvesini topluyorsunuz. Ay sonu geldiğinde kredi taksitleriyle boğuşmak yerine birlikte tatil planı yapabiliyorsunuz.",
+    "Domain": "relationship",
+    "Style": "",
+    "MinAge": 22,
+    "MaxAge": 65,
+    "Priority": 25,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "household_plan"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "weekend_escape",
+        "Text": "Birlikte güzel bir hafta sonu kaçamağı yapın.",
+        "Result": "Maddi baskı olmayınca ilişkinizdeki neşe ve muhabbet çoğaldı.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 5,
+          "Social": 3
+        },
+        "Qualities": {
+          "family": 6,
+          "resilience": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 5,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "home_upgrade",
+        "Text": "Evin gerçekten ihtiyaç duyduğu bir eksiği peşin alın.",
+        "Result": "Adım adım, kendi gücünüzle kurduğunuz yuva daha da güzelleşti.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 4,
+          "Health": 3
+        },
+        "Qualities": {
+          "autonomy": 4,
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 1,
+        "PartnerBond": 4,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_parenting_plan_rhythm",
+    "Title": "Konuşularak kurulan ebeveynlik",
+    "Text": "Çocuk konusunu önceden açıkça konuşup planlamış olmanız, hayatın yoğun temposunda birbirinizi suçlamadan omuz omuza durmanızı sağlıyor.",
+    "Domain": "family",
+    "Style": "",
+    "MinAge": 26,
+    "MaxAge": 55,
+    "Priority": 25,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "parenting_plan"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "share_turns",
+        "Text": "Sorumlulukları ve dinlenme saatlerini adil paylaşın.",
+        "Result": "Bilinçli alınan kararların evdeki huzuru nasıl koruduğunu gördünüz.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 5,
+          "Health": 3
+        },
+        "Qualities": {
+          "family": 6,
+          "autonomy": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 4,
+        "PartnerBond": 4,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "couple_time",
+        "Text": "Baş başa kalacağınız akşamları takvimde koruyun.",
+        "Result": "Aile olurken eş ve dost kalabilmeyi de başardınız.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 5,
+          "Social": 2
+        },
+        "Qualities": {
+          "family": 5,
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 6,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_care_support_balance",
+    "Title": "Paylaşılan bakım yükü",
+    "Text": "Yaşlanan aile büyüğünün bakımında yalnız kalmamayı seçmiştin. Bugün kardeşlerin ve destek ağıyla nöbeti devrederken nefes alabildiğini fark ediyorsun.",
+    "Domain": "family",
+    "Style": "",
+    "MinAge": 38,
+    "MaxAge": 78,
+    "Priority": 25,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "care_support"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "quality_visit",
+        "Text": "Yorgun olmadan, sadece sohbet etmek için yanına otur.",
+        "Result": "Tükenmediğin için sevdiklerine çok daha şefkatli yaklaşabildin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 5,
+          "Health": 4
+        },
+        "Qualities": {
+          "family": 6,
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 5,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "thank_helpers",
+        "Text": "Bakımı paylaşanlara içten bir teşekkür yemeği hazırla.",
+        "Result": "Dayanışma kültürünü ailenin merkezinde tuttun.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 4,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "community": 5,
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 4,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_second_path_bloom",
+    "Title": "İkinci yolculuğun meyvesi",
+    "Text": "Hayatın ortasında cesaret edip açtığın ikinci sayfa artık bir heves değil, seni besleyen gerçek bir uğraş haline geldi.",
+    "Domain": "personal",
+    "Style": "",
+    "MinAge": 36,
+    "MaxAge": 75,
+    "Priority": 26,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "second_path"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "exhibit_work",
+        "Text": "Ürettiklerini insanlarla paylaş.",
+        "Result": "Geç kalmışlık hissini yendin; yeni tutkun hayatına taze bir anlam kattı.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 6,
+          "Social": 4
+        },
+        "Qualities": {
+          "purpose": 7,
+          "autonomy": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "turn_into_income",
+        "Text": "Bu yeni beceriyi ek bir gelir kapısına dönüştür.",
+        "Result": "Sevdiğin işten kazandığın para sana bambaşka bir tatmin verdi.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 45000,
+          "Happiness": 5
+        },
+        "Qualities": {
+          "purpose": 5,
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_mentoring_gratitude",
+    "Title": "Yetiştirdiğin gencin mektubu",
+    "Text": "Masanın üzerinde el yazısıyla yazılmış bir zarf var:\n\n«Zamanında bana sabırla yol göstermeseydiniz mesleği bırakacaktım. Bugün kendi ekibimi kurdum; bana öğrettiğiniz gibi dinleyerek yönetiyorum.»",
+    "Domain": "work",
+    "Style": "note",
+    "MinAge": 45,
+    "MaxAge": 88,
+    "Priority": 27,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "mentoring"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "congratulate",
+        "Text": "Arayıp yürekten tebrik et.",
+        "Result": "Bir insanın hayatına dokunmuş olmanın gururu bütün yorgunluğunu unutturdu.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 6,
+          "Social": 4
+        },
+        "Qualities": {
+          "purpose": 7,
+          "community": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "frame_note",
+        "Text": "Notu çalışma köşende sakla.",
+        "Result": "Bıraktığın bilginin senden sonra da yaşayacağını bilmek içini ısıttı.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 6,
+          "Health": 2
+        },
+        "Qualities": {
+          "purpose": 6,
+          "resilience": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_kept_memories_reading",
+    "Title": "Kuşaklar boyu okunan hatıra defteri",
+    "Text": "Salonda akşam çayı demlenirken gençler senin yıllar önce yazdığın hatıra defterini açıp yüksek sesle okumaya başlıyor. Odaya hem kahkaha hem de derin bir saygı yayılıyor.",
+    "Domain": "family",
+    "Style": "",
+    "MinAge": 72,
+    "MaxAge": 100,
+    "Priority": 28,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [
+      "kept_memories"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "tell_more",
+        "Text": "Defterde yazmayan perde arkası hikâyeleri de anlat.",
+        "Result": "Yaşadığın yılların tecrübesi yeni kuşağın yolunu aydınlatan bir fener oldu.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 6,
+          "Social": 5
+        },
+        "Qualities": {
+          "family": 7,
+          "purpose": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 5,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "gift_notebook",
+        "Text": "Defteri ailenin en meraklı gencine emanet et.",
+        "Result": "Kendi hikâyenin kuşaklar boyu unutulmayacağını bilerek gülümsedin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 7
+        },
+        "Qualities": {
+          "family": 6,
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 6,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_stranger_train_note",
+    "Title": "Trende unutulan deri defter",
+    "Text": "Karşı koltukta oturan yolcu aceleyle inerken koltuğun üzerinde kilitli olmayan, içi el yazısı şiirler ve yarım kalmış bir roman taslağıyla dolu deri bir defter unutuyor. İlk sayfada yalnızca bir telefon numarası var.",
+    "Domain": "personal",
+    "Style": "",
+    "MinAge": 19,
+    "MaxAge": 65,
+    "Priority": 26,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "call_writer",
+        "Text": "Numarayı arayıp defteri elden teslim etmek için buluş.",
+        "Result": "İstasyon çay bahçesindeki buluşma beklenmedik bir edebiyat ve fikir dostluğunun kapısını açtı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 5,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "community": 5,
+          "purpose": 4
+        },
+        "Set": [
+          "train_writer_friend"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "lived_writer_book_launch",
+        "DelayDays": 180
+      },
+      {
+        "Id": "leave_lost_found",
+        "Text": "İstasyonun kayıp eşya bürosuna tutanakla teslim et.",
+        "Result": "Görevini yapmanın iç huzuruyla yoluna devam ettin.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 3
+        },
+        "Qualities": {
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_writer_book_launch",
+    "Title": "İthaf sayfasındaki adın",
+    "Text": "Aylar önce trende defterini teslim ettiğin yazarın ilk kitabı basılmış! Kargodan çıkan imzalı nüshanın ilk sayfasını açtığında şu satırı okuyorsun:\n\n«O gün trende bu defteri kurtaran ve bu hikâyenin kaybolmasına izin vermeyen güzel insana...»",
+    "Domain": "personal",
+    "Style": "note",
+    "MinAge": 19,
+    "MaxAge": 70,
+    "Priority": 28,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "",
+    "Needs": [
+      "train_writer_friend"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "attend_signing",
+        "Text": "İmza gününe gidip bu başarısını birlikte kutla.",
+        "Result": "Küçük bir iyiliğin koca bir esere dönüşmesine tanıklık etmek sana büyük ilham verdi.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 6,
+          "Social": 5,
+          "Education": 3
+        },
+        "Qualities": {
+          "community": 6,
+          "purpose": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "write_own_notes",
+        "Text": "Bu jestten ilham alıp kendi yazma denemelerine başla.",
+        "Result": "Sen de kendi biriktirdiğin hikâyeleri kağıda dökmeye karar verdin.",
+        "Cost": 0,
+        "Stats": {
+          "Education": 5,
+          "Happiness": 5
+        },
+        "Qualities": {
+          "purpose": 6,
+          "autonomy": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_night_witness",
+    "Title": "Sokak lambası altında vicdan sınavı",
+    "Text": "Gece geç saatte eve dönerken park halindeki eski bir esnaf kamyonetine pahalı bir aracın çarpıp hızla uzaklaştığını görüyorsun. Kamyonetin sahibi sabah gördüğünde yıkılacak; plakayı ise yalnızca sen tam olarak okudun.",
+    "Domain": "civic",
+    "Style": "",
+    "MinAge": 18,
+    "MaxAge": 75,
+    "Priority": 26,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "leave_witness_note",
+        "Text": "Plakayı ve telefonunu sileceğe bırakıp tanıklık yap.",
+        "Result": "Sabah arayan kamyonet sahibi sesinde minnetle teşekkür etti; zarar kuruşuna kadar karşılandı.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 5,
+          "Social": 4
+        },
+        "Qualities": {
+          "community": 6,
+          "resilience": 4
+        },
+        "Set": [
+          "civic_witness"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "lived_witness_gratitude",
+        "DelayDays": 120
+      },
+      {
+        "Id": "anonymous_report",
+        "Text": "Plakayı nöbetçi karakola bildirip silecek altına not bırak.",
+        "Result": "Adını öne çıkarmadan adaletin yerini bulmasını sağladın.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 4
+        },
+        "Qualities": {
+          "autonomy": 5,
+          "community": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_witness_gratitude",
+    "Title": "Marangozun el emeği teşekkürü",
+    "Text": "Kamyonetine çarpan aracı bulmasını sağladığın usta, bir sabah kapına el yapımı ceviz bir çalışma kutusu ve kasa dolusu taze meyveyle geliyor: «Sen o gece susmasaydın tezgâhımı kapatacaktım.»",
+    "Domain": "community",
+    "Style": "",
+    "MinAge": 18,
+    "MaxAge": 78,
+    "Priority": 27,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "",
+    "Needs": [
+      "civic_witness"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "accept_box",
+        "Text": "El emeği kutuyu kabul edip ustayı çaya davet et.",
+        "Result": "Mahallede sırtını yaslayabileceğin sarsılmaz bir dost kazandın.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 6,
+          "Social": 5
+        },
+        "Qualities": {
+          "community": 6,
+          "family": 3
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "order_furniture",
+        "Text": "Ustanın atölyesine ev için sipariş verip işine destek ol.",
+        "Result": "İyilik karşılıklı dayanışmaya dönüştü.",
+        "Cost": 6000,
+        "Stats": {
+          "Happiness": 7,
+          "Social": 6
+        },
+        "Qualities": {
+          "community": 7
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_sudden_inheritance_dispute",
+    "Title": "Uzak akrabadan kalan hisseli tarla",
+    "Text": "Kuzen Grubu: Arkadaşlar dedenin amcasından kalan taşlık zeytinlik için müteahhit hemen nakit teklif ediyor, satıp bölüşelim!\nSen: Orası asırlık zeytin ağaçlarıyla dolu, önce değerini ve ne yapılabileceğini araştıralım.\nKuzen Grubu: Herkes imzayı verdi, tek senin imzan bekleniyor.",
+    "Domain": "family",
+    "Style": "chat",
+    "MinAge": 24,
+    "MaxAge": 70,
+    "Priority": 26,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "buy_cousins_shares",
+        "Text": "Kuzenlerin payını ödeyip asırlık zeytinliği koruma altına al.",
+        "Result": "Ağaçları kestirmedin; bakımı yapılan zeytinlik her hasatta bereketiyle karşılık verdi.",
+        "Cost": 25000,
+        "Stats": {
+          "Money": 85000,
+          "Happiness": 6,
+          "Health": 2
+        },
+        "Qualities": {
+          "purpose": 6,
+          "autonomy": 5
+        },
+        "Set": [
+          "olive_grove_keeper"
+        ],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 0,
+        "Next": "lived_olive_harvest_gold",
+        "DelayDays": 180
+      },
+      {
+        "Id": "negotiate_better_deal",
+        "Text": "Acele satışı durdurup gerçek ekspertiz değeriyle pazarlık yap.",
+        "Result": "Sabırlı pazarlığın sayesinde bütün ailenin aldığı pay iki katına çıktı.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 55000,
+          "Social": 4,
+          "Happiness": 4
+        },
+        "Qualities": {
+          "resilience": 5,
+          "family": 4
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 4,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_olive_harvest_gold",
+    "Title": "İlk soğuk sıkım hasadı",
+    "Text": "Koruduğun asırlık zeytinlikten ilk mahsul çıkıyor. Taş değirmenden akan zümrüt yeşili zeytinyağı şişelenirken kendi markanı kurma fırsatı doğuyor.",
+    "Domain": "economy",
+    "Style": "",
+    "MinAge": 24,
+    "MaxAge": 75,
+    "Priority": 27,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "",
+    "Needs": [
+      "olive_grove_keeper"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "boutique_oil_brand",
+        "Text": "Butik şişeleme yapıp doğrudan gurme pazarlara sun.",
+        "Result": "Toprağa gösterdiğin vefa sana hem itibar hem de yüksek bir hasat geliri getirdi.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 95000,
+          "Happiness": 6
+        },
+        "Qualities": {
+          "purpose": 6,
+          "autonomy": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 2,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "share_with_family",
+        "Text": "Yarısını sat, yarısını bütün aile ve dostlarla paylaş.",
+        "Result": "Sofralarda senin zeytinliğinin bereketi konuşuldu.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 45000,
+          "Social": 6,
+          "Happiness": 6
+        },
+        "Qualities": {
+          "family": 6,
+          "community": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 5,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_radio_quiz_jackpot",
+    "Title": "Gece radyosunda ödüllü bilmece",
+    "Text": "[23:10 · GECE KÜLTÜR RADYOSU CANLI BAĞLANTI]\n«Evet, hattaki dinleyicimizle büyük ödül sorusundayız! Doğru yanıtı bilirseniz hem kültür vakfı ödülünü kazanacak hem de yarın akşam stüdyomuzun özel konuğu olacaksınız!»",
+    "Domain": "personal",
+    "Style": "radio",
+    "MinAge": 18,
+    "MaxAge": 85,
+    "Priority": 24,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "answer_confidently",
+        "Text": "Heyecanını bastırıp cevabı net bir sesle ver.",
+        "Result": "Sunucu coşkuyla alkışladı; bilginin beklenmedik bir gecede kapı açtığını gördün.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 35000,
+          "Happiness": 5,
+          "Education": 3
+        },
+        "Qualities": {
+          "autonomy": 4,
+          "purpose": 4
+        },
+        "Set": [
+          "radio_winner"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "lived_radio_studio_guest",
+        "DelayDays": 90
+      },
+      {
+        "Id": "gift_prize_school",
+        "Text": "Cevabı verip ödülü canlı yayında bir köy okuluna bağışla.",
+        "Result": "Canlı yayındaki bu jestin binlerce dinleyiciyi duygulandırdı.",
+        "Cost": 0,
+        "Stats": {
+          "Social": 7,
+          "Happiness": 7
+        },
+        "Qualities": {
+          "community": 7,
+          "purpose": 5
+        },
+        "Set": [
+          "radio_winner"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "lived_radio_studio_guest",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_radio_studio_guest",
+    "Title": "Mikrofon başında kendi hikâyen",
+    "Text": "Ödüllü yarışmanın ardından davet edildiğin radyo stüdyosunda sunucu soruyor: «Dinleyicilerimiz sesinizdeki samimiyeti çok sevdi. Ayda bir kendi köşenizi sunmak ister misiniz?»",
+    "Domain": "personal",
+    "Style": "",
+    "MinAge": 18,
+    "MaxAge": 85,
+    "Priority": 26,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "",
+    "Needs": [
+      "radio_winner"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "host_monthly_show",
+        "Text": "Teklifi kabul et ve gece anlatıları programına başla.",
+        "Result": "Mikrofon başında anlattığın hayat gözlemleri sana hem ek gelir hem de sadık bir dinleyici çevresi kazandırdı.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 40000,
+          "Social": 5,
+          "Happiness": 5
+        },
+        "Qualities": {
+          "purpose": 6,
+          "community": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "one_time_memoir",
+        "Text": "Tek bölümlük unutulmaz bir sohbet yapıp tadında bırak.",
+        "Result": "Kayıt arşivde hoş bir anı olarak yerini aldı.",
+        "Cost": 0,
+        "Stats": {
+          "Happiness": 5,
+          "Social": 3
+        },
+        "Qualities": {
+          "autonomy": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_rival_offer_betrayal",
+    "Title": "Rakip şirketten gelen gizli teklif",
+    "Text": "Rakip Yönetici: Ekibinizin üzerinde çalıştığı yeni projeyi biliyoruz. Bize geçersen maaşının iki katı imza parası hazır; tek şartımız mevcut müşteri listenizi de getirmen.\nSen: Bahsettiğiniz şey doğrudan meslek etiğine aykırı.\nRakip Yönetici: İş dünyasında herkes kendi gemisini kurtarır, yarına kadar düşün.",
+    "Domain": "work",
+    "Style": "chat",
+    "MinAge": 23,
+    "MaxAge": 60,
+    "Priority": 27,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": false,
+    "Context": "working",
+    "Needs": [],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "reject_and_protect",
+        "Text": "Teklifi reddet ve kendi ekibini sızıntı ihtimaline karşı uyar.",
+        "Result": "Sadakatin ve dürüstlüğün ortaya çıkınca kurum içinde sarsılmaz bir güven kazandın.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 50000,
+          "Social": 5,
+          "Happiness": 5
+        },
+        "Qualities": {
+          "resilience": 5,
+          "purpose": 6
+        },
+        "Set": [
+          "trusted_guardian"
+        ],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "lived_loyalty_rewarded",
+        "DelayDays": 150
+      },
+      {
+        "Id": "transfer_cleanly",
+        "Text": "Sır taşıma şartını reddet ama sadece kendi uzmanlığınla transfer ol.",
+        "Result": "Kimseye ihanet etmeden, kendi emeğinin pazarlığıyla daha yüksek bir pozisyona geçtin.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 65000,
+          "Education": 3
+        },
+        "Qualities": {
+          "autonomy": 6
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
+  },
+  {
+    "Id": "lived_loyalty_rewarded",
+    "Title": "Güvenin karşılığı ortaklık",
+    "Text": "Kritik dönemde ekibini ve meslek ilkelerini satmadığın unutulmadı. Yıl sonu değerlendirmesinde sana özel bir kâr ortaklığı ve liderlik yetkisi sunuluyor.",
+    "Domain": "work",
+    "Style": "",
+    "MinAge": 23,
+    "MaxAge": 64,
+    "Priority": 28,
+    "CooldownDays": 2555,
+    "Milestone": false,
+    "FollowUpOnly": true,
+    "Context": "",
+    "Needs": [
+      "trusted_guardian"
+    ],
+    "Forbids": [],
+    "Choices": [
+      {
+        "Id": "accept_profit_share",
+        "Text": "Kâr ortaklığını kabul edip yeni projelerin başına geç.",
+        "Result": "Dürüstlüğün kısa vadeli kazançtan çok daha büyük bir servet ve itibar getirdi.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 110000,
+          "Happiness": 6,
+          "Social": 4
+        },
+        "Qualities": {
+          "purpose": 7,
+          "resilience": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      },
+      {
+        "Id": "negotiate_autonomy",
+        "Text": "Ortaklıkla birlikte esnek çalışma ve kendi ekibini seçme hakkı al.",
+        "Result": "Hem maddi güvence hem de çalışma özgürlüğü elde ettin.",
+        "Cost": 0,
+        "Stats": {
+          "Money": 75000,
+          "Health": 4,
+          "Happiness": 6
+        },
+        "Qualities": {
+          "autonomy": 7,
+          "purpose": 5
+        },
+        "Set": [],
+        "Remove": [],
+        "FamilyBond": 0,
+        "PartnerBond": 0,
+        "Next": "",
+        "DelayDays": 90
+      }
+    ]
   }
 ]
