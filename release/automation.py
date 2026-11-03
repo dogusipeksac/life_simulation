@@ -15,6 +15,12 @@ ROOT = Path(__file__).resolve().parent.parent
 CONFIG_PATH = Path.home() / ".config/life-simulation/release.env"
 FLUTTER_BIN = Path("/Users/dogusipeksac/Documents/flutter/bin/flutter")
 
+# Ortam değişkenleri ve Homebrew PATH'i ekle
+ENV_EXTRA = os.environ.copy()
+ENV_EXTRA["PATH"] = f"/opt/homebrew/bin:{FLUTTER_BIN.parent}:{ENV_EXTRA.get('PATH', '')}"
+ENV_EXTRA["LANG"] = "en_US.UTF-8"
+ENV_EXTRA["LC_ALL"] = "en_US.UTF-8"
+
 
 def log(msg):
     print(f"==> {msg}", flush=True)
@@ -28,7 +34,10 @@ def fail(msg):
 def run_cmd(args, *, env=None, cwd=ROOT):
     cmd_str = " ".join(str(a) for a in args)
     print(f"+ {cmd_str}", flush=True)
-    res = subprocess.run([str(a) for a in args], cwd=cwd, env=env)
+    curr_env = ENV_EXTRA.copy()
+    if env:
+        curr_env.update(env)
+    res = subprocess.run([str(a) for a in args], cwd=cwd, env=curr_env)
     if res.returncode != 0:
         fail(f"Komut başarısız oldu (çıkış kodu: {res.returncode}): {cmd_str}")
 
@@ -38,11 +47,6 @@ def load_config():
         fail(f"Ayar dosyası bulunamadı: {CONFIG_PATH}\n"
              f"Lütfen config/release.env.example dosyasını {CONFIG_PATH} konumuna kopyalayıp doldurun.")
     
-    # İzin kontrolü (chmod 600)
-    mode = CONFIG_PATH.stat().st_mode & 0o777
-    if mode not in (0o600, 0o400):
-        log(f"Uyarı: {CONFIG_PATH} izinleri çok geniş ({oct(mode)}). 'chmod 600 {CONFIG_PATH}' önerilir.")
-
     conf = {}
     for line in CONFIG_PATH.read_text(encoding="utf-8").splitlines():
         line = line.strip()
@@ -105,13 +109,10 @@ def build_ios_ipa(version, build_number, export_options_plist):
 def upload_to_testflight(ipa_path, notes_path, config):
     log("Fastlane ile TestFlight'a yükleniyor...")
     fastlane_dir = ROOT / "release"
-    env = os.environ.copy()
-    env.update(config)
-    env["LANG"] = "en_US.UTF-8"
-    env["LC_ALL"] = "en_US.UTF-8"
+    env = config.copy()
     
     cmd = [
-        "bundle", "exec", "fastlane", "tf_upload",
+        "/opt/homebrew/bin/fastlane", "tf_upload",
         f"ipa:{ipa_path}",
         f"notes:{notes_path}"
     ]
