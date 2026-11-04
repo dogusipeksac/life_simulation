@@ -1,1 +1,1 @@
-Arayüz iyileştirmeleri, iPad tam ekran optimizasyonu ve tipografi dengelemeleri.
+Profil ekranına pratik ayarlar menüsü, Bizi Değerlendir ve Arkadaşlarınla Paylaş seçenekleri eklendi. Uzaktan yapılandırma ve güncelleme altyapısı entegre edildi. Arayüz ve kararlılık iyileştirmeleri yapıldı.

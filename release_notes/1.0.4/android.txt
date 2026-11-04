@@ -1,1 +1,1 @@
-Android cihazlarda yazı boyutu ve tipografi dengesi iyileştirildi, ekran taşmaları giderildi.
+Profil ekranına yeni ayarlar menüsü, Bizi Değerlendir ve Arkadaşlarınla Paylaş özellikleri eklendi. Dinamik güncelleme altyapısı ve Crashlytics hata takibi entegre edildi. Tipografi ve kararlılık iyileştirmeleri yapıldı.

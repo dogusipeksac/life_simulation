@@ -44,7 +44,7 @@ while [[ $# -gt 0 ]]; do
     --track) TRACK="${2:?--track internal|alpha|beta|production bekler}"; shift ;;
     --android) DO_IOS=0 ;;
     --ios) DO_ANDROID=0 ;;
-    --testflight) TESTFLIGHT=1; DO_ANDROID=0 ;;
+    --testflight) TESTFLIGHT=1 ;;
     --build) BUILD_ARG="${2:?--build bir tam sayı bekler}"; shift ;;
     --draft) STATUS="draft" ;;
     --skip-checks) SKIP_CHECKS=1 ;;
