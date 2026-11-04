@@ -39,11 +39,11 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'TODO_FIREBASE_IOS_API_KEY',
-    appId: 'TODO_FIREBASE_IOS_APP_ID',
-    messagingSenderId: 'TODO_SENDER_ID',
-    projectId: 'TODO_PROJECT_ID',
-    storageBucket: 'TODO_PROJECT_ID.firebasestorage.app',
+    apiKey: 'AIzaSyD5jJdHCQNpQb8VYEZtaV0XlXaEhlVVIWE',
+    appId: '1:655591401589:ios:e28e0c12a60110863a303c',
+    messagingSenderId: '655591401589',
+    projectId: 'life-simulation-71e07',
+    storageBucket: 'life-simulation-71e07.firebasestorage.app',
     iosBundleId: 'com.dogusipeksac.lifesimulation',
   );
 }
