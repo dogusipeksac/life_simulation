@@ -40,7 +40,7 @@ Hesap gerekmez; kaydın yalnızca cihazında durur. Oyun ücretsizdir ve reklam 
 **Tanıtım metni (≤170):** Doğumdan yüz yaşına bir hayat: kaderle gelen bir aile, 66 etkileşimli an, 103 meslek ve şifrelerle dolu dallanan hikâyeler. Ücretsiz, hesapsız.
 **Anahtar kelimeler (≤100):** hayat,simülasyon,hikaye,metin,oyun,karar,interaktif,roman,türkçe,kariyer,aile
 **Destek URL:** https://github.com/dogusipeksac/life_simulation
-**Gizlilik Politikası URL:** https://github.com/dogusipeksac/life_simulation
+**Gizlilik Politikası URL:** https://dogusipeksac.com/privacy-policy/
 **Telif Hakkı:** 2026 Doğuş İpeksaç
 **Bundle ID:** com.dogusipeksac.lifesimulation
 **Apple ID:** 6830319257
