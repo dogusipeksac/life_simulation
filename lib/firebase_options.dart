@@ -31,11 +31,11 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'TODO_FIREBASE_ANDROID_API_KEY',
-    appId: 'TODO_FIREBASE_ANDROID_APP_ID',
-    messagingSenderId: 'TODO_SENDER_ID',
-    projectId: 'TODO_PROJECT_ID',
-    storageBucket: 'TODO_PROJECT_ID.firebasestorage.app',
+    apiKey: 'AIzaSyDUcpjYgQYyw24EFpms24vNO1hO55I7b5E',
+    appId: '1:655591401589:android:eaacc148aa96acc13a303c',
+    messagingSenderId: '655591401589',
+    projectId: 'life-simulation-71e07',
+    storageBucket: 'life-simulation-71e07.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
