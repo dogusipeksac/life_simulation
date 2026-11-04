@@ -279,24 +279,25 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen> {
       ),
       const SizedBox(height: 18),
       for (final b in books) _bookCard(b),
-      _card([
-        Text(
-          'HİKÂYELERİN SENİNLE KALSIN',
-          style: VitaType.overline(context.vita),
-        ),
-        const SizedBox(height: 10),
-        _text(game.storyStore.status, caption: true),
-        const SizedBox(height: 8),
-        _text(
-          'Ücretli hikâyeler tek seferlik açılır. Satın alma yapmadan önce başlangıç bölümünü okuyabilirsin. Ana hayat kaydın etkilenmez.',
-          caption: true,
-        ),
-        _button(
-          'Satın alımları geri yükle',
-          () => _notice(game.restoreStories()),
-          secondary: true,
-        ),
-      ]),
+      if (Features.purchasesLive)
+        _card([
+          Text(
+            'HİKÂYELERİN SENİNLE KALSIN',
+            style: VitaType.overline(context.vita),
+          ),
+          const SizedBox(height: 10),
+          _text(game.storyStore.status, caption: true),
+          const SizedBox(height: 8),
+          _text(
+            'Ücretli hikâyeler tek seferlik açılır. Satın alma yapmadan önce başlangıç bölümünü okuyabilirsin. Ana hayat kaydın etkilenmez.',
+            caption: true,
+          ),
+          _button(
+            'Satın alımları geri yükle',
+            () => _notice(game.restoreStories()),
+            secondary: true,
+          ),
+        ]),
     ];
   }
 

@@ -1,0 +1,1 @@
+Hayat Simülasyonu ilk kapalı test sürümü. Kararlarınızla şekillenen hayat akışı, meslekler ve interaktif hikâye sahnelerini test edin.
