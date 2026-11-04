@@ -30,7 +30,7 @@ class LocalCrypto {
   static Future<void> unlock({FlutterSecureStorage? storage}) async {
     final store = storage ??
         const FlutterSecureStorage(
-          aOptions: AndroidOptions(encryptedSharedPreferences: true),
+          aOptions: AndroidOptions(resetOnError: true),
           iOptions: IOSOptions(
             accessibility: KeychainAccessibility.first_unlock_this_device,
           ),

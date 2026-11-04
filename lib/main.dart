@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'content/asset_content_loader.dart';
+import 'core/firebase/firebase_bootstrap.dart';
+import 'core/update/update_service.dart';
 import 'design/components.dart';
 import 'design/palette.dart';
 import 'design/preferences.dart';
@@ -23,8 +25,9 @@ import 'ui/intro_screen.dart';
 import 'ui/start_screen.dart';
 import 'ui/story_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await bootstrapFirebase();
   GoogleFonts.config.allowRuntimeFetching = false;
   LicenseRegistry.addLicense(() async* {
     yield LicenseEntryWithLineBreaks([
@@ -129,11 +132,13 @@ class _LifeSimulationAppState extends State<LifeSimulationApp> with WidgetsBindi
                   onDone: () => preferences.setIntroSeen(intro.latest),
                 );
               }
-              return ListenableBuilder(
-                listenable: game,
-                builder: (context, _) => game.inGame
-                    ? StoryScreen(game: game)
-                    : TitleScreen(game: game),
+              return _AppUpdateGate(
+                child: ListenableBuilder(
+                  listenable: game,
+                  builder: (context, _) => game.inGame
+                      ? StoryScreen(game: game)
+                      : TitleScreen(game: game),
+                ),
               );
             },
           ),
@@ -142,6 +147,29 @@ class _LifeSimulationAppState extends State<LifeSimulationApp> with WidgetsBindi
     );
   }
 
+}
+
+class _AppUpdateGate extends StatefulWidget {
+  const _AppUpdateGate({required this.child});
+  final Widget child;
+
+  @override
+  State<_AppUpdateGate> createState() => _AppUpdateGateState();
+}
+
+class _AppUpdateGateState extends State<_AppUpdateGate> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        UpdateService.instance.checkAndShowUpdate(context);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) => widget.child;
 }
 
 class _Splash extends StatelessWidget {

@@ -42,7 +42,15 @@ dependencies:
   google_mobile_ads: ^9.2.0
   pointycastle: ^4.0.0
   in_app_purchase_platform_interface: ^1.4.1
-  flutter_secure_storage: ^9.2.4
+  flutter_secure_storage: ^11.2.0
+
+  firebase_core: ^5.0.0
+  firebase_crashlytics: ^6.0.0
+  firebase_remote_config: ^7.0.0
+  package_info_plus: ^10.2.2
+  url_launcher: ^6.3.3
+  update_checker_package:
+    path: packages/update_checker_package
 
 dev_dependencies:
   flutter_test:

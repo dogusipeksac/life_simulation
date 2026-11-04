@@ -6,6 +6,12 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// Firebase / Crashlytics: google-services.json eklendiğinde otomatik devreye girer
+if (file("google-services.json").exists()) {
+    apply(plugin = "com.google.gms.google-services")
+    apply(plugin = "com.google.firebase.crashlytics")
+}
+
 // Yayın imzası: android/key.properties + life-simulation.jks (repoya girmez).
 // Yoksa release debug anahtarıyla imzalanır; Play AAB için key.properties şart.
 val keystoreProperties = Properties().apply {
