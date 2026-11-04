@@ -1,25 +1,29 @@
 {
-  "releases": [
+  "android": [],
+  "ios": [
     {
       "version": "1.0.0",
-      "build_number": 1,
-      "platform": "ios",
+      "build": 1,
       "target": "testflight",
-      "timestamp": "2026-11-03T19:47:51Z"
+      "status": "completed",
+      "uploaded_at": "2026-11-03T19:47:51Z",
+      "notes": ""
     },
     {
       "version": "1.0.0",
-      "build_number": 2,
-      "platform": "ios",
+      "build": 2,
       "target": "testflight",
-      "timestamp": "2026-11-04T09:43:34Z"
+      "status": "completed",
+      "uploaded_at": "2026-11-04T09:43:34Z",
+      "notes": ""
     },
     {
       "version": "1.0.0",
-      "build_number": 3,
-      "platform": "ios",
+      "build": 3,
       "target": "testflight",
-      "timestamp": "2026-11-04T10:28:25Z"
+      "status": "completed",
+      "uploaded_at": "2026-11-04T10:28:25Z",
+      "notes": "TestFlight build 3: UIRequiresFullScreen ve portre yönlendirme düzeltmeleri."
     }
   ]
 }

@@ -4,52 +4,57 @@ def apple_key
   app_store_connect_api_key(
     key_id: ENV.fetch("ASC_KEY_ID"),
     issuer_id: ENV.fetch("ASC_ISSUER_ID"),
-    key_filepath: ENV.fetch("ASC_KEY_FILE")
+    key_filepath: ENV.fetch("ASC_KEY_FILE", ENV.fetch("ASC_KEY_PATH", nil))
   )
 end
 
 platform :android do
-  desc "Upload the selected AAB and Turkish release notes only"
+  desc "Google Play'e AAB ve sürüm notlarını yükle"
   lane :release do |options|
+    track = options[:track] || ENV["PLAY_TRACK"] || "alpha"
+    status = options[:status] || "completed"
+    meta = options[:metadata] || File.expand_path("metadata/android", __dir__)
+    
     upload_to_play_store(
-      package_name: ENV.fetch("ANDROID_PACKAGE"),
+      package_name: ENV.fetch("ANDROID_PACKAGE", "com.dogusipeksac.lifesimulation"),
       json_key: ENV.fetch("PLAY_JSON_KEY"),
       aab: options.fetch(:aab),
-      track: options.fetch(:track),
-      release_status: options.fetch(:status),
-      metadata_path: options.fetch(:metadata),
+      track: track,
+      release_status: status,
+      metadata_path: meta,
       skip_upload_metadata: true,
       skip_upload_changelogs: false,
       skip_upload_images: true,
       skip_upload_screenshots: true,
-      validate_only: false
+      validate_only: options[:validate_only] == true || options[:validate_only] == "true"
     )
   end
 end
 
 platform :ios do
-  desc "Upload to TestFlight and set What to Test; do not distribute to testers"
-  lane :beta_upload do |options|
-    pilot(
+  desc "TestFlight'a yükle ve 'Test Edilecekler' metnini ata"
+  lane :beta do |options|
+    upload_to_testflight(
       api_key: apple_key,
-      app_identifier: ENV.fetch("IOS_BUNDLE_ID"),
+      app_identifier: ENV.fetch("IOS_BUNDLE_ID", "com.dogusipeksac.lifesimulation"),
       ipa: options.fetch(:ipa),
-      changelog: File.read(options.fetch(:notes), encoding: "UTF-8"),
+      changelog: File.read(options.fetch(:notes), encoding: "UTF-8").strip,
       skip_waiting_for_build_processing: false,
       distribute_external: false
     )
   end
 
-  desc "Upload IPA and Turkish What's New; leave review and release manual"
-  lane :app_store do |options|
-    deliver(
+  desc "App Store Connect sürümüne IPA ve What's New yükle (İnceleme elle gönderilir)"
+  lane :release do |options|
+    upload_to_app_store(
       api_key: apple_key,
-      app_identifier: ENV.fetch("IOS_BUNDLE_ID"),
+      app_identifier: ENV.fetch("IOS_BUNDLE_ID", "com.dogusipeksac.lifesimulation"),
       ipa: options.fetch(:ipa),
       app_version: options.fetch(:version),
-      release_notes: { "tr" => File.read(options.fetch(:notes), encoding: "UTF-8") },
-      metadata_path: options.fetch(:metadata),
+      release_notes: { "tr" => File.read(options.fetch(:notes), encoding: "UTF-8").strip },
+      metadata_path: options[:metadata] || File.expand_path("metadata/ios", __dir__),
       skip_screenshots: true,
+      skip_metadata: true,
       submit_for_review: false,
       automatic_release: false,
       force: true

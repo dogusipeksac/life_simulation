@@ -101,6 +101,18 @@ class _LifeSimulationAppState extends State<LifeSimulationApp> with WidgetsBindi
           theme: buildVitaTheme(VitaPalette.light),
           darkTheme: buildVitaTheme(VitaPalette.dark),
           themeMode: preferences.dark ? ThemeMode.dark : ThemeMode.light,
+          builder: (context, child) {
+            final media = MediaQuery.of(context);
+            return MediaQuery(
+              data: media.copyWith(
+                textScaler: media.textScaler.clamp(
+                  minScaleFactor: 0.85,
+                  maxScaleFactor: 1.05,
+                ),
+              ),
+              child: child!,
+            );
+          },
           home: FutureBuilder<GameController>(
             future: _game,
             builder: (context, snap) {

@@ -1,0 +1,1 @@
+Android cihazlarda yazı boyutu ve tipografi dengesi iyileştirildi, ekran taşmaları giderildi.

@@ -55,6 +55,9 @@ app.*.map.json
 
 # Yerel sürüm paketleri
 /dist/
+/release/output/
+fastlane/report.xml
+release/fastlane/report.xml
 /vendor/bundle/
 /.bundle/
 /release.env
