@@ -35,10 +35,15 @@ Hesap gerekmez; kaydın yalnızca cihazında durur. Oyun ücretsizdir ve reklam 
 **Kategori:** Oyunlar › Simülasyon · **Etiketler:** hayat simülasyonu, metin oyunu, interaktif hikâye
 
 ## App Store
-**Ad (≤30):** Hayat Simülasyonu
+**Ad (≤30):** Hayat Simülasyonu - Kararlar
 **Alt başlık (≤30):** Kararlarınla yazılan bir hayat
 **Tanıtım metni (≤170):** Doğumdan yüz yaşına bir hayat: kaderle gelen bir aile, 66 etkileşimli an, 103 meslek ve şifrelerle dolu dallanan hikâyeler. Ücretsiz, hesapsız.
 **Anahtar kelimeler (≤100):** hayat,simülasyon,hikaye,metin,oyun,karar,interaktif,roman,türkçe,kariyer,aile
+**Destek URL:** https://github.com/dogusipeksac/life_simulation
+**Gizlilik Politikası URL:** https://github.com/dogusipeksac/life_simulation
+**Telif Hakkı:** 2026 Doğuş İpeksaç
+**Bundle ID:** com.dogusipeksac.lifesimulation
+**Apple ID:** 6830319257
 **Açıklama:** Play tam açıklamasıyla aynı.
 
 ## Sürüm notu (ilk sürüm)
