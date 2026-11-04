@@ -17,14 +17,16 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 STORE = ROOT / "store"
 FONT_DIR = ROOT / "assets" / "fonts"
 
-# "Gece kitabı" paleti (lib/design/palette.dart)
-BG_TOP = (43, 33, 66)
-BG_BOTTOM = (14, 12, 22)
-INK = (239, 234, 224)
-MUTED = (156, 147, 168)
-ACCENT = (224, 180, 114)
-PAGE = (242, 233, 214)
-PAGE_SHADE = (214, 199, 172)
+# Modern "Sosyal Akış & Dinamik Kart" paleti (lib/design/palette.dart)
+BG_TOP = (19, 27, 46)        # #131B2E (Derin Slate Yüzey)
+BG_BOTTOM = (11, 15, 25)     # #0B0F19 (Derin Karbon Zemin)
+INK = (248, 250, 252)        # #F8FAFC (Temiz Buz/Beyaz)
+MUTED = (160, 174, 192)      # #A0AEC0 (Slate Gri)
+ACCENT = (56, 189, 248)      # #38BDF8 (Elektrik Mavi / Camgöbeği)
+ACCENT_WARM = (251, 191, 36) # #FBBF24 (Altın / Yıldız)
+PAGE = (241, 245, 249)       # #F1F5F9 (Ferah Kitap Sayfası)
+PAGE_SHADE = (203, 213, 225) # #CBD5E1 (Sayfa Gölgelendirmesi)
+BORDER_COLOR = (38, 53, 84)  # #263554 (Modern Kart Çerçevesi)
 
 
 def font(size, weight="SemiBold"):
@@ -88,9 +90,9 @@ def draw_motif(img, scale=1.0, mono=None):
     if mono is None:
         # Sayfa çizgileri: yazının izi.
         for i, y in enumerate((63, 69, 75)):
-            d.line(bezier(P(14, y), P(24, y - 4), P(36, y - 4), P(44, y + 1), 24), fill=(196, 180, 150), width=max(2, round(u * 1.1)))
-            d.line(bezier(P(56, y + 1), P(64, y - 4), P(76, y - 4), P(86, y), 24), fill=(186, 168, 138), width=max(2, round(u * 1.1)))
-        d.line((spine_top, spine_bottom), fill=(150, 128, 98), width=max(2, round(u * 1.4)))
+            d.line(bezier(P(14, y), P(24, y - 4), P(36, y - 4), P(44, y + 1), 24), fill=(148, 163, 184), width=max(2, round(u * 1.1)))
+            d.line(bezier(P(56, y + 1), P(64, y - 4), P(76, y - 4), P(86, y), 24), fill=(148, 163, 184), width=max(2, round(u * 1.1)))
+        d.line((spine_top, spine_bottom), fill=(100, 116, 139), width=max(2, round(u * 1.4)))
     else:
         d.line((spine_top, spine_bottom), fill=(0, 0, 0, 0), width=max(2, round(u * 2.2)))
 
@@ -106,13 +108,14 @@ def draw_motif(img, scale=1.0, mono=None):
         d.ellipse((*P(cx - r + 9, cy - r - 5), *P(cx + r + 9, cy + r - 5)), fill=cut)
 
     # Yıldız ✦: dört köşeli.
+    star_color = mono or ACCENT_WARM
     sx, sy, sr = 76, 18, 7
     star = []
     for k in range(8):
         a = math.pi / 4 * k - math.pi / 2
         rr = sr if k % 2 == 0 else sr * 0.32
         star.append(P(sx + rr * math.cos(a), sy + rr * math.sin(a)))
-    ImageDraw.Draw(img).polygon(star, fill=accent)
+    ImageDraw.Draw(img).polygon(star, fill=star_color)
 
 
 def make_icon():
@@ -176,6 +179,36 @@ def rounded(img, radius):
     return out
 
 
+def shift_screenshot_colors(im):
+    im = im.convert("RGBA")
+    pix = im.load()
+    w, h = im.size
+    for y in range(h):
+        for x in range(w):
+            r, g, b, a = pix[x, y]
+            if r < 45 and g < 40 and b < 55:
+                brightness = (r + g + b) / 3.0
+                factor = brightness / 28.0
+                nr = int(11 * factor)
+                ng = int(15 * factor)
+                nb = int(25 * factor)
+                pix[x, y] = (min(255, nr), min(255, ng), min(255, nb), a)
+            elif 25 <= r < 60 and 20 <= g < 55 and 35 <= b < 70 and abs(r - g) < 20:
+                brightness = (r + g + b) / 3.0
+                factor = brightness / 40.0
+                nr = int(19 * factor)
+                ng = int(27 * factor)
+                nb = int(46 * factor)
+                pix[x, y] = (min(255, nr), min(255, ng), min(255, nb), a)
+            elif r > 160 and g > 120 and b < 140 and r > b + 40:
+                t = (r - 160) / 95.0
+                nr = int(56 * (0.8 + 0.4 * t))
+                ng = int(189 * (0.8 + 0.4 * t))
+                nb = int(248 * (0.8 + 0.4 * t))
+                pix[x, y] = (min(255, nr), min(255, ng), min(255, nb), a)
+    return im.convert("RGB")
+
+
 def compose_screenshot(src, title, subtitle, size):
     W, H = size
     canvas = vertical_gradient(W, H, BG_TOP, BG_BOTTOM).convert("RGBA")
@@ -184,8 +217,9 @@ def compose_screenshot(src, title, subtitle, size):
     k = W / 1080
     y = text_center(d, (70 * k, 92 * k, W - 70 * k), title, font(round(74 * k)), ACCENT)
     y = text_center(d, (90 * k, y + 14 * k, W - 90 * k), subtitle, font(round(38 * k), "Regular"), INK)
-    # Ekran görüntüsü: durum çubuğunu kırp, yuvarlak köşeli bir "telefon" içinde.
+    # Ekran görüntüsü: durum çubuğunu kırp, renkleri modern palete uyarla, yuvarlak köşeli bir "telefon" içinde.
     shot = Image.open(src).convert("RGB")
+    shot = shift_screenshot_colors(shot)
     shot = shot.crop((0, 96, shot.width, shot.height - 40))
     top = y + 46 * k
     avail_h = H - top - 60 * k
@@ -194,11 +228,11 @@ def compose_screenshot(src, title, subtitle, size):
     shot = shot.resize((round(sw), round(sh)), Image.LANCZOS)
     frame_pad = round(14 * k)
     frame = Image.new("RGBA", (shot.width + 2 * frame_pad, shot.height + 2 * frame_pad), (0, 0, 0, 0))
-    ImageDraw.Draw(frame).rounded_rectangle((0, 0, *frame.size), round(58 * k), fill=(30, 26, 44, 255), outline=(70, 60, 96, 255), width=round(3 * k))
+    ImageDraw.Draw(frame).rounded_rectangle((0, 0, *frame.size), round(58 * k), fill=BG_TOP, outline=BORDER_COLOR, width=round(3 * k))
     frame.alpha_composite(rounded(shot.convert("RGBA"), round(46 * k)), (frame_pad, frame_pad))
     fx = round((W - frame.width) / 2)
     shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    ImageDraw.Draw(shadow).rounded_rectangle((fx + 10, top + 24, fx + frame.width + 10, top + frame.height + 24), round(58 * k), fill=(0, 0, 0, 120))
+    ImageDraw.Draw(shadow).rounded_rectangle((fx + 10, top + 24, fx + frame.width + 10, top + frame.height + 24), round(58 * k), fill=(0, 0, 0, 140))
     canvas.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(28 * k)))
     canvas.alpha_composite(frame, (fx, round(top)))
     return canvas.convert("RGB")
@@ -219,17 +253,20 @@ SCREENS = [
 def make_screenshots():
     raw = STORE / "raw"
     play = STORE / "play" / "screenshots"
-    ios = STORE / "appstore" / "6.9in"
+    ios_69 = STORE / "appstore" / "6.9in"
+    ios_67 = STORE / "appstore" / "6.7in"
     play.mkdir(parents=True, exist_ok=True)
-    ios.mkdir(parents=True, exist_ok=True)
+    ios_69.mkdir(parents=True, exist_ok=True)
+    ios_67.mkdir(parents=True, exist_ok=True)
     for name, title, sub in SCREENS:
         src = raw / name
         if not src.exists():
             print("eksik kaynak:", src)
             continue
         compose_screenshot(src, title, sub, (1080, 1920)).save(play / name, optimize=True)
-        compose_screenshot(src, title, sub, (1320, 2868)).save(ios / name, optimize=True)
-    print("screenshots: store/play/screenshots (1080x1920), store/appstore/6.9in (1320x2868)")
+        compose_screenshot(src, title, sub, (1320, 2868)).save(ios_69 / name, optimize=True)
+        compose_screenshot(src, title, sub, (1290, 2796)).save(ios_67 / name, optimize=True)
+    print("screenshots: play (1080x1920), appstore 6.9in (1320x2868), appstore 6.7in (1290x2796)")
 
 
 def make_feature():
