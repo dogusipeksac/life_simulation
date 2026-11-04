@@ -24,6 +24,14 @@
       "status": "completed",
       "uploaded_at": "2026-11-04T10:28:25Z",
       "notes": "TestFlight build 3: UIRequiresFullScreen ve portre yönlendirme düzeltmeleri."
+    },
+    {
+      "version": "1.0.4",
+      "build": 5,
+      "target": "testflight",
+      "status": "completed",
+      "uploaded_at": "2026-11-04T13:02:24Z",
+      "notes": "Profil ekranına pratik ayarlar menüsü, Bizi Değerlendir ve Arkadaşlarınla Paylaş seçenekleri eklendi. Uzaktan yapılandırma ve güncelleme altyapısı entegre edildi. Arayüz ve kararlılık iyileştirmeleri yapıldı."
     }
   ]
 }
