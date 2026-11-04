@@ -1,5 +1,14 @@
 {
-  "android": [],
+  "android": [
+    {
+      "version": "1.0.4",
+      "build": 5,
+      "target": "alpha",
+      "status": "completed",
+      "uploaded_at": "2026-11-04T13:08:39Z",
+      "notes": "Profil ekranına yeni ayarlar menüsü, Bizi Değerlendir ve Arkadaşlarınla Paylaş özellikleri eklendi. Dinamik güncelleme altyapısı ve Crashlytics hata takibi entegre edildi. Tipografi ve kararlılık iyileştirmeleri yapıldı."
+    }
+  ],
   "ios": [
     {
       "version": "1.0.0",
