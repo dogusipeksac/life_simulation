@@ -19,9 +19,8 @@ import '../game/world.dart';
 import 'game_controller.dart';
 import 'achievements_screen.dart';
 import 'interview_screen.dart';
-import 'intro_screen.dart';
-import 'privacy_screen.dart';
 import 'mini_game.dart';
+import 'settings_sheet.dart';
 
 /// P3 sayfaları yalnızca durumu okur ve controller'a niyet gönderir.
 class LifePage extends StatefulWidget {
@@ -158,22 +157,38 @@ class _LifePageState extends State<LifePage> {
           'relationships',
           'activities',
         ].contains(widget.page))
-          Align(
-            alignment: Alignment.centerLeft,
-            child: TextButton.icon(
-              onPressed: () => go(switch (widget.page) {
-                'person' => 'relationships',
-                'bank' => 'finance',
-                'profile' || 'menu' => 'story',
-                _ => 'profile',
-              }),
-              icon: const Icon(Icons.chevron_left),
-              label: Text(switch (widget.page) {
-                'person' => 'İlişkiler',
-                'bank' => 'Finans',
-                'profile' || 'menu' => 'Hikâye',
-                _ => 'Profil',
-              }),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 6),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton.icon(
+                  onPressed: () => go(switch (widget.page) {
+                    'person' => 'relationships',
+                    'bank' => 'finance',
+                    'profile' || 'menu' => 'story',
+                    _ => 'profile',
+                  }),
+                  icon: const Icon(Icons.chevron_left),
+                  label: Text(switch (widget.page) {
+                    'person' => 'İlişkiler',
+                    'bank' => 'Finans',
+                    'profile' || 'menu' => 'Hikâye',
+                    _ => 'Profil',
+                  }),
+                ),
+                if (['profile', 'menu'].contains(widget.page))
+                  IconButton(
+                    tooltip: 'Ayarlar',
+                    icon: const Icon(Icons.settings_outlined),
+                    onPressed: () => SettingsSheet.show(
+                      context,
+                      game: game,
+                      preferences: preferences,
+                      onChanged: () => setState(() {}),
+                    ),
+                  ),
+              ],
             ),
           ),
         if (_message.isNotEmpty)
@@ -451,20 +466,34 @@ class _LifePageState extends State<LifePage> {
           ),
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-          Row(children: [
-            PersonMedallion(name: s.playerName, female: s.profile.gender == 'Kadın', size: 66),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(s.playerName, maxLines: 1, overflow: TextOverflow.ellipsis, style: VitaType.title(p).copyWith(fontSize: 21)),
-                const SizedBox(height: 2),
-                Text('${s.ageText} · ${game.session.describeOccupation()}',
-                    maxLines: 2, overflow: TextOverflow.ellipsis, style: VitaType.caption(p)),
-                const SizedBox(height: 6),
-                VitaChip(formatMoney(s.money + s.bankBalance), icon: Icons.account_balance_wallet_outlined),
-              ]),
-            ),
-          ]),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              PersonMedallion(name: s.playerName, female: s.profile.gender == 'Kadın', size: 66),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text(s.playerName, maxLines: 1, overflow: TextOverflow.ellipsis, style: VitaType.title(p).copyWith(fontSize: 21)),
+                  const SizedBox(height: 2),
+                  Text('${s.ageText} · ${game.session.describeOccupation()}',
+                      maxLines: 2, overflow: TextOverflow.ellipsis, style: VitaType.caption(p)),
+                  const SizedBox(height: 6),
+                  VitaChip(formatMoney(s.money + s.bankBalance), icon: Icons.account_balance_wallet_outlined),
+                ]),
+              ),
+              const SizedBox(width: 8),
+              IconButton.filledTonal(
+                tooltip: 'Ayarlar',
+                onPressed: () => SettingsSheet.show(
+                  context,
+                  game: game,
+                  preferences: preferences,
+                  onChanged: () => setState(() {}),
+                ),
+                icon: const Icon(Icons.settings_outlined),
+              ),
+            ],
+          ),
           const SizedBox(height: 16),
           Row(children: [
             for (final (label, value, color) in [
@@ -645,45 +674,6 @@ class _LifePageState extends State<LifePage> {
           ]),
         ),
       ],
-      const SectionHeader('Ayarlar'),
-      SettingGroup(children: [
-        for (final (key, icon, title, value) in [
-          ('sound', Icons.volume_up_outlined, 'Dokunma sesleri', preferences.sound),
-          ('haptics', Icons.vibration, 'Titreşim', preferences.haptics),
-          ('motion', Icons.animation, 'Animasyonlar', preferences.motion),
-          ('dark', Icons.dark_mode_outlined, 'Karanlık tema', preferences.dark),
-        ])
-          SettingRow(
-            icon: icon,
-            title: title,
-            value: value,
-            onChanged: (v) {
-              preferences.set(key, v);
-              setState(() {});
-            },
-          ),
-      ]),
-      const SizedBox(height: 12),
-      SettingGroup(children: [
-        if (IntroDeck.current.pages.isNotEmpty)
-          SettingRow(icon: Icons.help_outline, title: 'Nasıl oynanır?', onTap: () => openIntro(context)),
-        SettingRow(icon: Icons.privacy_tip_outlined, title: 'Gizlilik ve bağlantılar', onTap: () => openPrivacy(context)),
-        if (!Features.fullAccess && game.ads.privacyOptionsRequired)
-          SettingRow(icon: Icons.ads_click, title: 'Reklam gizlilik seçenekleri', onTap: game.showAdPrivacyOptions),
-        SettingRow(
-          icon: Icons.home_outlined,
-          title: 'Açılış ekranına dön',
-          caption: 'Hayatın kaydedilir',
-          onTap: () async {
-            if (await confirm(
-              'Açılış ekranına dön?',
-              'Hayatın kaydedilecek. Kaldığın yerden devam edebilir veya yeni bir hayat başlatabilirsin.',
-            )) {
-              if (mounted) game.leaveToTitle();
-            }
-          },
-        ),
-      ]),
       const SizedBox(height: 14),
       Center(
         child: text(

@@ -51,6 +51,7 @@ dependencies:
   url_launcher: ^6.3.3
   update_checker_package:
     path: packages/update_checker_package
+  share_plus: ^13.3.1
 
 dev_dependencies:
   flutter_test:
