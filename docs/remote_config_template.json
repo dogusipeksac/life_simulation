@@ -1,0 +1,72 @@
+{
+  "conditions": [],
+  "parameters": {
+    "update_android_latest_version_code": {
+      "defaultValue": {
+        "value": "4"
+      },
+      "description": "Android Google Play son yayınlanan versionCode (pubspec +N)"
+    },
+    "update_android_min_required_version_code": {
+      "defaultValue": {
+        "value": "1"
+      },
+      "description": "Android zorunlu güncelleme eşiği (bu değerin altı force update alır)"
+    },
+    "update_ios_latest_version_code": {
+      "defaultValue": {
+        "value": "3"
+      },
+      "description": "iOS TestFlight / App Store son buildNumber (pubspec +N)"
+    },
+    "update_ios_min_required_version_code": {
+      "defaultValue": {
+        "value": "1"
+      },
+      "description": "iOS zorunlu güncelleme eşiği (bu değerin altı force update alır)"
+    },
+    "update_maintenance": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "true = tüm platformlarda tam ekran bakım modu"
+    },
+    "update_title": {
+      "defaultValue": {
+        "value": "Yeni Sürüm Hazır"
+      },
+      "description": "Güncelleme diyaloğu başlığı"
+    },
+    "update_description": {
+      "defaultValue": {
+        "value": "Daha iyi bir deneyim ve yeni özellikler için lütfen Hayat Simülasyonu'nu güncelleyin."
+      },
+      "description": "Güncelleme diyaloğu açıklaması"
+    },
+    "update_button": {
+      "defaultValue": {
+        "value": "Güncelle"
+      },
+      "description": "Güncelle butonu metni"
+    },
+    "update_cancel": {
+      "defaultValue": {
+        "value": "Daha Sonra"
+      },
+      "description": "İsteğe bağlı güncellemede erteleme metni"
+    },
+    "update_android_store_url": {
+      "defaultValue": {
+        "value": "https://play.google.com/store/apps/details?id=com.dogusipeksac.lifesimulation"
+      },
+      "description": "Google Play mağaza bağlantısı"
+    },
+    "update_ios_store_url": {
+      "defaultValue": {
+        "value": "https://apps.apple.com/app/id6754897042"
+      },
+      "description": "Apple App Store mağaza bağlantısı"
+    }
+  },
+  "parameterGroups": {}
+}
