@@ -30,4 +30,4 @@ Veri cihazındadır. Silmek: uygulamayı kaldır veya yeni hayat başlat.
 
 ## 7. İletişim
 Play Console / App Store geliştirici iletişimi veya web sitenin iletişim adresi.
-Paket: `com.life.simulation`
+Paket: `com.dogusipeksac.lifesimulation`

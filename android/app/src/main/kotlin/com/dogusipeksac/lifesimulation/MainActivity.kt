@@ -1,4 +1,4 @@
-package com.life.simulation
+package com.dogusipeksac.lifesimulation
 
 import io.flutter.embedding.android.FlutterActivity
 

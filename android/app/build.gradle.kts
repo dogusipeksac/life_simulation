@@ -15,7 +15,7 @@ val keystoreProperties = Properties().apply {
 val hasReleaseKey = keystoreProperties.getProperty("storeFile") != null
 
 android {
-    namespace = "com.life.simulation"
+    namespace = "com.dogusipeksac.lifesimulation"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -25,7 +25,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.life.simulation"
+        applicationId = "com.dogusipeksac.lifesimulation"
         // Canlı Android App ID; test için -PvitaAdmobAppId=ca-app-pub-3940256099942544~3347511713
         manifestPlaceholders["admobAppId"] = project.findProperty("vitaAdmobAppId")
             ?: "ca-app-pub-1381327816086955~5862548720"
