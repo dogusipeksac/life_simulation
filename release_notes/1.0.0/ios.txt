@@ -1,1 +1,1 @@
-İlk sürüm test yapısı. Kader ile başlayan hayat simülasyonu, 103 kariyer basamağı, ilişkiler ve interaktif sahneler test edilebilir. Lütfen yazım hataları veya takıldığınız yerleri bildirin.
+Yeni arayüz ve modern tasarım güncellemesi. Güncellenen logo, derin lacivert ve camgöbeği renk uyumu, 103 meslek, ilişkiler ve interaktif sahneler. Lütfen görüşlerinizi bildirin.
